@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { MainLayout } from "@carbon-info/layout";
+import {
+  FeatureCard,
+  HeroImage, IntroPage,
+  UtilitySection, DecentralizedStats,
+  Permissionless, Community, Partnership, RoadMap,
+} from "@carbon-info/views";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import { theme } from "./@carbon-info/theme";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <MainLayout>
+        <IntroPage />
+        <HeroImage />
+        <FeatureCard />
+        <UtilitySection />
+        <Permissionless />
+        <DecentralizedStats />
+        <Community />
+        <Partnership />
+        <RoadMap />
+      </MainLayout>
+    </MuiThemeProvider>
   );
 }
 

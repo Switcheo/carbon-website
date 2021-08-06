@@ -1,6 +1,43 @@
+@font-face {
+  font-family: "TyrosPro-Light";
+  /* font-weight: 600; */
+  src: url("./@carbon-info/assets/fonts/TyrosPro-Light.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "TyrosPro-SemiBold";
+  /* font-weight: 500; */
+  src: url("./@carbon-info/assets/fonts/TyrosPro-SemiBold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "TyrosPro";
+  /* font-weight: 400; */
+  src: url("./@carbon-info/assets/fonts/TyrosPro-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SourceSansPro-Bold";
+  /* font-weight: 400; */
+  src: url("./@carbon-info/assets/fonts/SourceSansPro-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SourceSansPro";
+  /* font-weight: 400; */
+  src: url("./@carbon-info/assets/fonts/SourceSansPro-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SourceSansPro-Light";
+  /* font-weight: 400; */
+  src: url("./@carbon-info/assets/fonts/SourceSansPro-Light.ttf") format("truetype");
+  font-display: swap;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'TyrosPro', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
