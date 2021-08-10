@@ -4,7 +4,8 @@ import {
   FeatureCard,
   HeroImage, IntroPage,
   UtilitySection, DecentralizedStats,
-  Permissionless, Community, Partnership, RoadMap,
+  Permissionless, Community, Partnership,
+  RoadMap, GetInvolved, RecieveUpdates,
 } from "@carbon-info/views";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./@carbon-info/theme";
@@ -23,6 +24,8 @@ function App() {
         <Community />
         <Partnership />
         <RoadMap />
+        <GetInvolved />
+        <RecieveUpdates />
       </MainLayout>
     </MuiThemeProvider>
   );

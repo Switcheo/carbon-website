@@ -71,6 +71,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "1363.2px",
     left: "-255px",
     top: "2200px",
+    pointerEvents: "none",
   },
   backgroundRight: {
     position: "absolute",
@@ -78,6 +79,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "1495.41px",
     right: "-450px",
     top: "2050px",
+    pointerEvents: "none",
   },
   description: {
     // marginTop: theme.spacing(4)

@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     top: "-105%",
     left: "-50%",
+    pointerEvents: "none",
   },
   title: {
     marginBottom: theme.spacing(8),
@@ -74,5 +75,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: "-110%",
     left: "-50%",
     position: "absolute",
+    pointerEvents: "none",
   },
 }));

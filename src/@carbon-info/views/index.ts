@@ -7,3 +7,6 @@ export * from "./DecentralizedStats";
 export * from "./Community";
 export * from "./Partnership";
 export * from "./RoadMap";
+export * from "./GetInvolved";
+export * from "./GetInvolved";
+export * from "./ReceiveUpdates";

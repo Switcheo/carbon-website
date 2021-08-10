@@ -54,20 +54,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   backgroundLeft: {
     position: "absolute",
-    // left: "-8%",
-    // top: "0%",
-    // width: "30%",
-    // width: "965.1px",
-    // height: "965.09px",
     left: "-700px",
     top: "-140px",
+    pointerEvents: "none",
   },
   backgroundRight: {
     position: "absolute",
-    // width: "825.19px",
-    // height: "825.2px",
     right: "-329.33px",
     top: "-140.32px",
+    pointerEvents: "none",
   },
   subtitle: {
     marginTop: theme.spacing(5.5),

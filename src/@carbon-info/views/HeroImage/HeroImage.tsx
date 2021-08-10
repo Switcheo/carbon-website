@@ -1,5 +1,5 @@
 import CarbonStructure from "@carbon-info/assets/background/carbon_structure.svg";
-import { Box, makeStyles, Theme } from "@material-ui/core";
+import { Box, makeStyles } from "@material-ui/core";
 import React from "react";
 
 
@@ -14,16 +14,10 @@ const HeroImage: React.FC = () => {
 
 export default HeroImage;
 
-const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    justifyContent: "center",
-    alignItems: "center",
-    // background: "red",
-    display: "block",
-    margin: theme.spacing(15, 0),
-  },
+const useStyles = makeStyles(() => ({
   carbonStructure: {
     marginTop: "-250px",
     marginBottom: "-170px",
+    pointerEvents: "none",
   },
 }));

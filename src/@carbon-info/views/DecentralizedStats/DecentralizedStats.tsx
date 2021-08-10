@@ -3,12 +3,13 @@ import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import chartSVG from "@carbon-info/assets/animated/chart.svg";
 import decentralizedGlow from "@carbon-info/assets/background/decentralizedGlow.svg";
 import { CardWithIcon } from "@carbon-info/components";
+import { Stroke } from "@carbon-info/assets";
 
 const DecentralizedStats: React.FC = () => {
   const classes = useStyles();
   return (
     <Box className={classes.boxContainer}>
-      <Grid container className={classes.container}>
+      <Grid container>
         <Grid container item xs={12} className={classes.textContainer}>
           <Grid item xs={6}>
             <Typography color="textPrimary" variant="h2" align="left">
@@ -17,7 +18,10 @@ const DecentralizedStats: React.FC = () => {
           </Grid>
           <Grid item xs={6} className={classes.description}>
             <Typography color="textPrimary" variant="subtitle1" align="left">
-              Already powering unique use cases<br />& decentralized financial applications
+              <Stroke className={classes.stroke} />
+              <div className={classes.descriptionDiv}>
+                Already powering unique use cases<br />& decentralized financial applications
+              </div>
             </Typography>
           </Grid>
         </Grid>
@@ -87,9 +91,6 @@ const DecentralizedStats: React.FC = () => {
 export default DecentralizedStats;
 
 const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-
-  },
   numbers: {
     fontWeight: 300,
     fontSize: 70,
@@ -99,9 +100,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   textContainer: {
     marginBottom: theme.spacing(14),
+    zIndex: 2,
   },
   description: {
     alignSelf: "flex-end",
+  },
+  descriptionDiv: {
+    display: "inline-flex",
   },
   imageContainer: {
     position: "relative",
@@ -110,6 +115,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     top: "-60%",
     left: "-50%",
+    pointerEvents: "none",
+    zIndex: 1,
   },
   noWrap: {
     overflow: "visible",
@@ -125,5 +132,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     top: "-80%",
     left: "-50%",
+    pointerEvents: "none",
+  },
+  stroke: {
+    margin: theme.spacing(0, 2, 0, 0),
+    verticalAlign: "super",
   },
 }));

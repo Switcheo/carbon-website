@@ -1,4 +1,4 @@
-<svg width="872" height="757" viewBox="0 0 872 757" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="930" height="757" viewBox="0 0 930 757" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_bii)">
 <rect x="665.699" y="180.72" width="48.7374" height="149.693" rx="10" fill="url(#paint0_linear)"/>
 </g>
@@ -62,6 +62,7 @@
 <g filter="url(#filter20_f)">
 <path d="M33.7902 502.032C51.1243 337.001 165.588 305.389 233.871 323.931C302.154 342.473 336.134 389.19 359.673 433.369C388.443 487.367 418.519 539.097 485.308 532.699C591.806 522.497 590.196 346.017 690.92 275.171C730.696 240.297 828.964 238.555 863.186 274.579" stroke="url(#paint20_linear)" stroke-width="5"/>
 </g>
+<rect x="930" y="29" width="680" height="650" transform="rotate(90 930 29)" fill="url(#paint21_linear)"/>
 <defs>
 <filter id="filter0_bii" x="565.699" y="80.7202" width="248.737" height="349.693" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -428,6 +429,10 @@
 <stop stop-color="#EDF8FE" stop-opacity="0.21"/>
 <stop offset="0.5" stop-color="#2FF3FF"/>
 <stop offset="1" stop-color="#578AEF" stop-opacity="0.23"/>
+</linearGradient>
+<linearGradient id="paint21_linear" x1="1270" y1="29" x2="1270" y2="679" gradientUnits="userSpaceOnUse">
+<stop offset="0.0677083" stop-color="#161515"/>
+<stop offset="1" stop-color="#161515" stop-opacity="0.07"/>
 </linearGradient>
 </defs>
 </svg>

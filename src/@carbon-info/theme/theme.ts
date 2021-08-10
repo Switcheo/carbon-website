@@ -23,6 +23,7 @@ export const theme = createTheme({
       text: {
         primary: "#FFFFFF",
       },
+      divider: "rgba(255,255,255,0.4)",
     },
     typography: {
       fontFamily: "TyrosPro, SourceSansPro, SourceSansPro-Light, SourceSansPro-Bold, TyrosPro-Light, TyrosPro-SemiBold",

@@ -1,7 +1,7 @@
 import { BoxProps, Container, makeStyles, Theme } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useEffect } from "react";
-import Header from "./components/Header";
+import { Footer, Header } from "./components";
 
 interface Props extends BoxProps { }
 
@@ -20,7 +20,7 @@ const MainLayout: React.FC<Props> = (props: Props) => {
       <Container>
         <Header />
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </Container>
     </main>
   );

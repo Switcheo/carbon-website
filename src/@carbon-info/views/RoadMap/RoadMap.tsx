@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     top: "-100%",
     left: "-10%",
+    pointerEvents: "none",
   },
   roadMapContainer: {
     marginTop: theme.spacing(10),
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   noWrap: {
     overflow: "visible",
-    marginBottom: theme.spacing(8),
+    marginBottom: theme.spacing(4),
   },
   roadMapTitleText: {
     fontFamily: "TyrosPro",

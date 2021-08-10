@@ -15,8 +15,6 @@ const Partnership: React.FC = () => {
         See Full Ecosystem <ArrowIcon />
       </Typography>
       <Grid container alignItems="center" justifyContent="center" className={classes.logoContainer} spacing={8}>
-        <div id="gradientOver;ay" className={classes.gradientOverlay} />
-        <img src={partnershipGlow} alt="glow" className={classes.glowSVG} />
         {allPartnersLogo.map((logo: any, index) => {
           return (
             <Grid item xs={3} key={index}>
@@ -24,6 +22,8 @@ const Partnership: React.FC = () => {
             </Grid>
           );
         })}
+        <div id="gradientOver;ay" className={classes.gradientOverlay} />
+        <img src={partnershipGlow} alt="glow" className={classes.glowSVG} />
       </Grid>
     </Box>
   );
@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     top: "-100%",
     left: "-10%",
+    pointerEvents: "none",
   },
   logoContainer: {
     marginTop: theme.spacing(10),
@@ -52,6 +53,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     height: "100%",
     width: "100%",
+    pointerEvents: "none",
     background: "linear-gradient(180deg, rgba(22, 21, 21, 0), rgb(22, 21, 21, 0.8))",
   },
 }));

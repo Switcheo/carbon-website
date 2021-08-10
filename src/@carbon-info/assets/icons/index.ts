@@ -1,1 +1,9 @@
 export { ReactComponent as ArrowIcon } from "./arrow.svg";
+export { ReactComponent as FacebookIcon } from "./facebook.svg";
+export { ReactComponent as LinkedInIcon } from "./linkedIn.svg";
+export { ReactComponent as MediumIcon } from "./medium.svg";
+export { ReactComponent as TelegramIcon } from "./telegram.svg";
+export { ReactComponent as TwitterIcon } from "./twitter.svg";
+export { ReactComponent as YoutubeIcon } from "./youtube.svg";
+export { ReactComponent as UpdateArrow } from "./updateArrow.svg";
+export { ReactComponent as Stroke } from "./stroke.svg";
