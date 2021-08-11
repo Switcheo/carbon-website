@@ -1,5 +1,5 @@
 import { ArrowIcon } from "@carbon-info/assets";
-import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, Grid, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 
 interface cardProps {
@@ -42,7 +42,7 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
 
 export default CardWithCTA;
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   subtext: {
     margin: "3rem 0px",
   },
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "25rem",
   },
   boxContainer: {
-    border: "1px solid white",
+    // border: "1px solid white",
     background: "linear-gradient(353.27deg, rgba(41, 40, 40, 0.21) -9.67%, #161515 94.17%)",
     mixBlendMode: "normal",
     boxShadow: "inset 62px 98px 100px -60px #242424, inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
@@ -83,12 +83,26 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "start",
     overflow: "hidden",
     margin: "auto",
+    "&::before": {
+      content: "''",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      borderRadius: 30,
+      padding: "2px",
+      background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.5))",
+      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      maskComposite: "destination-out",
+      PointerEvent: "none",
+    },
   },
   divTitle: {
     fontFamily: "TyrosPro",
     fontWeight: 300,
-    fontSize: "32px",
-    lineHeight: "36.8px",
+    fontSize: "2rem",
+    lineHeight: "2.3rem",
     // display: "flex",
     // height: "100%",
     // width: "100%",
@@ -100,6 +114,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
   },
   ctaIcon: {
-    margin: theme.spacing(0, 2),
+    margin: "0px 0.125rem",
   },
 }));

@@ -3,6 +3,8 @@ import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import utilityBackgroundLeft from "@carbon-info/assets/background/utilityBackgroundLeft.svg";
 import utilityGlow from "@carbon-info/assets/background/utilityGlow.svg";
 import { CardWithIcon } from "@carbon-info/components";
+import { LaunchIcon, TradeIcon, TransactIcon } from "@carbon-info/assets";
+// import { Trade } from "@carbon-info/assets";
 
 
 const UtilitySection: React.FC = () => {
@@ -31,20 +33,20 @@ const UtilitySection: React.FC = () => {
             <CardWithIcon
               title={"Trade or swap anything, cross-chain"}
               description={"Access assets on popular chains like Ethereum, Binance Smart Chain, Neo, Ziliqa with full convenience"}
-              icon={"ha"} />
+              icon={<TradeIcon />} />
           </Grid>
           <Grid item container xs={6} spacing={4}>
             <Grid item className={classes.gridItemRight}>
               <CardWithIcon
                 title={"Transact instantly without gas"}
                 description={"Zero fees, zero delays on a Layer 2 structure that minimises network congestion"}
-                icon={"ha"} />
+                icon={<TransactIcon />} />
             </Grid>
             <Grid item className={classes.gridItemRight}>
               <CardWithIcon
                 title={"Launch unlimited DeFi products"}
                 description={"Access assets on popular CFDs, perpetuals, and an ever expanding list of dApps with Carbon at their core"}
-                icon={"ha"} />
+                icon={<LaunchIcon />} />
             </Grid>
           </Grid>
         </Grid>

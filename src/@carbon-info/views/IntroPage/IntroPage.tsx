@@ -15,7 +15,7 @@ const IntroPage: React.FC = () => {
         </Typography>
         <IntroPageBackgroundLine className={classes.dash} />
         <Typography color="textPrimary" variant="h1">
-          The core of <br /> decentralised <br />financial markets
+          The core of <br /> <span className={classes.gradientText}>decentralised</span> <br /><span className={classes.gradientText}>financial markets</span>
         </Typography>
         <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
           Carbon is an end-to-end DeFi protocol<br /> powering cross-chain financial dApps
@@ -45,19 +45,24 @@ const useStyles = makeStyles((theme: Theme) => ({
     // left: "-8%",
     // top: "0%",
     // width: "30%",
-    width: "965.1px",
-    height: "965.09px",
-    left: "-473px",
-    top: "-426px",
+    width: "69vw",
+    // height: "965.09px",
+    left: "-34vw",
+    top: "-27vw",
   },
   backgroundRight: {
     position: "absolute",
-    width: "825.19px",
+    width: "69vw",
     height: "825.2px",
     right: "-389.33px",
     top: "120.32px",
   },
   subtitle: {
     marginTop: theme.spacing(5.5),
+  },
+  gradientText: {
+    background: "linear-gradient(20deg,#8FF7FE, #DAFFF4, #11D1D1)",
+    WebkitTextFillColor: "transparent",
+    WebkitBackgroundClip: "text",
   },
 }));

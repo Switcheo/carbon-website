@@ -37,14 +37,23 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'TyrosPro', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'TyrosPro', 'TyrosPro-Light', 'TyrosPro-SemiBold', 'SourceSansPro', 'SourceSansPro-Bold', 'SourceSansPro-Light';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 1000px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 8px;
+  }
 }

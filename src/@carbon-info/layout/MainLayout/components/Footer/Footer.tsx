@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Divider, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, Divider, Grid, makeStyles, Typography } from "@material-ui/core";
 import { CarbonLogo, FacebookIcon, LinkedInIcon, MediumIcon, TelegramIcon, TwitterIcon, YoutubeIcon } from "@carbon-info/assets";
 
 const sitemap = [
@@ -171,28 +171,28 @@ const Footer: React.FC = () => {
 
 export default Footer;
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   logo: {
     verticalAlign: "middle",
-    margin: theme.spacing(0, 1),
+    margin: "0px 0.063rem",
   },
   footerHeader: {
     fontFamily: "TyrosPro",
     fontWeight: 600,
-    fontSize: 24,
-    lineHeight: "34.08px",
+    fontSize: "1.5rem",
+    lineHeight: "2.13rem",
     letterSpacing: "-1px",
   },
   footerLink: {
     fontFamily: "SourceSansPro-Light",
     fontWeight: 400,
-    fontSize: 23,
-    lineHeight: "51.52px",
+    fontSize: "1.438rem",
+    lineHeight: "3.22rem",
     letterSpacing: "-1px",
     color: "#5C5C5C",
   },
   sitemapContainer: {
-    margin: theme.spacing(15, 0),
+    margin: "7.5rem 0px",
     marginLeft: "5%",
   },
   logoContainer: {
@@ -202,20 +202,20 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "end",
   },
   footNoteContainer: {
-    marginTop: theme.spacing(15),
-    marginBottom: theme.spacing(15),
+    marginTop: "7.5rem",
+    marginBottom: "7.5rem",
   },
   footNoteText: {
     color: "#6C6C6C",
   },
   socialMediaIcon: {
-    margin: theme.spacing(0, 1),
+    margin: "0px 0.063rem",
   },
   footNoteSignOff: {
     fontFamily: "TyrosPro",
     fontWeight: 300,
-    fontSize: 15,
-    lineHeight: "21.3px",
+    fontSize: "0.938rem",
+    lineHeight: "1.331rem",
     letterSpacing: "2px",
   },
 }));

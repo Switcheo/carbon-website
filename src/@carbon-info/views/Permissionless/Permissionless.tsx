@@ -3,6 +3,7 @@ import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import permissionlessSVG from "@carbon-info/assets/non-animated/permissionless-hero.svg";
 import permissionlessGlowSVG from "@carbon-info/assets/background/permissionless-glow.svg";
 import { CardWithIcon } from "@carbon-info/components";
+import { DecentralizedIcon, MilitaryIcon, TrustlessIcon } from "@carbon-info/assets";
 
 const Permissionless: React.FC = () => {
   const classes = useStyles();
@@ -27,24 +28,27 @@ const Permissionless: React.FC = () => {
           <CardWithIcon
             title={"Trustless, zero custody"}
             description={"Built on Tendermint Core to facilitate transactions securely"}
-            icon={"lol"}
+            icon={<TrustlessIcon />}
             size="small"
+            iconAlignment="top"
           />
         </Grid>
         <Grid item xs={4}>
           <CardWithIcon
             title={"Military-grade security for all"}
             description={"Enabled via the dPOS consensus mechanism"}
-            icon={"lol"}
+            icon={<MilitaryIcon />}
             size="small"
+            iconAlignment="top"
           />
         </Grid>
         <Grid item xs={4}>
           <CardWithIcon
             title={"100% decentralized order book"}
             description={"Full control for users of their assets while trading"}
-            icon={"lol"}
+            icon={<DecentralizedIcon />}
             size="small"
+            iconAlignment="top"
           />
         </Grid>
       </Grid>

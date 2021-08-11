@@ -16,7 +16,7 @@ const ReceieveUpdates: React.FC = () => {
           </Typography>
         </Grid>
         <Grid item md={6} className={classes.inputContainer}>
-          <Input fullWidth placeholder="Input Your Email Here"
+          <Input fullWidth placeholder="Insert Your Email"
             endAdornment={
               <InputAdornment position="end">
                 <UpdateArrow />
@@ -35,8 +35,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   divTitle: {
     fontFamily: "TyrosPro",
     fontWeight: 300,
-    fontSize: "32px",
-    lineHeight: "36.8px",
+    fontSize: "2rem",
+    lineHeight: "2.3rem",
   },
   container: {
     justifyContent: "center",
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   cardContainer: {
     alignItems: "center",
-    padding: theme.spacing(8),
+    padding: "2.5rem",
     // maxWidth: "80rem",
     // height: "38rem",
     // background: "linear-gradient(353.27deg, rgba(41, 40, 40, 0.11) -9.67%, #161515 20.17%)",
@@ -61,13 +61,27 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "start",
     // borderImage: "linear-gradient(to bottom, rgb(116, 232, 232) , rgb(255, 255, 255,0.26))",
     // borderImageSlice: 1,
-    border: "1px solid white",
+    // border: "1px solid white",
     background: "rgba(0,0,0,0.0)",
     margin: "auto",
+    "&::before": {
+      content: "''",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      borderRadius: 30,
+      padding: "2px",
+      background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
+      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      maskComposite: "destination-out",
+      PointerEvent: "none",
+    },
   },
   inputContainer: {
     alignItems: "center",
-    padding: theme.spacing(3),
+    padding: "1.5rem",
     // maxWidth: "80rem",
     // height: "38rem",
     // background: "linear-gradient(353.27deg, rgba(41, 40, 40, 0.11) -9.67%, #161515 20.17%)",
@@ -77,9 +91,23 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "start",
     // borderImage: "linear-gradient(to bottom, rgb(116, 232, 232) , rgb(255, 255, 255,0.26))",
     // borderImageSlice: 1,
-    border: "1px solid white",
+    // border: "1px solid white",
     background: "#090808",
     margin: "auto",
+    "&::before": {
+      content: "''",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      borderRadius: 10,
+      padding: "2px",
+      background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
+      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      maskComposite: "destination-out",
+      PointerEvent: "none",
+    },
 
   },
   image: {

@@ -48,8 +48,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   roadMapTitleText: {
     fontFamily: "TyrosPro",
     fontWeight: 300,
-    fontSize: 33,
-    lineHeight: "35.64px",
+    fontSize: "2.063rem",
+    lineHeight: "2.228rem",
     // letterSpacing: "-3px",
   },
 }));

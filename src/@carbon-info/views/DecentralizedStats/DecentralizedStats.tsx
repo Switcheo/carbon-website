@@ -3,7 +3,7 @@ import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import chartSVG from "@carbon-info/assets/animated/chart.svg";
 import decentralizedGlow from "@carbon-info/assets/background/decentralizedGlow.svg";
 import { CardWithIcon } from "@carbon-info/components";
-import { Stroke } from "@carbon-info/assets";
+import { AccelerateIcon, ChooseIcon, Stroke } from "@carbon-info/assets";
 
 const DecentralizedStats: React.FC = () => {
   const classes = useStyles();
@@ -71,7 +71,7 @@ const DecentralizedStats: React.FC = () => {
           <CardWithIcon
             title={"Choose your preferred derivative"}
             description={"Options, futures, perpetuals & more - create any market from our range of instruments supported"}
-            icon={"lol"}
+            icon={<ChooseIcon />}
             size="large"
           />
         </Grid>
@@ -79,7 +79,7 @@ const DecentralizedStats: React.FC = () => {
           <CardWithIcon
             title={"Accelerate application building"}
             description={"Tap into our native repository of derivative contracts to build applications out of the box"}
-            icon={"lol"}
+            icon={<AccelerateIcon />}
             size="large"
           />
         </Grid>
@@ -93,9 +93,9 @@ export default DecentralizedStats;
 const useStyles = makeStyles((theme: Theme) => ({
   numbers: {
     fontWeight: 300,
-    fontSize: 70,
-    lineHeight: "70px",
-    letterSpacing: -3,
+    fontSize: "4.375rem",
+    lineHeight: "4.375rem",
+    letterSpacing: "-0.188rem",
     fontFamily: "TyrosPro",
   },
   textContainer: {
