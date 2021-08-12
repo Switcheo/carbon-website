@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "-100%",
     [theme.breakpoints.down("sm")]: {
       marginBottom: "-110%",
-      width: "200%"
+      width: "200%",
     },
   },
   contentContainer: {
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   text: {
     margin: theme.spacing(3, 3),
     [theme.breakpoints.down("sm")]: {
-      display: "content"
+      display: "content",
     },
   },
 }));
