@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Divider, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Box, Divider, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { CarbonLogo, FacebookIcon, LinkedInIcon, MediumIcon, TelegramIcon, TwitterIcon, YoutubeIcon } from "@carbon-info/assets";
 
 const sitemap = [
@@ -108,21 +108,25 @@ const sitemap = [
 
 const Footer: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Box>
-      <Divider />
-      <Grid container className={classes.sitemapContainer}>
+      <Hidden smDown>
+        <Divider />
+      </Hidden>
+      <Grid container className={classes.sitemapContainer} spacing={isMobile ? 10 : 0}>
         {
           sitemap.map((section) => {
             return (
-              <Grid item container md key={section.section} direction="column">
+              <Grid item container xs={6} md key={section.section} direction="column">
                 <Typography color="textPrimary" className={classes.footerHeader} align="left">
                   {section.section}
                 </Typography>
                 {
-                  section.sitemap.map((map) => {
+                  section.sitemap.map((map, index) => {
                     return (
-                      <Typography color="textPrimary" key={map.title} className={classes.footerLink} align="left">
+                      <Typography color="textPrimary" key={map.title + index} className={classes.footerLink} align="left">
                         {map.title}
                       </Typography>
                     );
@@ -133,13 +137,15 @@ const Footer: React.FC = () => {
           })
         }
       </Grid>
-      <Divider />
+      <Hidden smDown>
+        <Divider />
+      </Hidden>
       <Grid container className={classes.footNoteContainer} spacing={6}>
-        <Grid container item md={12} alignItems="center" justifyContent="center">
-          <Grid item md={6} className={classes.logoContainer}>
+        <Grid container item xs={12} md={12} alignItems="center" justifyContent="center">
+          <Grid item xs={12} md={6} className={classes.logoContainer}>
             <CarbonLogo className={classes.logo} />
           </Grid>
-          <Grid item md={6} className={classes.socialMediaContainer}>
+          <Grid item xs={12} md={6} className={classes.socialMediaContainer}>
             {/* <Typography color="textPrimary" variant="body1">
               Social Media
             </Typography> */}
@@ -151,19 +157,21 @@ const Footer: React.FC = () => {
             <YoutubeIcon className={classes.socialMediaIcon} />
           </Grid>
         </Grid>
-        <Grid item md={12}>
-          <Typography className={classes.footNoteText} align="left" variant="body1">
-            This website is maintained by Switcheo Labs. The contents and opinions of this website are those of Switcheo Labs. Switcheo provides links to cryptocurrency exchanges as a service to the public. Switcheo Labs does not warrant that the information provided by these websites is correct, complete, and up-to-date. Switcheo Labs is not responsible for their content and expressly rejects any liability for damages of any kind resulting from the use, reference to, or reliance on any information contained within these websites.
+        <Hidden smDown>
+          <Grid item md={12}>
+            <Typography className={classes.footNoteText} align="left" variant="body1">
+              This website is maintained by Switcheo Labs. The contents and opinions of this website are those of Switcheo Labs. Switcheo provides links to cryptocurrency exchanges as a service to the public. Switcheo Labs does not warrant that the information provided by these websites is correct, complete, and up-to-date. Switcheo Labs is not responsible for their content and expressly rejects any liability for damages of any kind resulting from the use, reference to, or reliance on any information contained within these websites.
           </Typography>
-        </Grid>
-        <Grid item md={12}>
-          <Typography color="textPrimary" align="left" className={classes.footNoteSignOff}>
-            DEVELOPED BY SWITCHEO LABS
+          </Grid>
+          <Grid item md={12}>
+            <Typography color="textPrimary" align="left" className={classes.footNoteSignOff}>
+              DEVELOPED BY SWITCHEO LABS
           </Typography>
-          <Typography color="textPrimary" align="left" className={classes.footNoteSignOff}>
-            SITE DESIGNED BY HIGHSPARK
+            <Typography color="textPrimary" align="left" className={classes.footNoteSignOff}>
+              SITE DESIGNED BY HIGHSPARK
           </Typography>
-        </Grid>
+          </Grid>
+        </Hidden>
       </Grid>
     </Box>
   );
@@ -171,10 +179,13 @@ const Footer: React.FC = () => {
 
 export default Footer;
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   logo: {
     verticalAlign: "middle",
     margin: "0px 0.063rem",
+    [theme.breakpoints.down("sm")]: {
+      width: "30%",
+    },
   },
   footerHeader: {
     fontFamily: "TyrosPro",
@@ -194,12 +205,24 @@ const useStyles = makeStyles(() => ({
   sitemapContainer: {
     margin: "7.5rem 0px",
     marginLeft: "5%",
+    [theme.breakpoints.down("sm")]: {
+      margin: "7.5rem 0px",
+      padding: "0px 10%",
+      width: "fit-content",
+    },
   },
   logoContainer: {
     textAlign: "start",
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+    },
   },
   socialMediaContainer: {
     textAlign: "end",
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+      margin: "4rem 0px",
+    },
   },
   footNoteContainer: {
     marginTop: "7.5rem",
@@ -210,6 +233,10 @@ const useStyles = makeStyles(() => ({
   },
   socialMediaIcon: {
     margin: "0px 0.063rem",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0px 0.5rem",
+      width: "5rem",
+    },
   },
   footNoteSignOff: {
     fontFamily: "TyrosPro",

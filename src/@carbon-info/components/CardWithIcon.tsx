@@ -1,4 +1,4 @@
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import React from "react";
 
 interface cardProps {
@@ -58,7 +58,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
 
 export default CardWithIcon;
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   icon: {
     marginTop: "0.063rem",
   },
@@ -86,7 +86,15 @@ const useStyles = makeStyles(() => ({
       background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
-      PointerEvent: "none",
+      pointerEvents: "none",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "18rem",
+      width: "60vw",
+      borderRadius: 20,
+      "&::before": {
+        borderRadius: 20,
+      },
     },
   },
   boxContainersmall: {
@@ -113,7 +121,17 @@ const useStyles = makeStyles(() => ({
       background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
-      PointerEvent: "none",
+      pointerEvents: "none",
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: "auto",
+      height: "19rem",
+      width: "24rem",
+      padding: "4rem",
+      borderRadius: 20,
+      "&::before": {
+        borderRadius: 20,
+      },
     },
   },
   boxContainerlarge: {
@@ -140,7 +158,16 @@ const useStyles = makeStyles(() => ({
       background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
-      PointerEvent: "none",
+      pointerEvents: "none",
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: "auto",
+      height: "20rem",
+      width: "70%",
+      borderRadius: 15,
+      "&::before": {
+        borderRadius: 15,
+      },
     },
   },
   divTitle: {

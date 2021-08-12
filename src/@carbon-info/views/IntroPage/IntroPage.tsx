@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     // position: "relative"
   },
   dash: {
-    margin: theme.spacing(6, 0),
+    margin: "3rem 0px",
     height: "1.5rem",
   },
   backgroundLeft: {

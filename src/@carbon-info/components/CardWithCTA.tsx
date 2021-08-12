@@ -1,5 +1,5 @@
 import { ArrowIcon } from "@carbon-info/assets";
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import React from "react";
 
 interface cardProps {
@@ -9,12 +9,13 @@ interface cardProps {
   iconAlignment?: "side" | "top",
   ctaText: string,
   bigSVG?: boolean,
+  isMobile?: boolean,
 }
 
 const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
-  const { title, description, ctaText, icon, bigSVG } = props;
-  const svgClass = bigSVG ? "bigIcon" : "icon";
+  const { title, description, ctaText, icon, bigSVG, isMobile } = props;
+  const svgClass = bigSVG ? "bigIcon" : isMobile ? "icon" : "icon";
   return (
     <Box className={classes.boxContainer}>
       <div className={classes.iconContainer}>
@@ -42,7 +43,7 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
 
 export default CardWithCTA;
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   subtext: {
     margin: "3rem 0px",
   },
@@ -53,6 +54,9 @@ const useStyles = makeStyles(() => ({
     left: 0,
     right: 0,
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      width: "95%",
+    },
   },
   bigIcon: {
     position: "absolute",
@@ -68,6 +72,9 @@ const useStyles = makeStyles(() => ({
     position: "relative",
     width: "100%",
     height: "25rem",
+    [theme.breakpoints.down("sm")]: {
+      height: "35rem",
+    },
   },
   boxContainer: {
     // border: "1px solid white",
@@ -95,7 +102,14 @@ const useStyles = makeStyles(() => ({
       background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.5))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
-      PointerEvent: "none",
+      pointerEvents: "none",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "65rem",
+      borderRadius: 13.3,
+      "&::before": {
+        borderRadius: 13.3,
+      },
     },
   },
   divTitle: {
@@ -112,8 +126,16 @@ const useStyles = makeStyles(() => ({
   gridContainer: {
     height: "100%",
     width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      height: "0%",
+      paddingRight: "25%",
+    },
   },
   ctaIcon: {
     margin: "0px 0.125rem",
+    [theme.breakpoints.down("sm")]: {
+      transform: "scale(0.8)",
+      marginTop: "10px",
+    },
   },
 }));

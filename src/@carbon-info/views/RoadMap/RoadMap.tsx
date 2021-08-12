@@ -1,26 +1,49 @@
 import React from "react";
-import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import roadMap from "@carbon-info/assets/background/roadMap.svg";
 import roadMapGlow from "@carbon-info/assets/background/roadMapGlow.svg";
 import { ArrowIcon } from "@carbon-info/assets/icons";
 
 const RoadMap: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Box className={classes.boxContainer}>
       <Typography variant="h2" color="textPrimary" paragraph noWrap className={classes.noWrap}>
-        Building towards change
+        {
+          isMobile ? <span>Building<br />towards change</span>
+            : <span>Building towards change</span>
+        }
+
       </Typography >
-      <Typography variant="button" color="textPrimary">
-        See Feature Map <ArrowIcon />
-      </Typography>
+      <Hidden smDown>
+        <Typography variant="button" color="textPrimary">
+          See Feature Map <ArrowIcon />
+        </Typography>
+      </Hidden>
       <Grid container alignItems="center" justifyContent="center" className={classes.roadMapContainer} spacing={8}>
         <Typography color="textPrimary" className={classes.roadMapTitleText} paragraph>
           New market types
         </Typography>
         <img src={roadMapGlow} alt="glow" className={classes.glowSVG} />
-        <img src={roadMap} alt="roadMap" />
+        <div className={classes.roadMapSVGContainer}>
+          <img src={roadMap} alt="roadMap" className={classes.roadMapSVG} />
+        </div>
       </Grid>
+      <Typography color="textPrimary" variant="h2" paragraph>
+        20%
+      </Typography>
+      <Typography color="textPrimary" variant="body2">
+        Addition of new derivatives markets including options,<br /> binary options and physically settled markets
+      </Typography>
+      <Hidden mdUp>
+        <div className={classes.button}>
+          <Typography variant="button" color="textPrimary">
+            See Feature Map <ArrowIcon />
+          </Typography>
+        </div>
+      </Hidden>
     </Box>
   );
 };
@@ -28,8 +51,28 @@ const RoadMap: React.FC = () => {
 export default RoadMap;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  button: {
+    margin: "7rem",
+  },
   boxContainer: {
     margin: "50vh 0px",
+    [theme.breakpoints.down("sm")]: {
+      margin: "10vh 0px",
+    },
+  },
+  roadMapSVG: {
+    [theme.breakpoints.down("sm")]: {
+      // width: "100%",
+      position: "relative",
+      top: "-10rem",
+      transform: "scale(0.8)"
+    },
+  },
+  roadMapSVGContainer: {
+    [theme.breakpoints.down("sm")]: {
+      // width: "100%",
+      height: "15rem",
+    },
   },
   glowSVG: {
     position: "absolute",

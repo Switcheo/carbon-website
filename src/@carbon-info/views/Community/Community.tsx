@@ -12,22 +12,24 @@ const Community: React.FC = () => {
       <img src={communityBackGroundLeft} alt="communityBackGroundLeft" className={classes.backgroundLeft} />
       <img src={communityBackGroundRight} alt="communityBackGroundRight" className={classes.backgroundRight} />
       <Grid container className={classes.container} spacing={8}>
-        <Grid item xs={6}>
-          <img src={communityHero} alt="communityHero" />
+        <Grid item xs={12} md={6}>
+          <img src={communityHero} alt="communityHero" className={classes.image} />
         </Grid>
-        <Grid item xs={6}>
-          <Typography color="textPrimary" variant="h2" align="left" paragraph>
-            Owned and driven<br />by community
+        <Grid item xs={12} md={6}>
+          <div className={classes.textContainer}>
+            <Typography color="textPrimary" variant="h2" align="left" paragraph>
+              Owned and driven<br />by community
           </Typography>
-          <br />
-          <Typography color="textPrimary" variant="subtitle1" align="left" paragraph>
-            Using the SWTH token, anyone can play a<br />part in shaping Carbon’s journey towards<br />the future of finance.
+            <br />
+            <Typography color="textPrimary" variant="subtitle1" align="left" paragraph>
+              Using the SWTH token, anyone can play a<br />part in shaping Carbon’s journey towards<br />the future of finance.
           </Typography>
-          <br />
-          <Typography color="textPrimary" variant="button" align="left" paragraph>
-            Buy Token
+            <br />
+            <Typography color="textPrimary" variant="button" align="left" paragraph>
+              Buy Token
             <ArrowIcon className={classes.icon} />
-          </Typography>
+            </Typography>
+          </div>
         </Grid>
       </Grid>
     </Box>
@@ -40,6 +42,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     margin: "40vh 0px",
     position: "relative",
+    [theme.breakpoints.down("sm")]: {
+      margin: "10vh 0px",
+    },
+  },
+  textContainer: {
+    margin: "auto",
+    width: "fit-content",
   },
   container: {
     justifyContent: "center",
@@ -69,5 +78,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   icon: {
     margin: theme.spacing(0, 2),
+  },
+  image: {
+    [theme.breakpoints.down("sm")]: {
+      position: "relative",
+      top: 0,
+      left: 0,
+      width: "100%",
+    },
   },
 }));

@@ -7,7 +7,7 @@ const ReceieveUpdates: React.FC = () => {
   return (
     <Box className={classes.container}>
       <Grid container className={classes.cardContainer}>
-        <Grid item md={6}>
+        <Grid item xs={12} md={6}>
           <Typography color="textPrimary" className={classes.divTitle} align="left">
             Recieve Updates
           </Typography>
@@ -15,7 +15,7 @@ const ReceieveUpdates: React.FC = () => {
             Unsubscribe at any time.
           </Typography>
         </Grid>
-        <Grid item md={6} className={classes.inputContainer}>
+        <Grid item xs={12} md={6} className={classes.inputContainer}>
           <Input fullWidth placeholder="Insert Your Email"
             endAdornment={
               <InputAdornment position="end">
@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "40vh 0px",
     display: "relative",
     // background: "red"
+    [theme.breakpoints.down("sm")]: {
+      margin: "20vh 0px",
+    },
   },
   imageContainer: {
     alignItems: "center",
@@ -72,11 +75,17 @@ const useStyles = makeStyles((theme: Theme) => ({
       right: 0,
       bottom: 0,
       borderRadius: 30,
-      padding: "2px",
+      padding: "1px",
       background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
-      PointerEvent: "none",
+      pointerEvents: "none",
+    },
+    [theme.breakpoints.down("sm")]: {
+      borderRadius: 6.7,
+      "&::before": {
+        borderRadius: 6.7,
+      },
     },
   },
   inputContainer: {
@@ -102,13 +111,19 @@ const useStyles = makeStyles((theme: Theme) => ({
       right: 0,
       bottom: 0,
       borderRadius: 10,
-      padding: "2px",
+      padding: "1px",
       background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
-      PointerEvent: "none",
+      pointerEvents: "none",
     },
-
+    [theme.breakpoints.down("sm")]: {
+      margin: "8rem 0px 2rem 0px",
+      borderRadius: 4.4,
+      "&::before": {
+        borderRadius: 4.4,
+      },
+    },
   },
   image: {
     width: "90%",

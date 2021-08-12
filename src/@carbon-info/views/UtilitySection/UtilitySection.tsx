@@ -15,7 +15,7 @@ const UtilitySection: React.FC = () => {
       <img src={utilityGlow} alt="featureCardBackgroundRight" className={classes.backgroundRight} />
       <Grid container justifyContent="center" alignItems="center" spacing={8}>
         <Grid container item xs={12} className={classes.description} spacing={8}>
-          <Grid container item xs={6}>
+          <Grid container item sm={12} md={6}>
             <Grid item xs={12}>
               <Typography color="textPrimary" variant="h2">
                 Made to power<br />anything DeFi
@@ -28,14 +28,16 @@ const UtilitySection: React.FC = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid container xs={12}>
-          <Grid item container xs={6}>
-            <CardWithIcon
-              title={"Trade or swap anything, cross-chain"}
-              description={"Access assets on popular chains like Ethereum, Binance Smart Chain, Neo, Ziliqa with full convenience"}
-              icon={<TradeIcon />} />
+        <Grid container>
+          <Grid item container xs={12} md={6} className={classes.cardContainer}>
+            <Grid item className={classes.gridItem}>
+              <CardWithIcon
+                title={"Trade or swap anything, cross-chain"}
+                description={"Access assets on popular chains like Ethereum, Binance Smart Chain, Neo, Ziliqa with full convenience"}
+                icon={<TradeIcon />} />
+            </Grid>
           </Grid>
-          <Grid item container xs={6} spacing={4}>
+          <Grid item container xs={12} md={6} spacing={4} className={classes.cardContainer}>
             <Grid item className={classes.gridItemRight}>
               <CardWithIcon
                 title={"Transact instantly without gas"}
@@ -89,5 +91,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   gridItemRight: {
     marginLeft: "auto",
+    [theme.breakpoints.down("sm")]: {
+      margin: 0,
+    },
+  },
+  cardContainer: {
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center",
+      margin: 0,
+    },
+  },
+  gridItem: {
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "1rem",
+    },
   },
 }));

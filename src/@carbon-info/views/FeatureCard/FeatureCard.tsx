@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, Grid, Hidden, makeStyles, Theme, Typography } from "@material-ui/core";
 import carbonConnected from "@carbon-info/assets/background/carbon-connected.svg";
 import featureCardBackgroundLeft from "@carbon-info/assets/background/FeatureCardBackGroundLeft.svg";
 import featureCardBackgroundRight from "@carbon-info/assets/background/FeatureCardBackgroundRight.svg";
@@ -12,7 +12,7 @@ const FeatureCard: React.FC = () => {
       <img src={featureCardBackgroundLeft} alt="featureCardBackgroundLeft" className={classes.backgroundLeft} />
       <img src={featureCardBackgroundRight} alt="featureCardBackgroundRight" className={classes.backgroundRight} />
       <Grid container className={classes.cardContainer}>
-        <Grid container item xs={7}>
+        <Grid container item xs={12} md={7} className={classes.textContainer}>
           <div>
             <Typography color="textPrimary" variant="h2">
               Launch full-featured<br /> financial markets.<br /> No KYC required.
@@ -26,9 +26,11 @@ const FeatureCard: React.FC = () => {
             <ArrowIcon className={classes.icon} />
           </div>
         </Grid>
-        <Grid item xs={5} className={classes.imageContainer}>
-          <img src={carbonConnected} alt="carbon-connected" className={classes.image} />
-        </Grid>
+        <Hidden smDown>
+          <Grid item xs={5} className={classes.imageContainer}>
+            <img src={carbonConnected} alt="carbon-connected" className={classes.image} />
+          </Grid>
+        </Hidden>
       </Grid>
     </Box>
   );
@@ -76,7 +78,14 @@ const useStyles = makeStyles((theme: Theme) => ({
       background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
-      PointerEvent: "none",
+      pointerEvents: "none",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "42rem",
+      borderRadius: 21,
+      "&::before": {
+        borderRadius: 21,
+      },
     },
   },
   image: {
@@ -100,6 +109,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(0, 2),
   },
   subtext: {
-    margin: theme.spacing(8, 0),
+    margin: "4rem 0px",
+    [theme.breakpoints.down("sm")]: {
+      margin: "3rem 0px",
+    },
+  },
+  textContainer: {
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center",
+      alignItems: "center",
+    },
   },
 }));
