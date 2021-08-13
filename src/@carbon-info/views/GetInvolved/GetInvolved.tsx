@@ -30,7 +30,7 @@ const GetInvolved: React.FC = () => {
             <>
             </>
         }
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} className={classes.card}>
           <CardWithCTA
             title={"Develop on Carbon"}
             description={"Leverage our native source code to fast-track development"}
@@ -39,7 +39,7 @@ const GetInvolved: React.FC = () => {
             isMobile={isMobile}
           />
         </Grid>
-        <Grid item xs={12} md style={{ marginTop: isMobile ? 0 : "-42%" }}>
+        <Grid item xs={12} md style={{ marginTop: isMobile ? 0 : "-42%" }} className={classes.card}>
           <CardWithCTA
             title={"Propose a partnership"}
             description={"Want to collaborate toward a freer financial system?"}
@@ -48,7 +48,7 @@ const GetInvolved: React.FC = () => {
             bigSVG
           />
         </Grid>
-        <Grid item xs={12} md>
+        <Grid item xs={12} md className={classes.card}>
           <CardWithCTA
             title={"Pitch a project"}
             description={"Need funding to kickstart your project on Carbon?"}
@@ -66,6 +66,9 @@ const GetInvolved: React.FC = () => {
 export default GetInvolved;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  card: {
+    zIndex: 3,
+  },
   boxContainer: {
     margin: "50vh 0px",
     [theme.breakpoints.down("sm")]: {

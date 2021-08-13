@@ -232,10 +232,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: "#6C6C6C",
   },
   socialMediaIcon: {
-    margin: "0px 0.063rem",
+    margin: "0px 0.33rem",
     [theme.breakpoints.down("sm")]: {
       margin: "0px 0.5rem",
-      width: "5rem",
+      width: "4rem",
     },
   },
   footNoteSignOff: {
