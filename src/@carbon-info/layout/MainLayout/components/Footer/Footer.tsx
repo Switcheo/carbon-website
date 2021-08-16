@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Divider, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, Divider, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { CarbonLogo, FacebookIcon, LinkedInIcon, MediumIcon, TelegramIcon, TwitterIcon, YoutubeIcon } from "@carbon-info/assets";
 
 const sitemap = [
@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
       <Hidden smDown>
         <Divider />
       </Hidden>
-      <Grid container className={classes.sitemapContainer} spacing={isMobile ? 10 : 0}>
+      <Grid container className={classes.sitemapContainer} spacing={isMobile ? 7 : 0}>
         {
           sitemap.map((section) => {
             return (
@@ -126,9 +126,11 @@ const Footer: React.FC = () => {
                 {
                   section.sitemap.map((map, index) => {
                     return (
-                      <Typography color="textPrimary" key={map.title + index} className={classes.footerLink} align="left">
-                        {map.title}
-                      </Typography>
+                      <Link href={map.link} underline="none" target="_blank" key={map.title + index}>
+                        <Typography color="textPrimary" className={classes.footerLink} align="left">
+                          {map.title}
+                        </Typography>
+                      </Link>
                     );
                   })
                 }
@@ -193,6 +195,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: "1.5rem",
     lineHeight: "2.13rem",
     letterSpacing: "-1px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2.5rem",
+      marginBottom: "1rem",
+    },
   },
   footerLink: {
     fontFamily: "SourceSansPro-Light",
@@ -201,6 +207,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "3.22rem",
     letterSpacing: "-1px",
     color: "#5C5C5C",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2.2rem",
+      margin: "0.5rem 0px",
+    },
   },
   sitemapContainer: {
     margin: "7.5rem 0px",

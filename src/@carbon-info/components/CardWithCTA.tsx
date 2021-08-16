@@ -1,6 +1,6 @@
-import { ArrowIcon } from "@carbon-info/assets";
 import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import React from "react";
+import { CTAButton } from ".";
 
 interface cardProps {
   title: string,
@@ -10,15 +10,16 @@ interface cardProps {
   ctaText: string,
   bigSVG?: boolean,
   isMobile?: boolean,
+  link: string,
 }
 
 const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
-  const { title, description, ctaText, icon, bigSVG, isMobile } = props;
+  const { title, description, ctaText, icon, bigSVG, isMobile, link } = props;
   const svgClass = bigSVG ? "bigIcon" : isMobile ? "icon" : "icon";
   return (
     <Box className={classes.boxContainer}>
-      <div className={classes.iconContainer}>
+      <div className={svgClass ? classes.bigIconContainer : classes.iconContainer}>
         <img src={icon} alt="icon" className={classes[svgClass]} />
       </div>
       <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center">
@@ -30,10 +31,10 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
             <Typography color="textPrimary" variant="body2" className={classes.subtext}>
               {description}
             </Typography>
-            <Typography color="textPrimary" variant="button" display="inline">
-              {ctaText}
-            </Typography>
-            <ArrowIcon className={classes.ctaIcon} />
+            <CTAButton
+              text={ctaText}
+              link={link}
+            />
           </div>
         </Grid>
       </Grid>
@@ -55,7 +56,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     right: 0,
     textAlign: "center",
     [theme.breakpoints.down("sm")]: {
-      width: "95%",
+      width: "100%",
+      position: "relative",
     },
   },
   bigIcon: {
@@ -68,12 +70,20 @@ const useStyles = makeStyles((theme: Theme) => ({
     maxWidth: "100%",
     transform: "scale(2)",
   },
-  iconContainer: {
+  bigIconContainer: {
     position: "relative",
     width: "100%",
     height: "25rem",
     [theme.breakpoints.down("sm")]: {
       height: "35rem",
+    },
+  },
+  iconContainer: {
+    position: "relative",
+    width: "100%",
+    height: "25rem",
+    [theme.breakpoints.down("sm")]: {
+      height: "auto",
     },
   },
   boxContainer: {

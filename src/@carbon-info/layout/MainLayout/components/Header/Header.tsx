@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { CarbonLogo, MenuIcon } from "@carbon-info/assets";
 
 
@@ -18,10 +18,18 @@ const Header: React.FC = () => {
             <MenuIcon className={classes.menuIcon} />
             :
             <>
-              <Typography color="textPrimary" display="inline">About</Typography>
-              <Typography color="textPrimary" display="inline">Ecosystem</Typography>
-              <Typography color="textPrimary" display="inline">Whitepaper</Typography>
-              <Typography color="textPrimary" display="inline">Features</Typography>
+              <Link href={"/#About"} underline="none" target="_blank">
+                <Typography color="textPrimary" display="inline">About</Typography>
+              </Link>
+              <Link href={"/#Ecosystem"} underline="none" target="_blank">
+                <Typography color="textPrimary" display="inline">Ecosystem</Typography>
+              </Link>
+              <Link href={"/#Whitepaper"} underline="none" target="_blank">
+                <Typography color="textPrimary" display="inline">Whitepaper</Typography>
+              </Link>
+              <Link href={"/#Features"} underline="none" target="_blank">
+                <Typography color="textPrimary" display="inline">Features</Typography>
+              </Link>
             </>
         }
       </div>

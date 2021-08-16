@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import partnershipGlow from "@carbon-info/assets/background/partnershipGlow.svg";
 import { allPartnersLogo } from "@carbon-info/assets";
-import { ArrowIcon } from "@carbon-info/assets/icons";
+import { CTAButton } from "@carbon-info/components";
 
 const Partnership: React.FC = () => {
   const classes = useStyles();
@@ -18,9 +18,10 @@ const Partnership: React.FC = () => {
         }
       </Typography >
       <Hidden smDown>
-        <Typography variant="button" color="textPrimary">
-          See Full Ecosystem <ArrowIcon />
-        </Typography>
+        <CTAButton
+          text="SEE FULL ECOSYSTEM"
+          link="/#ECOSYSTEM"
+        />
       </Hidden>
       <Grid container alignItems="center" justifyContent="center" className={classes.logoContainer} spacing={isMobile ? 2 : 8}>
         {allPartnersLogo.map((logo: any, index) => {
@@ -34,9 +35,12 @@ const Partnership: React.FC = () => {
         <img src={partnershipGlow} alt="glow" className={classes.glowSVG} />
         <Hidden mdUp>
           <Grid item xs={12} className={classes.cta}>
-            <div>
+            <div className={classes.mobileCTAButton}>
               <Typography variant="button" color="textPrimary" align="left">
-                See Full Ecosystem <ArrowIcon />
+                <CTAButton
+                  text="SEE FULL ECOSYSTEM"
+                  link="/#ECOSYSTEM"
+                />
               </Typography>
             </div>
           </Grid>
@@ -52,6 +56,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   cta: {
     textAlign: "left",
     zIndex: 3,
+  },
+  mobileCTAButton: {
+    margin: "4rem 0px",
   },
   boxContainer: {
     margin: "50vh 0px",

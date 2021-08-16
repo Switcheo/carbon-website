@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, Hidden, makeStyles, Theme, Typography } from "@material-ui/core";
-import permissionlessSVG from "@carbon-info/assets/non-animated/permissionless-hero.svg";
+import permissionlessSVG from "@carbon-info/assets/non-animated/permissionlessHeroSVG.png";
 import permissionlessGlowSVG from "@carbon-info/assets/background/permissionless-glow.svg";
 import { CardWithIcon } from "@carbon-info/components";
 import { DecentralizedIcon, MilitaryIcon, TrustlessIcon } from "@carbon-info/assets";
@@ -65,8 +65,9 @@ export default Permissionless;
 const useStyles = makeStyles((theme: Theme) => ({
   heroSVG: {
     position: "absolute",
-    top: "-105%",
-    left: "-50%",
+    top: "-83%",
+    left: "-25%",
+    width: "150%",
     pointerEvents: "none",
     [theme.breakpoints.down("sm")]: {
       position: "relative",
@@ -105,8 +106,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   cardGridContainer: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       margin: "2rem auto",
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: "2rem 0px",
     },
   },
 }));

@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import GetInvolvedGlow from "@carbon-info/assets/background/getInvolvedGlow.svg";
-import GetInvolvedBG from "@carbon-info/assets/background/getInvolvedBG.svg";
-import ProposeSVG from "@carbon-info/assets/non-animated/propose.svg";
-import DevelopSVG from "@carbon-info/assets/non-animated/develop.svg";
-import PitchSVG from "@carbon-info/assets/non-animated/pitch.svg";
+import GetInvolvedBG from "@carbon-info/assets/background/getInvolvedBG.png";
+import ProposeSVG from "@carbon-info/assets/non-animated/propose.png";
+import DevelopSVG from "@carbon-info/assets/non-animated/develop.png";
+import PitchSVG from "@carbon-info/assets/non-animated/pitch.png";
 import { CardWithCTA } from "@carbon-info/components";
 
 const GetInvolved: React.FC = () => {
@@ -35,6 +35,7 @@ const GetInvolved: React.FC = () => {
             title={"Develop on Carbon"}
             description={"Leverage our native source code to fast-track development"}
             ctaText={"Read Docs"}
+            link={"/#document"}
             icon={DevelopSVG}
             isMobile={isMobile}
           />
@@ -44,6 +45,7 @@ const GetInvolved: React.FC = () => {
             title={"Propose a partnership"}
             description={"Want to collaborate toward a freer financial system?"}
             ctaText={"Get In Touch"}
+            link={"/#document"}
             icon={ProposeSVG}
             bigSVG
           />
@@ -53,6 +55,7 @@ const GetInvolved: React.FC = () => {
             title={"Pitch a project"}
             description={"Need funding to kickstart your project on Carbon?"}
             ctaText={"Apply Now"}
+            link={"/#document"}
             icon={PitchSVG}
             isMobile={isMobile}
           />

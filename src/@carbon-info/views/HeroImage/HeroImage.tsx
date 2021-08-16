@@ -1,4 +1,4 @@
-import CarbonStructure from "@carbon-info/assets/background/carbon_structure.svg";
+import CarbonStructure from "@carbon-info/assets/non-animated/carbonStructure.png";
 import { Box, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 
@@ -16,8 +16,8 @@ export default HeroImage;
 
 const useStyles = makeStyles((theme: Theme) => ({
   carbonStructure: {
-    marginTop: "-15.625rem",
-    marginBottom: "-10.625rem",
+    marginTop: "-7.625rem",
+    marginBottom: "-7.625rem",
     pointerEvents: "none",
     // maxWidth: "100vw",
     [theme.breakpoints.down("sm")]: {

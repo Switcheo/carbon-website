@@ -1,6 +1,10 @@
 import React from "react";
 import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
-import utilityBackgroundLeft from "@carbon-info/assets/background/utilityBackgroundLeft.svg";
+import utilityBackgroundLeft from "@carbon-info/assets/animated/ultilityBgLine.png";
+import utilityBackgroundSphere from "@carbon-info/assets/background/ultilityBgSphere.png";
+import binanceSphere from "@carbon-info/assets/animated/binanceSphere.png";
+import neoSphere from "@carbon-info/assets/animated/neoSphere.png";
+import ethSphere from "@carbon-info/assets/animated/ethSphere.png";
 import utilityGlow from "@carbon-info/assets/background/utilityGlow.svg";
 import { CardWithIcon } from "@carbon-info/components";
 import { LaunchIcon, TradeIcon, TransactIcon } from "@carbon-info/assets";
@@ -11,8 +15,14 @@ const UtilitySection: React.FC = () => {
   const classes = useStyles();
   return (
     <Box className={classes.container}>
-      <img src={utilityBackgroundLeft} alt="featureCardBackgroundLeft" className={classes.backgroundLeft} />
-      <img src={utilityGlow} alt="featureCardBackgroundRight" className={classes.backgroundRight} />
+      <div>
+        <img src={utilityBackgroundLeft} alt="featureCardBackgroundLeft" className={classes.backgroundLeft} />
+        <img src={utilityBackgroundSphere} alt="featureCardBackgroundLeft" className={classes.backgroundSphereLeft} />
+        <img src={binanceSphere} alt="binanceSphere" className={classes.binanceSphere} />
+        <img src={neoSphere} alt="neoSphere" className={classes.neoSphere} />
+        <img src={ethSphere} alt="ethSphere" className={classes.ethSphere} />
+        <img src={utilityGlow} alt="featureCardBackgroundRight" className={classes.backgroundRight} />
+      </div>
       <Grid container justifyContent="center" alignItems="center" spacing={8}>
         <Grid container item xs={12} className={classes.description} spacing={8}>
           <Grid container item sm={12} md={6}>
@@ -65,24 +75,59 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     // background: "red",
     display: "block",
-    margin: theme.spacing(15, 0),
+    margin: "25rem 1.5rem",
+    marginTop: "15rem",
     width: "100%",
+    position: "relative",
+    [theme.breakpoints.down("sm")]: {
+      margin: "15rem 1.5rem",
+    },
   },
   backgroundLeft: {
     position: "absolute",
+    width: "100%",
+    top: "14%",
+    left: "-27%",
+    pointerEvents: "none",
+  },
+  backgroundSphereLeft: {
+    position: "absolute",
+    width: "100%",
+    maxWidth: "40rem",
+    top: "57%",
+    left: "-6%",
+    pointerEvents: "none",
+  },
+  ethSphere: {
+    position: "absolute",
     // width: "92%",
-    width: "1289.36px",
-    height: "1363.2px",
-    left: "-255px",
-    top: "2200px",
+    width: "100%",
+    maxWidth: "18rem",
+    bottom: "-11%",
+    left: "17%",
+    pointerEvents: "none",
+  },
+  neoSphere: {
+    position: "absolute",
+    width: "100%",
+    maxWidth: "15rem",
+    bottom: "13%",
+    left: "38%",
+    pointerEvents: "none",
+  },
+  binanceSphere: {
+    position: "absolute",
+    width: "100%",
+    maxWidth: "11rem",
+    bottom: "43%",
+    left: "42.5%",
     pointerEvents: "none",
   },
   backgroundRight: {
     position: "absolute",
-    width: "1522.35px",
-    height: "1495.41px",
-    right: "-450px",
-    top: "2050px",
+    width: "100%",
+    right: "-26%",
+    top: "-4%",
     pointerEvents: "none",
   },
   description: {

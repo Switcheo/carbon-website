@@ -42,6 +42,9 @@
       "last 1 safari version"
     ]
   },
+  "reactSnap": {
+    "inlineCss": true
+  },
   "devDependencies": {
     "react-snap": "^1.23.0"
   }

@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import roadMap from "@carbon-info/assets/background/roadMap.svg";
 import roadMapGlow from "@carbon-info/assets/background/roadMapGlow.svg";
-import { ArrowIcon } from "@carbon-info/assets/icons";
+import { CTAButton } from "@carbon-info/components";
 
 const RoadMap: React.FC = () => {
   const classes = useStyles();
@@ -18,9 +18,10 @@ const RoadMap: React.FC = () => {
 
       </Typography >
       <Hidden smDown>
-        <Typography variant="button" color="textPrimary">
-          See Feature Map <ArrowIcon />
-        </Typography>
+        <CTAButton
+          text="SEE FEATURE MAP"
+          link="/#ECOSYSTEM"
+        />
       </Hidden>
       <Grid container alignItems="center" justifyContent="center" className={classes.roadMapContainer} spacing={8}>
         <Typography color="textPrimary" className={classes.roadMapTitleText} paragraph>
@@ -39,9 +40,10 @@ const RoadMap: React.FC = () => {
       </Typography>
       <Hidden mdUp>
         <div className={classes.button}>
-          <Typography variant="button" color="textPrimary">
-            See Feature Map <ArrowIcon />
-          </Typography>
+          <CTAButton
+            text="SEE FEATURE MAP"
+            link="https://app.dem.exchange"
+          />
         </div>
       </Hidden>
     </Box>
@@ -78,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   glowSVG: {
     position: "absolute",
-    top: "-100%",
+    // top: "-100%",
     left: "-10%",
     pointerEvents: "none",
   },

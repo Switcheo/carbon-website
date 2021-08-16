@@ -2,8 +2,8 @@ import React from "react";
 import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import communityBackGroundLeft from "@carbon-info/assets/background/communityBackGroundLeft.svg";
 import communityBackGroundRight from "@carbon-info/assets/background/communityBackGroundRight.svg";
-import communityHero from "@carbon-info/assets/animated/communityHero.svg";
-import { ArrowIcon } from "@carbon-info/assets/icons";
+import communityHero from "@carbon-info/assets/non-animated/communityHeroSVG.png";
+import { CTAButton } from "@carbon-info/components";
 
 const Community: React.FC = () => {
   const classes = useStyles();
@@ -25,9 +25,11 @@ const Community: React.FC = () => {
               Using the SWTH token, anyone can play a<br />part in shaping Carbon’s journey towards<br />the future of finance.
           </Typography>
             <br />
-            <Typography color="textPrimary" variant="button" align="left" paragraph>
-              Buy Token
-            <ArrowIcon className={classes.icon} />
+            <Typography align="left" paragraph>
+              <CTAButton
+                text="BUY TOKEN"
+                link="https://app.dem.exchange"
+              />
             </Typography>
           </div>
         </Grid>
@@ -63,14 +65,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   backgroundLeft: {
     position: "absolute",
-    left: "-700px",
-    top: "-140px",
+    left: "-52%",
+    top: "-19%",
+    width: "100%",
     pointerEvents: "none",
   },
   backgroundRight: {
     position: "absolute",
-    right: "-329.33px",
-    top: "-140.32px",
+    right: "-18%",
+    top: "-20%",
+    width: "67%",
     pointerEvents: "none",
   },
   subtitle: {

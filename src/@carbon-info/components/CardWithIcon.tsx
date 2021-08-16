@@ -123,11 +123,18 @@ const useStyles = makeStyles((theme: Theme) => ({
       maskComposite: "destination-out",
       pointerEvents: "none",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       margin: "auto",
       height: "19rem",
       width: "24rem",
       padding: "4rem",
+      borderRadius: 20,
+      "&::before": {
+        borderRadius: 20,
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: "auto",
       borderRadius: 20,
       "&::before": {
         borderRadius: 20,
