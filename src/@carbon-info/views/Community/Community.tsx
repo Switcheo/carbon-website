@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, Grid, Hidden, makeStyles, Theme, Typography } from "@material-ui/core";
 import communityBackGroundLeft from "@carbon-info/assets/background/communityBackGroundLeft.svg";
 import communityBackGroundRight from "@carbon-info/assets/background/communityBackGroundRight.svg";
 import communityHero from "@carbon-info/assets/non-animated/communityHeroSVG.png";
@@ -9,8 +9,10 @@ const Community: React.FC = () => {
   const classes = useStyles();
   return (
     <Box className={classes.boxContainer}>
-      <img src={communityBackGroundLeft} alt="communityBackGroundLeft" className={classes.backgroundLeft} />
-      <img src={communityBackGroundRight} alt="communityBackGroundRight" className={classes.backgroundRight} />
+      <Hidden smDown>
+        <img src={communityBackGroundLeft} alt="communityBackGroundLeft" className={classes.backgroundLeft} />
+        <img src={communityBackGroundRight} alt="communityBackGroundRight" className={classes.backgroundRight} />
+      </Hidden>
       <Grid container className={classes.container} spacing={8}>
         <Grid item xs={12} md={6}>
           <img src={communityHero} alt="communityHero" className={classes.image} />
@@ -84,11 +86,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(0, 2),
   },
   image: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       position: "relative",
-      top: 0,
-      left: 0,
       width: "100%",
+      margin: "-1rem 0px 0px -2rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: 0,
+      position: "relative",
+      width: "80%",
     },
   },
 }));

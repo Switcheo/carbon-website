@@ -11,21 +11,22 @@ interface cardProps {
   bigSVG?: boolean,
   isMobile?: boolean,
   link: string,
+  overwriteCSS?: any,
 }
 
 const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
-  const { title, description, ctaText, icon, bigSVG, isMobile, link } = props;
+  const { title, description, ctaText, icon, bigSVG, isMobile, link, overwriteCSS = {} } = props;
   const svgClass = bigSVG ? "bigIcon" : isMobile ? "icon" : "icon";
   return (
     <Box className={classes.boxContainer}>
       <div className={svgClass ? classes.bigIconContainer : classes.iconContainer}>
-        <img src={icon} alt="icon" className={classes[svgClass]} />
+        <img src={icon} alt="icon" className={classes[svgClass]} style={{ ...overwriteCSS }} />
       </div>
       <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center">
         <Grid item container>
-          <div>
-            <Typography color="textPrimary" variant="h2">
+          <div className={classes.textContainer}>
+            <Typography color="textPrimary" variant="h2" className={classes.divTitle}>
               {title}
             </Typography>
             <Typography color="textPrimary" variant="body2" className={classes.subtext}>
@@ -75,7 +76,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     height: "25rem",
     [theme.breakpoints.down("sm")]: {
+      height: "20rem",
+    },
+    [theme.breakpoints.down("xs")]: {
       height: "35rem",
+    },
+    [theme.breakpoints.down(400)]: {
+      height: "27rem",
+    },
+    [theme.breakpoints.down(350)]: {
+      height: "22rem",
     },
   },
   iconContainer: {
@@ -83,6 +93,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     height: "25rem",
     [theme.breakpoints.down("sm")]: {
+      height: "20rem",
+    },
+    [theme.breakpoints.down("xs")]: {
       height: "auto",
     },
   },
@@ -115,29 +128,39 @@ const useStyles = makeStyles((theme: Theme) => ({
       pointerEvents: "none",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "65rem",
+      padding: "0px",
+      minHeight: "46rem",
       borderRadius: 13.3,
       "&::before": {
         borderRadius: 13.3,
       },
     },
+    [theme.breakpoints.down("xs")]: {
+      height: "60rem",
+      padding: "2em 2em 2em 3em",
+    },
+    [theme.breakpoints.down(400)]: {
+      height: "50rem",
+    },
+    [theme.breakpoints.down(350)]: {
+      height: "25rem",
+    },
   },
   divTitle: {
-    fontFamily: "TyrosPro",
-    fontWeight: 300,
-    fontSize: "2rem",
-    lineHeight: "2.3rem",
-    // display: "flex",
-    // height: "100%",
-    // width: "100%",
-    // alignItems: "center",
-    // justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      fontFamily: "TyrosPro",
+      // fontWeight: 300,
+      fontSize: "3.1rem",
+      // lineHeight: "2.3rem",
+    },
   },
   gridContainer: {
     height: "100%",
     width: "100%",
     [theme.breakpoints.down("sm")]: {
       height: "0%",
+    },
+    [theme.breakpoints.down("xs")]: {
       paddingRight: "25%",
     },
   },
@@ -146,6 +169,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       transform: "scale(0.8)",
       marginTop: "10px",
+    },
+  },
+  textContainer: {
+    paddingRight: "30%",
+    [theme.breakpoints.down("sm")]: {
+      padding: "2rem",
     },
   },
 }));

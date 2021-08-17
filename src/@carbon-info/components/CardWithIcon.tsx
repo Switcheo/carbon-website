@@ -90,6 +90,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       height: "18rem",
+      width: "auto",
+      margin: "auto",
+      padding: "1.5em 2em 1.5em 3em",
+      borderRadius: 20,
+      "&::before": {
+        borderRadius: 20,
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "18rem",
       width: "60vw",
       borderRadius: 20,
       "&::before": {
@@ -105,7 +115,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     backdropFilter: "blur(100px)",
     borderRadius: 30,
     padding: "2em",
-    // width: "485px",
+    margin: "auto",
     height: "18rem",
     width: "20rem",
     textAlign: "start",
@@ -122,6 +132,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
       pointerEvents: "none",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "16rem",
     },
     [theme.breakpoints.down("xs")]: {
       margin: "auto",
@@ -182,11 +195,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 300,
     fontSize: "2rem",
     lineHeight: "2.3rem",
-    // display: "flex",
-    // height: "100%",
-    // width: "100%",
-    // alignItems: "center",
-    // justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.5rem",
+    },
   },
   gridContainer: {
     height: "100%",

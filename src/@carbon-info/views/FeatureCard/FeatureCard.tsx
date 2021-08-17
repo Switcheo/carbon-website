@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Grid, Hidden, makeStyles, Theme, Typography } from "@material-ui/core";
 import carbonConnected from "@carbon-info/assets/non-animated/featureCardHero.png";
 import featureCardBackgroundLeft from "@carbon-info/assets/background/FeatureCardBackGroundLeft.svg";
+import mobileGlow from "@carbon-info/assets/background/featureCardGlowMobile.svg";
 import featureCardBackgroundRight from "@carbon-info/assets/background/featureCardBgRight.png";
 import { CTAButton } from "@carbon-info/components";
 
@@ -10,8 +11,13 @@ const FeatureCard: React.FC = () => {
   return (
     <Box className={classes.container}>
       <Grid container className={classes.cardContainer}>
-        <img src={featureCardBackgroundLeft} alt="featureCardBackgroundLeft" className={classes.backgroundLeft} />
+        <Hidden smDown>
+          <img src={featureCardBackgroundLeft} alt="featureCardBackgroundLeft" className={classes.backgroundLeft} />
+        </Hidden>
         <img src={featureCardBackgroundRight} alt="featureCardBackgroundRight" className={classes.backgroundRight} />
+        <Hidden mdUp>
+          <img src={mobileGlow} alt="featureCardBackgroundLeft" className={classes.mobileGlow} />
+        </Hidden>
         <Grid container item xs={12} md={7} className={classes.textContainer}>
           <div>
             <Typography color="textPrimary" variant="h2">
@@ -77,6 +83,14 @@ const useStyles = makeStyles((theme: Theme) => ({
       pointerEvents: "none",
     },
     [theme.breakpoints.down("sm")]: {
+      // height: "42rem",
+      width: "fit-content",
+      borderRadius: 21,
+      "&::before": {
+        borderRadius: 21,
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
       height: "42rem",
       borderRadius: 21,
       "&::before": {
@@ -94,12 +108,30 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: "-50%",
     top: "-55%",
   },
+  mobileGlow: {
+    position: "absolute",
+    left: "-27%",
+    bottom: "-90%",
+    [theme.breakpoints.down("xs")]: {
+      left: "-110%",
+    },
+  },
   backgroundRight: {
     position: "absolute",
     width: "100%",
     // height: "",
     right: "-38%",
     top: "-23%",
+    [theme.breakpoints.down("sm")]: {
+      top: "-21%",
+      right: "-76%",
+      width: "160%",
+    },
+    [theme.breakpoints.down(330)]: {
+      top: "-12%",
+      right: "-86%",
+      width: "180%",
+    },
   },
   icon: {
     margin: theme.spacing(0, 2),

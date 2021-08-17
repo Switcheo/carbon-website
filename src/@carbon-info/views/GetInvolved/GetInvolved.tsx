@@ -14,7 +14,7 @@ const GetInvolved: React.FC = () => {
   return (
     <Box className={classes.boxContainer}>
       <img src={GetInvolvedBG} alt="bg" className={classes.background} />
-      <Grid container className={classes.contentContainer} justifyContent="center" spacing={8}>
+      <Grid container className={classes.contentContainer} justifyContent="flex-start" spacing={isMobile ? 4 : 8}>
         <Grid item xs={12} md={6}>
           <Typography color="textPrimary" variant="h2" align="left" className={classes.text}>
             <div className={classes.textContainer}>
@@ -30,7 +30,7 @@ const GetInvolved: React.FC = () => {
             <>
             </>
         }
-        <Grid item xs={12} md={6} className={classes.card}>
+        <Grid item xs={12} sm={6} md={6} className={classes.card}>
           <CardWithCTA
             title={"Develop on Carbon"}
             description={"Leverage our native source code to fast-track development"}
@@ -40,7 +40,7 @@ const GetInvolved: React.FC = () => {
             isMobile={isMobile}
           />
         </Grid>
-        <Grid item xs={12} md style={{ marginTop: isMobile ? 0 : "-42%" }} className={classes.card}>
+        <Grid item xs={12} sm={6} md style={{ marginTop: isMobile ? 0 : "-42%" }} className={classes.card}>
           <CardWithCTA
             title={"Propose a partnership"}
             description={"Want to collaborate toward a freer financial system?"}
@@ -50,7 +50,7 @@ const GetInvolved: React.FC = () => {
             bigSVG
           />
         </Grid>
-        <Grid item xs={12} md className={classes.card}>
+        <Grid item xs={12} sm={6} md className={classes.card}>
           <CardWithCTA
             title={"Pitch a project"}
             description={"Need funding to kickstart your project on Carbon?"}
@@ -58,6 +58,7 @@ const GetInvolved: React.FC = () => {
             link={"/#document"}
             icon={PitchSVG}
             isMobile={isMobile}
+            overwriteCSS={{ width: "31rem", display: "block", maxWidth: "85%" }}
           />
         </Grid>
         <img src={GetInvolvedGlow} alt="glow" className={classes.glowSVG} />
@@ -79,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   textContainer: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       margin: "auto",
       width: "fit-content",
     },
@@ -94,6 +95,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   contentContainer: {
     position: "relative",
+    [theme.breakpoints.down("sm")]: {
+      padding: "0px 4rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      padding: "0px 1rem",
+    },
   },
   glowSVG: {
     position: "absolute",

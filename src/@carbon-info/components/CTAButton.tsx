@@ -30,8 +30,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   text: {
     [theme.breakpoints.down("sm")]: {
-      fontSize: "2rem",
+      fontSize: "1.7rem",
       letterSpacing: "1px",
+    },
+    [theme.breakpoints.down(360)]: {
+      fontSize: "1.5rem",
     },
   },
   icon: {
@@ -39,7 +42,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     verticalAlign: "sub",
     [theme.breakpoints.down("sm")]: {
       height: "2rem",
-      margin: theme.spacing(0, 0.5),
+      margin: theme.spacing(0, 1),
+    },
+    [theme.breakpoints.down(360)]: {
+      height: "1.8rem",
+      margin: theme.spacing(0, 0.25),
     },
   },
 }));

@@ -11,7 +11,7 @@ const ReceieveUpdates: React.FC = () => {
           <Typography color="textPrimary" className={classes.divTitle} align="left">
             Recieve Updates
           </Typography>
-          <Typography color="textPrimary" variant="body1" align="left">
+          <Typography color="textPrimary" variant="body2" align="left">
             Unsubscribe at any time.
           </Typography>
         </Grid>
@@ -46,6 +46,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     // background: "red"
     [theme.breakpoints.down("sm")]: {
       margin: "20vh 0px",
+      padding: "0px 4rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      margin: "20vh 0px",
+      padding: "0px 1rem",
     },
   },
   imageContainer: {
@@ -118,7 +123,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       pointerEvents: "none",
     },
     [theme.breakpoints.down("sm")]: {
-      margin: "8rem 0px 2rem 0px",
+      margin: "4rem 0px 2rem 0px",
       borderRadius: 4.4,
       "&::before": {
         borderRadius: 4.4,

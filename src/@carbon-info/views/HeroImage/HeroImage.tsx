@@ -1,4 +1,5 @@
 import CarbonStructure from "@carbon-info/assets/non-animated/carbonStructure.png";
+import CarbonStructureSphereBg from "@carbon-info/assets/animated/carbonBgSphere.png";
 import { Box, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 
@@ -8,6 +9,7 @@ const HeroImage: React.FC = () => {
   return (
     <Box className={classes.carbonStructure}>
       <img src={CarbonStructure} alt="hero" className={classes.heroSVG} />
+      <img src={CarbonStructureSphereBg} alt="hero" className={classes.sphere} />
     </Box>
   );
 };
@@ -19,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: "-7.625rem",
     marginBottom: "-7.625rem",
     pointerEvents: "none",
+    position: "relative",
     // maxWidth: "100vw",
     [theme.breakpoints.down("sm")]: {
       marginTop: "-7.625rem",
@@ -31,5 +34,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   heroSVG: {
     width: "100%",
+  },
+  sphere: {
+    width: "60%",
+    position: "absolute",
+    top: "21%",
+    left: "16%",
   },
 }));

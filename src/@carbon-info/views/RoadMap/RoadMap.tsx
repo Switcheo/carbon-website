@@ -65,11 +65,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   roadMapSVG: {
     marginBottom: "-38%",
     [theme.breakpoints.down("sm")]: {
-      // width: "100%",
       position: "relative",
-      top: "-10rem",
+      top: "0rem",
       transform: "scale(0.8)",
       marginBottom: "0%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      top: "-10rem",
     },
   },
   roadMapSVGContainer: {
@@ -83,6 +85,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     // top: "-100%",
     left: "-10%",
     pointerEvents: "none",
+    [theme.breakpoints.down("sm")]: {
+      width: "150%",
+    },
   },
   roadMapContainer: {
     marginTop: theme.spacing(10),

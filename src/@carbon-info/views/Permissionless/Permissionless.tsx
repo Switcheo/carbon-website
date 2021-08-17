@@ -10,7 +10,7 @@ const Permissionless: React.FC = () => {
   return (
     <Box className={classes.container}>
       <Grid container spacing={8}>
-        <Grid item xs={12} md={6} style={{ position: "relative" }}>
+        <Grid item xs={12} md={6} className={classes.heroSVGContainer}>
           <img src={permissionlessSVG} alt="permissionless" className={classes.heroSVG} />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -63,19 +63,42 @@ const Permissionless: React.FC = () => {
 export default Permissionless;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  heroSVGContainer: {
+    position: "relative",
+    [theme.breakpoints.down("md")]: {
+      height: "23rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "auto",
+    },
+  },
   heroSVG: {
     position: "absolute",
     top: "-83%",
     left: "-25%",
     width: "150%",
     pointerEvents: "none",
+    [theme.breakpoints.down("md")]: {
+      position: "relative",
+      top: "-113%",
+      left: "-13rem",
+      width: "60rem",
+    },
     [theme.breakpoints.down("sm")]: {
+      position: "relative",
+      top: 0,
+      left: "-20%",
+      width: "100%",
+      margin: "-25% 0px",
+    },
+    [theme.breakpoints.down("xs")]: {
       position: "relative",
       top: 0,
       left: 0,
       width: "100%",
       margin: "-20% 0px",
       transform: "scale(1.5)",
+      maxWidth: "54rem",
     },
   },
   title: {
@@ -102,6 +125,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   description: {
     [theme.breakpoints.down("sm")]: {
+      textAlign: "start",
+      marginLeft: "10%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      textAlign: "center",
+      margin: 0,
       display: "inline-block",
     },
   },

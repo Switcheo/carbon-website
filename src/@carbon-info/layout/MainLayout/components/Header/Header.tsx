@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <div className={classes.navBarContainer}>
-      <span>
+      <span className={classes.logoContainer}>
         <CarbonLogo className={classes.logo} />
       </span>
       <div className={classes.navButtonContainer}>
@@ -50,10 +50,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   menuIcon: {
     transform: "scale(2.0)",
+    [theme.breakpoints.down("xs")]: {
+      transform: "scale(1.5)",
+    },
   },
   logo: {
     verticalAlign: "middle",
     margin: theme.spacing(0, 1),
+    [theme.breakpoints.down("xs")]: {
+      width: "55%",
+      marginRight: "auto",
+      textAlign: "start",
+    },
+  },
+  logoContainer: {
+    [theme.breakpoints.down("xs")]: {
+      textAlign: "start",
+    },
   },
   navButtonContainer: {
     marginLeft: "auto",

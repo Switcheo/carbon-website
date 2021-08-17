@@ -41,37 +41,45 @@ const DecentralizedStats: React.FC = () => {
             </Grid>
           </Hidden>
           <Grid container item xs={12} md={6} alignItems="center" justifyContent="center" spacing={isMobile ? 0 : 8} className={classes.statsContainer}>
-            <Grid item xs={12} md={6} className={classes.stats}>
-              <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
-                110M+
-              </Typography>
-              <Typography color="textPrimary" variant="body2" align="left">
-                Transacted on-chain
-              </Typography>
+            <Grid item xs={12} sm={6} md={6} className={classes.stats}>
+              <div className={classes.statsText}>
+                <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
+                  110M+
+                </Typography>
+                <Typography color="textPrimary" variant="body2" align="left">
+                  Transacted on-chain
+                </Typography>
+              </div>
             </Grid>
-            <Grid item xs={12} md={6} className={classes.stats}>
-              <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
-                $25M+
-              </Typography>
-              <Typography color="textPrimary" variant="body2" align="left" noWrap className={classes.noWrap}>
-                Highest TVL on liquidity pools
-              </Typography>
+            <Grid item xs={12} sm={6} md={6} className={classes.stats}>
+              <div className={classes.statsText}>
+                <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
+                  $25M+
+                </Typography>
+                <Typography color="textPrimary" variant="body2" align="left" noWrap className={classes.noWrap}>
+                  Highest TVL on liquidity pools
+                </Typography>
+              </div>
             </Grid>
-            <Grid item xs={12} md={6} className={classes.stats}>
-              <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
-                110M+
-              </Typography>
-              <Typography color="textPrimary" variant="body2" align="left">
-                Traded on margin
-              </Typography>
+            <Grid item xs={12} sm={6} md={6} className={classes.stats}>
+              <div className={classes.statsText}>
+                <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
+                  110M+
+                </Typography>
+                <Typography color="textPrimary" variant="body2" align="left">
+                  Traded on margin
+                </Typography>
+              </div>
             </Grid>
-            <Grid item xs={12} md={6} className={classes.stats}>
-              <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
-                100+
-              </Typography>
-              <Typography color="textPrimary" variant="body2" align="left" noWrap className={classes.noWrap}>
-                Apps & services & growing
-              </Typography>
+            <Grid item xs={12} sm={6} md={6} className={classes.stats}>
+              <div className={classes.statsText}>
+                <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
+                  100+
+                </Typography>
+                <Typography color="textPrimary" variant="body2" align="left" noWrap className={classes.noWrap}>
+                  Apps & services & growing
+                </Typography>
+              </div>
             </Grid>
           </Grid>
         </Grid>
@@ -102,6 +110,15 @@ const DecentralizedStats: React.FC = () => {
 export default DecentralizedStats;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  statsText: {
+    width: "fit-content",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "20%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0%",
+    },
+  },
   numbers: {
     fontWeight: 300,
     fontSize: "4.375rem",
@@ -113,13 +130,25 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "4rem",
     zIndex: 2,
     [theme.breakpoints.down("sm")]: {
+      margin: "5rem 15%",
+    },
+    [theme.breakpoints.down("xs")]: {
       margin: "0px 10%",
+      marginBottom: "2rem",
     },
   },
   statsContainer: {
+    [theme.breakpoints.down("md")]: {
+      margin: "0px",
+      height: "max-content",
+    },
     [theme.breakpoints.down("sm")]: {
-      margin: "0px 10%",
+      height: "max-content",
+      margin: "0px 5%",
       paddingLeft: -16,
+    },
+    [theme.breakpoints.down("xs")]: {
+      margin: "0px 10%",
     },
   },
   description: {
@@ -133,12 +162,20 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   stats: {
+    zIndex: 2,
+    [theme.breakpoints.down("md")]: {
+      padding: "1rem !important",
+    },
     [theme.breakpoints.down("sm")]: {
       margin: "2rem 0px",
+      padding: "0rem !important",
     },
   },
   imageContainer: {
     position: "relative",
+    [theme.breakpoints.down("sm")]: {
+      margin: "-20% 0px",
+    },
   },
   image: {
     position: "absolute",
@@ -146,7 +183,19 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: "-50%",
     pointerEvents: "none",
     zIndex: 1,
+    [theme.breakpoints.down("md")]: {
+      position: "absolute",
+      top: "-47%",
+      left: "-48%",
+      width: "150%",
+    },
     [theme.breakpoints.down("sm")]: {
+      position: "relative",
+      top: 0,
+      left: "-27%",
+      width: "100%",
+    },
+    [theme.breakpoints.down("xs")]: {
       position: "relative",
       top: 0,
       left: "-35%",
@@ -160,6 +209,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "20vh 0px",
   },
   cardContainer: {
+    zIndex: 2,
     position: "relative",
     marginTop: "12.5rem",
     [theme.breakpoints.down("sm")]: {
