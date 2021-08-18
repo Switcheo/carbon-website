@@ -29,6 +29,7 @@ const FeatureCard: React.FC = () => {
             <CTAButton
               text="READ DOCS"
               link="/#document"
+              CTA
             />
           </div>
         </Grid>
@@ -50,6 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     margin: "auto",
     display: "relative",
+    zIndex: 1,
     // background: "red"
   },
   imageContainer: {
@@ -76,8 +78,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       right: 0,
       bottom: 0,
       borderRadius: 58,
-      padding: "2px",
-      background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
+      padding: "1.755px",
+      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
       pointerEvents: "none",
@@ -100,6 +102,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   image: {
     width: "90%",
+    pointerEvents: "none",
   },
   backgroundLeft: {
     position: "absolute",
@@ -112,6 +115,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     left: "-27%",
     bottom: "-90%",
+    zIndex: 0,
+    pointerEvents: "none",
+    [theme.breakpoints.down("sm")]: {
+      left: "-108%",
+      bottom: "-50%",
+    },
     [theme.breakpoints.down("xs")]: {
       left: "-110%",
     },
@@ -122,6 +131,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     // height: "",
     right: "-38%",
     top: "-23%",
+    pointerEvents: "none",
     [theme.breakpoints.down("sm")]: {
       top: "-21%",
       right: "-76%",

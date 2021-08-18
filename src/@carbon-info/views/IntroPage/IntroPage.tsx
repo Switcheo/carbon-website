@@ -17,7 +17,7 @@ const IntroPage: React.FC = () => {
           Meet Carbon
         </Typography>
         <IntroPageBackgroundLine className={classes.dash} />
-        <Typography color="textPrimary" variant="h1">
+        <Typography color="textPrimary" variant="h2" className={classes.mainTitle}>
           The core of <br /> <span className={classes.gradientText}>decentralised</span> <br /><span className={classes.gradientText}>financial markets</span>
         </Typography>
         <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
@@ -39,6 +39,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     // overflow: "hidden",
     // maxWidth: "100vw",
     position: "relative",
+  },
+  mainTitle: {
+    [theme.breakpoints.down(320)]: {
+      fontSize: "3.65rem",
+      lineHeight: "3.5rem",
+    },
   },
   dash: {
     margin: "3rem 0px",
@@ -101,7 +107,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   subtitle: {
-    marginTop: theme.spacing(5.5),
+    marginTop: "2.5rem",
+    [theme.breakpoints.down(325)]: {
+      marginTop: "2.5rem",
+      fontSize: "1.825rem",
+    },
   },
   gradientText: {
     background: "linear-gradient(20deg,#8FF7FE, #DAFFF4, #11D1D1)",

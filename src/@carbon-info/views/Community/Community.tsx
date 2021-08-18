@@ -1,11 +1,14 @@
 import React from "react";
-import { Box, Grid, Hidden, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import communityBackGroundLeft from "@carbon-info/assets/background/communityBackGroundLeft.svg";
 import communityBackGroundRight from "@carbon-info/assets/background/communityBackGroundRight.svg";
 import communityHero from "@carbon-info/assets/non-animated/communityHeroSVG.png";
 import { CTAButton } from "@carbon-info/components";
 
 const Community: React.FC = () => {
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const classes = useStyles();
   return (
     <Box className={classes.boxContainer}>
@@ -19,11 +22,11 @@ const Community: React.FC = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <div className={classes.textContainer}>
-            <Typography color="textPrimary" variant="h2" align="left" paragraph>
+            <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" paragraph>
               Owned and driven<br />by community
           </Typography>
             <br />
-            <Typography color="textPrimary" variant="subtitle1" align="left" paragraph>
+            <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : "subtitle1"} align="left" paragraph>
               Using the SWTH token, anyone can play a<br />part in shaping Carbon’s journey towards<br />the future of finance.
           </Typography>
             <br />
@@ -31,12 +34,13 @@ const Community: React.FC = () => {
               <CTAButton
                 text="BUY TOKEN"
                 link="https://app.dem.exchange"
+                CTA
               />
             </Typography>
           </div>
         </Grid>
       </Grid>
-    </Box>
+    </Box >
   );
 };
 
@@ -91,7 +95,22 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "100%",
       margin: "-1rem 0px 0px -2rem",
     },
+    [theme.breakpoints.down(1100)]: {
+      position: "relative",
+      width: "100%",
+      margin: "-10rem 0px 0px -2rem",
+    },
+    [theme.breakpoints.down(961)]: {
+      position: "relative",
+      width: "100%",
+      margin: "-1rem 0px 0px -2rem",
+    },
     [theme.breakpoints.down("sm")]: {
+      margin: 0,
+      position: "relative",
+      width: "57%",
+    },
+    [theme.breakpoints.down("xs")]: {
       margin: 0,
       position: "relative",
       width: "80%",

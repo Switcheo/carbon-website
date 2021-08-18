@@ -58,6 +58,13 @@ export const theme = createTheme({
         lineHeight: "3.018rem",
         letterSpacing: "-0.063rem",
       },
+      subtitle2: {
+        fontFamily: "SourceSansPro-Light",
+        fontWeight: 300,
+        fontSize: "2.725rem",
+        lineHeight: "3.018rem",
+        letterSpacing: "-0.063rem",
+      },
       body1: {
         fontFamily: "SourceSansPro-Light",
         fontWeight: 200,

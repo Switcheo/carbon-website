@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Hidden, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import utilityBackgroundLeft from "@carbon-info/assets/animated/ultilityBgLine.png";
 import utilityBackgroundSphere from "@carbon-info/assets/background/ultilityBgSphere.png";
 import binanceSphere from "@carbon-info/assets/animated/binanceSphere.png";
@@ -14,6 +14,9 @@ import { LaunchIcon, TradeIcon, TransactIcon } from "@carbon-info/assets";
 
 const UtilitySection: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   return (
     <Box className={classes.container}>
       <div>
@@ -30,11 +33,14 @@ const UtilitySection: React.FC = () => {
         <Grid container item xs={12} className={classes.description} spacing={8}>
           <Grid container item sm={12} md={6}>
             <Grid item xs={12} className={classes.textContainer}>
-              <Typography color="textPrimary" variant="h2">
+              <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"}>
                 Made to power<br />anything DeFi
               </Typography>
-              <br /><br /><br />
-              <Typography color="textPrimary" variant="h6">
+              <br /><br />
+              <Hidden smDown>
+                <br />
+              </Hidden>
+              <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle1" : "h6"}>
                 Supports a full spectrum of finance<br />products including derivatives
               </Typography>
               <br /><br /><br />
@@ -212,8 +218,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   utilityBgMobile: {
     position: "absolute",
-    right: "-74%",
-    top: "-207%",
+    right: "-59%",
+    top: "-201%",
     pointerEvents: "none",
     [theme.breakpoints.down("xs")]: {
       right: "-44%",

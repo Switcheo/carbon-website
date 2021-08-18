@@ -18,7 +18,7 @@ const GetInvolved: React.FC = () => {
       <img src={GetInvolvedBG} alt="bg" className={classes.background} />
       <Grid container className={classes.contentContainer} justifyContent="flex-start" spacing={isTablet ? 4 : 8}>
         <Grid item xs={12} md={6}>
-          <Typography color="textPrimary" variant="h2" align="left" className={classes.text}>
+          <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" className={classes.text}>
             <div className={classes.textContainer}>
               Get involved in<br />building the new <br /> face of finance
             </div>
@@ -102,6 +102,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: "-40%",
     pointerEvents: "none",
     [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
       top: "49%",
       left: "-5%",
       width: "182%",

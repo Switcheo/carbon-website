@@ -41,6 +41,7 @@ const Partnership: React.FC = () => {
                 <CTAButton
                   text="SEE FULL ECOSYSTEM"
                   link="/#ECOSYSTEM"
+                  CTA
                 />
               </Typography>
             </div>

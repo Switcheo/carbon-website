@@ -8,7 +8,8 @@ import { AccelerateIcon, ChooseIcon, Stroke } from "@carbon-info/assets";
 const DecentralizedStats: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   return (
     <Box className={classes.boxContainer}>
       <Grid container>
@@ -19,12 +20,12 @@ const DecentralizedStats: React.FC = () => {
         </Hidden>
         <Grid container item xs={12} className={classes.textContainer}>
           <Grid item xs={12} md={6}>
-            <Typography color="textPrimary" variant="h2" align="left">
+            <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left">
               Decentralized<br />derivatives made<br />accessible to all
             </Typography>
           </Grid>
           <Grid item xs={12} md={6} className={classes.description}>
-            <Typography color="textPrimary" variant="subtitle1" align="left">
+            <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : "subtitle1"} align="left">
               <Hidden smDown>
                 <Stroke className={classes.stroke} />
               </Hidden>
@@ -40,43 +41,43 @@ const DecentralizedStats: React.FC = () => {
               <img src={chartSVG} alt="chart" className={classes.image} />
             </Grid>
           </Hidden>
-          <Grid container item xs={12} md={6} alignItems="center" justifyContent="center" spacing={isMobile ? 0 : 8} className={classes.statsContainer}>
+          <Grid container item xs={12} md={6} alignItems="center" justifyContent="center" spacing={isTablet ? 0 : 8} className={classes.statsContainer}>
             <Grid item xs={12} sm={6} md={6} className={classes.stats}>
               <div className={classes.statsText}>
-                <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
+                <Typography color="textPrimary" className={classes.numbers} paragraph={!isTablet} align="left">
                   110M+
                 </Typography>
-                <Typography color="textPrimary" variant="body2" align="left">
+                <Typography color="textPrimary" variant="body2" align="left" className={classes.numberText}>
                   Transacted on-chain
                 </Typography>
               </div>
             </Grid>
             <Grid item xs={12} sm={6} md={6} className={classes.stats}>
               <div className={classes.statsText}>
-                <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
+                <Typography color="textPrimary" className={classes.numbers} paragraph={!isTablet} align="left">
                   $25M+
                 </Typography>
-                <Typography color="textPrimary" variant="body2" align="left" noWrap className={classes.noWrap}>
+                <Typography color="textPrimary" variant="body2" align="left" noWrap className={classes.numberText}>
                   Highest TVL on liquidity pools
                 </Typography>
               </div>
             </Grid>
             <Grid item xs={12} sm={6} md={6} className={classes.stats}>
               <div className={classes.statsText}>
-                <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
+                <Typography color="textPrimary" className={classes.numbers} paragraph={!isTablet} align="left">
                   110M+
                 </Typography>
-                <Typography color="textPrimary" variant="body2" align="left">
+                <Typography color="textPrimary" variant="body2" align="left" className={classes.numberText}>
                   Traded on margin
                 </Typography>
               </div>
             </Grid>
             <Grid item xs={12} sm={6} md={6} className={classes.stats}>
               <div className={classes.statsText}>
-                <Typography color="textPrimary" className={classes.numbers} paragraph={!isMobile} align="left">
+                <Typography color="textPrimary" className={classes.numbers} paragraph={!isTablet} align="left">
                   100+
                 </Typography>
-                <Typography color="textPrimary" variant="body2" align="left" noWrap className={classes.noWrap}>
+                <Typography color="textPrimary" variant="body2" align="left" noWrap className={classes.numberText}>
                   Apps & services & growing
                 </Typography>
               </div>
@@ -84,7 +85,7 @@ const DecentralizedStats: React.FC = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid container alignItems="center" justifyContent="center" spacing={isMobile ? 4 : 10} className={classes.cardContainer}>
+      <Grid container alignItems="center" justifyContent="center" spacing={isTablet ? 4 : 10} className={classes.cardContainer}>
         <img src={decentralizedGlow} alt="decentralizedGlow" className={classes.glowSVG} />
         <Grid item xs={12} md={6}>
           <CardWithIcon
@@ -113,7 +114,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   statsText: {
     width: "fit-content",
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "20%",
+      // marginLeft: "20%",
     },
     [theme.breakpoints.down("xs")]: {
       marginLeft: "0%",
@@ -125,12 +126,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "4.375rem",
     letterSpacing: "-0.188rem",
     fontFamily: "TyrosPro",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "5rem",
+    },
   },
   textContainer: {
     marginBottom: "4rem",
     zIndex: 2,
     [theme.breakpoints.down("sm")]: {
-      margin: "5rem 15%",
+      margin: "5rem 20%",
     },
     [theme.breakpoints.down("xs")]: {
       margin: "0px 10%",
@@ -144,8 +148,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       height: "max-content",
-      margin: "0px 5%",
-      paddingLeft: -16,
+      margin: "0px 20%",
     },
     [theme.breakpoints.down("xs")]: {
       margin: "0px 10%",
@@ -202,8 +205,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "150%",
     },
   },
-  noWrap: {
+  numberText: {
     overflow: "visible",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.5rem",
+      lineHeight: "4.375rem",
+    },
   },
   boxContainer: {
     margin: "20vh 0px",

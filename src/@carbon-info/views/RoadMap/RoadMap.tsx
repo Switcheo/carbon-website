@@ -36,6 +36,7 @@ const RoadMap: React.FC = () => {
         20%
       </Typography>
       <Typography color="textPrimary" variant="body2">
+        (Ignore this section - Animation WIP) <br />
         Addition of new derivatives markets including options,<br /> binary options and physically settled markets
       </Typography>
       <Hidden mdUp>
@@ -43,6 +44,7 @@ const RoadMap: React.FC = () => {
           <CTAButton
             text="SEE FEATURE MAP"
             link="https://app.dem.exchange"
+            CTA
           />
         </div>
       </Hidden>
@@ -66,7 +68,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "-38%",
     [theme.breakpoints.down("sm")]: {
       position: "relative",
-      top: "0rem",
+      top: "-30%",
       transform: "scale(0.8)",
       marginBottom: "0%",
     },
@@ -90,8 +92,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   roadMapContainer: {
-    marginTop: theme.spacing(10),
+    marginTop: "10rem",
     position: "relative",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "3rem",
+    },
   },
   noWrap: {
     overflow: "visible",

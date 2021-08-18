@@ -22,7 +22,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
         {
           iconAlignment === "side" ?
             <Grid item container spacing={4}>
-              <Grid item xs={2} className={classes.icon}>
+              <Grid item xs={2} className={classes.sideIcon}>
                 {icon}
               </Grid>
               <Grid item xs={10}>
@@ -30,7 +30,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
                   {title}
                 </Typography>
                 <br />
-                <Typography variant="body1" color="textPrimary">
+                <Typography variant="body2" color="textPrimary">
                   {description}
                 </Typography>
               </Grid>
@@ -45,7 +45,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
                   {title}
                 </Typography>
                 <br />
-                <Typography variant="body1" color="textPrimary">
+                <Typography variant="body2" color="textPrimary">
                   {description}
                 </Typography>
               </Grid>
@@ -62,6 +62,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   icon: {
     marginTop: "0.063rem",
   },
+  sideIcon: {
+    marginTop: "0.063rem",
+    [theme.breakpoints.down("xs")]: {
+      "& > svg": {
+        width: "200%",
+      }
+    },
+    [theme.breakpoints.down(325)]: {
+      "& > svg": {
+        width: "350%",
+      }
+    },
+  },
   boxContainer: {
     background: "linear-gradient(353.27deg, rgba(41, 40, 40, 0.21) -9.67%, #161515 94.17%)",
     mixBlendMode: "normal",
@@ -70,7 +83,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 30,
     padding: "2em 3em 2em 4em",
     // width: "485px",
-    height: "16rem",
+    height: "17rem",
     width: "23rem",
     textAlign: "start",
     "&::before": {
@@ -81,14 +94,15 @@ const useStyles = makeStyles((theme: Theme) => ({
       right: 0,
       bottom: 0,
       borderRadius: 30,
-      padding: "2px",
-      background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
+      padding: "1.755px",
+      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
       pointerEvents: "none",
     },
     [theme.breakpoints.down("md")]: {
       width: "20rem",
+      height: "18.5rem",
     },
     [theme.breakpoints.down("sm")]: {
       height: "18rem",
@@ -129,8 +143,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       right: 0,
       bottom: 0,
       borderRadius: 30,
-      padding: "2px",
-      background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
+      padding: "1.755px",
+      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
       pointerEvents: "none",
@@ -141,19 +155,21 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: "0px 1rem",
       height: "100%",
     },
-    [theme.breakpoints.down("xs")]: {
-      margin: "auto",
-      height: "auto",
-      width: "24rem",
-      padding: "4rem",
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      margin: "2rem",
+      paddingRight: "15%",
       borderRadius: 20,
       "&::before": {
         borderRadius: 20,
       },
     },
-    [theme.breakpoints.down("sm")]: {
-      width: "auto",
-      margin: "2rem",
+    [theme.breakpoints.down("xs")]: {
+      margin: "auto",
+      height: "auto",
+      width: "75%",
+      paddingRight: "15%",
+      // padding: "4rem",
       borderRadius: 20,
       "&::before": {
         borderRadius: 20,
@@ -180,20 +196,26 @@ const useStyles = makeStyles((theme: Theme) => ({
       right: 0,
       bottom: 0,
       borderRadius: 30,
-      padding: "2px",
-      background: "linear-gradient(180deg,#74E8E8,#FFFFFF,rgba(255,255,255,0.7),rgba(255,255,255,0.5))",
+      padding: "1.755px",
+      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
       pointerEvents: "none",
     },
+    [theme.breakpoints.down(1000)]: {
+      height: "21.5rem",
+    },
     [theme.breakpoints.down("sm")]: {
       margin: "auto",
       height: "20rem",
-      width: "70%",
+      width: "50%",
       borderRadius: 15,
       "&::before": {
         borderRadius: 15,
       },
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "70%",
     },
   },
   divTitle: {

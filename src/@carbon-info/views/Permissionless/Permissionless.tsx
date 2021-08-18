@@ -7,7 +7,8 @@ import { DecentralizedIcon, MilitaryIcon, TrustlessIcon } from "@carbon-info/ass
 
 const Permissionless: React.FC = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
   return (
     <Box className={classes.container}>
@@ -17,11 +18,20 @@ const Permissionless: React.FC = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <div className={classes.description}>
-            <Typography color="textPrimary" variant="h2" align="left" className={classes.title}>
+            <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" className={classes.title}>
               Permissionless.<br />Zero restrictions.<br />Decentralized.
             </Typography>
-            <Typography color="textPrimary" variant={isMobile ? "subtitle1" : "body1"} align="left">
-              Carbon gives back control along <br />with the freedom to transact <br />without limits
+            <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : isMobile ? "subtitle1" : "body1"} align="left">
+              {
+                isTablet && !isMobile
+                  ? <span>
+                    Carbon gives back control along with<br /> the freedom to transact without limits
+                  </span>
+                  : <span>
+                    Carbon gives back control along <br />with the freedom to transact <br />without limits
+                  </span>
+              }
+
             </Typography>
           </div>
         </Grid>
