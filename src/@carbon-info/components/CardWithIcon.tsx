@@ -67,12 +67,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("xs")]: {
       "& > svg": {
         width: "200%",
-      }
+      },
     },
     [theme.breakpoints.down(325)]: {
       "& > svg": {
         width: "350%",
-      }
+      },
     },
   },
   boxContainer: {
