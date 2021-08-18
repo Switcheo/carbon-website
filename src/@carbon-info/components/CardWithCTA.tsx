@@ -75,16 +75,45 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "center",
     maxWidth: "100%",
     transform: "scale(2)",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "27rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "29rem",
+    },
+    [theme.breakpoints.down(700)]: {
+      maxWidth: "21rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "38rem",
+    },
+    [theme.breakpoints.down(380)]: {
+      maxWidth: "35rem",
+    },
+    [theme.breakpoints.down(350)]: {
+      maxWidth: "30rem",
+    },
   },
   bigIconContainer: {
     position: "relative",
     width: "100%",
     height: "25rem",
+    [theme.breakpoints.down("md")]: {
+      position: "inherit",
+      height: "24rem",
+    },
+    // [theme.breakpoints.down(1100)]: {
+    //   position: "relative",
+    //   height: "20rem",
+    // },
     [theme.breakpoints.down("sm")]: {
+      height: "23rem",
+    },
+    [theme.breakpoints.down(700)]: {
       height: "20rem",
     },
     [theme.breakpoints.down("xs")]: {
-      height: "35rem",
+      height: "33rem",
     },
     [theme.breakpoints.down(400)]: {
       height: "27rem",
@@ -98,7 +127,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     height: "25rem",
     [theme.breakpoints.down("sm")]: {
-      height: "20rem",
+      height: "23rem",
     },
     [theme.breakpoints.down("xs")]: {
       height: "auto",
