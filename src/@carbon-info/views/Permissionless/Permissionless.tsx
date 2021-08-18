@@ -1,11 +1,13 @@
 import React from "react";
-import { Box, Grid, Hidden, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import permissionlessSVG from "@carbon-info/assets/non-animated/permissionlessHeroSVG.png";
 import permissionlessGlowSVG from "@carbon-info/assets/background/permissionless-glow.svg";
 import { CardWithIcon } from "@carbon-info/components";
 import { DecentralizedIcon, MilitaryIcon, TrustlessIcon } from "@carbon-info/assets";
 
 const Permissionless: React.FC = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
   return (
     <Box className={classes.container}>
@@ -18,7 +20,7 @@ const Permissionless: React.FC = () => {
             <Typography color="textPrimary" variant="h2" align="left" className={classes.title}>
               Permissionless.<br />Zero restrictions.<br />Decentralized.
             </Typography>
-            <Typography color="textPrimary" variant="body1" align="left">
+            <Typography color="textPrimary" variant={isMobile ? "subtitle1" : "body1"} align="left">
               Carbon gives back control along <br />with the freedom to transact <br />without limits
             </Typography>
           </div>
