@@ -127,6 +127,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       right: "-76%",
       width: "160%",
     },
+    [theme.breakpoints.down("xs")]: {
+      top: "-10%",
+      right: "-76%",
+      width: "160%",
+    },
     [theme.breakpoints.down(330)]: {
       top: "-12%",
       right: "-86%",

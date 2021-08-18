@@ -46,14 +46,18 @@ html {
   font-size: 16px;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 960px) {
   html {
-    font-size: 13px;
+    font-size: 10.5px;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 480px) {
   html {
     font-size: 8px;
   }
+}
+
+body {
+  min-width: 320px;
 }

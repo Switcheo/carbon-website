@@ -112,12 +112,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: "15rem",
     width: "100%",
     position: "relative",
+    [theme.breakpoints.down("md")]: {
+      margin: "25rem 0px",
+    },
     [theme.breakpoints.down("sm")]: {
       margin: "12rem 0rem",
     },
-    // [theme.breakpoints.down("xs")]: {
-    //   margin: "10rem 1.5rem 15rem 1.5rem",
-    // },
   },
   cardsContainer: {
     padding: "0px 2rem",
@@ -212,13 +212,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   utilityBgMobile: {
     position: "absolute",
-    right: "-49%",
-    top: "-159%",
+    right: "-74%",
+    top: "-207%",
     pointerEvents: "none",
     [theme.breakpoints.down("xs")]: {
-      right: "-64%",
-      top: "-182%",
-      width: "250%",
+      right: "-44%",
+      top: "-114%",
+      width: "190%",
     },
     [theme.breakpoints.down(340)]: {
       top: "-83%",
