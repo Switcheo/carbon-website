@@ -10,11 +10,13 @@ import { CardWithCTA } from "@carbon-info/components";
 const GetInvolved: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isSmallMobile = useMediaQuery(theme.breakpoints.down(400));
   return (
     <Box className={classes.boxContainer}>
       <img src={GetInvolvedBG} alt="bg" className={classes.background} />
-      <Grid container className={classes.contentContainer} justifyContent="flex-start" spacing={isMobile ? 4 : 8}>
+      <Grid container className={classes.contentContainer} justifyContent="flex-start" spacing={isTablet ? 4 : 8}>
         <Grid item xs={12} md={6}>
           <Typography color="textPrimary" variant="h2" align="left" className={classes.text}>
             <div className={classes.textContainer}>
@@ -22,14 +24,6 @@ const GetInvolved: React.FC = () => {
             </div>
           </Typography>
         </Grid>
-        {
-          isMobile ?
-            <>
-            </>
-            :
-            <>
-            </>
-        }
         <Grid item xs={12} sm={6} md={6} className={classes.card}>
           <CardWithCTA
             title={"Develop on Carbon"}
@@ -37,10 +31,10 @@ const GetInvolved: React.FC = () => {
             ctaText={"Read Docs"}
             link={"/#document"}
             icon={DevelopSVG}
-            isMobile={isMobile}
+            isMobile={isTablet}
           />
         </Grid>
-        <Grid item xs={12} sm={6} md style={{ marginTop: isMobile ? 0 : "-42%" }} className={classes.card}>
+        <Grid item xs={12} sm={6} md style={{ marginTop: isTablet ? 0 : "-42%" }} className={classes.card}>
           <CardWithCTA
             title={"Propose a partnership"}
             description={"Want to collaborate toward a freer financial system?"}
@@ -57,8 +51,8 @@ const GetInvolved: React.FC = () => {
             ctaText={"Apply Now"}
             link={"/#document"}
             icon={PitchSVG}
-            isMobile={isMobile}
-            overwriteCSS={{ width: "31rem", display: "block", maxWidth: "85%" }}
+            isMobile={isTablet}
+            overwriteCSS={{ width: isSmallMobile ? "60vw" : isMobile ? "35rem" : "23rem", display: "block", maxWidth: "100%" }}
           />
         </Grid>
         <img src={GetInvolvedGlow} alt="glow" className={classes.glowSVG} />
@@ -107,6 +101,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: "-20%",
     left: "-40%",
     pointerEvents: "none",
+    [theme.breakpoints.down("sm")]: {
+      top: "49%",
+      left: "-5%",
+      width: "182%",
+    },
   },
   text: {
     margin: theme.spacing(3, 3),

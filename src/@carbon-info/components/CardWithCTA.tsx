@@ -58,7 +58,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "center",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
+      maxWidth: "27rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
       position: "relative",
+      maxWidth: "100%",
     },
   },
   bigIcon: {
