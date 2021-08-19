@@ -1,0 +1,59 @@
+version: 2.1
+jobs:
+  deploy:
+    docker:
+      # image with node, npm and yarn installed
+      - image: circleci/node:latest-browsers
+    steps:
+
+      # checkout workspace to repo code
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: yarn install
+          command: yarn install --frozen-lockfile --network-concurrency 1
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: build ReactJS project
+          command: |
+            yarn build
+
+      - run:.circle
+          name: install AWS CLI
+          command: |
+            sudo apt-get update
+            sudo apt-get install awscli
+
+      - run:
+          name: deploy to aws
+          command: |
+            aws configure set preview.cloudfront true
+            if [ "${CIRCLE_BRANCH}" = "staging" ]; then
+              aws s3 sync build s3://switcheo-carbon-website/staging/ --delete
+              aws cloudfront create-invalidation --distribution-id="E1BX9CZRIQU7CR" --paths=/*
+            elif [ "${CIRCLE_BRANCH}" = "master" ]; then
+              aws s3 sync build s3://switcheo-carbon-website/prod/ --delete
+              aws cloudfront create-invalidation --distribution-id="E1BX9CZRIQU7CR" --paths=/*
+            fi
+
+workflows: 
+  deploy-project:
+    jobs:
+      - deploy: 
+          context: org-switcheo
+          filters:
+            branches:
+              only:
+                # - master 
+                - staging
