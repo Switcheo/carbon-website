@@ -1,31 +1,41 @@
 import React from "react";
 import { Box, Grid, Input, InputAdornment, makeStyles, Theme, Typography } from "@material-ui/core";
 import { UpdateArrow } from "@carbon-info/assets";
-
+import { useInView } from "react-intersection-observer";
+import { FadeAndSlide } from "@carbon-info/components";
 const ReceieveUpdates: React.FC = () => {
   const classes = useStyles();
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0.5,
+    triggerOnce: true,
+  });
   return (
-    <Box className={classes.container}>
-      <Grid container className={classes.cardContainer}>
-        <Grid item xs={12} md={6}>
-          <Typography color="textPrimary" className={classes.divTitle} align="left">
-            Recieve Updates
+    <div ref={ref}>
+      <FadeAndSlide visible={inView}>
+        <Box className={classes.container}>
+          <Grid container className={classes.cardContainer}>
+            <Grid item xs={12} md={6}>
+              <Typography color="textPrimary" className={classes.divTitle} align="left">
+                Recieve Updates
           </Typography>
-          <Typography color="textPrimary" variant="body2" align="left">
-            Unsubscribe at any time.
+              <Typography color="textPrimary" variant="body2" align="left">
+                Unsubscribe at any time.
           </Typography>
-        </Grid>
-        <Grid item xs={12} md={6} className={classes.inputContainer}>
-          <Input fullWidth placeholder="Insert Your Email"
-            endAdornment={
-              <InputAdornment position="end">
-                <UpdateArrow />
-              </InputAdornment>
-            }
-          />
-        </Grid>
-      </Grid>
-    </Box>
+            </Grid>
+            <Grid item xs={12} md={6} className={classes.inputContainer}>
+              <Input fullWidth placeholder="Insert Your Email"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <UpdateArrow />
+                  </InputAdornment>
+                }
+              />
+            </Grid>
+          </Grid>
+        </Box>
+      </FadeAndSlide>
+    </div>
   );
 };
 

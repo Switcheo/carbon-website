@@ -5,7 +5,9 @@ import GetInvolvedBG from "@carbon-info/assets/background/getInvolvedBG.png";
 import ProposeSVG from "@carbon-info/assets/non-animated/propose.png";
 import DevelopSVG from "@carbon-info/assets/non-animated/develop.png";
 import PitchSVG from "@carbon-info/assets/non-animated/pitch.png";
-import { CardWithCTA } from "@carbon-info/components";
+import { CardWithCTA, FadeAndSlide } from "@carbon-info/components";
+import { useInView } from "react-intersection-observer";
+import clsx from "clsx";
 
 const GetInvolved: React.FC = () => {
   const classes = useStyles();
@@ -13,51 +15,60 @@ const GetInvolved: React.FC = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isSmallMobile = useMediaQuery(theme.breakpoints.down(400));
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0.15,
+    triggerOnce: true,
+  });
   return (
-    <Box className={classes.boxContainer}>
-      <img src={GetInvolvedBG} alt="bg" className={classes.background} />
-      <Grid container className={classes.contentContainer} justifyContent="flex-start" spacing={isTablet ? 4 : 8}>
-        <Grid item xs={12} md={6}>
-          <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" className={classes.text}>
-            <div className={classes.textContainer}>
-              Get involved in<br />building the new <br /> face of finance
-            </div>
-          </Typography>
+    <div ref={ref}>
+      <Box className={classes.boxContainer}>
+        <img src={GetInvolvedBG} alt="bg" className={clsx(classes.background, { open: inView })} />
+        <Grid container className={classes.contentContainer} justifyContent="flex-start" spacing={isTablet ? 4 : 8}>
+          <Grid item xs={12} md={6}>
+            <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" className={classes.text}>
+              <FadeAndSlide visible={inView}>
+                <div className={classes.textContainer}>
+                  Get involved in<br />building the new <br /> face of finance
+                </div>
+              </FadeAndSlide>
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6} md={6} className={classes.card}>
+            <CardWithCTA
+              title={"Develop on Carbon"}
+              description={"Leverage our native source code to fast-track development"}
+              ctaText={"Read Docs"}
+              link={"/#document"}
+              icon={DevelopSVG}
+              isMobile={isTablet}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md style={{ marginTop: isTablet ? 0 : "-42%" }} className={classes.card}>
+            <CardWithCTA
+              title={"Propose a partnership"}
+              description={"Want to collaborate toward a freer financial system?"}
+              ctaText={"Get In Touch"}
+              link={"/#document"}
+              icon={ProposeSVG}
+              bigSVG
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md className={classes.card}>
+            <CardWithCTA
+              title={"Pitch a project"}
+              description={"Need funding to kickstart your project on Carbon?"}
+              ctaText={"Apply Now"}
+              link={"/#document"}
+              icon={PitchSVG}
+              isMobile={isTablet}
+              overwriteCSS={{ width: isSmallMobile ? "60vw" : isMobile ? "35rem" : "23rem", display: "block", maxWidth: "100%" }}
+            />
+          </Grid>
+          <img src={GetInvolvedGlow} alt="glow" className={classes.glowSVG} />
         </Grid>
-        <Grid item xs={12} sm={6} md={6} className={classes.card}>
-          <CardWithCTA
-            title={"Develop on Carbon"}
-            description={"Leverage our native source code to fast-track development"}
-            ctaText={"Read Docs"}
-            link={"/#document"}
-            icon={DevelopSVG}
-            isMobile={isTablet}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md style={{ marginTop: isTablet ? 0 : "-42%" }} className={classes.card}>
-          <CardWithCTA
-            title={"Propose a partnership"}
-            description={"Want to collaborate toward a freer financial system?"}
-            ctaText={"Get In Touch"}
-            link={"/#document"}
-            icon={ProposeSVG}
-            bigSVG
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md className={classes.card}>
-          <CardWithCTA
-            title={"Pitch a project"}
-            description={"Need funding to kickstart your project on Carbon?"}
-            ctaText={"Apply Now"}
-            link={"/#document"}
-            icon={PitchSVG}
-            isMobile={isTablet}
-            overwriteCSS={{ width: isSmallMobile ? "60vw" : isMobile ? "35rem" : "23rem", display: "block", maxWidth: "100%" }}
-          />
-        </Grid>
-        <img src={GetInvolvedGlow} alt="glow" className={classes.glowSVG} />
-      </Grid>
-    </Box>
+      </Box>
+    </div>
   );
 };
 
@@ -82,6 +93,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   background: {
     pointerEvents: "none",
     marginBottom: "-100%",
+    opacity: 0,
+    transform: "translate(40px, 40px) scale(0.95)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px) scale(1)",
+    },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "-110%",
       width: "200%",

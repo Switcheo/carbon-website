@@ -5,28 +5,44 @@ import backgroundLogo from "@carbon-info/assets/background/introPageBgLeft.png";
 import backgroundLogoRight from "@carbon-info/assets/background/introPageBgRight.png";
 import backgroundSphereLeft from "@carbon-info/assets/animated/introPageSphereLeft.png";
 import backgroundSphereRight from "@carbon-info/assets/animated/introPageSphereRight.png";
+import { FadeAndSlide } from "@carbon-info/components";
+import { useInView } from "react-intersection-observer";
+import clsx from "clsx";
 
 const IntroPage: React.FC = () => {
   const classes = useStyles();
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0.4,
+    triggerOnce: true,
+  });
   return (
-    <Grid container className={classes.container}>
-      <img src={backgroundLogo} className={classes.backgroundLeft} alt="herobackground" />
-      <img src={backgroundSphereLeft} className={classes.sphereLeft} alt="herobackground" />
-      <div>
-        <Typography variant="h4" color="textPrimary">
-          Meet Carbon
-        </Typography>
-        <IntroPageBackgroundLine className={classes.dash} />
-        <Typography color="textPrimary" variant="h2" className={classes.mainTitle}>
-          The core of <br /> <span className={classes.gradientText}>decentralised</span> <br /><span className={classes.gradientText}>financial markets</span>
-        </Typography>
-        <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
-          Carbon is an end-to-end DeFi protocol<br /> powering cross-chain financial dApps
-        </Typography>
-      </div>
-      <img src={backgroundLogoRight} className={classes.backgroundRight} alt="herobackgroundright" />
-      <img src={backgroundSphereRight} className={classes.sphereRight} alt="herobackgroundright" />
-    </Grid>
+    <div ref={ref}>
+      <Grid container className={classes.container}>
+        <img src={backgroundLogo} className={clsx(classes.backgroundLeft, { open: inView })} alt="herobackground" />
+        <img src={backgroundSphereLeft} className={clsx(classes.sphereLeft, { open: inView })} alt="herobackground" />
+        <div>
+          <FadeAndSlide visible={inView} transform={[0, -20]}>
+            <Typography variant="h4" color="textPrimary">
+              Meet Carbon
+            </Typography>
+          </FadeAndSlide>
+          <IntroPageBackgroundLine className={classes.dash} />
+          <Typography color="textPrimary" variant="h2" className={clsx(classes.mainTitle, { open: inView })} >
+            The core of <br /> <span className={clsx(classes.gradientText, { open: inView })} >decentralised</span>
+            <br />
+            <span className={clsx(classes.gradientText, { open: inView })} >financial markets</span>
+          </Typography>
+          <FadeAndSlide visible={inView}>
+            <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
+              Carbon is an end-to-end DeFi protocol<br /> powering cross-chain financial dApps
+            </Typography>
+          </FadeAndSlide>
+        </div>
+        <img src={backgroundLogoRight} className={clsx(classes.backgroundRight, { open: inView })} alt="herobackgroundright" />
+        <img src={backgroundSphereRight} className={clsx(classes.sphereRight, { open: inView })} alt="herobackgroundright" />
+      </Grid>
+    </div>
   );
 };
 
@@ -41,6 +57,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "relative",
   },
   mainTitle: {
+    opacity: 0,
+    transition: "all 2s ease",
+    "&.open": {
+      opacity: 1,
+    },
     [theme.breakpoints.down(320)]: {
       fontSize: "3.65rem",
       lineHeight: "3.5rem",
@@ -55,6 +76,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: "-50%",
     top: "-125%",
     width: "86%",
+    opacity: 0,
+    transform: "translate(-40px, -40px) scale(0.95)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px) scale(1)",
+    },
     [theme.breakpoints.down(880)]: {
       top: "-67%",
       left: "-72%",
@@ -70,6 +98,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: "6%",
     top: "-2%",
     width: "21%",
+    opacity: 0,
+    transform: "translate(-40px, -40px) scale(0.95)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px) scale(1)",
+    },
     [theme.breakpoints.down(880)]: {
       left: "2%",
     },
@@ -85,6 +120,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     right: "-56%",
     top: "-5%",
     width: "80%",
+    opacity: 0,
+    transform: "translate(40px, 40px) scale(0.95)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px) scale(1)",
+    },
     [theme.breakpoints.down("xs")]: {
       right: "-58%",
       top: "-32%",
@@ -96,6 +138,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     right: "2%",
     top: "48%",
     width: "15%",
+    opacity: 0,
+    transform: "translate(40px, 40px) scale(0.95)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px) scale(1)",
+    },
     [theme.breakpoints.down(880)]: {
       right: "2%",
       top: "35%",

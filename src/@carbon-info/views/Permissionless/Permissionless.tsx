@@ -2,73 +2,91 @@ import React from "react";
 import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import permissionlessSVG from "@carbon-info/assets/non-animated/permissionlessHeroSVG.png";
 import permissionlessGlowSVG from "@carbon-info/assets/background/permissionless-glow.svg";
-import { CardWithIcon } from "@carbon-info/components";
+import { CardWithIcon, FadeAndSlide } from "@carbon-info/components";
 import { DecentralizedIcon, MilitaryIcon, TrustlessIcon } from "@carbon-info/assets";
+import { useInView } from "react-intersection-observer";
+import clsx from "clsx";
 
 const Permissionless: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0.5,
+    triggerOnce: true,
+  });
   return (
-    <Box className={classes.container}>
-      <Grid container spacing={8}>
-        <Grid item xs={12} md={6} className={classes.heroSVGContainer}>
-          <img src={permissionlessSVG} alt="permissionless" className={classes.heroSVG} />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <div className={classes.description}>
-            <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" className={classes.title}>
-              Permissionless.<br />Zero restrictions.<br />Decentralized.
-            </Typography>
-            <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : isMobile ? "subtitle1" : "body1"} align="left">
-              {
-                isTablet && !isMobile
-                  ? <span>
-                    Carbon gives back control along with<br /> the freedom to transact without limits
+    <div ref={ref}>
+      <Box className={classes.container}>
+        <Grid container spacing={8}>
+          <Grid item xs={12} md={6} className={classes.heroSVGContainer}>
+            <img src={permissionlessSVG} alt="permissionless" className={clsx(classes.heroSVG, { open: inView })} />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <div className={classes.description}>
+              <FadeAndSlide visible={inView} transform={[20, 0]}>
+                <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" className={classes.title}>
+                  Permissionless.<br />Zero restrictions.<br />Decentralized.
+                </Typography>
+              </FadeAndSlide>
+              <FadeAndSlide visible={inView} transform={[26, 0]} delay={0.1}>
+                <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : isMobile ? "subtitle1" : "body1"} align="left">
+                  {
+                    isTablet && !isMobile
+                      ? <span>
+                        Carbon gives back control along with<br /> the freedom to transact without limits
                   </span>
-                  : <span>
-                    Carbon gives back control along <br />with the freedom to transact <br />without limits
+                      : <span>
+                        Carbon gives back control along <br />with the freedom to transact <br />without limits
                   </span>
-              }
-
-            </Typography>
-          </div>
+                  }
+                </Typography>
+              </FadeAndSlide>
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
-      <Grid container className={classes.cardContainer}>
-        <Hidden smDown>
-          <img src={permissionlessGlowSVG} alt="permissionless-glow" className={classes.glowSVG} />
-        </Hidden>
-        <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
-          <CardWithIcon
-            title={"Trustless, zero custody"}
-            description={"Built on Tendermint Core to facilitate transactions securely"}
-            icon={<TrustlessIcon />}
-            size="small"
-            iconAlignment="top"
-          />
+        <Grid container className={classes.cardContainer}>
+          <Hidden smDown>
+            <img src={permissionlessGlowSVG} alt="permissionless-glow" className={classes.glowSVG} />
+          </Hidden>
+          <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
+            <FadeAndSlide visible={inView} transform={[-20, 0]}>
+              <CardWithIcon
+                title={"Trustless, zero custody"}
+                description={"Built on Tendermint Core to facilitate transactions securely"}
+                icon={<TrustlessIcon />}
+                size="small"
+                iconAlignment="top"
+              />
+            </FadeAndSlide>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
+            <FadeAndSlide visible={inView}>
+              <CardWithIcon
+                title={"Military-grade security for all"}
+                description={"Enabled via the dPOS consensus mechanism"}
+                icon={<MilitaryIcon />}
+                size="small"
+                iconAlignment="top"
+              />
+            </FadeAndSlide>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
+            <FadeAndSlide visible={inView} transform={[20, 0]}>
+              <CardWithIcon
+                title={"100% decentralized order book"}
+                description={"Full control for users of their assets while trading"}
+                icon={<DecentralizedIcon />}
+                size="small"
+                iconAlignment="top"
+              />
+            </FadeAndSlide>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
-          <CardWithIcon
-            title={"Military-grade security for all"}
-            description={"Enabled via the dPOS consensus mechanism"}
-            icon={<MilitaryIcon />}
-            size="small"
-            iconAlignment="top"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
-          <CardWithIcon
-            title={"100% decentralized order book"}
-            description={"Full control for users of their assets while trading"}
-            icon={<DecentralizedIcon />}
-            size="small"
-            iconAlignment="top"
-          />
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </div>
   );
 };
 
@@ -90,6 +108,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: "-25%",
     width: "150%",
     pointerEvents: "none",
+    opacity: 0,
+    transform: "translate(0px, 20px)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px)",
+    },
     [theme.breakpoints.down("md")]: {
       position: "relative",
       top: "-113%",
@@ -109,8 +134,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       left: 0,
       width: "100%",
       margin: "-20% 0px",
-      transform: "scale(1.5)",
+      transform: "translate(0px, 20px) scale(1.25)",
       maxWidth: "54rem",
+      "&.open": {
+        opacity: 1,
+        transform: "translate(0px,0px) scale(1.5)",
+      },
     },
   },
   title: {

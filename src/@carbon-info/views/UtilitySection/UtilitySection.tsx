@@ -7,102 +7,126 @@ import neoSphere from "@carbon-info/assets/animated/neoSphere.png";
 import ethSphere from "@carbon-info/assets/animated/ethSphere.png";
 import utilityBgMobile from "@carbon-info/assets/background/utilityBgMobile.png";
 import utilityGlow from "@carbon-info/assets/background/utilityGlow.svg";
-import { CardWithIcon } from "@carbon-info/components";
+import { CardWithIcon, FadeAndSlide } from "@carbon-info/components";
 import { LaunchIcon, TradeIcon, TransactIcon } from "@carbon-info/assets";
+import { useInView } from "react-intersection-observer";
 // import { Trade } from "@carbon-info/assets";
-
 
 const UtilitySection: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0.4,
+    triggerOnce: true,
+  });
   return (
-    <Box className={classes.container}>
-      <div>
-        <Hidden smDown>
-          <img src={utilityBackgroundLeft} alt="featureCardBackgroundLeft" className={classes.backgroundLeft} />
-          <img src={utilityBackgroundSphere} alt="featureCardBackgroundLeft" className={classes.backgroundSphereLeft} />
-          <img src={binanceSphere} alt="binanceSphere" className={classes.binanceSphere} />
-          <img src={neoSphere} alt="neoSphere" className={classes.neoSphere} />
-          <img src={ethSphere} alt="ethSphere" className={classes.ethSphere} />
-        </Hidden>
-        <img src={utilityGlow} alt="featureCardBackgroundRight" className={classes.backgroundRight} />
-      </div>
-      <Grid container justifyContent="center" alignItems="center" spacing={8} className={classes.cardsContainer}>
-        <Grid container item xs={12} className={classes.description} spacing={8}>
-          <Grid container item sm={12} md={6}>
-            <Grid item xs={12} className={classes.textContainer}>
-              <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} noWrap style={{ overflow: "visible" }}>
-                Made to power<br />anything DeFi
-              </Typography>
-              <br /><br />
-              <Hidden smDown>
-                <br />
-              </Hidden>
-              <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle1" : "h6"}>
-                Supports a full spectrum of finance<br />products including derivatives
-              </Typography>
-              <br /><br /><br />
-              <Hidden mdUp>
-                <img src={utilityBgMobile} alt="utilityBgMobile" className={classes.utilityBgMobile} />
-              </Hidden>
+    <div ref={ref}>
+      <Box className={classes.container}>
+        <div>
+          <Hidden smDown>
+            <img src={utilityBackgroundLeft} alt="featureCardBackgroundLeft" className={classes.backgroundLeft} />
+            <img src={utilityBackgroundSphere} alt="featureCardBackgroundLeft" className={classes.backgroundSphereLeft} />
+            <img src={binanceSphere} alt="binanceSphere" className={classes.binanceSphere} />
+            <img src={neoSphere} alt="neoSphere" className={classes.neoSphere} />
+            <img src={ethSphere} alt="ethSphere" className={classes.ethSphere} />
+          </Hidden>
+          <img src={utilityGlow} alt="featureCardBackgroundRight" className={classes.backgroundRight} />
+        </div>
+        <Grid container justifyContent="center" alignItems="center" spacing={8} className={classes.cardsContainer}>
+          <Grid container item xs={12} className={classes.description} spacing={8}>
+            <Grid container item sm={12} md={6}>
+              <Grid item xs={12} className={classes.textContainer}>
+                <FadeAndSlide visible={inView} transform={[-20, 0]}>
+                  <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} noWrap style={{ overflow: "visible" }}>
+                    Made to power<br />anything DeFi
+                  </Typography>
+                </FadeAndSlide>
+                <br /><br />
+                <Hidden smDown>
+                  <br />
+                </Hidden>
+                <FadeAndSlide visible={inView} transform={[-20, 0]} delay={0.4}>
+                  <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle1" : "h6"}>
+                    Supports a full spectrum of finance<br />products including derivatives
+                </Typography>
+                </FadeAndSlide>
+                <br /><br /><br />
+                <Hidden mdUp>
+                  <img src={utilityBgMobile} alt="utilityBgMobile" className={classes.utilityBgMobile} />
+                </Hidden>
+              </Grid>
             </Grid>
           </Grid>
+          {/* Mobile view */}
+          <Hidden mdUp>
+            <Grid container>
+              <Grid item container xs={12} sm={12} md={6} className={classes.cardContainer} spacing={4} justifyContent="flex-start">
+                <Grid item xs={12} sm={6}>
+                  <FadeAndSlide visible={inView} transform={[0, -20]}>
+                    <CardWithIcon
+                      title={"Trade or swap anything, cross-chain"}
+                      description={"Access assets on popular chains like Ethereum, Binance Smart Chain, Neo, Ziliqa with full convenience"}
+                      icon={<TradeIcon />} />
+                  </FadeAndSlide>
+                </Grid>
+                <Grid item xs={12} sm={6} className={classes.gridItemRight}>
+                  <FadeAndSlide visible={inView} transform={[0, -20]}>
+                    <CardWithIcon
+                      title={"Transact instantly without gas"}
+                      description={"Zero fees, zero delays on a Layer 2 structure that minimises network congestion"}
+                      icon={<TransactIcon />} />
+                  </FadeAndSlide>
+                </Grid>
+                <Grid item xs={12} sm={6} className={classes.gridItemRight}>
+                  <FadeAndSlide visible={inView} transform={[0, -20]}>
+                    <CardWithIcon
+                      title={"Launch unlimited DeFi products"}
+                      description={"Access assets on popular CFDs, perpetuals, and an ever expanding list of dApps with Carbon at their core"}
+                      icon={<LaunchIcon />} />
+                  </FadeAndSlide>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Hidden>
+          <Hidden smDown>
+            <Grid container justifyContent="center">
+              <Grid item container xs={12} sm={6} md={6} className={classes.cardContainer}>
+                <Grid item>
+                  <FadeAndSlide visible={inView} transform={[-20, 0]}>
+                    <CardWithIcon
+                      title={"Trade or swap anything, cross-chain"}
+                      description={"Access assets on popular chains like Ethereum, Binance Smart Chain, Neo, Ziliqa with full convenience"}
+                      icon={<TradeIcon />} />
+                  </FadeAndSlide>
+                </Grid>
+              </Grid>
+              <Grid item container xs={12} sm={6} md={6} spacing={4} className={classes.cardContainer}>
+                <Grid item className={classes.gridItemRight}>
+                  <FadeAndSlide visible={inView} transform={[20, 0]}>
+                    <CardWithIcon
+                      title={"Transact instantly without gas"}
+                      description={"Zero fees, zero delays on a Layer 2 structure that minimises network congestion"}
+                      icon={<TransactIcon />} />
+                  </FadeAndSlide>
+                </Grid>
+                <Grid item className={classes.gridItemRight}>
+                  <FadeAndSlide visible={inView} transform={[20, 0]}>
+                    <CardWithIcon
+                      title={"Launch unlimited DeFi products"}
+                      description={"Access assets on popular CFDs, perpetuals, and an ever expanding list of dApps with Carbon at their core"}
+                      icon={<LaunchIcon />} />
+                  </FadeAndSlide>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Hidden>
         </Grid>
-        {/* Mobile view */}
-        <Hidden mdUp>
-          <Grid container>
-            <Grid item container xs={12} sm={12} md={6} className={classes.cardContainer} spacing={4} justifyContent="flex-start">
-              <Grid item xs={12} sm={6}>
-                <CardWithIcon
-                  title={"Trade or swap anything, cross-chain"}
-                  description={"Access assets on popular chains like Ethereum, Binance Smart Chain, Neo, Ziliqa with full convenience"}
-                  icon={<TradeIcon />} />
-              </Grid>
-              <Grid item xs={12} sm={6} className={classes.gridItemRight}>
-                <CardWithIcon
-                  title={"Transact instantly without gas"}
-                  description={"Zero fees, zero delays on a Layer 2 structure that minimises network congestion"}
-                  icon={<TransactIcon />} />
-              </Grid>
-              <Grid item xs={12} sm={6} className={classes.gridItemRight}>
-                <CardWithIcon
-                  title={"Launch unlimited DeFi products"}
-                  description={"Access assets on popular CFDs, perpetuals, and an ever expanding list of dApps with Carbon at their core"}
-                  icon={<LaunchIcon />} />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Hidden>
-        <Hidden smDown>
-          <Grid container justifyContent="center">
-            <Grid item container xs={12} sm={6} md={6} className={classes.cardContainer}>
-              <Grid item>
-                <CardWithIcon
-                  title={"Trade or swap anything, cross-chain"}
-                  description={"Access assets on popular chains like Ethereum, Binance Smart Chain, Neo, Ziliqa with full convenience"}
-                  icon={<TradeIcon />} />
-              </Grid>
-            </Grid>
-            <Grid item container xs={12} sm={6} md={6} spacing={4} className={classes.cardContainer}>
-              <Grid item className={classes.gridItemRight}>
-                <CardWithIcon
-                  title={"Transact instantly without gas"}
-                  description={"Zero fees, zero delays on a Layer 2 structure that minimises network congestion"}
-                  icon={<TransactIcon />} />
-              </Grid>
-              <Grid item className={classes.gridItemRight}>
-                <CardWithIcon
-                  title={"Launch unlimited DeFi products"}
-                  description={"Access assets on popular CFDs, perpetuals, and an ever expanding list of dApps with Carbon at their core"}
-                  icon={<LaunchIcon />} />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Hidden>
-      </Grid>
-    </Box >
+      </Box >
+
+    </div>
   );
 };
 

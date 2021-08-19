@@ -2,53 +2,63 @@ import React from "react";
 import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import roadMap from "@carbon-info/assets/background/roadMap.svg";
 import roadMapGlow from "@carbon-info/assets/background/roadMapGlow.svg";
-import { CTAButton } from "@carbon-info/components";
+import { CTAButton, FadeAndSlide } from "@carbon-info/components";
+import { useInView } from "react-intersection-observer";
 
 const RoadMap: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0.5,
+    triggerOnce: true,
+  });
   return (
-    <Box className={classes.boxContainer}>
-      <Typography variant="h2" color="textPrimary" paragraph noWrap className={classes.noWrap}>
-        {
-          isMobile ? <span>Building<br />towards change</span>
-            : <span>Building towards change</span>
-        }
+    <div ref={ref}>
+      <Box className={classes.boxContainer}>
+        <FadeAndSlide visible={inView}>
+          <Typography variant="h2" color="textPrimary" paragraph noWrap className={classes.noWrap}>
+            {
+              isMobile ? <span>Building<br />towards change</span>
+                : <span>Building towards change</span>
+            }
 
-      </Typography >
-      <Hidden smDown>
-        <CTAButton
-          text="SEE FEATURE MAP"
-          link="/#ECOSYSTEM"
-        />
-      </Hidden>
-      <Grid container alignItems="center" justifyContent="center" className={classes.roadMapContainer} spacing={8}>
-        <Typography color="textPrimary" className={classes.roadMapTitleText} paragraph>
-          New market types
+          </Typography >
+          <Hidden smDown>
+            <CTAButton
+              text="SEE FEATURE MAP"
+              link="/#ECOSYSTEM"
+            />
+          </Hidden>
+        </FadeAndSlide>
+        <Grid container alignItems="center" justifyContent="center" className={classes.roadMapContainer} spacing={8}>
+          <Typography color="textPrimary" className={classes.roadMapTitleText} paragraph>
+            New market types
         </Typography>
-        <img src={roadMapGlow} alt="glow" className={classes.glowSVG} />
-        <div className={classes.roadMapSVGContainer}>
-          <img src={roadMap} alt="roadMap" className={classes.roadMapSVG} />
-        </div>
-      </Grid>
-      <Typography color="textPrimary" variant="h2" paragraph>
-        20%
+          <img src={roadMapGlow} alt="glow" className={classes.glowSVG} />
+          <div className={classes.roadMapSVGContainer}>
+            <img src={roadMap} alt="roadMap" className={classes.roadMapSVG} />
+          </div>
+        </Grid>
+        <Typography color="textPrimary" variant="h2" paragraph>
+          20%
       </Typography>
-      <Typography color="textPrimary" variant="body2">
-        (Ignore this section - Animation WIP) <br />
+        <Typography color="textPrimary" variant="body2">
+          (Ignore this section - Animation WIP) <br />
         Addition of new derivatives markets including options,<br /> binary options and physically settled markets
       </Typography>
-      <Hidden mdUp>
-        <div className={classes.button}>
-          <CTAButton
-            text="SEE FEATURE MAP"
-            link="https://app.dem.exchange"
-            CTA
-          />
-        </div>
-      </Hidden>
-    </Box>
+        <Hidden mdUp>
+          <div className={classes.button}>
+            <CTAButton
+              text="SEE FEATURE MAP"
+              link="https://app.dem.exchange"
+              CTA
+            />
+          </div>
+        </Hidden>
+      </Box>
+    </div>
   );
 };
 

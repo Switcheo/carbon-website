@@ -5,47 +5,60 @@ import featureCardBackgroundLeft from "@carbon-info/assets/background/FeatureCar
 import mobileGlow from "@carbon-info/assets/background/featureCardGlowMobile.svg";
 import featureCardBackgroundRight from "@carbon-info/assets/background/featureCardBgRight.png";
 import { CTAButton } from "@carbon-info/components";
+import { useInView } from "react-intersection-observer";
+import clsx from "clsx";
 
 const FeatureCard: React.FC = () => {
   const classes = useStyles();
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0.7,
+    triggerOnce: true,
+  });
+
   return (
-    <Box className={classes.container}>
-      <Grid container className={classes.cardContainer}>
-        <Hidden smDown>
-          <img src={featureCardBackgroundLeft} alt="featureCardBackgroundLeft" className={classes.backgroundLeft} />
-        </Hidden>
-        <img src={featureCardBackgroundRight} alt="featureCardBackgroundRight" className={classes.backgroundRight} />
-        <Hidden mdUp>
-          <img src={mobileGlow} alt="featureCardBackgroundLeft" className={classes.mobileGlow} />
-        </Hidden>
-        <Grid container item xs={12} md={7} className={classes.textContainer}>
-          <div>
-            <Typography color="textPrimary" variant="h2">
-              Launch full-featured<br /> financial markets.<br /> No KYC required.
+    <div ref={ref} className={classes.aniContainer}>
+      <Hidden smDown>
+        <img src={featureCardBackgroundLeft} alt="featureCardBackgroundLeft" className={clsx(classes.backgroundLeft, { open: inView })} />
+      </Hidden>
+      <Box className={clsx(classes.container, { open: inView })}>
+        <Grid container className={classes.cardContainer}>
+          <Grid container item xs={12} md={7} className={classes.textContainer}>
+            <Hidden mdUp>
+              <img src={mobileGlow} alt="featureCardBackgroundLeft" className={classes.mobileGlow} />
+            </Hidden>
+            <img src={featureCardBackgroundRight} alt="featureCardBackgroundRight" className={clsx(classes.backgroundRight, { open: inView })} />
+            <div>
+              <Typography color="textPrimary" variant="h2">
+                Launch full-featured<br /> financial markets.<br /> No KYC required.
             </Typography>
-            <Typography color="textPrimary" variant="body2" className={classes.subtext}>
-              Carbon is a third-gen blockchain protocol & <br />custom Layer 2 side chain, built for trading <br /> sophisticated financial instruments at scale.
+              <Typography color="textPrimary" variant="body2" className={classes.subtext}>
+                Carbon is a third-gen blockchain protocol & <br />custom Layer 2 side chain, built for trading <br /> sophisticated financial instruments at scale.
             </Typography>
-            <CTAButton
-              text="READ DOCS"
-              link="/#document"
-              CTA
-            />
-          </div>
-        </Grid>
-        <Hidden smDown>
-          <Grid item xs={5} className={classes.imageContainer}>
-            <img src={carbonConnected} alt="carbon-connected" className={classes.image} />
+              <CTAButton
+                text="READ DOCS"
+                link="/#document"
+                CTA
+              />
+            </div>
           </Grid>
-        </Hidden>
-      </Grid>
-    </Box>
+          <Hidden smDown>
+            <Grid item xs={5} className={classes.imageContainer}>
+              <img src={carbonConnected} alt="carbon-connected" className={classes.image} />
+            </Grid>
+          </Hidden>
+        </Grid>
+      </Box>
+    </div>
   );
 };
 
 export default FeatureCard;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  aniContainer: {
+    position: "relative",
+  },
   container: {
     justifyContent: "center",
     alignItems: "center",
@@ -53,6 +66,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "relative",
     zIndex: 1,
     // background: "red"
+    opacity: 0,
+    transform: "translate(0px, 20px)",
+    // transitionDelay: "0.3s",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px)",
+    },
   },
   imageContainer: {
     alignItems: "center",
@@ -110,6 +131,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     // height: "",
     left: "-50%",
     top: "-55%",
+    transform: "translate(10px, 0px)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px)",
+    },
   },
   mobileGlow: {
     position: "absolute",
@@ -131,6 +158,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     // height: "",
     right: "-38%",
     top: "-23%",
+    transform: "translate(-10px, 0px)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px)",
+    },
     pointerEvents: "none",
     [theme.breakpoints.down(1100)]: {
       top: "-11%",
