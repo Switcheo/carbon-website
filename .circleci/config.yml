@@ -41,10 +41,10 @@ jobs:
             aws configure set preview.cloudfront true
             if [ "${CIRCLE_BRANCH}" = "staging" ]; then
               aws s3 sync build s3://switcheo-carbon-website/staging/ --delete
-              aws cloudfront create-invalidation --distribution-id="E1BX9CZRIQU7CR" --paths=/*
+              aws cloudfront create-invalidation --distribution-id="E1QJNXB6J1OTUW" --paths=/*
             elif [ "${CIRCLE_BRANCH}" = "master" ]; then
               aws s3 sync build s3://switcheo-carbon-website/prod/ --delete
-              aws cloudfront create-invalidation --distribution-id="E1BX9CZRIQU7CR" --paths=/*
+              aws cloudfront create-invalidation --distribution-id="E1QJNXB6J1OTUW" --paths=/*
             fi
 
 workflows: 
