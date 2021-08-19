@@ -29,7 +29,7 @@ jobs:
           command: |
             yarn build
 
-      - run: .circle
+      - run:
           name: install AWS CLI
           command: |
             sudo apt-get update
