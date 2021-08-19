@@ -7,15 +7,18 @@ import { CTAButton } from "@carbon-info/components";
 const Partnership: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   return (
     <Box className={classes.boxContainer}>
-      <Typography variant="h2" color="textPrimary" paragraph noWrap={!isTablet} className={classes.noWrap}>
+      <Typography variant="h2" color="textPrimary" paragraph noWrap={!isTablet && !isSmallScreen} className={classes.noWrap}>
         {/* Partnered with & backed by the blockchain<br /> industry’s foremost builders */}
         {
           isTablet ? <span>Partnered with & <br /> backed by the best</span>
-            : <span>Partnered with & backed by the blockchain<br /> industry’s foremost builders</span>
+            : isSmallScreen
+              ? <span>Partnered with & backed by the blockchain industry’s foremost builders</span>
+              : <span>Partnered with & backed by the blockchain<br /> industry’s foremost builders</span>
         }
       </Typography >
       <Hidden smDown>

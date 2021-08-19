@@ -132,6 +132,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     right: "-38%",
     top: "-23%",
     pointerEvents: "none",
+    [theme.breakpoints.down(1100)]: {
+      top: "-11%",
+    },
     [theme.breakpoints.down("sm")]: {
       top: "-21%",
       right: "-76%",

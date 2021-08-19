@@ -33,7 +33,7 @@ const UtilitySection: React.FC = () => {
         <Grid container item xs={12} className={classes.description} spacing={8}>
           <Grid container item sm={12} md={6}>
             <Grid item xs={12} className={classes.textContainer}>
-              <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"}>
+              <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} noWrap style={{ overflow: "visible" }}>
                 Made to power<br />anything DeFi
               </Typography>
               <br /><br />
@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     position: "relative",
     [theme.breakpoints.down("md")]: {
-      margin: "25rem 0px",
+      margin: "10rem 0px 25rem 0px",
     },
     [theme.breakpoints.down("sm")]: {
       margin: "12rem 0rem",

@@ -26,7 +26,7 @@ const DecentralizedStats: React.FC = () => {
           </Grid>
           <Grid item xs={12} md={6} className={classes.description}>
             <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : "subtitle1"} align="left">
-              <Hidden smDown>
+              <Hidden mdDown>
                 <Stroke className={classes.stroke} />
               </Hidden>
               <div className={classes.descriptionDiv}>
@@ -145,6 +145,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("md")]: {
       margin: "0px",
       height: "max-content",
+    },
+    [theme.breakpoints.down(1100)]: {
+      margin: "0px 0px 0px -5%",
     },
     [theme.breakpoints.down("sm")]: {
       height: "max-content",
