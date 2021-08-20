@@ -1,6 +1,8 @@
 import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import React from "react";
 import { CTAButton } from ".";
+import { useInView } from "react-intersection-observer";
+import clsx from "clsx";
 
 interface cardProps {
   title: string,
@@ -18,28 +20,35 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
   const { title, description, ctaText, icon, bigSVG, isMobile, link, overwriteCSS = {} } = props;
   const svgClass = bigSVG ? "bigIcon" : isMobile ? "icon" : "icon";
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0.4,
+    triggerOnce: true,
+  });
   return (
-    <Box className={classes.boxContainer}>
-      <div className={svgClass ? classes.bigIconContainer : classes.iconContainer}>
-        <img src={icon} alt="icon" className={classes[svgClass]} style={{ ...overwriteCSS }} />
-      </div>
-      <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center">
-        <Grid item container>
-          <div className={classes.textContainer}>
-            <Typography color="textPrimary" variant="h2" className={classes.divTitle}>
-              {title}
-            </Typography>
-            <Typography color="textPrimary" variant="body2" className={classes.subtext}>
-              {description}
-            </Typography>
-            <CTAButton
-              text={ctaText}
-              link={link}
-            />
-          </div>
+    <div ref={ref}>
+      <Box className={clsx(classes.boxContainer, { open: inView })}>
+        <div className={svgClass ? classes.bigIconContainer : classes.iconContainer}>
+          <img src={icon} alt="icon" className={classes[svgClass]} style={{ ...overwriteCSS }} />
+        </div>
+        <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center">
+          <Grid item container>
+            <div className={classes.textContainer}>
+              <Typography color="textPrimary" variant="h2" className={classes.divTitle}>
+                {title}
+              </Typography>
+              <Typography color="textPrimary" variant="body2" className={classes.subtext}>
+                {description}
+              </Typography>
+              <CTAButton
+                text={ctaText}
+                link={link}
+              />
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </div>
   );
 };
 
@@ -147,6 +156,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "start",
     overflow: "hidden",
     margin: "auto",
+    opacity: 0,
+    transform: "translate(0px, 20px)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px)",
+    },
     "&::before": {
       content: "''",
       position: "absolute",

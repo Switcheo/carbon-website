@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   image: {
     opacity: 0,
-    transitionDelay: "0.5s",
+    transitionDelay: "0.1s",
     transform: "translate(0px, 0px) scale(0.9)",
     transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
     "&.open": {

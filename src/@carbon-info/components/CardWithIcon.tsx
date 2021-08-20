@@ -1,5 +1,7 @@
 import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import React from "react";
+import { useInView } from "react-intersection-observer";
+import clsx from "clsx";
 
 interface cardProps {
   title: string,
@@ -13,46 +15,53 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
   const { title, description, size, icon, iconAlignment = "side" } = props;
   const boxSize = size ? `boxContainer${size}` : "boxContainer";
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0.4,
+    triggerOnce: true,
+  });
   return (
-    <Box className={classes[boxSize]}>
-      <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center">
-        {/* <Grid item>
+    <div ref={ref}>
+      <Box className={clsx(classes[boxSize], { open: inView })}>
+        <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center">
+          {/* <Grid item>
           {icon}
         </Grid> */}
-        {
-          iconAlignment === "side" ?
-            <Grid item container spacing={4}>
-              <Grid item xs={2} className={classes.sideIcon}>
-                {icon}
+          {
+            iconAlignment === "side" ?
+              <Grid item container spacing={4}>
+                <Grid item xs={2} className={classes.sideIcon}>
+                  {icon}
+                </Grid>
+                <Grid item xs={10}>
+                  <Typography className={classes.divTitle} color="textPrimary" paragraph>
+                    {title}
+                  </Typography>
+                  <br />
+                  <Typography variant="body2" color="textPrimary">
+                    {description}
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid item xs={10}>
-                <Typography className={classes.divTitle} color="textPrimary" paragraph>
-                  {title}
-                </Typography>
-                <br />
-                <Typography variant="body2" color="textPrimary">
-                  {description}
-                </Typography>
+              :
+              <Grid item container spacing={4}>
+                <Grid item xs={12} className={classes.icon}>
+                  {icon}
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography className={classes.divTitle} color="textPrimary" paragraph>
+                    {title}
+                  </Typography>
+                  <br />
+                  <Typography variant="body2" color="textPrimary">
+                    {description}
+                  </Typography>
+                </Grid>
               </Grid>
-            </Grid>
-            :
-            <Grid item container spacing={4}>
-              <Grid item xs={12} className={classes.icon}>
-                {icon}
-              </Grid>
-              <Grid item xs={12}>
-                <Typography className={classes.divTitle} color="textPrimary" paragraph>
-                  {title}
-                </Typography>
-                <br />
-                <Typography variant="body2" color="textPrimary">
-                  {description}
-                </Typography>
-              </Grid>
-            </Grid>
-        }
-      </Grid>
-    </Box>
+          }
+        </Grid>
+      </Box>
+    </div>
   );
 };
 
@@ -86,6 +95,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "17rem",
     width: "23rem",
     textAlign: "start",
+    opacity: 0,
+    transform: "translate(0px, 20px)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px)",
+    },
     "&::before": {
       content: "''",
       position: "absolute",
@@ -135,6 +151,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "18rem",
     width: "20rem",
     textAlign: "start",
+    opacity: 0,
+    transform: "translate(0px, 20px)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px)",
+    },
     "&::before": {
       content: "''",
       position: "absolute",
@@ -188,6 +211,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "16rem",
     // width: "16rem",
     textAlign: "start",
+    opacity: 0,
+    transform: "translate(0px, 20px)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px)",
+    },
     "&::before": {
       content: "''",
       position: "absolute",
