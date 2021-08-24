@@ -26,7 +26,7 @@ const RoadMapButton: React.FC<Props> = (props: Props) => {
         classes.buttonContainer,
         { open: inView },
         { left: direction === "left" },
-        { right: direction === "right" }
+        { right: direction === "right" },
       )}
         onClick={callback}>
         {buttonIcon}

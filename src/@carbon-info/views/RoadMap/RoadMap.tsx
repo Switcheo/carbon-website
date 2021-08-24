@@ -13,7 +13,7 @@ const RoadMap: React.FC = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const [step, setStep] = useState<any>(0);
-  const [view, setView] = useState([-3, -2, -1, 0, 1, 2, 3])
+  const [view, setView] = useState([-3, -2, -1, 0, 1, 2, 3]);
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.5,
@@ -25,24 +25,22 @@ const RoadMap: React.FC = () => {
     setView((prev): any => {
       let temp = [prev[prev.length - 1]];
       for (let i = 0; i < prev.length - 1; i++) {
-        temp.push(prev[i])
+        temp.push(prev[i]);
       }
-      return temp
-    })
-  }
+      return temp;
+    });
+  };
 
   const decrementStep = () => {
     setStep((prev: number) => setStep(prev - 1));
     setView((prev): any => {
-      console.log(prev)
       let temp = [prev[0]];
       for (let i = prev.length - 1; i > 0; i--) {
-        temp.unshift(prev[i])
+        temp.unshift(prev[i]);
       }
-      console.log("result1:", temp)
-      return temp
-    })
-  }
+      return temp;
+    });
+  };
   // const getPointsAlongPath = (path: any, number: number) => {
   //   const length = path.getTotalLength();
   //   return (new Array(number)).fill(0).map((_, i) => path.getPointAtLength(length / (number - 1) * i))
@@ -66,7 +64,6 @@ const RoadMap: React.FC = () => {
   //   }
   // }, [step])
 
-  console.log(step)
   return (
     <div ref={ref}>
       <Box className={classes.boxContainer}>

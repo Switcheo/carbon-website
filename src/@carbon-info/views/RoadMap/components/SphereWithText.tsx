@@ -20,24 +20,23 @@ const coordinates: any = {
   "-1": [240, -40],
   "-2": [220, -40],
   "-3": [200, -40],
-}
+};
 
 
 const RoadMapButton: React.FC<Props> = (props: Props) => {
   let { step, percent, text, isMobile = false, isTablet = false } = props;
   const classes = useStyles();
-  console.log(step, coordinates[step]);
-  if (step <= -4 || step >= 4) return <></>
-  let fontStyle = {}
-  if (step === 0) fontStyle = { width: "18rem", top: "-5rem", left: "-4rem" }
-  else if (step === 1 || step === -1) fontStyle = { width: "18rem", top: "-5rem", left: "-4rem", fontSize: "1.4rem" }
-  else if (step >= 2 || step <= -2) fontStyle = { width: "8rem", top: "-8rem", left: "1rem", fontSize: "1.4rem", color: "rgb(255,255,255,0.38)" }
+  if (step <= -4 || step >= 4) return <></>;
+  let fontStyle = {};
+  if (step === 0) fontStyle = { width: "18rem", top: "-5rem", left: "-4rem" };
+  else if (step === 1 || step === -1) fontStyle = { width: "18rem", top: "-5rem", left: "-4rem", fontSize: "1.4rem" };
+  else if (step >= 2 || step <= -2) fontStyle = { width: "8rem", top: "-8rem", left: "1rem", fontSize: "1.4rem", color: "rgb(255,255,255,0.38)" };
   return (
     <div className={classes.centerSphereContainer} id="sphere" style={{
       transform: `rotate(${coordinates[step][0]}deg) translateX(55vw) rotate(-${coordinates[step][0]}deg) ${step == -1 || step == 1 ? "scale(0.9)" : ""} ${step <= -2 || step >= 2 ? "scale(0.8)" : ""}`,
       transition: "all 1s ease-in",
       top: `${isTablet ? isMobile ? coordinates[step][1] + 20 : coordinates[step][1] + 10 : coordinates[step][1]}px`,
-      opacity: step === -3 || step === 3 ? 0 : 1
+      opacity: step === -3 || step === 3 ? 0 : 1,
     }}>
       <Typography color="textPrimary" className={classes.roadMapTitleText} style={{ transition: "all 1s ease-in", position: "absolute", ...fontStyle }}>
         {text}
@@ -47,8 +46,8 @@ const RoadMapButton: React.FC<Props> = (props: Props) => {
           className={classes.circular}
           value={percent}
           styles={buildStyles({
-            pathColor: `rgba(255, 255, 255, 1)`,
-            trailColor: 'rgba(255, 255, 255, 0.3)',
+            pathColor: "rgba(255, 255, 255, 1)",
+            trailColor: "rgba(255, 255, 255, 0.3)",
           })}
         />
         <img src={roadMapSphere} alt="roadMapSphere" className={classes.centerSphere} />
@@ -84,7 +83,7 @@ const useStyles = makeStyles(() => ({
     },
     "100%": {
       transform: "rotate(360deg) translateX(55vw) rotate(-360deg)",
-    }
+    },
   },
   centerSphere: {
     position: "absolute",
