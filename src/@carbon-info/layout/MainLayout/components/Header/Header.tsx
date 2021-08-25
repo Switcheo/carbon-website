@@ -10,7 +10,6 @@ const Header: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  console.log("triggered", showMobileMenu)
   return (
     <div className={classes.navBarContainer}>
       <span className={clsx(classes.mobileMenu, { open: showMobileMenu })}>
@@ -63,7 +62,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.open": {
       opacity: 1,
       transform: "translate(0px,0px)",
-    }
+    },
   },
   navBarContainer: {
     display: "flex",

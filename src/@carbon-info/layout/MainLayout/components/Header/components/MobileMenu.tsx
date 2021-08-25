@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       backgroundColor: "#74E8E8",
       borderRadius: "4px",
       height: "10px",
-      transform: "scale(0.3)"
+      transform: "scale(0.3)",
     },
   },
   socialMediaContainer: {
