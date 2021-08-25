@@ -16,3 +16,4 @@ export { ReactComponent as TransactIcon } from "./transact.svg";
 export { ReactComponent as TrustlessIcon } from "./trustless.svg";
 export { ReactComponent as TradeIcon } from "./trade.svg";
 export { ReactComponent as MenuIcon } from "./menu.svg";
+export { ReactComponent as MenuIconClose } from "./menuIconClose.svg";
