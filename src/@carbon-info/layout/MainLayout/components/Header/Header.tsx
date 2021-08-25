@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { CarbonLogo, MenuIcon } from "@carbon-info/assets";
+import MobileMenu from "./components/MobileMenu";
+import clsx from "clsx";
 
 
 const Header: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <div className={classes.navBarContainer}>
+      <span className={clsx(classes.mobileMenu, { open: showMobileMenu })}>
+        <MobileMenu callback={() => setShowMobileMenu(false)} />
+      </span>
       <span className={classes.logoContainer}>
         <CarbonLogo className={classes.logo} />
       </span>
       <div className={classes.navButtonContainer}>
         {
           isMobile ?
-            <MenuIcon className={classes.menuIcon} />
+            <>
+              <div onClick={() => setShowMobileMenu(true)}>
+                <MenuIcon className={clsx(classes.menuIcon, { open: showMobileMenu })} />
+              </div>
+            </>
             :
             <>
               <Link href={"/#About"} underline="none" target="_blank">
@@ -40,6 +50,20 @@ const Header: React.FC = () => {
 export default Header;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  mobileMenu: {
+    zIndex: 10,
+    opacity: 0,
+    transform: "translate(0px,-80vh)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    // margin: theme.spacing(-6, -4, -12, -4),
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px)",
+    },
+  },
   navBarContainer: {
     display: "flex",
     alignItems: "center",
@@ -49,6 +73,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   menuIcon: {
+    position: "relative",
     transform: "scale(2.0)",
     [theme.breakpoints.down("xs")]: {
       transform: "scale(1.5)",
