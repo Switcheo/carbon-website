@@ -265,6 +265,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: "-80%",
     left: "-50%",
     pointerEvents: "none",
+    [theme.breakpoints.down("xs")]: {
+      top: "auto",
+      left: "auto",
+    },
   },
   stroke: {
     margin: theme.spacing(0, 2, 0, 0),
