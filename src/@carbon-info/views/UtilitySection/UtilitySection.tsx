@@ -1,10 +1,7 @@
 import React from "react";
 import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import utilityBackgroundLeft from "@carbon-info/assets/animated/ultilityBgLine.png";
+import utilityBackgroundLeft from "@carbon-info/assets/animated/utilityBGLeft.png";
 import utilityBackgroundSphere from "@carbon-info/assets/background/ultilityBgSphere.png";
-import binanceSphere from "@carbon-info/assets/animated/binanceSphere.png";
-import neoSphere from "@carbon-info/assets/animated/neoSphere.png";
-import ethSphere from "@carbon-info/assets/animated/ethSphere.png";
 import utilityBgMobile from "@carbon-info/assets/background/utilityBgMobile.png";
 import utilityGlow from "@carbon-info/assets/background/utilityGlow.svg";
 import { CardWithIcon, FadeAndSlide } from "@carbon-info/components";
@@ -29,9 +26,6 @@ const UtilitySection: React.FC = () => {
           <Hidden smDown>
             <img src={utilityBackgroundLeft} alt="featureCardBackgroundLeft" className={classes.backgroundLeft} />
             <img src={utilityBackgroundSphere} alt="featureCardBackgroundLeft" className={classes.backgroundSphereLeft} />
-            <img src={binanceSphere} alt="binanceSphere" className={classes.binanceSphere} />
-            <img src={neoSphere} alt="neoSphere" className={classes.neoSphere} />
-            <img src={ethSphere} alt="ethSphere" className={classes.ethSphere} />
           </Hidden>
           <img src={utilityGlow} alt="featureCardBackgroundRight" className={classes.backgroundRight} />
         </div>

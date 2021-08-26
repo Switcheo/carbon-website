@@ -58,11 +58,8 @@ const Header: React.FC = () => {
       </div>
       <Hidden mdUp>
         <div className={isScrolled ? classes.navBarFixedContainer : classes.navBarFixedContainerCollapsed}>
-          {/* <span className={clsx(classes.mobileMenu, { open: showMobileMenu })}>
-            <MobileMenu callback={() => setShowMobileMenu(false)} />
-          </span> */}
           <span className={classes.logoContainer}>
-            <CarbonLogo className={classes.logo} />
+            <CarbonLogo className={classes.logoFixed} />
           </span>
           <div className={classes.navButtonContainer}>
             {
@@ -178,6 +175,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   logoContainer: {
     [theme.breakpoints.down("xs")]: {
       textAlign: "start",
+    },
+  },
+  logoFixed: {
+    [theme.breakpoints.down("sm")]: {
+      width: "80%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "60%",
+      marginLeft: "1rem",
     },
   },
   navButtonContainer: {
