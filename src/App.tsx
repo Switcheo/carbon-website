@@ -1,11 +1,12 @@
 import React from "react";
 import { MainLayout } from "@carbon-info/layout";
 import {
-  FeatureCard,
-  HeroImage, IntroPage,
-  UtilitySection, DecentralizedStats,
-  Permissionless, Community, Partnership,
-  RoadMap, GetInvolved, RecieveUpdates,
+  // FeatureCard,
+  // HeroImage, IntroPage,
+  // UtilitySection, DecentralizedStats,
+  // Permissionless, Community, Partnership,
+  // RoadMap, GetInvolved, RecieveUpdates, 
+  RoadMapPage,
 } from "@carbon-info/views";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./@carbon-info/theme";
@@ -15,7 +16,8 @@ function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <MainLayout>
-        <IntroPage />
+        <RoadMapPage />
+        {/* <IntroPage />
         <HeroImage />
         <FeatureCard />
         <UtilitySection />
@@ -25,7 +27,7 @@ function App() {
         <Partnership />
         <RoadMap />
         <GetInvolved />
-        <RecieveUpdates />
+        <RecieveUpdates /> */}
       </MainLayout>
     </MuiThemeProvider>
   );

@@ -19,3 +19,5 @@ export { ReactComponent as MenuIcon } from "./menu.svg";
 export { ReactComponent as RoadMapLeftButtonIcon } from "./roadMapLeftButton.svg";
 export { ReactComponent as RoadMapRightButtonIcon } from "./roadMapRightButton.svg";
 export { ReactComponent as MenuIconClose } from "./menuIconClose.svg";
+export { ReactComponent as RoadMapPageCardIcon } from "./roadMapPageCardIcon.svg";
+export { ReactComponent as roadMapPageCardTick } from "./roadMapPageCardTick.svg";
