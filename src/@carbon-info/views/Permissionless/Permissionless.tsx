@@ -52,37 +52,31 @@ const Permissionless: React.FC = () => {
             <img src={permissionlessGlowSVG} alt="permissionless-glow" className={classes.glowSVG} />
           </Hidden>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
-            <FadeAndSlide visible={inView} transform={[-20, 0]}>
-              <CardWithIcon
-                title={"Trustless, zero custody"}
-                description={"Built on Tendermint Core to facilitate transactions securely"}
-                icon={<TrustlessIcon />}
-                size="small"
-                iconAlignment="top"
-              />
-            </FadeAndSlide>
+            <CardWithIcon
+              title={"Trustless, zero custody"}
+              description={"Built on Tendermint Core to facilitate transactions securely"}
+              icon={<TrustlessIcon />}
+              size="small"
+              iconAlignment="top"
+            />
           </Grid>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
-            <FadeAndSlide visible={inView}>
-              <CardWithIcon
-                title={"Military-grade security for all"}
-                description={"Enabled via the dPOS consensus mechanism"}
-                icon={<MilitaryIcon />}
-                size="small"
-                iconAlignment="top"
-              />
-            </FadeAndSlide>
+            <CardWithIcon
+              title={"Military-grade security for all"}
+              description={"Enabled via the dPOS consensus mechanism"}
+              icon={<MilitaryIcon />}
+              size="small"
+              iconAlignment="top"
+            />
           </Grid>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
-            <FadeAndSlide visible={inView} transform={[20, 0]}>
-              <CardWithIcon
-                title={"100% decentralized order book"}
-                description={"Full control for users of their assets while trading"}
-                icon={<DecentralizedIcon />}
-                size="small"
-                iconAlignment="top"
-              />
-            </FadeAndSlide>
+            <CardWithIcon
+              title={"100% decentralized order book"}
+              description={"Full control for users of their assets while trading"}
+              icon={<DecentralizedIcon />}
+              size="small"
+              iconAlignment="top"
+            />
           </Grid>
         </Grid>
       </Box>

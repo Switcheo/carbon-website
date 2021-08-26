@@ -115,11 +115,11 @@ const Footer: React.FC = () => {
       <Hidden xsDown>
         <Divider />
       </Hidden>
-      <Grid container className={classes.sitemapContainer} spacing={isMobile ? 7 : 0}>
+      <Grid container className={classes.sitemapContainer} spacing={isMobile ? 0 : 0}>
         {
           sitemap.map((section) => {
             return (
-              <Grid item container xs={6} sm md key={section.section} direction="column">
+              <Grid item container xs={6} sm md key={section.section} direction="column" style={{ padding: isMobile ? "0px 0px 3rem 3.25rem" : 0 }}>
                 <Typography color="textPrimary" className={classes.footerHeader} align="left">
                   {section.section}
                 </Typography>
@@ -127,7 +127,7 @@ const Footer: React.FC = () => {
                   section.sitemap.map((map, index) => {
                     return (
                       <Link href={map.link} underline="none" target="_blank" key={map.title + index}>
-                        <Typography color="textPrimary" className={classes.footerLink} align="left">
+                        <Typography color="textPrimary" className={classes.footerLink} align="left" >
                           {map.title}
                         </Typography>
                       </Link>
@@ -217,7 +217,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: "5%",
     [theme.breakpoints.down("xs")]: {
       margin: "7.5rem 0px",
-      padding: "0px 10%",
+      padding: "0px 0%",
       width: "fit-content",
     },
   },

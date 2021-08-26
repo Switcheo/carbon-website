@@ -126,7 +126,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       right: 0,
       bottom: 0,
       borderRadius: 10,
-      padding: "1px",
+      padding: "1.2px",
       background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
       maskComposite: "destination-out",
