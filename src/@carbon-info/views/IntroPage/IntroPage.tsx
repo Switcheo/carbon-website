@@ -29,7 +29,7 @@ const IntroPage: React.FC = () => {
           </FadeAndSlide>
           <IntroPageBackgroundLine className={classes.dash} />
           <Typography color="textPrimary" variant="h2" className={clsx(classes.mainTitle, { open: inView })} >
-            The core of <br /> <span className={clsx(classes.gradientText, { open: inView })} >decentralised</span>
+            The core of <br /> <span className={clsx(classes.gradientText, { open: inView })} >decentralized</span>
             <br />
             <span className={clsx(classes.gradientText, { open: inView })} >financial markets</span>
           </Typography>
