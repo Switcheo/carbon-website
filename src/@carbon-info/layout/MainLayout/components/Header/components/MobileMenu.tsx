@@ -20,19 +20,19 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
         <MenuIconClose onClick={callback} style={{ marginLeft: "auto" }} />
       </div>
       <div className={classes.navButtonContainer}>
-        <Link href={"/#footer"} underline="none">
+        <Link href={"/#footer"} underline="none" onClick={callback}>
           <Typography color="textPrimary" variant="h1" display="inline">About</Typography>
         </Link>
-        <Link href={"/#stats"} underline="none">
+        <Link href={"/#stats"} underline="none" onClick={callback}>
           <Typography color="textPrimary" variant="h1" display="inline">Ecosystem</Typography>
         </Link>
-        <Link href={"/#Whitepaper"} underline="none" target="_blank">
+        <Link href={"/#Whitepaper"} underline="none" target="_blank" onClick={callback}>
           <Typography color="textPrimary" variant="h1" display="inline">Whitepaper</Typography>
         </Link>
-        <Link href={"/#utility"} underline="none">
+        <Link href={"/#utility"} underline="none" onClick={callback}>
           <Typography color="textPrimary" variant="h1" display="inline">Features</Typography>
         </Link>
-        <Link href={"/#footer"} underline="none">
+        <Link href={"/#footer"} underline="none" onClick={callback}>
           <Typography color="textPrimary" variant="h1" display="inline">Contact Us</Typography>
         </Link>
       </div>
@@ -76,18 +76,22 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     marginBottom: "auto",
     alignItems: "center",
+    height: "6vh",
+    boxSizing: "border-box",
     [theme.breakpoints.down("xs")]: {
       textAlign: "start",
     },
   },
   navButtonContainer: {
     padding: "2rem",
-    display: "grid",
+    display: "flex",
+    flexDirection: "column",
+    height: "75vh",
+    boxSizing: "border-box",
     textAlign: "start",
-    margin: "5rem 0px",
-    height: "25rem",
+    // margin: "5rem 0px",
     gap: 25,
-    overflowY: "scroll",
+    overflowY: "auto",
     "&::-webkit-scrollbar": {
       width: "2px",
       backgroundColor: "#554B4B",
@@ -100,6 +104,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   socialMediaContainer: {
+    height: "17vh",
+    boxSizing: "border-box",
     marginTop: "auto",
     textAlign: "start",
     margin: "0px -3rem",
