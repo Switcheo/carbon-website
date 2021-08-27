@@ -21,7 +21,7 @@ const GetInvolved: React.FC = () => {
     triggerOnce: true,
   });
   return (
-    <div ref={ref}>
+    <div ref={ref} id="getInvolved">
       <Box className={classes.boxContainer}>
         <img src={GetInvolvedBG} alt="bg" className={clsx(classes.background, { open: inView })} />
         <Grid container className={classes.contentContainer} justifyContent="flex-start" spacing={isTablet ? 4 : 8}>

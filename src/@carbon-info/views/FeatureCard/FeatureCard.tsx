@@ -17,7 +17,7 @@ const FeatureCard: React.FC = () => {
   });
 
   return (
-    <div ref={ref} className={classes.aniContainer}>
+    <div ref={ref} className={classes.aniContainer} id="featureCard">
       <Hidden smDown>
         <img src={featureCardBackgroundLeft} alt="featureCardBackgroundLeft" className={clsx(classes.backgroundLeft, { open: inView })} />
       </Hidden>

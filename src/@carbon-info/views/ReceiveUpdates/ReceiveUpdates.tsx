@@ -11,7 +11,7 @@ const ReceieveUpdates: React.FC = () => {
     triggerOnce: true,
   });
   return (
-    <div ref={ref}>
+    <div ref={ref} id="recieveUpdates">
       <FadeAndSlide visible={inView}>
         <Box className={classes.container}>
           <Grid container className={classes.cardContainer}>

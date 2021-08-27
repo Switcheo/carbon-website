@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   return (
-    <Box>
+    <Box id="footer">
       <Hidden xsDown>
         <Divider />
       </Hidden>

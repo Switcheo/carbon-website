@@ -14,11 +14,11 @@ const DecentralizedStats: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.4,
+    threshold: 0.2,
     triggerOnce: true,
   });
   return (
-    <div ref={ref}>
+    <div ref={ref} id="stats">
       <Box className={classes.boxContainer}>
         <Grid container>
           <Hidden mdUp>

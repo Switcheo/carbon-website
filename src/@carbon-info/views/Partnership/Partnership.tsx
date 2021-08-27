@@ -17,7 +17,7 @@ const Partnership: React.FC = () => {
     triggerOnce: true,
   });
   return (
-    <div ref={ref}>
+    <div ref={ref} id="partnership">
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
           <Typography variant="h2" color="textPrimary" paragraph noWrap={!isTablet && !isSmallScreen} className={classes.noWrap}>

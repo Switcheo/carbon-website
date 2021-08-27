@@ -17,7 +17,7 @@ const IntroPage: React.FC = () => {
     triggerOnce: true,
   });
   return (
-    <div ref={ref}>
+    <div ref={ref} id="home">
       <Grid container className={classes.container}>
         <img src={backgroundLogo} className={clsx(classes.backgroundLeft, { open: inView })} alt="herobackground" />
         <img src={backgroundSphereLeft} className={clsx(classes.sphereLeft, { open: inView })} alt="herobackground" />

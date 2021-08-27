@@ -44,7 +44,7 @@ const RoadMap: React.FC = () => {
   };
 
   return (
-    <div ref={ref}>
+    <div ref={ref} id="roadMap">
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
           <Typography variant="h2" color="textPrimary" paragraph noWrap className={classes.noWrap}>
@@ -148,7 +148,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "140vw",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "170vw",
+      width: "125vw",
       // left: "0%"
       // top: "-10rem",
     },
@@ -161,7 +161,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginBottom: "-48%",
     },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: "-43%",
+      marginBottom: "-30%",
     },
     [theme.breakpoints.up("xl")]: {
       marginBottom: "-42vw",

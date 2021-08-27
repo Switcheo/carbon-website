@@ -18,7 +18,7 @@ const Community: React.FC = () => {
     triggerOnce: true,
   });
   return (
-    <div ref={ref}>
+    <div ref={ref} id="community">
       <Box className={classes.boxContainer}>
         <Hidden smDown>
           <img src={communityBackGroundLeft} alt="communityBackGroundLeft" className={clsx(classes.backgroundLeft, { open: inView })} />

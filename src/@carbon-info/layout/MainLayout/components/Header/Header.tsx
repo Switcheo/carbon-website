@@ -40,16 +40,16 @@ const Header: React.FC = () => {
               </>
               :
               <>
-                <Link href={"/#About"} underline="none" target="_blank">
+                <Link href={"/#footer"} underline="none">
                   <Typography color="textPrimary" display="inline">About</Typography>
                 </Link>
-                <Link href={"/#Ecosystem"} underline="none" target="_blank">
+                <Link href={"/#stats"} underline="none">
                   <Typography color="textPrimary" display="inline">Ecosystem</Typography>
                 </Link>
                 <Link href={"/#Whitepaper"} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Whitepaper</Typography>
                 </Link>
-                <Link href={"/#Features"} underline="none" target="_blank">
+                <Link href={"/#utility"} underline="none">
                   <Typography color="textPrimary" display="inline">Features</Typography>
                 </Link>
               </>
@@ -62,32 +62,11 @@ const Header: React.FC = () => {
             <CarbonLogo className={classes.logoFixed} />
           </span>
           <div className={classes.navButtonContainer}>
-            {
-              isMobile ?
-                <>
-                  <div onClick={() => setShowMobileMenu(true)}>
-                    <MenuIcon className={clsx(classes.menuIcon, { open: showMobileMenu })} />
-                  </div>
-                </>
-                :
-                <>
-                  <Link href={"/#About"} underline="none" target="_blank">
-                    <Typography color="textPrimary" display="inline">About</Typography>
-                  </Link>
-                  <Link href={"/#Ecosystem"} underline="none" target="_blank">
-                    <Typography color="textPrimary" display="inline">Ecosystem</Typography>
-                  </Link>
-                  <Link href={"/#Whitepaper"} underline="none" target="_blank">
-                    <Typography color="textPrimary" display="inline">Whitepaper</Typography>
-                  </Link>
-                  <Link href={"/#Features"} underline="none" target="_blank">
-                    <Typography color="textPrimary" display="inline">Features</Typography>
-                  </Link>
-                </>
-            }
+            <div onClick={() => setShowMobileMenu(true)}>
+              <MenuIcon className={clsx(classes.menuIcon, { open: showMobileMenu })} />
+            </div>
           </div>
         </div>
-
       </Hidden>
     </nav>
 

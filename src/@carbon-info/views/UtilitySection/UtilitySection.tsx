@@ -20,7 +20,7 @@ const UtilitySection: React.FC = () => {
     triggerOnce: true,
   });
   return (
-    <div ref={ref}>
+    <div ref={ref} id="utility">
       <Box className={classes.container}>
         <div>
           <Hidden smDown>

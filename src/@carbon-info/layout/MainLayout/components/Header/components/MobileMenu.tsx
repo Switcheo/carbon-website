@@ -12,8 +12,6 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
   const { callback } = props;
   const classes = useStyles();
   onClickOutside(ref, callback);
-  // const theme = useTheme();
-  // const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <div className={classes.navBarContainer} ref={ref}>
       <div className={classes.logoContainer}>
@@ -21,19 +19,19 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
         <MenuIconClose onClick={callback} style={{ marginLeft: "auto" }} />
       </div>
       <div className={classes.navButtonContainer}>
-        <Link href={"/#About"} underline="none" target="_blank">
-          <Typography color="textPrimary" variant="h1" display="inline">About</Typography>
+        <Link href={"/#footer"} underline="none">
+          <Typography color="textPrimary" display="inline">About</Typography>
         </Link>
-        <Link href={"/#Ecosystem"} underline="none" target="_blank">
-          <Typography color="textPrimary" variant="h1" display="inline">Ecosystem</Typography>
+        <Link href={"/#stats"} underline="none">
+          <Typography color="textPrimary" display="inline">Ecosystem</Typography>
         </Link>
         <Link href={"/#Whitepaper"} underline="none" target="_blank">
-          <Typography color="textPrimary" variant="h1" display="inline">Whitepaper</Typography>
+          <Typography color="textPrimary" display="inline">Whitepaper</Typography>
         </Link>
-        <Link href={"/#Features"} underline="none" target="_blank">
-          <Typography color="textPrimary" variant="h1" display="inline">Features</Typography>
+        <Link href={"/#utility"} underline="none">
+          <Typography color="textPrimary" display="inline">Features</Typography>
         </Link>
-        <Link href={"/#Community"} underline="none" target="_blank">
+        <Link href={"/#footer"} underline="none">
           <Typography color="textPrimary" variant="h1" display="inline">Contact Us</Typography>
         </Link>
       </div>
