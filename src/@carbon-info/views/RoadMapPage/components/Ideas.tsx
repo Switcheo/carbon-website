@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Grid, Hidden, makeStyles, Theme, Typography } from "@material-ui/core";
-import carbonConnected from "@carbon-info/assets/non-animated/featureCardHero.png";
-import featureCardBackgroundLeft from "@carbon-info/assets/background/FeatureCardBackGroundLeft.svg";
+import carbonConnected from "@carbon-info/assets/non-animated/roadmapPageHero.png";
 import { CTAButton } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
@@ -16,18 +15,15 @@ const Ideas: React.FC = () => {
 
   return (
     <div ref={ref} className={classes.aniContainer}>
-      <Hidden smDown>
-        <img src={featureCardBackgroundLeft} alt="featureCardBackgroundLeft" className={clsx(classes.backgroundLeft, { open: inView })} />
-      </Hidden>
       <Box className={clsx(classes.container, { open: inView })}>
-        <Grid container className={classes.cardContainer}>
+        <Grid container className={classes.cardContainer} justifyContent="center" alignItems="center">
           <Grid container item xs={12} md={7} className={classes.textContainer}>
             <div>
               <Typography color="textPrimary" variant="h2">
                 Have ideas on what we should build next?
             </Typography>
               <Typography color="textPrimary" variant="body2" className={classes.subtext}>
-                We’re building the infrastructure of the future and we can always use new, bright ideas. Help us innovate.
+                We’re building the infrastructure of the future and we<br /> can always use new, bright ideas. Help us innovate.
             </Typography>
               <CTAButton
                 text="Submit an idea"
@@ -94,7 +90,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   image: {
-    width: "90%",
+    width: "100%",
+    transform: "scale(1.5)",
     pointerEvents: "none",
   },
   backgroundLeft: {

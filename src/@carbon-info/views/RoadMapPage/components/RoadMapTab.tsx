@@ -3,7 +3,7 @@ import { Box, createStyles, Divider, Grid, Grow, makeStyles, Theme, Typography, 
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import { RoadMapPageCardIcon } from "@carbon-info/assets";
+import { RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
 import Switch from "@material-ui/core/Switch";
 
 const RoadMapTab: React.FC = () => {
@@ -28,37 +28,44 @@ const RoadMapTab: React.FC = () => {
           link: "https://switcheo.org",
         },
         {
-          title: "Smart accounts (ADR-28)",
+          title: "Stargate Upgrades",
           description: "Smart contract modules allowing Carbon to encode standing instructions into an address.",
           status: "In progress",
-          progress: 75,
+          progress: 85,
           link: "https://switcheo.org",
         },
         {
-          title: "Smart accounts (ADR-28)",
+          title: "Account rekeying (ADR-34)",
           description: "Smart contract modules allowing Carbon to encode standing instructions into an address.",
           status: "In progress",
-          progress: 75,
+          progress: 55,
           link: "https://switcheo.org",
         },
         {
-          title: "Smart accounts (ADR-28)",
+          title: "AMM incentive improvements",
           description: "Smart contract modules allowing Carbon to encode standing instructions into an address.",
           status: "In progress",
-          progress: 75,
+          progress: 70,
           link: "https://switcheo.org",
         },
         {
-          title: "Smart accounts (ADR-28)",
+          title: "On-chain referral mechanism",
           description: "Smart contract modules allowing Carbon to encode standing instructions into an address.",
+          status: "In progress",
+          progress: 70,
+          link: "https://switcheo.org",
+        },
+        {
+          title: "Insert title of completed card",
+          description: "Insert description here in a brief, but descriptive paragraph so it won’t overflow past 3 lines here",
           status: "Completed",
-          progress: 75,
+          progress: 100,
           link: "https://switcheo.org",
         },
       ],
     },
     {
-      title: "Enhance core functions",
+      title: "Attain financial sophistication",
       description: "Strengthening Carbon's architecture to power high-performant financial infrastructures.",
       tabs: [
         {
@@ -71,7 +78,20 @@ const RoadMapTab: React.FC = () => {
       ],
     },
     {
-      title: "Enhance core functions",
+      title: "Expand the ecosystem",
+      description: "Strengthening Carbon's architecture to power high - performant financial infrastructures.",
+      tabs: [
+        {
+          title: "Smart accounts (ADR-28)",
+          description: "Smart contract modules allowing Carbon to encode standing instructions into an address.",
+          status: "In progress",
+          progress: 75,
+          link: "https://switcheo.org",
+        },
+      ],
+    },
+    {
+      title: "Complete full decentralization",
       description: "Strengthening Carbon's architecture to power high - performant financial infrastructures.",
       tabs: [
         {
@@ -135,16 +155,31 @@ const RoadMapTab: React.FC = () => {
                           <Typography color="textPrimary" variant="subtitle1" className={classes.cardTitle}>
                             {o.title}
                           </Typography>
-                          <CircularProgressbar
-                            className={classes.circular}
-                            value={o.status === "Completed" ? 100 : o.progress}
-                            text={o.status === "Completed" ? <div>hello</div> as unknown as string : "75%"}
-                            styles={buildStyles({
-                              pathColor: o.status === "Completed" ? "#74E8E8" : "rgba(255, 255, 255, 1)",
-                              trailColor: "rgba(255, 255, 255, 0.3)",
-                              textColor: "rgba(255, 255, 255, 1)",
-                            })}
-                          />
+                          {
+                            o.status === "Completed" ?
+                              <div style={{ position: "relative" }}>
+                                <CircularProgressbar
+                                  className={classes.circularCompleted}
+                                  value={100}
+                                  styles={buildStyles({
+                                    pathColor: "#74E8E8",
+                                    trailColor: "rgba(255, 255, 255, 0.3)",
+                                    textColor: "rgba(255, 255, 255, 1)",
+                                  })} />
+                                <RoadMapPageCardTick style={{ position: "absolute", zIndex: 99, top: "1.1rem", left: "33%" }} />
+                              </div>
+                              :
+                              <CircularProgressbar
+                                className={classes.circular}
+                                value={o.progress}
+                                text={`${o.progress}%`}
+                                styles={buildStyles({
+                                  pathColor: "rgba(255, 255, 255, 1)",
+                                  trailColor: "rgba(255, 255, 255, 0.3)",
+                                  textColor: "rgba(255, 255, 255, 1)",
+                                })}
+                              />
+                          }
                           <Typography color="textPrimary" variant="body1" align="left" style={{ gridColumn: "1/-1" }} className={classes.cardDescription}>
                             {o.description}
                           </Typography>
@@ -169,6 +204,10 @@ const RoadMapTab: React.FC = () => {
 export default RoadMapTab;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  circularCompleted: {
+    position: "absolute",
+    height: "4rem",
+  },
   status: {
     color: "#74E8E8",
     "&.completed": {
@@ -244,7 +283,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     zIndex: 1,
     width: "100%",
     boxSizing: "border-box",
-    padding: "1.5rem 2rem",
+    padding: "1.5rem 2.5rem",
     // boxShadow: "inset 62px 98px 100px -60px rgba(36, 36, 36,0.5), inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
     backdropFilter: "blur()",
     borderRadius: "0px 0px 0px 0px",

@@ -1,10 +1,8 @@
 import React from "react";
 import { Grid, makeStyles, Theme, Typography } from "@material-ui/core";
 import { IntroPageBackgroundLine } from "@carbon-info/assets/background";
-import backgroundLogo from "@carbon-info/assets/background/introPageBgLeft.png";
-import backgroundLogoRight from "@carbon-info/assets/background/introPageBgRight.png";
-import backgroundSphereLeft from "@carbon-info/assets/animated/introPageSphereLeft.png";
-import backgroundSphereRight from "@carbon-info/assets/animated/introPageSphereRight.png";
+import backgroundLogo from "@carbon-info/assets/background/roadMapPageLeft.png";
+import backgroundLogoRight from "@carbon-info/assets/background/roadMapPageRight.png";
 import { FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
@@ -20,7 +18,6 @@ const Intro: React.FC = () => {
     <div ref={ref}>
       <Grid container className={classes.container}>
         <img src={backgroundLogo} className={clsx(classes.backgroundLeft, { open: inView })} alt="herobackground" />
-        <img src={backgroundSphereLeft} className={clsx(classes.sphereLeft, { open: inView })} alt="herobackground" />
         <div>
           <Typography color="textPrimary" variant="h2" className={clsx(classes.mainTitle, { open: inView })} >
             Carbon Protocol
@@ -40,7 +37,6 @@ const Intro: React.FC = () => {
           </FadeAndSlide>
         </div>
         <img src={backgroundLogoRight} className={clsx(classes.backgroundRight, { open: inView })} alt="herobackgroundright" />
-        <img src={backgroundSphereRight} className={clsx(classes.sphereRight, { open: inView })} alt="herobackgroundright" />
       </Grid>
     </div>
   );
@@ -74,8 +70,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   backgroundLeft: {
     position: "absolute",
-    left: "-50%",
-    top: "-125%",
+    left: "-61%",
+    top: "-25%",
     width: "86%",
     opacity: 0,
     transform: "translate(-40px, -40px) scale(0.95)",
