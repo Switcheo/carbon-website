@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Divider, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { CarbonLogo, FacebookIcon, LinkedInIcon, MediumIcon, TelegramIcon, TwitterIcon, YoutubeIcon } from "@carbon-info/assets";
+import { Path } from "@carbon-info/constants";
 
 const sitemap = [
   {
@@ -151,12 +152,24 @@ const Footer: React.FC = () => {
             {/* <Typography color="textPrimary" variant="body1">
               Social Media
             </Typography> */}
-            <MediumIcon className={classes.socialMediaIcon} />
-            <TelegramIcon className={classes.socialMediaIcon} />
-            <TwitterIcon className={classes.socialMediaIcon} />
-            <LinkedInIcon className={classes.socialMediaIcon} />
-            <FacebookIcon className={classes.socialMediaIcon} />
-            <YoutubeIcon className={classes.socialMediaIcon} />
+            <Link href={Path.Socials.Medium} underline="none" target="_blank">
+              <MediumIcon className={classes.socialMediaIcon} />
+            </Link>
+            <Link href={Path.Socials.Telegram} underline="none" target="_blank">
+              <TelegramIcon className={classes.socialMediaIcon} />
+            </Link>
+            <Link href={Path.Socials.SwitcheoTwitter} underline="none" target="_blank">
+              <TwitterIcon className={classes.socialMediaIcon} />
+            </Link>
+            <Link href={Path.Socials.LinkedIn} underline="none" target="_blank">
+              <LinkedInIcon className={classes.socialMediaIcon} />
+            </Link>
+            <Link href={Path.Socials.Facebook} underline="none" target="_blank">
+              <FacebookIcon className={classes.socialMediaIcon} />
+            </Link>
+            <Link href={Path.Socials.Youtube} underline="none" target="_blank">
+              <YoutubeIcon className={classes.socialMediaIcon} />
+            </Link>
           </Grid>
         </Grid>
         <Hidden xsDown>

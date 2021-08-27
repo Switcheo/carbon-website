@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Link, makeStyles, Typography, Theme } from "@material-ui/core";
 import { CarbonLogo, MediumIcon, MenuIconClose, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
 import onClickOutside from "@carbon-info/hooks/OnClickOutside";
+import { Path } from "@carbon-info/constants";
 
 interface Props {
   callback: () => void,
@@ -20,25 +21,31 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
       </div>
       <div className={classes.navButtonContainer}>
         <Link href={"/#footer"} underline="none">
-          <Typography color="textPrimary" display="inline">About</Typography>
+          <Typography color="textPrimary" variant="h1" display="inline">About</Typography>
         </Link>
         <Link href={"/#stats"} underline="none">
-          <Typography color="textPrimary" display="inline">Ecosystem</Typography>
+          <Typography color="textPrimary" variant="h1" display="inline">Ecosystem</Typography>
         </Link>
         <Link href={"/#Whitepaper"} underline="none" target="_blank">
-          <Typography color="textPrimary" display="inline">Whitepaper</Typography>
+          <Typography color="textPrimary" variant="h1" display="inline">Whitepaper</Typography>
         </Link>
         <Link href={"/#utility"} underline="none">
-          <Typography color="textPrimary" display="inline">Features</Typography>
+          <Typography color="textPrimary" variant="h1" display="inline">Features</Typography>
         </Link>
         <Link href={"/#footer"} underline="none">
           <Typography color="textPrimary" variant="h1" display="inline">Contact Us</Typography>
         </Link>
       </div>
       <div className={classes.socialMediaContainer}>
-        <MediumIcon className={classes.socialMediaIcon} />
-        <TelegramIcon className={classes.socialMediaIcon} />
-        <TwitterIcon className={classes.socialMediaIcon} />
+        <Link href={Path.Socials.Medium} underline="none" target="_blank">
+          <MediumIcon className={classes.socialMediaIcon} />
+        </Link>
+        <Link href={Path.Socials.Telegram} underline="none" target="_blank">
+          <TelegramIcon className={classes.socialMediaIcon} />
+        </Link>
+        <Link href={Path.Socials.SwitcheoTwitter} underline="none" target="_blank">
+          <TwitterIcon className={classes.socialMediaIcon} />
+        </Link>
       </div>
     </div>
   );
