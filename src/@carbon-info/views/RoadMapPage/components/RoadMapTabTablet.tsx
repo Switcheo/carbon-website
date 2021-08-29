@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Box, createStyles, Divider, Grid, Grow, makeStyles, Theme, Typography, withStyles } from "@material-ui/core";
-import { useInView } from "react-intersection-observer";
-import clsx from "clsx";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import { RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
+import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
+import { Box, createStyles, Grid, Grow, makeStyles, Theme, Typography, withStyles } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
+import clsx from "clsx";
+import React, { useState } from "react";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { useInView } from "react-intersection-observer";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 interface Props {
   content: {
@@ -20,6 +22,21 @@ interface Props {
   }[],
 }
 
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
 const RoadMapTab: React.FC<Props> = (props: Props) => {
   const { content } = props;
   const classes = useStyles();
@@ -27,57 +44,66 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
   const [showCompleted, setShowCompleted] = useState(false);
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.8,
+    threshold: 0.4,
     triggerOnce: true,
   });
-
   return (
     <div ref={ref} className={classes.aniContainer}>
       <Box className={clsx(classes.container, { open: inView })}>
         <Grid container>
           <Grid container item xs={12} className={classes.tabContainer}>
-            {
-              content.map((o, index) => {
-                return (
-                  <div onClick={() => setView(index)} key={o.title}>
-                    <Typography color="textPrimary" variant="h4" className={clsx(classes.tab, { selected: index === view })}>
-                      {o.title}
-                      {
-                        index === view && (
-                          <Divider style={{ position: "absolute", bottom: 0, zIndex: 4, width: "70%", left: "15%" }} />
-                        )
-                      }
-                    </Typography>
-                  </div>
-                );
-              })
-            }
+            <Carousel
+              responsive={responsive}
+              infinite={true}
+              keyBoardControl={true}
+              customTransition="all .5"
+              transitionDuration={500}
+              containerClass="carousel-container"
+              itemClass="carousel-item-padding-40-px"
+              customLeftArrow={<RoadMapPageArrowLeft className={"react-multiple-carousel__arrow react-multiple-carousel__arrow--left"} />}
+              customRightArrow={<RoadMapPageArrowRight className={"react-multiple-carousel__arrow react-multiple-carousel__arrow--right"} />}
+              beforeChange={(nextSlide) => {
+                const nextSlideAbs = nextSlide - 2 < 0
+                  ? nextSlide - 2 + content.length
+                  : nextSlide - 2 > content.length - 1
+                    ? 0
+                    : nextSlide - 2;
+                setView(nextSlideAbs);
+              }}
+            >
+              {
+                content.map((o, index) => {
+                  return (
+                    <div key={o.title}>
+                      <Typography color="textPrimary" variant="h2" className={clsx(classes.tab, { selected: index === view })}>
+                        {o.title}
+                      </Typography>
+                    </div>
+                  );
+                })
+              }
+            </Carousel>
           </Grid>
-          <Grid container item xs={12} className={classes.contentContainer} spacing={4}>
-            <Grid item xs={12}>
-              <div className={classes.descriptionAndFilterContainer}>
-                <span>
-                  <Typography color="textPrimary" variant="body1" align="left" style={{ width: "55%" }}>
-                    {content[view].description}
+          <br />
+          <Typography color="textPrimary" variant="subtitle1" align="center" style={{}} className={classes.titleDescription}>
+            {content[0].description}
+          </Typography>
+          <span className={classes.FilterContainer}>
+            <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
+              In Progress
                   </Typography>
-                </span>
-                <span className={classes.FilterContainer}>
-                  <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
-                    In Progress
+            <IOSSwitch checked={showCompleted} onChange={() => setShowCompleted(!showCompleted)} name="checkedB" />
+            <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
+              Completed
                   </Typography>
-                  <IOSSwitch checked={showCompleted} onChange={() => setShowCompleted(!showCompleted)} name="checkedB" />
-                  <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
-                    Completed
-                  </Typography>
-                </span>
-              </div>
-            </Grid>
+          </span>
+          <Grid container item xs={12} className={classes.contentContainer} spacing={0}>
             <Grid container item xs={12} spacing={2}>
               {
                 content[view].tabs.filter(card => card.status === (showCompleted ? "Completed" : "In progress")).map((o, index) => {
                   return (
                     <Grid item xs={12} sm={6} md={4} key={o.title}>
-                      <Grow in={inView} timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200}>
+                      <Grow in={true} timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200}>
                         <div className={clsx(classes.contentCardContainer, { completed: o.status === "Completed" })}>
                           <Typography color="textPrimary" variant="subtitle1" className={classes.cardTitle}>
                             {o.title}
@@ -93,7 +119,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                                     trailColor: "rgba(255, 255, 255, 0.3)",
                                     textColor: "rgba(255, 255, 255, 1)",
                                   })} />
-                                <RoadMapPageCardTick style={{ position: "absolute", zIndex: 99, top: "1.1rem", left: "33%" }} />
+                                <RoadMapPageCardTick className={classes.tickSVG} />
                               </div>
                               :
                               <CircularProgressbar
@@ -124,13 +150,24 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
           </Grid>
         </Grid>
       </Box>
-    </div>
+    </div >
   );
 };
 
 export default RoadMapTab;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  tickSVG: {
+    position: "absolute",
+    zIndex: 99,
+    top: "1.1rem",
+    left: "35%",
+    [theme.breakpoints.down("sm")]: {
+      top: "0.7rem",
+      left: "37%",
+      width: "1.5rem",
+    },
+  },
   circularCompleted: {
     position: "absolute",
     height: "4rem",
@@ -152,6 +189,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "100%",
   },
   cardTitle: {
+    width: "80%",
     fontFamily: "TyrosPro",
     fontWeight: 400,
     fontSize: "1.5rem",
@@ -159,13 +197,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     letterSpacing: "-0.063rem",
   },
   cardDescription: {
+
+  },
+  titleDescription: {
+    width: "70%",
+    margin: "2rem auto",
     // fontFamily: "SourceSansPro-Light",
-    // fontWeight: 200,
+    fontWeight: 600,
+    color: "#C4C4C4",
     // fontSize: "1.438rem",
     // lineHeight: "2.041rem",
     // letterSpacing: "-0.063rem",
   },
   contentCardContainer: {
+    boxSizing: "border-box",
+    height: "100%",
     gridTemplateRows: "4rem",
     rowGap: "1rem",
     display: "grid",
@@ -208,87 +254,50 @@ const useStyles = makeStyles((theme: Theme) => ({
   tab: {
     position: "relative",
     zIndex: 1,
-    width: "100%",
+    width: "50%",
     boxSizing: "border-box",
-    padding: "1.5rem 2.5rem",
-    // boxShadow: "inset 62px 98px 100px -60px rgba(36, 36, 36,0.5), inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
-    backdropFilter: "blur()",
-    borderRadius: "0px 0px 0px 0px",
+    // padding: "1.5rem 2.5rem",
     margin: "auto",
     "&.selected": {
       color: "#74E8E8",
       zIndex: 3,
-      backgroundColor: "#1B1C1F",
-      boxShadow: "inset 84.877px 134.16px 136.898px -82.139px #242424, inset 0px 1.36898px 54.7594px rgb(85 85 85 / 4%)",
-      "&::before": {
-        content: "''",
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        borderRadius: "12px 12px 0px 0px",
-        padding: "1.755px 1.755px 0px 1.755px",
-        background: "#74E8E8",
-        mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-        maskComposite: "destination-out",
-        pointerEvents: "none",
-      },
     },
   },
   tabContainer: {
-    backgroundColor: "#1B1C1F",
-    boxShadow: "inset 84.877px 134.16px 136.898px -82.139px #242424, inset 0px 1.36898px 54.7594px rgba(85, 85, 85, 0.04)",
-    mixBlendMode: "normal",
-    backdropFilter: "blur(136.89px)",
+    // backgroundColor: "#1B1C1F",
+    // boxShadow: "inset 84.877px 134.16px 136.898px -82.139px #242424, inset 0px 1.36898px 54.7594px rgba(85, 85, 85, 0.04)",
+    // mixBlendMode: "normal",
+    // backdropFilter: "blur(136.89px)",
     width: "100%",
     display: "grid",
-    gridTemplateColumns: "1fr 1fr 1fr 1fr",
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: "-2px",
-    zIndex: 3,
-    borderRadius: 9,
-    "&::before": {
-      content: "''",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      padding: "0px 0px 1.755px 0px",
-      background: "#74E8E8",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: "destination-out",
-      pointerEvents: "none",
-    },
+    // gridTemplateColumns: "1fr 1fr 1fr 1fr",
+    // justifyContent: "center",
+    // alignItems: "center",
+    // marginBottom: "-2px",
+    // zIndex: 3,
+    // borderRadius: 9,
+    // "&::before": {
+    //   content: "''",
+    //   position: "absolute",
+    //   top: 0,
+    //   left: 0,
+    //   right: 0,
+    //   bottom: 0,
+    //   padding: "0px 0px 1.755px 0px",
+    //   background: "#74E8E8",
+    //   mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+    //   maskComposite: "destination-out",
+    //   pointerEvents: "none",
+    // },
   },
   contentContainer: {
     zIndex: 2,
     padding: "2rem",
     boxSizing: "border-box",
-    boxShadow: "inset 62px 98px 100px -60px rgba(36, 36, 36,0.5), inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
-    backdropFilter: "blur(3px)",
-    borderRadius: "12px",
-    background: "#1B1C1F",
-    margin: "auto",
-    "&::before": {
-      content: "''",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      borderRadius: "0px 0px 12px 12px",
-      padding: "1.755px",
-      background: "#74E8E8",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: "destination-out",
-      pointerEvents: "none",
-    },
+    marginTop: "1rem",
   },
   FilterContainer: {
-    marginLeft: "auto",
+    margin: "0px auto",
   },
   descriptionAndFilterContainer: {
     display: "flex",
@@ -300,9 +309,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    margin: "20vh 0px",
+    margin: "3vh 0px 0vh 0px",
     display: "relative",
     zIndex: 1,
+    minHeight: "55rem",
     // background: "red"
     opacity: 0,
     transform: "translate(0px, 20px)",
@@ -311,48 +321,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.open": {
       opacity: 1,
       transform: "translate(0px,0px)",
-    },
-  },
-  cardContainer: {
-    position: "relative",
-    alignItems: "center",
-    padding: "0px 2.5rem 0px 2.5rem",
-    maxWidth: "80rem",
-    height: "38rem",
-    boxShadow: "inset 62px 98px 100px -60px rgba(36, 36, 36,0.5), inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
-    backdropFilter: "blur(3px)",
-    borderRadius: "58px",
-    textAlign: "start",
-    background: "rgba(0,0,0,0.0)",
-    margin: "auto",
-    "&::before": {
-      content: "''",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      borderRadius: 58,
-      padding: "1.755px",
-      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: "destination-out",
-      pointerEvents: "none",
-    },
-    [theme.breakpoints.down("sm")]: {
-      // height: "42rem",
-      width: "fit-content",
-      borderRadius: 21,
-      "&::before": {
-        borderRadius: 21,
-      },
-    },
-    [theme.breakpoints.down("xs")]: {
-      height: "42rem",
-      borderRadius: 21,
-      "&::before": {
-        borderRadius: 21,
-      },
     },
   },
 }));

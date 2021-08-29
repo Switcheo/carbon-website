@@ -9,13 +9,18 @@ const Ideas: React.FC = () => {
   const classes = useStyles();
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.8,
+    threshold: 0.4,
     triggerOnce: true,
   });
 
   return (
     <div ref={ref} className={classes.aniContainer}>
       <Box className={clsx(classes.container, { open: inView })}>
+        <Hidden mdUp>
+          <div className={classes.imageContainer}>
+            <img src={carbonConnected} alt="carbon-connected" className={classes.image} />
+          </div>
+        </Hidden>
         <Grid container className={classes.cardContainer} justifyContent="center" alignItems="center">
           <Grid container item xs={12} md={7} className={classes.textContainer}>
             <div>
@@ -28,7 +33,6 @@ const Ideas: React.FC = () => {
               <CTAButton
                 text="Submit an idea"
                 link="/#document"
-                CTA
               />
             </div>
           </Grid>
@@ -93,6 +97,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     transform: "scale(1.5)",
     pointerEvents: "none",
+    [theme.breakpoints.down("sm")]: {
+      transform: "scale(1)",
+      marginBottom: "-15rem",
+    },
   },
   backgroundLeft: {
     position: "absolute",
@@ -166,6 +174,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       justifyContent: "center",
       alignItems: "center",
+      width: "min-content",
+      minWidth: "38rem",
+      margin: "auto",
     },
+    [theme.breakpoints.down(340)]: {
+      minWidth: "34rem",
+    }
   },
 }));

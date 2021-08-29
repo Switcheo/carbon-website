@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { IntroPageBackgroundLine } from "@carbon-info/assets/background";
 import backgroundLogo from "@carbon-info/assets/background/roadMapPageLeft.png";
 import backgroundLogoRight from "@carbon-info/assets/background/roadMapPageRight.png";
@@ -9,6 +9,9 @@ import clsx from "clsx";
 
 const Intro: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmallMobile = useMediaQuery(theme.breakpoints.down(340));
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.4,
@@ -19,19 +22,19 @@ const Intro: React.FC = () => {
       <Grid container className={classes.container}>
         <img src={backgroundLogo} className={clsx(classes.backgroundLeft, { open: inView })} alt="herobackground" />
         <div>
-          <Typography color="textPrimary" variant="h2" className={clsx(classes.mainTitle, { open: inView })} >
+          <Typography color="textPrimary" variant={isTablet && !isSmallMobile ? "h1" : "h2"} className={clsx(classes.mainTitle, { open: inView })} >
             Carbon Protocol
             <br />
             <span className={clsx(classes.gradientText, { open: inView })} >Roadmap</span>
           </Typography>
           <FadeAndSlide visible={inView}>
-            <Typography color="textPrimary" variant="body1" className={classes.subtitle}>
+            <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
               We’re constantly building new features and integrations<br />to Carbon simultaneously to support some of the<br />blockchain’s most robust innovations
             </Typography>
           </FadeAndSlide>
           <IntroPageBackgroundLine className={classes.dash} />
           <FadeAndSlide visible={inView} transform={[0, -20]}>
-            <Typography variant="h3" color="textPrimary">
+            <Typography variant={isTablet && !isSmallMobile ? "h2" : "h3"} color="textPrimary">
               Our core focus areas
             </Typography>
           </FadeAndSlide>
@@ -155,9 +158,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   subtitle: {
     marginTop: "2.5rem",
     fontSize: "1.725rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2.125rem",
+    },
     [theme.breakpoints.down(325)]: {
       marginTop: "2.5rem",
-      fontSize: "1.825rem",
+      fontSize: "1.625rem",
     },
   },
   gradientText: {
