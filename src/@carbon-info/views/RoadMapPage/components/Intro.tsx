@@ -84,12 +84,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       transform: "translate(0px,0px) scale(1)",
     },
     [theme.breakpoints.down(880)]: {
-      top: "-67%",
+      top: "-31%",
       left: "-72%",
       width: "100%",
     },
     [theme.breakpoints.down("xs")]: {
-      top: "-69%",
+      top: "-23%",
       left: "-73%",
     },
   },
@@ -128,9 +128,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       transform: "translate(0px,0px) scale(1)",
     },
     [theme.breakpoints.down("xs")]: {
-      right: "-58%",
-      top: "-32%",
-      width: "80%",
+      right: "-72%",
+      top: "-12%",
+      width: "100%",
     },
   },
   sphereRight: {

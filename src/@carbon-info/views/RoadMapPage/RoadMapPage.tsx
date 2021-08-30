@@ -12,6 +12,7 @@ const content = [
       {
         title: "Smart accounts (ADR-28)",
         description: "Smart contract modules allowing Carbon to encode standing instructions into an address.",
+        longDescription: "Smart accounts (ADR-28) are simple smart contract modules that allow Carbon to encode standing instructions into an address resulting in specific execution paths. This means that Carbon can send funds into a special account (swth123xyz…) on the protocol, automatically performing an action or series of actions based on instructions. Smart accounts enable trades to be executed even if users do not have an account on Carbon.",
         status: "In progress",
         progress: 75,
         link: "https://switcheo.org",
@@ -19,6 +20,7 @@ const content = [
       {
         title: "Stargate Upgrades",
         description: "Smart contract modules allowing Carbon to encode standing instructions into an address.",
+        longDescription: "Smart accounts (ADR-28) are simple smart contract modules that allow Carbon to encode standing instructions into an address resulting in specific execution paths. This means that Carbon can send funds into a special account (swth123xyz…) on the protocol, automatically performing an action or series of actions based on instructions. Smart accounts enable trades to be executed even if users do not have an account on Carbon.",
         status: "In progress",
         progress: 85,
         link: "https://switcheo.org",
@@ -26,6 +28,7 @@ const content = [
       {
         title: "Account rekeying (ADR-34)",
         description: "Smart contract modules allowing Carbon to encode standing instructions into an address.",
+        longDescription: "Smart accounts (ADR-28) are simple smart contract modules that allow Carbon to encode standing instructions into an address resulting in specific execution paths. This means that Carbon can send funds into a special account (swth123xyz…) on the protocol, automatically performing an action or series of actions based on instructions. Smart accounts enable trades to be executed even if users do not have an account on Carbon.",
         status: "In progress",
         progress: 55,
         link: "https://switcheo.org",
@@ -33,6 +36,7 @@ const content = [
       {
         title: "AMM incentive improvements",
         description: "Smart contract modules allowing Carbon to encode standing instructions into an address.",
+        longDescription: "Smart accounts (ADR-28) are simple smart contract modules that allow Carbon to encode standing instructions into an address resulting in specific execution paths. This means that Carbon can send funds into a special account (swth123xyz…) on the protocol, automatically performing an action or series of actions based on instructions. Smart accounts enable trades to be executed even if users do not have an account on Carbon.",
         status: "In progress",
         progress: 70,
         link: "https://switcheo.org",
@@ -40,6 +44,7 @@ const content = [
       {
         title: "On-chain referral mechanism",
         description: "Smart contract modules allowing Carbon to encode standing instructions into an address.",
+        longDescription: "Smart accounts (ADR-28) are simple smart contract modules that allow Carbon to encode standing instructions into an address resulting in specific execution paths. This means that Carbon can send funds into a special account (swth123xyz…) on the protocol, automatically performing an action or series of actions based on instructions. Smart accounts enable trades to be executed even if users do not have an account on Carbon.",
         status: "In progress",
         progress: 70,
         link: "https://switcheo.org",
@@ -47,6 +52,7 @@ const content = [
       {
         title: "Insert title of completed card",
         description: "Insert description here in a brief, but descriptive paragraph so it won’t overflow past 3 lines here",
+        longDescription: "Smart accounts (ADR-28) are simple smart contract modules that allow Carbon to encode standing instructions into an address resulting in specific execution paths. This means that Carbon can send funds into a special account (swth123xyz…) on the protocol, automatically performing an action or series of actions based on instructions. Smart accounts enable trades to be executed even if users do not have an account on Carbon.",
         status: "Completed",
         progress: 100,
         link: "https://switcheo.org",

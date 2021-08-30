@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Box, createStyles, Divider, Grid, Grow, makeStyles, Theme, Typography, withStyles } from "@material-ui/core";
+import { Box, createStyles, Divider, Grid, Grow, makeStyles, Modal, Theme, Typography, withStyles } from "@material-ui/core";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
 import Switch from "@material-ui/core/Switch";
+import RoadMapModal from "./RoadMapModal";
 
 interface Props {
   content: {
@@ -16,6 +17,7 @@ interface Props {
       status: string;
       progress: number;
       link: string;
+      longDescription?: string;
     }[];
   }[],
 }
@@ -24,15 +26,46 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
   const { content } = props;
   const classes = useStyles();
   const [view, setView] = useState(0);
+  const [tabView, setTabView] = useState(0);
   const [showCompleted, setShowCompleted] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.8,
     triggerOnce: true,
   });
 
+  const incrementTab = () => {
+    setTabView((prev) => {
+      if (prev + 1 > content[view].tabs
+        .filter(o => o.status === (showCompleted ? "Completed" : "In progress")).length - 1) return 0;
+      else return prev + 1;
+    });
+  };
+
+  const decrementTab = () => {
+    setTabView((prev) => {
+      if (prev - 1 < 0) return prev - 1 + content[view].tabs
+        .filter(o => o.status === (showCompleted ? "Completed" : "In progress")).length;
+      else return prev - 1;
+    });
+  };
+
   return (
     <div ref={ref} className={classes.aniContainer}>
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <RoadMapModal
+          closeModal={() => setShowModal(false)}
+          content={content[view].tabs.filter(o => o.status === (showCompleted ? "Completed" : "In progress"))[tabView]}
+          mainTitle={content[view].title}
+          incrementTab={incrementTab}
+          decrementTab={decrementTab} />
+      </Modal>
       <Box className={clsx(classes.container, { open: inView })}>
         <Grid container>
           <Grid container item xs={12} className={classes.tabContainer}>
@@ -113,7 +146,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                           <Typography color="textPrimary" variant="body1" align="left" className={clsx(classes.status, { completed: o.status === "Completed" })}>
                             {o.status}
                           </Typography>
-                          <RoadMapPageCardIcon className={classes.arrowIcon} />
+                          <RoadMapPageCardIcon className={classes.arrowIcon} onClick={() => { setShowModal(true); setTabView(index); }} />
                         </div>
                       </Grow>
                     </Grid>

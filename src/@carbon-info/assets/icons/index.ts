@@ -23,3 +23,5 @@ export { ReactComponent as RoadMapPageCardIcon } from "./roadMapPageCardIcon.svg
 export { ReactComponent as RoadMapPageCardTick } from "./roadMapPageCardTick.svg";
 export { ReactComponent as RoadMapPageArrowRight } from "./roadMapPageArrowRight.svg";
 export { ReactComponent as RoadMapPageArrowLeft } from "./roadMapPageArrowLeft.svg";
+export { ReactComponent as GitHubIcon } from "./github.svg";
+export { ReactComponent as DocsIcon } from "./docs.svg";

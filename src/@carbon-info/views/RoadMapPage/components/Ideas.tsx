@@ -68,6 +68,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
       transform: "translate(0px,0px)",
     },
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "-15vh",
+    },
   },
   imageContainer: {
     alignItems: "center",
@@ -180,6 +183,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down(340)]: {
       minWidth: "34rem",
-    }
+    },
   },
 }));

@@ -1,11 +1,12 @@
-import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick, } from "@carbon-info/assets";
-import { Box, Divider, makeStyles, Theme, Typography } from "@material-ui/core";
+import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
+import { Box, Divider, makeStyles, Modal, Theme, Typography } from "@material-ui/core";
 import clsx from "clsx";
-import React from "react";
+import React, { useState } from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import { useInView } from "react-intersection-observer";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel";
+import RoadMapModal from "./RoadMapModal";
 
 interface Props {
   content: {
@@ -21,34 +22,45 @@ interface Props {
   }[],
 }
 
-// const responsive = {
-//   desktop: {
-//     breakpoint: { max: 3000, min: 1024 },
-//     items: 1,
-//   },
-//   tablet: {
-//     breakpoint: { max: 1024, min: 464 },
-//     items: 1,
-//   },
-//   mobile: {
-//     breakpoint: { max: 464, min: 0 },
-//     items: 1,
-//   },
-// };
-
 const RoadMapTab: React.FC<Props> = (props: Props) => {
   const { content } = props;
   const classes = useStyles();
+  const [view, setView] = useState(0);
+  const [tabView, setTabView] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.2,
     triggerOnce: true,
   });
+
+  const incrementTab = () => {
+    setTabView((prev) => {
+      if (prev + 1 > content[view].tabs.length - 1) return 0;
+      else return prev + 1;
+    });
+  };
+
+  const decrementTab = () => {
+    setTabView((prev) => {
+      if (prev - 1 < 0) return prev - 1 + content[view].tabs.length;
+      else return prev - 1;
+    });
+  };
+
   return (
     <div ref={ref} className={classes.aniContainer}>
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <RoadMapModal closeModal={() => setShowModal(false)} content={content[view].tabs[tabView]} mainTitle={content[view].title} incrementTab={incrementTab} decrementTab={decrementTab} />
+      </Modal>
       <Box className={clsx(classes.container, { open: inView })}>
         {
-          content.map((o) => {
+          content.map((o, index) => {
             return (
               <>
                 <Divider style={{ width: "80%", background: "#554B4B", margin: "0px auto" }} />
@@ -71,9 +83,9 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                     autoPlay={false}
                   >
                     {
-                      o.tabs.map((o, index) => {
+                      o.tabs.map((o, tabIndex) => {
                         return (
-                          <div key={index} className={clsx(classes.contentCardContainer, { completed: o.status === "Completed" })}>
+                          <div key={tabIndex} className={clsx(classes.contentCardContainer, { completed: o.status === "Completed" })}>
                             <Typography color="textPrimary" variant="subtitle1" className={classes.cardTitle}>
                               {o.title}
                             </Typography>
@@ -108,7 +120,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                             <Typography color="textPrimary" variant="body1" align="left" className={clsx(classes.status, { completed: o.status === "Completed" })}>
                               {o.status}
                             </Typography>
-                            <RoadMapPageCardIcon className={classes.arrowIcon} />
+                            <RoadMapPageCardIcon className={classes.arrowIcon} onClick={() => { setView(index); setShowModal(true); setTabView(tabIndex); }} />
                           </div>
                         );
                       })
@@ -144,7 +156,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: "#878181",
     "& > svg > path": {
       fill: "#878181 !important",
-    }
+    },
   },
   tickSVG: {
     position: "absolute",
@@ -199,8 +211,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     // letterSpacing: "-0.063rem",
     [theme.breakpoints.down(340)]: {
       width: "100%",
-      fontSize: "2rem"
-    }
+      fontSize: "2rem",
+    },
   },
   contentCardContainer: {
     boxSizing: "border-box",
