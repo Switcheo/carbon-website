@@ -1,18 +1,12 @@
 import { BoxProps, Container, makeStyles, Theme } from "@material-ui/core";
 import clsx from "clsx";
-import React, { useEffect } from "react";
+import React from "react";
 import { Footer, Header } from "./components";
 
 interface Props extends BoxProps { }
 
 const MainLayout: React.FC<Props> = (props: Props) => {
   const { children, className, ...rest } = props;
-
-  useEffect(() => {
-    if (window.location.pathname !== "" && window.location.pathname !== "/") {
-      window.location.href = "/";
-    }
-  }, []);
 
   const classes = useStyles();
   return (

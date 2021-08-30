@@ -3,7 +3,6 @@ import { Box, makeStyles, Theme, useMediaQuery, useTheme } from "@material-ui/co
 // import { useInView } from "react-intersection-observer";
 import { Ideas, Intro, RoadMapTabMobile, RoadMapTabTablet, RoadMapTab } from "./components";
 import { RecieveUpdates } from "../ReceiveUpdates";
-
 const content = [
   {
     title: "Enhance core functions",
