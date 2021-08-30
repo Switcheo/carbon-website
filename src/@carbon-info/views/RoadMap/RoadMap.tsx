@@ -57,7 +57,7 @@ const RoadMap: React.FC = () => {
           <Hidden smDown>
             <CTAButton
               text="SEE FEATURE MAP"
-              link="/#ECOSYSTEM"
+              link="/roadmap"
             />
           </Hidden>
         </FadeAndSlide>
@@ -109,7 +109,7 @@ const RoadMap: React.FC = () => {
           <div className={classes.button}>
             <CTAButton
               text="SEE FEATURE MAP"
-              link="https://app.dem.exchange"
+              link="/roadmap"
               CTA
             />
           </div>

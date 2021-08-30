@@ -32,7 +32,7 @@ const Permissionless: React.FC = () => {
                 </Typography>
               </FadeAndSlide>
               <FadeAndSlide visible={inView} transform={[26, 0]} delay={0.1}>
-                <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : isMobile ? "subtitle1" : "body1"} align="left">
+                <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : isMobile ? "subtitle1" : "subtitle1"} align="left">
                   {
                     isTablet && !isMobile
                       ? <span>
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   heroSVG: {
     position: "absolute",
-    top: "-83%",
+    top: "-77%",
     left: "-25%",
     width: "150%",
     pointerEvents: "none",
@@ -114,6 +114,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       top: "-113%",
       left: "-13rem",
       width: "60rem",
+    },
+    [theme.breakpoints.down(1050)]: {
+      position: "relative",
+      top: "-88%",
+      width: "56rem",
     },
     [theme.breakpoints.down("sm")]: {
       position: "relative",

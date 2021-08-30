@@ -31,7 +31,7 @@ const UtilitySection: React.FC = () => {
         </div>
         <Grid container justifyContent="center" alignItems="center" spacing={8} className={classes.cardsContainer}>
           <Grid container item xs={12} className={classes.description} spacing={8}>
-            <Grid container item sm={12} md={6}>
+            <Grid container item sm={12} md={6} className={classes.textContainerWrapper}>
               <Grid item xs={12} className={classes.textContainer}>
                 <FadeAndSlide visible={inView} transform={[-20, 0]}>
                   <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} noWrap style={{ overflow: "visible" }}>
@@ -43,7 +43,7 @@ const UtilitySection: React.FC = () => {
                   <br />
                 </Hidden>
                 <FadeAndSlide visible={inView} transform={[-20, 0]} delay={0.4}>
-                  <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle1" : "h6"}>
+                  <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle1" : "subtitle1"}>
                     Supports a full spectrum of finance<br />products including derivatives
                 </Typography>
                 </FadeAndSlide>
@@ -127,6 +127,11 @@ const UtilitySection: React.FC = () => {
 export default UtilitySection;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  textContainerWrapper: {
+    [theme.breakpoints.down("xs")]: {
+      padding: "32px 32px 32px 0px !important",
+    },
+  },
   container: {
     justifyContent: "center",
     alignItems: "center",
@@ -245,7 +250,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "190%",
     },
     [theme.breakpoints.down(340)]: {
-      top: "-83%",
+      top: "-103%",
       right: "-45%",
       width: "183%",
     },
