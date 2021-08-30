@@ -9,7 +9,7 @@ const HeroImage: React.FC = () => {
   const classes = useStyles();
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0,
+    threshold: 0.7,
     triggerOnce: false,
     rootMargin: "300% 0px 0px 0px",
   });
