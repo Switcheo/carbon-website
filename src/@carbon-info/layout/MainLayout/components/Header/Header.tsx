@@ -28,7 +28,9 @@ const Header: React.FC = () => {
       </div>
       <div className={classes.navBarContainer}>
         <span className={classes.logoContainer}>
-          <CarbonLogo className={classes.logo} />
+          <Link href={"/"} underline="none">
+            <CarbonLogo className={classes.logo} />
+          </Link>
         </span>
         <div className={classes.navButtonContainer}>
           {
@@ -59,7 +61,9 @@ const Header: React.FC = () => {
       <Hidden mdUp>
         <div className={isScrolled ? classes.navBarFixedContainer : classes.navBarFixedContainerCollapsed}>
           <span className={classes.logoContainer}>
-            <CarbonLogo className={classes.logoFixed} />
+            <Link href={"/"} underline="none">
+              <CarbonLogo className={classes.logoFixed} />
+            </Link>
           </span>
           <div className={classes.navButtonContainer}>
             <div onClick={() => setShowMobileMenu(true)}>
