@@ -45,8 +45,8 @@ const Header: React.FC = () => {
                 <Link href={"/#footer"} underline="none">
                   <Typography color="textPrimary" display="inline">About</Typography>
                 </Link>
-                <Link href={"/#stats"} underline="none">
-                  <Typography color="textPrimary" display="inline">Ecosystem</Typography>
+                <Link href={"/roadmap"} underline="none">
+                  <Typography color="textPrimary" display="inline">RoadMap</Typography>
                 </Link>
                 <Link href={"/#Whitepaper"} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Whitepaper</Typography>

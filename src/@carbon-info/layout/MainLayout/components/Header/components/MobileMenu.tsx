@@ -23,8 +23,8 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
         <Link href={"/#footer"} underline="none" onClick={callback}>
           <Typography color="textPrimary" variant="h1" display="inline">About</Typography>
         </Link>
-        <Link href={"/#stats"} underline="none" onClick={callback}>
-          <Typography color="textPrimary" variant="h1" display="inline">Ecosystem</Typography>
+        <Link href={"/roadmap"} underline="none" onClick={callback}>
+          <Typography color="textPrimary" variant="h1" display="inline">RoadMap</Typography>
         </Link>
         <Link href={"/#Whitepaper"} underline="none" target="_blank" onClick={callback}>
           <Typography color="textPrimary" variant="h1" display="inline">Whitepaper</Typography>
