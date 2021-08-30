@@ -168,15 +168,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     background: "#292A2F",
     padding: "3rem 7rem",
     maxWidth: "40rem",
-    margin: "3rem auto 9rem auto",
+    margin: "2% auto 9rem auto",
     alignItems: "center",
     borderRadius: 15,
     border: "0.1px solid #196163",
     [theme.breakpoints.down("sm")]: {
-      margin: "5rem auto 9rem auto",
+      margin: "15% auto 9rem auto",
     },
     [theme.breakpoints.down("xs")]: {
-      margin: "5rem 3rem 9rem 3rem",
+      margin: "25% auto 9rem auto",
       padding: "7rem 2rem",
     },
   },

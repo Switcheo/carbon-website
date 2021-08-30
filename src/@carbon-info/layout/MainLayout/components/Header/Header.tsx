@@ -77,6 +77,7 @@ export default Header;
 
 const useStyles = makeStyles((theme: Theme) => ({
   mobileMenu: {
+    height: "-webkit-fill-available",
     zIndex: 11,
     opacity: 0,
     transform: "translate(0px,-80vh)",

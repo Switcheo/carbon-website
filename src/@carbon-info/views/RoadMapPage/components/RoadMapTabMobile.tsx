@@ -52,6 +52,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
     <div ref={ref} className={classes.aniContainer}>
       <Modal
         open={showModal}
+        style={{ alignItems: "center", justifyContent: "center" }}
         onClose={() => setShowModal(false)}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
