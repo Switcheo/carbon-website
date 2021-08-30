@@ -3,3 +3,8 @@
   position: relative;
   overflow: hidden;
 }
+
+.react-multiple-carousel__arrow {
+  background: transparent;
+  min-width: auto;
+}

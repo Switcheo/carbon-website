@@ -248,7 +248,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   footNoteContainer: {
-    marginTop: "7.5rem",
+    marginTop: "5.5rem",
     marginBottom: "7.5rem",
   },
   footNoteText: {

@@ -7,19 +7,20 @@ import { RoadMapLeftButtonIcon, RoadMapRightButtonIcon } from "@carbon-info/asse
 interface Props {
   callback?: () => void,
   direction: "left" | "right",
+  size?: "small",
 }
 
 const RoadMapButton: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
   // const theme = useTheme();
   // const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const { direction, callback } = props;
+  const { direction, callback, size } = props;
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.5,
     triggerOnce: true,
   });
-  const buttonIcon = direction === "left" ? <RoadMapLeftButtonIcon className={classes.icon} /> : <RoadMapRightButtonIcon className={classes.icon} />;
+  const buttonIcon = direction === "left" ? <RoadMapLeftButtonIcon className={clsx(classes.icon, { small: size === "small" })} /> : <RoadMapRightButtonIcon className={clsx(classes.icon, { small: size === "small" })} />;
   return (
     <div ref={ref}>
       <div className={clsx(
@@ -27,6 +28,7 @@ const RoadMapButton: React.FC<Props> = (props: Props) => {
         { open: inView },
         { left: direction === "left" },
         { right: direction === "right" },
+        { small: size === "small" },
       )}
         onClick={callback}>
         {buttonIcon}
@@ -41,6 +43,10 @@ const useStyles = makeStyles(() => ({
   icon: {
     width: "1.5rem",
     height: "1.5rem",
+    "&.small": {
+      width: "1rem",
+      height: "1rem",
+    },
   },
   buttonContainer: {
     display: "flex",
@@ -76,6 +82,26 @@ const useStyles = makeStyles(() => ({
     "&.open": {
       opacity: 1,
       transform: "translate(0px,0px)",
+    },
+    "&.small": {
+      width: "4rem",
+      height: "4rem",
+      "&.left": {
+        marginRight: "0rem",
+        transform: "translate(20px, 0px)",
+        "&.open": {
+          opacity: 1,
+          transform: "translate(0px,0px)",
+        },
+      },
+      "&.right": {
+        marginLeft: "0rem",
+        transform: "translate(-20px, 0px)",
+        "&.open": {
+          opacity: 1,
+          transform: "translate(0px,0px)",
+        },
+      },
     },
     "&::before": {
       content: "''",
