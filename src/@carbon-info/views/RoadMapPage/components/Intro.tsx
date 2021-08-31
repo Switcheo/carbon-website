@@ -163,6 +163,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "2.125rem",
     },
+    [theme.breakpoints.down(400)]: {
+      minWidth: "44rem",
+    },
     [theme.breakpoints.down(325)]: {
       marginTop: "2.5rem",
       fontSize: "1.625rem",
