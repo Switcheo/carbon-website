@@ -132,7 +132,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("xs")]: {
       lineHeight: "28px",
-      width: "100%",
+      width: "90%",
     },
   },
   description: {
