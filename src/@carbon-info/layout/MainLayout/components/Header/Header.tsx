@@ -105,6 +105,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: theme.spacing(6, 4, 12, 4),
       transition: "all 0.25s linear",
     },
+    [theme.breakpoints.down("sm")]: {
+      margin: theme.spacing(3, 2, 8, 2),
+    },
+    [theme.breakpoints.down("xs")]: {
+      margin: theme.spacing(1, 0, 7, 0),
+    },
   },
   navBarFixedContainer: {
     zIndex: 10,
@@ -120,7 +126,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     transition: "all 0.25s linear",
     opacity: 1,
     [theme.breakpoints.down("xs")]: {
-      padding: ".5rem 3rem .75rem 1rem",
+      padding: ".75rem 3rem .75rem 1rem",
     },
   },
   navBarFixedContainerCollapsed: {
@@ -151,9 +157,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     verticalAlign: "middle",
     margin: theme.spacing(0, 1),
     [theme.breakpoints.down("xs")]: {
-      width: "55%",
+      // width: "55%",
       marginRight: "auto",
       textAlign: "start",
+      width: "11rem",
     },
   },
   logoContainer: {
@@ -166,7 +173,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "80%",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "60%",
+      width: "11rem",
       marginLeft: "1rem",
     },
   },

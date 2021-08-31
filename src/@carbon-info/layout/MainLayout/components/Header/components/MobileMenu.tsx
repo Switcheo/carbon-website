@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     gridAutoRows: "max-content",
   },
   logo: {
-    width: "10rem",
+    width: "11rem",
     margin: theme.spacing(0, 1),
   },
   logoContainer: {
