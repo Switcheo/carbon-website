@@ -123,7 +123,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     [theme.breakpoints.down("xs")]: {
-      height: "42rem",
+      height: "36rem",
       borderRadius: 21,
       "&::before": {
         borderRadius: 21,
@@ -205,6 +205,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       margin: "3rem 0px",
       maxWidth: "33rem",
+      fontSize: "2rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      margin: "2.5rem 0px",
+      fontSize: "1.7rem",
     },
   },
   textContainer: {
