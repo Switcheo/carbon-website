@@ -89,9 +89,9 @@ const RoadMap: React.FC = () => {
             </div>
           </Grid>
         </FadeAndSlide>
-        <Typography color="textPrimary" variant="h2" paragraph>
+        <Typography color="textPrimary" variant="h2" paragraph className={classes.percentage}>
           20%
-      </Typography>
+        </Typography>
         <Typography color="textPrimary" variant="body2">
           Addition of new derivatives markets including options,<br /> binary options and physically settled markets
       </Typography>
@@ -122,6 +122,16 @@ const RoadMap: React.FC = () => {
 export default RoadMap;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  percentage: {
+    fontWeight: 600,
+    fontSize: "3.138rem",
+    [theme.breakpoints.down(1080)]: {
+      marginTop: "3rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 0,
+    },
+  },
   circular: {
     position: "absolute",
   },
