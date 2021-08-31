@@ -116,7 +116,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
           <Typography color="textPrimary" variant="subtitle1" align="center" style={{}} className={classes.titleDescription}>
             {content[0].description}
           </Typography>
-          <span className={classes.FilterContainer}>
+          <div className={classes.FilterContainer}>
             <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
               In Progress
                   </Typography>
@@ -124,7 +124,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
             <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
               Completed
                   </Typography>
-          </span>
+          </div>
           <Grid container item xs={12} className={classes.contentContainer} spacing={0}>
             <Grid container item xs={12} spacing={2}>
               {
@@ -210,6 +210,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 400,
   },
   arrowIcon: {
+    height: "2rem",
+    cursor: "pointer",
     alignSelf: "center",
     justifySelf: "center",
   },
@@ -238,6 +240,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     // letterSpacing: "-0.063rem",
   },
   contentCardContainer: {
+    // maxWidth: "25rem",
     boxSizing: "border-box",
     height: "100%",
     gridTemplateRows: "4rem",
@@ -325,6 +328,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: "1rem",
   },
   FilterContainer: {
+    width: "100%",
     margin: "0px auto",
   },
   descriptionAndFilterContainer: {

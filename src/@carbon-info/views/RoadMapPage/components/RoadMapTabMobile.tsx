@@ -169,6 +169,16 @@ const useStyles = makeStyles((theme: Theme) => ({
       left: "37%",
       width: "1.5rem",
     },
+    [theme.breakpoints.down("xs")]: {
+      top: "0.4rem",
+      left: "40%",
+    },
+    [theme.breakpoints.down(380)]: {
+      left: "38%",
+    },
+    [theme.breakpoints.down(340)]: {
+      left: "37%",
+    },
   },
   circularCompleted: {
     position: "absolute",
@@ -184,6 +194,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 400,
   },
   arrowIcon: {
+    height: "2rem",
+    cursor: "pointer",
     alignSelf: "center",
     justifySelf: "center",
   },
@@ -199,7 +211,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     letterSpacing: "-0.063rem",
   },
   cardDescription: {
-
+    width: "80%",
   },
   titleDescription: {
     width: "90%",

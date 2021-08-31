@@ -10,7 +10,7 @@ const HeroImage: React.FC = () => {
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.7,
-    triggerOnce: false,
+    triggerOnce: true,
     rootMargin: "300% 0px 0px 0px",
   });
   return (

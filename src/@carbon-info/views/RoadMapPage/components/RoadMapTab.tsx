@@ -126,7 +126,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                                     trailColor: "rgba(255, 255, 255, 0.3)",
                                     textColor: "rgba(255, 255, 255, 1)",
                                   })} />
-                                <RoadMapPageCardTick style={{ position: "absolute", zIndex: 99, top: "1.1rem", left: "33%" }} />
+                                <RoadMapPageCardTick className={classes.tickSVG} />
                               </div>
                               :
                               <CircularProgressbar
@@ -164,6 +164,15 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
 export default RoadMapTab;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  tickSVG: {
+    position: "absolute",
+    zIndex: 99,
+    top: "1.1rem",
+    left: "33%",
+    [theme.breakpoints.down(1050)]: {
+      left: "28%",
+    },
+  },
   circularCompleted: {
     position: "absolute",
     height: "4rem",
@@ -178,6 +187,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 400,
   },
   arrowIcon: {
+    cursor: "pointer",
     alignSelf: "center",
     justifySelf: "center",
   },
@@ -270,6 +280,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   tabContainer: {
+    cursor: "pointer",
     backgroundColor: "#1B1C1F",
     boxShadow: "inset 84.877px 134.16px 136.898px -82.139px #242424, inset 0px 1.36898px 54.7594px rgba(85, 85, 85, 0.04)",
     mixBlendMode: "normal",
