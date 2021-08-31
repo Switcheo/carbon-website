@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     backdropFilter: "blur(3px)",
     borderRadius: "58px",
     textAlign: "start",
-    background: "rgba(0,0,0,0.0)",
+    background: "linear-gradient(180deg,rgba(41, 40, 40,0.5),#161515)",
     margin: "auto",
     "&::before": {
       content: "''",

@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     // borderImage: "linear-gradient(to bottom, rgb(116, 232, 232) , rgb(255, 255, 255,0.26))",
     // borderImageSlice: 1,
     // border: "1px solid white",
-    background: "rgba(0,0,0,0.0)",
+    background: "linear-gradient(180deg,rgba(41, 40, 40,0.5),#161515)",
     margin: "auto",
     "&::before": {
       content: "''",
