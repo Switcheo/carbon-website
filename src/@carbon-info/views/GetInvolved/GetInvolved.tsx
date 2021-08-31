@@ -29,7 +29,7 @@ const GetInvolved: React.FC = () => {
             <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" className={classes.text}>
               <FadeAndSlide visible={inView}>
                 <div className={classes.textContainer}>
-                  Get involved in<br />building the new <br /> face of finance
+                  Get involved in building the new face of finance
                 </div>
               </FadeAndSlide>
             </Typography>
@@ -85,8 +85,20 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   textContainer: {
+    minWidth: "30rem",
+    [theme.breakpoints.down("sm")]: {
+      width: "fit-content",
+      maxWidth: "42rem",
+    },
     [theme.breakpoints.down("xs")]: {
       margin: "auto",
+      maxWidth: "30rem",
+      width: "fit-content",
+    },
+    [theme.breakpoints.down(330)]: {
+      margin: "auto",
+      maxWidth: "30rem",
+      minWidth: "30rem",
       width: "fit-content",
     },
   },

@@ -14,6 +14,7 @@ const UtilitySection: React.FC = () => {
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const smallLaptop = useMediaQuery(theme.breakpoints.down(1100));
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.4,
@@ -43,9 +44,10 @@ const UtilitySection: React.FC = () => {
                   <br />
                 </Hidden>
                 <FadeAndSlide visible={inView} transform={[-20, 0]} delay={0.4}>
-                  <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle1" : "subtitle1"}>
-                    Supports a full spectrum of finance<br />products including derivatives
-                </Typography>
+                  <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : "subtitle1"}>
+                    {smallLaptop && !isTablet ? "Supports a full spectrum of finance products including derivatives"
+                      : <>Supports a full spectrum of finance<br />products including derivatives</>}
+                  </Typography>
                 </FadeAndSlide>
                 <br /><br /><br />
                 <Hidden mdUp>
@@ -145,7 +147,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: "10rem 0px 25rem 0px",
     },
     [theme.breakpoints.down("sm")]: {
-      margin: "12rem 0rem",
+      margin: "17rem 0rem",
+    },
+    [theme.breakpoints.down(330)]: {
+      margin: "18rem 0rem",
     },
   },
   cardsContainer: {
@@ -215,7 +220,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     // marginTop: theme.spacing(4)
     textAlign: "start",
     [theme.breakpoints.down("sm")]: {
-      marginBottom: "15rem",
+      marginBottom: "18rem",
     },
     [theme.breakpoints.down("xs")]: {
       marginBottom: "10rem",
@@ -241,8 +246,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   utilityBgMobile: {
     position: "absolute",
-    right: "-59%",
-    top: "-201%",
+    right: "-60%",
+    top: "-190%",
     pointerEvents: "none",
     [theme.breakpoints.down("xs")]: {
       right: "-44%",
@@ -260,9 +265,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       flexBasis: "auto",
       margin: "auto",
+      marginLeft: "calc(14% - 1rem)",
     },
     [theme.breakpoints.down(340)]: {
       whiteSpace: "nowrap",
+      margin: "auto",
     },
   },
 }));

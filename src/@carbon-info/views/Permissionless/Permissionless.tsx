@@ -137,7 +137,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       maxWidth: "54rem",
       "&.open": {
         opacity: 1,
-        transform: "translate(0px,0px) scale(1.5)",
+        transform: "translate(0px,0px) scale(1.75)",
       },
     },
   },

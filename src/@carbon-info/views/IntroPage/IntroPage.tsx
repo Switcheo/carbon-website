@@ -35,7 +35,7 @@ const IntroPage: React.FC = () => {
           </Typography>
           <FadeAndSlide visible={inView}>
             <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
-              Carbon is an end-to-end DeFi protocol<br /> powering cross-chain financial dApps
+              Carbon is an end-to-end DeFi protocol powering cross-chain financial dApps
             </Typography>
           </FadeAndSlide>
         </div>
@@ -157,9 +157,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   subtitle: {
     marginTop: "2.5rem",
+    maxWidth: "31rem",
     [theme.breakpoints.down(325)]: {
       marginTop: "2.5rem",
-      fontSize: "1.825rem",
+      fontSize: "2rem",
     },
   },
   gradientText: {

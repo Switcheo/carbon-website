@@ -210,7 +210,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 400,
   },
   arrowIcon: {
-    height: "2rem",
+    height: "1.8rem",
     cursor: "pointer",
     alignSelf: "center",
     justifySelf: "center",
@@ -249,7 +249,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     gridTemplateColumns: "75% 25%",
     textAlign: "start",
     alignItems: "flex-start",
-    padding: "1rem 1rem 1rem 2rem",
+    padding: "2rem 1rem 2rem 2rem",
     boxShadow: "inset 62px 98px 100px -60px rgba(36, 36, 36,0.5), inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
     backdropFilter: "blur(3px)",
     borderRadius: 12,

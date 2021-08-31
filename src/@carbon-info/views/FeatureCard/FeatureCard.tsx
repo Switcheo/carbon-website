@@ -29,11 +29,11 @@ const FeatureCard: React.FC = () => {
             </Hidden>
             <img src={featureCardBackgroundRight} alt="featureCardBackgroundRight" className={clsx(classes.backgroundRight, { open: inView })} />
             <div>
-              <Typography color="textPrimary" variant="h2">
-                Launch full-featured<br /> financial markets.<br /> No KYC required.
+              <Typography color="textPrimary" variant="h2" className={classes.title}>
+                Launch full-featured financial markets.<br />No KYC required.
             </Typography>
               <Typography color="textPrimary" variant="body2" className={classes.subtext}>
-                Carbon is a third-gen blockchain protocol & <br />custom Layer 2 side chain, built for trading <br /> sophisticated financial instruments at scale.
+                Carbon is a third-gen blockchain protocol & custom Layer 2 side chain, built for trading sophisticated financial instruments at scale.
             </Typography>
               <CTAButton
                 text="READ DOCS"
@@ -56,6 +56,15 @@ const FeatureCard: React.FC = () => {
 export default FeatureCard;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  title: {
+    maxWidth: "39rem",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "38rem",
+    },
+    [theme.breakpoints.down(330)]: {
+      fontSize: "2.938rem",
+    },
+  },
   aniContainer: {
     position: "relative",
   },
@@ -119,6 +128,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       "&::before": {
         borderRadius: 21,
       },
+    },
+    [theme.breakpoints.down(330)]: {
+      height: "36rem",
+      fontSize: "2.938rem",
     },
   },
   image: {
@@ -191,6 +204,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "4rem 0px",
     [theme.breakpoints.down("sm")]: {
       margin: "3rem 0px",
+      maxWidth: "33rem",
     },
   },
   textContainer: {

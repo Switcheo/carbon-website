@@ -18,7 +18,7 @@ const Community: React.FC = () => {
     triggerOnce: true,
   });
   return (
-    <div ref={ref} id="community">
+    <div ref={ref}>
       <Box className={classes.boxContainer}>
         <Hidden smDown>
           <img src={communityBackGroundLeft} alt="communityBackGroundLeft" className={clsx(classes.backgroundLeft, { open: inView })} />
@@ -31,12 +31,12 @@ const Community: React.FC = () => {
           <Grid item xs={12} md={6}>
             <FadeAndSlide visible={inView} transform={[20, 0]} delay={0.6}>
               <div className={classes.textContainer}>
-                <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" paragraph>
-                  Owned and driven<br />by community
+                <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" paragraph className={classes.title}>
+                  Owned and driven by community
                 </Typography>
                 <br />
-                <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : "subtitle1"} align="left" paragraph>
-                  Using the SWTH token, anyone can play a<br />part in shaping Carbon’s journey towards<br />the future of finance.
+                <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : "subtitle1"} align="left" paragraph className={classes.subtitle}>
+                  Using the SWTH token, anyone can play a part in shaping Carbon’s journey towards the future of finance.
                 </Typography>
                 <br />
                 <Typography align="left" paragraph>
@@ -59,6 +59,21 @@ const Community: React.FC = () => {
 export default Community;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  subtitle: {
+    maxWidth: "35rem",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "42rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "32rem",
+    },
+  },
+  title: {
+    maxWidth: "41rem",
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "32rem",
+    },
+  },
   boxContainer: {
     margin: "40vh 0px",
     position: "relative",
@@ -108,9 +123,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
       transform: "translate(0px,0px)",
     },
-  },
-  subtitle: {
-    marginTop: theme.spacing(5.5),
   },
   icon: {
     margin: theme.spacing(0, 2),

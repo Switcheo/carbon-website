@@ -32,7 +32,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
               </Grid>
               <Grid container item xs={10}>
                 <Grid item xs={12}>
-                  <Typography className={classes.divTitle} color="textPrimary" paragraph>
+                  <Typography className={classes.divTitle} color="textPrimary">
                     {title}
                   </Typography>
                 </Grid>
@@ -72,6 +72,18 @@ export default CardWithIcon;
 const useStyles = makeStyles((theme: Theme) => ({
   icon: {
     marginTop: "0.063rem",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "1rem",
+      "& > svg": {
+        width: "4rem",
+      },
+    },
+    [theme.breakpoints.down(325)]: {
+      marginBottom: "1rem",
+      "& > svg": {
+        width: "4rem",
+      },
+    },
   },
   sideIcon: {
     marginTop: "0.063rem",
@@ -83,6 +95,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down(325)]: {
       "& > svg": {
         width: "350%",
+        transform: "translateX(-6px)",
       },
     },
   },
@@ -123,22 +136,29 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: "18.5rem",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "19rem",
+      height: "17rem",
       width: "auto",
       margin: "auto",
-      padding: "1.5em 2em 1.5em 3em",
+      padding: "1.5em 2em 0.5em 3em",
       borderRadius: 20,
       "&::before": {
         borderRadius: 20,
       },
     },
+    [theme.breakpoints.down(630)]: {
+      height: "19rem",
+    },
     [theme.breakpoints.down("xs")]: {
-      height: "20rem",
+      height: "18rem",
       width: "60vw",
       borderRadius: 20,
       "&::before": {
         borderRadius: 20,
       },
+    },
+    [theme.breakpoints.down(330)]: {
+      height: "17rem",
+      width: "70vw",
     },
   },
   boxContainersmall: {
@@ -240,14 +260,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       margin: "auto",
-      height: "20rem",
-      width: "50%",
+      height: "17rem",
+      width: "52%",
+      padding: "2em 3em 1.5em 4em",
       borderRadius: 15,
       "&::before": {
         borderRadius: 15,
       },
     },
     [theme.breakpoints.down("xs")]: {
+      padding: "2em 3em 2em 4em",
       width: "70%",
     },
   },

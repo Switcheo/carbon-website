@@ -29,8 +29,8 @@ const DecentralizedStats: React.FC = () => {
           <Grid container item xs={12} className={classes.textContainer}>
             <Grid item xs={12} md={6}>
               <FadeAndSlide visible={inView} transform={[-20, 0]}>
-                <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left">
-                  Decentralized<br />derivatives made<br />accessible to all
+                <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" className={classes.decentralizedText}>
+                  Decentralized derivatives made accessible to all
                 </Typography>
               </FadeAndSlide>
             </Grid>
@@ -41,8 +41,8 @@ const DecentralizedStats: React.FC = () => {
                     <Stroke className={classes.stroke} />
                   </Hidden>
                   <div className={classes.descriptionDiv}>
-                    Already powering unique use cases<br />& decentralized financial applications
-              </div>
+                    Already powering unique use cases & decentralized financial applications
+                  </div>
                 </Typography>
               </FadeAndSlide>
             </Grid>
@@ -137,6 +137,9 @@ const DecentralizedStats: React.FC = () => {
 export default DecentralizedStats;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  decentralizedText: {
+    minWidth: "31rem",
+  },
   statsText: {
     width: "fit-content",
     [theme.breakpoints.down("sm")]: {
@@ -187,10 +190,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignSelf: "flex-end",
   },
   descriptionDiv: {
+    maxWidth: "35rem",
     display: "inline-flex",
+    [theme.breakpoints.down(1000)]: {
+      marginLeft: "3rem",
+    },
     [theme.breakpoints.down("sm")]: {
       display: "block",
       marginTop: "2rem",
+      marginLeft: "0px",
     },
   },
   stats: {
