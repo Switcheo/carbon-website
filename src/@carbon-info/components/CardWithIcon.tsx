@@ -1,4 +1,4 @@
-import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
@@ -15,6 +15,9 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
   const { title, description, size, icon, iconAlignment = "side" } = props;
   const boxSize = size ? `boxContainer${size}` : "boxContainer";
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  console.log(isDesktop)
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.1,
@@ -32,7 +35,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
               </Grid>
               <Grid container item xs={10}>
                 <Grid item xs={12}>
-                  <Typography className={classes.divTitle} color="textPrimary">
+                  <Typography className={classes.divTitle} color="textPrimary" paragraph={isDesktop}>
                     {title}
                   </Typography>
                 </Grid>
@@ -139,7 +142,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: "17rem",
       width: "auto",
       margin: "auto",
-      padding: "1.5em 2em 0.5em 3em",
+      padding: "1.5em 1.5em 0.5em 2.5em",
       borderRadius: 20,
       "&::before": {
         borderRadius: 20,
@@ -149,6 +152,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: "19rem",
     },
     [theme.breakpoints.down("xs")]: {
+      padding: "1.5em 2em 0.5em 3em",
       height: "18rem",
       width: "60vw",
       borderRadius: 20,
