@@ -198,10 +198,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   divTitle: {
     [theme.breakpoints.down("sm")]: {
+      width: "90%",
       fontFamily: "TyrosPro",
       // fontWeight: 300,
       fontSize: "3.1rem",
       // lineHeight: "2.3rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
     },
   },
   gridContainer: {

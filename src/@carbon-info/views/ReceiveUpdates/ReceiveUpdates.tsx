@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Grid, Input, InputAdornment, makeStyles, Theme, Typography } from "@material-ui/core";
 import { UpdateArrow } from "@carbon-info/assets";
 import { useInView } from "react-intersection-observer";
 import { FadeAndSlide } from "@carbon-info/components";
+import { emailRegex, newsLetterSignUpAPI } from "@carbon-info/constants";
 const ReceieveUpdates: React.FC = () => {
   const classes = useStyles();
   const { ref, inView } = useInView({
@@ -10,6 +11,40 @@ const ReceieveUpdates: React.FC = () => {
     threshold: 0.5,
     triggerOnce: true,
   });
+
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const onSubscribe = async () => {
+    if (loading) return;
+    if (!email.match(emailRegex)) return setError("Please enter a valid email address.");
+    setError("");
+    setSuccess("");
+    try {
+      const response = await fetch(newsLetterSignUpAPI.endpoint, {
+        method: "POST",
+        referrerPolicy: "no-referrer-when-downgrade",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email, emailType: "subscribe", labels: [] }),
+      });
+      if (response.ok) {
+        setSuccess("Check your email to confirm subscription.");
+      } else {
+        setError("Failed to sign up, please try again later.");
+        console.error(new Error(JSON.stringify(response, null, 4)));
+      }
+    } catch (error) {
+      if (error && error.message)
+        setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div ref={ref} id="recieveUpdates">
       <FadeAndSlide visible={inView}>
@@ -23,14 +58,19 @@ const ReceieveUpdates: React.FC = () => {
                 Unsubscribe at any time.
           </Typography>
             </Grid>
-            <Grid item xs={12} md={6} className={classes.inputContainer}>
-              <Input fullWidth placeholder="Insert Your Email"
-                endAdornment={
-                  <InputAdornment position="end">
-                    <UpdateArrow />
-                  </InputAdornment>
-                }
-              />
+            <Grid item xs={12} md={6}>
+              <div className={classes.inputContainer}>
+                <Input fullWidth placeholder="Insert Your Email"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <UpdateArrow onClick={onSubscribe} />
+                    </InputAdornment>
+                  }
+                />
+              </div>
+              {!!error && <Typography className={classes.text} variant="body2" color="error">{error}</Typography>}
+              {!!success && <Typography className={classes.text} variant="body2" color="primary">{success}</Typography>}
             </Grid>
           </Grid>
         </Box>
@@ -42,6 +82,15 @@ const ReceieveUpdates: React.FC = () => {
 export default ReceieveUpdates;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  text: {
+    fontSize: "90%",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "initial",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "small",
+    },
+  },
   divTitle: {
     fontFamily: "TyrosPro",
     fontWeight: 300,

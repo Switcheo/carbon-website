@@ -137,7 +137,13 @@ const useStyles = makeStyles((theme: Theme) => ({
       maxWidth: "54rem",
       "&.open": {
         opacity: 1,
-        transform: "translate(0px,0px) scale(1.75)",
+        transform: "translate(0px,0px) scale(1.25)",
+      },
+    },
+    [theme.breakpoints.down(400)]: {
+      "&.open": {
+        opacity: 1,
+        transform: "translate(0px,0px) scale(1.55)",
       },
     },
   },
