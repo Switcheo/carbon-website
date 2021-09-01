@@ -17,7 +17,6 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
   const boxSize = size ? `boxContainer${size}` : "boxContainer";
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
-  console.log(isDesktop)
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.1,

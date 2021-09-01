@@ -201,6 +201,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(0, 2),
   },
   subtext: {
+    maxWidth: "31rem",
     margin: "4rem 0px",
     [theme.breakpoints.down("sm")]: {
       margin: "3rem 0px",
