@@ -36,10 +36,10 @@ const Permissionless: React.FC = () => {
                   {
                     isTablet && !isMobile
                       ? <span>
-                        Carbon gives back control along with<br /> the freedom to transact without limits
+                        Carbon gives back control along with<br /> the freedom to transact without trust
                   </span>
                       : <span>
-                        Carbon gives back control along <br />with the freedom to transact <br />without limits
+                        Carbon gives back control along <br />with the freedom to transact <br />without trust
                   </span>
                   }
                 </Typography>
@@ -53,8 +53,8 @@ const Permissionless: React.FC = () => {
           </Hidden>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
-              title={"Trustless, zero custody"}
-              description={"Built on Tendermint Core to facilitate transactions securely"}
+              title={"Trustless, scalable, low-fees"}
+              description={"Built on Tendermint Core to facilitate secure transactions at scale with ultra-low costs"}
               icon={<TrustlessIcon />}
               size="small"
               iconAlignment="top"
@@ -62,8 +62,8 @@ const Permissionless: React.FC = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
-              title={"Military-grade security for all"}
-              description={"Enabled via the dPOS consensus mechanism"}
+              title={"Permissionless, censorship resistant"}
+              description={"Supports creation of any type of DeFi innovations powered by complex financial instruments such as futures and more"}
               icon={<MilitaryIcon />}
               size="small"
               iconAlignment="top"
@@ -71,8 +71,8 @@ const Permissionless: React.FC = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
-              title={"100% decentralized order book"}
-              description={"Full control for users of their assets while trading"}
+              title={"Powerful primitives"}
+              description={"Comes with robust building blocks such as as fully decentralized central limit order books (CLOBs) that can be built upon by anyone"}
               icon={<DecentralizedIcon />}
               size="small"
               iconAlignment="top"
