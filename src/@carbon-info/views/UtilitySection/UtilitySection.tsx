@@ -40,7 +40,7 @@ const UtilitySection: React.FC = () => {
                   </Typography>
                 </FadeAndSlide>
                 <br />
-                {isTablet && <br />}
+                {(isTablet && !isMobile) && <br />}
                 {/* <Hidden mdUp>
                   <br />
                 </Hidden> */}
@@ -248,15 +248,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   utilityBgMobile: {
     position: "absolute",
     right: "-80%",
-    top: "-370%",
+    top: "-330%",
     pointerEvents: "none",
     [theme.breakpoints.down("xs")]: {
       right: "-48%",
-      top: "-233%",
+      top: "-210%",
       width: "190%",
     },
     [theme.breakpoints.down(340)]: {
-      top: "-203%",
+      top: "-193%",
       right: "-45%",
       width: "183%",
     },
