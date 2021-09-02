@@ -37,7 +37,7 @@ const FeatureCard: React.FC = () => {
             </Typography>
               <CTAButton
                 text="READ DOCS"
-                link="/#document"
+                link="https://guide.carbon.network"
                 CTA
               />
             </div>

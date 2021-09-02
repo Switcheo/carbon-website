@@ -21,6 +21,21 @@ const RoadMap: React.FC = () => {
     triggerOnce: true,
   });
 
+  function useThrottle(func: any, delay: any) {
+    const [inThrottle, setInThrottle] = useState<any>(false);
+    const throttledFunc = function () {
+      if (!inThrottle) {
+        func();
+        setInThrottle(true);
+        setTimeout(() => {
+          setInThrottle(false);
+        }, delay);
+      }
+      // saveTimeout(newTimeout);
+    };
+    return throttledFunc;
+  }
+
   const incrementStep = () => {
     setStep((prev: number) => setStep(prev + 1));
     setView((prev): any => {
@@ -99,10 +114,10 @@ const RoadMap: React.FC = () => {
         <br />
         <Grid container style={{ zIndex: 9, position: "relative" }}>
           <Grid item xs={6}>
-            <RoadMapButton direction="left" callback={incrementStep} />
+            <RoadMapButton direction="left" callback={useThrottle(incrementStep, 900)} />
           </Grid>
           <Grid item xs={6}>
-            <RoadMapButton direction="right" callback={decrementStep} />
+            <RoadMapButton direction="right" callback={useThrottle(decrementStep, 900)} />
           </Grid>
         </Grid>
         <Hidden mdUp>

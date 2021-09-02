@@ -49,7 +49,7 @@ const GetInvolved: React.FC = () => {
               title={"Propose a partnership"}
               description={"Want to collaborate toward a freer financial system?"}
               ctaText={"Get In Touch"}
-              link={"/#document"}
+              link={"mailto:marketing@switcheo.network"}
               icon={ProposeSVG}
               bigSVG
             />
@@ -59,7 +59,7 @@ const GetInvolved: React.FC = () => {
               title={"Pitch a project"}
               description={"Need funding to kickstart your project on Carbon?"}
               ctaText={"Apply Now"}
-              link={"/#document"}
+              link={"https://forum.switcheo.foundation/topic/42/applying-for-project-grants-under-the-switcheo-development-fund"}
               icon={PitchSVG}
               isMobile={isTablet}
               overwriteCSS={{ width: isSmallMobile ? "60vw" : isMobile ? "35rem" : "23rem", display: "block", maxWidth: "100%" }}

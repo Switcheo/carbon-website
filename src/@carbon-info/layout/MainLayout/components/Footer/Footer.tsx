@@ -30,15 +30,23 @@ const sitemap = [
     ],
   },
   {
-    section: "Learn",
+    section: "Build",
     sitemap: [
       {
-        title: "Stargate",
-        link: "https://staging.carbon.network",
+        title: "Switcheo Development Fund",
+        link: "https://forum.switcheo.foundation/topic/42/applying-for-project-grants-under-the-switcheo-development-fund",
       },
       {
-        title: "Carbon SDK",
-        link: "https://staging.carbon.network",
+        title: "Explorer",
+        link: "https://scan.carbon.network",
+      },
+      {
+        title: "APIs",
+        link: "https://docs.carbon.network",
+      },
+      {
+        title: "GitHub",
+        link: "https://github.com",
       },
     ],
   },
@@ -46,41 +54,41 @@ const sitemap = [
     section: "Explore",
     sitemap: [
       {
-        title: "Tokens",
-        link: "https://staging.carbon.network",
+        title: "Learn",
+        link: "https://guide.carbon.network",
       },
       {
-        title: "Ecosystem",
-        link: "https://staging.carbon.network",
+        title: "Features",
+        link: "/#utility",
       },
       {
-        title: "Wallets",
-        link: "https://staging.carbon.network",
+        title: "Stake",
+        link: "https://app.dem.exchange/stake",
+      },
+      {
+        title: "Get SWTH",
+        link: "https://app.dem.exchange/trade/swth_eth1",
+      },
+      {
+        title: "Token",
+        link: "https://switcheo.org/tokens?net=main",
       },
       {
         title: "Blog",
-        link: "https://staging.carbon.network",
+        link: "https://blog.switcheo.com ",
       },
     ],
   },
   {
-    section: "Participate",
+    section: "Contribute",
     sitemap: [
       {
-        title: "Community",
-        link: "https://staging.carbon.network",
+        title: "Forum",
+        link: "https://forum.carbon.network",
       },
       {
-        title: "Contributors",
-        link: "https://staging.carbon.network",
-      },
-      {
-        title: "Events",
-        link: "https://staging.carbon.network",
-      },
-      {
-        title: "Newsletters",
-        link: "https://staging.carbon.network",
+        title: "Governance",
+        link: "https://scan.carbon.network/governance",
       },
     ],
   },

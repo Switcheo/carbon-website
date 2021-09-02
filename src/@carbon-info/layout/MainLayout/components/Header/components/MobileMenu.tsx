@@ -20,20 +20,17 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
         <MenuIconClose onClick={callback} style={{ marginLeft: "auto" }} />
       </div>
       <div className={classes.navButtonContainer}>
-        <Link href={"/#footer"} underline="none" onClick={callback}>
-          <Typography color="textPrimary" variant="h1" display="inline">About</Typography>
+        <Link href={"/#footer"} underline="none" onClick={callback} >
+          <Typography color="textPrimary" variant="h1" display="inline">Learn</Typography>
         </Link>
-        <Link href={"/roadmap"} underline="none" onClick={callback}>
-          <Typography color="textPrimary" variant="h1" display="inline">RoadMap</Typography>
+        <Link onClick={callback} href={"https://forum.switcheo.foundation/topic/42/applying-for-project-grants-under-the-switcheo-development-fund"} underline="none" target="_blank">
+          <Typography color="textPrimary" variant="h1" display="inline">Build</Typography>
         </Link>
-        <Link href={"/#Whitepaper"} underline="none" target="_blank" onClick={callback}>
-          <Typography color="textPrimary" variant="h1" display="inline">Whitepaper</Typography>
+        <Link href={"/roadmap"} underline="none" onClick={callback} >
+          <Typography color="textPrimary" variant="h1" display="inline">Roadmap</Typography>
         </Link>
-        <Link href={"/#utility"} underline="none" onClick={callback}>
-          <Typography color="textPrimary" variant="h1" display="inline">Features</Typography>
-        </Link>
-        <Link href={"/#footer"} underline="none" onClick={callback}>
-          <Typography color="textPrimary" variant="h1" display="inline">Contact Us</Typography>
+        <Link href={"https://scan.carbon.network"} underline="none" onClick={callback} >
+          <Typography color="textPrimary" variant="h1" display="inline">Explorer</Typography>
         </Link>
       </div>
       <div className={classes.socialMediaContainer}>

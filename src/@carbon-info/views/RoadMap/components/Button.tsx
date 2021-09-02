@@ -49,6 +49,7 @@ const useStyles = makeStyles(() => ({
     },
   },
   buttonContainer: {
+    cursor: "pointer",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

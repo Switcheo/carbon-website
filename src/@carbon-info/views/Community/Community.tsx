@@ -42,7 +42,7 @@ const Community: React.FC = () => {
                 <Typography align="left" paragraph>
                   <CTAButton
                     text="BUY TOKEN"
-                    link="https://app.dem.exchange"
+                    link="https://app.dem.exchange/trade/swth_eth1"
                     CTA
                   />
                 </Typography>
