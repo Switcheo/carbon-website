@@ -14,6 +14,7 @@ import { default as PolyNetworkLogo } from "./PolyNetwork.svg";
 import { default as StakeWithUsLogo } from "./Stakewithus.svg";
 import { default as ZilliqaLogo } from "./Zilliqa.svg";
 
-export const allPartnersLogo = [ZilliqaLogo, StakeWithUsLogo, PolyNetworkLogo, NeoLogo, 
-  NGCLogo, O3LabsLogo, ThreeACLogo, BoltLogo, DACMLogo, 
-  DefianceCapitalLogo, DefiCapitalLogo, DuskLogo, EverStakeLogo, HoubiLogo, EverStakeLogo, EverStakeLogo];
+export const allPartnersLogo = [ ThreeACLogo, DefianceCapitalLogo, NGCLogo, NeoLogo, DefiCapitalLogo, PolyNetworkLogo, ZilliqaLogo, DACMLogo, DuskLogo, 
+  HoubiLogo, StakeWithUsLogo, O3LabsLogo, EverStakeLogo, BoltLogo];
+  
+

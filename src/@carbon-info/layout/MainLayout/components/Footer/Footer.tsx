@@ -222,10 +222,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   footerLink: {
+    margin: "0.5rem 0px",
+    maxWidth: "13rem",
     fontFamily: "SourceSansPro-Light",
     fontWeight: 400,
     fontSize: "1.438rem",
-    lineHeight: "3.22rem",
+    // lineHeight: "3.22rem",
     letterSpacing: "-1px",
     color: "#5C5C5C",
     [theme.breakpoints.down("xs")]: {

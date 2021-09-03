@@ -324,6 +324,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       height: "auto",
     },
+    [theme.breakpoints.down("xs")]: {
+      gap: "3rem",
+      alignItems: "flex-start",
+      height: "23rem",
+    },
+    [theme.breakpoints.down(330)]: {
+      gridTemplateRows: "10% 20% 48%",
+      gap: "3rem",
+      height: "27rem",
+      alignItems: "flex-start",
+    },
   },
   gridContainer: {
     height: "100%",
