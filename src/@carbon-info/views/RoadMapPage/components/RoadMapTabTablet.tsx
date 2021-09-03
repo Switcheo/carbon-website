@@ -114,7 +114,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
           </Grid>
           <br />
           <Typography color="textPrimary" variant="subtitle1" align="center" style={{}} className={classes.titleDescription}>
-            {content[0].description}
+            {content[view].description}
           </Typography>
           <div className={classes.FilterContainer}>
             <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
