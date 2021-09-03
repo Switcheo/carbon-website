@@ -36,17 +36,18 @@ const UtilitySection: React.FC = () => {
               <Grid item xs={12} className={classes.textContainer}>
                 <FadeAndSlide visible={inView} transform={[-20, 0]}>
                   <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} noWrap style={{ overflow: "visible" }}>
-                    Made to power<br />anything DeFi
+                    Why Carbon?
                   </Typography>
                 </FadeAndSlide>
-                <br /><br />
-                <Hidden smDown>
+                <br />
+                {(isTablet && !isMobile) && <br />}
+                {/* <Hidden mdUp>
                   <br />
-                </Hidden>
+                </Hidden> */}
                 <FadeAndSlide visible={inView} transform={[-20, 0]} delay={0.4}>
                   <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : "subtitle1"}>
-                    {smallLaptop && !isTablet ? "Supports a full spectrum of finance products including derivatives"
-                      : <>Supports a full spectrum of finance<br />products including derivatives</>}
+                    {smallLaptop && !isTablet ? "Made to power anything DeFi"
+                      : <>Made to power anything DeFi</>}
                   </Typography>
                 </FadeAndSlide>
                 <br /><br /><br />
@@ -63,24 +64,24 @@ const UtilitySection: React.FC = () => {
                 <Grid item xs={12} sm={6}>
                   <FadeAndSlide visible={inView} transform={[0, -20]}>
                     <CardWithIcon
-                      title={"Trade or swap anything, cross-chain"}
-                      description={"Access assets on popular chains like Ethereum, Binance Smart Chain, Neo, Ziliqa with full convenience"}
+                      title={"INTERCONNECTIVE"}
+                      description={"Power interoperability between sovereign blockchain networks."}
                       icon={<TradeIcon />} />
                   </FadeAndSlide>
                 </Grid>
                 <Grid item xs={12} sm={6} className={classes.gridItemRight}>
                   <FadeAndSlide visible={inView} transform={[0, -20]}>
                     <CardWithIcon
-                      title={"Transact instantly without gas"}
-                      description={"Zero fees, zero delays on a Layer 2 structure that minimises network congestion"}
+                      title={"VERSATILE"}
+                      description={"One protocol, limitless possibilities. You can build any DeFi innovation on top of Carbon. "}
                       icon={<TransactIcon />} />
                   </FadeAndSlide>
                 </Grid>
                 <Grid item xs={12} sm={6} className={classes.gridItemRight}>
                   <FadeAndSlide visible={inView} transform={[0, -20]}>
                     <CardWithIcon
-                      title={"Launch unlimited DeFi products"}
-                      description={"Access assets on popular CFDs, perpetuals, and an ever expanding list of dApps with Carbon at their core"}
+                      title={"SECURE"}
+                      description={"A custom-built sidechain secured by a distributed network of validators to ensure trustless and permissionless transactions."}
                       icon={<LaunchIcon />} />
                   </FadeAndSlide>
                 </Grid>
@@ -93,8 +94,8 @@ const UtilitySection: React.FC = () => {
                 <Grid item>
                   <FadeAndSlide visible={inView} transform={[-20, 0]}>
                     <CardWithIcon
-                      title={"Trade or swap anything, cross-chain"}
-                      description={"Access assets on popular chains like Ethereum, Binance Smart Chain, Neo, Ziliqa with full convenience"}
+                      title={"INTERCONNECTIVE"}
+                      description={"Power interoperability between sovereign blockchain networks"}
                       icon={<TradeIcon />} />
                   </FadeAndSlide>
                 </Grid>
@@ -103,16 +104,16 @@ const UtilitySection: React.FC = () => {
                 <Grid item className={classes.gridItemRight}>
                   <FadeAndSlide visible={inView} transform={[20, 0]}>
                     <CardWithIcon
-                      title={"Transact instantly without gas"}
-                      description={"Zero fees, zero delays on a Layer 2 structure that minimises network congestion"}
+                      title={"VERSATILE"}
+                      description={"One protocol, limitless possibilities. You can build any DeFi innovation on top of Carbon. "}
                       icon={<TransactIcon />} />
                   </FadeAndSlide>
                 </Grid>
                 <Grid item className={classes.gridItemRight}>
                   <FadeAndSlide visible={inView} transform={[20, 0]}>
                     <CardWithIcon
-                      title={"Launch unlimited DeFi products"}
-                      description={"Access assets on popular CFDs, perpetuals, and an ever expanding list of dApps with Carbon at their core"}
+                      title={"SECURE"}
+                      description={"A custom-built sidechain secured by a distributed network of validators to ensure trustless and permissionless transactions."}
                       icon={<LaunchIcon />} />
                   </FadeAndSlide>
                 </Grid>
@@ -165,7 +166,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   backgroundLeft: {
     position: "absolute",
     width: "100%",
-    top: "14%",
+    top: "0%",
     left: "-27%",
     pointerEvents: "none",
   },
@@ -246,16 +247,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   utilityBgMobile: {
     position: "absolute",
-    right: "-60%",
-    top: "-190%",
+    right: "-80%",
+    top: "-330%",
     pointerEvents: "none",
     [theme.breakpoints.down("xs")]: {
-      right: "-44%",
-      top: "-114%",
+      right: "-48%",
+      top: "-210%",
       width: "190%",
     },
     [theme.breakpoints.down(340)]: {
-      top: "-103%",
+      top: "-193%",
       right: "-45%",
       width: "183%",
     },

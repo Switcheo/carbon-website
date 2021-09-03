@@ -29,13 +29,13 @@ const IntroPage: React.FC = () => {
           </FadeAndSlide>
           <IntroPageBackgroundLine className={classes.dash} />
           <Typography color="textPrimary" variant="h2" className={clsx(classes.mainTitle, { open: inView })} >
-            The core of <br /> <span className={clsx(classes.gradientText, { open: inView })} >decentralized</span>
+            Breathing Life into
             <br />
-            <span className={clsx(classes.gradientText, { open: inView })} >financial markets</span>
+            <span className={clsx(classes.gradientText, { open: inView })} >Decentralized<br /> Finance</span>
           </Typography>
           <FadeAndSlide visible={inView}>
             <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
-              Carbon is an end-to-end DeFi protocol powering cross-chain financial dApps
+              Carbon is a Layer 2 DeFi protocol powering cross-chain financial infrastructures and markets.
             </Typography>
           </FadeAndSlide>
         </div>
@@ -157,7 +157,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   subtitle: {
     marginTop: "2.5rem",
-    maxWidth: "31rem",
+    maxWidth: "40rem",
     [theme.breakpoints.down(325)]: {
       marginTop: "2.5rem",
       fontSize: "2rem",

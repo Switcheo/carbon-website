@@ -30,11 +30,11 @@ const FeatureCard: React.FC = () => {
             <img src={featureCardBackgroundRight} alt="featureCardBackgroundRight" className={clsx(classes.backgroundRight, { open: inView })} />
             <div>
               <Typography color="textPrimary" variant="h2" className={classes.title}>
-                Launch full-featured financial markets.<br />No KYC required.
+                The fundamental building block of all things DeFi
             </Typography>
               <Typography color="textPrimary" variant="body2" className={classes.subtext}>
-                Carbon is a third-gen blockchain protocol & custom Layer 2 side chain, built for trading sophisticated financial instruments at scale.
-            </Typography>
+                {"Carbon's highly interoperable and scalable architecture makes it easy for anyone to build on top of and bootstrap financial markets for any asset type from any blockchain."}
+              </Typography>
               <CTAButton
                 text="READ DOCS"
                 link="https://guide.carbon.network"

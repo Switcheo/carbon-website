@@ -183,16 +183,16 @@ const Footer: React.FC = () => {
         <Hidden xsDown>
           <Grid item md={12}>
             <Typography className={classes.footNoteText} align="left" variant="body1">
-              This website is maintained by Switcheo Labs. The contents and opinions of this website are those of Switcheo Labs. Switcheo provides links to cryptocurrency exchanges as a service to the public. Switcheo Labs does not warrant that the information provided by these websites is correct, complete, and up-to-date. Switcheo Labs is not responsible for their content and expressly rejects any liability for damages of any kind resulting from the use, reference to, or reliance on any information contained within these websites.
+              This website is maintained by Switcheo Labs. The contents and opinions of this website are those of Switcheo Labs. Switcheo Labs provides links to cryptocurrency exchanges as a service to the public. Switcheo Labs does not operate these websites and is not responsible for their content and expressly rejects any liability for damages of any kind resulting from the use, reference to, or reliance on any information contained within these websites. Switcheo Labs does not warrant that the information provided by these websites is correct, complete, or up-to-date.
           </Typography>
           </Grid>
           <Grid item md={12}>
             <Typography color="textPrimary" align="left" className={classes.footNoteSignOff}>
-              DEVELOPED BY SWITCHEO LABS
+              MADE WITH ❤️ FOR BUILDERS EVERYWHERE
           </Typography>
-            <Typography color="textPrimary" align="left" className={classes.footNoteSignOff}>
+            {/* <Typography color="textPrimary" align="left" className={classes.footNoteSignOff}>
               SITE DESIGNED BY HIGHSPARK
-          </Typography>
+          </Typography> */}
           </Grid>
         </Hidden>
       </Grid>
@@ -222,10 +222,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   footerLink: {
+    margin: "0.5rem 0px",
+    maxWidth: "13rem",
     fontFamily: "SourceSansPro-Light",
     fontWeight: 400,
     fontSize: "1.438rem",
-    lineHeight: "3.22rem",
+    // lineHeight: "3.22rem",
     letterSpacing: "-1px",
     color: "#5C5C5C",
     [theme.breakpoints.down("xs")]: {

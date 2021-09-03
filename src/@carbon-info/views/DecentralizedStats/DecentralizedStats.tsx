@@ -30,7 +30,7 @@ const DecentralizedStats: React.FC = () => {
             <Grid item xs={12} md={6}>
               <FadeAndSlide visible={inView} transform={[-20, 0]}>
                 <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" className={classes.decentralizedText}>
-                  Decentralized derivatives made accessible to all
+                  Creating a new era of interconnectedness & accessibility
                 </Typography>
               </FadeAndSlide>
             </Grid>
@@ -110,8 +110,8 @@ const DecentralizedStats: React.FC = () => {
           <Grid item xs={12} md={6}>
             <FadeAndSlide visible={inView}>
               <CardWithIcon
-                title={"Choose your preferred derivative"}
-                description={"Options, futures, perpetuals & more - create any market from our range of instruments supported"}
+                title={"Real use cases"}
+                description={"Carbon powers Demex, one of the more popular fully decentralized exchange for trading a plethora of financial instruments."}
                 icon={<ChooseIcon />}
                 size="large"
               />
@@ -120,8 +120,8 @@ const DecentralizedStats: React.FC = () => {
           <Grid item xs={12} md={6}>
             <FadeAndSlide visible={inView}>
               <CardWithIcon
-                title={"Accelerate application building"}
-                description={"Tap into our native repository of derivative contracts to build applications out of the box"}
+                title={"Join the community"}
+                description={"Like what you see? Join our conversations and be a part of a new era!"}
                 icon={<AccelerateIcon />}
                 size="large"
               />
@@ -139,6 +139,14 @@ export default DecentralizedStats;
 const useStyles = makeStyles((theme: Theme) => ({
   decentralizedText: {
     minWidth: "31rem",
+    [theme.breakpoints.down(1100)]: {
+      maxWidth: "15rem",
+      minWidth: "0rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "47rem",
+    },
+
   },
   statsText: {
     width: "fit-content",

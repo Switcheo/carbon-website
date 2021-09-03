@@ -32,7 +32,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
               <Grid item xs={2} className={classes.sideIcon}>
                 {icon}
               </Grid>
-              <Grid container item xs={10}>
+              <Grid container item xs={10} className={classes.textContainer}>
                 <Grid item xs={12}>
                   <Typography className={classes.divTitle} color="textPrimary" paragraph={isDesktop}>
                     {title}
@@ -72,8 +72,26 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
 export default CardWithIcon;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  textContainer: {
+    display: "grid",
+    gridTemplateRows: "20% 80%",
+    rowGap: 20,
+    [theme.breakpoints.down(1100)]: {
+      gridTemplateRows: "28% 80%",
+    },
+    [theme.breakpoints.down(1000)]: {
+      height: "18rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gridTemplateRows: "20% 80%",
+      height: "auto",
+    },
+  },
   icon: {
     marginTop: "0.063rem",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "1rem",
+    },
     [theme.breakpoints.down("xs")]: {
       marginBottom: "1rem",
       "& > svg": {
@@ -88,6 +106,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   sideIcon: {
+    textAlign: "center",
     marginTop: "0.063rem",
     [theme.breakpoints.down("xs")]: {
       "& > svg": {
@@ -110,7 +129,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "2em 3em 2em 2em",
     // width: "485px",
     height: "17rem",
-    width: "23rem",
+    width: "24rem",
     textAlign: "start",
     opacity: 0,
     transform: "translate(0px, 20px)",
@@ -134,7 +153,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       pointerEvents: "none",
     },
     [theme.breakpoints.down("md")]: {
-      width: "20rem",
+      width: "24rem",
       height: "18.5rem",
     },
     [theme.breakpoints.down("sm")]: {
@@ -205,7 +224,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       width: "auto",
-      margin: "2rem",
+      // margin: "2rem",
       paddingRight: "15%",
       borderRadius: 20,
       "&::before": {
@@ -234,7 +253,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 30,
     padding: "2em 3em 2em 4em",
     // width: "485px",
-    height: "16rem",
+    height: "14rem",
     // width: "16rem",
     textAlign: "start",
     opacity: 0,
@@ -258,12 +277,15 @@ const useStyles = makeStyles((theme: Theme) => ({
       maskComposite: "destination-out",
       pointerEvents: "none",
     },
+    [theme.breakpoints.down(1100)]: {
+      height: "16rem",
+    },
     [theme.breakpoints.down(1000)]: {
-      height: "21.5rem",
+      height: "18rem",
     },
     [theme.breakpoints.down("sm")]: {
       margin: "auto",
-      height: "17rem",
+      height: "15rem",
       width: "52%",
       padding: "2em 3em 1.5em 4em",
       borderRadius: 15,
@@ -272,11 +294,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "2em 3em 2em 4em",
+      padding: "1em 3em 3em 4em",
       width: "70%",
     },
   },
   divTitle: {
+    overflowWrap: "anywhere",
     fontFamily: "TyrosPro",
     fontWeight: 300,
     fontSize: "2rem",
@@ -292,12 +315,25 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   contentContainerWrapper: {
+    display: "grid",
+    gridTemplateRows: "10% 20% 70%",
     padding: "1rem 0rem",
     height: "100%",
     alignItems: "center",
     gap: "0.5rem",
     [theme.breakpoints.down("sm")]: {
-      height: "100%",
+      height: "auto",
+    },
+    [theme.breakpoints.down("xs")]: {
+      gap: "3rem",
+      alignItems: "flex-start",
+      height: "23rem",
+    },
+    [theme.breakpoints.down(330)]: {
+      gridTemplateRows: "10% 20% 48%",
+      gap: "3rem",
+      height: "27rem",
+      alignItems: "flex-start",
     },
   },
   gridContainer: {

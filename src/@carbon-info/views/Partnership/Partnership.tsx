@@ -67,7 +67,6 @@ const Partnership: React.FC = () => {
           </Hidden>
         </Grid>
       </Box>
-
     </div>
   );
 };
@@ -129,7 +128,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "100%",
     width: "100%",
     pointerEvents: "none",
-    background: "linear-gradient(180deg, rgba(22, 21, 21, 0), rgb(22, 21, 21, 0.8))",
+    background: "linear-gradient(180deg, rgba(22, 21, 21, 0), rgb(22, 21, 21, 0.9))",
   },
   logo: {
     [theme.breakpoints.down("sm")]: {
