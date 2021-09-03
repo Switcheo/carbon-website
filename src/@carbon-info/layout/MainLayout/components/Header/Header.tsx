@@ -42,16 +42,16 @@ const Header: React.FC = () => {
               </>
               :
               <>
-                <Link href={"/#footer"} underline="none">
+                <Link href={"https://guide.carbon.net"} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Learn</Typography>
                 </Link>
                 <Link href={"https://forum.switcheo.foundation/topic/42/applying-for-project-grants-under-the-switcheo-development-fund"} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Build</Typography>
                 </Link>
-                <Link href={"/roadmap"} underline="none">
+                <Link href={"/roadmap"} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Roadmap</Typography>
                 </Link>
-                <Link href={"https://scan.carbon.network"} underline="none">
+                <Link href={"https://scan.carbon.network"} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Explorer</Typography>
                 </Link>
               </>

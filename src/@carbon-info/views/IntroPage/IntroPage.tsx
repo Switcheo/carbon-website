@@ -72,6 +72,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "1.5rem",
   },
   backgroundLeft: {
+    pointerEvents: "none",
     position: "absolute",
     left: "-50%",
     top: "-125%",
@@ -116,6 +117,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   backgroundRight: {
+    pointerEvents: "none",
     position: "absolute",
     right: "-56%",
     top: "-5%",
