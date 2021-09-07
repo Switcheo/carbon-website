@@ -31,7 +31,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
   const [showModal, setShowModal] = useState(false);
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.8,
+    threshold: 0.56,
     triggerOnce: true,
   });
 
@@ -205,12 +205,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     // fontFamily: "SourceSansPro-Light",
     // fontWeight: 200,
     // fontSize: "1.438rem",
-    // lineHeight: "2.041rem",
+    lineHeight: "1.55rem",
     // letterSpacing: "-0.063rem",
   },
   contentCardContainer: {
     gridTemplateRows: "4rem",
-    rowGap: "1rem",
+    rowGap: "1.2rem",
     display: "grid",
     gridTemplateColumns: "75% 25%",
     textAlign: "start",
@@ -249,6 +249,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   tab: {
+    lineHeight: "1.688rem",
     position: "relative",
     zIndex: 1,
     width: "100%",

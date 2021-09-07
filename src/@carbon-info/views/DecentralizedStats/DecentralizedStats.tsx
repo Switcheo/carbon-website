@@ -3,9 +3,31 @@ import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useThe
 import chartSVG from "@carbon-info/assets/animated/chart.svg";
 import decentralizedGlow from "@carbon-info/assets/background/decentralizedGlow.svg";
 import { CardWithIcon, FadeAndSlide } from "@carbon-info/components";
-import { AccelerateIcon, ChooseIcon, Stroke } from "@carbon-info/assets";
+import { AccelerateIcon, ChooseIcon, Stroke, TelegramIcon, TwitterIcon, YoutubeIcon } from "@carbon-info/assets";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
+
+const useCaseContent = [
+  {
+    link: "http://...",
+    icon: <TwitterIcon />,
+  },
+];
+
+const joinCommunityContent = [
+  {
+    link: "http://...",
+    icon: <TwitterIcon />,
+  },
+  {
+    link: "http://...",
+    icon: <TelegramIcon />,
+  },
+  {
+    link: "http://...",
+    icon: <YoutubeIcon />,
+  },
+];
 
 const DecentralizedStats: React.FC = () => {
   const classes = useStyles();
@@ -114,6 +136,7 @@ const DecentralizedStats: React.FC = () => {
                 description={"Carbon powers Demex, one of the more popular fully decentralized exchange for trading a plethora of financial instruments."}
                 icon={<ChooseIcon />}
                 size="large"
+                CTAicon={useCaseContent}
               />
             </FadeAndSlide>
           </Grid>
@@ -124,6 +147,7 @@ const DecentralizedStats: React.FC = () => {
                 description={"Like what you see? Join our conversations and be a part of a new era!"}
                 icon={<AccelerateIcon />}
                 size="large"
+                CTAicon={joinCommunityContent}
               />
             </FadeAndSlide>
           </Grid>
