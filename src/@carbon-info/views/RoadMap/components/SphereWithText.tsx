@@ -103,7 +103,7 @@ const useStyles = makeStyles(() => ({
     lineHeight: "2.228rem",
     width: "23rem",
     top: "-5rem",
-    left: "-6rem",
+    left: "-6.5rem",
     // letterSpacing: "-3px",
   },
   circular: {
