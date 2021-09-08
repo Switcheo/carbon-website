@@ -90,7 +90,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
             <Grid item xs={12}>
               <div className={classes.descriptionAndFilterContainer}>
                 <span>
-                  <Typography color="textPrimary" variant="body1" align="left" style={{ width: "55%" }}>
+                  <Typography color="textPrimary" variant="body1" align="left" style={{ maxWidth: "26rem" }}>
                     {content[view].description}
                   </Typography>
                 </span>
@@ -200,22 +200,28 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: "1.5rem",
     lineHeight: "2.041rem",
     letterSpacing: "-0.063rem",
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    lineClamp: 2,
+    boxOrient: "vertical",
+    display: "-webkit-box",
   },
   cardDescription: {
-    // fontFamily: "SourceSansPro-Light",
-    // fontWeight: 200,
-    // fontSize: "1.438rem",
     lineHeight: "1.55rem",
-    // letterSpacing: "-0.063rem",
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    lineClamp: 4,
+    boxOrient: "vertical",
+    display: "-webkit-box",
   },
   contentCardContainer: {
     gridTemplateRows: "4rem",
-    rowGap: "1.2rem",
+    rowGap: "1.6rem",
     display: "grid",
     gridTemplateColumns: "75% 25%",
     textAlign: "start",
     alignItems: "flex-start",
-    padding: "1rem 1rem 1rem 2rem",
+    padding: "1.5rem 1rem 1.5rem 2rem",
     boxShadow: "inset 62px 98px 100px -60px rgba(36, 36, 36,0.5), inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
     backdropFilter: "blur(3px)",
     borderRadius: 12,

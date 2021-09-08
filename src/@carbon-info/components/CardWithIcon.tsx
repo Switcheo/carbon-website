@@ -68,7 +68,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
                 {icon}
               </Grid>
               <Grid item xs={12} className={classes.contentContainer}>
-                <Typography className={classes.divTitle} color="textPrimary" paragraph>
+                <Typography className={classes.divTitleTop} style={{ width: title === "Powerful primitives" ? "70%" : "98%" }} color="textPrimary" paragraph>
                   {title}
                 </Typography>
                 {/* <br /> */}
@@ -89,11 +89,12 @@ export default CardWithIcon;
 
 const useStyles = makeStyles((theme: Theme) => ({
   iconWrapper: {
+    cursor: "pointer",
     "& > svg": {
       [theme.breakpoints.down("sm")]: {
         width: "3rem",
       },
-    }
+    },
   },
   textContainerWithSocialIcons: {
     display: "grid",
@@ -227,7 +228,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 30,
     padding: "2em",
     margin: "auto",
-    height: "100%",
+    // height: "100%",
     width: "20rem",
     textAlign: "start",
     opacity: 0,
@@ -346,6 +347,20 @@ const useStyles = makeStyles((theme: Theme) => ({
     //   fontSize: "1.5rem",
     // },
   },
+  divTitleTop: {
+    overflowWrap: "anywhere",
+    fontFamily: "TyrosPro",
+    fontWeight: 300,
+    fontSize: "2rem",
+    lineHeight: "2.3rem",
+    width: "93%",
+    [theme.breakpoints.down("sm")]: {
+      width: "76%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "90%",
+    },
+  },
   contentContainer: {
     height: "50%",
     [theme.breakpoints.down("sm")]: {
@@ -354,15 +369,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   contentContainerWrapper: {
     display: "grid",
-    gridTemplateRows: "10% 20% 70%",
+    gridTemplateRows: "10% 14% 70%",
     padding: "1rem 0rem",
     height: "100%",
     alignItems: "center",
-    gap: "0.5rem",
+    gap: "1.5rem",
     [theme.breakpoints.down("sm")]: {
       height: "auto",
+      gridTemplateRows: "10% 8% 70%",
     },
     [theme.breakpoints.down("xs")]: {
+      gridTemplateRows: "10% 16% 70%",
       gap: "3rem",
       alignItems: "flex-start",
       height: "23rem",
