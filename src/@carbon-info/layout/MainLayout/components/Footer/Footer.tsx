@@ -10,22 +10,27 @@ const sitemap = [
       {
         title: "Learn",
         link: "https://staging.carbon.network",
+        target: "",
       },
       {
         title: "Features",
         link: "https://staging.carbon.network",
+        target: "",
       },
       {
         title: "Staking",
         link: "https://staging.carbon.network",
+        target: "",
       },
       {
         title: "Get SWTH",
         link: "https://staging.carbon.network",
+        target: "",
       },
       {
         title: "FAQ",
         link: "https://staging.carbon.network",
+        target: "",
       },
     ],
   },
@@ -35,18 +40,22 @@ const sitemap = [
       {
         title: "Switcheo Development Fund",
         link: "https://forum.switcheo.foundation/topic/42/applying-for-project-grants-under-the-switcheo-development-fund",
+        target: "_blank",
       },
       {
         title: "Explorer",
         link: "https://scan.carbon.network",
+        target: "_blank",
       },
       {
         title: "APIs",
         link: "https://docs.carbon.network",
+        target: "_blank",
       },
       {
         title: "GitHub",
         link: "https://github.com",
+        target: "_blank",
       },
     ],
   },
@@ -56,26 +65,32 @@ const sitemap = [
       {
         title: "Learn",
         link: "https://guide.carbon.network",
+        target: "_blank",
       },
       {
         title: "Features",
         link: "/#utility",
+        target: "",
       },
       {
         title: "Stake",
         link: "https://app.dem.exchange/stake",
+        target: "_blank",
       },
       {
         title: "Get SWTH",
         link: "https://app.dem.exchange/trade/swth_eth1",
+        target: "_blank",
       },
       {
         title: "Token",
         link: "https://switcheo.org/tokens?net=main",
+        target: "_blank",
       },
       {
         title: "Blog",
         link: "https://blog.switcheo.com ",
+        target: "_blank",
       },
     ],
   },
@@ -85,10 +100,12 @@ const sitemap = [
       {
         title: "Forum",
         link: "https://forum.carbon.network",
+        target: "_blank",
       },
       {
         title: "Governance",
         link: "https://scan.carbon.network/governance",
+        target: "_blank",
       },
     ],
   },
@@ -98,18 +115,22 @@ const sitemap = [
       {
         title: "About",
         link: "https://staging.carbon.network",
+        target: "",
       },
       {
         title: "Press Kit",
         link: "https://staging.carbon.network",
+        target: "",
       },
       {
         title: "Design",
         link: "https://staging.carbon.network",
+        target: "",
       },
       {
         title: "Resources",
         link: "https://staging.carbon.network",
+        target: "",
       },
     ],
   },
@@ -135,7 +156,7 @@ const Footer: React.FC = () => {
                 {
                   section.sitemap.map((map, index) => {
                     return (
-                      <Link href={map.link} underline="none" target="_blank" key={map.title + index}>
+                      <Link href={map.link} underline="none" target={map.target} key={map.title + index}>
                         <Typography color="textPrimary" className={classes.footerLink} align="left" >
                           {map.title}
                         </Typography>

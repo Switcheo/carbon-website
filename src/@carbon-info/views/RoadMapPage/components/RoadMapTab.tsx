@@ -17,7 +17,6 @@ interface Props {
       status: string;
       progress: number;
       link: string;
-      longDescription?: string;
     }[];
   }[],
 }
