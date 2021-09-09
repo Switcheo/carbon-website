@@ -25,3 +25,5 @@ export { ReactComponent as RoadMapPageArrowRight } from "./roadMapPageArrowRight
 export { ReactComponent as RoadMapPageArrowLeft } from "./roadMapPageArrowLeft.svg";
 export { ReactComponent as GitHubIcon } from "./github.svg";
 export { ReactComponent as DocsIcon } from "./docs.svg";
+export { ReactComponent as DemexIcon } from "./demex.svg";
+export { ReactComponent as DiscordIcon } from "./discord.svg";

@@ -219,15 +219,25 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "100%",
   },
   cardTitle: {
-    width: "80%",
+    // width: "80%",
     fontFamily: "TyrosPro",
     fontWeight: 400,
     fontSize: "1.5rem",
     lineHeight: "2.041rem",
     letterSpacing: "-0.063rem",
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    lineClamp: 2,
+    boxOrient: "vertical",
+    display: "-webkit-box",
   },
   cardDescription: {
-
+    lineHeight: "1.6rem",
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    lineClamp: 4,
+    boxOrient: "vertical",
+    display: "-webkit-box",
   },
   titleDescription: {
     width: "70%",

@@ -3,9 +3,32 @@ import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useThe
 import chartSVG from "@carbon-info/assets/animated/chart.svg";
 import decentralizedGlow from "@carbon-info/assets/background/decentralizedGlow.svg";
 import { CardWithIcon, FadeAndSlide } from "@carbon-info/components";
-import { AccelerateIcon, ChooseIcon, Stroke } from "@carbon-info/assets";
+import { AccelerateIcon, ChooseIcon, Stroke, DemexIcon, TwitterIcon, YoutubeIcon, DiscordIcon } from "@carbon-info/assets";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
+import { Path } from "@carbon-info/constants";
+
+const useCaseContent = [
+  {
+    link: Path.Socials.Demex,
+    icon: <DemexIcon />,
+  },
+];
+
+const joinCommunityContent = [
+  {
+    link: Path.Socials.SwitcheoTwitter,
+    icon: <TwitterIcon />,
+  },
+  {
+    link: Path.Socials.Discord,
+    icon: <DiscordIcon />,
+  },
+  {
+    link: Path.Socials.Youtube,
+    icon: <YoutubeIcon />,
+  },
+];
 
 const DecentralizedStats: React.FC = () => {
   const classes = useStyles();
@@ -114,6 +137,7 @@ const DecentralizedStats: React.FC = () => {
                 description={"Carbon powers Demex, one of the more popular fully decentralized exchange for trading a plethora of financial instruments."}
                 icon={<ChooseIcon />}
                 size="large"
+                CTAicon={useCaseContent}
               />
             </FadeAndSlide>
           </Grid>
@@ -124,6 +148,7 @@ const DecentralizedStats: React.FC = () => {
                 description={"Like what you see? Join our conversations and be a part of a new era!"}
                 icon={<AccelerateIcon />}
                 size="large"
+                CTAicon={joinCommunityContent}
               />
             </FadeAndSlide>
           </Grid>
@@ -139,14 +164,20 @@ export default DecentralizedStats;
 const useStyles = makeStyles((theme: Theme) => ({
   decentralizedText: {
     minWidth: "31rem",
-    [theme.breakpoints.down(1100)]: {
-      maxWidth: "15rem",
-      minWidth: "0rem",
+    [theme.breakpoints.down(1180)]: {
+      // maxWidth: "15rem",
+      // minWidth: "0rem",
+      fontSize: "2.63rem",
     },
     [theme.breakpoints.down("sm")]: {
       minWidth: "47rem",
+      fontSize: "3.6rem",
     },
-
+    [theme.breakpoints.down("xs")]: {
+      minWidth: "47rem",
+      fontSize: "2.63rem",
+      lineHeight: "2.9rem",
+    },
   },
   statsText: {
     width: "fit-content",

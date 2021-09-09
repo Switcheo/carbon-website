@@ -13,7 +13,7 @@ const Partnership: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.6,
+    threshold: 0.35,
     triggerOnce: true,
   });
   return (

@@ -52,11 +52,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("xs")]: {
       verticalAlign: "sub",
       height: "2rem",
-      margin: theme.spacing(0, 1),
+      margin: "0px 2px",
     },
     [theme.breakpoints.down(360)]: {
       height: "1.8rem",
-      margin: theme.spacing(0, 0.25),
+      margin: "0px 2px",
     },
   },
   text: {

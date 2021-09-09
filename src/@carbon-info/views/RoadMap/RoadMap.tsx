@@ -1,11 +1,27 @@
 import React, { useState } from "react";
-import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, Fade, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import roadMapBG from "@carbon-info/assets/background/roadmapLineBg.png";
 import roadMapGlow from "@carbon-info/assets/background/roadMapGlow.svg";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import { RoadMapButton, SphereWithText } from "./components";
+import { roadMapAnimationItems } from "@carbon-info/constants";
 // import * as d3 from "d3";
+
+const initialViewState = (data: any) => {
+  let result: number[] = [0];
+  for (let i = 1; i < data.length / 2; i++) {
+    result.unshift(i * -1);
+    result.push(i);
+  }
+  if (data.length % 2 === 0) result.push((result.length / 2) + 1);
+  return result;
+};
+
+const initialCounter = (data: any) => {
+  if (data.length % 2 === 0) return Math.floor(data.length / 2) - 1;
+  else return Math.floor(data.length / 2);
+};
 
 const RoadMap: React.FC = () => {
   const classes = useStyles();
@@ -13,8 +29,9 @@ const RoadMap: React.FC = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isWideDesktop = useMediaQuery(theme.breakpoints.up("xl"));
+  const [progressAndDescriptionCounter, setProgressAndDescriptionCounter] = useState<any>(initialCounter(roadMapAnimationItems));
   const [step, setStep] = useState<any>(0);
-  const [view, setView] = useState([-3, -2, -1, 0, 1, 2, 3]);
+  const [view, setView] = useState(initialViewState(roadMapAnimationItems));
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.5,
@@ -37,6 +54,9 @@ const RoadMap: React.FC = () => {
   }
 
   const incrementStep = () => {
+    setProgressAndDescriptionCounter((prev: number) => {
+      return prev + 1 > roadMapAnimationItems.length - 1 ? 0 : prev + 1;
+    });
     setStep((prev: number) => setStep(prev + 1));
     setView((prev): any => {
       let temp = [prev[prev.length - 1]];
@@ -48,6 +68,9 @@ const RoadMap: React.FC = () => {
   };
 
   const decrementStep = () => {
+    setProgressAndDescriptionCounter((prev: number) => {
+      return prev - 1 < 0 ? roadMapAnimationItems.length - 1 : prev - 1;
+    });
     setStep((prev: number) => setStep(prev - 1));
     setView((prev): any => {
       let temp = [prev[0]];
@@ -71,7 +94,7 @@ const RoadMap: React.FC = () => {
           </Typography >
           <Hidden smDown>
             <CTAButton
-              text="SEE FEATURE MAP"
+              text="See Full Roadmap"
               link="/roadmap"
             />
           </Hidden>
@@ -93,23 +116,27 @@ const RoadMap: React.FC = () => {
                 transform: `rotate(${step * 0}deg)`, transition: "all 0.3s ease-in",
                 width: "100%",
               }}>
-                <SphereWithText step={view[0]} percent={10} text="insert text" isMobile={isMobile} isTablet={isTablet} isWideDesktop={isWideDesktop} />
-                <SphereWithText step={view[1]} percent={10} text="Next Lvl" isMobile={isMobile} isTablet={isTablet} isWideDesktop={isWideDesktop} />
-                <SphereWithText step={view[2]} percent={10} text="Cosmos IBC interoperatibility" isMobile={isMobile} isTablet={isTablet} isWideDesktop={isWideDesktop} />
-                <SphereWithText step={view[3]} percent={20} text="New market type" isMobile={isMobile} isTablet={isTablet} isWideDesktop={isWideDesktop} />
-                <SphereWithText step={view[4]} percent={30} text="Cross-chain swap exchange" isMobile={isMobile} isTablet={isTablet} isWideDesktop={isWideDesktop} />
-                <SphereWithText step={view[5]} percent={30} text="Lorem Ip" isMobile={isMobile} isTablet={isTablet} isWideDesktop={isWideDesktop} />
-                <SphereWithText step={view[6]} percent={30} text="To the Moon" isMobile={isMobile} isTablet={isTablet} isWideDesktop={isWideDesktop} />
+                {roadMapAnimationItems.map((items, index) => {
+                  return (
+                    <SphereWithText key={index} step={view[index]} percent={items.progress} text={items.title} isMobile={isMobile} isTablet={isTablet} isWideDesktop={isWideDesktop} />
+                  );
+                })}
               </div>
             </div>
           </Grid>
         </FadeAndSlide>
         <Typography color="textPrimary" variant="h2" paragraph className={classes.percentage}>
-          20%
+          {roadMapAnimationItems[progressAndDescriptionCounter].progress}%
         </Typography>
-        <Typography color="textPrimary" variant="body2">
-          Addition of new derivatives markets including options,<br /> binary options and physically settled markets
-      </Typography>
+        <Fade in={true}>
+          <Typography color="textPrimary" variant="body2" className={classes.roadMapDescription}>
+            {roadMapAnimationItems[progressAndDescriptionCounter].description}
+          </Typography>
+        </Fade>
+        <Typography color="textPrimary" variant="body2" style={{ color: "#c4c4c4" }}>
+          - Read more on roadmap page -
+          {/* <CTAButton text={"Read More"} link={"https://staging.carbon.network/roadmap"} /> */}
+        </Typography>
         <br />
         <br />
         <Grid container style={{ zIndex: 9, position: "relative" }}>
@@ -123,7 +150,7 @@ const RoadMap: React.FC = () => {
         <Hidden mdUp>
           <div className={classes.button}>
             <CTAButton
-              text="SEE FEATURE MAP"
+              text="See Full Roadmap"
               link="/roadmap"
               CTA
             />
@@ -137,7 +164,17 @@ const RoadMap: React.FC = () => {
 export default RoadMap;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  roadMapDescription: {
+    maxWidth: "46rem",
+    margin: "auto",
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    lineClamp: 2,
+    boxOrient: "vertical",
+    display: "-webkit-box",
+  },
   percentage: {
+    transition: "all 1s ease-in",
     fontWeight: 600,
     fontSize: "3.138rem",
     [theme.breakpoints.down(1080)]: {
@@ -181,7 +218,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   roadMapSVGContainer: {
     pointerEvents: "none",
     position: "relative",
-    marginBottom: "-42vw",
+    marginBottom: "-38vw",
     [theme.breakpoints.down("sm")]: {
       marginBottom: "-48%",
     },

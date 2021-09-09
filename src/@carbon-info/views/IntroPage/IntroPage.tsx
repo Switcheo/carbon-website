@@ -29,9 +29,9 @@ const IntroPage: React.FC = () => {
           </FadeAndSlide>
           <IntroPageBackgroundLine className={classes.dash} />
           <Typography color="textPrimary" variant="h2" className={clsx(classes.mainTitle, { open: inView })} >
-            Breathing Life into
+            Breathing life into
             <br />
-            <span className={clsx(classes.gradientText, { open: inView })} >Decentralized<br /> Finance</span>
+            <span className={clsx(classes.gradientText, { open: inView })} >decentralized<br /> finance</span>
           </Typography>
           <FadeAndSlide visible={inView}>
             <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>

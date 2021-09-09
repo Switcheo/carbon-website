@@ -14,7 +14,7 @@ const Permissionless: React.FC = () => {
   const classes = useStyles();
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.5,
+    threshold: 0.35,
     triggerOnce: true,
   });
   return (
@@ -54,7 +54,7 @@ const Permissionless: React.FC = () => {
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
               title={"Trustless, scalable, low-fees"}
-              description={"Built on Tendermint Core to facilitate secure transactions at scale with ultra-low costs"}
+              description={"Built on Tendermint Core to facilitate secure, scalable and instantaneous trades at ultra-low costs."}
               icon={<TrustlessIcon />}
               size="small"
               iconAlignment="top"
@@ -62,8 +62,8 @@ const Permissionless: React.FC = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
-              title={"Permissionless, censorship resistant"}
-              description={"Supports creation of any type of DeFi innovations powered by complex financial instruments such as futures and more"}
+              title={"Completely permissionless"}
+              description={"Supports the creation of any DeFi innovation, even those powered by complex financial instruments like futures."}
               icon={<MilitaryIcon />}
               size="small"
               iconAlignment="top"
@@ -72,7 +72,7 @@ const Permissionless: React.FC = () => {
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
               title={"Powerful primitives"}
-              description={"Comes with robust building blocks such as as fully decentralized central limit order books (CLOBs) that can be built upon by anyone"}
+              description={"Equipped with robust building blocks such as fully decentralized central limit order books that anyone can build on."}
               icon={<DecentralizedIcon />}
               size="small"
               iconAlignment="top"

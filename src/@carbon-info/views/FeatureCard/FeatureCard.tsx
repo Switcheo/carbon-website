@@ -12,10 +12,9 @@ const FeatureCard: React.FC = () => {
   const classes = useStyles();
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.8,
+    threshold: 0.6,
     triggerOnce: true,
   });
-
   return (
     <div ref={ref} className={classes.aniContainer} id="featureCard">
       <Hidden smDown>

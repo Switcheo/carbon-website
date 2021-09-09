@@ -1,4 +1,4 @@
-import { Box, Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, Grid, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
@@ -8,12 +8,13 @@ interface cardProps {
   description: string,
   icon: any,
   iconAlignment?: "side" | "top",
-  size?: "small" | "normal" | "large"
+  size?: "small" | "normal" | "large",
+  CTAicon?: any[],
 }
 
 const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
-  const { title, description, size, icon, iconAlignment = "side" } = props;
+  const { title, description, size, icon, iconAlignment = "side", CTAicon } = props;
   const boxSize = size ? `boxContainer${size}` : "boxContainer";
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
@@ -32,7 +33,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
               <Grid item xs={2} className={classes.sideIcon}>
                 {icon}
               </Grid>
-              <Grid container item xs={10} className={classes.textContainer}>
+              <Grid container item xs={10} className={CTAicon && CTAicon?.length > 0 ? classes.textContainerWithSocialIcons : classes.textContainer}>
                 <Grid item xs={12}>
                   <Typography className={classes.divTitle} color="textPrimary" paragraph={isDesktop}>
                     {title}
@@ -44,6 +45,21 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
                     {description}
                   </Typography>
                 </Grid>
+                {CTAicon && CTAicon?.length > 0 &&
+                  (
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      {CTAicon.map((o: any, index) => {
+                        return (
+                          <Grid item key={o.link}>
+                            <Link href={o.link} className={classes.iconWrapper} style={{ marginLeft: index > 0 ? "1rem" : 0 }}>
+                              {o.icon}
+                            </Link>
+                          </Grid>
+                        );
+                      })}
+                    </div>
+                  )
+                }
               </Grid>
             </Grid>
             :
@@ -52,7 +68,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
                 {icon}
               </Grid>
               <Grid item xs={12} className={classes.contentContainer}>
-                <Typography className={classes.divTitle} color="textPrimary" paragraph>
+                <Typography className={classes.divTitleTop} style={{ width: title === "Powerful primitives" ? "70%" : "98%" }} color="textPrimary" paragraph>
                   {title}
                 </Typography>
                 {/* <br /> */}
@@ -72,6 +88,26 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
 export default CardWithIcon;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  iconWrapper: {
+    cursor: "pointer",
+    "& > svg": {
+      [theme.breakpoints.down("sm")]: {
+        width: "3rem",
+      },
+    },
+  },
+  textContainerWithSocialIcons: {
+    display: "grid",
+    gridTemplateRows: "20% 65% auto",
+    [theme.breakpoints.down("sm")]: {
+      // gap: 10,
+      gridTemplateRows: "20% 55% auto",
+    },
+    [theme.breakpoints.down(330)]: {
+      // gap: 10,
+      gridTemplateRows: "20% 58% auto",
+    },
+  },
   textContainer: {
     display: "grid",
     gridTemplateRows: "20% 80%",
@@ -192,7 +228,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 30,
     padding: "2em",
     margin: "auto",
-    height: "100%",
+    // height: "100%",
     width: "20rem",
     textAlign: "start",
     opacity: 0,
@@ -253,7 +289,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 30,
     padding: "2em 3em 2em 4em",
     // width: "485px",
-    height: "14rem",
+    height: "17rem",
     // width: "16rem",
     textAlign: "start",
     opacity: 0,
@@ -294,8 +330,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "1em 3em 3em 4em",
+      padding: "1em 3em 4.5em 4em",
       width: "70%",
+    },
+    [theme.breakpoints.down(380)]: {
+      padding: "1em 3em 6em 4em",
     },
   },
   divTitle: {
@@ -308,6 +347,20 @@ const useStyles = makeStyles((theme: Theme) => ({
     //   fontSize: "1.5rem",
     // },
   },
+  divTitleTop: {
+    overflowWrap: "anywhere",
+    fontFamily: "TyrosPro",
+    fontWeight: 300,
+    fontSize: "2rem",
+    lineHeight: "2.3rem",
+    width: "93%",
+    [theme.breakpoints.down("sm")]: {
+      width: "76%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "90%",
+    },
+  },
   contentContainer: {
     height: "50%",
     [theme.breakpoints.down("sm")]: {
@@ -316,15 +369,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   contentContainerWrapper: {
     display: "grid",
-    gridTemplateRows: "10% 20% 70%",
+    gridTemplateRows: "10% 14% 70%",
     padding: "1rem 0rem",
     height: "100%",
     alignItems: "center",
-    gap: "0.5rem",
+    gap: "1.5rem",
     [theme.breakpoints.down("sm")]: {
       height: "auto",
+      gridTemplateRows: "10% 8% 70%",
     },
     [theme.breakpoints.down("xs")]: {
+      gridTemplateRows: "10% 16% 70%",
       gap: "3rem",
       alignItems: "flex-start",
       height: "23rem",

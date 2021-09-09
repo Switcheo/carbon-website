@@ -11,5 +11,6 @@ export const Path = {
     Youtube: "https://www.youtube.com/channel/UCqZ9sxvw-0UoHzno4-d97oQ",
     Medium: "https://medium.com/switcheo",
     Discord: "https://discord.gg/SPh62Hf",
+    Demex: "https://app.dem.exchange",
   },
 };

@@ -57,10 +57,11 @@ const RoadMapButton: React.FC<Props> = (props: Props) => {
   let { step, percent, text, isMobile = false, isTablet = false, isWideDesktop = false } = props;
   const coordinates = isWideDesktop ? coordinatesWideDesktop : isMobile ? coordinatesMobile : isTablet ? coordinatesTablet : coordinatesDesktop;
   const classes = useStyles();
+  if (!step && step !== 0) step = 4;
   if (step <= -4 || step >= 4) return <></>;
   let fontStyle = {};
-  if (step === 0) fontStyle = {};
-  else if (step === 1 || step === -1) fontStyle = { transform: "scale(0.8)" };
+  if (step === 0) fontStyle = { top: text.length <= 15 ? "-3rem" : text.length > 40 ? "-7rem" : "", left: text.length < 5 ? "-6.5rem" : "" };
+  else if (step === 1 || step === -1) fontStyle = { transform: "scale(0.8)", top: text.length <= 15 ? "-3rem" : "" };
   else if ((step >= 2 || step <= -2)) fontStyle = { transform: "scale(0.5)", color: "rgb(255,255,255,0.38)", top: "-3.5rem", left: step < 0 ? "-7rem" : "-1rem" };
   return (
     <div className={classes.centerSphereContainer} id="sphere" style={{
@@ -100,9 +101,9 @@ const useStyles = makeStyles(() => ({
     fontWeight: 300,
     fontSize: "2.063rem",
     lineHeight: "2.228rem",
-    width: "18rem",
+    width: "23rem",
     top: "-5rem",
-    left: "-4rem",
+    left: "-6.5rem",
     // letterSpacing: "-3px",
   },
   circular: {
