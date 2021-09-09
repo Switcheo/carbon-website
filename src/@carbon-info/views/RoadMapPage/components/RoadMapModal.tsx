@@ -11,7 +11,6 @@ interface Props {
     status: string;
     progress: number;
     link: string;
-    longDescription?: string;
   };
   incrementTab: () => void;
   decrementTab: () => void;
@@ -22,7 +21,7 @@ interface Props {
 const RoadMapModal: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
   const { content, mainTitle, incrementTab, decrementTab, closeModal } = props;
-  const { title, status, progress, link, longDescription } = content;
+  const { title, status, progress, link, description } = content;
   return (
     <div className={classes.container}>
       <MenuIconClose style={{ position: "absolute", top: 20, right: 20 }} onClick={closeModal} />
@@ -52,7 +51,7 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
           What is this about? Why is it important?
         </Typography>
         <Typography color="textPrimary" variant="body2" className={classes.description}>
-          {longDescription}
+          {description}
         </Typography>
       </div>
       <Divider style={{ backgroundColor: "#212125" }} className={classes.divider} />
