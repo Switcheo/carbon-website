@@ -16,7 +16,8 @@ interface Props {
       description: string;
       status: string;
       progress: number;
-      link: string;
+      docLink: string;
+      githubLink: string;
     }[];
   }[],
 }
@@ -30,7 +31,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
   const [showModal, setShowModal] = useState(false);
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.56,
+    threshold: 0.4,
     triggerOnce: true,
   });
 

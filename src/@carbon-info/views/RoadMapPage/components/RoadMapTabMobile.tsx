@@ -17,7 +17,8 @@ interface Props {
       description: string;
       status: string;
       progress: number;
-      link: string;
+      docLink: string;
+      githubLink: string;
     }[];
   }[],
 }

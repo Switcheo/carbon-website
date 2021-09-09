@@ -10,7 +10,8 @@ interface Props {
     description: string;
     status: string;
     progress: number;
-    link: string;
+    docLink: string;
+    githubLink: string;
   };
   incrementTab: () => void;
   decrementTab: () => void;
@@ -21,11 +22,11 @@ interface Props {
 const RoadMapModal: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
   const { content, mainTitle, incrementTab, decrementTab, closeModal } = props;
-  const { title, status, progress, link, description } = content;
+  const { title, status, progress, docLink, githubLink, description } = content;
   return (
     <div className={classes.container}>
       <MenuIconClose style={{ position: "absolute", top: 20, right: 20 }} onClick={closeModal} />
-      <Grid container alignItems="center">
+      <Grid container alignItems="center" className={classes.titleContainer}>
         <Grid item xs={2} className={classes.circular}>
           <CircularProgressbar
             value={progress}
@@ -58,22 +59,30 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
       <Hidden smDown>
         <div style={{ display: "flex", flexDirection: "row", margin: "2rem 0px", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "row", gap: 20 }}>
-            <Link href={link} underline="none" target="_blank">
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
-                <DocsIcon style={{ height: "2rem" }} />
-                <Typography color="textPrimary" variant="body2">
-                  Docs
+            {
+              docLink && (
+                <Link href={docLink} underline="none" target="_blank">
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
+                    <DocsIcon style={{ height: "2rem" }} />
+                    <Typography color="textPrimary" variant="body2">
+                      Docs
               </Typography>
-              </div>
-            </Link>
-            <Link href={link} underline="none" target="_blank">
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
-                <GitHubIcon style={{ height: "2rem" }} />
-                <Typography color="textPrimary" variant="body2">
-                  GitHub
+                  </div>
+                </Link>
+              )
+            }
+            {
+              githubLink && (
+                <Link href={githubLink} underline="none" target="_blank">
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
+                    <GitHubIcon style={{ height: "2rem" }} />
+                    <Typography color="textPrimary" variant="body2">
+                      GitHub
               </Typography>
-              </div>
-            </Link>
+                  </div>
+                </Link>
+              )
+            }
           </div>
           <div style={{ marginLeft: "auto", display: "flex", flexDirection: "row", gap: 20 }}>
             <RoadMapButton direction="left" size={"small"} callback={decrementTab} />
@@ -84,22 +93,35 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
       <Hidden mdUp>
         <div style={{ display: "flex", flexDirection: "column", margin: "2rem 0px", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "row", gap: 20 }}>
-            <Link href={link} underline="none" target="_blank">
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
-                <DocsIcon style={{ height: "3rem" }} />
-                <Typography color="textPrimary" variant="body2">
-                  Docs
-              </Typography>
-              </div>
-            </Link>
-            <Link href={link} underline="none" target="_blank">
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
-                <GitHubIcon style={{ height: "3rem" }} />
-                <Typography color="textPrimary" variant="body2">
-                  GitHub
-              </Typography>
-              </div>
-            </Link>
+            {
+              docLink && (
+                <Link href={docLink} underline="none" target="_blank">
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
+                    <DocsIcon style={{ height: "3rem" }} />
+                    <Typography color="textPrimary" variant="body2">
+                      Docs
+                </Typography>
+                  </div>
+                </Link>
+              )
+            }
+            {
+              githubLink && (
+                <Link href={githubLink} underline="none" target="_blank">
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
+                    <GitHubIcon style={{ height: "3rem" }} />
+                    <Typography color="textPrimary" variant="body2">
+                      GitHub
+                    </Typography>
+                  </div>
+                </Link>
+              )
+            }
+            {
+              (!githubLink && !docLink) && (
+                <div style={{ height: "5.9rem" }} />
+              )
+            }
           </div>
           <div style={{ display: "flex", flexDirection: "row", gap: 20, marginTop: "3rem" }}>
             <span style={{ marginRight: "5rem" }}>
@@ -118,6 +140,15 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
 export default RoadMapModal;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  titleContainer: {
+    height: "9.5rem",
+    [theme.breakpoints.down("xs")]: {
+      height: "11rem",
+    },
+    [theme.breakpoints.down(330)]: {
+      height: "10.5rem",
+    },
+  },
   divider: {
     margin: "2rem 0px",
   },
@@ -160,6 +191,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: "1.1rem",
   },
   textContainer: {
+    height: "14rem",
     margin: "1rem 0px",
   },
   container: {
