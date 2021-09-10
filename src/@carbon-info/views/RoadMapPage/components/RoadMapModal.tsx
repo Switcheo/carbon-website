@@ -171,6 +171,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: "1.1rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.2rem",
+      lineHeight: "1.7rem",
     },
   },
   divTitle: {
