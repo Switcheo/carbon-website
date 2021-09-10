@@ -61,8 +61,8 @@ const RoadMapButton: React.FC<Props> = (props: Props) => {
   if (step <= -4 || step >= 4) return <></>;
   let fontStyle = {};
   if (step === 0) fontStyle = { top: text.length <= 15 ? "-3rem" : text.length > 40 ? "-7rem" : "", left: text.length < 5 ? "-6.5rem" : "" };
-  else if (step === 1 || step === -1) fontStyle = { transform: "scale(0.8)", top: text.length <= 15 ? "-3rem" : "" };
-  else if ((step >= 2 || step <= -2)) fontStyle = { transform: "scale(0.5)", color: "rgb(255,255,255,0.38)", top: "-3.5rem", left: step < 0 ? "-7rem" : "-1rem" };
+  else if (step === 1 || step === -1) fontStyle = { transform: "scale(0.8)", top: text.length <= 15 ? "-3rem" : text.length > 40 ? "-7rem" : "" };
+  else if ((step >= 2 || step <= -2)) fontStyle = { transform: "scale(0.5)", color: "rgb(255,255,255,0.38)", top: text.length > 40 ? "-5.5rem" : text.length < 5 ? "-2.5rem" : "-3.5rem", left: step < 0 ? "-9rem" : text.length < 5 ? "-3.5rem" : "-2.5rem" };
   return (
     <div className={classes.centerSphereContainer} id="sphere" style={{
       transform: `rotate(${coordinates[step][0]}deg) translateX(55vw) rotate(-${coordinates[step][0]}deg) ${step == -1 || step == 1 ? "scale(0.9)" : ""} ${step <= -2 || step >= 2 ? "scale(0.8)" : ""}`,

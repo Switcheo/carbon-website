@@ -178,6 +178,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "4rem",
   },
   status: {
+    marginTop: "auto",
     color: "#74E8E8",
     "&.completed": {
       color: "#5B5656",
@@ -187,6 +188,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 400,
   },
   arrowIcon: {
+    marginTop: "auto",
     cursor: "pointer",
     alignSelf: "center",
     justifySelf: "center",
@@ -215,6 +217,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "-webkit-box",
   },
   contentCardContainer: {
+    height: "100%",
+    boxSizing: "border-box",
     gridTemplateRows: "4rem",
     rowGap: "1.6rem",
     display: "grid",

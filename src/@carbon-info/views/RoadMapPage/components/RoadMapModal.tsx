@@ -161,12 +161,13 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "90%",
     },
     [theme.breakpoints.down("xs")]: {
-      lineHeight: "28px",
+      lineHeight: "20px",
       width: "90%",
     },
   },
   description: {
     color: "#8C909D",
+    lineHeight: "1.5rem",
     fontSize: "1.1rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.2rem",
@@ -191,8 +192,26 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: "1.1rem",
   },
   textContainer: {
-    height: "14rem",
+    boxSizing: "border-box",
+    overflowY: "auto",
+    "&::-webkit-scrollbar": {
+      width: "2px",
+      backgroundColor: "#554B4B",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "#74E8E8",
+      borderRadius: "4px",
+      height: "10px",
+      transform: "scale(0.3)",
+    },
+    height: "12.5rem",
     margin: "1rem 0px",
+    [theme.breakpoints.down("sm")]: {
+      height: "14rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "17.5rem",
+    },
   },
   container: {
     position: "relative",
@@ -204,10 +223,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 15,
     border: "0.1px solid #196163",
     [theme.breakpoints.down("sm")]: {
-      margin: "15% auto 9rem auto",
+      margin: "10% auto 9rem auto",
     },
     [theme.breakpoints.down("xs")]: {
-      margin: "25% auto 9rem auto",
+      margin: "25% 1rem 9rem 1rem",
       padding: "7rem 2rem",
     },
   },
