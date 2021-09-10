@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Box, Fade, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, Fade, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import roadMapBG from "@carbon-info/assets/background/roadmapLineBg.png";
 import roadMapGlow from "@carbon-info/assets/background/roadMapGlow.svg";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import { RoadMapButton, SphereWithText } from "./components";
 import { roadMapAnimationItems } from "@carbon-info/constants";
+import { ArrowIcon } from "@carbon-info/assets";
 // import * as d3 from "d3";
 
 const initialViewState = (data: any) => {
@@ -133,10 +134,13 @@ const RoadMap: React.FC = () => {
             {roadMapAnimationItems[progressAndDescriptionCounter].description}
           </Typography>
         </Fade>
-        <Typography color="textPrimary" variant="body2" style={{ color: "#c4c4c4" }}>
-          - Read more on roadmap page -
-          {/* <CTAButton text={"Read More"} link={"https://staging.carbon.network/roadmap"} /> */}
-        </Typography>
+        <Link href={"/roadmap"} target={"_blank"} underline="none">
+          <Typography color="textPrimary" variant="body2" style={{ color: "#c4c4c4", marginTop: "1rem", cursor: "pointer" }}>
+            Read more
+          <ArrowIcon className={classes.arrowIcon} />
+            {/* <CTAButton text={"Read More"} link={"https://staging.carbon.network/roadmap"} /> */}
+          </Typography>
+        </Link>
         <br />
         <br />
         <Grid container style={{ zIndex: 9, position: "relative" }}>
@@ -164,6 +168,14 @@ const RoadMap: React.FC = () => {
 export default RoadMap;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  arrowIcon: {
+    width: "1.7rem",
+    verticalAlign: "middle",
+    margin: "0px 0.5rem",
+    "& > path": {
+      fill: "#c4c4c4",
+    },
+  },
   roadMapDescription: {
     maxWidth: "46rem",
     margin: "auto",
@@ -192,7 +204,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
   },
   button: {
-    margin: "7rem",
+    margin: "7rem auto",
   },
   boxContainer: {
     margin: "50vh 0px",
