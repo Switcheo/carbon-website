@@ -16,33 +16,41 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import { ContentfulClient, ContentfulProvider } from "react-contentful";
+const contentfulClient: any = new (ContentfulClient as any)({
+  accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
+  space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+});
+
 function App() {
   return (
     <Router>
-      <MuiThemeProvider theme={theme}>
-        <MainLayout>
-          <Switch>
-            <Route path="/roadmap">
-              <RoadMapPage />
-            </Route>
-            <Route path="/">
-              <>
-                <IntroPage />
-                <HeroImage />
-                <FeatureCard />
-                <UtilitySection />
-                <Permissionless />
-                <DecentralizedStats />
-                <Community />
-                <Partnership />
-                <RoadMap />
-                <GetInvolved />
-                <RecieveUpdates />
-              </>
-            </Route>
-          </Switch>
-        </MainLayout>
-      </MuiThemeProvider>
+      <ContentfulProvider client={contentfulClient}>
+        <MuiThemeProvider theme={theme}>
+          <MainLayout>
+            <Switch>
+              <Route path="/roadmap">
+                <RoadMapPage />
+              </Route>
+              <Route path="/">
+                <>
+                  <IntroPage />
+                  <HeroImage />
+                  <FeatureCard />
+                  <UtilitySection />
+                  <Permissionless />
+                  <DecentralizedStats />
+                  <Community />
+                  <Partnership />
+                  <RoadMap />
+                  <GetInvolved />
+                  <RecieveUpdates />
+                </>
+              </Route>
+            </Switch>
+          </MainLayout>
+        </MuiThemeProvider>
+      </ContentfulProvider>
     </Router>
   );
 }

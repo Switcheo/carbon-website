@@ -7,6 +7,7 @@ import { useInView } from "react-intersection-observer";
 import { RoadMapButton, SphereWithText } from "./components";
 import { roadMapAnimationItems } from "@carbon-info/constants";
 import { ArrowIcon } from "@carbon-info/assets";
+// import { useContentful } from "react-contentful";
 // import * as d3 from "d3";
 
 const initialViewState = (data: any) => {
@@ -38,6 +39,14 @@ const RoadMap: React.FC = () => {
     threshold: 0.5,
     triggerOnce: true,
   });
+  // const { data, error, fetched, loading } = useContentful({
+  //   contentType: "carbonRoadmapEntry",
+  //   // query: {
+  //   //   "fields.slug[in]": `/${props.match.slug || ""}`,
+  //   // }
+  // });
+
+  // console.log(data, error, fetched, loading);
 
   function useThrottle(func: any, delay: any) {
     const [inThrottle, setInThrottle] = useState<any>(false);

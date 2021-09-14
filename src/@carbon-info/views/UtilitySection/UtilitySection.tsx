@@ -5,7 +5,7 @@ import utilityBackgroundSphere from "@carbon-info/assets/background/ultilityBgSp
 import utilityBgMobile from "@carbon-info/assets/background/utilityBgMobile.png";
 import utilityGlow from "@carbon-info/assets/background/utilityGlow.svg";
 import { CardWithIcon, FadeAndSlide } from "@carbon-info/components";
-import { LaunchIcon, TradeIcon, TransactIcon } from "@carbon-info/assets";
+import { LaunchIcon, MilitaryIcon, TradeIcon } from "@carbon-info/assets";
 import { useInView } from "react-intersection-observer";
 // import { Trade } from "@carbon-info/assets";
 
@@ -74,7 +74,7 @@ const UtilitySection: React.FC = () => {
                     <CardWithIcon
                       title={"VERSATILE"}
                       description={"One protocol, limitless possibilities. You can build any DeFi innovation on top of Carbon. "}
-                      icon={<TransactIcon />} />
+                      icon={<LaunchIcon />} />
                   </FadeAndSlide>
                 </Grid>
                 <Grid item xs={12} sm={6} className={classes.gridItemRight}>
@@ -82,7 +82,7 @@ const UtilitySection: React.FC = () => {
                     <CardWithIcon
                       title={"SECURE"}
                       description={"A custom-built sidechain secured by a distributed network of validators to ensure trustless and permissionless transactions."}
-                      icon={<LaunchIcon />} />
+                      icon={<MilitaryIcon />} />
                   </FadeAndSlide>
                 </Grid>
               </Grid>
@@ -106,7 +106,7 @@ const UtilitySection: React.FC = () => {
                     <CardWithIcon
                       title={"VERSATILE"}
                       description={"One protocol, limitless possibilities. You can build any DeFi innovation on top of Carbon. "}
-                      icon={<TransactIcon />} />
+                      icon={<LaunchIcon />} />
                   </FadeAndSlide>
                 </Grid>
                 <Grid item className={classes.gridItemRight}>
@@ -114,7 +114,7 @@ const UtilitySection: React.FC = () => {
                     <CardWithIcon
                       title={"SECURE"}
                       description={"A custom-built sidechain secured by a distributed network of validators to ensure trustless and permissionless transactions."}
-                      icon={<LaunchIcon />} />
+                      icon={<MilitaryIcon />} />
                   </FadeAndSlide>
                 </Grid>
               </Grid>

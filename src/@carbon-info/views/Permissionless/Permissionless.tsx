@@ -3,7 +3,7 @@ import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useThe
 import permissionlessSVG from "@carbon-info/assets/non-animated/permissionlessHeroSVG.png";
 import permissionlessGlowSVG from "@carbon-info/assets/background/permissionless-glow.svg";
 import { CardWithIcon, FadeAndSlide } from "@carbon-info/components";
-import { DecentralizedIcon, MilitaryIcon, TrustlessIcon } from "@carbon-info/assets";
+import { DecentralizedIcon, TrustlessIcon } from "@carbon-info/assets";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 
@@ -64,7 +64,7 @@ const Permissionless: React.FC = () => {
             <CardWithIcon
               title={"Completely permissionless"}
               description={"Supports the creation of any DeFi innovation, even those powered by complex financial instruments like futures."}
-              icon={<MilitaryIcon />}
+              icon={<TrustlessIcon />}
               size="small"
               iconAlignment="top"
             />

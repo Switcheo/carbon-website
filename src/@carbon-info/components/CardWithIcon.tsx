@@ -144,16 +144,21 @@ const useStyles = makeStyles((theme: Theme) => ({
   sideIcon: {
     textAlign: "center",
     marginTop: "0.063rem",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "-0.23rem",
+    },
     [theme.breakpoints.down("xs")]: {
+      marginTop: "-0.73rem",
       "& > svg": {
         width: "200%",
       },
     },
     [theme.breakpoints.down(325)]: {
-      "& > svg": {
-        width: "350%",
-        transform: "translateX(-6px)",
-      },
+      marginTop: "-0.63rem",
+      // "& > svg": {
+      //   width: "350%",
+      //   transform: "translateX(-6px)",
+      // },
     },
   },
   boxContainer: {

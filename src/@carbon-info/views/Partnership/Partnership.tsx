@@ -1,8 +1,8 @@
 import React from "react";
-import { Box, Grid, Grow, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, Grid, Grow, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import partnershipGlow from "@carbon-info/assets/background/partnershipGlow.svg";
 import { allPartnersLogo } from "@carbon-info/assets";
-import { CTAButton, FadeAndSlide } from "@carbon-info/components";
+import { FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 
 const Partnership: React.FC = () => {
@@ -10,7 +10,6 @@ const Partnership: React.FC = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.35,
@@ -30,14 +29,14 @@ const Partnership: React.FC = () => {
             }
           </Typography >
         </FadeAndSlide>
-        <Hidden smDown>
+        {/* <Hidden smDown>
           <FadeAndSlide visible={inView} delay={0.2}>
             <CTAButton
               text="SEE FULL ECOSYSTEM"
               link="/#ECOSYSTEM"
             />
           </FadeAndSlide>
-        </Hidden>
+        </Hidden> */}
         <Grid container alignItems="center" justifyContent="center" className={classes.logoContainer} spacing={isTablet ? 2 : 8}>
           {allPartnersLogo.map((logo: any, index) => {
             return (
@@ -50,7 +49,7 @@ const Partnership: React.FC = () => {
           })}
           <div id="gradientOver;ay" className={classes.gradientOverlay} />
           <img src={partnershipGlow} alt="glow" className={classes.glowSVG} />
-          <Hidden mdUp>
+          {/* <Hidden mdUp>
             <Grid item xs={12} className={classes.cta}>
               <FadeAndSlide visible={inView} delay={0.2}>
                 <div className={classes.mobileCTAButton}>
@@ -64,7 +63,7 @@ const Partnership: React.FC = () => {
                 </div>
               </FadeAndSlide>
             </Grid>
-          </Hidden>
+          </Hidden> */}
         </Grid>
       </Box>
     </div>
