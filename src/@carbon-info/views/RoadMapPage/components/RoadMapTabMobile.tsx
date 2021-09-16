@@ -37,14 +37,14 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
 
   const incrementTab = () => {
     setTabView((prev) => {
-      if (prev + 1 > content[view].tabs.length - 1) return 0;
+      if (prev + 1 > content[view]?.tabs.length - 1) return 0;
       else return prev + 1;
     });
   };
 
   const decrementTab = () => {
     setTabView((prev) => {
-      if (prev - 1 < 0) return prev - 1 + content[view].tabs.length;
+      if (prev - 1 < 0) return prev - 1 + content[view]?.tabs.length;
       else return prev - 1;
     });
   };
@@ -58,7 +58,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <RoadMapModal closeModal={() => setShowModal(false)} content={content[view].tabs[tabView]} mainTitle={content[view].title} incrementTab={incrementTab} decrementTab={decrementTab} />
+        <RoadMapModal closeModal={() => setShowModal(false)} content={content[view]?.tabs[tabView]} mainTitle={content[view]?.title} incrementTab={incrementTab} decrementTab={decrementTab} />
       </Modal>
       <Box className={clsx(classes.container, { open: inView })}>
         {

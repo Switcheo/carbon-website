@@ -57,6 +57,7 @@ const RoadMapButton: React.FC<Props> = (props: Props) => {
   let { step, percent, text, isMobile = false, isTablet = false, isWideDesktop = false } = props;
   const coordinates = isWideDesktop ? coordinatesWideDesktop : isMobile ? coordinatesMobile : isTablet ? coordinatesTablet : coordinatesDesktop;
   const classes = useStyles();
+  step = Math.ceil(step);
   if (!step && step !== 0) step = 4;
   if (step <= -4 || step >= 4) return <></>;
   let fontStyle = {};

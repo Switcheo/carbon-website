@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Fade, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import roadMapBG from "@carbon-info/assets/background/roadmapLineBg.png";
 import roadMapGlow from "@carbon-info/assets/background/roadMapGlow.svg";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import { RoadMapButton, SphereWithText } from "./components";
-import { roadMapAnimationItems } from "@carbon-info/constants";
 import { ArrowIcon } from "@carbon-info/assets";
-// import { useContentful } from "react-contentful";
-// import * as d3 from "d3";
+import { useContentful } from "react-contentful";
 
 const initialViewState = (data: any) => {
   let result: number[] = [0];
@@ -31,22 +29,40 @@ const RoadMap: React.FC = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isWideDesktop = useMediaQuery(theme.breakpoints.up("xl"));
-  const [progressAndDescriptionCounter, setProgressAndDescriptionCounter] = useState<any>(initialCounter(roadMapAnimationItems));
+  const [progressAndDescriptionCounter, setProgressAndDescriptionCounter] = useState<any>(initialCounter([]));
   const [step, setStep] = useState<any>(0);
-  const [view, setView] = useState(initialViewState(roadMapAnimationItems));
+  const [roadMapItems, setRoadMapItems] = useState<any[]>([]);
+  const [view, setView] = useState([0]);
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.5,
     triggerOnce: true,
   });
-  // const { data, error, fetched, loading } = useContentful({
-  //   contentType: "carbonRoadmapEntry",
-  //   // query: {
-  //   //   "fields.slug[in]": `/${props.match.slug || ""}`,
-  //   // }
-  // });
+  const { data } = useContentful({
+    contentType: "carbonRoadmap",
+  });
 
-  // console.log(data, error, fetched, loading);
+  useEffect(() => {
+    if (!data && view) return;
+    async function fetchRoadMapItems() {
+      let result: any[] = [];
+      const content = await data as any;
+      content?.includes?.Entry?.forEach((entry: any) => {
+        result.push({
+          docLink: entry?.fields?.link,
+          githubLink: entry?.fields?.githubLink,
+          progress: entry?.fields?.progress,
+          status: entry?.fields?.status,
+          title: entry?.fields?.title,
+          description: entry?.fields?.description?.content[0]?.content[0]?.value,
+        });
+      });
+      setRoadMapItems(result);
+      setView(initialViewState(result));
+      setProgressAndDescriptionCounter(initialCounter(result));
+    }
+    fetchRoadMapItems();
+  }, [data]);
 
   function useThrottle(func: any, delay: any) {
     const [inThrottle, setInThrottle] = useState<any>(false);
@@ -63,9 +79,9 @@ const RoadMap: React.FC = () => {
     return throttledFunc;
   }
 
-  const incrementStep = () => {
+  const decrementStep = () => {
     setProgressAndDescriptionCounter((prev: number) => {
-      return prev + 1 > roadMapAnimationItems.length - 1 ? 0 : prev + 1;
+      return prev + 1 > roadMapItems.length - 1 ? 0 : prev + 1;
     });
     setStep((prev: number) => setStep(prev + 1));
     setView((prev): any => {
@@ -77,9 +93,9 @@ const RoadMap: React.FC = () => {
     });
   };
 
-  const decrementStep = () => {
+  const incrementStep = () => {
     setProgressAndDescriptionCounter((prev: number) => {
-      return prev - 1 < 0 ? roadMapAnimationItems.length - 1 : prev - 1;
+      return prev - 1 < 0 ? roadMapItems.length - 1 : prev - 1;
     });
     setStep((prev: number) => setStep(prev - 1));
     setView((prev): any => {
@@ -90,7 +106,6 @@ const RoadMap: React.FC = () => {
       return temp;
     });
   };
-
   return (
     <div ref={ref} id="roadMap">
       <Box className={classes.boxContainer}>
@@ -126,7 +141,7 @@ const RoadMap: React.FC = () => {
                 transform: `rotate(${step * 0}deg)`, transition: "all 0.3s ease-in",
                 width: "100%",
               }}>
-                {roadMapAnimationItems.map((items, index) => {
+                {roadMapItems.map((items, index) => {
                   return (
                     <SphereWithText key={index} step={view[index]} percent={items.progress} text={items.title} isMobile={isMobile} isTablet={isTablet} isWideDesktop={isWideDesktop} />
                   );
@@ -136,11 +151,11 @@ const RoadMap: React.FC = () => {
           </Grid>
         </FadeAndSlide>
         <Typography color="textPrimary" variant="h2" paragraph className={classes.percentage}>
-          {roadMapAnimationItems[progressAndDescriptionCounter].progress}%
+          {roadMapItems[progressAndDescriptionCounter]?.progress}%
         </Typography>
         <Fade in={true}>
           <Typography color="textPrimary" variant="body2" className={classes.roadMapDescription}>
-            {roadMapAnimationItems[progressAndDescriptionCounter].description}
+            {roadMapItems[progressAndDescriptionCounter]?.description}
           </Typography>
         </Fade>
         <Link href={"/roadmap"} target={"_blank"} underline="none">

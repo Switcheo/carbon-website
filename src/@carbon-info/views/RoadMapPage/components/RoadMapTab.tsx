@@ -37,7 +37,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
 
   const incrementTab = () => {
     setTabView((prev) => {
-      if (prev + 1 > content[view].tabs
+      if (prev + 1 > content[view]?.tabs
         .filter(o => o.status === (showCompleted ? "Completed" : "In progress")).length - 1) return 0;
       else return prev + 1;
     });
@@ -45,7 +45,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
 
   const decrementTab = () => {
     setTabView((prev) => {
-      if (prev - 1 < 0) return prev - 1 + content[view].tabs
+      if (prev - 1 < 0) return prev - 1 + content[view]?.tabs
         .filter(o => o.status === (showCompleted ? "Completed" : "In progress")).length;
       else return prev - 1;
     });
@@ -61,8 +61,8 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
       >
         <RoadMapModal
           closeModal={() => setShowModal(false)}
-          content={content[view].tabs.filter(o => o.status === (showCompleted ? "Completed" : "In progress"))[tabView]}
-          mainTitle={content[view].title}
+          content={content[view]?.tabs.filter(o => o.status === (showCompleted ? "Completed" : "In progress"))[tabView]}
+          mainTitle={content[view]?.title}
           incrementTab={incrementTab}
           decrementTab={decrementTab} />
       </Modal>
@@ -72,7 +72,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
             {
               content.map((o, index) => {
                 return (
-                  <div onClick={() => setView(index)} key={o.title}>
+                  <div onClick={() => setView(index)} key={o.title} style={{ height: "100%" }}>
                     <Typography color="textPrimary" variant="h4" className={clsx(classes.tab, { selected: index === view })}>
                       {o.title}
                       {
@@ -90,8 +90,8 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
             <Grid item xs={12}>
               <div className={classes.descriptionAndFilterContainer}>
                 <span>
-                  <Typography color="textPrimary" variant="body1" align="left" style={{ maxWidth: "26rem" }}>
-                    {content[view].description}
+                  <Typography color="textPrimary" variant="body1" align="left" style={{ maxWidth: "36rem" }}>
+                    {content[view]?.description}
                   </Typography>
                 </span>
                 <span className={classes.FilterContainer}>
@@ -107,7 +107,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
             </Grid>
             <Grid container item xs={12} spacing={2}>
               {
-                content[view].tabs.filter(card => card.status === (showCompleted ? "Completed" : "In progress")).map((o, index) => {
+                content[view]?.tabs.filter(card => card.status === (showCompleted ? "Completed" : "In progress")).map((o, index) => {
                   return (
                     <Grid item xs={12} sm={6} md={4} key={o.title}>
                       <Grow in={inView} timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200}>
@@ -259,6 +259,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   tab: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
     lineHeight: "1.688rem",
     position: "relative",
     zIndex: 1,
@@ -291,6 +295,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   tabContainer: {
+    height: "100%",
     cursor: "pointer",
     backgroundColor: "#1B1C1F",
     boxShadow: "inset 84.877px 134.16px 136.898px -82.139px #242424, inset 0px 1.36898px 54.7594px rgba(85, 85, 85, 0.04)",

@@ -54,7 +54,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
 
   const incrementTab = () => {
     setTabView((prev) => {
-      if (prev + 1 > content[view].tabs
+      if (prev + 1 > content[view]?.tabs
         .filter(o => o.status === (showCompleted ? "Completed" : "In progress")).length - 1) return 0;
       else return prev + 1;
     });
@@ -62,7 +62,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
 
   const decrementTab = () => {
     setTabView((prev) => {
-      if (prev - 1 < 0) return prev - 1 + content[view].tabs
+      if (prev - 1 < 0) return prev - 1 + content[view]?.tabs
         .filter(o => o.status === (showCompleted ? "Completed" : "In progress")).length;
       else return prev - 1;
     });
@@ -76,7 +76,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <RoadMapModal closeModal={() => setShowModal(false)} content={content[view].tabs.filter(o => o.status === (showCompleted ? "Completed" : "In progress"))[tabView]} mainTitle={content[view].title} incrementTab={incrementTab} decrementTab={decrementTab} />
+        <RoadMapModal closeModal={() => setShowModal(false)} content={content[view]?.tabs.filter(o => o.status === (showCompleted ? "Completed" : "In progress"))[tabView]} mainTitle={content[view]?.title} incrementTab={incrementTab} decrementTab={decrementTab} />
       </Modal>
       <Box className={clsx(classes.container, { open: inView })}>
         <Grid container>
@@ -115,7 +115,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
           </Grid>
           <br />
           <Typography color="textPrimary" variant="subtitle1" align="center" style={{}} className={classes.titleDescription}>
-            {content[view].description}
+            {content[view]?.description}
           </Typography>
           <div className={classes.FilterContainer}>
             <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
@@ -129,7 +129,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
           <Grid container item xs={12} className={classes.contentContainer} spacing={0}>
             <Grid container item xs={12} spacing={2}>
               {
-                content[view].tabs.filter(card => card.status === (showCompleted ? "Completed" : "In progress")).map((o, index) => {
+                content[view]?.tabs.filter(card => card.status === (showCompleted ? "Completed" : "In progress")).map((o, index) => {
                   return (
                     <Grid item xs={12} sm={6} md={4} key={o.title}>
                       <Grow in={true} timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200}>
@@ -296,7 +296,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   tab: {
     position: "relative",
     zIndex: 1,
-    width: "50%",
+    maxWidth: "27rem",
     boxSizing: "border-box",
     // padding: "1.5rem 2.5rem",
     margin: "auto",

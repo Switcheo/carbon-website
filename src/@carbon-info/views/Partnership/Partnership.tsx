@@ -93,9 +93,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     zIndex: 0,
     pointerEvents: "none",
     [theme.breakpoints.down("sm")]: {
-      width: "150%",
-      left: "-27%",
-      top: "-90%",
+      width: "104%",
+      left: "-8%",
+      top: "-93%",
     },
     [theme.breakpoints.down("xs")]: {
       width: "150%",
@@ -109,9 +109,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       marginTop: "3rem",
       padding: "2rem 4rem",
+      gap: 12,
     },
     [theme.breakpoints.down("xs")]: {
       padding: "2rem",
+      gap: 0,
     },
   },
   noWrap: {
@@ -131,10 +133,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   logo: {
     [theme.breakpoints.down("sm")]: {
-      width: "50%",
+      width: "70%",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "80%",
+      width: "85%",
     },
   },
   logoGrid: {
