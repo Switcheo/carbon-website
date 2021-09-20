@@ -54,7 +54,7 @@ const RoadMap: React.FC = () => {
           progress: entry?.fields?.progress,
           status: entry?.fields?.status,
           title: entry?.fields?.title,
-          description: entry?.fields?.description?.content[0]?.content[0]?.value,
+          description: entry?.fields?.shortDescription,
         });
       });
       setRoadMapItems(result);

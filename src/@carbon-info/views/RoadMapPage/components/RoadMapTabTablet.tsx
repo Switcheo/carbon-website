@@ -20,6 +20,7 @@ interface Props {
       progress: number;
       docLink: string;
       githubLink: string;
+      shortDescription: string;
     }[];
   }[],
 }
@@ -163,7 +164,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                               />
                           }
                           <Typography color="textPrimary" variant="body1" align="left" style={{ gridColumn: "1/-1" }} className={classes.cardDescription}>
-                            {o.description}
+                            {o.shortDescription}
                           </Typography>
                           <Typography color="textPrimary" variant="body1" align="left" className={clsx(classes.status, { completed: o.status === "Completed" })}>
                             {o.status}
@@ -236,7 +237,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "1.6rem",
     textOverflow: "ellipsis",
     overflow: "hidden",
-    lineClamp: 4,
+    lineClamp: 3,
     boxOrient: "vertical",
     display: "-webkit-box",
   },

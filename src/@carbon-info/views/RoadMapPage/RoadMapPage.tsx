@@ -33,6 +33,7 @@ const RoadMapPage: React.FC = () => {
               status: entry.fields.status,
               title: entry.fields.title,
               description: entry.fields.description.content[0].content[0].value,
+              shortDescription: entry.fields.shortDescription,
             });
           });
 
