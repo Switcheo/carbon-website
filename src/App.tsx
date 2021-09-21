@@ -5,7 +5,7 @@ import {
   HeroImage, IntroPage,
   UtilitySection, DecentralizedStats,
   Permissionless, Community, Partnership,
-  RoadMap, GetInvolved, RecieveUpdates,
+  RoadMap, GetInvolved,
   RoadMapPage,
 } from "@carbon-info/views";
 import { MuiThemeProvider } from "@material-ui/core/styles";
@@ -44,7 +44,7 @@ function App() {
                   <Partnership />
                   <RoadMap />
                   <GetInvolved />
-                  <RecieveUpdates />
+                  {/* <RecieveUpdates /> */}
                 </>
               </Route>
             </Switch>

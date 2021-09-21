@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, makeStyles, Theme, useMediaQuery, useTheme } from "@material-ui/core";
 import { Ideas, Intro, RoadMapTabMobile, RoadMapTabTablet, RoadMapTab } from "./components";
-import { RecieveUpdates } from "../ReceiveUpdates";
 import { useContentful } from "react-contentful";
 
 const RoadMapPage: React.FC = () => {
@@ -57,7 +56,7 @@ const RoadMapPage: React.FC = () => {
         <Intro />
         {RoadMapTabView}
         <Ideas />
-        <RecieveUpdates />
+        {/* <RecieveUpdates /> */}
       </Box>
     </div>
   );

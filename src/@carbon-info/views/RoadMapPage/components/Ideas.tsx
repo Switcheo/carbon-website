@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "auto",
     display: "relative",
     zIndex: 1,
+    marginBottom: "15vh",
     // background: "red"
     opacity: 0,
     transform: "translate(0px, 20px)",
@@ -69,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       transform: "translate(0px,0px)",
     },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: "-15vh",
+      marginBottom: "10vh",
     },
   },
   imageContainer: {
