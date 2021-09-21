@@ -63,6 +63,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
           closeModal={() => setShowModal(false)}
           content={content[view]?.tabs.filter(o => o.status === (showCompleted ? "Completed" : "In progress"))[tabView]}
           mainTitle={content[view]?.title}
+          page={tabView + 1}
           incrementTab={incrementTab}
           decrementTab={decrementTab} />
       </Modal>

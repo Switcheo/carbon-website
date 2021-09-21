@@ -77,7 +77,13 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <RoadMapModal closeModal={() => setShowModal(false)} content={content[view]?.tabs.filter(o => o.status === (showCompleted ? "Completed" : "In progress"))[tabView]} mainTitle={content[view]?.title} incrementTab={incrementTab} decrementTab={decrementTab} />
+        <RoadMapModal
+          closeModal={() => setShowModal(false)}
+          content={content[view]?.tabs.filter(o => o.status === (showCompleted ? "Completed" : "In progress"))[tabView]}
+          mainTitle={content[view]?.title}
+          page={tabView + 1}
+          incrementTab={incrementTab}
+          decrementTab={decrementTab} />
       </Modal>
       <Box className={clsx(classes.container, { open: inView })}>
         <Grid container>

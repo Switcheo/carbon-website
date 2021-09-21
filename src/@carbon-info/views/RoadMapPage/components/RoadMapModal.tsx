@@ -17,11 +17,12 @@ interface Props {
   decrementTab: () => void;
   mainTitle: string;
   closeModal: () => void;
+  page: number;
 }
 
 const RoadMapModal: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
-  const { content, mainTitle, incrementTab, decrementTab, closeModal } = props;
+  const { content, mainTitle, incrementTab, decrementTab, closeModal, page } = props;
   const { title, status, progress, docLink, githubLink, description } = content;
   return (
     <div className={classes.container}>
@@ -55,7 +56,12 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
           {description}
         </Typography>
       </div>
-      <Divider style={{ backgroundColor: "#212125" }} className={classes.divider} />
+      <div style={{ position: "relative" }}>
+        <Divider style={{ backgroundColor: "#212125" }} className={classes.divider} />
+        <Typography color="textPrimary" variant="body1" style={{ position: "absolute", bottom: 5, right: 0, color: "#555861" }}>
+          {page}
+        </Typography>
+      </div>
       <Hidden smDown>
         <div style={{ display: "flex", flexDirection: "row", margin: "2rem 0px", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "row", gap: 20 }}>
@@ -193,6 +199,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: "1.1rem",
   },
   textContainer: {
+    position: "relative",
     boxSizing: "border-box",
     overflowY: "auto",
     "&::-webkit-scrollbar": {
