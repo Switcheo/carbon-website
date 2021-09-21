@@ -117,11 +117,13 @@ const RoadMap: React.FC = () => {
 
           </Typography >
           <Hidden smDown>
-            <CTAButton
-              text="See Full Roadmap"
-              link="/roadmap"
-              newTab={false}
-            />
+            <div style={{ marginLeft: 20 }}>
+              <CTAButton
+                text="See Full Roadmap"
+                link="/roadmap"
+                newTab={false}
+              />
+            </div>
           </Hidden>
         </FadeAndSlide>
         <FadeAndSlide visible={inView} delay={10000}>

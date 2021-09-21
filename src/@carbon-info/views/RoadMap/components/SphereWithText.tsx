@@ -14,7 +14,7 @@ interface Props {
 }
 
 const coordinatesDesktop: any = {
-  "0": [270, -30],
+  "0": [269.7, -30],
   "1": [300, -40],
   "2": [320, -55],
   "3": [340, -55],
@@ -61,8 +61,8 @@ const RoadMapButton: React.FC<Props> = (props: Props) => {
   if (!step && step !== 0) step = 4;
   if (step <= -4 || step >= 4) return <></>;
   let fontStyle = {};
-  if (step === 0) fontStyle = { top: text.length <= 15 ? "-3rem" : text.length > 40 ? "-7rem" : "", left: text.length < 5 ? "-6.5rem" : "" };
-  else if (step === 1 || step === -1) fontStyle = { transform: "scale(0.8)", top: text.length <= 15 ? "-3rem" : text.length > 40 ? "-7rem" : "" };
+  if (step === 0) fontStyle = { top: text.length <= 17 ? "-4rem" : text.length > 40 ? "-7rem" : "", left: text.length < 5 ? "-6.5rem" : "" };
+  else if (step === 1 || step === -1) fontStyle = { transform: "scale(0.8)", top: text.length <= 17 ? "-4rem" : text.length > 40 ? "-7rem" : "" };
   else if ((step >= 2 || step <= -2)) fontStyle = { transform: "scale(0.5)", color: "rgb(255,255,255,0.38)", top: text.length > 40 ? "-5.5rem" : text.length < 5 ? "-2.5rem" : "-3.5rem", left: step < 0 ? "-9rem" : text.length < 5 ? "-3.5rem" : "-2.5rem" };
   return (
     <div className={classes.centerSphereContainer} id="sphere" style={{
