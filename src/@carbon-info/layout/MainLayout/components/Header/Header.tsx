@@ -48,7 +48,7 @@ const Header: React.FC = () => {
                 <Link href={"https://forum.switcheo.foundation/topic/42/applying-for-project-grants-under-the-switcheo-development-fund"} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Build</Typography>
                 </Link>
-                <Link href={"/roadmap"} underline="none" target="_blank">
+                <Link href={"/roadmap"} underline="none">
                   <Typography color="textPrimary" display="inline">Roadmap</Typography>
                 </Link>
                 <Link href={"https://scan.carbon.network"} underline="none" target="_blank">

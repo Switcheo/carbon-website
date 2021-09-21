@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Box, Fade, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, Fade, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import roadMapBG from "@carbon-info/assets/background/roadmapLineBg.png";
 import roadMapGlow from "@carbon-info/assets/background/roadMapGlow.svg";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import { RoadMapButton, SphereWithText } from "./components";
-import { ArrowIcon } from "@carbon-info/assets";
 import { useContentful } from "react-contentful";
 
 const initialViewState = (data: any) => {
@@ -121,6 +120,7 @@ const RoadMap: React.FC = () => {
             <CTAButton
               text="See Full Roadmap"
               link="/roadmap"
+              newTab={false}
             />
           </Hidden>
         </FadeAndSlide>
@@ -158,13 +158,12 @@ const RoadMap: React.FC = () => {
             {roadMapItems[progressAndDescriptionCounter]?.description}
           </Typography>
         </Fade>
-        <Link href={"/roadmap"} target={"_blank"} underline="none">
+        {/* <Link href={"/roadmap"} target={"_blank"} underline="none">
           <Typography color="textPrimary" variant="body2" style={{ color: "#c4c4c4", marginTop: "1rem", cursor: "pointer" }}>
             Read more
           <ArrowIcon className={classes.arrowIcon} />
-            {/* <CTAButton text={"Read More"} link={"https://staging.carbon.network/roadmap"} /> */}
           </Typography>
-        </Link>
+        </Link> */}
         <br />
         <br />
         <Grid container style={{ zIndex: 9, position: "relative" }}>
@@ -181,6 +180,7 @@ const RoadMap: React.FC = () => {
               text="See Full Roadmap"
               link="/roadmap"
               CTA
+              newTab={false}
             />
           </div>
         </Hidden>

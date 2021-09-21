@@ -6,16 +6,17 @@ interface buttonProps {
   text: string,
   link: string,
   CTA?: boolean,
+  newTab?: boolean,
 }
 
 const CTAButton: React.FC<buttonProps> = (props: buttonProps) => {
   const classes = useStyles() as any;
-  const { text, link, CTA } = props;
+  const { text, link, CTA, newTab = true } = props;
   const iconClass = CTA ? "iconCTA" : "icon";
   const textClass = CTA ? "textCTA" : "text";
   return (
     <Box className={classes.container}>
-      <Link href={link} underline="none" target="_blank">
+      <Link href={link} underline="none" target={newTab ? "_blank" : ""}>
         <Typography color="textPrimary" variant="button" display="inline" className={classes[textClass]}>
           {text}
         </Typography>

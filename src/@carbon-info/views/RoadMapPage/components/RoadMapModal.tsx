@@ -49,7 +49,7 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
       <Divider style={{ width: "80%", backgroundColor: "#42444B" }} className={classes.divider} />
       <div className={classes.textContainer}>
         <Typography color="textPrimary" variant="subtitle1" className={classes.divTitle} paragraph>
-          What is this about? Why is it important?
+          About
         </Typography>
         <Typography color="textPrimary" variant="body2" className={classes.description}>
           {description}

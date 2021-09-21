@@ -17,7 +17,7 @@ const useCaseContent = [
 
 const joinCommunityContent = [
   {
-    link: Path.Socials.SwitcheoTwitter,
+    link: Path.Socials.Twitter,
     icon: <TwitterIcon />,
   },
   {
@@ -81,7 +81,7 @@ const DecentralizedStats: React.FC = () => {
                 <div className={classes.statsText}>
                   <FadeAndSlide visible={inView}>
                     <Typography color="textPrimary" className={classes.numbers} paragraph={!isTablet} align="left">
-                      110M+
+                      130M+
                     </Typography>
                     <Typography color="textPrimary" variant="body2" align="left" className={classes.numberText}>
                       Transacted on-chain
@@ -105,10 +105,10 @@ const DecentralizedStats: React.FC = () => {
                 <div className={classes.statsText}>
                   <FadeAndSlide visible={inView} delay={0.22}>
                     <Typography color="textPrimary" className={classes.numbers} paragraph={!isTablet} align="left">
-                      110M+
+                      100x
                   </Typography>
                     <Typography color="textPrimary" variant="body2" align="left" className={classes.numberText}>
-                      Traded on margin
+                      Leverage
                   </Typography>
                   </FadeAndSlide>
                 </div>
@@ -117,10 +117,10 @@ const DecentralizedStats: React.FC = () => {
                 <div className={classes.statsText}>
                   <FadeAndSlide visible={inView} delay={0.26}>
                     <Typography color="textPrimary" className={classes.numbers} paragraph={!isTablet} align="left">
-                      100+
+                      1.07b
                   </Typography>
                     <Typography color="textPrimary" variant="body2" align="left" noWrap className={classes.numberText}>
-                      Apps & services & growing
+                      SWTH tokens staked
                   </Typography>
                   </FadeAndSlide>
                 </div>
@@ -290,8 +290,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   numberText: {
+    marginLeft: 7,
     overflow: "visible",
     [theme.breakpoints.down("sm")]: {
+      marginLeft: 5,
       fontSize: "1.5rem",
       lineHeight: "4.375rem",
     },

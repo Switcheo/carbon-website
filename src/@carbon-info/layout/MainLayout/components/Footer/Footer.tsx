@@ -187,7 +187,7 @@ const Footer: React.FC = () => {
             <Link href={Path.Socials.Telegram} underline="none" target="_blank">
               <TelegramIcon className={classes.socialMediaIcon} />
             </Link>
-            <Link href={Path.Socials.SwitcheoTwitter} underline="none" target="_blank">
+            <Link href={Path.Socials.Twitter} underline="none" target="_blank">
               <TwitterIcon className={classes.socialMediaIcon} />
             </Link>
             <Link href={Path.Socials.LinkedIn} underline="none" target="_blank">
@@ -250,7 +250,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: "1.438rem",
     // lineHeight: "3.22rem",
     letterSpacing: "-1px",
-    color: "#5C5C5C",
+    color: "#696969",
     [theme.breakpoints.down("xs")]: {
       fontSize: "2.2rem",
       margin: "0.5rem 0px",

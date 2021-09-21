@@ -3,8 +3,8 @@ export const Path = {
   Feedback: "https://ideas.dem.exchange/",
   Socials: {
     Facebook: "https://www.facebook.com/SwitcheoExchange",
-    LinkedIn: "https://www.linkedin.com/company/switcheonetwork/",
-    SwitcheoTwitter: "https://twitter.com/SwitcheoNetwork",
+    LinkedIn: "https://www.linkedin.com/company/switcheo/",
+    Twitter: "https://twitter.com/0xcarbon",
     DemexTwitter: "https://twitter.com/demexchange",
     Reddit: "https://www.reddit.com/r/Switcheo/",
     Telegram: "https://t.me/switcheo",

@@ -29,13 +29,13 @@ const Intro: React.FC = () => {
           </Typography>
           <FadeAndSlide visible={inView}>
             <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
-              We’re constantly building new features and integrations<br />to Carbon simultaneously to support some of the<br />blockchain’s most robust innovations
+              The Carbon Protocol is a coalescence of countless features and <br /> new capabilities constantly being developed to support  <br /> some of the blockchain’s most robust innovations.
             </Typography>
           </FadeAndSlide>
           <IntroPageBackgroundLine className={classes.dash} />
           <FadeAndSlide visible={inView} transform={[0, -20]}>
             <Typography variant={isTablet && !isSmallMobile ? "h2" : "h3"} color="textPrimary">
-              Our core focus areas
+              Key focus areas
             </Typography>
           </FadeAndSlide>
         </div>

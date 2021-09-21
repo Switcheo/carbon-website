@@ -209,7 +209,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "-webkit-box",
   },
   cardDescription: {
-    lineHeight: "1.75rem",
+    lineHeight: "1.90rem",
     textOverflow: "ellipsis",
     overflow: "hidden",
     lineClamp: 3,

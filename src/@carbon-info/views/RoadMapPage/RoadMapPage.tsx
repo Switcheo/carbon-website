@@ -12,9 +12,6 @@ const RoadMapPage: React.FC = () => {
   const [roadMapItem, setRoadMapItems] = useState<any[]>([]);
   const { data } = useContentful({
     contentType: "carbonRoadmap",
-    // query: {
-    //   "fields.slug[in]": `/${props.match.slug || ""}`,
-    // }
   });
 
   useEffect(() => {
