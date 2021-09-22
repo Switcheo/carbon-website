@@ -12,5 +12,6 @@ export const Path = {
     Medium: "https://medium.com/switcheo",
     Discord: "https://discord.gg/SPh62Hf",
     Demex: "https://app.dem.exchange",
+    Github: "https://github.com/switcheo",
   },
 };

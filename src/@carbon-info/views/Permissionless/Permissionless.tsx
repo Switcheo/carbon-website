@@ -3,7 +3,7 @@ import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useThe
 import permissionlessSVG from "@carbon-info/assets/non-animated/permissionlessHeroSVG.png";
 import permissionlessGlowSVG from "@carbon-info/assets/background/permissionless-glow.svg";
 import { CardWithIcon, FadeAndSlide } from "@carbon-info/components";
-import { DecentralizedIcon, TrustlessIcon } from "@carbon-info/assets";
+import { PermissionlessIcon, PowerfulIcon, TrustlessIcon } from "@carbon-info/assets";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 
@@ -63,17 +63,17 @@ const Permissionless: React.FC = () => {
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
               title={"Completely permissionless"}
-              description={"Supports the creation of any DeFi innovation, even those powered by complex financial instruments like futures."}
-              icon={<TrustlessIcon />}
+              description={"Supports the creation of any DeFi innovation, even those powered by complex financial instruments like futures and perpetuals."}
+              icon={<PermissionlessIcon />}
               size="small"
               iconAlignment="top"
             />
           </Grid>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
-              title={"Powerful primitives"}
-              description={"Equipped with robust building blocks such as fully decentralized central limit order books that anyone can build on."}
-              icon={<DecentralizedIcon />}
+              title={"Powerful tools"}
+              description={"Equipped with robust building blocks such as decentralized central limit orderbooks (CLOBs) that anyone can utilize."}
+              icon={<PowerfulIcon />}
               size="small"
               iconAlignment="top"
             />

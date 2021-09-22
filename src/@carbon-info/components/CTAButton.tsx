@@ -30,6 +30,7 @@ export default CTAButton;
 
 const useStyles = makeStyles((theme: Theme) => ({
   textCTA: {
+    letterSpacing: "2px",
     [theme.breakpoints.down("sm")]: {
       fontSize: "2.3rem",
       letterSpacing: "1px",
@@ -61,6 +62,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   text: {
+    letterSpacing: "2px",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.7rem",
       letterSpacing: "1px",

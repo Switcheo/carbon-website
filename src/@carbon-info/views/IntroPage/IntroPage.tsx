@@ -29,9 +29,16 @@ const IntroPage: React.FC = () => {
           </FadeAndSlide>
           <IntroPageBackgroundLine className={classes.dash} />
           <Typography color="textPrimary" variant="h2" className={clsx(classes.mainTitle, { open: inView })} >
-            Breathing life into
+            The Core of
             <br />
-            <span className={clsx(classes.gradientText, { open: inView })} >decentralized<br /> finance</span>
+            <span className={clsx(classes.gradientText, { open: inView })} >
+              decentralized
+            <br />
+              {/* financial markets */}
+            </span>
+            <span className={clsx(classes.gradientText)}>
+              financial markets
+              </span>
           </Typography>
           <FadeAndSlide visible={inView}>
             <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
@@ -166,7 +173,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   gradientText: {
-    background: "linear-gradient(20deg,#8FF7FE, #DAFFF4, #11D1D1)",
+    background: "linear-gradient(63deg,#196163,#DAFFF4,#DAFFF4, #72E7E2, #11D1D1)",
     WebkitTextFillColor: "transparent",
     WebkitBackgroundClip: "text",
   },

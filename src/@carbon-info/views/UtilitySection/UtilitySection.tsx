@@ -73,7 +73,7 @@ const UtilitySection: React.FC = () => {
                   <FadeAndSlide visible={inView} transform={[0, -20]}>
                     <CardWithIcon
                       title={"VERSATILE"}
-                      description={"One protocol, limitless possibilities. You can build any DeFi innovation on top of Carbon. "}
+                      description={"One protocol, limitless possibilities. Build any Defi innovation such as derivatives using Carbon's AMMs, liquidity pools & more. "}
                       icon={<LaunchIcon />} />
                   </FadeAndSlide>
                 </Grid>
@@ -105,7 +105,7 @@ const UtilitySection: React.FC = () => {
                   <FadeAndSlide visible={inView} transform={[20, 0]}>
                     <CardWithIcon
                       title={"VERSATILE"}
-                      description={"One protocol, limitless possibilities. You can build any DeFi innovation on top of Carbon. "}
+                      description={"One protocol, limitless possibilities. Build any Defi innovation such as derivatives using Carbon's AMMs, liquidity pools & more. "}
                       icon={<LaunchIcon />} />
                   </FadeAndSlide>
                 </Grid>

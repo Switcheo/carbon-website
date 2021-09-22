@@ -7,28 +7,13 @@ import { useInView } from "react-intersection-observer";
 import { RoadMapButton, SphereWithText } from "./components";
 import { useContentful } from "react-contentful";
 
-const initialViewState = (data: any) => {
-  let result: number[] = [0];
-  for (let i = 1; i < data.length / 2; i++) {
-    result.unshift(i * -1);
-    result.push(i);
-  }
-  if (data.length % 2 === 0) result.push((result.length / 2) + 1);
-  return result;
-};
-
-const initialCounter = (data: any) => {
-  if (data.length % 2 === 0) return Math.floor(data.length / 2) - 1;
-  else return Math.floor(data.length / 2);
-};
-
 const RoadMap: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isWideDesktop = useMediaQuery(theme.breakpoints.up("xl"));
-  const [progressAndDescriptionCounter, setProgressAndDescriptionCounter] = useState<any>(initialCounter([]));
+  const [progressAndDescriptionCounter, setProgressAndDescriptionCounter] = useState<any>([]);
   const [step, setStep] = useState<any>(0);
   const [roadMapItems, setRoadMapItems] = useState<any[]>([]);
   const [view, setView] = useState([0]);
@@ -46,22 +31,54 @@ const RoadMap: React.FC = () => {
     async function fetchRoadMapItems() {
       let result: any[] = [];
       const content = await data as any;
-      content?.includes?.Entry?.forEach((entry: any) => {
-        result.push({
-          docLink: entry?.fields?.link,
-          githubLink: entry?.fields?.githubLink,
-          progress: entry?.fields?.progress,
-          status: entry?.fields?.status,
-          title: entry?.fields?.title,
-          description: entry?.fields?.shortDescription,
+      if (content && Array.isArray(content.items)) {
+        content.items.forEach((o: any) => {
+          o?.fields?.entries?.forEach((entry: any) => {
+            result.push({
+              category: o.fields.title,
+              docLink: entry.fields.link,
+              githubLink: entry.fields.githubLink,
+              progress: entry.fields.progress,
+              status: entry.fields.status,
+              title: entry.fields.title,
+              description: entry.fields.description.content[0].content[0].value,
+              shortDescription: entry.fields.shortDescription,
+            });
+          });
         });
-      });
+      }
+      result.sort(((a, b) => b.progress - a.progress));
       setRoadMapItems(result);
       setView(initialViewState(result));
       setProgressAndDescriptionCounter(initialCounter(result));
     }
     fetchRoadMapItems();
   }, [data]);
+
+  const initialViewState = (data: any) => {
+    let result: number[] = [0];
+    let completedCounter = 1;
+    let inProgressCounter = 1;
+    for (let i = 0; i < data.length - 1; i++) {
+      if (data[i].progress >= 100) {
+        result.unshift(completedCounter * -1);
+        completedCounter++;
+      }
+      else {
+        result.push(inProgressCounter);
+        inProgressCounter++;
+      }
+    }
+    return result;
+  };
+
+  const initialCounter = (data: any) => {
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].progress < 100) {
+        return i;
+      }
+    }
+  };
 
   function useThrottle(func: any, delay: any) {
     const [inThrottle, setInThrottle] = useState<any>(false);
@@ -116,7 +133,7 @@ const RoadMap: React.FC = () => {
             }
 
           </Typography >
-          <Hidden smDown>
+          {/* <Hidden smDown>
             <div style={{ marginLeft: 20 }}>
               <CTAButton
                 text="See Full Roadmap"
@@ -124,7 +141,7 @@ const RoadMap: React.FC = () => {
                 newTab={false}
               />
             </div>
-          </Hidden>
+          </Hidden> */}
         </FadeAndSlide>
         <FadeAndSlide visible={inView} delay={10000}>
           <Grid container alignItems="center" justifyContent="center" className={classes.roadMapContainer} spacing={8} style={{ zIndex: 1 }}>
@@ -155,17 +172,15 @@ const RoadMap: React.FC = () => {
         <Typography color="textPrimary" variant="h2" paragraph className={classes.percentage}>
           {roadMapItems[progressAndDescriptionCounter]?.progress}%
         </Typography>
+        <Typography color="textPrimary" variant="body2" style={{ color: "#c4c4c4", marginTop: "1rem", cursor: "pointer" }}>
+          {roadMapItems[progressAndDescriptionCounter]?.category}
+        </Typography>
+        <br />
         <Fade in={true}>
           <Typography color="textPrimary" variant="body2" className={classes.roadMapDescription}>
-            {roadMapItems[progressAndDescriptionCounter]?.description}
+            {roadMapItems[progressAndDescriptionCounter]?.shortDescription}
           </Typography>
         </Fade>
-        {/* <Link href={"/roadmap"} target={"_blank"} underline="none">
-          <Typography color="textPrimary" variant="body2" style={{ color: "#c4c4c4", marginTop: "1rem", cursor: "pointer" }}>
-            Read more
-          <ArrowIcon className={classes.arrowIcon} />
-          </Typography>
-        </Link> */}
         <br />
         <br />
         <Grid container style={{ zIndex: 9, position: "relative" }}>
@@ -176,16 +191,14 @@ const RoadMap: React.FC = () => {
             <RoadMapButton direction="right" callback={useThrottle(decrementStep, 900)} />
           </Grid>
         </Grid>
-        <Hidden mdUp>
-          <div className={classes.button}>
-            <CTAButton
-              text="See Full Roadmap"
-              link="/roadmap"
-              CTA
-              newTab={false}
-            />
-          </div>
-        </Hidden>
+        <div className={classes.button}>
+          <CTAButton
+            text="See Full Roadmap"
+            link="/roadmap"
+            CTA
+            newTab={false}
+          />
+        </div>
       </Box>
     </div >
   );
@@ -203,7 +216,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   roadMapDescription: {
-    maxWidth: "46rem",
+    maxWidth: "35rem",
     margin: "auto",
     textOverflow: "ellipsis",
     overflow: "hidden",
@@ -230,7 +243,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
   },
   button: {
-    margin: "7rem auto",
+    margin: "3rem 0px 3rem 16px",
+    [theme.breakpoints.down("sm")]: {
+      margin: "7rem auto",
+    },
   },
   boxContainer: {
     margin: "50vh 0px",

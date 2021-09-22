@@ -29,7 +29,7 @@ const FeatureCard: React.FC = () => {
             <img src={featureCardBackgroundRight} alt="featureCardBackgroundRight" className={clsx(classes.backgroundRight, { open: inView })} />
             <div>
               <Typography color="textPrimary" variant="h2" className={classes.title}>
-                The fundamental building block of all things DeFi
+                The core of all things DeFi
             </Typography>
               <Typography color="textPrimary" variant="body2" className={classes.subtext}>
                 {"Carbon's highly interoperable and scalable architecture makes it easy for anyone to build on top of and bootstrap financial markets for any asset type from any blockchain."}
@@ -56,9 +56,9 @@ export default FeatureCard;
 
 const useStyles = makeStyles((theme: Theme) => ({
   title: {
-    maxWidth: "39rem",
+    maxWidth: "30rem",
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "38rem",
+      maxWidth: "30rem",
     },
     [theme.breakpoints.down(330)]: {
       fontSize: "2.938rem",

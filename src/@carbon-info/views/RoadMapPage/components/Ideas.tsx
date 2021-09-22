@@ -24,11 +24,11 @@ const Ideas: React.FC = () => {
         <Grid container className={classes.cardContainer} justifyContent="center" alignItems="center">
           <Grid container item xs={12} md={7} className={classes.textContainer}>
             <div>
-              <Typography color="textPrimary" variant="h2">
-                Have ideas on what we should build next?
+              <Typography color="textPrimary" variant="h2" className={classes.title}>
+                Have ideas to accelerate the growth of Carbon?
             </Typography>
               <Typography color="textPrimary" variant="body2" className={classes.subtext}>
-                We’re building the infrastructure of the future and we<br /> can always use new, bright ideas. Help us innovate.
+                Help decentralize Carbon&apos;s development even further by sharing fresh ideas, proposing new features and sparking insightful conversations.
             </Typography>
               <CTAButton
                 text="Submit an idea"
@@ -170,11 +170,18 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   subtext: {
     margin: "4rem 0px",
+    maxWidth: "33rem",
     [theme.breakpoints.down("sm")]: {
       margin: "3rem 0px",
     },
   },
+  title: {
+    [theme.breakpoints.down(340)]: {
+      fontSize: "3.13rem",
+    },
+  },
   textContainer: {
+    maxWidth: "38rem",
     [theme.breakpoints.down("sm")]: {
       justifyContent: "center",
       alignItems: "center",
@@ -183,7 +190,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: "auto",
     },
     [theme.breakpoints.down(340)]: {
-      minWidth: "34rem",
+      minWidth: "31rem",
+      marginTop: "11rem",
     },
   },
 }));

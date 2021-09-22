@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Divider, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import { CarbonLogo, FacebookIcon, LinkedInIcon, MediumIcon, TelegramIcon, TwitterIcon, YoutubeIcon } from "@carbon-info/assets";
+import { CarbonLogo, DiscordIcon, GitHubIcon, RedditIcon, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
 
 const sitemap = [
@@ -8,29 +8,54 @@ const sitemap = [
     section: "Learn",
     sitemap: [
       {
-        title: "Learn",
-        link: "https://staging.carbon.network",
-        target: "",
-      },
-      {
         title: "Features",
         link: "https://staging.carbon.network",
         target: "",
       },
       {
-        title: "Staking",
-        link: "https://staging.carbon.network",
-        target: "",
+        title: "Guides",
+        link: "https://guide.carbon.network",
+        target: "_blank",
       },
+      {
+        title: "Blog",
+        link: "https://blog.switcheo.com",
+        target: "_blank",
+      },
+    ],
+  },
+  {
+    section: "Explore",
+    sitemap: [
       {
         title: "Get SWTH",
-        link: "https://staging.carbon.network",
-        target: "",
+        link: "https://app.dem.exchange/trade/swth_eth1",
+        target: "_blank",
       },
       {
-        title: "FAQ",
-        link: "https://staging.carbon.network",
-        target: "",
+        title: "Stake",
+        link: "https://app.dem.exchange/stake",
+        target: "_blank",
+      },
+      {
+        title: "Token",
+        link: "https://switcheo.org/tokens?net=main",
+        target: "_blank",
+      },
+      {
+        title: "Markets",
+        link: "https://switcheo.org/markets?net=main",
+        target: "_blank",
+      },
+      {
+        title: "Demex",
+        link: "https://dem.exchange",
+        target: "_blank",
+      },
+      {
+        title: "Carbon Scan",
+        link: "https://scan.carbon.network ",
+        target: "_blank",
       },
     ],
   },
@@ -43,11 +68,6 @@ const sitemap = [
         target: "_blank",
       },
       {
-        title: "Explorer",
-        link: "https://scan.carbon.network",
-        target: "_blank",
-      },
-      {
         title: "APIs",
         link: "https://docs.carbon.network",
         target: "_blank",
@@ -55,41 +75,6 @@ const sitemap = [
       {
         title: "GitHub",
         link: "https://github.com",
-        target: "_blank",
-      },
-    ],
-  },
-  {
-    section: "Explore",
-    sitemap: [
-      {
-        title: "Learn",
-        link: "https://guide.carbon.network",
-        target: "_blank",
-      },
-      {
-        title: "Features",
-        link: "/#utility",
-        target: "",
-      },
-      {
-        title: "Stake",
-        link: "https://app.dem.exchange/stake",
-        target: "_blank",
-      },
-      {
-        title: "Get SWTH",
-        link: "https://app.dem.exchange/trade/swth_eth1",
-        target: "_blank",
-      },
-      {
-        title: "Token",
-        link: "https://switcheo.org/tokens?net=main",
-        target: "_blank",
-      },
-      {
-        title: "Blog",
-        link: "https://blog.switcheo.com ",
         target: "_blank",
       },
     ],
@@ -106,31 +91,6 @@ const sitemap = [
         title: "Governance",
         link: "https://scan.carbon.network/governance",
         target: "_blank",
-      },
-    ],
-  },
-  {
-    section: "Resources",
-    sitemap: [
-      {
-        title: "About",
-        link: "https://staging.carbon.network",
-        target: "",
-      },
-      {
-        title: "Press Kit",
-        link: "https://staging.carbon.network",
-        target: "",
-      },
-      {
-        title: "Design",
-        link: "https://staging.carbon.network",
-        target: "",
-      },
-      {
-        title: "Resources",
-        link: "https://staging.carbon.network",
-        target: "",
       },
     ],
   },
@@ -181,23 +141,20 @@ const Footer: React.FC = () => {
             {/* <Typography color="textPrimary" variant="body1">
               Social Media
             </Typography> */}
-            <Link href={Path.Socials.Medium} underline="none" target="_blank">
-              <MediumIcon className={classes.socialMediaIcon} />
+            <Link href={Path.Socials.Twitter} underline="none" target="_blank">
+              <TwitterIcon className={classes.socialMediaIcon} />
             </Link>
             <Link href={Path.Socials.Telegram} underline="none" target="_blank">
               <TelegramIcon className={classes.socialMediaIcon} />
             </Link>
-            <Link href={Path.Socials.Twitter} underline="none" target="_blank">
-              <TwitterIcon className={classes.socialMediaIcon} />
+            <Link href={Path.Socials.Discord} underline="none" target="_blank">
+              <DiscordIcon className={classes.socialMediaIcon} />
             </Link>
-            <Link href={Path.Socials.LinkedIn} underline="none" target="_blank">
-              <LinkedInIcon className={classes.socialMediaIcon} />
+            <Link href={Path.Socials.Reddit} underline="none" target="_blank">
+              <RedditIcon className={classes.socialMediaIcon} />
             </Link>
-            <Link href={Path.Socials.Facebook} underline="none" target="_blank">
-              <FacebookIcon className={classes.socialMediaIcon} />
-            </Link>
-            <Link href={Path.Socials.Youtube} underline="none" target="_blank">
-              <YoutubeIcon className={classes.socialMediaIcon} />
+            <Link href={Path.Socials.Github} underline="none" target="_blank">
+              <GitHubIcon className={classes.socialMediaIcon} />
             </Link>
           </Grid>
         </Grid>
@@ -250,7 +207,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: "1.438rem",
     // lineHeight: "3.22rem",
     letterSpacing: "-1px",
-    color: "#696969",
+    color: "#ababab",
     [theme.breakpoints.down("xs")]: {
       fontSize: "2.2rem",
       margin: "0.5rem 0px",

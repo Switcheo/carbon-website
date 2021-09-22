@@ -75,7 +75,9 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                 return (
                   <div onClick={() => setView(index)} key={o.title} style={{ height: "100%" }}>
                     <Typography color="textPrimary" variant="h4" className={clsx(classes.tab, { selected: index === view })}>
-                      {o.title}
+                      <span style={{ maxWidth: "10rem" }}>
+                        {o.title}
+                      </span>
                       {
                         index === view && (
                           <Divider style={{ position: "absolute", bottom: 0, zIndex: 4, width: "70%", left: "15%" }} />
@@ -179,6 +181,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "4rem",
   },
   status: {
+    letterSpacing: 0,
     marginTop: "auto",
     color: "#74E8E8",
     "&.completed": {
@@ -210,10 +213,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "-webkit-box",
   },
   cardDescription: {
+    letterSpacing: "0px",
     lineHeight: "1.90rem",
     textOverflow: "ellipsis",
     overflow: "hidden",
-    lineClamp: 3,
+    lineClamp: 4,
     boxOrient: "vertical",
     display: "-webkit-box",
   },

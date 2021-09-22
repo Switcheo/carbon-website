@@ -68,7 +68,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
                 {icon}
               </Grid>
               <Grid item xs={12} className={classes.contentContainer}>
-                <Typography className={classes.divTitleTop} style={{ width: title === "Powerful primitives" ? "70%" : "98%" }} color="textPrimary" paragraph>
+                <Typography className={classes.divTitleTop} style={{ width: title === "Powerful tools" ? "70%" : "98%" }} color="textPrimary" paragraph>
                   {title}
                 </Typography>
                 {/* <br /> */}

@@ -47,7 +47,7 @@ const GetInvolved: React.FC = () => {
           <Grid item xs={12} sm={6} md style={{ marginTop: isTablet ? 0 : "-42%" }} className={classes.card}>
             <CardWithCTA
               title={"Propose a partnership"}
-              description={"Want to collaborate toward a freer financial system?"}
+              description={"Working towards a freer financial system"}
               ctaText={"Get In Touch"}
               link={"mailto:marketing@switcheo.network"}
               icon={ProposeSVG}

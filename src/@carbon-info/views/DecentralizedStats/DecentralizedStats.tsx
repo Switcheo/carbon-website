@@ -64,7 +64,7 @@ const DecentralizedStats: React.FC = () => {
                     <Stroke className={classes.stroke} />
                   </Hidden>
                   <div className={classes.descriptionDiv}>
-                    Already powering unique use cases & decentralized financial applications
+                    Powering unique use cases & decentralized financial applications
                   </div>
                 </Typography>
               </FadeAndSlide>
@@ -81,7 +81,7 @@ const DecentralizedStats: React.FC = () => {
                 <div className={classes.statsText}>
                   <FadeAndSlide visible={inView}>
                     <Typography color="textPrimary" className={classes.numbers} paragraph={!isTablet} align="left">
-                      130M+
+                      $130M+
                     </Typography>
                     <Typography color="textPrimary" variant="body2" align="left" className={classes.numberText}>
                       Transacted on-chain
@@ -96,7 +96,7 @@ const DecentralizedStats: React.FC = () => {
                       $25M+
                     </Typography>
                     <Typography color="textPrimary" variant="body2" align="left" noWrap className={classes.numberText}>
-                      Highest TVL on liquidity pools
+                      Peak Liquidity Pool TVL
                     </Typography>
                   </FadeAndSlide>
                 </div>
@@ -105,10 +105,10 @@ const DecentralizedStats: React.FC = () => {
                 <div className={classes.statsText}>
                   <FadeAndSlide visible={inView} delay={0.22}>
                     <Typography color="textPrimary" className={classes.numbers} paragraph={!isTablet} align="left">
-                      100x
+                      10,000
                   </Typography>
                     <Typography color="textPrimary" variant="body2" align="left" className={classes.numberText}>
-                      Leverage
+                      Transactions per second
                   </Typography>
                   </FadeAndSlide>
                 </div>
@@ -134,7 +134,7 @@ const DecentralizedStats: React.FC = () => {
             <FadeAndSlide visible={inView}>
               <CardWithIcon
                 title={"Real use cases"}
-                description={"Carbon powers Demex, one of the more popular fully decentralized exchange for trading a plethora of financial instruments."}
+                description={"Carbon powers Demex, a popular, fully decentralized exchange for trading a plethora of financial instruments."}
                 icon={<ChooseIcon />}
                 size="large"
                 CTAicon={useCaseContent}
