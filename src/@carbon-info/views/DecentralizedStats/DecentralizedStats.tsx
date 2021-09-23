@@ -194,6 +194,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: "4.375rem",
     letterSpacing: "-0.188rem",
     fontFamily: "TyrosPro",
+    [theme.breakpoints.down(1100)]: {
+      fontSize: "4rem",
+    },
     [theme.breakpoints.down("sm")]: {
       fontSize: "5rem",
     },
@@ -239,6 +242,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginTop: "2rem",
       marginLeft: "0px",
     },
+    [theme.breakpoints.down(330)]: {
+      maxWidth: "30rem",
+    }
   },
   stats: {
     zIndex: 2,

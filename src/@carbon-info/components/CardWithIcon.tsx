@@ -10,14 +10,16 @@ interface cardProps {
   iconAlignment?: "side" | "top",
   size?: "small" | "normal" | "large",
   CTAicon?: any[],
+  height?: number,
 }
 
 const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
-  const { title, description, size, icon, iconAlignment = "side", CTAicon } = props;
+  const { title, description, size, icon, iconAlignment = "side", CTAicon, height } = props;
   const boxSize = size ? `boxContainer${size}` : "boxContainer";
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.1,
@@ -30,7 +32,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
         {
           iconAlignment === "side" ?
             <Grid item container spacing={4} style={{ height: "100%" }}>
-              <Grid item xs={2} className={classes.sideIcon}>
+              <Grid item xs={2} className={size === "large" ? classes.sideIconLarge : classes.sideIcon} style={{ marginTop: title === "Real use cases" && isMobile ? "-1rem" : "" }}>
                 {icon}
               </Grid>
               <Grid container item xs={10} className={CTAicon && CTAicon?.length > 0 ? classes.textContainerWithSocialIcons : classes.textContainer}>
@@ -64,11 +66,11 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
             </Grid>
             :
             <Grid item container spacing={0} className={classes.contentContainerWrapper}>
-              <Grid item xs={12} className={classes.icon} style={{ height: "20%" }}>
+              <Grid item xs={12} className={classes.icon} style={{ height: height && !isDesktop ? height : "20%" }}>
                 {icon}
               </Grid>
               <Grid item xs={12} className={classes.contentContainer}>
-                <Typography className={classes.divTitleTop} style={{ width: title === "Powerful tools" ? "70%" : "98%" }} color="textPrimary" paragraph>
+                <Typography className={classes.divTitleTop} style={{ width: title === "Powerful tools" ? "57%" : "98%" }} color="textPrimary" paragraph>
                   {title}
                 </Typography>
                 {/* <br /> */}
@@ -101,10 +103,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     gridTemplateRows: "20% 65% auto",
     [theme.breakpoints.down("sm")]: {
       // gap: 10,
+      paddingTop: "8px !important",
       gridTemplateRows: "20% 55% auto",
     },
     [theme.breakpoints.down(330)]: {
       // gap: 10,
+      paddingTop: "14px !important",
       gridTemplateRows: "20% 58% auto",
     },
   },
@@ -127,18 +131,47 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: "0.063rem",
     [theme.breakpoints.down("sm")]: {
       marginBottom: "1rem",
+      "& > svg": {
+        width: "4rem",
+        height: "3rem",
+      },
     },
     [theme.breakpoints.down("xs")]: {
       marginBottom: "1rem",
       "& > svg": {
         width: "4rem",
+        height: "3rem",
       },
     },
     [theme.breakpoints.down(325)]: {
       marginBottom: "1rem",
       "& > svg": {
         width: "4rem",
+        height: "3rem",
       },
+    },
+  },
+  sideIconLarge: {
+    textAlign: "center",
+    marginTop: "0.063rem",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "-0.23rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "-0.73rem",
+      "& > svg": {
+        width: "200%",
+      },
+    },
+    [theme.breakpoints.down(325)]: {
+      marginTop: "-0.33rem",
+      "& > svg": {
+        width: "300%",
+      },
+      // "& > svg": {
+      //   width: "350%",
+      //   transform: "translateX(-6px)",
+      // },
     },
   },
   sideIcon: {

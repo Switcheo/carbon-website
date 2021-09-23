@@ -58,6 +58,7 @@ const Permissionless: React.FC = () => {
               icon={<TrustlessIcon />}
               size="small"
               iconAlignment="top"
+              height={30}
             />
           </Grid>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
