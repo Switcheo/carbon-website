@@ -244,7 +244,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down(330)]: {
       maxWidth: "30rem",
-    }
+    },
   },
   stats: {
     zIndex: 2,
