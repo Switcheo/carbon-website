@@ -3,7 +3,7 @@ import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useThe
 import chartSVG from "@carbon-info/assets/animated/chart.svg";
 import decentralizedGlow from "@carbon-info/assets/background/decentralizedGlow.svg";
 import { CardWithIcon, FadeAndSlide } from "@carbon-info/components";
-import { AccelerateIcon, ChooseIcon, Stroke, DemexIcon, TwitterIcon, YoutubeIcon, DiscordIcon } from "@carbon-info/assets";
+import { AccelerateIcon, ChooseIcon, Stroke, DemexIcon, TwitterIcon, DiscordIcon, TelegramIcon } from "@carbon-info/assets";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 import { Path } from "@carbon-info/constants";
@@ -21,12 +21,12 @@ const joinCommunityContent = [
     icon: <TwitterIcon />,
   },
   {
-    link: Path.Socials.Discord,
-    icon: <DiscordIcon />,
+    link: Path.Socials.Telegram,
+    icon: <TelegramIcon />,
   },
   {
-    link: Path.Socials.Youtube,
-    icon: <YoutubeIcon />,
+    link: Path.Socials.Discord,
+    icon: <DiscordIcon />,
   },
 ];
 

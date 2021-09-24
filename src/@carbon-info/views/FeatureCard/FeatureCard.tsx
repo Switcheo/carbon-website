@@ -12,7 +12,7 @@ const FeatureCard: React.FC = () => {
   const classes = useStyles();
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.74,
+    threshold: 0.77,
     triggerOnce: true,
   });
   return (
