@@ -29,7 +29,7 @@ const IntroPage: React.FC = () => {
           </FadeAndSlide>
           <IntroPageBackgroundLine className={classes.dash} />
           <Typography color="textPrimary" variant="h2" className={clsx(classes.mainTitle, { open: inView })} >
-            The Core of
+            The core of
             <br />
             <span className={clsx(classes.gradientText, { open: inView })} >
               decentralized
@@ -42,7 +42,7 @@ const IntroPage: React.FC = () => {
           </Typography>
           <FadeAndSlide visible={inView}>
             <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
-              Carbon is a Layer 2 DeFi protocol powering cross-chain financial infrastructures and markets.
+              Carbon is a Layer-2 cross-chain protocol<br/>that can power anything DeFi.
             </Typography>
           </FadeAndSlide>
         </div>

@@ -29,10 +29,10 @@ const FeatureCard: React.FC = () => {
             <img src={featureCardBackgroundRight} alt="featureCardBackgroundRight" className={clsx(classes.backgroundRight, { open: inView })} />
             <div>
               <Typography color="textPrimary" variant="h2" className={classes.title}>
-                The core of all things DeFi
+                Breathing life into all things DeFi
             </Typography>
               <Typography color="textPrimary" variant="body2" className={classes.subtext}>
-                {"Carbon's highly interoperable and scalable architecture makes it easy for anyone to build on top of and bootstrap financial markets for any asset type from any blockchain."}
+                {"Carbon's highly interoperable and scalable architecture makes it possible for anyone to bootstrap financial markets for any asset type, through any blockchain."}
               </Typography>
               <CTAButton
                 text="READ DOCS"
@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   cardContainer: {
     position: "relative",
     alignItems: "center",
-    padding: "0px 2.5rem 0px 2.5rem",
+    padding: "0px 2.5rem 0px 4rem",
     maxWidth: "80rem",
     height: "38rem",
     boxShadow: "inset 62px 98px 100px -60px rgba(36, 36, 36,0.5), inset 0px 1px 40px rgba(85, 85, 85, 0.04)",

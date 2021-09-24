@@ -33,15 +33,7 @@ const Permissionless: React.FC = () => {
               </FadeAndSlide>
               <FadeAndSlide visible={inView} transform={[26, 0]} delay={0.1}>
                 <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : isMobile ? "subtitle1" : "subtitle1"} align="left">
-                  {
-                    isTablet && !isMobile
-                      ? <span>
-                        Carbon gives back control along with<br /> the freedom to transact without trust
-                  </span>
-                      : <span>
-                        Carbon gives back control along <br />with the freedom to transact <br />without trust
-                  </span>
-                  }
+                  Carbon gives market participants complete freedom and transparency
                 </Typography>
               </FadeAndSlide>
             </div>
@@ -53,18 +45,17 @@ const Permissionless: React.FC = () => {
           </Hidden>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
-              title={"Trustless, scalable, low-fees"}
-              description={"Built on Tendermint Core to facilitate secure, scalable and instantaneous trades at ultra-low costs."}
+              title={"Ultra-low Fees, Infinite Scalability"}
+              description={"Built on Tendermint and precision-designed to handle complex financial constructs at scale for instantaneous transactions at ultra-low costs."}
               icon={<TrustlessIcon />}
               size="small"
               iconAlignment="top"
-              height={30}
             />
           </Grid>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
-              title={"Completely permissionless"}
-              description={"Supports the creation of any DeFi innovation, even those powered by complex financial instruments like futures and perpetuals."}
+              title={"Limitless Possibilities"}
+              description={"Supports the creation of any DeFi innovation for any asset type, using market instruments such as futures, perpetuals, options and more."}
               icon={<PermissionlessIcon />}
               size="small"
               iconAlignment="top"
@@ -72,8 +63,8 @@ const Permissionless: React.FC = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
-              title={"Powerful tools"}
-              description={"Equipped with robust building blocks such as decentralized central limit orderbooks (CLOBs) that anyone can utilize."}
+              title={"Powerful Tools"}
+              description={"Equipped with robust building blocks such as cross-margining capabilities and fully decentralized central limit orderbooks (CLOBs) that anyone can utilize."}
               icon={<PowerfulIcon />}
               size="small"
               iconAlignment="top"

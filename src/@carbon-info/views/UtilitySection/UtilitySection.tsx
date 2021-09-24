@@ -14,7 +14,6 @@ const UtilitySection: React.FC = () => {
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
-  const smallLaptop = useMediaQuery(theme.breakpoints.down(1100));
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.4,
@@ -46,8 +45,7 @@ const UtilitySection: React.FC = () => {
                 </Hidden> */}
                 <FadeAndSlide visible={inView} transform={[-20, 0]} delay={0.4}>
                   <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : "subtitle1"}>
-                    {smallLaptop && !isTablet ? "Made to power anything DeFi"
-                      : <>Made to power anything DeFi</>}
+                    It&apos;s made for the future, today.
                   </Typography>
                 </FadeAndSlide>
                 <br /><br /><br />
@@ -95,7 +93,7 @@ const UtilitySection: React.FC = () => {
                   <FadeAndSlide visible={inView} transform={[-20, 0]}>
                     <CardWithIcon
                       title={"INTERCONNECTIVE"}
-                      description={"Powers interoperability between sovereign blockchain networks that enables seamless cross-chain transactions and more."}
+                      description={"Powers interoperability between sovereign blockchain networks, enabling seamless cross-chain transactions and more."}
                       icon={<TradeIcon />} />
                   </FadeAndSlide>
                 </Grid>
@@ -105,7 +103,7 @@ const UtilitySection: React.FC = () => {
                   <FadeAndSlide visible={inView} transform={[20, 0]}>
                     <CardWithIcon
                       title={"VERSATILE"}
-                      description={"One protocol, limitless possibilities. Build any Defi innovation such as derivatives using Carbon's AMMs, liquidity pools and more. "}
+                      description={"One protocol, limitless possibilities. Supports any DeFi innovation including derivatives, using built-in liquidity pools, AMMs and more. "}
                       icon={<LaunchIcon />} />
                   </FadeAndSlide>
                 </Grid>
@@ -113,7 +111,7 @@ const UtilitySection: React.FC = () => {
                   <FadeAndSlide visible={inView} transform={[20, 0]}>
                     <CardWithIcon
                       title={"SECURE"}
-                      description={"A custom-built sidechain secured by a distributed network of validators to ensure trustless and permissionless transactions."}
+                      description={"Custom-built to transact billions, permissionlessly secured by a large network of validators for trustless and safe transactions."}
                       icon={<MilitaryIcon />} />
                   </FadeAndSlide>
                 </Grid>

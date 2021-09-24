@@ -16,10 +16,11 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
-const contentfulClient: any = new (ContentfulClient as any)({
-  accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
-  space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+const contentfulClient: any = ContentfulClient({
+  accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN!,
+  space: process.env.REACT_APP_CONTENTFUL_SPACE_ID!,
 });
 
 function App() {

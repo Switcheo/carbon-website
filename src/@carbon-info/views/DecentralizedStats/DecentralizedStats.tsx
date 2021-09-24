@@ -53,7 +53,7 @@ const DecentralizedStats: React.FC = () => {
             <Grid item xs={12} md={6}>
               <FadeAndSlide visible={inView} transform={[-20, 0]}>
                 <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" className={classes.decentralizedText}>
-                  Creating a new era of interconnectedness & accessibility
+                  Powering the future of finance
                 </Typography>
               </FadeAndSlide>
             </Grid>
@@ -64,7 +64,7 @@ const DecentralizedStats: React.FC = () => {
                     <Stroke className={classes.stroke} />
                   </Hidden>
                   <div className={classes.descriptionDiv}>
-                    Powering unique use cases & decentralized financial applications
+                    With evergrowing adoption
                   </div>
                 </Typography>
               </FadeAndSlide>
