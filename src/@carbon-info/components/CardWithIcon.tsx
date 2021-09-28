@@ -317,6 +317,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       maxWidth: "80%",
       marginBottom: 0,
     },
+    [theme.breakpoints.down(700)]: {
+      maxWidth: "96%",
+    },
     [theme.breakpoints.down(330)]: {
       maxWidth: "90%",
     },

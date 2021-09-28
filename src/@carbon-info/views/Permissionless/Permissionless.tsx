@@ -32,7 +32,7 @@ const Permissionless: React.FC = () => {
                 </Typography>
               </FadeAndSlide>
               <FadeAndSlide visible={inView} transform={[26, 0]} delay={0.1}>
-                <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : isMobile ? "subtitle1" : "subtitle1"} align="left">
+                <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : isMobile ? "subtitle1" : "subtitle1"} align="left" className={classes.subTitle}>
                   Carbon gives market participants complete freedom and transparency
                 </Typography>
               </FadeAndSlide>
@@ -79,6 +79,15 @@ const Permissionless: React.FC = () => {
 export default Permissionless;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  subTitle: {
+    maxWidth: "33rem",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "43rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "36rem",
+    },
+  },
   heroSVGContainer: {
     position: "relative",
     [theme.breakpoints.down("md")]: {
@@ -164,9 +173,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   description: {
     [theme.breakpoints.down("sm")]: {
       textAlign: "start",
-      marginLeft: "10%",
+      marginLeft: "8%",
     },
     [theme.breakpoints.down("xs")]: {
+      marginLeft: "12%",
       textAlign: "center",
       margin: 0,
       display: "inline-block",
