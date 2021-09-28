@@ -181,7 +181,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   statsText: {
     width: "fit-content",
     [theme.breakpoints.down("sm")]: {
-      // marginLeft: "20%",
     },
     [theme.breakpoints.down("xs")]: {
       marginLeft: "0%",

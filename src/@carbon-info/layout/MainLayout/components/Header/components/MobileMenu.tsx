@@ -52,14 +52,12 @@ export default MobileMenu;
 
 const useStyles = makeStyles((theme: Theme) => ({
   navBarContainer: {
-    // height: "100vh",
     height: "-webkit-fill-available",
     width: "100vw",
     position: "absolute",
     background: "#272525",
     top: 0,
     left: 0,
-    // alignItems: "center",
     display: "flex",
     flexDirection: "column",
     zIndex: 9,
@@ -74,7 +72,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   logoContainer: {
     display: "flex",
     alignItems: "center",
-    // height: "6vh",
     boxSizing: "border-box",
     [theme.breakpoints.down("xs")]: {
       textAlign: "start",
@@ -84,10 +81,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "2rem",
     display: "flex",
     flexDirection: "column",
-    // height: "80vh",
     boxSizing: "border-box",
     textAlign: "start",
-    // margin: "5rem 0px",
     gap: 25,
     overflowY: "auto",
     "&::-webkit-scrollbar": {
@@ -102,7 +97,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   socialMediaContainer: {
-    // height: "12vh",
     width: "-webkit-fill-available",
     boxSizing: "border-box",
     marginTop: "auto",

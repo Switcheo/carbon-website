@@ -89,8 +89,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
-    // maxWidth: "100vw",
-    // position: "relative"
   },
   dash: {
     margin: theme.spacing(6, 0),

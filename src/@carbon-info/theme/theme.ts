@@ -83,7 +83,6 @@ export const theme = createTheme({
         fontWeight: 700,
         fontSize: "1.5rem",
         lineHeight: "2.13rem",
-        // letterSpacing: "-0.063rem",
       },
     },
 });

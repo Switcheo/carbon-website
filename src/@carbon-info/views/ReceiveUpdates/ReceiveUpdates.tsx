@@ -102,7 +102,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     margin: "40vh 0px",
     display: "relative",
-    // background: "red"
     [theme.breakpoints.down("sm")]: {
       margin: "20vh 0px",
       padding: "0px 4rem",
@@ -119,16 +118,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   cardContainer: {
     alignItems: "center",
     padding: "2.5rem",
-    // maxWidth: "80rem",
-    // height: "38rem",
-    // background: "linear-gradient(353.27deg, rgba(41, 40, 40, 0.11) -9.67%, #161515 20.17%)",
     boxShadow: "inset 62px 98px 100px -60px rgba(36, 36, 36,0.5), inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
     backdropFilter: "blur(3px)",
     borderRadius: "30px",
     textAlign: "start",
-    // borderImage: "linear-gradient(to bottom, rgb(116, 232, 232) , rgb(255, 255, 255,0.26))",
-    // borderImageSlice: 1,
-    // border: "1px solid white",
     background: "linear-gradient(180deg,rgba(41, 40, 40,0.5),#161515)",
     margin: "auto",
     "&::before": {
@@ -155,16 +148,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   inputContainer: {
     alignItems: "center",
     padding: "1.5rem",
-    // maxWidth: "80rem",
-    // height: "38rem",
-    // background: "linear-gradient(353.27deg, rgba(41, 40, 40, 0.11) -9.67%, #161515 20.17%)",
     boxShadow: "inset 62px 98px 100px -60px rgba(36, 36, 36,0.5), inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
     backdropFilter: "blur(3px)",
     borderRadius: "10px",
     textAlign: "start",
-    // borderImage: "linear-gradient(to bottom, rgb(116, 232, 232) , rgb(255, 255, 255,0.26))",
-    // borderImageSlice: 1,
-    // border: "1px solid white",
     background: "#090808",
     margin: "auto",
     "&::before": {

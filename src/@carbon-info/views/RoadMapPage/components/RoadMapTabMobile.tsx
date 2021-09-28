@@ -235,12 +235,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   titleDescription: {
     width: "90%",
     margin: "2rem auto",
-    // fontFamily: "SourceSansPro-Light",
     fontWeight: 600,
     color: "#C4C4C4",
-    // fontSize: "1.438rem",
-    // lineHeight: "2.041rem",
-    // letterSpacing: "-0.063rem",
     [theme.breakpoints.down(340)]: {
       width: "100%",
       fontSize: "2rem",
@@ -294,7 +290,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "relative",
     zIndex: 1,
     boxSizing: "border-box",
-    // padding: "1.5rem 2.5rem",
     margin: "auto",
     "&.selected": {
       color: "#74E8E8",
@@ -328,10 +323,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "relative",
     zIndex: 1,
     minHeight: 55,
-    // background: "red"
     opacity: 0,
     transform: "translate(0px, 20px)",
-    // transitionDelay: "0.3s",
     transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
     "&.open": {
       opacity: 1,

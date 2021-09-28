@@ -265,8 +265,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("xs")]: {
       width: "125vw",
-      // left: "0%"
-      // top: "-10rem",
     },
   },
   roadMapSVGContainer: {

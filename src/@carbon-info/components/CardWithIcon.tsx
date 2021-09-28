@@ -102,12 +102,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     gap: "1rem",
     [theme.breakpoints.down("sm")]: {
-      // gap: 10,
       paddingTop: "8px !important",
       gridTemplateRows: "20% 55% auto",
     },
     [theme.breakpoints.down(330)]: {
-      // gap: 10,
       paddingTop: "14px !important",
       gridTemplateRows: "20% 58% auto",
     },

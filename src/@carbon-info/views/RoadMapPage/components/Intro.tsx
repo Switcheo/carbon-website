@@ -51,8 +51,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    // overflow: "hidden",
-    // maxWidth: "100vw",
     position: "relative",
   },
   mainTitle: {
@@ -113,7 +111,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       left: "-2%",
       top: "0%",
       width: "22%",
-      // maxWidth: "10rem",
     },
   },
   backgroundRight: {

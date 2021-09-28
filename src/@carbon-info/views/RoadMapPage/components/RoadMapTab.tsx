@@ -274,7 +274,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     boxSizing: "border-box",
     padding: "1.5rem 2.5rem",
-    // boxShadow: "inset 62px 98px 100px -60px rgba(36, 36, 36,0.5), inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
     backdropFilter: "blur()",
     borderRadius: "0px 0px 0px 0px",
     margin: "auto",
@@ -368,10 +367,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "20vh 0px",
     display: "relative",
     zIndex: 1,
-    // background: "red"
     opacity: 0,
     transform: "translate(0px, 20px)",
-    // transitionDelay: "0.3s",
     transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
     "&.open": {
       opacity: 1,
@@ -405,7 +402,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       pointerEvents: "none",
     },
     [theme.breakpoints.down("sm")]: {
-      // height: "42rem",
       width: "fit-content",
       borderRadius: 21,
       "&::before": {
@@ -453,7 +449,6 @@ const IOSSwitch = withStyles((theme: Theme) =>
     },
     track: {
       borderRadius: 26 / 2,
-      // border: `1px solid ${theme.palette.grey[400]}`,
       backgroundColor: "#3c3636",
       opacity: 1,
       transition: theme.transitions.create(["background-color", "border"]),

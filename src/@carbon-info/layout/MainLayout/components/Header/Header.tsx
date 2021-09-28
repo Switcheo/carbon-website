@@ -90,7 +90,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: 0,
     left: 0,
     pointerEvents: "none",
-    // margin: theme.spacing(-6, -4, -12, -4),
     "&.open": {
       pointerEvents: "all",
       opacity: 1,
@@ -157,7 +156,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     verticalAlign: "middle",
     margin: theme.spacing(0, 1),
     [theme.breakpoints.down("xs")]: {
-      // width: "55%",
       marginRight: "auto",
       textAlign: "start",
       width: "11rem",

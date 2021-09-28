@@ -12,8 +12,6 @@ interface Props {
 
 const RoadMapButton: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
-  // const theme = useTheme();
-  // const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const { direction, callback, size } = props;
   const { ref, inView } = useInView({
     /* Optional options */
@@ -64,7 +62,6 @@ const useStyles = makeStyles(() => ({
     boxShadow: "inset 62px 98px 100px -60px #242424, inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
     backdropFilter: "blur(100px)",
     borderRadius: "50%",
-    // padding: "2em 3em 2em 4em",
     width: "6rem",
     height: "6rem",
     textAlign: "start",

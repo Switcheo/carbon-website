@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "-7.625rem",
     pointerEvents: "none",
     position: "relative",
-    // maxWidth: "100vw",
     [theme.breakpoints.down("sm")]: {
       marginTop: "-7.625rem",
       marginBottom: "-5.625rem",

@@ -7,7 +7,6 @@ import utilityGlow from "@carbon-info/assets/background/utilityGlow.svg";
 import { CardWithIcon, FadeAndSlide } from "@carbon-info/components";
 import { LaunchIcon, MilitaryIcon, TradeIcon } from "@carbon-info/assets";
 import { useInView } from "react-intersection-observer";
-// import { Trade } from "@carbon-info/assets";
 
 const UtilitySection: React.FC = () => {
   const classes = useStyles();
@@ -136,7 +135,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    // background: "red",
     display: "block",
     margin: "25rem 1.5rem",
     marginTop: "15rem",
@@ -178,7 +176,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   ethSphere: {
     position: "absolute",
-    // width: "92%",
     width: "100%",
     maxWidth: "18rem",
     bottom: "-11%",
@@ -216,7 +213,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   description: {
-    // marginTop: theme.spacing(4)
     textAlign: "start",
     [theme.breakpoints.down("sm")]: {
       marginBottom: "18rem",

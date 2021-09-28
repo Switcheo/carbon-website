@@ -227,7 +227,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "100%",
   },
   cardTitle: {
-    // width: "80%",
     fontFamily: "TyrosPro",
     fontWeight: 400,
     fontSize: "1.5rem",
@@ -250,15 +249,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   titleDescription: {
     width: "70%",
     margin: "2rem auto",
-    // fontFamily: "SourceSansPro-Light",
     fontWeight: 600,
     color: "#C4C4C4",
-    // fontSize: "1.438rem",
-    // lineHeight: "2.041rem",
-    // letterSpacing: "-0.063rem",
   },
   contentCardContainer: {
-    // maxWidth: "25rem",
     boxSizing: "border-box",
     height: "100%",
     gridTemplateRows: "4rem",
@@ -305,7 +299,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     zIndex: 1,
     maxWidth: "27rem",
     boxSizing: "border-box",
-    // padding: "1.5rem 2.5rem",
     margin: "auto",
     "&.selected": {
       color: "#74E8E8",
@@ -313,31 +306,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   tabContainer: {
-    // backgroundColor: "#1B1C1F",
-    // boxShadow: "inset 84.877px 134.16px 136.898px -82.139px #242424, inset 0px 1.36898px 54.7594px rgba(85, 85, 85, 0.04)",
-    // mixBlendMode: "normal",
-    // backdropFilter: "blur(136.89px)",
     width: "100%",
     display: "grid",
-    // gridTemplateColumns: "1fr 1fr 1fr 1fr",
-    // justifyContent: "center",
-    // alignItems: "center",
-    // marginBottom: "-2px",
-    // zIndex: 3,
-    // borderRadius: 9,
-    // "&::before": {
-    //   content: "''",
-    //   position: "absolute",
-    //   top: 0,
-    //   left: 0,
-    //   right: 0,
-    //   bottom: 0,
-    //   padding: "0px 0px 1.755px 0px",
-    //   background: "#74E8E8",
-    //   mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-    //   maskComposite: "destination-out",
-    //   pointerEvents: "none",
-    // },
   },
   contentContainer: {
     zIndex: 2,
@@ -363,10 +333,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "relative",
     zIndex: 1,
     minHeight: "55rem",
-    // background: "red"
     opacity: 0,
     transform: "translate(0px, 20px)",
-    // transitionDelay: "0.3s",
     transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
     "&.open": {
       opacity: 1,
@@ -406,7 +374,6 @@ const IOSSwitch = withStyles((theme: Theme) =>
     },
     track: {
       borderRadius: 26 / 2,
-      // border: `1px solid ${theme.palette.grey[400]}`,
       backgroundColor: "#3c3636",
       opacity: 1,
       transition: theme.transitions.create(["background-color", "border"]),

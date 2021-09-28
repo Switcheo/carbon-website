@@ -105,7 +105,6 @@ const useStyles = makeStyles(() => ({
     width: "23rem",
     top: "-5rem",
     left: "-6.5rem",
-    // letterSpacing: "-3px",
   },
   circular: {
     position: "absolute",
@@ -115,12 +114,10 @@ const useStyles = makeStyles(() => ({
     top: 0,
     right: "50%",
     transition: "all 1s ease-in",
-    // animation: "$move 2s infinite linear",
     marginTop: "55vw",
   },
   centerSphere: {
     position: "absolute",
     width: "100%",
-    // marginRight: "-1%",
   },
 }));

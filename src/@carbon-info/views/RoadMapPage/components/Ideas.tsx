@@ -60,10 +60,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "relative",
     zIndex: 1,
     marginBottom: "15vh",
-    // background: "red"
     opacity: 0,
     transform: "translate(0px, 20px)",
-    // transitionDelay: "0.3s",
     transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
     "&.open": {
       opacity: 1,
@@ -83,14 +81,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "0px 2.5rem 0px 2.5rem",
     maxWidth: "80rem",
     height: "38rem",
-    // boxShadow: "inset 62px 98px 100px -60px rgba(36, 36, 36,0.5), inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
-    // backdropFilter: "blur(3px)",
-    // borderRadius: "58px",
     textAlign: "start",
-    // background: "rgba(0,0,0,0.0)",
     margin: "auto",
     [theme.breakpoints.down("sm")]: {
-      // height: "42rem",
       width: "fit-content",
     },
     [theme.breakpoints.down("xs")]: {
@@ -109,7 +102,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   backgroundLeft: {
     position: "absolute",
     width: "100%",
-    // height: "",
     left: "-50%",
     top: "-55%",
     transform: "translate(10px, 0px)",
@@ -136,7 +128,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   backgroundRight: {
     position: "absolute",
     width: "100%",
-    // height: "",
     right: "-38%",
     top: "-23%",
     transform: "translate(-10px, 0px)",

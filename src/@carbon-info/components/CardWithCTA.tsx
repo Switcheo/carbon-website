@@ -111,10 +111,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       position: "inherit",
       height: "24rem",
     },
-    // [theme.breakpoints.down(1100)]: {
-    //   position: "relative",
-    //   height: "20rem",
-    // },
     [theme.breakpoints.down("sm")]: {
       height: "23rem",
     },
@@ -143,16 +139,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   boxContainer: {
-    // border: "1px solid white",
     background: "linear-gradient(353.27deg, rgba(41, 40, 40, 0.21) -9.67%, #161515 94.17%)",
     mixBlendMode: "normal",
     boxShadow: "inset 62px 98px 100px -60px #242424, inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
     backdropFilter: "blur(100px)",
     borderRadius: 30,
     padding: "2em 3em 2em 4em",
-    // width: "485px",
     minHeight: "48rem",
-    // width: "22rem",
     textAlign: "start",
     overflow: "hidden",
     margin: "auto",
@@ -200,9 +193,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       width: "90%",
       fontFamily: "TyrosPro",
-      // fontWeight: 300,
       fontSize: "3.1rem",
-      // lineHeight: "2.3rem",
     },
     [theme.breakpoints.down("xs")]: {
       width: "100%",

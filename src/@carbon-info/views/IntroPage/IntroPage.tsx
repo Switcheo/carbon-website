@@ -42,7 +42,7 @@ const IntroPage: React.FC = () => {
           </Typography>
           <FadeAndSlide visible={inView}>
             <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
-              Carbon is a Layer-2 cross-chain protocol<br/>that can power anything DeFi.
+              Carbon is a Layer-2 cross-chain protocol<br />that can power anything DeFi.
             </Typography>
           </FadeAndSlide>
         </div>
@@ -59,8 +59,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    // overflow: "hidden",
-    // maxWidth: "100vw",
     position: "relative",
   },
   mainTitle: {
@@ -120,7 +118,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       left: "-2%",
       top: "0%",
       width: "22%",
-      // maxWidth: "10rem",
     },
   },
   backgroundRight: {
