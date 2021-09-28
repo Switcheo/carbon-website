@@ -223,6 +223,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: "max-content",
       margin: "0px 20%",
     },
+    [theme.breakpoints.down(740)]: {
+      margin: "0px 12% 0px 19%",
+    },
+    [theme.breakpoints.down(680)]: {
+      margin: "0px 6% 0px 17%",
+    },
     [theme.breakpoints.down("xs")]: {
       margin: "0px 10%",
     },
