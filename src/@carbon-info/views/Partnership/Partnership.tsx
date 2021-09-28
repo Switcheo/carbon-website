@@ -20,7 +20,6 @@ const Partnership: React.FC = () => {
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
           <Typography variant="h2" color="textPrimary" paragraph noWrap={!isTablet && !isSmallScreen} className={classes.noWrap}>
-            {/* Partnered with & backed by the blockchain<br /> industry’s foremost builders */}
             {
               isTablet ? <span>Partnered with & <br /> backed by the best</span>
                 : isSmallScreen
@@ -29,14 +28,6 @@ const Partnership: React.FC = () => {
             }
           </Typography >
         </FadeAndSlide>
-        {/* <Hidden smDown>
-          <FadeAndSlide visible={inView} delay={0.2}>
-            <CTAButton
-              text="SEE FULL ECOSYSTEM"
-              link="/#ECOSYSTEM"
-            />
-          </FadeAndSlide>
-        </Hidden> */}
         <Grid container alignItems="center" justifyContent="center" className={classes.logoContainer} spacing={isTablet ? 2 : 8}>
           {allPartnersLogo.map((logo: any, index) => {
             return (
@@ -49,21 +40,6 @@ const Partnership: React.FC = () => {
           })}
           <div id="gradientOver;ay" className={classes.gradientOverlay} />
           <img src={partnershipGlow} alt="glow" className={classes.glowSVG} />
-          {/* <Hidden mdUp>
-            <Grid item xs={12} className={classes.cta}>
-              <FadeAndSlide visible={inView} delay={0.2}>
-                <div className={classes.mobileCTAButton}>
-                  <Typography variant="button" color="textPrimary" align={isTablet && !isMobile ? "center" : "left"}>
-                    <CTAButton
-                      text="SEE FULL ECOSYSTEM"
-                      link="/#ECOSYSTEM"
-                      CTA
-                    />
-                  </Typography>
-                </div>
-              </FadeAndSlide>
-            </Grid>
-          </Hidden> */}
         </Grid>
       </Box>
     </div>
@@ -73,13 +49,6 @@ const Partnership: React.FC = () => {
 export default Partnership;
 
 const useStyles = makeStyles((theme: Theme) => ({
-  cta: {
-    textAlign: "left",
-    zIndex: 3,
-  },
-  mobileCTAButton: {
-    margin: "6rem 0px",
-  },
   boxContainer: {
     margin: "50vh 0px",
     [theme.breakpoints.down("sm")]: {

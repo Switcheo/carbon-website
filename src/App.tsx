@@ -45,7 +45,6 @@ function App() {
                   <Partnership />
                   <RoadMap />
                   <GetInvolved />
-                  {/* <RecieveUpdates /> */}
                 </>
               </Route>
             </Switch>

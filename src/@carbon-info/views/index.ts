@@ -9,5 +9,4 @@ export * from "./Partnership";
 export * from "./RoadMap";
 export * from "./GetInvolved";
 export * from "./GetInvolved";
-export * from "./ReceiveUpdates";
 export * from "./RoadMapPage";

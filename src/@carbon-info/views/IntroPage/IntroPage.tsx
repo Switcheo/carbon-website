@@ -34,7 +34,6 @@ const IntroPage: React.FC = () => {
             <span className={clsx(classes.gradientText, { open: inView })} >
               decentralized
             <br />
-              {/* financial markets */}
             </span>
             <span className={clsx(classes.gradientText)}>
               financial markets

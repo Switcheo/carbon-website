@@ -130,7 +130,7 @@ const DecentralizedStats: React.FC = () => {
         </Grid>
         <Grid container alignItems="center" justifyContent="center" spacing={isTablet ? 4 : 10} className={classes.cardContainer}>
           <img src={decentralizedGlow} alt="decentralizedGlow" className={classes.glowSVG} />
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} className={classes.CTACardContainer}>
             <FadeAndSlide visible={inView}>
               <CardWithIcon
                 title={"Real use cases"}
@@ -141,7 +141,7 @@ const DecentralizedStats: React.FC = () => {
               />
             </FadeAndSlide>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} className={classes.CTACardContainer}>
             <FadeAndSlide visible={inView}>
               <CardWithIcon
                 title={"Join the community"}
@@ -162,6 +162,12 @@ const DecentralizedStats: React.FC = () => {
 export default DecentralizedStats;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  CTACardContainer: {
+    padding: 0,
+    [theme.breakpoints.down(1000)]: {
+      padding: "8px !important",
+    },
+  },
   decentralizedText: {
     minWidth: "31rem",
     [theme.breakpoints.down(1180)]: {

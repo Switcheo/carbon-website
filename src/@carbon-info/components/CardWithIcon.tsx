@@ -280,15 +280,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.large": {
       height: "17rem",
       padding: "2em 3em 2em 4em",
+      margin: "1rem auto",
       [theme.breakpoints.down(1100)]: {
-        height: "16rem",
+        padding: "2em 3em 2em 2em",
+        height: "18rem",
         width: "22rem",
       },
       [theme.breakpoints.down(1000)]: {
         height: "18rem",
       },
       [theme.breakpoints.down("sm")]: {
-        margin: "auto",
+        // margin: "auto",
         height: "15rem",
         width: "52%",
         padding: "2em 3em 1.5em 4em",
@@ -298,10 +300,10 @@ const useStyles = makeStyles((theme: Theme) => ({
         },
       },
       [theme.breakpoints.down("xs")]: {
-        padding: "1em 3em 4.5em 4em",
+        padding: "1em 3em 4em 4em",
         width: "70%",
       },
-      [theme.breakpoints.down(380)]: {
+      [theme.breakpoints.down(330)]: {
         padding: "1em 3em 6em 4em",
       },
     },

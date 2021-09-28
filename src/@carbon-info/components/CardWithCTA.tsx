@@ -18,8 +18,7 @@ interface cardProps {
 
 const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
-  const { title, description, ctaText, icon, bigSVG, isMobile, link, overwriteCSS = {} } = props;
-  const svgClass = bigSVG ? "bigIcon" : isMobile ? "icon" : "icon";
+  const { title, description, ctaText, icon, bigSVG, link, overwriteCSS = {} } = props;
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.4,
@@ -28,8 +27,8 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   return (
     <div ref={ref}>
       <Box className={clsx(classes.boxContainer, { open: inView })}>
-        <div className={svgClass ? classes.bigIconContainer : classes.iconContainer}>
-          <img src={icon} alt="icon" className={classes[svgClass]} style={{ ...overwriteCSS }} />
+        <div className={clsx(classes.iconContainer, { big: bigSVG })}>
+          <img src={icon} alt="icon" className={clsx(classes.icon, { big: bigSVG })} style={{ ...overwriteCSS }} />
         </div>
         <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center">
           <Grid item container>
@@ -74,57 +73,27 @@ const useStyles = makeStyles((theme: Theme) => ({
       position: "relative",
       maxWidth: "100%",
     },
-  },
-  bigIcon: {
-    position: "absolute",
-    marginLeft: "auto",
-    marginRight: "auto",
-    left: 0,
-    right: 0,
-    textAlign: "center",
-    maxWidth: "100%",
-    transform: "scale(2)",
-    [theme.breakpoints.down("md")]: {
-      maxWidth: "27rem",
-    },
-    [theme.breakpoints.down("sm")]: {
-      maxWidth: "29rem",
-    },
-    [theme.breakpoints.down(700)]: {
-      maxWidth: "21rem",
-    },
-    [theme.breakpoints.down("xs")]: {
-      maxWidth: "38rem",
-    },
-    [theme.breakpoints.down(380)]: {
-      maxWidth: "35rem",
-    },
-    [theme.breakpoints.down(350)]: {
-      maxWidth: "30rem",
-    },
-  },
-  bigIconContainer: {
-    position: "relative",
-    width: "100%",
-    height: "25rem",
-    [theme.breakpoints.down("md")]: {
-      position: "inherit",
-      height: "24rem",
-    },
-    [theme.breakpoints.down("sm")]: {
-      height: "23rem",
-    },
-    [theme.breakpoints.down(700)]: {
-      height: "20rem",
-    },
-    [theme.breakpoints.down("xs")]: {
-      height: "33rem",
-    },
-    [theme.breakpoints.down(400)]: {
-      height: "27rem",
-    },
-    [theme.breakpoints.down(350)]: {
-      height: "22rem",
+    "&.big": {
+      maxWidth: "100%",
+      transform: "scale(2)",
+      [theme.breakpoints.down("md")]: {
+        maxWidth: "27rem",
+      },
+      [theme.breakpoints.down("sm")]: {
+        maxWidth: "29rem",
+      },
+      [theme.breakpoints.down(700)]: {
+        maxWidth: "21rem",
+      },
+      [theme.breakpoints.down("xs")]: {
+        maxWidth: "38rem",
+      },
+      [theme.breakpoints.down(380)]: {
+        maxWidth: "35rem",
+      },
+      [theme.breakpoints.down(350)]: {
+        maxWidth: "30rem",
+      },
     },
   },
   iconContainer: {
@@ -136,6 +105,27 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("xs")]: {
       height: "auto",
+    },
+    "&.big": {
+      [theme.breakpoints.down("md")]: {
+        position: "inherit",
+        height: "24rem",
+      },
+      [theme.breakpoints.down("sm")]: {
+        height: "23rem",
+      },
+      [theme.breakpoints.down(700)]: {
+        height: "20rem",
+      },
+      [theme.breakpoints.down("xs")]: {
+        height: "33rem",
+      },
+      [theme.breakpoints.down(400)]: {
+        height: "27rem",
+      },
+      [theme.breakpoints.down(350)]: {
+        height: "22rem",
+      },
     },
   },
   boxContainer: {
@@ -207,13 +197,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("xs")]: {
       paddingRight: "25%",
-    },
-  },
-  ctaIcon: {
-    margin: "0px 0.125rem",
-    [theme.breakpoints.down("sm")]: {
-      transform: "scale(0.8)",
-      marginTop: "10px",
     },
   },
   textContainer: {

@@ -90,10 +90,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     overflow: "hidden",
   },
-  dash: {
-    margin: theme.spacing(6, 0),
-    height: "1.5rem",
-  },
   backgroundLeft: {
     position: "absolute",
     left: "-52%",
@@ -121,9 +117,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
       transform: "translate(0px,0px)",
     },
-  },
-  icon: {
-    margin: theme.spacing(0, 2),
   },
   image: {
     opacity: 0,

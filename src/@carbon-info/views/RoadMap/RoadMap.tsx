@@ -6,6 +6,7 @@ import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import { RoadMapButton, SphereWithText } from "./components";
 import { useContentful } from "react-contentful";
+import clsx from "clsx";
 
 const RoadMap: React.FC = () => {
   const classes = useStyles();
@@ -133,36 +134,28 @@ const RoadMap: React.FC = () => {
             }
 
           </Typography >
-          {/* <Hidden smDown>
-            <div style={{ marginLeft: 20 }}>
-              <CTAButton
-                text="See Full Roadmap"
-                link="/roadmap"
-                newTab={false}
-              />
-            </div>
-          </Hidden> */}
         </FadeAndSlide>
         <FadeAndSlide visible={inView} delay={10000}>
-          <Grid container alignItems="center" justifyContent="center" className={classes.roadMapContainer} spacing={8} style={{ zIndex: 1 }}>
+          <Grid container alignItems="center" justifyContent="center" className={classes.roadMapContainer} spacing={8}>
             <img src={roadMapGlow} alt="glow" className={classes.glowSVG} />
             <div className={classes.roadMapSVGContainer} style={{ overflow: "visible", marginTop: "5rem" }}>
               <Hidden lgDown>
-                <div style={{ pointerEvents: "none", background: "linear-gradient(to left, rgb(22, 21, 21,1),transparent,transparent)", width: "100vw", height: "100vh", top: 0, right: 0, zIndex: 3, position: "absolute" }} />
-                <div style={{ pointerEvents: "none", background: "linear-gradient(to right, rgb(22, 21, 21,1),transparent,transparent)", width: "100vw", height: "100vh", top: 0, left: 0, zIndex: 3, position: "absolute" }} />
+                <div className={clsx(classes.gradientOverlay, "right")} />
+                <div className={clsx(classes.gradientOverlay, "left")} />
               </Hidden>
               <img src={roadMapBG} alt="bg" className={classes.roadMapSVG} />
-              <div style={{
-                borderRadius: "48%",
-                position: "absolute",
-                top: 0,
-                zIndex: 2,
-                transform: `rotate(${step * 0}deg)`, transition: "all 0.3s ease-in",
-                width: "100%",
-              }}>
+              <div className={classes.sphereContainer} style={{ transform: `rotate(${step * 0}deg)` }}>
                 {roadMapItems.map((items, index) => {
                   return (
-                    <SphereWithText key={index} step={view[index]} percent={items.progress} text={items.title} isMobile={isMobile} isTablet={isTablet} isWideDesktop={isWideDesktop} />
+                    <SphereWithText
+                      key={index}
+                      step={view[index]}
+                      percent={items.progress}
+                      text={items.title}
+                      isMobile={isMobile}
+                      isTablet={isTablet}
+                      isWideDesktop={isWideDesktop}
+                    />
                   );
                 })}
               </div>
@@ -172,7 +165,7 @@ const RoadMap: React.FC = () => {
         <Typography color="textPrimary" variant="h2" paragraph className={classes.percentage}>
           {roadMapItems[progressAndDescriptionCounter]?.progress}%
         </Typography>
-        <Typography color="textPrimary" variant="body2" style={{ color: "#c4c4c4", marginTop: "1rem", cursor: "pointer" }}>
+        <Typography color="textPrimary" variant="body2" className={classes.category}>
           {roadMapItems[progressAndDescriptionCounter]?.category}
         </Typography>
         <br />
@@ -207,12 +200,33 @@ const RoadMap: React.FC = () => {
 export default RoadMap;
 
 const useStyles = makeStyles((theme: Theme) => ({
-  arrowIcon: {
-    width: "1.7rem",
-    verticalAlign: "middle",
-    margin: "0px 0.5rem",
-    "& > path": {
-      fill: "#c4c4c4",
+  sphereContainer: {
+    borderRadius: "48%",
+    position: "absolute",
+    top: 0,
+    zIndex: 2,
+    transition: "all 0.3s ease-in",
+    width: "100%",
+  },
+  category: {
+    color: "#c4c4c4",
+    marginTop: "1rem",
+    cursor: "pointer",
+  },
+  gradientOverlay: {
+    pointerEvents: "none",
+    zIndex: 3,
+    position: "absolute",
+    width: "100vw",
+    height: "100vh",
+    top: 0,
+    "&.right": {
+      background: "linear-gradient(to left, rgb(22, 21, 21,1),transparent,transparent)",
+      right: 0,
+    },
+    "&.left": {
+      background: "linear-gradient(to right, rgb(22, 21, 21,1),transparent,transparent)",
+      left: 0,
     },
   },
   roadMapDescription: {
@@ -234,13 +248,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       marginTop: 0,
     },
-  },
-  circular: {
-    position: "absolute",
-  },
-  centerSphere: {
-    position: "absolute",
-    width: "100%",
   },
   button: {
     margin: "3rem 0px 3rem 16px",
@@ -290,6 +297,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   roadMapContainer: {
+    zIndex: 1,
     marginTop: "7rem",
     position: "relative",
     [theme.breakpoints.down("sm")]: {
@@ -302,11 +310,5 @@ const useStyles = makeStyles((theme: Theme) => ({
   noWrap: {
     overflow: "visible",
     marginBottom: theme.spacing(4),
-  },
-  roadMapTitleText: {
-    fontFamily: "TyrosPro",
-    fontWeight: 300,
-    fontSize: "2.063rem",
-    lineHeight: "2.228rem",
   },
 }));

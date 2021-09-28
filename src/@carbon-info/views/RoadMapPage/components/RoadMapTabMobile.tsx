@@ -123,7 +123,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                                   })}
                                 />
                             }
-                            <Typography color="textPrimary" variant="body1" align="left" style={{ gridColumn: "1/-1" }} className={classes.cardDescription}>
+                            <Typography color="textPrimary" variant="body1" align="left" className={classes.cardDescription}>
                               {o.shortDescription}
                             </Typography>
                             <Typography color="textPrimary" variant="body1" align="left" className={clsx(classes.status, { completed: o.status === "Completed" })}>
@@ -141,7 +141,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                 <Typography color="textPrimary" variant="subtitle2" className={classes.swipe}>
                   <RoadMapPageArrowLeft style={{ height: "1.5rem", color: "red" }} />
                         SWIPE FOR MORE
-                        <RoadMapPageArrowRight style={{ height: "1.5rem" }} />
+                  <RoadMapPageArrowRight style={{ height: "1.5rem" }} />
                 </Typography>
                 <br /><br /><br />
                 <Divider style={{ width: "80%", background: "#554B4B", margin: "0px auto" }} />
@@ -231,6 +231,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineClamp: 3,
     boxOrient: "vertical",
     display: "-webkit-box",
+    gridColumn: "1/-1",
   },
   titleDescription: {
     width: "90%",
