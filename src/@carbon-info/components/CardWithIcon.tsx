@@ -27,7 +27,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
   return (
     <Box className={clsx(classes.boxContainer, size, { open: inView })}>
       <div ref={ref} />
-      <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center" style={{}}>
+      <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center">
         {
           iconAlignment === "side" ?
             <Grid item container spacing={4} style={{ height: "100%" }}>
@@ -39,13 +39,12 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
               </Grid>
               <Grid container item xs={10} className={CTAicon && CTAicon?.length > 0 ? classes.textContainerWithSocialIcons : classes.textContainer}>
                 <Grid item xs={12}>
-                  <Typography className={classes.divTitle} color="textPrimary" paragraph={isDesktop}>
+                  <Typography className={clsx(classes.divTitle, { social: CTAicon })} color="textPrimary" paragraph={isDesktop}>
                     {title}
                   </Typography>
                 </Grid>
-                {/* <br /> */}
                 <Grid item xs={12}>
-                  <Typography variant="body2" color="textPrimary">
+                  <Typography variant="body2" color="textPrimary" className={classes.description}>
                     {description}
                   </Typography>
                 </Grid>
@@ -72,10 +71,9 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
                 {icon}
               </Grid>
               <Grid item xs={12} className={classes.contentContainer}>
-                <Typography className={classes.divTitle} style={{ width: title === "Powerful tools" ? "57%" : "98%" }} color="textPrimary" paragraph>
+                <Typography className={clsx(classes.divTitle, size, { shortTitle: title.length < 15 })} color="textPrimary" paragraph>
                   {title}
                 </Typography>
-                {/* <br /> */}
               </Grid>
               <Grid item xs={12} className={classes.contentContainer}>
                 <Typography variant="body2" color="textPrimary" >
@@ -101,8 +99,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   textContainerWithSocialIcons: {
-    display: "grid",
-    gridTemplateRows: "20% 65% auto",
+    display: "flex",
+    gap: "1rem",
     [theme.breakpoints.down("sm")]: {
       // gap: 10,
       paddingTop: "8px !important",
@@ -125,7 +123,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: "18rem",
     },
     [theme.breakpoints.down("sm")]: {
-      gridTemplateRows: "20% 80%",
+      display: "flex",
+      rowGap: 0,
       height: "auto",
     },
   },
@@ -188,6 +187,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   boxContainer: {
     height: "100%",
+    minHeight: "14rem",
     background: "linear-gradient(353.27deg, rgba(41, 40, 40, 0.21) -9.67%, #161515 94.17%)",
     mixBlendMode: "normal",
     boxShadow: "inset 62px 98px 100px -60px #242424, inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
@@ -251,6 +251,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "2em",
       margin: "auto",
       width: "20rem",
+      height: "auto",
+      minHeight: "23rem",
       [theme.breakpoints.down("md")]: {
         boxSizing: "border-box",
         width: "auto",
@@ -282,6 +284,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "2em 3em 2em 4em",
       [theme.breakpoints.down(1100)]: {
         height: "16rem",
+        width: "22rem",
       },
       [theme.breakpoints.down(1000)]: {
         height: "18rem",
@@ -306,13 +309,34 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   divTitle: {
-    // overflowWrap: "anywhere",
     fontFamily: "TyrosPro",
     fontWeight: 300,
     fontSize: "2rem",
     lineHeight: "2.3rem",
     [theme.breakpoints.down("sm")]: {
+      maxWidth: "80%",
       marginBottom: 0,
+    },
+    [theme.breakpoints.down(330)]: {
+      maxWidth: "90%",
+    },
+    "&.small": {
+      minHeight: "4rem",
+      maxHeight: "5rem",
+      [theme.breakpoints.down("sm")]: {
+        minHeight: "5rem",
+      },
+      [theme.breakpoints.down("xs")]: {
+        maxHeight: "7rem",
+      },
+    },
+    "&.shortTitle": {
+      [theme.breakpoints.down("sm")]: {
+        maxWidth: "57%",
+      },
+    },
+    "&.social": {
+      whiteSpace: "nowrap",
     },
   },
   contentContainer: {
@@ -327,5 +351,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   gridContainer: {
     height: "100%",
     width: "100%",
+  },
+  description: {
+    minHeight: "8rem",
+    [theme.breakpoints.down("sm")]: {
+      minHeight: "5rem",
+    },
   },
 }));
