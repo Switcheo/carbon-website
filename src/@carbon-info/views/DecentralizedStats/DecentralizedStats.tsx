@@ -60,7 +60,7 @@ const DecentralizedStats: React.FC = () => {
             <Grid item xs={12} md={6} className={classes.description}>
               <FadeAndSlide visible={inView} transform={[20, 0]}>
                 <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : "subtitle1"} align="left">
-                  <Hidden mdDown>
+                  <Hidden smDown>
                     <Stroke className={classes.stroke} />
                   </Hidden>
                   <div className={classes.descriptionDiv}>
@@ -165,16 +165,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   decentralizedText: {
     minWidth: "31rem",
     [theme.breakpoints.down(1180)]: {
-      // maxWidth: "15rem",
-      // minWidth: "0rem",
       fontSize: "2.63rem",
     },
     [theme.breakpoints.down("sm")]: {
-      minWidth: "47rem",
+      maxWidth: "37rem",
       fontSize: "3.6rem",
+      minWidth: "20rem",
     },
     [theme.breakpoints.down("xs")]: {
-      minWidth: "47rem",
+      maxWidth: "25rem",
       fontSize: "2.63rem",
       lineHeight: "2.9rem",
     },
