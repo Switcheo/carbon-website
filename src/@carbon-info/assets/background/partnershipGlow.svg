@@ -3,7 +3,7 @@
 <path d="M718.694 1195.87C480.666 1184.19 293.652 974.285 300.99 727.041C308.328 479.797 507.243 288.841 745.27 300.507C983.297 312.174 1170.31 522.091 1162.97 769.335C1155.64 1016.58 956.721 1207.55 718.694 1195.87Z" fill="url(#paint0_radial)"/>
 </g>
 <defs>
-<filter id="filter0_f" x="0.78125" y="0" width="1462.4" height="1496.38" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_f" x="0.78125" y="0" width="1462.4" height="1496.38" filterUnits="userSpaceOnUse">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur"/>
