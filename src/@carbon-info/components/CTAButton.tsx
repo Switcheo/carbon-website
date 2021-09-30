@@ -29,6 +29,9 @@ const CTAButton: React.FC<buttonProps> = (props: buttonProps) => {
 export default CTAButton;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    whiteSpace: "nowrap",
+  },
   textCTA: {
     letterSpacing: "2px",
     [theme.breakpoints.down("sm")]: {

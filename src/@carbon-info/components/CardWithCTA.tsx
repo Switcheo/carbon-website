@@ -108,12 +108,21 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: "23rem",
     },
     [theme.breakpoints.down("xs")]: {
+      height: "36rem",
+    },
+    [theme.breakpoints.down(550)]: {
+      height: "33rem",
+    },
+    [theme.breakpoints.down(480)]: {
+      height: "37rem",
+    },
+    [theme.breakpoints.down(420)]: {
       height: "33rem",
     },
     [theme.breakpoints.down(400)]: {
       height: "27rem",
     },
-    [theme.breakpoints.down(330)]: {
+    [theme.breakpoints.down(350)]: {
       height: "23rem",
     },
     "&.big": {
@@ -123,9 +132,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
       [theme.breakpoints.down("sm")]: {
         height: "23rem",
-      },
-      [theme.breakpoints.down(700)]: {
-        height: "20rem",
       },
       [theme.breakpoints.down("xs")]: {
         height: "33rem",
@@ -195,12 +201,13 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontFamily: "TyrosPro",
       fontSize: "3.1rem",
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down(700)]: {
       width: "100%",
     },
   },
   gridItem: {
     height: "100%",
+    width: "100%",
   },
   gridContainer: {
     height: "24rem",
@@ -219,8 +226,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "100%",
     boxSizing: "border-box",
     paddingRight: "30%",
+    [theme.breakpoints.down(1190)]: {
+      paddingRight: "20%",
+    },
+    [theme.breakpoints.down(1090)]: {
+      paddingRight: "11%",
+    },
     [theme.breakpoints.down("sm")]: {
+      paddingRight: "25%",
       padding: "2rem",
+    },
+    [theme.breakpoints.down(740)]: {
+      paddingRight: "15%",
+    },
+    [theme.breakpoints.down(630)]: {
+      paddingRight: "8%",
     },
   },
 }));
