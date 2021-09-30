@@ -9,17 +9,17 @@ const sitemap = [
     sitemap: [
       {
         title: "Features",
-        link: "https://staging.carbon.network",
+        link: Path.Footer.Features,
         target: "",
       },
       {
         title: "Guides",
-        link: "https://guide.carbon.network",
+        link: Path.Footer.Guides,
         target: "_blank",
       },
       {
         title: "Blog",
-        link: "https://blog.switcheo.com",
+        link: Path.Footer.Blog,
         target: "_blank",
       },
     ],
@@ -29,32 +29,32 @@ const sitemap = [
     sitemap: [
       {
         title: "Get SWTH",
-        link: "https://app.dem.exchange/trade/swth_eth1",
+        link: Path.Footer.GetSWTH,
         target: "_blank",
       },
       {
         title: "Stake",
-        link: "https://app.dem.exchange/stake",
+        link: Path.Footer.Stake,
         target: "_blank",
       },
       {
         title: "Token",
-        link: "https://switcheo.org/tokens?net=main",
+        link: Path.Footer.Token,
         target: "_blank",
       },
       {
         title: "Markets",
-        link: "https://switcheo.org/markets?net=main",
+        link: Path.Footer.Markets,
         target: "_blank",
       },
       {
         title: "Demex",
-        link: "https://dem.exchange",
+        link: Path.Footer.Demex,
         target: "_blank",
       },
       {
         title: "Carbon Scan",
-        link: "https://scan.carbon.network ",
+        link: Path.Footer.CarbonScan,
         target: "_blank",
       },
     ],
@@ -64,17 +64,17 @@ const sitemap = [
     sitemap: [
       {
         title: "Switcheo Development Fund",
-        link: "https://forum.switcheo.foundation/topic/42/applying-for-project-grants-under-the-switcheo-development-fund",
+        link: Path.Footer.SwitcheoDevelopmentFund,
         target: "_blank",
       },
       {
         title: "APIs",
-        link: "https://docs.carbon.network",
+        link: Path.Footer.APIs,
         target: "_blank",
       },
       {
         title: "GitHub",
-        link: "https://github.com",
+        link: Path.Footer.Github,
         target: "_blank",
       },
     ],
@@ -84,12 +84,12 @@ const sitemap = [
     sitemap: [
       {
         title: "Forum",
-        link: "https://forum.carbon.network",
+        link: Path.Footer.Forum,
         target: "_blank",
       },
       {
         title: "Governance",
-        link: "https://scan.carbon.network/governance",
+        link: Path.Footer.Governance,
         target: "_blank",
       },
     ],

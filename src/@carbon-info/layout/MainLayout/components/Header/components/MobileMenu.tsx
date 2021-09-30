@@ -20,16 +20,16 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
         <MenuIconClose onClick={callback} style={{ marginLeft: "auto" }} />
       </div>
       <div className={classes.navButtonContainer}>
-        <Link href={"https://guide.carbon.net"} underline="none" onClick={callback} target="_blank">
+        <Link href={Path.Footer.Guides} underline="none" onClick={callback} target="_blank">
           <Typography color="textPrimary" variant="h1" display="inline">Learn</Typography>
         </Link>
-        <Link target="_blank" onClick={callback} href={"https://forum.switcheo.foundation/topic/42/applying-for-project-grants-under-the-switcheo-development-fund"} underline="none">
+        <Link target="_blank" onClick={callback} href={Path.Footer.SwitcheoDevelopmentFund} underline="none">
           <Typography color="textPrimary" variant="h1" display="inline">Build</Typography>
         </Link>
         <Link href={"/roadmap"} underline="none" onClick={callback} >
           <Typography color="textPrimary" variant="h1" display="inline">Roadmap</Typography>
         </Link>
-        <Link href={"https://scan.carbon.network"} underline="none" onClick={callback} target="_blank">
+        <Link href={Path.Footer.CarbonScan} underline="none" onClick={callback} target="_blank">
           <Typography color="textPrimary" variant="h1" display="inline">Explorer</Typography>
         </Link>
       </div>

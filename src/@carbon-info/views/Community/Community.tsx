@@ -6,6 +6,7 @@ import communityHero from "@carbon-info/assets/non-animated/communityHeroSVG.png
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
+import { Path } from "@carbon-info/constants";
 
 const Community: React.FC = () => {
   const theme = useTheme();
@@ -42,7 +43,7 @@ const Community: React.FC = () => {
                 <Typography align="left" paragraph>
                   <CTAButton
                     text="GET TOKEN"
-                    link="https://app.dem.exchange/trade/swth_eth1"
+                    link={Path.GetToken}
                     CTA
                   />
                 </Typography>

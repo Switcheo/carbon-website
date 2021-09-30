@@ -8,6 +8,7 @@ import PitchSVG from "@carbon-info/assets/non-animated/pitch.png";
 import { CardWithCTA, FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
+import { Path } from "@carbon-info/constants";
 
 const GetInvolved: React.FC = () => {
   const classes = useStyles();
@@ -59,7 +60,7 @@ const GetInvolved: React.FC = () => {
               title={"Pitch a project"}
               description={"Need funding to kickstart your project on Carbon?"}
               ctaText={"Apply Now"}
-              link={"https://forum.switcheo.foundation/topic/42/applying-for-project-grants-under-the-switcheo-development-fund"}
+              link={Path.Footer.SwitcheoDevelopmentFund}
               icon={PitchSVG}
               isMobile={isTablet}
               overwriteCSS={{ width: isSmallMobile ? "60vw" : isMobile ? "35rem" : "23rem", display: "block", maxWidth: "100%" }}

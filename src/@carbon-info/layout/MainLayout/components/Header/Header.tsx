@@ -3,6 +3,7 @@ import { Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } 
 import { CarbonLogo, MenuIcon } from "@carbon-info/assets";
 import MobileMenu from "./components/MobileMenu";
 import clsx from "clsx";
+import { Path } from "@carbon-info/constants";
 
 const SWITCH_THRESHOLD = 45;
 
@@ -42,16 +43,16 @@ const Header: React.FC = () => {
               </>
               :
               <>
-                <Link href={"https://guide.carbon.net"} underline="none" target="_blank">
+                <Link href={Path.Footer.Guides} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Learn</Typography>
                 </Link>
-                <Link href={"https://forum.switcheo.foundation/topic/42/applying-for-project-grants-under-the-switcheo-development-fund"} underline="none" target="_blank">
+                <Link href={Path.Footer.SwitcheoDevelopmentFund} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Build</Typography>
                 </Link>
                 <Link href={"/roadmap"} underline="none">
                   <Typography color="textPrimary" display="inline">Roadmap</Typography>
                 </Link>
-                <Link href={"https://scan.carbon.network"} underline="none" target="_blank">
+                <Link href={Path.Footer.CarbonScan} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Explorer</Typography>
                 </Link>
               </>

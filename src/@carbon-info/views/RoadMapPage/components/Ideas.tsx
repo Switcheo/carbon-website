@@ -4,6 +4,7 @@ import carbonConnected from "@carbon-info/assets/non-animated/roadmapPageHero.pn
 import { CTAButton } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
+import { Path } from "@carbon-info/constants";
 
 const Ideas: React.FC = () => {
   const classes = useStyles();
@@ -32,7 +33,7 @@ const Ideas: React.FC = () => {
             </Typography>
               <CTAButton
                 text="Submit an idea"
-                link="/#document"
+                link={Path.Socials.SwitcheoForum}
               />
             </div>
           </Grid>

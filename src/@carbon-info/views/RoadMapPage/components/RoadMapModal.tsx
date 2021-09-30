@@ -207,7 +207,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       backgroundColor: "#554B4B",
     },
     "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "#74E8E8",
+      backgroundColor: `#74E8E8"`,
       borderRadius: "4px",
       height: "10px",
       transform: "scale(0.3)",
