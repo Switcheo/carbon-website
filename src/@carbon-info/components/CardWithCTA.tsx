@@ -31,7 +31,7 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
           <img src={icon} alt="icon" className={clsx(classes.icon, { big: bigSVG })} style={{ ...overwriteCSS }} />
         </div>
         <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center">
-          <Grid item container>
+          <Grid item className={classes.gridItem}>
             <div className={classes.textContainer}>
               <Typography color="textPrimary" variant="h2" className={classes.divTitle}>
                 {title}
@@ -39,10 +39,12 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
               <Typography color="textPrimary" variant="body2" className={classes.subtext}>
                 {description}
               </Typography>
-              <CTAButton
-                text={ctaText}
-                link={link}
-              />
+              <div>
+                <CTAButton
+                  text={ctaText}
+                  link={link}
+                />
+              </div>
             </div>
           </Grid>
         </Grid>
@@ -56,6 +58,8 @@ export default CardWithCTA;
 const useStyles = makeStyles((theme: Theme) => ({
   subtext: {
     margin: "3rem 0px",
+    height: "4rem",
+    maxWidth: "20rem",
   },
   icon: {
     position: "absolute",
@@ -104,7 +108,13 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: "23rem",
     },
     [theme.breakpoints.down("xs")]: {
-      height: "auto",
+      height: "33rem",
+    },
+    [theme.breakpoints.down(400)]: {
+      height: "27rem",
+    },
+    [theme.breakpoints.down(330)]: {
+      height: "23rem",
     },
     "&.big": {
       [theme.breakpoints.down("md")]: {
@@ -189,17 +199,25 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "100%",
     },
   },
-  gridContainer: {
+  gridItem: {
     height: "100%",
+  },
+  gridContainer: {
+    height: "24rem",
     width: "100%",
     [theme.breakpoints.down("sm")]: {
-      height: "0%",
+      // height: "0%",
     },
     [theme.breakpoints.down("xs")]: {
       paddingRight: "25%",
     },
+    [theme.breakpoints.down(330)]: {
+      paddingRight: "20%",
+    },
   },
   textContainer: {
+    height: "100%",
+    boxSizing: "border-box",
     paddingRight: "30%",
     [theme.breakpoints.down("sm")]: {
       padding: "2rem",
