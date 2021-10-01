@@ -30,14 +30,14 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
   const [view, setView] = useState(0);
   const [tabView, setTabView] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const isSafari = !!(navigator.userAgent.indexOf('Safari') !== -1)
-  const isChrome = !!(navigator.userAgent.indexOf('Chrome') !== -1)
+  const isSafari = !!(navigator.userAgent.indexOf("Safari") !== -1);
+  const isChrome = !!(navigator.userAgent.indexOf("Chrome") !== -1);
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.2,
     triggerOnce: true,
   });
-  console.log(navigator.userAgent.indexOf('Safari'), navigator.userAgent);
+
   const incrementTab = () => {
     setTabView((prev) => {
       if (prev + 1 > content[view]?.tabs.length - 1) return 0;
@@ -166,8 +166,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       "& li": {
         margin: "0px 5px !important",
         boxSizing: "border-box",
-      }
-    }
+      },
+    },
   },
   swipe: {
     fontSize: "2rem",
