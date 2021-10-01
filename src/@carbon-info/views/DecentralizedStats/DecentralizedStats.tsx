@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import chartSVG from "@carbon-info/assets/animated/chart.svg";
+import chartSVG from "@carbon-info/assets/animated/chart.png";
 import decentralizedGlow from "@carbon-info/assets/background/decentralizedGlow.svg";
 import { CardWithIcon, FadeAndSlide } from "@carbon-info/components";
 import { AccelerateIcon, ChooseIcon, Stroke, DemexIcon, TwitterIcon, DiscordIcon, TelegramIcon } from "@carbon-info/assets";
