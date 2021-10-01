@@ -30,12 +30,14 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
   const [view, setView] = useState(0);
   const [tabView, setTabView] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const isSafari = !!(navigator.userAgent.indexOf('Safari') !== -1)
+  const isChrome = !!(navigator.userAgent.indexOf('Chrome') !== -1)
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.2,
     triggerOnce: true,
   });
-
+  console.log(navigator.userAgent.indexOf('Safari'), navigator.userAgent);
   const incrementTab = () => {
     setTabView((prev) => {
       if (prev + 1 > content[view]?.tabs.length - 1) return 0;
@@ -78,7 +80,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                   <Typography color="textPrimary" variant="h2" className={clsx(classes.tab)}>
                     {o.title}
                   </Typography>
-                  <Typography color="textPrimary" variant="subtitle1" align="center" style={{}} className={classes.titleDescription}>
+                  <Typography color="textPrimary" variant="subtitle1" align="center" className={classes.titleDescription}>
                     {o.description}
                   </Typography>
                 </div>
@@ -90,6 +92,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                     showIndicators={false}
                     centerMode
                     autoPlay={false}
+                    className={clsx(classes.Carousel, { safari: isSafari && !isChrome })}
                   >
                     {
                       o.tabs.map((o, tabIndex) => {
@@ -158,6 +161,14 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
 export default RoadMapTab;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  Carousel: {
+    "&.safari": {
+      "& li": {
+        margin: "0px 5px !important",
+        boxSizing: "border-box",
+      }
+    }
+  },
   swipe: {
     fontSize: "2rem",
     letterSpacing: 1,
