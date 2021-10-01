@@ -266,6 +266,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     backdropFilter: "blur(3px)",
     borderRadius: 12,
     margin: "auto",
+    position: "relative",
     "&.completed": {
       backgroundColor: "#292A2F",
       boxShadow: "inset 62px 98px 100px -60px #242424, inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
@@ -290,7 +291,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: "destination-out",
+      maskComposite: "source-out",
       pointerEvents: "none",
     },
   },
