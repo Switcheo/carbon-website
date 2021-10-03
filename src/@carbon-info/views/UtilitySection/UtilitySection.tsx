@@ -61,7 +61,7 @@ const UtilitySection: React.FC = () => {
                 <Grid item xs={12} sm={6}>
                   <FadeAndSlide visible={inView} transform={[0, -20]}>
                     <CardWithIcon
-                      title={"INTERCONNECTIVE"}
+                      title={"CONNECTIVE"}
                       description={"Powers interoperability between sovereign blockchain networks that enables seamless cross-chain transactions and more."}
                       icon={<TradeIcon />} />
                   </FadeAndSlide>
@@ -91,7 +91,7 @@ const UtilitySection: React.FC = () => {
                 <Grid item>
                   <FadeAndSlide visible={inView} transform={[-20, 0]}>
                     <CardWithIcon
-                      title={"INTERCONNECTIVE"}
+                      title={"CONNECTIVE"}
                       description={"Powers interoperability between sovereign blockchain networks, enabling seamless cross-chain transactions and more."}
                       icon={<TradeIcon />} />
                   </FadeAndSlide>

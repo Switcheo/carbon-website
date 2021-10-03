@@ -84,7 +84,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                     {o.description}
                   </Typography>
                 </div>
-                <div style={{ margin: "2rem 0px 0.5rem 0px" }}>
+                <div style={{ margin: "3rem 0px 0.5rem 0px" }}>
                   <Carousel
                     showArrows={false}
                     showStatus={false}
@@ -138,7 +138,6 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                       })
                     }
                   </Carousel>
-
                 </div>
                 <br /><br />
                 <Typography color="textPrimary" variant="subtitle2" className={classes.swipe}>
