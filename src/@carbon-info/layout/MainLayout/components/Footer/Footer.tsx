@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
         {
           sitemap.map((section) => {
             return (
-              <Grid item container xs={6} sm md key={section.section} direction="column" style={{ padding: isMobile ? "0px 0px 3rem 3.25rem" : 0 }}>
+              <Grid item container xs={6} sm md key={section.section} direction="column" className={classes.mobileSiteMapSection}>
                 <Typography color="textPrimary" className={classes.footerHeader} align="left">
                   {section.section}
                 </Typography>
@@ -181,6 +181,11 @@ const Footer: React.FC = () => {
 export default Footer;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  mobileSiteMapSection: {
+    [theme.breakpoints.down("xs")]: {
+      padding: "0px 0px 3rem 3.25rem",
+    },
+  },
   logo: {
     verticalAlign: "middle",
     margin: "0px 0.063rem",
@@ -205,7 +210,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: "SourceSansPro-Light",
     fontWeight: 400,
     fontSize: "1.438rem",
-    // lineHeight: "3.22rem",
     letterSpacing: "-1px",
     color: "#ababab",
     [theme.breakpoints.down("xs")]: {

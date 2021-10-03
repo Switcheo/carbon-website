@@ -17,7 +17,7 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
     <div className={classes.navBarContainer} ref={ref}>
       <div className={classes.logoContainer}>
         <CarbonLogo className={classes.logo} />
-        <MenuIconClose onClick={callback} style={{ marginLeft: "auto" }} />
+        <MenuIconClose onClick={callback} className={classes.menuIcon} />
       </div>
       <div className={classes.navButtonContainer}>
         <Link href={Path.Footer.Guides} underline="none" onClick={callback} target="_blank">
@@ -51,6 +51,9 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
 export default MobileMenu;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  menuIcon: {
+    marginLeft: "auto",
+  },
   navBarContainer: {
     height: "-webkit-fill-available",
     width: "100vw",

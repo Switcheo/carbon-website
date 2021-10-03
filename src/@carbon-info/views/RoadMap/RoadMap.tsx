@@ -138,7 +138,7 @@ const RoadMap: React.FC = () => {
         <FadeAndSlide visible={inView} delay={10000}>
           <Grid container alignItems="center" justifyContent="center" className={classes.roadMapContainer} spacing={8}>
             <img src={roadMapGlow} alt="glow" className={classes.glowSVG} />
-            <div className={classes.roadMapSVGContainer} style={{ overflow: "visible", marginTop: "5rem" }}>
+            <div className={classes.roadMapSVGContainer}>
               <Hidden lgDown>
                 <div className={clsx(classes.gradientOverlay, "right")} />
                 <div className={clsx(classes.gradientOverlay, "left")} />
@@ -176,7 +176,7 @@ const RoadMap: React.FC = () => {
         </Fade>
         <br />
         <br />
-        <Grid container style={{ zIndex: 9, position: "relative" }}>
+        <Grid container className={classes.roadMapButtonContainer}>
           <Grid item xs={6}>
             <RoadMapButton direction="left" callback={useThrottle(incrementStep, 900)} />
           </Grid>
@@ -200,6 +200,10 @@ const RoadMap: React.FC = () => {
 export default RoadMap;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  roadMapButtonContainer: {
+    zIndex: 9,
+    position: "relative",
+  },
   sphereContainer: {
     borderRadius: "48%",
     position: "absolute",
@@ -275,6 +279,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   roadMapSVGContainer: {
+    overflow: "visible",
+    marginTop: "5rem",
     pointerEvents: "none",
     position: "relative",
     marginBottom: "-38vw",

@@ -1,8 +1,9 @@
 import { DocsIcon, GitHubIcon, MenuIconClose } from "@carbon-info/assets";
 import { RoadMapButton } from "@carbon-info/views/RoadMap/components";
-import { Divider, Grid, Hidden, Link, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Divider, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import React from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import clsx from "clsx";
 
 interface Props {
   content: {
@@ -22,11 +23,13 @@ interface Props {
 
 const RoadMapModal: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
+  const theme = useTheme();
   const { content, mainTitle, incrementTab, decrementTab, closeModal, page } = props;
   const { title, status, progress, docLink, githubLink, description } = content;
+  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <div className={classes.container}>
-      <MenuIconClose style={{ position: "absolute", top: 20, right: 20 }} onClick={closeModal} />
+      <MenuIconClose className={classes.menuIcon} onClick={closeModal} />
       <Grid container alignItems="center" className={classes.titleContainer}>
         <Grid item xs={2} className={classes.circular}>
           <CircularProgressbar
@@ -38,7 +41,7 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
               textColor: "rgba(255, 255, 255, 1)",
             })} />
         </Grid>
-        <Grid item xs={10} style={{ padding: "1em", paddingLeft: "1.5rem" }}>
+        <Grid item xs={10} className={classes.titleTextContainer}>
           <Typography color="textPrimary" variant="body1" className={classes.status}>
             {`${status} > ${mainTitle}`}
           </Typography>
@@ -47,7 +50,7 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
           </Typography>
         </Grid>
       </Grid>
-      <Divider style={{ width: "80%", backgroundColor: "#42444B" }} className={classes.divider} />
+      <Divider className={clsx(classes.divider, "topDivider")} />
       <div className={classes.textContainer}>
         <Typography color="textPrimary" variant="subtitle1" className={classes.divTitle} paragraph>
           Description
@@ -56,23 +59,23 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
           {description}
         </Typography>
       </div>
-      <div style={{ position: "relative" }}>
-        <Divider style={{ backgroundColor: "#212125" }} className={classes.divider} />
-        <Typography color="textPrimary" variant="body1" style={{ position: "absolute", bottom: 5, right: 0, color: "#555861" }}>
+      <div className={classes.pageContainer}>
+        <Divider className={clsx(classes.divider, "bottomDivider")} />
+        <Typography color="textPrimary" variant="body1" className={classes.pageNumber}>
           {page}
         </Typography>
       </div>
       <Hidden smDown>
-        <div style={{ display: "flex", flexDirection: "row", margin: "2rem 0px", alignItems: "center" }}>
-          <div style={{ display: "flex", flexDirection: "row", gap: 20 }}>
+        <div className={classes.iconAndButtonContainer}>
+          <div className={classes.iconContainer}>
             {
               docLink && (
                 <Link href={docLink} underline="none" target="_blank">
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
-                    <DocsIcon style={{ height: "2rem" }} />
+                  <div className={classes.iconAndTextContainer}>
+                    <DocsIcon className={classes.icon} />
                     <Typography color="textPrimary" variant="body2">
                       Docs
-              </Typography>
+                    </Typography>
                   </div>
                 </Link>
               )
@@ -80,33 +83,33 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
             {
               githubLink && (
                 <Link href={githubLink} underline="none" target="_blank">
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
-                    <GitHubIcon style={{ height: "2rem" }} />
+                  <div className={classes.iconAndTextContainer}>
+                    <GitHubIcon className={classes.icon} />
                     <Typography color="textPrimary" variant="body2">
                       GitHub
-              </Typography>
+                    </Typography>
                   </div>
                 </Link>
               )
             }
           </div>
-          <div style={{ marginLeft: "auto", display: "flex", flexDirection: "row", gap: 20 }}>
+          <div className={classes.roadMapButtonsContainer}>
             <RoadMapButton direction="left" size={"small"} callback={decrementTab} />
             <RoadMapButton direction="right" size={"small"} callback={incrementTab} />
           </div>
         </div>
       </Hidden>
       <Hidden mdUp>
-        <div style={{ display: "flex", flexDirection: "column", margin: "2rem 0px", alignItems: "center" }}>
-          <div style={{ display: "flex", flexDirection: "row", gap: 20 }}>
+        <div className={clsx(classes.iconAndButtonContainer, { tablet: isTablet })}>
+          <div className={classes.iconContainer}>
             {
               docLink && (
                 <Link href={docLink} underline="none" target="_blank">
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
-                    <DocsIcon style={{ height: "3rem" }} />
+                  <div className={classes.iconAndTextContainer}>
+                    <DocsIcon className={clsx(classes.icon, "tablet")} />
                     <Typography color="textPrimary" variant="body2">
                       Docs
-                </Typography>
+                    </Typography>
                   </div>
                 </Link>
               )
@@ -114,8 +117,8 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
             {
               githubLink && (
                 <Link href={githubLink} underline="none" target="_blank">
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 7 }}>
-                    <GitHubIcon style={{ height: "3rem" }} />
+                  <div className={classes.iconAndTextContainer}>
+                    <GitHubIcon className={clsx(classes.icon, "tablet")} />
                     <Typography color="textPrimary" variant="body2">
                       GitHub
                     </Typography>
@@ -124,16 +127,17 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
               )
             }
             {
+              // create empty space
               (!githubLink && !docLink) && (
                 <div style={{ height: "5.9rem" }} />
               )
             }
           </div>
-          <div style={{ display: "flex", flexDirection: "row", gap: 20, marginTop: "3rem" }}>
-            <span style={{ marginRight: "5rem" }}>
+          <div className={clsx(classes.roadMapButtonsContainer, "tablet")}>
+            <span className={classes.roadMapButton}>
               <RoadMapButton direction="left" size={"small"} callback={decrementTab} />
             </span>
-            <span style={{ marginLeft: "5rem" }}>
+            <span className={clsx(classes.roadMapButton, "right")}>
               <RoadMapButton direction="right" size={"small"} callback={incrementTab} />
             </span>
           </div>
@@ -146,6 +150,67 @@ const RoadMapModal: React.FC<Props> = (props: Props) => {
 export default RoadMapModal;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  roadMapButtonsContainer: {
+    marginLeft: "auto",
+    display: "flex",
+    flexDirection: "row",
+    gap: 20,
+    "&.tablet": {
+      marginTop: "3rem",
+      marginLeft: 0,
+    },
+  },
+  roadMapButton: {
+    marginRight: "5rem",
+    "&.right": {
+      marginRight: 0,
+      marginLeft: "5rem",
+    },
+  },
+  iconAndTextContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 7,
+  },
+  iconAndButtonContainer: {
+    display: "flex",
+    flexDirection: "row",
+    margin: "2rem 0px",
+    alignItems: "center",
+    "&.tablet": {
+      flexDirection: "column",
+    },
+  },
+  iconContainer: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 20,
+  },
+  icon: {
+    height: "2rem",
+    "&.tablet": {
+      height: "3rem",
+    },
+  },
+  pageContainer: {
+    position: "relative",
+  },
+  pageNumber: {
+    position: "absolute",
+    bottom: 5,
+    right: 0,
+    color: "#555861",
+  },
+  titleTextContainer: {
+    padding: "1em",
+    paddingLeft: "1.5rem",
+  },
+  menuIcon: {
+    position: "absolute",
+    top: 20,
+    right: 20,
+  },
   titleContainer: {
     height: "9.5rem",
     [theme.breakpoints.down("xs")]: {
@@ -157,6 +222,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   divider: {
     margin: "2rem 0px",
+    "&.topDivider": {
+      width: "80%",
+      backgroundColor: "#42444B",
+    },
+    "&.bottomDivider": {
+      backgroundColor: "#212125",
+    },
   },
   title: {
     lineHeight: "42px",

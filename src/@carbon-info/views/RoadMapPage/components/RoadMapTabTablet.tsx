@@ -121,7 +121,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
             </Carousel>
           </Grid>
           <br />
-          <Typography color="textPrimary" variant="subtitle1" align="center" style={{}} className={classes.titleDescription}>
+          <Typography color="textPrimary" variant="subtitle1" align="center" className={classes.titleDescription}>
             {content[view]?.description}
           </Typography>
           <div className={classes.FilterContainer}>
@@ -146,7 +146,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                           </Typography>
                           {
                             o.status === "Completed" ?
-                              <div style={{ position: "relative" }}>
+                              <div className={classes.circularCompletedContainer}>
                                 <CircularProgressbar
                                   className={classes.circularCompleted}
                                   value={100}
@@ -169,7 +169,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                                 })}
                               />
                           }
-                          <Typography color="textPrimary" variant="body1" align="left" style={{ gridColumn: "1/-1" }} className={classes.cardDescription}>
+                          <Typography color="textPrimary" variant="body1" align="left" className={classes.cardDescription}>
                             {o.shortDescription}
                           </Typography>
                           <Typography color="textPrimary" variant="body1" align="left" className={clsx(classes.status, { completed: o.status === "Completed" })}>
@@ -193,6 +193,9 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
 export default RoadMapTab;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  circularCompletedContainer: {
+    position: "relative",
+  },
   tickSVG: {
     position: "absolute",
     zIndex: 99,
@@ -245,6 +248,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineClamp: 3,
     boxOrient: "vertical",
     display: "-webkit-box",
+    gridColumn: "1/-1",
   },
   titleDescription: {
     width: "70%",

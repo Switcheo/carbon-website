@@ -45,7 +45,7 @@ const GetInvolved: React.FC = () => {
               isMobile={isTablet}
             />
           </Grid>
-          <Grid item xs={12} sm={6} md style={{ marginTop: isTablet ? 0 : "-42%" }} className={classes.card}>
+          <Grid item xs={12} sm={6} md className={clsx(classes.card, "leftCard", { tablet: isTablet })}>
             <CardWithCTA
               title={"Propose a partnership"}
               description={"Working towards a freer financial system"}
@@ -78,6 +78,12 @@ export default GetInvolved;
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
     zIndex: 3,
+    "&.leftCard": {
+      marginTop: "-42%",
+    },
+    "&.tablet": {
+      marginTop: 0,
+    },
   },
   boxContainer: {
     margin: "50vh 0px",

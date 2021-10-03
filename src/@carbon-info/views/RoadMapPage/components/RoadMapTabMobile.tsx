@@ -56,7 +56,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
     <div ref={ref} className={classes.aniContainer}>
       <Modal
         open={showModal}
-        style={{ alignItems: "center", justifyContent: "center" }}
+        className={classes.modal}
         onClose={() => setShowModal(false)}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
@@ -74,7 +74,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
           content.map((o, index) => {
             return (
               <>
-                <Divider style={{ width: "80%", background: "#554B4B", margin: "0px auto" }} />
+                <Divider className={classes.divider} />
                 <br /><br /><br />
                 <div key={o.title}>
                   <Typography color="textPrimary" variant="h2" className={clsx(classes.tab)}>
@@ -84,7 +84,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                     {o.description}
                   </Typography>
                 </div>
-                <div style={{ margin: "3rem 0px 0.5rem 0px" }}>
+                <div className={classes.carouselContainer}>
                   <Carousel
                     showArrows={false}
                     showStatus={false}
@@ -92,7 +92,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                     showIndicators={false}
                     centerMode
                     autoPlay={false}
-                    className={clsx(classes.Carousel, { safari: isSafari && !isChrome })}
+                    className={clsx(classes.carousel, { safari: isSafari && !isChrome })}
                   >
                     {
                       o.tabs.map((o, tabIndex) => {
@@ -103,7 +103,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                             </Typography>
                             {
                               o.status === "Completed" ?
-                                <div style={{ position: "relative" }}>
+                                <div className={classes.circularCompletedContainer}>
                                   <CircularProgressbar
                                     className={classes.circularCompleted}
                                     value={100}
@@ -141,12 +141,12 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                 </div>
                 <br /><br />
                 <Typography color="textPrimary" variant="subtitle2" className={classes.swipe}>
-                  <RoadMapPageArrowLeft style={{ height: "1.5rem", color: "red" }} />
+                  <RoadMapPageArrowLeft className={classes.swipeArrow} />
                         SWIPE FOR MORE
-                  <RoadMapPageArrowRight style={{ height: "1.5rem" }} />
+                  <RoadMapPageArrowRight className={classes.swipeArrow} />
                 </Typography>
                 <br /><br /><br />
-                <Divider style={{ width: "80%", background: "#554B4B", margin: "0px auto" }} />
+                <Divider className={classes.divider} />
               </>
             );
           })
@@ -160,7 +160,25 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
 export default RoadMapTab;
 
 const useStyles = makeStyles((theme: Theme) => ({
-  Carousel: {
+  swipeArrow: {
+    height: "1.5rem",
+  },
+  circularCompletedContainer: {
+    position: "relative",
+  },
+  divider: {
+    width: "80%",
+    background: "#554B4B",
+    margin: "0px auto",
+  },
+  modal: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  carouselContainer: {
+    margin: "3rem 0px 0.5rem 0px",
+  },
+  carousel: {
     "&.safari": {
       "& li": {
         margin: "0px 5px !important",

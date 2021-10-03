@@ -73,14 +73,14 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
             {
               content.map((o, index) => {
                 return (
-                  <div onClick={() => setView(index)} key={o.title} style={{ height: "100%" }}>
+                  <div onClick={() => setView(index)} key={o.title} className={classes.tabDiv}>
                     <Typography color="textPrimary" variant="h4" className={clsx(classes.tab, { selected: index === view })}>
-                      <span style={{ maxWidth: "10rem" }}>
+                      <span className={classes.tabTitle}>
                         {o.title}
                       </span>
                       {
                         index === view && (
-                          <Divider style={{ position: "absolute", bottom: 0, zIndex: 4, width: "70%", left: "15%" }} />
+                          <Divider className={classes.tabDivider} />
                         )
                       }
                     </Typography>
@@ -93,7 +93,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
             <Grid item xs={12}>
               <div className={classes.descriptionAndFilterContainer}>
                 <span>
-                  <Typography color="textPrimary" variant="body1" align="left" style={{ maxWidth: "36rem" }}>
+                  <Typography color="textPrimary" variant="body1" align="left" className={classes.description}>
                     {content[view]?.description}
                   </Typography>
                 </span>
@@ -120,7 +120,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                           </Typography>
                           {
                             o.status === "Completed" ?
-                              <div style={{ position: "relative" }}>
+                              <div className={classes.circularCompletedContainer}>
                                 <CircularProgressbar
                                   className={classes.circularCompleted}
                                   value={100}
@@ -143,7 +143,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                                 })}
                               />
                           }
-                          <Typography color="textPrimary" variant="body1" align="left" style={{ gridColumn: "1/-1" }} className={classes.cardDescription}>
+                          <Typography color="textPrimary" variant="body1" align="left" className={classes.cardDescription}>
                             {o.shortDescription}
                           </Typography>
                           <Typography color="textPrimary" variant="body1" align="left" className={clsx(classes.status, { completed: o.status === "Completed" })}>
@@ -167,6 +167,22 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
 export default RoadMapTab;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  description: {
+    maxWidth: "36rem",
+  },
+  tabDiv: {
+    height: "100%",
+  },
+  tabTitle: {
+    maxWidth: "10rem",
+  },
+  tabDivider: {
+    position: "absolute",
+    bottom: 0,
+    zIndex: 4,
+    width: "70%",
+    left: "15%",
+  },
   tickSVG: {
     position: "absolute",
     zIndex: 99,
@@ -175,6 +191,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down(1050)]: {
       left: "28%",
     },
+  },
+  circularCompletedContainer: {
+    position: "relative",
   },
   circularCompleted: {
     position: "absolute",
@@ -220,6 +239,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineClamp: 4,
     boxOrient: "vertical",
     display: "-webkit-box",
+    gridColumn: "1/-1",
   },
   contentCardContainer: {
     height: "100%",

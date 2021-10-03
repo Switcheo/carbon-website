@@ -76,10 +76,10 @@ const RoadMapButton: React.FC<Props> = (props: Props) => {
           : step === -3 || step === 3
             ? 0 : 1,
     }}>
-      <Typography color="textPrimary" className={classes.roadMapTitleText} style={{ transition: "all 1s ease-in", position: "absolute", ...fontStyle }}>
+      <Typography color="textPrimary" className={classes.roadMapTitleText} style={{ ...fontStyle }}>
         {text}
       </Typography>
-      <div style={{ position: "relative", height: "5rem", width: "5rem" }}>
+      <div className={classes.progressBar}>
         <CircularProgressbar
           className={classes.circular}
           value={percent}
@@ -97,7 +97,14 @@ const RoadMapButton: React.FC<Props> = (props: Props) => {
 export default RoadMapButton;
 
 const useStyles = makeStyles(() => ({
+  progressBar: {
+    position: "relative",
+    height: "5rem",
+    width: "5rem",
+  },
   roadMapTitleText: {
+    transition: "all 1s ease-in",
+    position: "absolute",
     fontFamily: "TyrosPro",
     fontWeight: 300,
     fontSize: "2.063rem",

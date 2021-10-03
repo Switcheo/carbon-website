@@ -30,10 +30,9 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
       <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center">
         {
           iconAlignment === "side" ?
-            <Grid item container spacing={4} style={{ height: "100%" }}>
+            <Grid item container spacing={4} className={classes.iconContainer}>
               <Grid
-                item xs={2} className={clsx(classes.sideIcon, size)}
-                style={{ marginTop: title === "Real use cases" && isMobile ? "-1rem" : "" }}
+                item xs={2} className={clsx(classes.sideIcon, size, { applyMarginTop: title === "Real use cases" && isMobile })}
               >
                 {icon}
               </Grid>
@@ -50,11 +49,11 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
                 </Grid>
                 {CTAicon && CTAicon?.length > 0 &&
                   (
-                    <div style={{ display: "flex", flexDirection: "row" }}>
+                    <div className={classes.iconCTAContainer}>
                       {CTAicon.map((o: any, index) => {
                         return (
                           <Grid item key={o.link}>
-                            <Link href={o.link} className={classes.iconWrapper} style={{ marginLeft: index > 0 ? "1rem" : 0 }}>
+                            <Link href={o.link} className={clsx(classes.iconWrapper, { notFirstItem: index > 0 })}>
                               {o.icon}
                             </Link>
                           </Grid>
@@ -90,12 +89,22 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
 export default CardWithIcon;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  iconCTAContainer: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  iconContainer: {
+    height: "100%",
+  },
   iconWrapper: {
     cursor: "pointer",
     "& > svg": {
       [theme.breakpoints.down("sm")]: {
         width: "3rem",
       },
+    },
+    "&.notFirstItem": {
+      marginLeft: "1rem",
     },
   },
   textContainerWithSocialIcons: {
@@ -181,6 +190,9 @@ const useStyles = makeStyles((theme: Theme) => ({
           width: "300%",
         },
       },
+    },
+    "&.applyMarginTop": {
+      marginTop: "-1rem",
     },
   },
   boxContainer: {
