@@ -48,7 +48,7 @@ function App() {
               </Route>
               <Route path="/">
                 <>
-                  <Suspense fallback={<div></div>}>
+                  <Suspense fallback={<div style={{ height: "100vh" }} />}>
                     <IntroPage />
                     <HeroImage />
                     <FeatureCard />
