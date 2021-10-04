@@ -1,7 +1,6 @@
 import { BoxProps, Container, makeStyles, Theme } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
-import { Footer, Header } from "./components";
 
 interface Props extends BoxProps { }
 
@@ -12,15 +11,22 @@ const MainLayout: React.FC<Props> = (props: Props) => {
   return (
     <main className={clsx(classes.app, className)} {...rest}>
       <Container>
-        <Header />
-        {children}
-        <Footer />
+        <div className={classes.container}>
+          {children}
+        </div>
       </Container>
     </main>
   );
 };
 
 const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+
+  },
   app: {
     backgroundColor: theme.palette.background.default,
     display: "flex",
