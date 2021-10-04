@@ -7,7 +7,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./@carbon-info/theme";
 import "./App.css";
 import {
-  BrowserRouter as Router,
+  BrowserRouter as Router, Route, Switch,
 } from "react-router-dom";
 
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
@@ -22,7 +22,11 @@ function App() {
       <ContentfulProvider client={contentfulClient}>
         <MuiThemeProvider theme={theme}>
           <MainLayout>
-            <IntroPage />
+            <Switch>
+              <Route path="/">
+                <IntroPage />
+              </Route>
+            </Switch>
           </MainLayout>
         </MuiThemeProvider>
       </ContentfulProvider>
