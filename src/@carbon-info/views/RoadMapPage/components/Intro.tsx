@@ -11,6 +11,7 @@ const Intro: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmallTablet = useMediaQuery(theme.breakpoints.down(700));
   const isSmallMobile = useMediaQuery(theme.breakpoints.down(340));
   const { ref, inView } = useInView({
     /* Optional options */
@@ -28,9 +29,15 @@ const Intro: React.FC = () => {
             <span className={clsx(classes.gradientText, { open: inView })} >Roadmap</span>
           </Typography>
           <FadeAndSlide visible={inView}>
-            <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
-              The Carbon Protocol is a coalescence of countless features and <br /> new capabilities constantly being developed to support  <br /> some of the blockchain’s most robust innovations.
-            </Typography>
+            {
+              isSmallTablet ?
+                <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
+                  The Carbon Protocol is a coalescence of countless features and new capabilities constantly being developed to support some of the blockchain’s most robust innovations.
+                </Typography>
+                : <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
+                  The Carbon Protocol is a coalescence of countless features and <br /> new capabilities constantly being developed to support  <br /> some of the blockchain’s most robust innovations.
+                </Typography>
+            }
           </FadeAndSlide>
           <IntroPageBackgroundLine className={classes.dash} />
           <FadeAndSlide visible={inView} transform={[0, -20]}>
@@ -160,10 +167,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "2.125rem",
     },
+    [theme.breakpoints.down(700)]: {
+      maxWidth: "50rem",
+    },
     [theme.breakpoints.down(400)]: {
       minWidth: "44rem",
     },
     [theme.breakpoints.down(325)]: {
+      minWidth: "36rem",
       marginTop: "2.5rem",
       fontSize: "1.625rem",
     },

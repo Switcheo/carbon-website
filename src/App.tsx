@@ -44,7 +44,9 @@ function App() {
           <MainLayout>
             <Switch>
               <Route path="/roadmap">
-                <RoadMapPage />
+                <Suspense fallback={<div style={{ height: "100vh" }} />}>
+                  <RoadMapPage />
+                </Suspense>
               </Route>
               <Route path="/">
                 <>
