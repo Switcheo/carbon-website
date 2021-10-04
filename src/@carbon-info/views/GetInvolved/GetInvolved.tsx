@@ -40,7 +40,7 @@ const GetInvolved: React.FC = () => {
               title={"Develop on Carbon"}
               description={"Leverage our native source code to fast-track development"}
               ctaText={"Read Docs"}
-              link={"/#document"}
+              link={Path.Footer.Guides}
               icon={DevelopSVG}
               isMobile={isTablet}
             />

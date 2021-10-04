@@ -13,7 +13,7 @@ export const Path = {
     Discord: "https://discord.gg/SPh62Hf",
     Demex: "https://app.dem.exchange",
     Github: "https://github.com/switcheo",
-    SwitcheoForum: "https://forum.switcheo.foundation",
+    SwitcheoForum: "https://forum.carbon.network",
   },
   Footer: {
     Features: "/#features",
@@ -25,7 +25,7 @@ export const Path = {
     Markets: "https://switcheo.org/markets?net=main",
     Demex: "https://dem.exchange",
     CarbonScan: "https://scan.carbon.network",
-    SwitcheoDevelopmentFund: "https://forum.switcheo.foundation/topic/42/applying-for-project-grants-under-the-switcheo-development-fund",
+    SwitcheoDevelopmentFund: "https://forum.carbon.network/topic/42/applying-for-project-grants-under-the-switcheo-development-fund",
     APIs: "https://docs.carbon.network",
     Github: "https://github.com/Switcheo",
     Forum: "https://forum.carbon.network",
