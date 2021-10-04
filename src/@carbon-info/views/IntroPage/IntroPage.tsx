@@ -68,19 +68,19 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
       transform: "translate(0px,0px) scale(1)",
     },
-    [theme.breakpoints.down(880)]: {
-      top: "-67%",
-      left: "-72%",
+    [theme.breakpoints.down("sm")]: {
+      top: "10%",
+      left: "-62%",
       width: "100%",
     },
-    [theme.breakpoints.down("xs")]: {
-      top: "-69%",
-      left: "-73%",
-    },
+    // [theme.breakpoints.down("xs")]: {
+    //   top: "-69%",
+    //   left: "-73%",
+    // },
   },
   sphereLeft: {
     position: "absolute",
-    left: "6%",
+    left: "10%",
     top: "18%",
     width: "21%",
     opacity: 0,
@@ -90,12 +90,13 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
       transform: "translate(0px,0px) scale(1)",
     },
-    [theme.breakpoints.down(880)]: {
-      left: "2%",
+    [theme.breakpoints.down("sm")]: {
+      left: "4%",
+      top: "30%",
     },
     [theme.breakpoints.down("xs")]: {
-      left: "-2%",
-      top: "0%",
+      left: "5%",
+      top: "32%",
       width: "22%",
     },
   },
@@ -113,8 +114,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       transform: "translate(0px,0px) scale(1)",
     },
     [theme.breakpoints.down("xs")]: {
-      right: "-58%",
-      top: "-32%",
+      right: "-48%",
+      top: "47%",
       width: "80%",
     },
   },
@@ -135,8 +136,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       top: "35%",
     },
     [theme.breakpoints.down("xs")]: {
-      right: "3%",
-      top: "10%",
+      right: "13%",
+      top: "55%",
       width: "16%",
     },
   },
