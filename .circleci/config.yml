@@ -44,10 +44,10 @@ jobs:
               aws cloudfront create-invalidation --distribution-id="E1QJNXB6J1OTUW" --paths=/*
             elif [ "${CIRCLE_BRANCH}" = "master" ]; then
               aws s3 sync build s3://switcheo-carbon-website/prod/ --delete
-              aws cloudfront create-invalidation --distribution-id="E1QJNXB6J1OTUW" --paths=/*
-            elif [ "${CIRCLE_BRANCH}" = "feat/carbon-scan" ]; then
-              aws s3 sync build s3://switcheo-carbon-website/carbonscan/ --delete
               aws cloudfront create-invalidation --distribution-id="E3AUJMH8N05ZG4" --paths=/*
+            elif [ "${CIRCLE_BRANCH}" = "feat/carbon-scan" ]; then
+              aws s3 sync build s3://carbonscan/prod/ --delete
+              aws cloudfront create-invalidation --distribution-id="EH39M40PYRWVW" --paths=/*
             fi
 
 workflows: 
