@@ -23,6 +23,16 @@ const coordinatesDesktop: any = {
   "-3": [200, -40],
 };
 
+const coordinatesDesktopSafari: any = {
+  "0": [270, -40],
+  "1": [295, -50],
+  "2": [315, -55],
+  "3": [340, -55],
+  "-1": [245, -50],
+  "-2": [225, -40],
+  "-3": [200, -40],
+};
+
 const coordinatesMobile: any = {
   "3": [510, -120],
   "2": [430, -120],
@@ -31,6 +41,26 @@ const coordinatesMobile: any = {
   "-1": [220, -40],
   "-2": [110, -120],
   "-3": [30, -120],
+};
+
+const coordinatesMobileSafari: any = {
+  "3": [510, -120],
+  "2": [430, -120],
+  "1": [310, -50],
+  "0": [270, -30],
+  "-1": [230, -50],
+  "-2": [110, -120],
+  "-3": [30, -120],
+};
+
+const coordinatesTabletSafari: any = {
+  "3": [350, -145],
+  "2": [350, -145],
+  "1": [300, -45],
+  "0": [270, -26],
+  "-1": [240, -45],
+  "-2": [190, -140],
+  "-3": [190, -140],
 };
 
 const coordinatesTablet: any = {
@@ -53,9 +83,21 @@ const coordinatesWideDesktop: any = {
   "-3": [190, -140],
 };
 
+const coordinatesWideDesktopSafari: any = {
+  "3": [350, -145],
+  "2": [310, -55],
+  "1": [290, -40],
+  "0": [270, -30],
+  "-1": [250, -40],
+  "-2": [230, -50],
+  "-3": [190, -140],
+};
+
 const RoadMapButton: React.FC<Props> = (props: Props) => {
+  const isSafari = !!(navigator.userAgent.indexOf("Safari") !== -1 && navigator.userAgent.indexOf("Chrome") === -1);
   let { step, percent, text, isMobile = false, isTablet = false, isWideDesktop = false } = props;
-  const coordinates = isWideDesktop ? coordinatesWideDesktop : isMobile ? coordinatesMobile : isTablet ? coordinatesTablet : coordinatesDesktop;
+  const coordinates = isSafari ? isWideDesktop ? coordinatesWideDesktopSafari : isMobile ? coordinatesMobileSafari : isTablet ? coordinatesTabletSafari : coordinatesDesktopSafari
+    : isWideDesktop ? coordinatesWideDesktop : isMobile ? coordinatesMobile : isTablet ? coordinatesTablet : coordinatesDesktop;
   const classes = useStyles();
   step = Math.ceil(step);
   if (!step && step !== 0) step = 4;
@@ -64,9 +106,12 @@ const RoadMapButton: React.FC<Props> = (props: Props) => {
   if (step === 0) fontStyle = { top: text.length <= 17 ? "-4rem" : text.length > 40 ? "-7rem" : "", left: text.length < 5 ? "-6.5rem" : "" };
   else if (step === 1 || step === -1) fontStyle = { transform: "scale(0.8)", top: text.length <= 17 ? "-4rem" : text.length > 40 ? "-7rem" : "" };
   else if ((step >= 2 || step <= -2)) fontStyle = { transform: "scale(0.5)", color: "rgb(255,255,255,0.38)", top: text.length > 40 ? "-5.5rem" : text.length < 5 ? "-2.5rem" : "-3.5rem", left: step < 0 ? "-9rem" : text.length < 5 ? "-3.5rem" : "-2.5rem" };
+  const radius = step === 0 && isSafari ? "55vw" : "55vw";
+  const translateXRadius = step === 0 && isSafari ? "55vw" : "55vw";
   return (
     <div className={classes.centerSphereContainer} id="sphere" style={{
-      transform: `rotate(${coordinates[step][0]}deg) translateX(55vw) rotate(-${coordinates[step][0]}deg) ${step == -1 || step == 1 ? "scale(0.9)" : ""} ${step <= -2 || step >= 2 ? "scale(0.8)" : ""}`,
+      marginTop: radius,
+      transform: `rotate(${coordinates[step][0]}deg) translateX(${translateXRadius}) rotate(-${coordinates[step][0]}deg) ${step == -1 || step == 1 ? "scale(0.9)" : ""} ${step <= -2 || step >= 2 ? "scale(0.8)" : ""}`,
       transition: "all 1s ease-in",
       top: `${isTablet ? isMobile ? coordinates[step][1] + 10 : coordinates[step][1] : coordinates[step][1]}px`,
       opacity: isMobile ? step <= -1 || step >= 1 ? 0 : 1
@@ -120,8 +165,7 @@ const useStyles = makeStyles(() => ({
     position: "absolute",
     top: 0,
     right: "50%",
-    transition: "all 1s ease-in",
-    marginTop: "55vw",
+    // transition: "all 1s ease-in",
   },
   centerSphere: {
     position: "absolute",
