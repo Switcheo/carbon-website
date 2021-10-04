@@ -18,7 +18,7 @@ const Permissionless: React.FC = () => {
     triggerOnce: true,
   });
   return (
-    <div ref={ref} id="permissionless">
+    <div ref={ref} id="features">
       <Box className={classes.container}>
         <Grid container spacing={8}>
           <Grid item xs={12} md={6} className={classes.heroSVGContainer}>

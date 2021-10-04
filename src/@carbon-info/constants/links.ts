@@ -16,7 +16,7 @@ export const Path = {
     SwitcheoForum: "https://forum.switcheo.foundation",
   },
   Footer: {
-    Features: "https://carbon.network",
+    Features: "/#features",
     Guides: "https://guide.carbon.network",
     Blog: "https://blog.switcheo.com",
     GetSWTH: "https://app.dem.exchange/trade/swth_eth1",
