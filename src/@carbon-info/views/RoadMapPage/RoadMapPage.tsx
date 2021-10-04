@@ -56,7 +56,6 @@ const RoadMapPage: React.FC = () => {
         <Intro />
         {RoadMapTabView}
         <Ideas />
-        {/* <RecieveUpdates /> */}
       </Box>
     </div>
   );
