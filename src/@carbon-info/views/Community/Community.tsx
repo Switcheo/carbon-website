@@ -40,7 +40,7 @@ const Community: React.FC = () => {
                   Using the SWTH token, anyone can play a part in shaping Carbon’s journey towards the future of finance.
                 </Typography>
                 <br />
-                <Typography align="left" paragraph>
+                <Typography align="left" paragraph component={"span"}>
                   <CTAButton
                     text="GET TOKEN"
                     link={Path.GetToken}
