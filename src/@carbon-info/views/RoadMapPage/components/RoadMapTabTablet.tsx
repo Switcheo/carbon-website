@@ -25,6 +25,8 @@ interface Props {
   }[],
 }
 
+const isFirefox = !!(navigator.userAgent.indexOf("Firefox") !== -1);
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -295,7 +297,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: "source-out",
+      maskComposite: `${isFirefox ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
   },

@@ -16,6 +16,8 @@ interface cardProps {
   overwriteCSS?: any,
 }
 
+const isFirefox = !!(navigator.userAgent.indexOf("Firefox") !== -1);
+
 const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
   const { title, description, ctaText, icon, bigSVG, link, overwriteCSS = {} } = props;
@@ -173,7 +175,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: "source-out",
+      maskComposite: `${isFirefox ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
     [theme.breakpoints.down("sm")]: {
