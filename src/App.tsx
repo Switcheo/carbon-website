@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
+import { GoogleAnalytics } from "@carbon-info/components";
 const contentfulClient: any = ContentfulClient({
   accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN!,
   space: process.env.REACT_APP_CONTENTFUL_SPACE_ID!,
@@ -33,6 +34,7 @@ function App() {
     <Router>
       <ContentfulProvider client={contentfulClient}>
         <MuiThemeProvider theme={theme}>
+          <GoogleAnalytics />
           <MainLayout>
             <Switch>
               <Route path="/roadmap">
