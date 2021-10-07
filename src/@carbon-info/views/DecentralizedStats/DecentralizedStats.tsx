@@ -33,6 +33,7 @@ const joinCommunityContent = [
 const DecentralizedStats: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const isSmallLaptop = useMediaQuery(theme.breakpoints.down(1000));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const { ref, inView } = useInView({
@@ -90,7 +91,7 @@ const DecentralizedStats: React.FC = () => {
                 </div>
               </Grid>
               <Grid item xs={12} sm={6} md={6} className={classes.stats}>
-                <div className={classes.statsText}>
+                <div className={clsx(classes.statsText, { smallLaptop: isSmallLaptop })}>
                   <FadeAndSlide visible={inView} delay={0.22}>
                     <Typography color="textPrimary" className={classes.numbers} paragraph={!isTablet} align="left">
                       $25M+
@@ -114,7 +115,7 @@ const DecentralizedStats: React.FC = () => {
                 </div>
               </Grid>
               <Grid item xs={12} sm={6} md={6} className={classes.stats}>
-                <div className={classes.statsText}>
+                <div className={clsx(classes.statsText, { smallLaptop: isSmallLaptop })}>
                   <FadeAndSlide visible={inView} delay={0.26}>
                     <Typography color="textPrimary" className={classes.numbers} paragraph={!isTablet} align="left">
                       1.07b
@@ -186,7 +187,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   statsText: {
     width: "fit-content",
-    [theme.breakpoints.down("sm")]: {
+    "&.smallLaptop": {
+      [theme.breakpoints.down(1000)]: {
+        marginLeft: "20px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        marginLeft: 0,
+      },
     },
     [theme.breakpoints.down("xs")]: {
       marginLeft: "0%",
@@ -308,6 +315,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   numberText: {
     marginLeft: 7,
     overflow: "visible",
+    whiteSpace: "nowrap",
     [theme.breakpoints.down("sm")]: {
       marginLeft: 5,
       fontSize: "1.5rem",

@@ -45,7 +45,7 @@ const GetInvolved: React.FC = () => {
               isMobile={isTablet}
             />
           </Grid>
-          <Grid item xs={12} sm={6} md className={clsx(classes.card, "leftCard", { tablet: isTablet })}>
+          <Grid item xs={12} sm={6} md={6} className={clsx(classes.card, "leftCard", { tablet: isTablet })}>
             <CardWithCTA
               title={"Propose a partnership"}
               description={"Working towards a freer financial system"}
@@ -55,7 +55,7 @@ const GetInvolved: React.FC = () => {
               bigSVG
             />
           </Grid>
-          <Grid item xs={12} sm={6} md className={classes.card}>
+          <Grid item xs={12} sm={6} md={6} className={classes.card}>
             <CardWithCTA
               title={"Pitch a project"}
               description={"Need funding to kickstart your project on Carbon?"}
