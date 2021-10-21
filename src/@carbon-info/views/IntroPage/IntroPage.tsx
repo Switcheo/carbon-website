@@ -41,7 +41,7 @@ const IntroPage: React.FC = () => {
           </Typography>
           <FadeAndSlide visible={inView}>
             <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
-              Carbon is a Layer-2 cross-chain protocol<br />that can power anything DeFi.
+              Carbon is a cross-chain protocol that acts as a<br />building block for DeFi.
             </Typography>
           </FadeAndSlide>
         </div>

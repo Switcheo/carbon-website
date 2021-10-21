@@ -45,7 +45,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography variant="body2" color="textPrimary" className={classes.description}>
+                  <Typography variant="body2" color="textPrimary" className={clsx(classes.description, { normal: !CTAicon })}>
                     {description}
                   </Typography>
                 </Grid>
@@ -72,7 +72,7 @@ const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
                 {icon}
               </Grid>
               <Grid item xs={12} className={classes.contentContainer}>
-                <Typography className={clsx(classes.divTitle, size, { shortTitle: title.length < 15 })} color="textPrimary" paragraph>
+                <Typography className={clsx(classes.divTitle, size, { shortTitle: title.length < 20 })} color="textPrimary" paragraph>
                   {title}
                 </Typography>
               </Grid>
@@ -126,7 +126,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     gridTemplateRows: "20% 80%",
     rowGap: 20,
     [theme.breakpoints.down(1100)]: {
-      gridTemplateRows: "28% 80%",
+      gridTemplateRows: "20% 80%",
     },
     [theme.breakpoints.down(1000)]: {
       height: "18rem",
@@ -199,7 +199,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   boxContainer: {
     height: "100%",
-    minHeight: "14rem",
+    minHeight: "16.5rem",
     background: "linear-gradient(353.27deg, rgba(41, 40, 40, 0.21) -9.67%, #161515 94.17%)",
     mixBlendMode: "normal",
     boxShadow: "inset 62px 98px 100px -60px #242424, inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
@@ -243,8 +243,11 @@ const useStyles = makeStyles((theme: Theme) => ({
         borderRadius: 20,
       },
     },
-    [theme.breakpoints.down(630)]: {
+    [theme.breakpoints.down(700)]: {
       height: "19rem",
+    },
+    [theme.breakpoints.down(650)]: {
+      height: "22rem",
     },
     [theme.breakpoints.down("xs")]: {
       padding: "1.5em 2em 0.5em 3em",
@@ -264,7 +267,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: "auto",
       width: "20rem",
       height: "auto",
-      minHeight: "23rem",
+      minHeight: "26rem",
       [theme.breakpoints.down("md")]: {
         boxSizing: "border-box",
         width: "auto",
@@ -289,6 +292,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         "&::before": {
           borderRadius: 20,
         },
+      },
+      [theme.breakpoints.down(330)]: {
+        paddingRight: "10%",
       },
     },
     "&.large": {
@@ -338,6 +344,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       maxWidth: "90%",
     },
     "&.small": {
+      // maxWidth: "14rem",
       minHeight: "4rem",
       maxHeight: "5rem",
       [theme.breakpoints.down("sm")]: {
@@ -373,6 +380,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     minHeight: "8rem",
     [theme.breakpoints.down("sm")]: {
       minHeight: "5rem",
+    },
+    "&.normal": {
+      [theme.breakpoints.down("sm")]: {
+        minHeight: "5rem",
+        height: "9rem",
+      },
+      [theme.breakpoints.down(650)]: {
+        height: "14rem",
+      },
+      [theme.breakpoints.down("xs")]: {
+        height: "9rem",
+      },
     },
   },
 }));

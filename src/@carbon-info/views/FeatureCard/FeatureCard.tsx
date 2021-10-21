@@ -34,7 +34,7 @@ const FeatureCard: React.FC = () => {
                 Breathing life into all things DeFi
             </Typography>
               <Typography color="textPrimary" variant="body2" className={classes.subtext}>
-                {"Carbon's highly interoperable and scalable architecture makes it possible for anyone to bootstrap financial markets for any asset type, through any blockchain."}
+                {"Carbon protocol allows anyone to bootstrap open financial markets for any asset type, on any blockchain."}
               </Typography>
               <CTAButton
                 text="READ DOCS"

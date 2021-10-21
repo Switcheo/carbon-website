@@ -28,12 +28,14 @@ const Permissionless: React.FC = () => {
             <div className={classes.description}>
               <FadeAndSlide visible={inView} transform={[20, 0]}>
                 <Typography color="textPrimary" variant={isTablet && !isMobile ? "h1" : "h2"} align="left" className={classes.title}>
-                  Permissionless.<br />Zero restrictions.<br />Decentralized.
+                  Zero restrictions.<br />Fully decentralized.<br />Limitless possibilities.
                 </Typography>
               </FadeAndSlide>
               <FadeAndSlide visible={inView} transform={[26, 0]} delay={0.1}>
                 <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : isMobile ? "subtitle1" : "subtitle1"} align="left" className={classes.subTitle}>
-                  Carbon gives market participants complete freedom and transparency
+                  {"Carbon gives users complete freedom to participate in any market, or build their own DeFi innovations without reinventing the wheel. Here's why."}
+                  <br /><br />
+                  {""}
                 </Typography>
               </FadeAndSlide>
             </div>
@@ -45,17 +47,8 @@ const Permissionless: React.FC = () => {
           </Hidden>
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
-              title={"Ultra-low Fees, Infinite Scalability"}
-              description={"Built on Tendermint and precision-designed to handle complex financial constructs at scale for instantaneous transactions at ultra-low costs."}
-              icon={<TrustlessIcon />}
-              size="small"
-              iconAlignment="top"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
-            <CardWithIcon
-              title={"Limitless Possibilities"}
-              description={"Supports the creation of any DeFi innovation for any asset type, using market instruments such as futures, perpetuals, options and more."}
+              title={"Cross-Chain Efficiency"}
+              description={"Users can interact with multiple networks seamlessly without relying on centralized entities, while liquidity is interconnected instead of being siloed on each blockchain."}
               icon={<PermissionlessIcon />}
               size="small"
               iconAlignment="top"
@@ -64,8 +57,17 @@ const Permissionless: React.FC = () => {
           <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
             <CardWithIcon
               title={"Powerful Tools"}
-              description={"Equipped with robust building blocks such as cross-margining capabilities and fully decentralized central limit orderbooks (CLOBs) that anyone can utilize."}
+              description={"Anyone can use Carbon protocol's fully decentralized order books, market instruments (spot, futures, perpetuals, options) with cross-margining capabilities  as building blocks for their new DeFi paradigms."}
               icon={<PowerfulIcon />}
+              size="small"
+              iconAlignment="top"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} className={classes.cardGridContainer}>
+            <CardWithIcon
+              title={"Layer-2 Scalability"}
+              description={"Built on Tendermint and precision-designed to handle complex financial constructs at scale for instantaneous transactions at ultra-low costs."}
+              icon={<TrustlessIcon />}
               size="small"
               iconAlignment="top"
             />
@@ -99,7 +101,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   heroSVG: {
     position: "absolute",
-    top: "-77%",
+    top: "-55%",
     left: "-25%",
     width: "150%",
     pointerEvents: "none",
@@ -112,8 +114,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("md")]: {
       position: "relative",
-      top: "-113%",
-      left: "-13rem",
+      top: "-103%",
+      left: "-12rem",
       width: "60rem",
     },
     [theme.breakpoints.down(1050)]: {
@@ -149,6 +151,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   title: {
+    fontSize: "3.138rem",
+    minWidth: "30rem",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "2.938rem",
+    },
+    [theme.breakpoints.down(1150)]: {
+      fontSize: "2.638rem",
+    },
     marginBottom: "2rem",
   },
   container: {
@@ -158,7 +168,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   cardContainer: {
-    margin: "13em 0px",
+    margin: "7em 0px",
     position: "relative",
     [theme.breakpoints.down("sm")]: {
       margin: "5rem 0px",

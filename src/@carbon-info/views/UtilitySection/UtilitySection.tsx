@@ -62,7 +62,7 @@ const UtilitySection: React.FC = () => {
                   <FadeAndSlide visible={inView} transform={[0, -20]}>
                     <CardWithIcon
                       title={"CONNECTIVE"}
-                      description={"Powers interoperability between sovereign blockchain networks that enables seamless cross-chain transactions and more."}
+                      description={"Powers interoperability between blockchains like Ethereum, Cosmos, BSC, Neo and Zilliqa with true cross-chain liquidity pools through the PolyNetwork bridge."}
                       icon={<TradeIcon />} />
                   </FadeAndSlide>
                 </Grid>
@@ -70,15 +70,15 @@ const UtilitySection: React.FC = () => {
                   <FadeAndSlide visible={inView} transform={[0, -20]}>
                     <CardWithIcon
                       title={"VERSATILE"}
-                      description={"One protocol, limitless possibilities. Build any Defi innovation such as derivatives using Carbon's AMMs, liquidity pools and more. "}
+                      description={"Supports any DeFi innovation with native support of crypto derivatives, Balancer-style liquidity pools, AMMs, on-chain order books and more."}
                       icon={<LaunchIcon />} />
                   </FadeAndSlide>
                 </Grid>
                 <Grid item xs={12} sm={6} className={classes.gridItemRight}>
                   <FadeAndSlide visible={inView} transform={[0, -20]}>
                     <CardWithIcon
-                      title={"SECURE"}
-                      description={"A custom-built sidechain secured by a distributed network of validators to ensure trustless and permissionless transactions."}
+                      title={"STABLE"}
+                      description={"Custom-built using Cosmos-SDK and secured by a large network of validators through Tendermint PoS for trustless and safe transactions."}
                       icon={<MilitaryIcon />} />
                   </FadeAndSlide>
                 </Grid>
@@ -92,7 +92,7 @@ const UtilitySection: React.FC = () => {
                   <FadeAndSlide visible={inView} transform={[-20, 0]}>
                     <CardWithIcon
                       title={"CONNECTIVE"}
-                      description={"Powers interoperability between sovereign blockchain networks, enabling seamless cross-chain transactions and more."}
+                      description={"Powers interoperability between blockchains like Ethereum, Cosmos, BSC, Neo and Zilliqa with true cross-chain liquidity pools through the PolyNetwork bridge."}
                       icon={<TradeIcon />} />
                   </FadeAndSlide>
                 </Grid>
@@ -102,15 +102,15 @@ const UtilitySection: React.FC = () => {
                   <FadeAndSlide visible={inView} transform={[20, 0]}>
                     <CardWithIcon
                       title={"VERSATILE"}
-                      description={"One protocol, limitless possibilities. Supports any DeFi innovation including derivatives, using built-in liquidity pools, AMMs and more. "}
+                      description={"Supports any DeFi innovation with native support of crypto derivatives, Balancer-style liquidity pools, AMMs, on-chain order books and more."}
                       icon={<LaunchIcon />} />
                   </FadeAndSlide>
                 </Grid>
                 <Grid item className={classes.gridItemRight}>
                   <FadeAndSlide visible={inView} transform={[20, 0]}>
                     <CardWithIcon
-                      title={"SECURE"}
-                      description={"Custom-built to transact billions, permissionlessly secured by a large network of validators for trustless and safe transactions."}
+                      title={"STABLE"}
+                      description={"Custom-built using Cosmos-SDK and secured by a large network of validators through Tendermint PoS for trustless and safe transactions."}
                       icon={<MilitaryIcon />} />
                   </FadeAndSlide>
                 </Grid>

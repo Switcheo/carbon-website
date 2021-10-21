@@ -85,7 +85,7 @@ const DecentralizedStats: React.FC = () => {
                       $130M+
                     </Typography>
                     <Typography color="textPrimary" variant="body2" align="left" className={classes.numberText}>
-                      Transacted on-chain
+                      Transacted On-Chain
                     </Typography>
                   </FadeAndSlide>
                 </div>
@@ -109,7 +109,7 @@ const DecentralizedStats: React.FC = () => {
                       10,000
                   </Typography>
                     <Typography color="textPrimary" variant="body2" align="left" className={classes.numberText}>
-                      Transactions per second
+                      Max Transactions/Second
                   </Typography>
                   </FadeAndSlide>
                 </div>
@@ -121,7 +121,7 @@ const DecentralizedStats: React.FC = () => {
                       1.07b
                   </Typography>
                     <Typography color="textPrimary" variant="body2" align="left" noWrap className={classes.numberText}>
-                      SWTH tokens staked
+                      SWTH Tokens Staked
                   </Typography>
                   </FadeAndSlide>
                 </div>
@@ -146,7 +146,7 @@ const DecentralizedStats: React.FC = () => {
             <FadeAndSlide visible={inView}>
               <CardWithIcon
                 title={"Join the community"}
-                description={"Like what you see? Join our conversations and be a part of a new era!"}
+                description={"Like what you see? Join the conversation and be a part of a new era!"}
                 icon={<AccelerateIcon />}
                 size="large"
                 CTAicon={joinCommunityContent}
@@ -316,6 +316,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: 7,
     overflow: "visible",
     whiteSpace: "nowrap",
+    [theme.breakpoints.down(1050)]: {
+      fontSize: "1.3rem",
+      lineHeight: "1.75rem",
+    },
     [theme.breakpoints.down("sm")]: {
       marginLeft: 5,
       fontSize: "1.5rem",
