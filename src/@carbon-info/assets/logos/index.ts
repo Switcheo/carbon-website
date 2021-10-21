@@ -13,8 +13,18 @@ import { default as O3LabsLogo } from "./O3Labs.svg";
 import { default as PolyNetworkLogo } from "./PolyNetwork.svg";
 import { default as StakeWithUsLogo } from "./Stakewithus.svg";
 import { default as ZilliqaLogo } from "./Zilliqa.svg";
+import { default as IOSGLogo } from "./IOSG.svg";
+import { default as straisXLogo } from "./straisX.svg";
+import { default as TendermintLogo } from "./Tendermint.svg";
+import { default as CosmosLogo } from "./Cosmos.svg";
 
-export const allPartnersLogo = [ ThreeACLogo, DefianceCapitalLogo, NGCLogo, NeoLogo, DefiCapitalLogo, PolyNetworkLogo, ZilliqaLogo, DACMLogo, DuskLogo, 
-  HoubiLogo, StakeWithUsLogo, O3LabsLogo, BlockHunterLogo, BoltLogo];
+export const allPartnersLogo = [ 
+  ThreeACLogo, DefianceCapitalLogo, NGCLogo, 
+  NeoLogo, DefiCapitalLogo, PolyNetworkLogo, 
+  ZilliqaLogo, DACMLogo, DuskLogo, 
+  HoubiLogo, StakeWithUsLogo, O3LabsLogo, 
+  BlockHunterLogo, BoltLogo, IOSGLogo,
+  straisXLogo, TendermintLogo, CosmosLogo,
+];
   
 
