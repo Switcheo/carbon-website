@@ -327,7 +327,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   boxContainer: {
-    margin: "40vh 0px 20vh 0px",
+    margin: "46vh 0px 20vh 0px",
+    [theme.breakpoints.down("xs")]: {
+      margin: "30vh 0px 20vh 0px",
+    },
   },
   cardContainer: {
     zIndex: 2,
