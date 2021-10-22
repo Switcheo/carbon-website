@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 import heroSVGAnimationStart from "@carbon-info/assets/animated/heroSVGAnimationStart.svg";
 import heroSVGAnimationEnd from "@carbon-info/assets/animated/heroSVGAnimationEnd.svg";
-import { Parallax, Background } from 'react-parallax';
+import { Parallax, Background } from "react-parallax";
 
 const HeroImage: React.FC = () => {
   const classes = useStyles();
