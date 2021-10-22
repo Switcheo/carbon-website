@@ -13,10 +13,10 @@ import { default as O3LabsLogo } from "./O3Labs.svg";
 import { default as PolyNetworkLogo } from "./PolyNetwork.svg";
 import { default as StakeWithUsLogo } from "./Stakewithus.svg";
 import { default as ZilliqaLogo } from "./Zilliqa.svg";
-import { default as IOSGLogo } from "./IOSG.svg";
-import { default as straisXLogo } from "./straisX.svg";
-import { default as TendermintLogo } from "./Tendermint.svg";
-import { default as CosmosLogo } from "./Cosmos.svg";
+import { default as IOSGLogo } from "./IOSG.png";
+import { default as straisXLogo } from "./straisX.png";
+import { default as TendermintLogo } from "./Tendermint.png";
+import { default as CosmosLogo } from "./Cosmos.png";
 
 export const allPartnersLogo = [ 
   ThreeACLogo, DefianceCapitalLogo, NGCLogo, 
