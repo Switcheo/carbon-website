@@ -1,12 +1,12 @@
-// import CarbonStructure from "@carbon-info/assets/non-animated/carbonStructure.png";
+import CarbonStructure from "@carbon-info/assets/non-animated/carbonStructure.png";
 import CarbonStructureSphereBg from "@carbon-info/assets/animated/carbonBgSphere.png";
 import { Box, makeStyles, Theme } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
-import heroSVGAnimationStart from "@carbon-info/assets/animated/heroSVGAnimationStart.svg";
-import heroSVGAnimationEnd from "@carbon-info/assets/animated/heroSVGAnimationEnd.svg";
-import { Parallax, Background } from "react-parallax";
+// import heroSVGAnimationStart from "@carbon-info/assets/animated/heroSVGAnimationStart.svg";
+// import heroSVGAnimationEnd from "@carbon-info/assets/animated/heroSVGAnimationEnd.svg";
+// import { Parallax, Background } from "react-parallax";
 
 const HeroImage: React.FC = () => {
   const classes = useStyles();
@@ -26,7 +26,7 @@ const HeroImage: React.FC = () => {
   return (
     <div ref={ref} >
       <Box className={classes.carbonStructure} id="hero">
-        <Parallax blur={10} strength={120}>
+        {/* <Parallax blur={10} strength={120}>
           <Background className={classes.parallaxBg}>
             <img src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere)} />
           </Background>
@@ -36,8 +36,9 @@ const HeroImage: React.FC = () => {
           {
             (inView) && <object type="image/svg+xml" data={heroSVGAnimationEnd} className={clsx(classes.animationEnd, { open: inView && animationEnded })} />
           }
-        </Parallax>
-        {/* <img src={CarbonStructure} alt="hero" className={classes.heroSVG} /> */}
+        </Parallax> */}
+        <img src={CarbonStructure} alt="hero" className={classes.heroSVG} />
+        <img ref={ref} src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere, { open: inView })} />
       </Box>
     </div>
   );
@@ -64,18 +65,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   carbonStructure: {
-    height: "80rem",
+    // height: "80rem",
     marginTop: "-7.625rem",
     marginBottom: "-7.625rem",
     pointerEvents: "none",
     position: "relative",
     [theme.breakpoints.down("sm")]: {
-      height: "60rem",
+      // height: "60rem",
       marginTop: "-7.625rem",
       marginBottom: "-5.625rem",
     },
     [theme.breakpoints.down("xs")]: {
-      height: "36rem",
+      // height: "36rem",
       marginTop: 0,
       marginBottom: 0,
     },
@@ -86,13 +87,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   sphere: {
     width: "60%",
     position: "absolute",
-    top: "20vh",
-    left: "70%",
-    [theme.breakpoints.down("sm")]: {
-      top: "15vh",
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "12vh",
+    top: "21%",
+    left: "16%",
+    opacity: 0,
+    transform: "scale(0.75)",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    "&.open": {
+      opacity: 1,
+      transform: "scale(1)",
     },
   },
 }));
