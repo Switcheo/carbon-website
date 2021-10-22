@@ -8,3 +8,11 @@
   background: transparent;
   min-width: auto;
 }
+
+.react-parallax  {
+  overflow: visible !important;
+}
+.react-parallax-background-children {
+  position: relative !important;
+  left: 0 !important;
+}
