@@ -163,8 +163,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "4.375rem",
     },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "3.438rem",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "3.138rem",
+    },
+    [theme.breakpoints.down(330)]: {
+      fontSize: "2.838rem",
     },
   },
   container: {
