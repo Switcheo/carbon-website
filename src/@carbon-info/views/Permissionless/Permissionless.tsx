@@ -153,13 +153,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     fontSize: "3.138rem",
     minWidth: "30rem",
+    marginBottom: "2rem",
     [theme.breakpoints.down("md")]: {
       fontSize: "2.938rem",
     },
     [theme.breakpoints.down(1150)]: {
       fontSize: "2.638rem",
     },
-    marginBottom: "2rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "4.375rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "3.438rem",
+    },
   },
   container: {
     margin: "30vh 0px",

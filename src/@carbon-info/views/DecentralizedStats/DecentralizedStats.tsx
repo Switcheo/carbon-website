@@ -327,7 +327,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   boxContainer: {
-    margin: "20vh 0px",
+    margin: "40vh 0px 20vh 0px",
   },
   cardContainer: {
     zIndex: 2,

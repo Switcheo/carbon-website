@@ -48,9 +48,9 @@ function App() {
                     <IntroPage />
                     <HeroImage />
                     <FeatureCard />
+                    <DecentralizedStats />
                     <UtilitySection />
                     <Permissionless />
-                    <DecentralizedStats />
                     <Community />
                     <Partnership />
                     <RoadMap />
