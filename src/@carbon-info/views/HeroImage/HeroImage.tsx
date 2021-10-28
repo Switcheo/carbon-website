@@ -24,11 +24,11 @@ const HeroImage: React.FC = () => {
     if (!svg1 || !svg2) return;
 
     setStep1(true);
-    console.log("anim1 click", anim1Ref.current.contentDocument);
+    // console.log("anim1 click", anim1Ref.current.contentDocument);
     anim1Ref.current.contentDocument?.querySelector("svg")?.dispatchEvent(new Event("click"));
     setTimeout(() => {
       setStep2(true);
-      console.log("anim2 click", anim2Ref.current);
+      // console.log("anim2 click", anim2Ref.current);
       anim2Ref.current?.contentDocument?.querySelector("svg")?.dispatchEvent(new Event("click"));
     }, 1700);
   }, step1 ? null : 300);
