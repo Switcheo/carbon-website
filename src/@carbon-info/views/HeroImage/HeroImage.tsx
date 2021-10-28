@@ -1,44 +1,64 @@
-import CarbonStructure from "@carbon-info/assets/non-animated/carbonStructure.png";
+// import CarbonStructure from "@carbon-info/assets/non-animated/carbonStructure.png";
 import CarbonStructureSphereBg from "@carbon-info/assets/animated/carbonBgSphere.png";
 import { Box, makeStyles, Theme } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
-// import heroSVGAnimationStart from "@carbon-info/assets/animated/heroSVGAnimationStart.svg";
-// import heroSVGAnimationEnd from "@carbon-info/assets/animated/heroSVGAnimationEnd.svg";
-// import { Parallax, Background } from "react-parallax";
+import heroSVGAnimationStart from "@carbon-info/assets/animated/heroSVGAnimationStart.svg";
+import heroSVGAnimationEnd from "@carbon-info/assets/animated/heroSVGAnimationEnd.svg";
+import { Parallax, Background } from "react-parallax";
+import useInterval from "@carbon-info/hooks/useInterval";
 
 const HeroImage: React.FC = () => {
   const classes = useStyles();
-  const [animationEnded, setAnimationEnded] = useState(false);
+  const anim1Ref = useRef<HTMLObjectElement | null>(null);
+  const anim2Ref = useRef<HTMLObjectElement | null>(null);
+  const [step1, setStep1] = useState(false);
+  const [step2, setStep2] = useState(false);
+
+  useInterval(() => {
+    if (!inView) return;
+    if (!anim1Ref.current || !anim2Ref.current) return;
+    const svg1 = anim1Ref.current.contentDocument?.querySelector("svg");
+    const svg2 = anim2Ref.current.contentDocument?.querySelector("svg");
+    if (!svg1 || !svg2) return;
+
+    setStep1(true);
+    console.log("anim1 click", anim1Ref.current.contentDocument);
+    anim1Ref.current.contentDocument?.querySelector("svg")?.dispatchEvent(new Event("click"));
+    setTimeout(() => {
+      setStep2(true);
+      console.log("anim2 click", anim2Ref.current);
+      anim2Ref.current?.contentDocument?.querySelector("svg")?.dispatchEvent(new Event("click"));
+    }, 1700);
+  }, step1 ? null : 300);
+
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.4,
+    threshold: 0.8,
     triggerOnce: true,
   });
-
-  useEffect(() => {
-    if (inView && !animationEnded) {
-      setTimeout(() => { setAnimationEnded(true); }, 3500);
-    }
-  }, [inView, animationEnded]);
 
   return (
     <div ref={ref} >
       <Box className={classes.carbonStructure} id="hero">
-        {/* <Parallax blur={10} strength={120}>
+        <Parallax blur={10} strength={120}>
           <Background className={classes.parallaxBg}>
             <img src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere)} />
           </Background>
-          {
-            (!animationEnded && inView) && <object type="image/svg+xml" data={heroSVGAnimationStart} className={clsx(classes.animation, { open: inView })} />
-          }
-          {
-            (inView) && <object type="image/svg+xml" data={heroSVGAnimationEnd} className={clsx(classes.animationEnd, { open: inView && animationEnded })} />
-          }
-        </Parallax> */}
-        <img src={CarbonStructure} alt="hero" className={classes.heroSVG} />
-        <img ref={ref} src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere, { open: inView })} />
+          <div className="container">
+            <div id="anim">
+              <object ref={anim1Ref} className={`svg ${step1 ? "step1" : ""} ${step2 ? "step2" : ""}`} id="anim1" data={heroSVGAnimationStart} type="image/svg+xml">
+
+              </object>
+              <object ref={anim2Ref} className={`svg ${step1 ? "step1" : ""} ${step2 ? "step2" : ""}`} id="anim2" data={heroSVGAnimationEnd} type="image/svg+xml">
+
+              </object>
+            </div>
+          </div>
+        </Parallax>
+        {/* <img src={CarbonStructure} alt="hero" className={classes.heroSVG} /> */}
+        {/* <img ref={ref} src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere, { open: inView })} /> */}
       </Box>
     </div>
   );
@@ -67,7 +87,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   carbonStructure: {
     // height: "80rem",
     marginTop: "-7.625rem",
-    marginBottom: "-7.625rem",
+    marginBottom: "11.625rem",
     pointerEvents: "none",
     position: "relative",
     [theme.breakpoints.down("sm")]: {
