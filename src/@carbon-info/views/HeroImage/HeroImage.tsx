@@ -30,7 +30,7 @@ const HeroImage: React.FC = () => {
     setTimeout(() => {
       setStep2(true);
       anim2Ref.current?.contentDocument?.querySelector("svg")?.dispatchEvent(new Event("click"));
-    }, 5000);
+    }, 1700);
   }, step1 ? null : 300);
 
   const { ref, inView } = useInView({
@@ -42,9 +42,9 @@ const HeroImage: React.FC = () => {
   return (
     <div ref={ref} >
       <Box className={classes.carbonStructure} id="hero">
-        <Parallax blur={10} strength={isMobile ? 30 : 60}>
+        <Parallax blur={10} strength={isMobile ? 40 : 60}>
           <Background>
-            <img src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere, { open: inView || isMobile })} />
+            <img src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere, { open: isMobile ? inView && step1 : inView })} />
           </Background>
           <div className="container">
             <div id="anim" className={classes.anim}>
@@ -135,11 +135,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   sphere: {
     width: "60%",
     position: "absolute",
-    top: 86,
+    top: 116,
     left: "67%",
     opacity: 0,
     transform: "scale(0.75)",
-    transition: "all ease-in 0.3s",
+    transition: "all ease-in 0.5s",
+    [theme.breakpoints.down("sm")]: {
+      top: 86,
+    },
     [theme.breakpoints.down("xs")]: {
       top: 46,
     },
