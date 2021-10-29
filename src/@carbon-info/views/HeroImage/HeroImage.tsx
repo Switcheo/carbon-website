@@ -42,7 +42,7 @@ const HeroImage: React.FC = () => {
   return (
     <div ref={ref} >
       <Box className={classes.carbonStructure} id="hero">
-        <Parallax blur={10} strength={isMobile ? 40 : 60}>
+        <Parallax blur={10} strength={isMobile ? 80 : 120}>
           <Background>
             <img src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere, { open: isMobile ? inView && step1 : inView })} />
           </Background>
