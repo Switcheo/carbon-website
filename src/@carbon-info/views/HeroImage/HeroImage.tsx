@@ -20,18 +20,17 @@ const HeroImage: React.FC = () => {
   useInterval(() => {
     if (!inView) return;
     if (!anim1Ref.current || !anim2Ref.current) return;
+    if (!anim1Ref.current.contentDocument?.querySelector("svg > script")) return;
     const svg1 = anim1Ref.current.contentDocument?.querySelector("svg");
     const svg2 = anim2Ref.current.contentDocument?.querySelector("svg");
     if (!svg1 || !svg2) return;
 
     setStep1(true);
-    // console.log("anim1 click", anim1Ref.current.contentDocument, "click", anim1Ref.current.contentDocument?.querySelector("svg"));
     anim1Ref.current.contentDocument?.querySelector("svg")?.dispatchEvent(new Event("click"));
     setTimeout(() => {
       setStep2(true);
-      // console.log("anim2 click", anim2Ref.current);
       anim2Ref.current?.contentDocument?.querySelector("svg")?.dispatchEvent(new Event("click"));
-    }, 1700);
+    }, 5000);
   }, step1 ? null : 300);
 
   const { ref, inView } = useInView({
@@ -43,8 +42,8 @@ const HeroImage: React.FC = () => {
   return (
     <div ref={ref} >
       <Box className={classes.carbonStructure} id="hero">
-        <Parallax blur={10} strength={isMobile ? 40 : 60}>
-          <Background className={classes.parallaxBg}>
+        <Parallax blur={10} strength={isMobile ? 30 : 60}>
+          <Background>
             <img src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere, { open: inView || isMobile })} />
           </Background>
           <div className="container">
@@ -103,9 +102,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: "80vw",
     },
   },
-  parallaxBg: {
-    top: "20%",
-  },
   animationEnd: {
     opacity: 0,
     transition: "opacity ease-in 0s",
@@ -121,31 +117,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   carbonStructure: {
-    // height: "80rem",
     marginTop: "-7.625rem",
     marginBottom: "11.625rem",
     pointerEvents: "none",
     position: "relative",
-    // [theme.breakpoints.down(1250)]: {
-    //   marginBottom: "4rem",
-    // },
-    // [theme.breakpoints.down(1150)]: {
-    //   marginBottom: "-4.625rem",
-    // },
     [theme.breakpoints.down("sm")]: {
       marginBottom: "-5.625rem",
     },
-    // [theme.breakpoints.down(850)]: {
-    //   marginBottom: "-18.625rem",
-    // },
-    // [theme.breakpoints.down(750)]: {
-    //   marginBottom: "-22.625rem",
-    // },
-    // [theme.breakpoints.down(700)]: {
-    //   marginBottom: "-26.625rem",
-    // },
     [theme.breakpoints.down("xs")]: {
-      // height: "36rem",
       marginTop: 0,
       marginBottom: 0,
     },
@@ -156,14 +135,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   sphere: {
     width: "60%",
     position: "absolute",
-    // top: "21%",
     top: 86,
     left: "67%",
     opacity: 0,
     transform: "scale(0.75)",
     transition: "all ease-in 0.3s",
     [theme.breakpoints.down("xs")]: {
-      top: 50,
+      top: 46,
     },
     "&.open": {
       opacity: 1,
