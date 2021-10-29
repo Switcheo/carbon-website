@@ -1,6 +1,5 @@
-// import CarbonStructure from "@carbon-info/assets/non-animated/carbonStructure.png";
 import CarbonStructureSphereBg from "@carbon-info/assets/animated/carbonBgSphere.png";
-import { Box, makeStyles, Theme } from "@material-ui/core";
+import { Box, makeStyles, Theme, useMediaQuery, useTheme } from "@material-ui/core";
 import React, { useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
@@ -11,6 +10,8 @@ import useInterval from "@carbon-info/hooks/useInterval";
 
 const HeroImage: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const anim1Ref = useRef<HTMLObjectElement | null>(null);
   const anim2Ref = useRef<HTMLObjectElement | null>(null);
   const [step1, setStep1] = useState(false);
@@ -24,7 +25,7 @@ const HeroImage: React.FC = () => {
     if (!svg1 || !svg2) return;
 
     setStep1(true);
-    // console.log("anim1 click", anim1Ref.current.contentDocument);
+    // console.log("anim1 click", anim1Ref.current.contentDocument, "click", anim1Ref.current.contentDocument?.querySelector("svg"));
     anim1Ref.current.contentDocument?.querySelector("svg")?.dispatchEvent(new Event("click"));
     setTimeout(() => {
       setStep2(true);
@@ -35,30 +36,33 @@ const HeroImage: React.FC = () => {
 
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.8,
+    threshold: isMobile ? 1 : 0.8,
     triggerOnce: true,
   });
 
   return (
     <div ref={ref} >
       <Box className={classes.carbonStructure} id="hero">
-        <Parallax blur={10} strength={120}>
+        <Parallax blur={10} strength={isMobile ? 40 : 60}>
           <Background className={classes.parallaxBg}>
-            <img src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere)} />
+            <img src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere, { open: inView || isMobile })} />
           </Background>
           <div className="container">
-            <div id="anim">
-              <object ref={anim1Ref} className={`svg ${step1 ? "step1" : ""} ${step2 ? "step2" : ""}`} id="anim1" data={heroSVGAnimationStart} type="image/svg+xml">
-
+            <div id="anim" className={classes.anim}>
+              <object ref={anim1Ref}
+                className={clsx(classes.svg, { hidden: !inView }, { step1 }, { step2 })}
+                id="anim1" data={heroSVGAnimationStart}
+                type="image/svg+xml">
               </object>
-              <object ref={anim2Ref} className={`svg ${step1 ? "step1" : ""} ${step2 ? "step2" : ""}`} id="anim2" data={heroSVGAnimationEnd} type="image/svg+xml">
-
+              <object ref={anim2Ref}
+                className={clsx(classes.svg, { hidden: true }, { anim2Step1: step1 || !inView }, { anim2Step2: step2 && inView })}
+                id="anim2"
+                data={heroSVGAnimationEnd}
+                type="image/svg+xml">
               </object>
             </div>
           </div>
         </Parallax>
-        {/* <img src={CarbonStructure} alt="hero" className={classes.heroSVG} /> */}
-        {/* <img ref={ref} src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere, { open: inView })} /> */}
       </Box>
     </div>
   );
@@ -67,6 +71,38 @@ const HeroImage: React.FC = () => {
 export default HeroImage;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  svg: {
+    left: 0,
+    position: "absolute",
+    transition: "opacity ease-in 0s",
+    "&.hidden": {
+      opacity: 0,
+    },
+    "&.anim2Step1": {
+      opacity: 0,
+    },
+    "&.anim2Step2": {
+      opacity: 1,
+    },
+    "&.step1": {
+      opacity: 1,
+    },
+    "&.step2": {
+      opacity: 0,
+    },
+  },
+  anim: {
+    maxHeight: 800,
+    height: "50vw",
+    width: "100%",
+    position: "relative",
+    [theme.breakpoints.down(1380)]: {
+      height: "55vw",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "80vw",
+    },
+  },
   parallaxBg: {
     top: "20%",
   },
@@ -90,11 +126,24 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "11.625rem",
     pointerEvents: "none",
     position: "relative",
+    // [theme.breakpoints.down(1250)]: {
+    //   marginBottom: "4rem",
+    // },
+    // [theme.breakpoints.down(1150)]: {
+    //   marginBottom: "-4.625rem",
+    // },
     [theme.breakpoints.down("sm")]: {
-      // height: "60rem",
-      marginTop: "-7.625rem",
       marginBottom: "-5.625rem",
     },
+    // [theme.breakpoints.down(850)]: {
+    //   marginBottom: "-18.625rem",
+    // },
+    // [theme.breakpoints.down(750)]: {
+    //   marginBottom: "-22.625rem",
+    // },
+    // [theme.breakpoints.down(700)]: {
+    //   marginBottom: "-26.625rem",
+    // },
     [theme.breakpoints.down("xs")]: {
       // height: "36rem",
       marginTop: 0,
@@ -107,11 +156,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   sphere: {
     width: "60%",
     position: "absolute",
-    top: "21%",
-    left: "16%",
+    // top: "21%",
+    top: 86,
+    left: "67%",
     opacity: 0,
     transform: "scale(0.75)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    transition: "all ease-in 0.3s",
+    [theme.breakpoints.down("xs")]: {
+      top: 50,
+    },
     "&.open": {
       opacity: 1,
       transform: "scale(1)",
