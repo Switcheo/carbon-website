@@ -7,7 +7,7 @@ import heroSVGAnimationStart from "@carbon-info/assets/animated/heroSVGAnimation
 import heroSVGAnimationEnd from "@carbon-info/assets/animated/heroSVGAnimationEnd.json";
 // import { Parallax, Background } from "react-parallax";
 import useInterval from "@carbon-info/hooks/useInterval";
-import Lottie from 'react-lottie';
+import Lottie from "react-lottie";
 
 const HeroImage: React.FC = () => {
   const classes = useStyles();
@@ -22,8 +22,8 @@ const HeroImage: React.FC = () => {
     autoplay: false,
     animationData: heroSVGAnimationStart,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
 
   const defaultOptions2 = {
@@ -31,8 +31,8 @@ const HeroImage: React.FC = () => {
     autoplay: false,
     animationData: heroSVGAnimationEnd,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
 
   useInterval(() => {
@@ -40,7 +40,6 @@ const HeroImage: React.FC = () => {
     if (!anim1Ref.current || !anim2Ref.current) return;
 
     setTimeout(() => {
-      console.log("count start")
       setStep1(true);
     }, 1900);
   }, step1 ? null : 300);
@@ -57,7 +56,7 @@ const HeroImage: React.FC = () => {
         <div id="anim" className={classes.anim}>
           <div ref={anim1Ref} style={{
             position: "absolute", zIndex: 33,
-            opacity: (inView && !step1) ? 1 : 0
+            opacity: (inView && !step1) ? 1 : 0,
           }}>
             <Lottie
               isStopped={!inView && step1}
