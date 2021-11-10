@@ -8,6 +8,7 @@ import heroSVGAnimationEnd from "@carbon-info/assets/animated/heroSVGAnimationEn
 // import { Parallax, Background } from "react-parallax";
 import useInterval from "@carbon-info/hooks/useInterval";
 import Lottie from "react-lottie";
+import { FadeAndSlide } from "@carbon-info/components";
 
 const HeroImage: React.FC = () => {
   const classes = useStyles();
@@ -53,24 +54,26 @@ const HeroImage: React.FC = () => {
   return (
     <div ref={ref} >
       <Box className={classes.carbonStructure} id="hero">
-        <div id="anim" className={classes.anim}>
-          <div ref={anim1Ref} style={{
-            position: "absolute", zIndex: 33,
-            opacity: (inView && !step1) ? 1 : 0,
-          }}>
-            <Lottie
-              isPaused={!inView}
-              options={defaultOptions}
-            />
+        <FadeAndSlide visible={inView}>
+          <div id="anim" className={classes.anim}>
+            <div ref={anim1Ref} style={{
+              position: "absolute", zIndex: 33,
+              opacity: (inView && !step1) ? 1 : 0,
+            }}>
+              <Lottie
+                isPaused={!inView}
+                options={defaultOptions}
+              />
+            </div>
+            <div ref={anim2Ref} style={{
+              position: "absolute", zIndex: 33, opacity: (inView && step1) ? 1 : 0,
+            }}>
+              <Lottie
+                isPaused={!inView && !step1}
+                options={defaultOptions2} />
+            </div>
           </div>
-          <div ref={anim2Ref} style={{
-            position: "absolute", zIndex: 33, opacity: (inView && step1) ? 1 : 0,
-          }}>
-            <Lottie
-              isPaused={!inView && !step1}
-              options={defaultOptions2} />
-          </div>
-        </div>
+        </FadeAndSlide>
         {/* <Parallax blur={10} strength={isMobile ? 80 : 120}>
           <Background>
             <img src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere, { open: isMobile ? inView && step1 : inView })} />
