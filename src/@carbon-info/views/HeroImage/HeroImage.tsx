@@ -59,7 +59,7 @@ const HeroImage: React.FC = () => {
             opacity: (inView && !step1) ? 1 : 0,
           }}>
             <Lottie
-              isStopped={!inView && step1}
+              isPaused={!inView}
               options={defaultOptions}
             />
           </div>
