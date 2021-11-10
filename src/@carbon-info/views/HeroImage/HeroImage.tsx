@@ -1,13 +1,12 @@
-// import CarbonStructureSphereBg from "@carbon-info/assets/animated/carbonBgSphere.png";
+import CarbonStructureSphereBg from "@carbon-info/assets/animated/carbonBgSphere.png";
 import { Box, makeStyles, Theme, useMediaQuery, useTheme } from "@material-ui/core";
 import React, { useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
-// import clsx from "clsx";
-import heroSVGAnimationStart from "@carbon-info/assets/animated/heroSVGAnimationStart.json";
-import heroSVGAnimationEnd from "@carbon-info/assets/animated/heroSVGAnimationEnd.json";
-// import { Parallax, Background } from "react-parallax";
+import clsx from "clsx";
+import heroSVGAnimationStart from "@carbon-info/assets/animated/heroSVGAnimationStart.svg";
+import heroSVGAnimationEnd from "@carbon-info/assets/animated/heroSVGAnimationEnd.svg";
+import { Parallax, Background } from "react-parallax";
 import useInterval from "@carbon-info/hooks/useInterval";
-import Lottie from "react-lottie";
 
 const HeroImage: React.FC = () => {
   const classes = useStyles();
@@ -16,32 +15,22 @@ const HeroImage: React.FC = () => {
   const anim1Ref = useRef<HTMLObjectElement | null>(null);
   const anim2Ref = useRef<HTMLObjectElement | null>(null);
   const [step1, setStep1] = useState(false);
-
-  const defaultOptions = {
-    loop: false,
-    autoplay: false,
-    animationData: heroSVGAnimationStart,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
-  const defaultOptions2 = {
-    loop: true,
-    autoplay: false,
-    animationData: heroSVGAnimationEnd,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+  const [step2, setStep2] = useState(false);
 
   useInterval(() => {
     if (!inView) return;
     if (!anim1Ref.current || !anim2Ref.current) return;
+    if (!anim1Ref.current.contentDocument?.querySelector("svg > script")) return;
+    const svg1 = anim1Ref.current.contentDocument?.querySelector("svg");
+    const svg2 = anim2Ref.current.contentDocument?.querySelector("svg");
+    if (!svg1 || !svg2) return;
 
+    setStep1(true);
+    anim1Ref.current.contentDocument?.querySelector("svg")?.dispatchEvent(new Event("click"));
     setTimeout(() => {
-      setStep1(true);
-    }, 1900);
+      setStep2(true);
+      anim2Ref.current?.contentDocument?.querySelector("svg")?.dispatchEvent(new Event("click"));
+    }, 1700);
   }, step1 ? null : 300);
 
   const { ref, inView } = useInView({
@@ -53,25 +42,7 @@ const HeroImage: React.FC = () => {
   return (
     <div ref={ref} >
       <Box className={classes.carbonStructure} id="hero">
-        <div id="anim" className={classes.anim}>
-          <div ref={anim1Ref} style={{
-            position: "absolute", zIndex: 33,
-            opacity: (inView && !step1) ? 1 : 0,
-          }}>
-            <Lottie
-              isPaused={!inView}
-              options={defaultOptions}
-            />
-          </div>
-          <div ref={anim2Ref} style={{
-            position: "absolute", zIndex: 33, opacity: (inView && step1) ? 1 : 0,
-          }}>
-            <Lottie
-              isPaused={!inView && !step1}
-              options={defaultOptions2} />
-          </div>
-        </div>
-        {/* <Parallax blur={10} strength={isMobile ? 80 : 120}>
+        <Parallax blur={10} strength={isMobile ? 80 : 120}>
           <Background>
             <img src={CarbonStructureSphereBg} alt="hero" className={clsx(classes.sphere, { open: isMobile ? inView && step1 : inView })} />
           </Background>
@@ -90,7 +61,7 @@ const HeroImage: React.FC = () => {
               </object>
             </div>
           </div>
-        </Parallax> */}
+        </Parallax>
       </Box>
     </div>
   );
@@ -100,10 +71,9 @@ export default HeroImage;
 
 const useStyles = makeStyles((theme: Theme) => ({
   svg: {
-    transform: "scale(1)",
     left: 0,
     position: "absolute",
-    willChange: "content",
+    transition: "opacity ease-in 0s",
     "&.hidden": {
       opacity: 0,
     },
@@ -134,20 +104,20 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   animationEnd: {
     opacity: 0,
-    // transition: "opacity ease-in 0s",
+    transition: "opacity ease-in 0s",
     "&.open": {
       opacity: 1,
     },
   },
   animation: {
     opacity: 0,
-    // transition: "opacity ease-in 0.6s",
+    transition: "opacity ease-in 0.6s",
     "&.open": {
       opacity: 1,
     },
   },
   carbonStructure: {
-    marginTop: "-11.625rem",
+    marginTop: "-7.625rem",
     marginBottom: "11.625rem",
     pointerEvents: "none",
     position: "relative",
