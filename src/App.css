@@ -16,3 +16,27 @@
   position: relative !important;
   left: 0 !important;
 }
+
+/* .svg {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#anim1 {
+  opacity: 0;
+}
+#anim1.step1 {
+  opacity: 1;
+}
+#anim1.step1.step2 {
+  opacity: 0;
+}
+
+#anim2 {
+  opacity: 0;
+}
+#anim2.step2 {
+  opacity: 1;
+} */
