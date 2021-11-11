@@ -42,7 +42,7 @@ const HeroImage: React.FC = () => {
 
     setTimeout(() => {
       setStep1(true);
-    }, 1900);
+    }, 2000);
   }, step1 ? null : 300);
 
   const { ref, inView } = useInView({
