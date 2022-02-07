@@ -126,8 +126,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
     "&.open": {
       opacity: 1,
-      transform: "translate(0px,0px) scale(1)",
+      transform: "translate(0px,0px) scale(1.1)",
     },
+    margin: "-2.7rem 0px 0px -5rem",
     [theme.breakpoints.down("md")]: {
       position: "relative",
       width: "100%",
@@ -136,7 +137,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down(1100)]: {
       position: "relative",
       width: "100%",
-      margin: "-10rem 0px 0px -2rem",
+      margin: "-1rem 0px 0px -2rem",
+    },
+    [theme.breakpoints.down(1050)]: {
+      position: "relative",
+      width: "100%",
+      margin: "-5rem 0px 0px -2rem",
     },
     [theme.breakpoints.down(961)]: {
       position: "relative",
@@ -144,12 +150,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: "-1rem 0px 0px -2rem",
     },
     [theme.breakpoints.down("sm")]: {
-      margin: 0,
       position: "relative",
       width: "57%",
+      margin: "0rem 0px 0px 0rem",
     },
     [theme.breakpoints.down("xs")]: {
-      margin: 0,
+      margin: "4rem 0px -2rem 0rem",
       position: "relative",
       width: "80%",
     },
