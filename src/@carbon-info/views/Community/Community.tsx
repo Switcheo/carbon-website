@@ -128,7 +128,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
       transform: "translate(0px,0px) scale(1.1)",
     },
-    margin: "-2.7rem 0px 0px -5rem",
+    margin: "-3rem 0px 0px -5rem",
     [theme.breakpoints.down("md")]: {
       position: "relative",
       width: "100%",
