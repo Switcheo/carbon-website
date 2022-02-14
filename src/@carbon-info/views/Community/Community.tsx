@@ -126,7 +126,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
     "&.open": {
       opacity: 1,
-      transform: "translate(0px,0px) scale(1.1)",
+      transform: "translate(0px,0px) scale(1)",
     },
     margin: "-3rem 0px 0px -5rem",
     [theme.breakpoints.down("md")]: {
@@ -139,7 +139,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "100%",
       margin: "-1rem 0px 0px -2rem",
     },
-    [theme.breakpoints.down(1050)]: {
+    [theme.breakpoints.down(1060)]: {
       position: "relative",
       width: "100%",
       margin: "-5rem 0px 0px -2rem",
