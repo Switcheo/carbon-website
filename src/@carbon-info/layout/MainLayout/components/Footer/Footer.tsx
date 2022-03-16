@@ -28,17 +28,12 @@ const sitemap = [
     section: "Explore",
     sitemap: [
       {
-        title: "Get SWTH",
-        link: Path.Footer.GetSWTH,
+        title: "SWTH",
+        link: Path.Footer.SWTH,
         target: "_blank",
       },
       {
-        title: "Stake",
-        link: Path.Footer.Stake,
-        target: "_blank",
-      },
-      {
-        title: "Token",
+        title: "Tokens",
         link: Path.Footer.Token,
         target: "_blank",
       },
@@ -53,7 +48,7 @@ const sitemap = [
         target: "_blank",
       },
       {
-        title: "Carbon Scan",
+        title: "Carbonscan",
         link: Path.Footer.CarbonScan,
         target: "_blank",
       },

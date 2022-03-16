@@ -6,6 +6,7 @@ import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import { RoadMapButton, SphereWithText } from "./components";
 import { useContentful } from "react-contentful";
+import moment from 'moment';
 import clsx from "clsx";
 
 const RoadMap: React.FC = () => {
@@ -31,11 +32,12 @@ const RoadMap: React.FC = () => {
     if (!data && view) return;
     async function fetchRoadMapItems() {
       let result: any[] = [];
+      let progress100: any[] = [];
       const content = await data as any;
       if (content && Array.isArray(content.items)) {
         content.items.forEach((o: any) => {
           o?.fields?.entries?.forEach((entry: any) => {
-            result.push({
+            let data = {
               category: o.fields.title,
               docLink: entry.fields.link,
               githubLink: entry.fields.githubLink,
@@ -44,14 +46,28 @@ const RoadMap: React.FC = () => {
               title: entry.fields.title,
               description: entry.fields.description.content[0].content[0].value,
               shortDescription: entry.fields.shortDescription,
-            });
+              lastUpdate: entry.sys.updatedAt
+            }
+            if (entry.fields.progress === 100) {
+              progress100.push({ ...data })
+            }
+            else {
+              result.push({ ...data });
+            }
           });
         });
       }
+      progress100.sort(((a, b) => {
+        if (moment(a.lastUpdate) > moment(b.lastUpdate)) {
+          return 1
+        }
+        return -1
+      }));
       result.sort(((a, b) => b.progress - a.progress));
-      setRoadMapItems(result);
-      setView(initialViewState(result));
-      setProgressAndDescriptionCounter(initialCounter(result));
+      const finalResult = [...progress100, ...result];
+      setRoadMapItems(finalResult);
+      setView(initialViewState(finalResult));
+      setProgressAndDescriptionCounter(initialCounter(finalResult));
     }
     fetchRoadMapItems();
   }, [data]);

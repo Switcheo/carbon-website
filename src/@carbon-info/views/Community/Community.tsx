@@ -42,8 +42,8 @@ const Community: React.FC = () => {
                 <br />
                 <Typography align="left" paragraph component={"span"}>
                   <CTAButton
-                    text="GET TOKEN"
-                    link={Path.GetToken}
+                    text="FIND OUT MORE"
+                    link={Path.FindOutMore}
                     CTA
                   />
                 </Typography>
