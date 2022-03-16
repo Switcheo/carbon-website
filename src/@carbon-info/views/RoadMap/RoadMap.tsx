@@ -6,7 +6,7 @@ import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import { RoadMapButton, SphereWithText } from "./components";
 import { useContentful } from "react-contentful";
-import moment from 'moment';
+import moment from "moment";
 import clsx from "clsx";
 
 const RoadMap: React.FC = () => {
@@ -46,10 +46,10 @@ const RoadMap: React.FC = () => {
               title: entry.fields.title,
               description: entry.fields.description.content[0].content[0].value,
               shortDescription: entry.fields.shortDescription,
-              lastUpdate: entry.sys.updatedAt
-            }
+              lastUpdate: entry.sys.updatedAt,
+            };
             if (entry.fields.progress === 100) {
-              progress100.push({ ...data })
+              progress100.push({ ...data });
             }
             else {
               result.push({ ...data });
@@ -59,9 +59,9 @@ const RoadMap: React.FC = () => {
       }
       progress100.sort(((a, b) => {
         if (moment(a.lastUpdate) > moment(b.lastUpdate)) {
-          return 1
+          return 1;
         }
-        return -1
+        return -1;
       }));
       result.sort(((a, b) => b.progress - a.progress));
       const finalResult = [...progress100, ...result];
