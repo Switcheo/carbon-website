@@ -46,7 +46,7 @@ const Header: React.FC = () => {
                 <Link href={Path.Footer.Guides} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Learn</Typography>
                 </Link>
-                <Link href={Path.Footer.SwitcheoDevelopmentFund} underline="none" target="_blank">
+                <Link href={Path.Header.Build} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Build</Typography>
                 </Link>
                 <Link href={"/roadmap"} underline="none">
@@ -54,6 +54,9 @@ const Header: React.FC = () => {
                 </Link>
                 <Link href={Path.Footer.CarbonScan} underline="none" target="_blank">
                   <Typography color="textPrimary" display="inline">Explorer</Typography>
+                </Link>
+                <Link href={Path.Header.SWTH} underline="none" target="_blank">
+                  <Typography color="textPrimary" display="inline">SWTH</Typography>
                 </Link>
               </>
           }

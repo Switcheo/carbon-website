@@ -32,6 +32,9 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
         <Link href={Path.Footer.CarbonScan} underline="none" onClick={callback} target="_blank">
           <Typography color="textPrimary" variant="h1" display="inline">Explorer</Typography>
         </Link>
+        <Link href={Path.Header.SWTH} underline="none" onClick={callback} target="_blank">
+          <Typography color="textPrimary" variant="h1" display="inline">SWTH</Typography>
+        </Link>
       </div>
       <div className={classes.socialMediaContainer}>
         <Link href={Path.Socials.Medium} underline="none" target="_blank">

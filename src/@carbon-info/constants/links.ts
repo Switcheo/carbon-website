@@ -1,4 +1,8 @@
 export const Path = {
+  Header:{
+    Build: "https://docs.carbon.network",
+    SWTH: "https://hub.carbon.network/",
+  },
   ContactUs: "https://support.switcheo.network/en/",
   Feedback: "https://ideas.dem.exchange/",
   Socials: {
@@ -26,10 +30,12 @@ export const Path = {
     Demex: "https://dem.exchange",
     CarbonScan: "https://scan.carbon.network",
     SwitcheoDevelopmentFund: "https://forum.carbon.network/topic/42/applying-for-project-grants-under-the-switcheo-development-fund",
-    APIs: "https://docs.carbon.network",
-    Github: "https://github.com/Switcheo",
+    APIs: "https://docs.carbon.network/api-references",
+    Github: "https://github.com/Switcheo/carbon-bootstrap/releases",
+    SDK: "https://github.com/Switcheo/carbon-js-sdk",
     Forum: "https://forum.carbon.network",
     Governance: "https://scan.carbon.network/governance",
+    Setup: "https://docs.carbon.network/setting-up-a-node/mainnet-setup",
   },
   FindOutMore: "https://hub.carbon.network/",
 };

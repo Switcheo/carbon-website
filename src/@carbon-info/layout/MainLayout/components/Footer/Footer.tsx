@@ -58,13 +58,18 @@ const sitemap = [
     section: "Build",
     sitemap: [
       {
-        title: "Switcheo Development Fund",
-        link: Path.Footer.SwitcheoDevelopmentFund,
+        title: "Setup",
+        link: Path.Footer.Setup,
         target: "_blank",
       },
       {
-        title: "APIs",
+        title: "Docs",
         link: Path.Footer.APIs,
+        target: "_blank",
+      },
+      {
+        title: "SDK",
+        link: Path.Footer.SDK,
         target: "_blank",
       },
       {
@@ -72,6 +77,11 @@ const sitemap = [
         link: Path.Footer.Github,
         target: "_blank",
       },
+      {
+        title: "Switcheo Development Fund",
+        link: Path.Footer.SwitcheoDevelopmentFund,
+        target: "_blank",
+      }
     ],
   },
   {
