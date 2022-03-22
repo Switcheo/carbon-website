@@ -81,7 +81,7 @@ const sitemap = [
         title: "Switcheo Development Fund",
         link: Path.Footer.SwitcheoDevelopmentFund,
         target: "_blank",
-      }
+      },
     ],
   },
   {
