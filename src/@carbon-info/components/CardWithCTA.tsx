@@ -29,9 +29,6 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   });
   return (
     <div ref={ref}>
-      <h1>
-        {navigator.userAgent}
-      </h1>
       <Box className={clsx(classes.boxContainer, { open: inView })}>
         <div className={clsx(classes.iconContainer, { big: bigSVG })}>
           <img src={icon} alt="icon" className={clsx(classes.icon, { big: bigSVG })} style={{ ...overwriteCSS }} />
