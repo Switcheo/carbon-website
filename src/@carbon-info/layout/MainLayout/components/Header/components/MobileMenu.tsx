@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Link, makeStyles, Typography, Theme } from "@material-ui/core";
-import { CarbonLogo, MediumIcon, MenuIconClose, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
+import { CarbonLogo, MenuIconClose, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
 import onClickOutside from "@carbon-info/hooks/OnClickOutside";
 import { Path } from "@carbon-info/constants";
 

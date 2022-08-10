@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Divider, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import { CarbonLogo, DiscordIcon, GitHubIcon, RedditIcon, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
+import { CarbonLogo, DiscordIcon, GitHubIcon, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
 
 const sitemap = [
