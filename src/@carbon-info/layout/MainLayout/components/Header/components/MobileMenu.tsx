@@ -37,9 +37,6 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
         </Link>
       </div>
       <div className={classes.socialMediaContainer}>
-        <Link href={Path.Socials.Medium} underline="none" target="_blank">
-          <MediumIcon className={classes.socialMediaIcon} />
-        </Link>
         <Link href={Path.Socials.Telegram} underline="none" target="_blank">
           <TelegramIcon className={classes.socialMediaIcon} />
         </Link>

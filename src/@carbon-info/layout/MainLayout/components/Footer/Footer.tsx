@@ -155,9 +155,6 @@ const Footer: React.FC = () => {
             <Link href={Path.Socials.Discord} underline="none" target="_blank">
               <DiscordIcon className={classes.socialMediaIcon} />
             </Link>
-            <Link href={Path.Socials.Reddit} underline="none" target="_blank">
-              <RedditIcon className={classes.socialMediaIcon} />
-            </Link>
             <Link href={Path.Socials.Github} underline="none" target="_blank">
               <GitHubIcon className={classes.socialMediaIcon} />
             </Link>
