@@ -56,7 +56,7 @@ const Header: React.FC = () => {
                   <Typography color="textPrimary" display="inline">Explorer</Typography>
                 </Link>
                 <Link href={Path.Header.SWTH} underline="none" target="_blank">
-                  <Typography color="textPrimary" display="inline">SWTH</Typography>
+                  <Typography color="textPrimary" display="inline">Token &#40;$SWTH&#41;</Typography>
                 </Link>
               </>
           }

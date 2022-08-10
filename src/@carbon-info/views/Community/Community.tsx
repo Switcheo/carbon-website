@@ -37,7 +37,7 @@ const Community: React.FC = () => {
                 </Typography>
                 <br />
                 <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : "subtitle1"} align="left" paragraph className={classes.subtitle}>
-                  Using the SWTH token, anyone can play a part in shaping Carbon’s journey towards the future of finance.
+                  Using the Carbon &#40;$SWTH&#41; Token, anyone can play a part in shaping Carbon’s journey towards the future of finance.
                 </Typography>
                 <br />
                 <Typography align="left" paragraph component={"span"}>

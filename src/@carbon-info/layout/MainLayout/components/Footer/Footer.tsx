@@ -8,38 +8,33 @@ const sitemap = [
     section: "Learn",
     sitemap: [
       {
-        title: "Features",
+        title: "Carbon Features",
         link: Path.Footer.Features,
         target: "",
       },
       {
-        title: "Guides",
+        title: "Guide to Carbon",
         link: Path.Footer.Guides,
         target: "_blank",
       },
       {
-        title: "Blog",
+        title: "Core Dev Blog",
         link: Path.Footer.Blog,
         target: "_blank",
       },
     ],
   },
   {
-    section: "Explore",
+    section: "Ecosystem",
     sitemap: [
       {
-        title: "SWTH",
-        link: Path.Footer.SWTH,
+        title: "Carbon Token ($SWTH)",
+        link: Path.Footer.CarbonHub,
         target: "_blank",
       },
       {
-        title: "Tokens",
-        link: Path.Footer.Token,
-        target: "_blank",
-      },
-      {
-        title: "Markets",
-        link: Path.Footer.Markets,
+        title: "Buy $SWTH",
+        link: Path.Footer.Buy,
         target: "_blank",
       },
       {
@@ -49,6 +44,11 @@ const sitemap = [
       },
       {
         title: "Carbonscan",
+        link: Path.Footer.CarbonScan,
+        target: "_blank",
+      },
+      {
+        title: "Hydrogen",
         link: Path.Footer.CarbonScan,
         target: "_blank",
       },
@@ -78,7 +78,7 @@ const sitemap = [
         target: "_blank",
       },
       {
-        title: "Switcheo Development Fund",
+        title: "Community Dev Fund (SDF)",
         link: Path.Footer.SwitcheoDevelopmentFund,
         target: "_blank",
       },
