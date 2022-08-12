@@ -49,7 +49,7 @@ const sitemap = [
       },
       {
         title: "Hydrogen",
-        link: Path.Footer.CarbonScan,
+        link: Path.Footer.Hydrogen,
         target: "_blank",
       },
     ],
