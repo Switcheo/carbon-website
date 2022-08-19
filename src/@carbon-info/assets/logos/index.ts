@@ -1,5 +1,4 @@
 export { ReactComponent as CarbonLogo } from "./carbon_logo.svg";
-import { default as ThreeACLogo } from "./3AC.svg";
 import { default as BoltLogo } from "./Bolt.svg";
 import { default as DACMLogo } from "./DACM.svg";
 import { default as DefianceCapitalLogo } from "./DefianceCapital.svg";
@@ -19,7 +18,7 @@ import { default as TendermintLogo } from "./Tendermint.png";
 import { default as CosmosLogo } from "./Cosmos.png";
 
 export const allPartnersLogo = [ 
-  ThreeACLogo, DefianceCapitalLogo, NGCLogo, 
+  DefianceCapitalLogo, NGCLogo, 
   NeoLogo, DefiCapitalLogo, PolyNetworkLogo, 
   ZilliqaLogo, DACMLogo, DuskLogo, 
   HoubiLogo, StakeWithUsLogo, O3LabsLogo, 
