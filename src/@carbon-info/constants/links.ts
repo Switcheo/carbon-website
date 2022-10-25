@@ -7,7 +7,7 @@ export const Path = {
   Socials: {
     LinkedIn: "https://www.linkedin.com/company/switcheo/",
     Twitter: "https://twitter.com/0xcarbon",
-    Telegram: "https://t.me/switcheo",
+    Telegram: "https://t.me/carbon_ecosystem",
     Youtube: "https://www.youtube.com/channel/UCqZ9sxvw-0UoHzno4-d97oQ",
     Medium: "https://medium.com/switcheo",
     Discord: "https://discord.gg/SPh62Hf",
