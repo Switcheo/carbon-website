@@ -13,7 +13,7 @@ const useContentful = (args: CallArgs) => {
       console.warn("useContentful only allows carbon roadmap content type atm");
 
     (async () => {
-      const response = await fetch("https://content.carbon.network/data/contentful");
+      const response = await fetch(`https://content.carbon.network/contentful/master/${args.contentType}`);
       const result = await response.json();
 
       setData(result);
