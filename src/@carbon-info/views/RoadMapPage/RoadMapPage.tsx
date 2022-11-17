@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useContentful } from "@carbon-info/hooks";
 import { Box, makeStyles, Theme, useMediaQuery, useTheme } from "@material-ui/core";
-import { Ideas, Intro, RoadMapTabMobile, RoadMapTabTablet, RoadMapTab } from "./components";
-import { useContentful } from "react-contentful";
+import React, { useEffect, useState } from "react";
+import { Ideas, Intro, RoadMapTab, RoadMapTabMobile, RoadMapTabTablet } from "./components";
 
 const RoadMapPage: React.FC = () => {
   const classes = useStyles();

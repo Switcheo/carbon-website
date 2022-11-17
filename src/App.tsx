@@ -9,13 +9,8 @@ import {
   Route,
 } from "react-router-dom";
 
-import { ContentfulClient, ContentfulProvider } from "react-contentful";
 import { GoogleAnalytics } from "@carbon-info/components";
 import { DecentralizedStats } from "@carbon-info/views";
-const contentfulClient: any = ContentfulClient({
-  accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN!,
-  space: process.env.REACT_APP_CONTENTFUL_SPACE_ID!,
-});
 
 //Lazy loading Components to improve performance
 const FeatureCard = React.lazy(() => import("@carbon-info/views/FeatureCard/FeatureCard"));
@@ -32,36 +27,34 @@ const RoadMapPage = React.lazy(() => import("@carbon-info/views/RoadMapPage/Road
 function App() {
   return (
     <Router>
-      <ContentfulProvider client={contentfulClient}>
-        <MuiThemeProvider theme={theme}>
-          <GoogleAnalytics />
-          <MainLayout>
-            <Switch>
-              <Route path="/roadmap">
+      <MuiThemeProvider theme={theme}>
+        <GoogleAnalytics />
+        <MainLayout>
+          <Switch>
+            <Route path="/roadmap">
+              <Suspense fallback={<div style={{ height: "100vh" }} />}>
+                <RoadMapPage />
+              </Suspense>
+            </Route>
+            <Route path="/">
+              <>
                 <Suspense fallback={<div style={{ height: "100vh" }} />}>
-                  <RoadMapPage />
+                  <IntroPage />
+                  <HeroImage />
+                  <FeatureCard />
+                  <DecentralizedStats />
+                  <UtilitySection />
+                  <Permissionless />
+                  <Community />
+                  <Partnership />
+                  <RoadMap />
+                  <GetInvolved />
                 </Suspense>
-              </Route>
-              <Route path="/">
-                <>
-                  <Suspense fallback={<div style={{ height: "100vh" }} />}>
-                    <IntroPage />
-                    <HeroImage />
-                    <FeatureCard />
-                    <DecentralizedStats />
-                    <UtilitySection />
-                    <Permissionless />
-                    <Community />
-                    <Partnership />
-                    <RoadMap />
-                    <GetInvolved />
-                  </Suspense>
-                </>
-              </Route>
-            </Switch>
-          </MainLayout>
-        </MuiThemeProvider>
-      </ContentfulProvider>
+              </>
+            </Route>
+          </Switch>
+        </MainLayout>
+      </MuiThemeProvider>
     </Router>
   );
 }

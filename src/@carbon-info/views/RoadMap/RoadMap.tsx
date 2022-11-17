@@ -5,9 +5,9 @@ import roadMapGlow from "@carbon-info/assets/background/roadMapGlow.svg";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import { RoadMapButton, SphereWithText } from "./components";
-import { useContentful } from "react-contentful";
 import moment from "moment";
 import clsx from "clsx";
+import { useContentful } from "@carbon-info/hooks";
 
 const RoadMap: React.FC = () => {
   const classes = useStyles();
