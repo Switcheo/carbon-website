@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState } from "react";
 import { Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import { CarbonLogo, MenuIcon } from "@carbon-info/assets";
+import { ArrowIcon, CarbonLogo, MenuIcon } from "@carbon-info/assets";
 import MobileMenu from "./components/MobileMenu";
 import clsx from "clsx";
 import { Path } from "@carbon-info/constants";
@@ -44,23 +44,24 @@ const Header: React.FC = () => {
               :
               <>
                 <Link href={Path.Footer.Guides} underline="none" target="_blank">
-                  <Typography color="textPrimary" display="inline">Learn</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline">Learn</Typography>
                 </Link>
                 <Link href={Path.Header.Build} underline="none" target="_blank">
-                  <Typography color="textPrimary" display="inline">Build</Typography>
-                </Link>
-                <Link href={"/roadmap"} underline="none">
-                  <Typography color="textPrimary" display="inline">Roadmap</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline">Build</Typography>
                 </Link>
                 <Link href={Path.Footer.CarbonScan} underline="none" target="_blank">
-                  <Typography color="textPrimary" display="inline">Explorer</Typography>
-                </Link>
-                <Link href={Path.Header.SWTH} underline="none" target="_blank">
-                  <Typography color="textPrimary" display="inline">Token &#40;$SWTH&#41;</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline">Explore</Typography>
                 </Link>
               </>
           }
         </div>
+        {!isMobile && (
+          <>
+            <Link href={Path.Header.SWTH} underline="none" target="_blank">
+              <Typography variant="h4" color="textPrimary" display="inline">Buy $SWTH <ArrowIcon /></Typography>
+            </Link>
+          </>
+        )}
       </div>
       <Hidden mdUp>
         <div className={isScrolled ? classes.navBarFixedContainer : classes.navBarFixedContainerCollapsed}>
@@ -103,7 +104,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   navBarContainer: {
     display: "flex",
     alignItems: "center",
-    margin: theme.spacing(6, 0, 12, 0),
+    maxWidth: "1400px",
+    margin: theme.spacing(6, "auto", 12, "auto"),
+    justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
       margin: theme.spacing(6, 4, 12, 4),
       transition: "all 0.25s linear",
@@ -159,6 +162,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   logo: {
     verticalAlign: "middle",
     margin: theme.spacing(0, 1),
+    width: "250px",
     [theme.breakpoints.down("xs")]: {
       marginRight: "auto",
       textAlign: "start",
@@ -180,8 +184,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   navButtonContainer: {
-    marginLeft: "auto",
     display: "flex",
-    gap: 45,
+    gap: 50,
   },
 }));

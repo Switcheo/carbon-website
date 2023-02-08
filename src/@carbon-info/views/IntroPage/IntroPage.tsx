@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, makeStyles, Theme, Typography } from "@material-ui/core";
-import { IntroPageBackgroundLine } from "@carbon-info/assets/background";
 import backgroundLogo from "@carbon-info/assets/background/introPageBgLeft.png";
 import backgroundLogoRight from "@carbon-info/assets/background/introPageBgRight.png";
 import backgroundSphereLeft from "@carbon-info/assets/animated/introPageSphereLeft.png";
@@ -8,6 +7,7 @@ import backgroundSphereRight from "@carbon-info/assets/animated/introPageSphereR
 import { FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
+import { Carbon, Scroll } from "@carbon-info/assets";
 
 const IntroPage: React.FC = () => {
   const classes = useStyles();
@@ -23,32 +23,39 @@ const IntroPage: React.FC = () => {
         <img src={backgroundSphereLeft} className={clsx(classes.sphereLeft, { open: inView })} alt="herobackground" />
         <div>
           <FadeAndSlide visible={inView} transform={[0, -20]}>
-            <Typography variant="h4" color="textPrimary">
-              Meet Carbon
+            <Typography variant="body1" color="textSecondary" className={classes.bodyTypography}>
+              MEET CARBON
             </Typography>
           </FadeAndSlide>
-          <IntroPageBackgroundLine className={classes.dash} />
-          <Typography color="textPrimary" variant="h2" className={clsx(classes.mainTitle, { open: inView })} >
-            The core of
+          <Typography color="textPrimary" variant="h1" className={clsx(classes.mainTitle, { open: inView })} >
+            The Core of
             <br />
-            <span className={clsx(classes.gradientText, { open: inView })} >
-              decentralized
-            <br />
+            <span className={clsx(classes.hightlightedText, { open: inView })} >
+              Decentralized
+              <br />
             </span>
-            <span className={clsx(classes.gradientText)}>
-              financial markets
-              </span>
+            <span className={clsx(classes.hightlightedText)}>
+              Financial Markets.
+            </span>
           </Typography>
           <FadeAndSlide visible={inView}>
-            <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
-              Carbon is a cross-chain protocol that acts as a<br />building block for DeFi.
+            <Typography color="textSecondary" variant="body1" className={classes.subtitle}>
+              Carbon is a cross-chain protocol that acts as<br />a building block for DeFi.
             </Typography>
+            <Carbon className={classes.carbonIcon} />
           </FadeAndSlide>
         </div>
         <img src={backgroundLogoRight} className={clsx(classes.backgroundRight, { open: inView })} alt="herobackgroundright" />
         <img src={backgroundSphereRight} className={clsx(classes.sphereRight, { open: inView })} alt="herobackgroundright" />
       </Grid>
-    </div>
+      <FadeAndSlide visible={inView}>
+        <div className={clsx(classes.scrollContainer, { open: inView })}>
+          <Scroll />
+          <Typography className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
+        </div>
+      </FadeAndSlide>
+
+    </div >
   );
 };
 
@@ -63,6 +70,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   mainTitle: {
     opacity: 0,
     transition: "all 2s ease",
+    marginTop: "1rem",
     "&.open": {
       opacity: 1,
     },
@@ -161,16 +169,35 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   subtitle: {
-    marginTop: "2.5rem",
+    margin: "1rem auto",
     maxWidth: "40rem",
     [theme.breakpoints.down(325)]: {
       marginTop: "2.5rem",
       fontSize: "2rem",
     },
   },
-  gradientText: {
-    background: "linear-gradient(63deg,#196163,#DAFFF4,#DAFFF4, #72E7E2, #11D1D1)",
-    WebkitTextFillColor: "transparent",
-    WebkitBackgroundClip: "text",
+  hightlightedText: {
+    color: theme.palette.primary.light,
+  },
+  carbonIcon: {
+    marginTop: "-450px",
+  },
+  scrollContainer: {
+    opacity: 0,
+    marginTop: "-350px",
+    "&.open": {
+      opacity: 1,
+    },
+  },
+  scrollText: {
+    marginTop: "1.562rem",
+    fontFamily: theme.typography.body1.fontFamily,
+    fontWeight: 600,
+    fontSize: "1.125rem",
+    lineHeight: "1.562rem",
+    color: theme.palette.text.hint,
+  },
+  bodyTypography: {
+    fontWeight: 400,
   },
 }));
