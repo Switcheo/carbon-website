@@ -26,7 +26,7 @@ export const theme = createTheme({
       disabled: "#5C5C5C",
       hint: "#989898",
     },
-    divider: "rgba(255,255,255,0.4)",
+    divider: "#343434",
   },
   typography: {
     fontFamily: "TyrosPro, SourceSansPro, SourceSansPro-Light, SourceSansPro-Bold, TyrosPro-Light, TyrosPro-SemiBold",

@@ -11,6 +11,7 @@ import {
 
 import { GoogleAnalytics } from "@carbon-info/components";
 import { DecentralizedStats } from "@carbon-info/views";
+import { Data } from "@carbon-info/views/Data";
 
 //Lazy loading Components to improve performance
 const FeatureCard = React.lazy(() => import("@carbon-info/views/FeatureCard/FeatureCard"));
@@ -40,6 +41,7 @@ function App() {
               <>
                 <Suspense fallback={<div style={{ height: "100vh" }} />}>
                   <IntroPage />
+                  <Data />
                   <HeroImage />
                   <FeatureCard />
                   <DecentralizedStats />
