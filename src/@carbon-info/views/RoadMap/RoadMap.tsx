@@ -204,7 +204,6 @@ const RoadMap: React.FC = () => {
           <CTAButton
             text="See Full Roadmap"
             link="/roadmap"
-            CTA
             newTab={false}
           />
         </div>

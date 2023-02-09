@@ -2,6 +2,7 @@ export { ReactComponent as AccelerateIcon } from "./accelerate.svg";
 export { ReactComponent as ArrowIcon } from "./arrow.svg";
 export { ReactComponent as ChooseIcon } from "./choose.svg";
 export { ReactComponent as Carbon } from "./carbon.svg";
+export { ReactComponent as Connective } from "./connective.svg";
 export { ReactComponent as DecentralizedIcon } from "./decentralized.svg";
 export { ReactComponent as DemexIcon } from "./demex.svg";
 export { ReactComponent as DiscordIcon } from "./discord.svg";

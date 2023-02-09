@@ -1,9 +1,6 @@
 import React from "react";
 import { Grid, makeStyles, Theme, Typography } from "@material-ui/core";
-import backgroundLogo from "@carbon-info/assets/background/introPageBgLeft.png";
-import backgroundLogoRight from "@carbon-info/assets/background/introPageBgRight.png";
-import backgroundSphereLeft from "@carbon-info/assets/animated/introPageSphereLeft.png";
-import backgroundSphereRight from "@carbon-info/assets/animated/introPageSphereRight.png";
+import carbonHexagonBackground from "@carbon-info/assets/background/carbonHexagonBackground.svg";
 import { FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
@@ -19,9 +16,8 @@ const IntroPage: React.FC = () => {
   return (
     <div ref={ref} id="home">
       <Grid container className={classes.container}>
-        <img src={backgroundLogo} className={clsx(classes.backgroundLeft, { open: inView })} alt="herobackground" />
-        <img src={backgroundSphereLeft} className={clsx(classes.sphereLeft, { open: inView })} alt="herobackground" />
-        <div>
+        <img src={carbonHexagonBackground} className={clsx(classes.hexagonBackground, { open: inView })} />
+        <div className={classes.headerContainer}>
           <FadeAndSlide visible={inView} transform={[0, -20]}>
             <Typography variant="body1" color="textSecondary" className={classes.bodyTypography}>
               MEET CARBON
@@ -44,17 +40,14 @@ const IntroPage: React.FC = () => {
             </Typography>
             <Carbon className={classes.carbonIcon} />
           </FadeAndSlide>
+          <FadeAndSlide visible={inView}>
+            <div className={clsx(classes.scrollContainer, { open: inView })}>
+              <Scroll />
+              <Typography className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
+            </div>
+          </FadeAndSlide>
         </div>
-        <img src={backgroundLogoRight} className={clsx(classes.backgroundRight, { open: inView })} alt="herobackgroundright" />
-        <img src={backgroundSphereRight} className={clsx(classes.sphereRight, { open: inView })} alt="herobackgroundright" />
       </Grid>
-      <FadeAndSlide visible={inView}>
-        <div className={clsx(classes.scrollContainer, { open: inView })}>
-          <Scroll />
-          <Typography className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
-        </div>
-      </FadeAndSlide>
-
     </div >
   );
 };
@@ -62,15 +55,23 @@ const IntroPage: React.FC = () => {
 export default IntroPage;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  hexagonBackground: {
+    position: "absolute",
+    zIndex: 0,
+  },
   container: {
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
   },
+  headerContainer: {
+    zIndex: 5,
+    marginTop: "4.75rem",
+  },
   mainTitle: {
     opacity: 0,
     transition: "all 2s ease",
-    marginTop: "1rem",
+    marginTop: "0.75rem",
     "&.open": {
       opacity: 1,
     },
@@ -169,7 +170,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   subtitle: {
-    margin: "1rem auto",
+    margin: "0.5rem auto",
     maxWidth: "40rem",
     [theme.breakpoints.down(325)]: {
       marginTop: "2.5rem",
@@ -180,17 +181,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.primary.light,
   },
   carbonIcon: {
-    marginTop: "-450px",
+    marginTop: "-500px",
   },
   scrollContainer: {
     opacity: 0,
-    marginTop: "-350px",
+    marginTop: "-500px",
     "&.open": {
       opacity: 1,
     },
   },
   scrollText: {
-    marginTop: "1.562rem",
+    marginTop: "0.75rem",
     fontFamily: theme.typography.body1.fontFamily,
     fontWeight: 600,
     fontSize: "1.125rem",

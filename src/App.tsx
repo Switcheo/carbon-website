@@ -10,13 +10,16 @@ import {
 } from "react-router-dom";
 
 import { GoogleAnalytics } from "@carbon-info/components";
-import { DecentralizedStats } from "@carbon-info/views";
-import { Data } from "@carbon-info/views/Data";
 
 //Lazy loading Components to improve performance
-const FeatureCard = React.lazy(() => import("@carbon-info/views/FeatureCard/FeatureCard"));
-const HeroImage = React.lazy(() => import("@carbon-info/views/HeroImage/HeroImage"));
 const IntroPage = React.lazy(() => import("@carbon-info/views/IntroPage/IntroPage"));
+const Data = React.lazy(() => import("@carbon-info/views/Data/Data"));
+const Features = React.lazy(() => import("@carbon-info/views/Features/Features"));
+
+//Remove components later
+const FeatureCard = React.lazy(() => import("@carbon-info/views/FeatureCard/FeatureCard"));
+const DecentralizedStats = React.lazy(() => import("@carbon-info/views/DecentralizedStats/DecentralizedStats"));
+const HeroImage = React.lazy(() => import("@carbon-info/views/HeroImage/HeroImage"));
 const UtilitySection = React.lazy(() => import("@carbon-info/views/UtilitySection/UtilitySection"));
 const Permissionless = React.lazy(() => import("@carbon-info/views/Permissionless/Permissionless"));
 const Community = React.lazy(() => import("@carbon-info/views/Community/Community"));
@@ -42,6 +45,8 @@ function App() {
                 <Suspense fallback={<div style={{ height: "100vh" }} />}>
                   <IntroPage />
                   <Data />
+                  <Features />
+                  {/* Remove sections below */}
                   <HeroImage />
                   <FeatureCard />
                   <DecentralizedStats />

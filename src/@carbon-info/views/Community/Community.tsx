@@ -44,7 +44,6 @@ const Community: React.FC = () => {
                   <CTAButton
                     text="FIND OUT MORE"
                     link={Path.FindOutMore}
-                    CTA
                   />
                 </Typography>
               </div>

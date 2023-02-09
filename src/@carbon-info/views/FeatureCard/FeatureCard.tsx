@@ -33,14 +33,13 @@ const FeatureCard: React.FC = () => {
             <div>
               <Typography color="textPrimary" variant="h2" className={classes.title}>
                 Breathing life into all things DeFi
-            </Typography>
+              </Typography>
               <Typography color="textPrimary" variant="body2" className={classes.subtext}>
                 {"Carbon protocol allows anyone to bootstrap open financial markets for any asset type, on any blockchain."}
               </Typography>
               <CTAButton
                 text="READ DOCS"
                 link="https://guide.carbon.network"
-                CTA
               />
             </div>
           </Grid>
