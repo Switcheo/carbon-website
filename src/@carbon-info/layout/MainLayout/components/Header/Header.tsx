@@ -57,7 +57,7 @@ const Header: React.FC = () => {
         </div>
         {!isMobile && (
           <>
-            <Link href={Path.Header.SWTH} underline="none" target="_blank">
+            <Link href={Path.Header.SWTH} underline="none" target="_blank" className={classes.externalLink}>
               <Typography variant="h4" color="textPrimary" display="inline">Buy $SWTH <ArrowIcon /></Typography>
             </Link>
           </>
@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     alignItems: "center",
     maxWidth: "1400px",
-    margin: theme.spacing(6, "auto", 12, "auto"),
+    margin: theme.spacing(6, "auto"),
     justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
       margin: theme.spacing(6, 4, 12, 4),
@@ -170,6 +170,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   logoContainer: {
+    display: "flex",
+    flex: 1,
     [theme.breakpoints.down("xs")]: {
       textAlign: "start",
     },
@@ -186,5 +188,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   navButtonContainer: {
     display: "flex",
     gap: 50,
+    justifyContent: "center",
+    flex: 1,
+  },
+  externalLink: {
+    display: "flex",
+    flex: 1,
+    justifyContent: "flex-end",
   },
 }));

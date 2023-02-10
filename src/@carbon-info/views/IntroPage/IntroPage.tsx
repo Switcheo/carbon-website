@@ -57,7 +57,8 @@ export default IntroPage;
 const useStyles = makeStyles((theme: Theme) => ({
   hexagonBackground: {
     position: "absolute",
-    zIndex: 0,
+    top: 0,
+    transform: "rotate(6.93deg)",
   },
   container: {
     justifyContent: "center",
@@ -66,7 +67,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   headerContainer: {
     zIndex: 5,
-    marginTop: "4.75rem",
+    marginTop: "8.5rem",
   },
   mainTitle: {
     opacity: 0,
@@ -181,7 +182,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.primary.light,
   },
   carbonIcon: {
-    marginTop: "-500px",
+    marginTop: "-540px",
+    width: "1680px",
   },
   scrollContainer: {
     opacity: 0,
@@ -191,7 +193,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   scrollText: {
-    marginTop: "0.75rem",
+    marginTop: "1.5rem",
     fontFamily: theme.typography.body1.fontFamily,
     fontWeight: 600,
     fontSize: "1.125rem",
