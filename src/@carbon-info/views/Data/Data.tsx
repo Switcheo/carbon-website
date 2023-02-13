@@ -1,8 +1,13 @@
 import { FadeAndSlide } from "@carbon-info/components";
-import { Box, makeStyles, Table, TableCell, TableRow, Theme, Typography } from "@material-ui/core";
+import { Box, makeStyles, Table, TableBody, TableCell, TableRow, Theme, Typography } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
+
+interface DataInfo {
+  value: string,
+  description: string,
+}
 
 const Data: React.FC = () => {
   const classes = useStyles();
@@ -11,6 +16,27 @@ const Data: React.FC = () => {
     threshold: 0.4,
     triggerOnce: true,
   });
+
+  const tableInfo: DataInfo[] = [{
+    value: "157,000,000+",
+    description: "On-Chain Transactions",
+  }, {
+    value: "$16,599,873",
+    description: "Total Value Locked",
+  }, {
+    value: "1,231,184,282",
+    description: "Total SWTH Staked",
+  }, {
+    value: "<$0.01",
+    description: "Gas Fees",
+  }, {
+    value: "10,000",
+    description: "Transactions Per Second",
+  }, {
+    value: "1-2 s",
+    description: "Block Time",
+  }];
+
   return (
     <div ref={ref} id="data" className={classes.container}>
       <FadeAndSlide visible={inView}>
@@ -24,46 +50,28 @@ const Data: React.FC = () => {
       </FadeAndSlide>
       <FadeAndSlide visible={inView}>
         <Table className={clsx(classes.dataTable, { open: inView })}>
-          <TableRow>
-            <TableCell className={classes.tableCell}>
-              <Box>
-                <Typography variant="h3" color="textPrimary" align="center">157,000,000+</Typography>
-                <Typography variant="body2" color="textSecondary" align="center">On-Chain Transactions</Typography>
-              </Box>
-            </TableCell>
-            <TableCell className={classes.tableCell}>
-              <Box className={classes.dataBox}>
-                <Typography variant="h3" color="textPrimary" align="center">$16,599,873</Typography>
-                <Typography variant="body2" color="textSecondary" align="center">Total Value Locked</Typography>
-              </Box>
-            </TableCell>
-            <TableCell className={classes.tableCell}>
-              <Box className={classes.dataBox}>
-                <Typography variant="h3" color="textPrimary" align="center">1,231,184,282</Typography>
-                <Typography variant="body2" color="textSecondary" align="center">Total SWTH Staked</Typography>
-              </Box>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className={classes.tableCell}>
-              <Box>
-                <Typography variant="h3" color="textPrimary" align="center">&#60;$0.01</Typography>
-                <Typography variant="body2" color="textSecondary" align="center">Gas Fees</Typography>
-              </Box>
-            </TableCell>
-            <TableCell className={classes.tableCell}>
-              <Box className={classes.dataBox}>
-                <Typography variant="h3" color="textPrimary" align="center">10,000</Typography>
-                <Typography variant="body2" color="textSecondary" align="center">Transactions Per Second</Typography>
-              </Box>
-            </TableCell>
-            <TableCell className={classes.tableCell}>
-              <Box className={classes.dataBox}>
-                <Typography variant="h3" color="textPrimary" align="center">1-2 s</Typography>
-                <Typography variant="body2" color="textSecondary" align="center">Block Time</Typography>
-              </Box>
-            </TableCell>
-          </TableRow>
+          <TableBody>
+            <TableRow>
+              {tableInfo.slice(0, 3).map((item: DataInfo, index) => (
+                <TableCell className={classes.tableCell} key={item.description.replace(" ", "-")}>
+                  <Box className={index === 0 ? "" : classes.dataBox} >
+                    <Typography variant="h3" color="textPrimary" align="center">{item.value}</Typography>
+                    <Typography variant="body2" color="textSecondary" align="center">{item.description}</Typography>
+                  </Box>
+                </TableCell>
+              ))}
+            </TableRow>
+            <TableRow>
+              {tableInfo.slice(3, 6).map((item: DataInfo, index) => (
+                <TableCell className={classes.tableCell} key={item.description.replace(" ", "-")}>
+                  <Box className={index === 0 ? "" : classes.dataBox}>
+                    <Typography variant="h3" color="textPrimary" align="center">{item.value}</Typography>
+                    <Typography variant="body2" color="textSecondary" align="center">{item.description}</Typography>
+                  </Box>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableBody>
         </Table>
       </FadeAndSlide>
     </div >

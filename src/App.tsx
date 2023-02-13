@@ -12,21 +12,21 @@ import {
 import { GoogleAnalytics } from "@carbon-info/components";
 
 //Lazy loading Components to improve performance
+const RoadMapPage = React.lazy(() => import("@carbon-info/views/RoadMapPage/RoadMapPage"));
 const IntroPage = React.lazy(() => import("@carbon-info/views/IntroPage/IntroPage"));
 const Data = React.lazy(() => import("@carbon-info/views/Data/Data"));
 const Features = React.lazy(() => import("@carbon-info/views/Features/Features"));
 
 //Remove components later
-const FeatureCard = React.lazy(() => import("@carbon-info/views/FeatureCard/FeatureCard"));
-const DecentralizedStats = React.lazy(() => import("@carbon-info/views/DecentralizedStats/DecentralizedStats"));
-const HeroImage = React.lazy(() => import("@carbon-info/views/HeroImage/HeroImage"));
-const UtilitySection = React.lazy(() => import("@carbon-info/views/UtilitySection/UtilitySection"));
-const Permissionless = React.lazy(() => import("@carbon-info/views/Permissionless/Permissionless"));
-const Community = React.lazy(() => import("@carbon-info/views/Community/Community"));
-const Partnership = React.lazy(() => import("@carbon-info/views/Partnership/Partnership"));
-const RoadMap = React.lazy(() => import("@carbon-info/views/RoadMap/RoadMap"));
-const GetInvolved = React.lazy(() => import("@carbon-info/views/GetInvolved/GetInvolved"));
-const RoadMapPage = React.lazy(() => import("@carbon-info/views/RoadMapPage/RoadMapPage"));
+// const FeatureCard = React.lazy(() => import("@carbon-info/views/FeatureCard/FeatureCard"));
+// const DecentralizedStats = React.lazy(() => import("@carbon-info/views/DecentralizedStats/DecentralizedStats"));
+// const HeroImage = React.lazy(() => import("@carbon-info/views/HeroImage/HeroImage"));
+// const UtilitySection = React.lazy(() => import("@carbon-info/views/UtilitySection/UtilitySection"));
+// const Permissionless = React.lazy(() => import("@carbon-info/views/Permissionless/Permissionless"));
+// const Community = React.lazy(() => import("@carbon-info/views/Community/Community"));
+// const Partnership = React.lazy(() => import("@carbon-info/views/Partnership/Partnership"));
+// const RoadMap = React.lazy(() => import("@carbon-info/views/RoadMap/RoadMap"));
+// const GetInvolved = React.lazy(() => import("@carbon-info/views/GetInvolved/GetInvolved"));
 
 function App() {
   return (
@@ -47,7 +47,7 @@ function App() {
                   <Data />
                   <Features />
                   {/* Remove sections below */}
-                  <HeroImage />
+                  {/* <HeroImage />
                   <FeatureCard />
                   <DecentralizedStats />
                   <UtilitySection />
@@ -55,7 +55,7 @@ function App() {
                   <Community />
                   <Partnership />
                   <RoadMap />
-                  <GetInvolved />
+                  <GetInvolved /> */}
                 </Suspense>
               </>
             </Route>
