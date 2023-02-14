@@ -29,26 +29,26 @@ export const theme = createTheme({
     divider: "#343434",
   },
   typography: {
-    fontFamily: "TyrosPro, SourceSansPro, SourceSansPro-Light, SourceSansPro-Bold, TyrosPro-Light, TyrosPro-SemiBold",
-    h1: { // XLarge 64px
-      fontFamily: "TyrosPro",
+    fontFamily: "TyrosPro, SourceSansPro, SourceSansPro-Light, SourceSansPro-Bold, TyrosPro-Light, TyrosPro-SemiBold, TyrosPro-Bold",
+    h1: { // XLarge 58px
+      fontFamily: "TyrosPro-Bold",
       fontWeight: 900,
-      fontSize: "4rem",
-      lineHeight: "5.5rem",
+      fontSize: "3.625rem",
+      lineHeight: "5.125rem",
       letterSpacing: "-0.02rem",
     },
-    h2: { // Large 48px
+    h2: { // Large 42px
       fontFamily: "TyrosPro",
       fontWeight: 600,
-      fontSize: "3rem",
-      lineHeight: "4.125rem",
+      fontSize: "2.625rem",
+      lineHeight: "3.75rem",
       letterSpacing: "-0.02rem",
     },
-    h3: { // 36px
+    h3: { // 30px
       fontFamily: "TyrosPro",
       fontWeight: 600,
-      fontSize: "2.25rem",
-      lineHeight: "3.125rem",
+      fontSize: "1.875rem",
+      lineHeight: "2.755rem",
       letterSpacing: 0,
     },
     h4: { // Regular 24px/CTA & Title
@@ -58,29 +58,24 @@ export const theme = createTheme({
       lineHeight: "2.062rem",
       letterSpacing: "-0.02rem",
     },
-    h5: { // Mobile/Header 16px
+    h5: { // Mobile/Header 10px
       fontFamily: "TyrosPro",
       fontWeight: 700,
-      fontSize: "1rem",
-      lineHeight: "1.375rem",
+      fontSize: "0.625rem",
+      lineHeight: "1rem",
     },
-    body1: { // Regular 24px/Body
+    body1: { // Regular 18px/Body
       fontFamily: "TyrosPro",
       fontWeight: 500,
-      fontSize: "1.5rem",
-      lineHeight: "2.062rem",
+      fontSize: "1.125rem",
+      lineHeight: "1.687rem",
       letterSpacing: 0,
     },
-    body2: { // Small 20px/Body
+    body2: { // Small 12px/Body
       fontFamily: "TyrosPro",
       fontWeight: 400,
-      fontSize: "1.25rem",
-      lineHeight: "1.719rem",
-    },
-    button: {
-      fontWeight: 700,
-      fontSize: "1.5rem",
-      lineHeight: "2.13rem",
+      fontSize: "0.875rem",
+      lineHeight: "1.344rem",
     },
   },
 });
