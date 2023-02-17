@@ -22,7 +22,7 @@ const MainLayout: React.FC<Props> = (props: Props) => {
 
 const useStyles = makeStyles((theme: Theme) => ({
   app: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.background.default,
     display: "flex",
     flexDirection: "column",
     position: "relative",

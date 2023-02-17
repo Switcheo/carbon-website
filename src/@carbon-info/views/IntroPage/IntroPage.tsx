@@ -1,10 +1,11 @@
 import React from "react";
 import { Grid, makeStyles, Theme, Typography } from "@material-ui/core";
-import carbonHexagonBackground from "@carbon-info/assets/background/carbonHexagonBackground.svg";
+import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
-import { Carbon, Scroll } from "@carbon-info/assets";
+import Lottie from "react-lottie";
+import { Scroll } from "@carbon-info/assets";
 
 const IntroPage: React.FC = () => {
   const classes = useStyles();
@@ -13,10 +14,24 @@ const IntroPage: React.FC = () => {
     threshold: 0.4,
     triggerOnce: true,
   });
+
+  const AniStartOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: heroBackgroundAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
     <div ref={ref} id="home">
       <Grid container className={classes.container}>
-        <img src={carbonHexagonBackground} className={clsx(classes.hexagonBackground, { open: inView })} />
+        <Lottie
+          options={AniStartOptions}
+          width={1480}
+        />
+        {/* <img src={carbonHexagonBackground} className={clsx(classes.hexagonBackground, { open: inView })} /> */}
         <div className={classes.headerContainer}>
           <FadeAndSlide visible={inView} transform={[0, -20]}>
             <Typography variant="body1" color="textSecondary" className={classes.bodyTypography}>
@@ -38,7 +53,6 @@ const IntroPage: React.FC = () => {
             <Typography color="textSecondary" variant="body1" className={classes.subtitle}>
               Carbon is a cross-chain protocol that acts as<br />a building block for DeFi.
             </Typography>
-            <Carbon className={classes.carbonIcon} />
           </FadeAndSlide>
           <FadeAndSlide visible={inView}>
             <div className={clsx(classes.scrollContainer, { open: inView })}>
@@ -67,7 +81,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   headerContainer: {
     zIndex: 5,
-    marginTop: "8.5rem",
+    marginTop: "11.25rem",
+    position: "absolute",
+    top: 0,
   },
   mainTitle: {
     opacity: 0,
@@ -171,7 +187,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   subtitle: {
-    margin: "0.5rem auto",
     maxWidth: "40rem",
     [theme.breakpoints.down(325)]: {
       marginTop: "2.5rem",
@@ -187,7 +202,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   scrollContainer: {
     opacity: 0,
-    marginTop: "-500px",
+    marginTop: "445px",
     "&.open": {
       opacity: 1,
     },

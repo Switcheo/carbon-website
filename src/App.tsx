@@ -16,6 +16,8 @@ const RoadMapPage = React.lazy(() => import("@carbon-info/views/RoadMapPage/Road
 const IntroPage = React.lazy(() => import("@carbon-info/views/IntroPage/IntroPage"));
 const Data = React.lazy(() => import("@carbon-info/views/Data/Data"));
 const Features = React.lazy(() => import("@carbon-info/views/Features/Features"));
+const RoadMap = React.lazy(() => import("@carbon-info/views/RoadMap/RoadMap"));
+const Partnership = React.lazy(() => import("@carbon-info/views/Partnership/Partnership"));
 
 //Remove components later
 // const FeatureCard = React.lazy(() => import("@carbon-info/views/FeatureCard/FeatureCard"));
@@ -24,8 +26,6 @@ const Features = React.lazy(() => import("@carbon-info/views/Features/Features")
 // const UtilitySection = React.lazy(() => import("@carbon-info/views/UtilitySection/UtilitySection"));
 // const Permissionless = React.lazy(() => import("@carbon-info/views/Permissionless/Permissionless"));
 // const Community = React.lazy(() => import("@carbon-info/views/Community/Community"));
-// const Partnership = React.lazy(() => import("@carbon-info/views/Partnership/Partnership"));
-// const RoadMap = React.lazy(() => import("@carbon-info/views/RoadMap/RoadMap"));
 // const GetInvolved = React.lazy(() => import("@carbon-info/views/GetInvolved/GetInvolved"));
 
 function App() {
@@ -46,6 +46,8 @@ function App() {
                   <IntroPage />
                   <Data />
                   <Features />
+                  <RoadMap />
+                  <Partnership />
                   {/* Remove sections below */}
                   {/* <HeroImage />
                   <FeatureCard />
@@ -53,8 +55,6 @@ function App() {
                   <UtilitySection />
                   <Permissionless />
                   <Community />
-                  <Partnership />
-                  <RoadMap />
                   <GetInvolved /> */}
                 </Suspense>
               </>
