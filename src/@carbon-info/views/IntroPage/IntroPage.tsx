@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
@@ -9,11 +9,14 @@ import { Scroll } from "@carbon-info/assets";
 
 const IntroPage: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.4,
     triggerOnce: true,
   });
+
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
   const AniStartOptions = {
     loop: true,
@@ -29,9 +32,9 @@ const IntroPage: React.FC = () => {
       <Grid container className={classes.container}>
         <Lottie
           options={AniStartOptions}
-          width={1480}
+          width={isMobile ? "100%" : 1480}
+          height={isMobile ? 450 : "100%"}
         />
-        {/* <img src={carbonHexagonBackground} className={clsx(classes.hexagonBackground, { open: inView })} /> */}
         <div className={classes.headerContainer}>
           <FadeAndSlide visible={inView} transform={[0, -20]}>
             <Typography variant="body1" color="textSecondary" className={classes.bodyTypography}>
@@ -56,7 +59,7 @@ const IntroPage: React.FC = () => {
           </FadeAndSlide>
           <FadeAndSlide visible={inView}>
             <div className={clsx(classes.scrollContainer, { open: inView })}>
-              <Scroll />
+              <Scroll className={classes.scrollIcon} />
               <Typography className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
             </div>
           </FadeAndSlide>
@@ -78,12 +81,20 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
+    [theme.breakpoints.only("xs")]: {
+      marginLeft: "-16px",
+      width: "calc(100% + 32px)",
+    },
   },
   headerContainer: {
     zIndex: 5,
     marginTop: "11.25rem",
     position: "absolute",
     top: 0,
+    [theme.breakpoints.only("xs")]: {
+      marginTop: 0,
+      margin: "0 16px",
+    },
   },
   mainTitle: {
     opacity: 0,
@@ -92,7 +103,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.open": {
       opacity: 1,
     },
-    [theme.breakpoints.down(320)]: {
+    [theme.breakpoints.only("xs")]: {
       fontSize: "3.65rem",
       lineHeight: "3.5rem",
     },
@@ -101,94 +112,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "3rem 0px",
     height: "1.5rem",
   },
-  backgroundLeft: {
-    pointerEvents: "none",
-    position: "absolute",
-    left: "-50%",
-    top: "-125%",
-    width: "86%",
-    opacity: 0,
-    transform: "translate(-40px, -40px) scale(0.95)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
-    "&.open": {
-      opacity: 1,
-      transform: "translate(0px,0px) scale(1)",
-    },
-    [theme.breakpoints.down(880)]: {
-      top: "-67%",
-      left: "-72%",
-      width: "100%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "-69%",
-      left: "-73%",
-    },
-  },
-  sphereLeft: {
-    position: "absolute",
-    left: "6%",
-    top: "-2%",
-    width: "21%",
-    opacity: 0,
-    transform: "translate(-40px, -40px) scale(0.95)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
-    "&.open": {
-      opacity: 1,
-      transform: "translate(0px,0px) scale(1)",
-    },
-    [theme.breakpoints.down(880)]: {
-      left: "2%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      left: "-2%",
-      top: "0%",
-      width: "22%",
-    },
-  },
-  backgroundRight: {
-    pointerEvents: "none",
-    position: "absolute",
-    right: "-56%",
-    top: "-5%",
-    width: "80%",
-    opacity: 0,
-    transform: "translate(40px, 40px) scale(0.95)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
-    "&.open": {
-      opacity: 1,
-      transform: "translate(0px,0px) scale(1)",
-    },
-    [theme.breakpoints.down("xs")]: {
-      right: "-58%",
-      top: "-32%",
-      width: "80%",
-    },
-  },
-  sphereRight: {
-    position: "absolute",
-    right: "2%",
-    top: "48%",
-    width: "15%",
-    opacity: 0,
-    transform: "translate(40px, 40px) scale(0.95)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
-    "&.open": {
-      opacity: 1,
-      transform: "translate(0px,0px) scale(1)",
-    },
-    [theme.breakpoints.down(880)]: {
-      right: "2%",
-      top: "35%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      right: "3%",
-      top: "10%",
-      width: "16%",
-    },
-  },
   subtitle: {
     maxWidth: "40rem",
-    [theme.breakpoints.down(325)]: {
+    [theme.breakpoints.only("xs")]: {
       marginTop: "2.5rem",
       fontSize: "2rem",
     },
@@ -205,6 +131,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: "445px",
     "&.open": {
       opacity: 1,
+    },
+    [theme.breakpoints.only("xs")]: {
+      marginTop: "145px",
+    },
+  },
+  scrollIcon: {
+    [theme.breakpoints.only("xs")]: {
+      height: "20px",
     },
   },
   scrollText: {

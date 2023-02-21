@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: 0,
     right: 0,
     transform: "translate(0px,0px)",
-    background: "#272525",
+    background: theme.palette.background.default,
     padding: "1.25rem 3rem 1.25rem 1rem",
     transition: "all 0.25s linear",
     opacity: 1,
@@ -154,10 +154,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   menuIcon: {
     position: "relative",
-    transform: "scale(2.0)",
-    [theme.breakpoints.down("xs")]: {
-      transform: "scale(1.5)",
-    },
   },
   logo: {
     verticalAlign: "middle",
@@ -188,8 +184,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   navButtonContainer: {
     display: "flex",
     gap: 50,
-    justifyContent: "center",
+    justifyContent: "flex-end",
     flex: 1,
+    marginRight: theme.spacing(1),
   },
   externalLink: {
     display: "flex",
