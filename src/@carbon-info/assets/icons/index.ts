@@ -1,7 +1,7 @@
 export { ReactComponent as AccelerateIcon } from "./accelerate.svg";
 export { ReactComponent as ArrowIcon } from "./arrow.svg";
-export { ReactComponent as ChooseIcon } from "./choose.svg";
 export { ReactComponent as Carbon } from "./carbon.svg";
+export { ReactComponent as ChooseIcon } from "./choose.svg";
 export { ReactComponent as Connective } from "./connective.svg";
 export { ReactComponent as DecentralizedIcon } from "./decentralized.svg";
 export { ReactComponent as DemexIcon } from "./demex.svg";
@@ -23,8 +23,9 @@ export { ReactComponent as RoadMapPageArrowRight } from "./roadMapPageArrowRight
 export { ReactComponent as RoadMapPageCardIcon } from "./roadMapPageCardIcon.svg";
 export { ReactComponent as RoadMapPageCardTick } from "./roadMapPageCardTick.svg";
 export { ReactComponent as RoadMapRightButtonIcon } from "./roadMapRightButton.svg";
-export { ReactComponent as Stroke } from "./stroke.svg";
 export { ReactComponent as Scroll } from "./scroll.svg";
+export { ReactComponent as Stable } from "./stable.svg";
+export { ReactComponent as Stroke } from "./stroke.svg";
 export { ReactComponent as TelegramIcon } from "./telegram.svg";
 export { ReactComponent as TradeIcon } from "./trade.svg";
 export { ReactComponent as TransactIcon } from "./transact.svg";
@@ -32,4 +33,6 @@ export { ReactComponent as PermissionlessIcon } from "./trustless.svg";
 export { ReactComponent as TrustlessIcon } from "./trustlessIcon.svg";
 export { ReactComponent as TwitterIcon } from "./twitter.svg";
 export { ReactComponent as UpdateArrow } from "./updateArrow.svg";
+export { ReactComponent as Versatile } from "./versatile.svg";
 export { ReactComponent as YoutubeIcon } from "./youtube.svg";
+

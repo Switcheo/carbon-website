@@ -17,7 +17,7 @@ const CTAButton: React.FC<buttonProps> = (props: buttonProps) => {
   const { text, link, newTab = true, buttonClassName, textClassName, iconClassName } = props;
   return (
     <Box className={clsx(classes.container, buttonClassName)}>
-      <Link href={link} underline="none" target={newTab ? "_blank" : ""}>
+      <Link href={link} underline="none" target={newTab ? "_blank" : ""} style={{ display: "flex", alignItems: "center" }}>
         <Typography variant="button" display="inline" className={clsx(classes.textClass, textClassName)}>
           {text}
         </Typography>
@@ -34,6 +34,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     whiteSpace: "nowrap",
     textAlign: "left",
     width: "fit-content",
+    display: "flex",
+    alignItems: "center",
   },
   textClass: {
     letterSpacing: "2px",
