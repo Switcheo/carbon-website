@@ -17,13 +17,13 @@ import { default as straisXLogo } from "./straisX.png";
 import { default as TendermintLogo } from "./Tendermint.png";
 import { default as CosmosLogo } from "./Cosmos.png";
 
-export const allPartnersLogo = [ 
-  DefianceCapitalLogo, NGCLogo, 
-  NeoLogo, DefiCapitalLogo, PolyNetworkLogo, 
-  ZilliqaLogo, DACMLogo, DuskLogo, 
-  HoubiLogo, StakeWithUsLogo, O3LabsLogo, 
-  BlockHunterLogo, BoltLogo, IOSGLogo,
-  straisXLogo, TendermintLogo, CosmosLogo,
+export const allPartnersLogo = [
+  CosmosLogo, TendermintLogo,
+  DefianceCapitalLogo, NGCLogo, NeoLogo,
+  DefiCapitalLogo, PolyNetworkLogo, ZilliqaLogo,
+  DACMLogo, DuskLogo, HoubiLogo,
+  StakeWithUsLogo, O3LabsLogo, BlockHunterLogo,
+  BoltLogo, IOSGLogo, straisXLogo,
 ];
-  
+
 
