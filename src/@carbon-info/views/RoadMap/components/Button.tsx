@@ -10,9 +10,6 @@ interface Props {
   size?: "small",
 }
 
-const isFirefox = !!(navigator.userAgent.indexOf("Firefox") !== -1);
-const isMobileSafari = !!(navigator.userAgent.indexOf("iPhone") > -1);
-
 const RoadMapButton: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
   const { direction, callback, size } = props;
@@ -42,11 +39,11 @@ export default RoadMapButton;
 
 const useStyles = makeStyles(() => ({
   icon: {
-    width: "1.5rem",
-    height: "1.5rem",
+    width: "2rem",
+    height: "2rem",
     "&.small": {
-      width: "1rem",
-      height: "1rem",
+      width: "1.5rem",
+      height: "1.5rem",
     },
   },
   buttonContainer: {
@@ -54,19 +51,12 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    background: "linear-gradient(353.27deg, rgba(41, 40, 40, 0.21) -9.67%, #161515 94.17%)",
-    "&:hover": {
-      background: "linear-gradient(90.32deg, #12F1FF 0.23%, #4F7EAA 96.43%)",
-      "& path": {
-        stroke: "#8CF2FD",
-      },
-    },
+    background: "rgba(176, 176, 176, 0.03)",
     mixBlendMode: "normal",
-    boxShadow: "inset 62px 98px 100px -60px #242424, inset 0px 1px 40px rgba(85, 85, 85, 0.04)",
-    backdropFilter: "blur(100px)",
+    backdropFilter: "blur(4px)",
     borderRadius: "50%",
-    width: "6rem",
-    height: "6rem",
+    width: "80px",
+    height: "80px",
     textAlign: "start",
     overflow: "hidden",
     margin: "auto",
@@ -103,20 +93,6 @@ const useStyles = makeStyles(() => ({
           transform: "translate(0px,0px)",
         },
       },
-    },
-    "&::before": {
-      content: "''",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      borderRadius: "50%",
-      padding: "1.755px",
-      background: "linear-gradient(180deg,#74E8E8,rgba(255,255,255,0.7),rgba(255,255,255,0.3))",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
-      pointerEvents: "none",
     },
   },
 }));
