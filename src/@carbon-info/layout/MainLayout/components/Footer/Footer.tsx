@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Divider, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import { CarbonLogo, DiscordIcon, GitHubIcon, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
+import { CarbonLogo, DiscordFooterIcon, GitHubIcon, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
 
 const sitemap = [
@@ -153,7 +153,7 @@ const Footer: React.FC = () => {
               <TelegramIcon className={classes.socialMediaIcon} />
             </Link>
             <Link href={Path.Socials.Discord} underline="none" target="_blank">
-              <DiscordIcon className={classes.socialMediaIcon} />
+              <DiscordFooterIcon className={classes.socialMediaIcon} />
             </Link>
             <Link href={Path.Socials.Github} underline="none" target="_blank">
               <GitHubIcon className={classes.socialMediaIcon} />
@@ -164,12 +164,12 @@ const Footer: React.FC = () => {
           <Grid item md={12}>
             <Typography className={classes.footNoteText} align="left" variant="body1">
               This website is maintained by Switcheo Labs. The contents and opinions of this website are those of Switcheo Labs. Switcheo Labs provides links to cryptocurrency exchanges as a service to the public. Switcheo Labs does not operate these websites and is not responsible for their content and expressly rejects any liability for damages of any kind resulting from the use, reference to, or reliance on any information contained within these websites. Switcheo Labs does not warrant that the information provided by these websites is correct, complete, or up-to-date.
-          </Typography>
+            </Typography>
           </Grid>
           <Grid item md={12}>
             <Typography color="textPrimary" align="left" className={classes.footNoteSignOff}>
               MADE WITH ❤️ FOR BUILDERS EVERYWHERE
-          </Typography>
+            </Typography>
             {/* <Typography color="textPrimary" align="left" className={classes.footNoteSignOff}>
               SITE DESIGNED BY HIGHSPARK
           </Typography> */}
@@ -249,7 +249,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: "#6C6C6C",
   },
   socialMediaIcon: {
-    margin: "0px 0.33rem",
+    height: "32px",
+    width: "32px",
+    margin: "0px 1.5rem",
     [theme.breakpoints.down("xs")]: {
       margin: "0px 0.5rem",
       width: "4rem",

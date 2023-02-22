@@ -20,6 +20,7 @@ const RoadMap = React.lazy(() => import("@carbon-info/views/RoadMap/RoadMap"));
 const Secured = React.lazy(() => import("@carbon-info/views/Secured/Secured"));
 const Partnership = React.lazy(() => import("@carbon-info/views/Partnership/Partnership"));
 const Build = React.lazy(() => import("@carbon-info/views/Build/Build"));
+const Socials = React.lazy(() => import("@carbon-info/views/Socials/Socials"));
 
 //Remove components later
 // const FeatureCard = React.lazy(() => import("@carbon-info/views/FeatureCard/FeatureCard"));
@@ -52,6 +53,7 @@ function App() {
                   <Secured />
                   <Partnership />
                   <Build />
+                  <Socials />
                   {/* Remove sections below */}
                   {/* <HeroImage />
                   <FeatureCard />

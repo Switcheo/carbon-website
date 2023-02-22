@@ -52,14 +52,14 @@ export const theme = createTheme({
       letterSpacing: 0,
     },
     h4: { // Regular 24px/CTA & Title
-      fontFamily: "TyrosPro",
+      fontFamily: "TyrosPro-Bold",
       fontWeight: 700,
       fontSize: "1.5rem",
       lineHeight: "2.062rem",
       letterSpacing: "-0.02rem",
     },
     h5: { // Mobile/Header 10px
-      fontFamily: "TyrosPro",
+      fontFamily: "TyrosPro-Bold",
       fontWeight: 700,
       fontSize: "0.625rem",
       lineHeight: "1rem",

@@ -6,7 +6,9 @@ export { ReactComponent as Connective } from "./connective.svg";
 export { ReactComponent as DecentralizedIcon } from "./decentralized.svg";
 export { ReactComponent as DemexIcon } from "./demex.svg";
 export { ReactComponent as DiscordIcon } from "./discord.svg";
+export { ReactComponent as DiscordFooterIcon } from "./discordFooter.svg";
 export { ReactComponent as DocsIcon } from "./docs.svg";
+export { ReactComponent as ExternalLink } from "./externalLink.svg";
 export { ReactComponent as FacebookIcon } from "./facebook.svg";
 export { ReactComponent as GitHubIcon } from "./github.svg";
 export { ReactComponent as LaunchIcon } from "./launch.svg";
@@ -35,3 +37,4 @@ export { ReactComponent as TwitterIcon } from "./twitter.svg";
 export { ReactComponent as UpdateArrow } from "./updateArrow.svg";
 export { ReactComponent as Versatile } from "./versatile.svg";
 export { ReactComponent as YoutubeIcon } from "./youtube.svg";
+
