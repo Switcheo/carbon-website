@@ -35,4 +35,3 @@ export { ReactComponent as TwitterIcon } from "./twitter.svg";
 export { ReactComponent as UpdateArrow } from "./updateArrow.svg";
 export { ReactComponent as Versatile } from "./versatile.svg";
 export { ReactComponent as YoutubeIcon } from "./youtube.svg";
-
