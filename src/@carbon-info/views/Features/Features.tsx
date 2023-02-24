@@ -1,14 +1,15 @@
-import Connective from "@carbon-info/assets/icons/connective.svg";
-import Stable from "@carbon-info/assets/icons/stable.svg";
-import Versatile from "@carbon-info/assets/icons/versatile.svg";
 import carbonFeaturesBackground from "@carbon-info/assets/background/carbonFeaturesBackground.svg";
+import stable from "@carbon-info/assets/animated/stable.json";
+import connective from "@carbon-info/assets/animated/connective.json";
+import versatile from "@carbon-info/assets/animated/versatile.json";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
-import { Box, makeStyles, Theme, Typography, useTheme } from "@material-ui/core";
+import { Box, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
-import "react-multi-carousel/lib/styles.css";
+import Lottie from "react-lottie";
 import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 interface FeatureItem {
   header: string,
@@ -27,24 +28,51 @@ const Features: React.FC = () => {
     triggerOnce: true,
   });
 
+  const ConnectiveAnimation = {
+    loop: true,
+    autoplay: true,
+    animationData: connective,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  const StableAnimation = {
+    loop: true,
+    autoplay: true,
+    animationData: stable,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  const VersatileAnimation = {
+    loop: true,
+    autoplay: true,
+    animationData: versatile,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   const items: FeatureItem[] = [{
     header: "Connective",
     subheader: "Powers interoperability",
     description: "between multiple blockchains with on-chain liquidity through PolyNetwork and IBC.",
     ctaLink: "https://guide.carbon.network",
-    icon: Connective,
+    icon: ConnectiveAnimation,
   }, {
     header: "Versatile",
     subheader: "Native support",
     description: "of any crypto derivatives, amplified liquidity pools, AMMs, on-chain order books and more.",
     ctaLink: "https://guide.carbon.network",
-    icon: Versatile,
+    icon: VersatileAnimation,
   }, {
     header: "Secure & Stable",
     subheader: "Custom-built",
     description: "using Cosmos-SDK and secured through Tendermint PoS for trustless and safe transactions.",
     ctaLink: "https://guide.carbon.network",
-    icon: Stable,
+    icon: StableAnimation,
   }];
 
   const responsive = {
@@ -102,12 +130,11 @@ const Features: React.FC = () => {
                       iconClassName={classes.ctaButtonIcon}
                     />
                   </Box>
-                  {/* TODO: uncomment when video is ready */}
-                  {/* <video autoPlay loop muted className={classes.videoContainer}>
-                    <source src={Connective} type="video/mp4" />
-                  </video> */}
-                  {/* TODO: remove img src use video instead */}
-                  <img src={item.icon} />
+                  <Lottie
+                    options={item.icon}
+                    width={144}
+                    height={160}
+                  />
                 </div>
               );
             })}
