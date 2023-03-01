@@ -16,6 +16,7 @@ const RoadMapPage = React.lazy(() => import("@carbon-info/views/RoadMapPage/Road
 const IntroPage = React.lazy(() => import("@carbon-info/views/IntroPage/IntroPage"));
 const Data = React.lazy(() => import("@carbon-info/views/Data/Data"));
 const Features = React.lazy(() => import("@carbon-info/views/Features/Features"));
+const Ecosystem = React.lazy(() => import("@carbon-info/views/Ecosystem/Ecosystem"));
 const RoadMap = React.lazy(() => import("@carbon-info/views/RoadMap/RoadMap"));
 const Secured = React.lazy(() => import("@carbon-info/views/Secured/Secured"));
 const Partnership = React.lazy(() => import("@carbon-info/views/Partnership/Partnership"));
@@ -49,6 +50,7 @@ function App() {
                   <IntroPage />
                   <Data />
                   <Features />
+                  <Ecosystem />
                   <RoadMap />
                   <Secured />
                   <Partnership />

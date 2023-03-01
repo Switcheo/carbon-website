@@ -17,9 +17,9 @@ const Build: React.FC = () => {
   });
 
   return (
-    <div ref={ref} id="build">
+    <div ref={ref} id="build" style={{ position: "relative" }}>
+      <img src={PlanetBackground} className={classes.background} />
       <Box className={classes.boxContainer}>
-        <img src={PlanetBackground} className={classes.background} />
         <FadeAndSlide visible={inView}>
           <Typography variant="h1" color="textPrimary" style={{ marginBottom: "4.5rem" }}>Build on Carbon</Typography>
           <Grid container justifyContent="flex-start" spacing={10}>
@@ -59,7 +59,7 @@ export default Build;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "25vh auto",
+    margin: "50vh auto",
     maxWidth: "1480px",
     [theme.breakpoints.only("xl")]: {
       maxWidth: "1830px",
@@ -71,8 +71,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   background: {
     position: "absolute",
     width: "1887px",
-    top: "-500px",
-    left: "50%",
+    top: "-600px",
+    left: "45%",
     marginLeft: "-50%",
   },
 }));

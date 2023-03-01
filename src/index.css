@@ -59,15 +59,15 @@ html {
   scroll-behavior: smooth;
 }
 
-/* @media screen and (max-width: 960px) {
+@media screen and (max-width: 960px) {
   html {
-    font-size: 10px;
+    font-size: 12px;
   }
-} */
+}
 
 @media screen and (max-width: 600px) {
   html {
-    font-size: 8px;
+    font-size: 10px;
   }
 }
 
