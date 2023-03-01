@@ -8,6 +8,7 @@ import { Box, Theme, Typography, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import { ExternalLink } from "@carbon-info/assets";
+import { Path } from "@carbon-info/constants";
 
 interface socialItem {
   icon: string,
@@ -27,22 +28,22 @@ const Socials: React.FC = () => {
   const items: socialItem[] = [{
     icon: TelegramIcon,
     title: "Telegram Channel",
-    link: "https://t.me/carbon_ecosystem",
+    link: Path.Socials.Telegram,
     description: "Get the latest updates on Carbon by joining our ecosystem announcement channel on Telegram.",
   }, {
     icon: TwitterIcon,
     title: "Twitter",
-    link: "https://twitter.com/0xcarbon",
+    link: Path.Socials.Twitter,
     description: "Don’t miss a single tweet, follow us on Twitter at @0xcarbon for more alpha.",
   }, {
     icon: DiscordIcon,
     title: "Discord Chat",
-    link: "https://discord.com/invite/SPh62Hf",
+    link: Path.Socials.Discord,
     description: "Have a question about Carbon? Ask our global community or get in touch with us on Discord.",
   }, {
     icon: GithubIcon,
     title: "Developer GitHub",
-    link: "https://github.com/Switcheo/carbon-bootstrap",
+    link: Path.Socials.Github,
     description: "Interested in building on Carbon or joining us as a validator? Join the discussion.",
   }];
 
@@ -51,8 +52,8 @@ const Socials: React.FC = () => {
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
           <img src={SocialsBackground} className={classes.background} />
-          <Box display="flex" justifyContent="center">
-            <Box maxWidth="478px" marginRight="10rem">
+          <Box className={classes.contentBox}>
+            <Box className={classes.headerSection}>
               <Typography variant="h1" color="textPrimary" style={{ textAlign: "left", marginBottom: "2.5rem" }}>Be apart of our global community</Typography>
               <Typography variant="body1" color="textSecondary" style={{ textAlign: "left" }}>
                 Join a fast-growing community of developers and innovators connected all over the world building the new face of finance.
@@ -99,15 +100,36 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: 0,
     top: "-325px",
     zIndex: -1,
+    [theme.breakpoints.down("sm")]: {
+      top: "-100px",
+      width: "700px",
+      left: "-50%",
+    },
+  },
+  contentBox: {
+    display: "flex",
+    justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
+  },
+  headerSection: {
+    maxWidth: "478px",
+    marginRight: "10rem",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "unset",
+      marginRight: 0,
+      marginBottom: "3rem",
+    },
   },
   icon: {
-    height: "60px",
-    width: "60px",
+    height: "3.75rem",
+    width: "3.75rem",
     marginRight: "2.5rem",
   },
   linkIcon: {
-    height: "24px",
-    width: "24px",
+    height: "1.5rem",
+    width: "1.5rem",
     marginLeft: "8px",
   },
 }));

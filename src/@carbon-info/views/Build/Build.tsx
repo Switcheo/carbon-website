@@ -4,12 +4,15 @@ import ProposeSVG from "@carbon-info/assets/non-animated/propose.svg";
 import PlanetBackground from "@carbon-info/assets/background/planetBackground.svg";
 import { CardWithCTA, FadeAndSlide } from "@carbon-info/components";
 import { Path } from "@carbon-info/constants";
-import { Box, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
+import { Box, Grid, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 
 const Build: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.35,
@@ -22,7 +25,7 @@ const Build: React.FC = () => {
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
           <Typography variant="h1" color="textPrimary" style={{ marginBottom: "4.5rem" }}>Build on Carbon</Typography>
-          <Grid container justifyContent="flex-start" spacing={10}>
+          <Grid container justifyContent="flex-start" spacing={isMobile ? 5 : 10}>
             <Grid item xs={12} md={4}>
               <CardWithCTA
                 title={"Develop on Carbon"}

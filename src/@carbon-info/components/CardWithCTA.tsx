@@ -20,7 +20,7 @@ const isMobileSafari = !!(navigator.userAgent.indexOf("iPhone") > -1);
 
 const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
-  const { title, description, icon, bigSVG, overwriteCSS, link = {} } = props;
+  const { title, description, icon, overwriteCSS, link = {} } = props;
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.4,
@@ -31,9 +31,9 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
     <div ref={ref}>
       <Box className={clsx(classes.boxContainer, { open: inView })} onClick={() => window.open(`${link}`, "_blank")}>
         <div className={classes.iconContainer}>
-          <img src={icon} alt="icon" className={clsx(classes.icon, { big: bigSVG })} style={{ ...overwriteCSS }} />
+          <img src={icon} alt="icon" className={classes.icon} style={{ ...overwriteCSS }} />
         </div>
-        <Grid className={classes.gridContainer} container alignItems="center" justifyContent="center">
+        <Grid className={classes.gridContainer} container>
           <Grid item className={classes.gridItem}>
             <div className={classes.textContainer}>
               <Typography color="textPrimary" variant="h2" className={classes.title}>
@@ -57,6 +57,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     right: 0,
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      height: "8rem",
+      width: "8rem",
+    },
   },
   iconContainer: {
     position: "relative",
@@ -97,23 +101,14 @@ const useStyles = makeStyles((theme: Theme) => ({
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
+    [theme.breakpoints.up("md")]: {
+      minHeight: "375px",
+    },
     [theme.breakpoints.down("sm")]: {
-      padding: "0px",
-      minHeight: "46rem",
       borderRadius: 13.3,
       "&::before": {
         borderRadius: 13.3,
       },
-    },
-    [theme.breakpoints.down("xs")]: {
-      height: "60rem",
-      padding: "2em 2em 2em 3em",
-    },
-    [theme.breakpoints.down(400)]: {
-      height: "50rem",
-    },
-    [theme.breakpoints.down(350)]: {
-      height: "25rem",
     },
   },
   gridItem: {
@@ -124,6 +119,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   gridContainer: {
     width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "flex-start",
+    },
   },
   textContainer: {
     height: "100%",

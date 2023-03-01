@@ -7,6 +7,7 @@ import featureCardBackgroundRight from "@carbon-info/assets/background/featureCa
 import { CTAButton } from "@carbon-info/components";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
+import { Path } from "@carbon-info/constants";
 
 const isFirefox = !!(navigator.userAgent.indexOf("Firefox") !== -1);
 const isMobileSafari = !!(navigator.userAgent.indexOf("iPhone") > -1);
@@ -39,7 +40,7 @@ const FeatureCard: React.FC = () => {
               </Typography>
               <CTAButton
                 text="READ DOCS"
-                link="https://guide.carbon.network"
+                link={Path.Footer.Guides}
               />
             </div>
           </Grid>

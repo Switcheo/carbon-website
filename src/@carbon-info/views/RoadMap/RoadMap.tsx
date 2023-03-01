@@ -144,11 +144,7 @@ const RoadMap: React.FC = () => {
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
           <Typography variant="h2" color="textPrimary" paragraph noWrap className={classes.noWrap}>
-            {
-              isTablet ? <span>Building<br />towards change</span>
-                : <span>Building towards change</span>
-            }
-
+            Building towards change
           </Typography >
         </FadeAndSlide>
         <FadeAndSlide visible={inView} delay={10000}>

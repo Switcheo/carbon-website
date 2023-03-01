@@ -3,13 +3,14 @@ import stable from "@carbon-info/assets/animated/stable.json";
 import connective from "@carbon-info/assets/animated/connective.json";
 import versatile from "@carbon-info/assets/animated/versatile.json";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
-import { Box, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
+import { Box, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Path } from "@carbon-info/constants";
 
 interface FeatureItem {
   header: string,
@@ -22,6 +23,8 @@ interface FeatureItem {
 const Features: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.4,
@@ -59,19 +62,19 @@ const Features: React.FC = () => {
     header: "Connective",
     subheader: "Powers interoperability",
     description: "between multiple blockchains with on-chain liquidity through PolyNetwork and IBC.",
-    ctaLink: "https://guide.carbon.network",
+    ctaLink: Path.Footer.Guides,
     icon: ConnectiveAnimation,
   }, {
     header: "Versatile",
     subheader: "Native support",
     description: "of any crypto derivatives, amplified liquidity pools, AMMs, on-chain order books and more.",
-    ctaLink: "https://guide.carbon.network",
+    ctaLink: Path.Footer.Guides,
     icon: VersatileAnimation,
   }, {
     header: "Secure & Stable",
     subheader: "Custom-built",
     description: "using Cosmos-SDK and secured through Tendermint PoS for trustless and safe transactions.",
-    ctaLink: "https://guide.carbon.network",
+    ctaLink: Path.Footer.Guides,
     icon: StableAnimation,
   }];
 
@@ -97,10 +100,10 @@ const Features: React.FC = () => {
         <Box className={clsx(classes.container, { open: inView })} >
           <>
             <Typography variant="h1" color="textPrimary" align="left">
-              Carbon is built
-              <br />
-              <span style={{ color: theme.palette.primary.light }}>for the future,</span>
-              <br />
+              Carbon is built&nbsp;
+              {!isMobile && <br />}
+              <span style={{ color: theme.palette.primary.light }}>for the future,&nbsp;</span>
+              {!isMobile && <br />}
               today.
             </Typography>
           </>
@@ -114,7 +117,7 @@ const Features: React.FC = () => {
           >
             {items.map((item, index) => {
               return (
-                <div key={`${item.header}-${index}`} style={{ marginBottom: "96px", display: "flex", alignItems: "flex-start" }}>
+                <Box className={classes.carouselItem} key={`${item.header}-${index}`}>
                   <Box>
                     <Typography variant="h2" color="textPrimary" align="left" style={{ marginBottom: "40px" }}>
                       {item.header}
@@ -134,8 +137,9 @@ const Features: React.FC = () => {
                     options={item.icon}
                     width={144}
                     height={160}
+                    style={{ margin: 0 }}
                   />
-                </div>
+                </Box>
               );
             })}
           </Carousel>
@@ -157,6 +161,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.only("xl")]: {
       left: 0,
     },
+    [theme.breakpoints.down("sm")]: {
+      top: "5rem",
+      height: "80rem",
+      left: "-75%",
+    },
   },
   container: {
     width: "100vw",
@@ -170,10 +179,28 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.open": {
       opacity: 1,
     },
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
   },
   carouselContainer: {
     width: "667px",
     marginLeft: "129px",
+    [theme.breakpoints.down("sm")]: {
+      width: "calc(100% - 72px)",
+      marginLeft: 0,
+      paddingRight: "2.5rem",
+    },
+  },
+  carouselItem: {
+    marginBottom: "96px",
+    display: "flex",
+    alignItems: "flex-start",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "4rem",
+      flexDirection: "column-reverse",
+      justifyContent: "flex-start",
+    },
   },
   connectiveContainer: {
     display: "flex",

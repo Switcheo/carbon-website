@@ -4,6 +4,7 @@ import floatSwth from "@carbon-info/assets/animated/floatSWTH.json";
 import spinSwth from "@carbon-info/assets/animated/spinSWTH.json";
 import { CTAButton } from "@carbon-info/components";
 import FadeAndSlide from "@carbon-info/components/FadeAndSlide";
+import { Path } from "@carbon-info/constants";
 import { Box, Button, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
@@ -67,10 +68,10 @@ const Secured: React.FC = () => {
           <Box className={clsx(classes.secureContainer, { open: inView })}>
             <div className={classes.descriptionContainer}>
               <Typography variant="h1" color="textPrimary" style={{ marginBottom: "2.125rem" }}>Secured by SWTH</Typography>
-              <Typography variant="body1" color="textSecondary" style={{ fontWeight: 500, maxWidth: "35rem", marginBottom: "2.125rem" }}>Using the Carbon Token - <span className={classes.highlightedText}>$SWTH</span>, anyone can secure the Carbon blockchain while earning transaction fees and staking rewards.</Typography>
-              <Box display="flex" justifyContent="flex-start" alignItems="center">
-                <Button variant="contained" className={classes.containedButton} href="https://hub.carbon.network/buy" target="_blank">Buy $SWTH<ArrowIcon style={{ marginLeft: "10px" }} /></Button>
-                <CTAButton text="Start Staking" link="https://hub.carbon.network/stake" textClassName={classes.ctaText} iconClassName={classes.ctaIcon} />
+              <Typography variant="body1" color="textSecondary" className={classes.description}>Using the Carbon Token - <span className="highlightedText">$SWTH</span>, anyone can secure the Carbon blockchain while earning transaction fees and staking rewards.</Typography>
+              <Box className={classes.actionButtons}>
+                <Button variant="contained" className={classes.containedButton} href={Path.Footer.Buy} target="_blank">Buy $SWTH<ArrowIcon style={{ marginLeft: "10px" }} /></Button>
+                <CTAButton text="Start Staking" link={Path.Footer.Stake} textClassName={classes.ctaText} iconClassName={classes.ctaIcon} />
               </Box>
             </div>
             <Box minWidth={400}>
@@ -113,15 +114,42 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.open": {
       opacity: 1,
     },
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column-reverse",
+    },
   },
   descriptionContainer: {
     maxWidth: "48.125rem",
     textAlign: "left",
     marginRight: "5rem",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: 0,
+      width: "100%",
+      maxWidth: "unset",
+    },
   },
-  highlightedText: {
-    fontWeight: 700,
-    color: theme.palette.primary.light,
+  description: {
+    fontWeight: 500,
+    maxWidth: "35rem",
+    marginBottom: "2.125rem",
+    "&.highlightedText": {
+      fontWeight: 700,
+      color: theme.palette.primary.light,
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: "2.5rem 0",
+      width: "100%",
+      maxWidth: "unset",
+    },
+  },
+  actionButtons: {
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      justifyContent: "center",
+    },
   },
   containedButton: {
     ...theme.typography.h4,
@@ -134,6 +162,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&:hover": {
       background: "radial-gradient(63.65% 55% at 50.51% 100%, rgba(10, 220, 182, 0.4) 0%, rgba(10, 220, 182, 0.1) 51.54%, rgba(10, 220, 182, 0) 100%), #142C2C",
       boxShadow: "none",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginRight: 0,
+      marginBottom: "2rem",
     },
   },
   ctaText: {

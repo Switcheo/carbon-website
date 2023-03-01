@@ -67,13 +67,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "auto",
     position: "relative",
     maxWidth: "1200px",
+    width: "100%",
     [theme.breakpoints.down("sm")]: {
       marginTop: "3rem",
-      padding: "2rem 4rem",
       gap: 12,
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "2rem",
       gap: 0,
     },
   },

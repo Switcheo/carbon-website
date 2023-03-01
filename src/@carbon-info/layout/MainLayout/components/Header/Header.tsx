@@ -57,7 +57,7 @@ const Header: React.FC = () => {
         </div>
         {!isMobile && (
           <>
-            <Link href={Path.Header.SWTH} underline="none" target="_blank" className={classes.externalLink}>
+            <Link href={Path.Footer.Buy} underline="none" target="_blank" className={classes.externalLink}>
               <Typography variant="h4" color="textPrimary" display="inline">Buy $SWTH <ArrowIcon /></Typography>
             </Link>
           </>

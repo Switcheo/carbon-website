@@ -88,6 +88,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.open": {
       opacity: 1,
     },
+    [theme.breakpoints.down("sm")]: {
+      ...theme.typography.h3,
+    },
   },
   dataTable: {
     marginTop: "10rem",

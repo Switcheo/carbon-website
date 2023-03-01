@@ -35,6 +35,7 @@ export const Path = {
     Forum: "https://commonwealth.im/carbon-protocol",
     Governance: "https://scan.carbon.network/governance",
     Setup: "https://docs.carbon.network/setting-up-a-node/mainnet-setup",
+    Research: "https://blog.switcheo.com/tag/research/",
   },
   FindOutMore: "https://hub.carbon.network/",
 };

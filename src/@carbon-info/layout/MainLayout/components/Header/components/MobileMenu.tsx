@@ -1,4 +1,4 @@
-import { ArrowIcon, CarbonLogo, MenuIconClose, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
+import { ArrowIcon, CarbonLogo, MenuIconClose } from "@carbon-info/assets";
 import mobileMenuBackground from "@carbon-info/assets/background/mobileMenuBackground.svg";
 import { Path } from "@carbon-info/constants";
 import onClickOutside from "@carbon-info/hooks/OnClickOutside";
@@ -39,16 +39,8 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
         <Link href={Path.Footer.CarbonScan} underline="none" target="_blank">
           <Typography variant="h4" color="textPrimary" display="inline">Explore</Typography>
         </Link>
-        <Link href={Path.Header.SWTH} underline="none" target="_blank">
+        <Link href={Path.Footer.Buy} underline="none" target="_blank">
           <Typography variant="h4" color="textPrimary" display="inline">Buy $SWTH <ArrowIcon className={classes.arrowIcon} /></Typography>
-        </Link>
-      </div>
-      <div className={classes.socialMediaContainer}>
-        <Link href={Path.Socials.Telegram} underline="none" target="_blank">
-          <TelegramIcon className={classes.socialMediaIcon} />
-        </Link>
-        <Link href={Path.Socials.Twitter} underline="none" target="_blank">
-          <TwitterIcon className={classes.socialMediaIcon} />
         </Link>
       </div>
     </div>
@@ -60,6 +52,8 @@ export default MobileMenu;
 const useStyles = makeStyles((theme: Theme) => ({
   menuIcon: {
     marginLeft: "auto",
+    height: "12px",
+    width: "12px",
   },
   navBarContainer: {
     height: "-webkit-fill-available",
@@ -71,7 +65,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     flexDirection: "column",
     zIndex: 9,
-    // padding: "2rem 3rem",
     boxSizing: "border-box",
     gridAutoRows: "max-content",
   },
@@ -79,6 +72,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "100%",
     width: "100%",
     position: "absolute",
+    zIndex: 0,
   },
   logo: {
     width: "11rem",
@@ -92,6 +86,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("xs")]: {
       textAlign: "start",
     },
+    zIndex: 10,
   },
   navButtonContainer: {
     padding: "2rem 3rem",
@@ -101,6 +96,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "start",
     gap: 25,
     overflowY: "auto",
+    zIndex: 10,
     "&::-webkit-scrollbar": {
       width: "2px",
       backgroundColor: "#554B4B",
@@ -111,24 +107,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: "10px",
       transform: "scale(0.3)",
     },
-  },
-  socialMediaContainer: {
-    width: "-webkit-fill-available",
-    boxSizing: "border-box",
-    marginTop: "auto",
-    textAlign: "start",
-    margin: "0px -3rem",
-    marginBottom: "-2rem",
-    padding: "2rem",
-    alignSelf: "end",
-    background: "#201E1E",
-    [theme.breakpoints.down("xs")]: {
-      padding: "3rem",
-    },
-  },
-  socialMediaIcon: {
-    margin: "0px 1rem",
-    width: "5rem",
   },
   arrowIcon: {
     height: "12px",
