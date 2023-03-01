@@ -7,6 +7,7 @@ import { Path } from "@carbon-info/constants";
 import { Box, Grid, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import React from "react";
 import { useInView } from "react-intersection-observer";
+import "animate.css";
 
 const Build: React.FC = () => {
   const classes = useStyles();
@@ -26,15 +27,16 @@ const Build: React.FC = () => {
         <FadeAndSlide visible={inView}>
           <Typography variant="h1" color="textPrimary" style={{ marginBottom: "4.5rem" }}>Build on Carbon</Typography>
           <Grid container justifyContent="flex-start" spacing={isMobile ? 5 : 10}>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInLeft" : ""}>
               <CardWithCTA
                 title={"Develop on Carbon"}
                 description={"Leverage our native source code to fast-track development"}
                 link={Path.Footer.Guides}
                 icon={DevelopSVG}
+
               />
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInUp" : ""}>
               <CardWithCTA
                 title={"Propose a partnership"}
                 description={"Working towards a freer financial system"}
@@ -42,7 +44,7 @@ const Build: React.FC = () => {
                 icon={ProposeSVG}
               />
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInRight" : ""}>
               <CardWithCTA
                 title={"Pitch your project"}
                 description={"Need funding to kickstart your project on Carbon?"}
@@ -62,7 +64,7 @@ export default Build;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "50vh auto",
+    margin: "25vh auto",
     maxWidth: "1480px",
     [theme.breakpoints.only("xl")]: {
       maxWidth: "1830px",

@@ -94,9 +94,9 @@ const Features: React.FC = () => {
   };
 
   return (
-    <div ref={ref} id="features">
+    <div ref={ref} id="features" className={classes.features}>
+      <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: inView })} />
       <FadeAndSlide visible={inView}>
-        <img src={carbonFeaturesBackground} className={classes.background} />
         <Box className={clsx(classes.container, { open: inView })} >
           <>
             <Typography variant="h1" color="textPrimary" align="left">
@@ -152,12 +152,19 @@ const Features: React.FC = () => {
 export default Features;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  features: {
+    position: "relative",
+  },
   background: {
     height: "1283px",
     position: "absolute",
     top: -125,
     left: "-15%",
     scale: 2.25,
+    opacity: 0,
+    "&.open": {
+      opacity: 1,
+    },
     [theme.breakpoints.only("xl")]: {
       left: 0,
     },

@@ -21,7 +21,7 @@ const RoadMap: React.FC = () => {
   const [view, setView] = useState([0]);
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.5,
+    threshold: 0.25,
     triggerOnce: true,
   });
   const { data } = useContentful({
@@ -275,7 +275,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   boxContainer: {
-    margin: "50vh 0px",
+    margin: "25vh 0px",
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
     },

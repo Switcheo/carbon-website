@@ -3,6 +3,7 @@ import { Divider, Grid, makeStyles, Paper, Theme, Typography, useMediaQuery, use
 import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
+import { AnimateKeyframes } from "react-simple-animate";
 
 interface DataInfo {
   value: string,
@@ -14,7 +15,7 @@ const Data: React.FC = () => {
   const theme = useTheme();
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.4,
+    threshold: 0.7,
     triggerOnce: true,
   });
 
@@ -52,17 +53,24 @@ const Data: React.FC = () => {
         </Typography>
       </FadeAndSlide>
       <FadeAndSlide visible={inView}>
-        <Grid container item xs={8} sm={12} spacing={0} justifyContent="center" className={clsx(classes.dataTable, { open: inView })}>
-          {tableInfo.map((item: DataInfo) => (
-            <Grid item xs={12} sm={4} xl={2} key={item.description.replace(" ", "-")}>
-              <Paper className={classes.dataBox} elevation={0}>
-                <Typography variant="h3" color="textPrimary" align="center">{item.value}</Typography>
-                <Typography variant="body2" color="textSecondary" align="center">{item.description}</Typography>
-              </Paper>
-              {widthXs && <Divider className={classes.mobileDivider} />}
-            </Grid>
-          ))}
-        </Grid>
+        <AnimateKeyframes
+          play={inView}
+          iterationCount={1}
+          keyframes={["transform: scale(0)", "transform: scale(1)"]}
+          duration={0.75}
+        >
+          <Grid container item xs={8} sm={12} spacing={0} justifyContent="center" className={clsx(classes.dataTable, { open: inView })}>
+            {tableInfo.map((item: DataInfo) => (
+              <Grid item xs={12} sm={4} xl={2} key={item.description.replace(" ", "-")}>
+                <Paper className={classes.dataBox} elevation={0}>
+                  <Typography variant="h3" color="textPrimary" align="center">{item.value}</Typography>
+                  <Typography variant="body2" color="textSecondary" align="center">{item.description}</Typography>
+                </Paper>
+                {widthXs && <Divider className={classes.mobileDivider} />}
+              </Grid>
+            ))}
+          </Grid>
+        </AnimateKeyframes>
       </FadeAndSlide>
     </div >
   );
@@ -102,6 +110,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: "10px",
     opacity: 0,
     transition: "all 2s ease",
+    animation: "expandTable .25s",
     "&.open": {
       opacity: 1,
     },

@@ -9,6 +9,7 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 import { ExternalLink } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
+import "animate.css";
 
 interface socialItem {
   icon: string,
@@ -61,7 +62,7 @@ const Socials: React.FC = () => {
             </Box>
             <Box>
               {items.map((item: socialItem, index) => (
-                <Box key={`${item.title}-${index}`} display="flex" justifyContent="flex-end" alignItems="center" marginBottom="2.5rem">
+                <Box key={`${item.title}-${index}`} display="flex" justifyContent="flex-end" alignItems="center" marginBottom="2.5rem" className={inView ? "animate__animated animate__fadeInRight" : ""} style={{ animationDelay: `calc(${index} * 250ms)` }}>
                   <img src={item.icon} alt="icon" className={classes.icon} />
                   <div>
                     <Box onClick={() => window.open(`${item.link}`, "_blank")} display="flex" alignItems="center" style={{ marginBottom: "1rem" }}>
@@ -85,7 +86,7 @@ export default Socials;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "50vh auto",
+    margin: "25vh auto",
     maxWidth: "1480px",
     [theme.breakpoints.only("xl")]: {
       maxWidth: "1600px",

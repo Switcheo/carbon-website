@@ -1,11 +1,12 @@
-import React from "react";
-import { Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { Scroll } from "@carbon-info/assets";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
-import { useInView } from "react-intersection-observer";
+import { Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import "animate.css";
 import clsx from "clsx";
+import React from "react";
+import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
-import { Scroll } from "@carbon-info/assets";
 
 const IntroPage: React.FC = () => {
   const classes = useStyles();
@@ -41,7 +42,7 @@ const IntroPage: React.FC = () => {
               MEET CARBON
             </Typography>
           </FadeAndSlide>
-          <Typography color="textPrimary" variant="h1" className={clsx(classes.mainTitle, { open: inView })} >
+          <Typography color="textPrimary" variant="h1" className={clsx(classes.mainTitle, "animate__animated animate__slideInUp", { open: inView })} >
             The Core of
             <br />
             <span className={clsx(classes.highlightedText, { open: inView })} >
@@ -53,13 +54,13 @@ const IntroPage: React.FC = () => {
             </span>
           </Typography>
           <FadeAndSlide visible={inView}>
-            <Typography color="textSecondary" variant="body1" className={classes.subtitle}>
+            <Typography color="textSecondary" variant="body1" className={clsx(classes.subtitle, "animate__animated animate__slideInUp")}>
               Carbon is a cross-chain protocol that acts as<br />a building block for DeFi.
             </Typography>
           </FadeAndSlide>
           <FadeAndSlide visible={inView}>
             <div className={clsx(classes.scrollContainer, { open: inView })}>
-              <Scroll className={classes.scrollIcon} />
+              <Scroll className={clsx(classes.scrollIcon, "bounce")} />
               <Typography variant="body2" className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
             </div>
           </FadeAndSlide>
@@ -111,6 +112,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "1.5rem",
   },
   subtitle: {
+    transition: "all 2s ease",
     maxWidth: "40rem",
   },
   highlightedText: {
@@ -122,12 +124,18 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   scrollContainer: {
     opacity: 0,
-    marginTop: "21.5rem",
+    marginTop: "30rem",
     "&.open": {
       opacity: 1,
     },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "21.5rem",
+    },
   },
   scrollIcon: {
+    "&.bounce": {
+      animation: "bounce 2s ease infinite",
+    },
     [theme.breakpoints.down("sm")]: {
       height: "2.5rem",
     },

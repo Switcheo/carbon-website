@@ -16,7 +16,7 @@ const Secured: React.FC = () => {
   const classes = useStyles();
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.4,
+    threshold: 0.75,
     triggerOnce: true,
   });
 
@@ -100,7 +100,7 @@ export default Secured;
 
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
-    margin: "50vh 0px",
+    margin: "25vh 0px",
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
     },
