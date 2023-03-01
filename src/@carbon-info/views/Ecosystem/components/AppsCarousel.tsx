@@ -197,18 +197,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "6.25rem",
     width: "6.25rem",
   },
-  arrowContainer: {
-    position: "absolute",
-    zIndex: 1000,
-    backgroundColor: "rgba(176, 176, 176, 0.01)",
-    height: "80px",
-    width: "80px",
-    borderRadius: "80px",
-    filter: "drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.5))",
-  },
-  rightArrow: {
-    right: "calc(4% + 1px)",
-  },
 }));
 
 export default AppsCarousel;

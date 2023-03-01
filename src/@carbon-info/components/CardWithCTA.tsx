@@ -7,12 +7,7 @@ interface cardProps {
   title: string,
   description: string,
   icon: string,
-  iconAlignment?: "side" | "top",
-  ctaText?: string,
-  bigSVG?: boolean,
-  isMobile?: boolean,
   link: string,
-  overwriteCSS?: any,
 }
 
 const isFirefox = !!(navigator.userAgent.indexOf("Firefox") !== -1);
@@ -20,7 +15,7 @@ const isMobileSafari = !!(navigator.userAgent.indexOf("iPhone") > -1);
 
 const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
-  const { title, description, icon, overwriteCSS, link = {} } = props;
+  const { title, description, icon, link = {} } = props;
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.4,
@@ -31,7 +26,7 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
     <div ref={ref}>
       <Box className={clsx(classes.boxContainer, { open: inView })} onClick={() => window.open(`${link}`, "_blank")}>
         <div className={classes.iconContainer}>
-          <img src={icon} alt="icon" className={classes.icon} style={{ ...overwriteCSS }} />
+          <img src={icon} alt="icon" className={classes.icon} />
         </div>
         <Grid className={classes.gridContainer} container>
           <Grid item className={classes.gridItem}>

@@ -1,13 +1,13 @@
+import PlanetBackground from "@carbon-info/assets/background/planetBackground.svg";
 import DevelopSVG from "@carbon-info/assets/non-animated/develop.svg";
 import PitchSVG from "@carbon-info/assets/non-animated/pitch.svg";
 import ProposeSVG from "@carbon-info/assets/non-animated/propose.svg";
-import PlanetBackground from "@carbon-info/assets/background/planetBackground.svg";
 import { CardWithCTA, FadeAndSlide } from "@carbon-info/components";
 import { Path } from "@carbon-info/constants";
 import { Box, Grid, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import "animate.css";
 import React from "react";
 import { useInView } from "react-intersection-observer";
-import "animate.css";
 
 const Build: React.FC = () => {
   const classes = useStyles();
@@ -33,7 +33,6 @@ const Build: React.FC = () => {
                 description={"Leverage our native source code to fast-track development"}
                 link={Path.Footer.Guides}
                 icon={DevelopSVG}
-
               />
             </Grid>
             <Grid item xs={12} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInUp" : ""}>

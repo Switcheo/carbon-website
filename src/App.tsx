@@ -1,13 +1,13 @@
-import React, { Suspense } from "react";
 import { MainLayout } from "@carbon-info/layout";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import { theme } from "./@carbon-info/theme";
-import "./App.css";
+import React, { Suspense } from "react";
 import {
+  Route,
   BrowserRouter as Router,
   Switch,
-  Route,
 } from "react-router-dom";
+import { theme } from "./@carbon-info/theme";
+import "./App.css";
 
 import { GoogleAnalytics } from "@carbon-info/components";
 
@@ -22,15 +22,6 @@ const Secured = React.lazy(() => import("@carbon-info/views/Secured/Secured"));
 const Partnership = React.lazy(() => import("@carbon-info/views/Partnership/Partnership"));
 const Build = React.lazy(() => import("@carbon-info/views/Build/Build"));
 const Socials = React.lazy(() => import("@carbon-info/views/Socials/Socials"));
-
-//Remove components later
-// const FeatureCard = React.lazy(() => import("@carbon-info/views/FeatureCard/FeatureCard"));
-// const DecentralizedStats = React.lazy(() => import("@carbon-info/views/DecentralizedStats/DecentralizedStats"));
-// const HeroImage = React.lazy(() => import("@carbon-info/views/HeroImage/HeroImage"));
-// const UtilitySection = React.lazy(() => import("@carbon-info/views/UtilitySection/UtilitySection"));
-// const Permissionless = React.lazy(() => import("@carbon-info/views/Permissionless/Permissionless"));
-// const Community = React.lazy(() => import("@carbon-info/views/Community/Community"));
-// const GetInvolved = React.lazy(() => import("@carbon-info/views/GetInvolved/GetInvolved"));
 
 function App() {
   return (
@@ -56,14 +47,6 @@ function App() {
                   <Partnership />
                   <Build />
                   <Socials />
-                  {/* Remove sections below */}
-                  {/* <HeroImage />
-                  <FeatureCard />
-                  <DecentralizedStats />
-                  <UtilitySection />
-                  <Permissionless />
-                  <Community />
-                  <GetInvolved /> */}
                 </Suspense>
               </>
             </Route>

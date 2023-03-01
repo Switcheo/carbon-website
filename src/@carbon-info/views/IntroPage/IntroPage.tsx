@@ -73,11 +73,6 @@ const IntroPage: React.FC = () => {
 export default IntroPage;
 
 const useStyles = makeStyles((theme: Theme) => ({
-  hexagonBackground: {
-    position: "absolute",
-    top: 0,
-    transform: "rotate(6.93deg)",
-  },
   container: {
     justifyContent: "center",
     alignItems: "center",
@@ -107,20 +102,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       ...theme.typography.h3,
     },
   },
-  dash: {
-    margin: "3rem 0px",
-    height: "1.5rem",
-  },
   subtitle: {
     transition: "all 2s ease",
     maxWidth: "40rem",
   },
   highlightedText: {
     color: theme.palette.primary.light,
-  },
-  carbonIcon: {
-    marginTop: "-540px",
-    width: "1680px",
   },
   scrollContainer: {
     opacity: 0,

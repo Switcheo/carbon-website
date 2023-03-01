@@ -1,8 +1,8 @@
-import React from "react";
-import { Box, Grid, Grow, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import partnershipGlow from "@carbon-info/assets/background/partnershipGlow.svg";
 import { allPartnersLogo } from "@carbon-info/assets";
+import partnershipGlow from "@carbon-info/assets/background/partnershipGlow.svg";
 import { FadeAndSlide } from "@carbon-info/components";
+import { Box, Grid, Grow, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import React from "react";
 import { useInView } from "react-intersection-observer";
 
 const Partnership: React.FC = () => {

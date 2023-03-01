@@ -18,28 +18,10 @@ const Ecosystem: React.FC = () => {
   const filters = ["All", "IBC", "EVM", "Non-EVM"]; // TODO: Add Coming Soon filter
   const [value, setValue] = useState<string>(tabs[0]);
   const [blockchainFilter, setBlockchainFilter] = useState<string>(filters[0]);
-  const contentRef = React.useRef<HTMLDivElement | null>(null);
 
   const handleChange = (newValue: any) => {
     setValue(newValue);
   };
-
-  const handleBackgroundChange = (contentRef: React.MutableRefObject<HTMLDivElement | null>) => {
-    if (contentRef) {
-      if (contentRef?.current?.scrollTop === 0) {
-        contentRef?.current?.setAttribute("style", "background: linear-gradient(0deg, rgba(18, 18, 18, 0) 30.26%, #121212 48.4%)");
-      } else if ((contentRef?.current?.scrollTop ?? 0) + (contentRef?.current?.clientHeight ?? 0) === contentRef?.current?.scrollHeight) {
-        contentRef?.current?.setAttribute("style", "background: linear-gradient(0deg, rgba(18, 18, 18, 0) 30.26%, #121212 48.4%)");
-      } else {
-        contentRef?.current?.setAttribute("style", "background: linear-gradient(0deg, rgba(18, 18, 18, 0) 30.26%, #121212 48.4%)");
-      }
-    }
-  };
-
-  if (contentRef?.current && contentRef?.current?.scrollHeight > contentRef?.current?.clientHeight) {
-    contentRef?.current.addEventListener("load", () => handleBackgroundChange(contentRef));
-    contentRef?.current.addEventListener("scroll", () => handleBackgroundChange(contentRef));
-  }
 
   const filterButtons = (
     <Box className={classes.filters}>
@@ -90,6 +72,36 @@ const Ecosystem: React.FC = () => {
     });
   }, []);
 
+  const content = React.useMemo(() => {
+    switch (value) {
+      case "Featured dApps":
+        return <AppsCarousel items={allFeatured} inView />;
+      case "Blockchains":
+        return (
+          <>
+            {filterButtons}
+            <div className={classes.contentBox}>
+              <FeatureGrid items={filteredBlockchains} inView />
+            </div>
+          </>
+        );
+      case "Wallets":
+        return (
+          <div className={classes.contentBox}>
+            <FeatureGrid items={allWallets} inView />
+          </div>
+        );
+      case "Validators":
+        return (
+          <div className={classes.contentBox}>
+            <FeatureGrid items={sortedValidators} inView />
+          </div>
+        );
+      default:
+        return <AppsCarousel items={allFeatured} inView />;
+    }
+  }, [inView, value, filteredBlockchains]);
+
   return (
     <div ref={ref} id="ecosystem">
       <Box className={classes.boxContainer}>
@@ -122,15 +134,7 @@ const Ecosystem: React.FC = () => {
                 </Box>
               ))}
           </Box>
-          {value === "Featured dApps" && <AppsCarousel items={allFeatured} inView />}
-          {value === "Blockchains" && filterButtons}
-          <div className={classes.contentBox} ref={contentRef}>
-            {value === "Blockchains" && (
-              <FeatureGrid items={filteredBlockchains} inView />
-            )}
-            {value === "Wallets" && <FeatureGrid items={allWallets} inView />}
-            {value === "Validators" && <FeatureGrid items={sortedValidators} inView />}
-          </div>
+          {content}
         </FadeAndSlide >
       </Box>
     </div >
@@ -143,6 +147,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
     margin: "25vh auto",
+    minHeight: "90vh",
     maxWidth: "1430px",
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
@@ -197,33 +202,30 @@ const useStyles = makeStyles((theme: Theme) => ({
       background: "linear-gradient(270deg, #74E8E8 0%, #FF2C2C 100%)",
     },
   },
-  contentBox: {
-    maxHeight: "45rem",
+  contentBox: { //
     marginTop: "3.5rem",
-    overflowY: "auto",
     position: "relative",
-    "&::-webkit-scrollbar": {
-      width: "12px",
-      height: "12px",
+    // gradient scroll
+    "&::before": {
+      content: "''",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "15rem",
+      background: "linear-gradient(#121212, rgba(255, 255, 255, 0.001))",
     },
-    "&::-webkit-scrollbar-corner": {
-      backgroundColor: "transparent",
-      borderRadius: "10px",
+    "&::after": {
+      content: "''",
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      width: "100%",
+      height: "15rem",
+      background: "linear-gradient(rgba(255, 255, 255, 0.001), #121212)",
     },
-    "&::-webkit-scrollbar-track": {
-      backgroundColor: "transparent",
-      borderRadius: "10px",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      backgroundClip: "padding-box",
-      backgroundColor: "#182323",
-      border: "3px solid",
-      borderColor: "transparent",
-      borderRadius: "14px",
-    },
-    "& *": {
-      scrollbarColor: "transparent",
-      scrollbarWidth: "thin",
+    "&.hidden": {
+      display: "none",
     },
   },
   filters: {

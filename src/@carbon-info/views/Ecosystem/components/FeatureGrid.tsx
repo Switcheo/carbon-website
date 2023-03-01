@@ -1,7 +1,7 @@
 import { Box, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
-import { BlockchainConfig, ValidatorConfig, WalletConfig, isBlockchainConfig } from "../ecosystemConfig";
 import clsx from "clsx";
 import React from "react";
+import { BlockchainConfig, ValidatorConfig, WalletConfig, isBlockchainConfig } from "../ecosystemConfig";
 
 interface Props {
   items: BlockchainConfig[] | WalletConfig[] | ValidatorConfig[],
@@ -56,17 +56,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxSizing: "border-box",
     justifyContent: "space-between",
     paddingBottom: "3.5rem",
-    backgroundImage: `linear-gradient(to right, ${theme.palette.background.default}, ${theme.palette.background.default}), 
-    linear-gradient(to right, ${theme.palette.background.default}, ${theme.palette.background.default}),
-    linear-gradient(to right, rgb(196 196 196 / 14%), rgba(255, 255, 255, 0)), 
-    linear-gradient(to left, rgb(196 196 196 / 14%), rgba(255, 255, 255, 0))`,
-    /* Shadows */
-    /* Shadow covers */
-    backgroundPosition: "bottom center, top center, bottom center, top center",
-    backgroundRepeat: "no-repeat",
-    backgroundColor: theme.palette.background.default,
-    backgroundSize: "100% 20px, 100% 20px, 100% 10px, 100% 10px",
-    backgroundAttachment: "local, local, scroll, scroll",
     [theme.breakpoints.only("sm")]: {
       gridTemplateColumns: "repeat(auto-fill, 12rem)",
     },
@@ -74,9 +63,31 @@ const useStyles = makeStyles((theme: Theme) => ({
       gridTemplateColumns: "repeat(auto-fill, 9rem)",
       rowGap: "2.5rem",
     },
-    "&:after": {
-      content: "",
-      flex: "auto",
+    // gradient scroll
+    overflowY: "auto",
+    maxHeight: "47.5rem",
+    "&::-webkit-scrollbar": {
+      width: "12px",
+      height: "12px",
+    },
+    "&::-webkit-scrollbar-corner": {
+      backgroundColor: "transparent",
+      borderRadius: "10px",
+    },
+    "&::-webkit-scrollbar-track": {
+      backgroundColor: "transparent",
+      borderRadius: "10px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundClip: "padding-box",
+      backgroundColor: "#182323",
+      border: "3px solid",
+      borderColor: "transparent",
+      borderRadius: "14px",
+    },
+    "& *": {
+      scrollbarColor: "transparent",
+      scrollbarWidth: "thin",
     },
   },
   cardContainer: {

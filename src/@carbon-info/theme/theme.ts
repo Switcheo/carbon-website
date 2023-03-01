@@ -85,11 +85,5 @@ export const theme = createTheme({
       fontSize: "0.875rem",
       lineHeight: "1.75rem",
     },
-    // body3: { // 18px
-    //   fontFamily: "TyrosPro",
-    //   fontWeight: 400,
-    //   fontSize: "0.75rem",
-    //   lineHeight: "1.172rem",
-    // },
   },
 });

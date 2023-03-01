@@ -1,15 +1,15 @@
+import { ExternalLink } from "@carbon-info/assets";
 import SocialsBackground from "@carbon-info/assets/background/socialsBackground.svg";
-import TelegramIcon from "@carbon-info/assets/icons/telegram.svg";
 import DiscordIcon from "@carbon-info/assets/icons/discord.svg";
 import GithubIcon from "@carbon-info/assets/icons/github.svg";
+import TelegramIcon from "@carbon-info/assets/icons/telegram.svg";
 import TwitterIcon from "@carbon-info/assets/icons/twitter.svg";
 import { FadeAndSlide } from "@carbon-info/components";
+import { Path } from "@carbon-info/constants";
 import { Box, Theme, Typography, makeStyles } from "@material-ui/core";
+import "animate.css";
 import React from "react";
 import { useInView } from "react-intersection-observer";
-import { ExternalLink } from "@carbon-info/assets";
-import { Path } from "@carbon-info/constants";
-import "animate.css";
 
 interface socialItem {
   icon: string,

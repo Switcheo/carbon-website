@@ -1,8 +1,9 @@
-import carbonFeaturesBackground from "@carbon-info/assets/background/carbonFeaturesBackground.svg";
-import stable from "@carbon-info/assets/animated/stable.json";
 import connective from "@carbon-info/assets/animated/connective.json";
+import stable from "@carbon-info/assets/animated/stable.json";
 import versatile from "@carbon-info/assets/animated/versatile.json";
+import carbonFeaturesBackground from "@carbon-info/assets/background/carbonFeaturesBackground.svg";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
+import { Path } from "@carbon-info/constants";
 import { Box, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
@@ -10,7 +11,6 @@ import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Path } from "@carbon-info/constants";
 
 interface FeatureItem {
   header: string,
@@ -209,13 +209,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       justifyContent: "flex-start",
     },
   },
-  connectiveContainer: {
-    display: "flex",
-    alignItems: "start",
-    justifyContent: "flex-end",
-    width: "50%",
-    marginLeft: "7.5rem",
-  },
   ctaButton: {
     paddingBottom: "6.25rem",
     borderBottom: "2px solid #0ADCB6",
@@ -231,16 +224,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& path": {
       fill: theme.palette.primary.light,
     },
-  },
-  videoContainer: {
-    width: "240px",
-    marginTop: "-56px",
-    position: "absolute",
-    top: 0,
-    right: 0,
-  },
-  sliderContainer: {
-    transform: "none !important",
   },
   dotList: {
     width: "100%",
