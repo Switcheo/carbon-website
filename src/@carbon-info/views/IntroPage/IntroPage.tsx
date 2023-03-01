@@ -44,11 +44,11 @@ const IntroPage: React.FC = () => {
           <Typography color="textPrimary" variant="h1" className={clsx(classes.mainTitle, { open: inView })} >
             The Core of
             <br />
-            <span className={clsx(classes.hightlightedText, { open: inView })} >
+            <span className={clsx(classes.highlightedText, { open: inView })} >
               Decentralized
               <br />
             </span>
-            <span className={clsx(classes.hightlightedText)}>
+            <span className={clsx(classes.highlightedText)}>
               Financial Markets.
             </span>
           </Typography>
@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontSize: "2rem",
     },
   },
-  hightlightedText: {
+  highlightedText: {
     color: theme.palette.primary.light,
   },
   carbonIcon: {

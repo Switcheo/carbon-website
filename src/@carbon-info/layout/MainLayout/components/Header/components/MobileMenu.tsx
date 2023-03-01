@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
-import { Link, makeStyles, Typography, Theme } from "@material-ui/core";
-import { CarbonLogo, MenuIconClose, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
-import onClickOutside from "@carbon-info/hooks/OnClickOutside";
+import { ArrowIcon, CarbonLogo, MenuIconClose, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
+import mobileMenuBackground from "@carbon-info/assets/background/mobileMenuBackground.svg";
 import { Path } from "@carbon-info/constants";
+import onClickOutside from "@carbon-info/hooks/OnClickOutside";
+import { Link, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
+import React, { useRef } from "react";
 
 interface Props {
   callback: () => void,
@@ -11,29 +12,35 @@ interface Props {
 const MobileMenu: React.FC<Props> = (props: Props) => {
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
   const { callback } = props;
+  const theme = useTheme();
   const classes = useStyles();
   onClickOutside(ref, callback);
   return (
     <div className={classes.navBarContainer} ref={ref}>
+      <img src={mobileMenuBackground} className={classes.background} />
       <div className={classes.logoContainer}>
         <CarbonLogo className={classes.logo} />
         <MenuIconClose onClick={callback} className={classes.menuIcon} />
       </div>
       <div className={classes.navButtonContainer}>
-        <Link href={Path.Footer.Guides} underline="none" onClick={callback} target="_blank">
-          <Typography color="textPrimary" variant="h1" display="inline">Learn</Typography>
+        <Typography color="textPrimary" variant="h1" style={{ margin: "5rem 0" }}>
+          The Core of
+          <br />
+          <span style={{ color: theme.palette.primary.light }}>
+            Decentralized Financial Markets.
+          </span>
+        </Typography>
+        <Link href={Path.Footer.Guides} underline="none" target="_blank">
+          <Typography variant="h4" color="textPrimary" display="inline">Learn</Typography>
         </Link>
-        <Link target="_blank" onClick={callback} href={Path.Footer.SwitcheoDevelopmentFund} underline="none">
-          <Typography color="textPrimary" variant="h1" display="inline">Build</Typography>
+        <Link href={Path.Header.Build} underline="none" target="_blank">
+          <Typography variant="h4" color="textPrimary" display="inline">Build</Typography>
         </Link>
-        <Link href={"/roadmap"} underline="none" onClick={callback} >
-          <Typography color="textPrimary" variant="h1" display="inline">Roadmap</Typography>
+        <Link href={Path.Footer.CarbonScan} underline="none" target="_blank">
+          <Typography variant="h4" color="textPrimary" display="inline">Explore</Typography>
         </Link>
-        <Link href={Path.Footer.CarbonScan} underline="none" onClick={callback} target="_blank">
-          <Typography color="textPrimary" variant="h1" display="inline">Explorer</Typography>
-        </Link>
-        <Link href={Path.Header.SWTH} underline="none" onClick={callback} target="_blank">
-          <Typography color="textPrimary" variant="h1" display="inline">SWTH</Typography>
+        <Link href={Path.Header.SWTH} underline="none" target="_blank">
+          <Typography variant="h4" color="textPrimary" display="inline">Buy $SWTH <ArrowIcon className={classes.arrowIcon} /></Typography>
         </Link>
       </div>
       <div className={classes.socialMediaContainer}>
@@ -57,16 +64,21 @@ const useStyles = makeStyles((theme: Theme) => ({
   navBarContainer: {
     height: "-webkit-fill-available",
     width: "100vw",
-    position: "absolute",
+    position: "relative",
     background: "#272525",
     top: 0,
     left: 0,
     display: "flex",
     flexDirection: "column",
     zIndex: 9,
-    padding: "2rem 3rem",
+    // padding: "2rem 3rem",
     boxSizing: "border-box",
     gridAutoRows: "max-content",
+  },
+  background: {
+    height: "100%",
+    width: "100%",
+    position: "absolute",
   },
   logo: {
     width: "11rem",
@@ -76,12 +88,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     alignItems: "center",
     boxSizing: "border-box",
+    padding: ".75rem 3rem .75rem 1rem",
     [theme.breakpoints.down("xs")]: {
       textAlign: "start",
     },
   },
   navButtonContainer: {
-    padding: "2rem",
+    padding: "2rem 3rem",
     display: "flex",
     flexDirection: "column",
     boxSizing: "border-box",
@@ -116,5 +129,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   socialMediaIcon: {
     margin: "0px 1rem",
     width: "5rem",
+  },
+  arrowIcon: {
+    height: "12px",
+    width: "20px",
   },
 }));
