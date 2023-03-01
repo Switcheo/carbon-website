@@ -33,7 +33,7 @@ const IntroPage: React.FC = () => {
         <Lottie
           options={AniStartOptions}
           width={isMobile ? "100%" : 1480}
-          height={isMobile ? 450 : "100%"}
+          height={isMobile ? 650 : "100%"}
         />
         <div className={classes.headerContainer}>
           <FadeAndSlide visible={inView} transform={[0, -20]}>
@@ -60,7 +60,7 @@ const IntroPage: React.FC = () => {
           <FadeAndSlide visible={inView}>
             <div className={clsx(classes.scrollContainer, { open: inView })}>
               <Scroll className={classes.scrollIcon} />
-              <Typography className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
+              <Typography variant="body2" className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
             </div>
           </FadeAndSlide>
         </div>
@@ -92,8 +92,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     top: 0,
     [theme.breakpoints.only("xs")]: {
-      marginTop: 0,
-      margin: "0 16px",
+      marginTop: "8rem",
     },
   },
   mainTitle: {
@@ -103,9 +102,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.open": {
       opacity: 1,
     },
-    [theme.breakpoints.only("xs")]: {
-      fontSize: "3.65rem",
-      lineHeight: "3.5rem",
+    [theme.breakpoints.down("sm")]: {
+      ...theme.typography.h3,
     },
   },
   dash: {
@@ -114,10 +112,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   subtitle: {
     maxWidth: "40rem",
-    [theme.breakpoints.only("xs")]: {
-      marginTop: "2.5rem",
-      fontSize: "2rem",
-    },
   },
   highlightedText: {
     color: theme.palette.primary.light,
@@ -128,25 +122,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   scrollContainer: {
     opacity: 0,
-    marginTop: "445px",
+    marginTop: "21.5rem",
     "&.open": {
       opacity: 1,
     },
-    [theme.breakpoints.only("xs")]: {
-      marginTop: "145px",
-    },
   },
   scrollIcon: {
-    [theme.breakpoints.only("xs")]: {
-      height: "20px",
+    [theme.breakpoints.down("sm")]: {
+      height: "2.5rem",
     },
   },
   scrollText: {
-    marginTop: "1.5rem",
-    fontFamily: theme.typography.body1.fontFamily,
+    marginTop: "1rem",
     fontWeight: 600,
-    fontSize: "1.125rem",
-    lineHeight: "1.562rem",
     color: theme.palette.text.hint,
   },
   bodyTypography: {
