@@ -25,5 +25,3 @@ export const allPartnersLogo = [
   StakeWithUsLogo, O3LabsLogo, BlockHunterLogo,
   BoltLogo, IOSGLogo, straisXLogo,
 ];
-
-
