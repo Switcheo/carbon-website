@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "-webkit-fill-available",
     width: "100vw",
     position: "relative",
-    background: "#272525",
+    background: theme.palette.background.navBar,
     top: 0,
     left: 0,
     display: "flex",
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     zIndex: 10,
     "&::-webkit-scrollbar": {
       width: "2px",
-      backgroundColor: "#554B4B",
+      backgroundColor: theme.palette.background.scrollbar,
     },
     "&::-webkit-scrollbar-thumb": {
       backgroundColor: theme.palette.primary.main,

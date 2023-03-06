@@ -1,6 +1,26 @@
 import { createTheme } from "@material-ui/core";
 import { Shadows } from "@material-ui/core/styles/shadows";
 
+declare module "@material-ui/core/styles/createPalette" {
+  export interface TypeText {
+    primary: string;
+    secondary: string;
+    disabled: string;
+    hint: string;
+    tag: string;
+    button: string;
+    footer: string;
+  }
+  export interface TypeBackground {
+    default: string;
+    paper: string;
+    navBar: string;
+    divider: string;
+    scrollbar: string;
+    thumb: string;
+  }
+}
+
 export const theme = createTheme({
   palette: {
     common: {
@@ -10,6 +30,10 @@ export const theme = createTheme({
     background: {
       default: "#121212",
       paper: "#161515",
+      navBar: "#272525",
+      divider: "rgba(116, 232, 232, 0.75)",
+      scrollbar: "#554B4B",
+      thumb: "#182323",
     },
     primary: {
       light: "#31D8D6", // highlight
@@ -26,6 +50,9 @@ export const theme = createTheme({
       secondary: "#B0B0B0",
       disabled: "#5C5C5C",
       hint: "#989898",
+      tag: "#0D4444",
+      button: "#DDDDDD",
+      footer: "#6C6C6C",
     },
     divider: "#343434",
   },
@@ -33,7 +60,10 @@ export const theme = createTheme({
     "none",
     "-33px -33px 75px -10px rgba(0, 0, 0, 0.33), 33px 33px 75px -10px rgba(0, 0, 0, 0.75)",
     "0px 0px 12px -10px rgba(0, 0, 0, 0.75)",
-    ...Array(23).fill("none"),
+    "0px 0px 444.024px #0F616B, 0px 0px 148.008px #0F616B, 0px 0px 74.004px #0F616B, 0px 0px 21.144px #0F616B",
+    "0px 0px 8px rgba(0, 242, 199, 0.33)",
+    "inset 0 0 0 1000px rgba(18,18,18,.5)",
+    ...Array(20).fill("none"),
   ] as Shadows,
   typography: {
     fontFamily: "TyrosPro, SourceSansPro, SourceSansPro-Light, SourceSansPro-Bold, TyrosPro-Light, TyrosPro-SemiBold, TyrosPro-Bold",

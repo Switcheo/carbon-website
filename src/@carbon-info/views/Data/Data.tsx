@@ -1,4 +1,5 @@
 import { FadeAndSlide } from "@carbon-info/components";
+import { StyleUtils } from "@carbon-info/utils/styles";
 import { Divider, Grid, makeStyles, Paper, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
@@ -102,11 +103,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   dataTable: {
     marginTop: "10rem",
-    background: "linear-gradient(0deg, rgba(24, 35, 35, 0.8), rgba(24, 35, 35, 0.8))",
+    background: StyleUtils.tableBackgroundGradient,
     borderWidth: "0px 4px",
     borderStyle: "solid",
     borderColor: theme.palette.primary.main,
-    boxShadow: "0px 0px 444.024px #0F616B, 0px 0px 148.008px #0F616B, 0px 0px 74.004px #0F616B, 0px 0px 21.144px #0F616B",
+    boxShadow: theme.shadows[3],
     borderRadius: "10px",
     opacity: 0,
     transition: "all 2s ease",
@@ -148,8 +149,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   mobileDivider: {
     width: "20px",
     height: "2px",
-    backgroundColor: "rgba(116, 232, 232, 0.75)",
-    boxShadow: "0px 0px 8px rgba(0, 242, 199, 0.33)",
+    backgroundColor: theme.palette.background.divider,
+    boxShadow: theme.shadows[4],
     borderRadius: "4px",
     margin: "auto",
   },

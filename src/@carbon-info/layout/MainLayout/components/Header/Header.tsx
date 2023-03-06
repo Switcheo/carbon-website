@@ -144,7 +144,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: 0,
     left: 0,
     right: 0,
-    background: "#272525",
+    background: theme.palette.background.navBar,
     padding: "1.25rem 3rem 1.25rem 1rem",
     transition: "all 0.25s linear",
     opacity: 0,

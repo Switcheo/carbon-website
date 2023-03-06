@@ -171,7 +171,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   divider: {
     width: "80%",
-    background: "#554B4B",
+    background: theme.palette.background.scrollbar,
     margin: "0px auto",
   },
   modal: {

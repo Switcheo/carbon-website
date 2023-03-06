@@ -219,7 +219,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   footNoteText: {
-    color: "#6C6C6C",
+    color: theme.palette.text.footer,
   },
   socialMediaIcon: {
     height: "32px",

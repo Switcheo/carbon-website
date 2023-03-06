@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     "&::-webkit-scrollbar-thumb": {
       backgroundClip: "padding-box",
-      backgroundColor: "#182323",
+      backgroundColor: theme.palette.background.thumb,
       border: "3px solid",
       borderColor: "transparent",
       borderRadius: "14px",

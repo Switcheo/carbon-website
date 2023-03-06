@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "2.5rem",
   },
   boxContainer: {
-    background: "#121212",
+    background: theme.palette.background.default,
     mixBlendMode: "normal",
     boxShadow: theme.shadows[1],
     backdropFilter: "blur(100px)",

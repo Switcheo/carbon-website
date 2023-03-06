@@ -211,7 +211,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   ctaButton: {
     paddingBottom: "6.25rem",
-    borderBottom: "2px solid #0ADCB6",
+    borderBottom: `2px solid ${theme.palette.primary.dark}`,
   },
   ctaButtonText: {
     ...theme.typography.body2,

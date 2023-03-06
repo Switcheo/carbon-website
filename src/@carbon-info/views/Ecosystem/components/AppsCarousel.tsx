@@ -51,11 +51,11 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
       {items.map((item, index) => {
         const { name, icon, description, tag, ctaLink } = item;
         return view === index ? (
-          <Box className={clsx(classes.cardContainer, "expandCard", { open: inView })} style={{ backgroundImage: `url("${item?.backgroundImage}")`, boxShadow: "inset 0 0 0 1000px rgba(18,18,18,.5)", backgroundPosition: isMobile ? "-24px -48px" : "" }} key={`${name}-featured-dApps`}>
+          <Box className={clsx(classes.cardContainer, "expandCard", { open: inView })} style={{ backgroundImage: `url("${item?.backgroundImage}")`, boxShadow: `${theme.shadows[5]}`, backgroundPosition: isMobile ? "-24px -48px" : "" }} key={`${name}-featured-dApps`}>
             <Typography variant="body1" color="textPrimary" className={classes.tag}>{tag}</Typography>
             <img src={icon} className={classes.dAppLogo} />
             <Typography variant="h3" color="textPrimary" style={{ fontFamily: "TyrosPro-Bold", fontWeight: 700, marginTop: "1rem" }}>{name}</Typography>
-            <Typography variant="body2" style={{ color: "#DDDDDD", marginTop: "1rem" }}>{description}</Typography>
+            <Typography variant="body2" style={{ color: theme.palette.text.button, marginTop: "1rem" }}>{description}</Typography>
             <Button className={classes.ctaButton} href={ctaLink} target="_blank">Launch {name}</Button>
           </Box>
         ) : (
@@ -164,7 +164,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   tag: {
     fontFamily: "TyrosPro-Bold",
-    background: "#0D4444",
+    background: theme.palette.text.tag,
     boxShadow: theme.shadows[2],
     borderRadius: "32px",
     padding: "0.5rem 1.5rem",
@@ -179,7 +179,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   ctaButton: {
     ...theme.typography.body1,
     fontWeight: 700,
-    background: "radial-gradient(63.65% 55% at 50.51% 100%, rgba(10, 220, 182, 0.4) 0%, rgba(10, 220, 182, 0.1) 51.54%, rgba(10, 220, 182, 0) 100%), #142C2C",
+    background: StyleUtils.ctaButtonGradient,
     borderRadius: "12px",
     padding: "1rem 2rem",
     textTransform: "none",
@@ -188,7 +188,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   minButton: {
     ...theme.typography.body2,
     fontWeight: 700,
-    background: "#0D4444",
+    background: theme.palette.text.tag,
     padding: "0.5rem 1.5rem",
     borderRadius: "32px",
   },
