@@ -1,6 +1,7 @@
 import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
+import { isFirefox, isMobileSafari } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
-import { Box, Divider, Modal, Theme, Typography, makeStyles } from "@material-ui/core";
+import { Box, Divider, Modal, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
@@ -25,12 +26,10 @@ interface Props {
   }[],
 }
 
-const isFirefox = !!(navigator.userAgent.indexOf("Firefox") !== -1);
-const isMobileSafari = !!(navigator.userAgent.indexOf("iPhone") > -1);
-
 const RoadMapTab: React.FC<Props> = (props: Props) => {
   const { content } = props;
   const classes = useStyles();
+  const theme = useTheme();
   const [view, setView] = useState(0);
   const [tabView, setTabView] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -112,7 +111,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                                     className={classes.circularCompleted}
                                     value={100}
                                     styles={buildStyles({
-                                      pathColor: "#74E8E8",
+                                      pathColor: theme.palette.primary.main,
                                       trailColor: "rgba(255, 255, 255, 0.3)",
                                       textColor: "rgba(255, 255, 255, 1)",
                                     })} />
@@ -225,7 +224,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "4rem",
   },
   status: {
-    color: "#74E8E8",
+    color: theme.palette.primary.main,
     "&.completed": {
       color: "#5B5656",
     },
@@ -315,7 +314,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: StyleUtils.roadmapBackgroundGradient,
       mask: StyleUtils.maskGradient,
-      maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
+      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
   },
@@ -325,7 +324,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxSizing: "border-box",
     margin: "auto",
     "&.selected": {
-      color: "#74E8E8",
+      color: theme.palette.primary.main,
       zIndex: 3,
     },
   },

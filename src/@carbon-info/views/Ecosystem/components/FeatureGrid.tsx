@@ -1,3 +1,4 @@
+import { isFirefox, isMobileSafari } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
@@ -8,9 +9,6 @@ interface Props {
   items: BlockchainConfig[] | WalletConfig[] | ValidatorConfig[],
   inView: boolean,
 }
-
-const isFirefox = !!(navigator.userAgent.indexOf("Firefox") !== -1);
-const isMobileSafari = !!(navigator.userAgent.indexOf("iPhone") > -1);
 
 const FeatureGrid: React.FC<Props> = (props: Props) => {
   const { items, inView } = props;
@@ -123,7 +121,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: StyleUtils.cardBackgroundGradient,
       mask: StyleUtils.maskGradient,
-      maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
+      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
     "&.IBC": {
