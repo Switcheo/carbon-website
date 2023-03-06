@@ -1,4 +1,5 @@
 import { FadeAndSlide } from "@carbon-info/components";
+import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Button, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useState } from "react";
@@ -160,7 +161,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   tabWrapper: {
     position: "relative",
     "&:hover > $activeIndicator": {
-      background: "linear-gradient(270deg, #74E8E8 0%, #FF2C2C 100%)",
+      background: StyleUtils.activeIndicator,
     },
     "&:not(:last-child)": {
       marginRight: "10rem",
@@ -199,7 +200,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     background: "transparent",
     borderRadius: "3px",
     "&.active": {
-      background: "linear-gradient(270deg, #74E8E8 0%, #FF2C2C 100%)",
+      background: StyleUtils.activeIndicator,
     },
   },
   contentBox: { //
@@ -213,7 +214,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       left: 0,
       width: "100%",
       height: "15rem",
-      background: "linear-gradient(#121212, rgba(255, 255, 255, 0.001))",
+      background: StyleUtils.scrollBottomGradient,
     },
     "&::after": {
       content: "''",
@@ -222,7 +223,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       left: 0,
       width: "100%",
       height: "15rem",
-      background: "linear-gradient(rgba(255, 255, 255, 0.001), #121212)",
+      background: StyleUtils.scrollTopGradient,
     },
     "&.hidden": {
       display: "none",

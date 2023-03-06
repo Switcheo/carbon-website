@@ -1,7 +1,8 @@
+import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
-import clsx from "clsx";
 
 interface cardProps {
   title: string,
@@ -91,8 +92,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 30,
       padding: "1.755px",
-      background: "linear-gradient(180deg, #74E8E8 0%, rgba(116, 232, 232, 0) 100%)",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      background: StyleUtils.cardBackgroundGradient,
+      mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },

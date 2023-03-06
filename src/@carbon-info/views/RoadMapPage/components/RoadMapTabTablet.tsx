@@ -1,9 +1,10 @@
 import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
-import { Box, createStyles, Grid, Grow, makeStyles, Modal, Theme, Typography, withStyles } from "@material-ui/core";
+import { StyleUtils } from "@carbon-info/utils/styles";
+import { Box, Grid, Grow, Modal, Theme, Typography, createStyles, makeStyles, withStyles } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
 import clsx from "clsx";
 import React, { useState } from "react";
-import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { useInView } from "react-intersection-observer";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -130,11 +131,11 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
           <div className={classes.FilterContainer}>
             <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
               In Progress
-                  </Typography>
+            </Typography>
             <IOSSwitch checked={showCompleted} onChange={() => setShowCompleted(!showCompleted)} name="checkedB" />
             <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
               Completed
-                  </Typography>
+            </Typography>
           </div>
           <Grid container item xs={12} className={classes.contentContainer} spacing={0}>
             <Grid container item xs={12} spacing={2}>
@@ -284,7 +285,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         borderRadius: 12,
         padding: 0,
         background: "none",
-        mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+        mask: StyleUtils.maskGradient,
       },
     },
     "&::before": {
@@ -296,8 +297,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 12,
       padding: "1.755px",
-      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      background: StyleUtils.roadmapBackgroundGradient,
+      mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { Box, createStyles, Divider, Grid, Grow, makeStyles, Modal, Theme, Typography, withStyles } from "@material-ui/core";
-import { useInView } from "react-intersection-observer";
-import clsx from "clsx";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
+import { StyleUtils } from "@carbon-info/utils/styles";
+import { Box, Divider, Grid, Grow, Modal, Theme, Typography, createStyles, makeStyles, withStyles } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
+import clsx from "clsx";
+import React, { useState } from "react";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { useInView } from "react-intersection-observer";
 import RoadMapModal from "./RoadMapModal";
 
 interface Props {
@@ -271,7 +272,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         borderRadius: 12,
         padding: 0,
         background: "none",
-        mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+        mask: StyleUtils.maskGradient,
       },
     },
     "&::before": {
@@ -283,8 +284,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 12,
       padding: "1.755px",
-      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      background: StyleUtils.roadmapBackgroundGradient,
+      mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
@@ -318,7 +319,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         borderRadius: "12px 12px 0px 0px",
         padding: "1.755px 1.755px 0px 1.755px",
         background: "#74E8E8",
-        mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+        mask: StyleUtils.maskGradient,
         maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
         pointerEvents: "none",
       },
@@ -349,7 +350,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       padding: "0px 0px 2px 0px",
       background: "#74E8E8",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
@@ -374,7 +375,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       borderRadius: "0px 0px 12px 12px",
       padding: "1.755px",
       background: "#74E8E8",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
@@ -424,8 +425,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 58,
       padding: "1.755px",
-      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      background: StyleUtils.roadmapBackgroundGradient,
+      mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },

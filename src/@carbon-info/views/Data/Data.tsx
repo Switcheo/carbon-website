@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     background: "linear-gradient(0deg, rgba(24, 35, 35, 0.8), rgba(24, 35, 35, 0.8))",
     borderWidth: "0px 4px",
     borderStyle: "solid",
-    borderColor: "#74E8E8",
+    borderColor: theme.palette.primary.main,
     boxShadow: "0px 0px 444.024px #0F616B, 0px 0px 148.008px #0F616B, 0px 0px 74.004px #0F616B, 0px 0px 21.144px #0F616B",
     borderRadius: "10px",
     opacity: 0,

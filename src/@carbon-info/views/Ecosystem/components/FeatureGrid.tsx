@@ -1,3 +1,4 @@
+import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
@@ -93,7 +94,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   cardContainer: {
     height: "15.625rem",
     width: "15.625rem",
-    background: "linear-gradient(151.06deg, #121212 50%, rgba(0, 126, 119, 0.5) 256.32%)",
+    background: StyleUtils.gridItemBackgroundGradient("rgba(0, 126, 119, 0.5)"),
     mixBlendMode: "normal",
     boxShadow: theme.shadows[1],
     backdropFilter: "blur(100px)",
@@ -120,33 +121,33 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 30,
       padding: "1.755px",
-      background: "linear-gradient(180deg, #74E8E8 0%, rgba(116, 232, 232, 0) 100%)",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      background: StyleUtils.cardBackgroundGradient,
+      mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
     "&.IBC": {
-      background: "linear-gradient(151.06deg, #121212 50%, rgba(1, 103, 255, 0.5) 256.32%)",
+      background: StyleUtils.gridItemBackgroundGradient("rgba(1, 103, 255, 0.5)"),
       "&::before": {
-        background: "linear-gradient(180deg, #0167FF 0%, rgba(1, 103, 255, 0) 100%)",
+        background: StyleUtils.gridItemBorderGradient("#0167FF", "rgba(1, 103, 255, 0)"),
       },
     },
     "&.EVM": {
-      background: "linear-gradient(151.06deg, #121212 50%, rgba(0, 126, 119, 0.5) 256.32%)",
+      background: StyleUtils.gridItemBackgroundGradient("rgba(0, 126, 119, 0.5)"),
       "&::before": {
-        background: "linear-gradient(180deg, #74E8E8 0%, rgba(116, 232, 232, 0) 100%)",
+        background: StyleUtils.cardBackgroundGradient,
       },
     },
     "&.Non-EVM": {
-      background: "linear-gradient(151.06deg, #121212 50%, #C32B21 256.32%)",
+      background: StyleUtils.gridItemBackgroundGradient("#C32B21"),
       "&::before": {
-        background: "linear-gradient(180deg, #D67A74 0%, rgba(195, 43, 33, 0) 100%)",
+        background: StyleUtils.gridItemBorderGradient("#D67A74", "rgba(195, 43, 33, 0)"),
       },
     },
     "&.Coming": {
-      background: "linear-gradient(151.06deg, #121212 50%, rgba(176, 176, 176, 0.5) 256.32%)",
+      background: StyleUtils.gridItemBackgroundGradient("rgba(176, 176, 176, 0.5)"),
       "&::before": {
-        background: "linear-gradient(180deg, #B0B0B0 0%, rgba(176, 176, 176, 0) 100%)",
+        background: StyleUtils.gridItemBorderGradient("#B0B0B0", "rgba(176, 176, 176, 0)"),
       },
     },
     [theme.breakpoints.only("sm")]: {

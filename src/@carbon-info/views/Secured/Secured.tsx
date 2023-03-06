@@ -5,6 +5,7 @@ import spinSwth from "@carbon-info/assets/animated/spinSWTH.json";
 import { CTAButton } from "@carbon-info/components";
 import FadeAndSlide from "@carbon-info/components/FadeAndSlide";
 import { Path } from "@carbon-info/constants";
+import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Button, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
@@ -158,9 +159,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "0.5rem 1.5rem",
     marginRight: "2.125rem",
     borderRadius: "24px",
-    background: "radial-gradient(63.65% 55% at 50.51% 100%, rgba(10, 220, 182, 0.4) 0%, rgba(10, 220, 182, 0.1) 51.54%, rgba(10, 220, 182, 0) 100%), #142C2C",
+    background: StyleUtils.greenGradient,
     "&:hover": {
-      background: "radial-gradient(63.65% 55% at 50.51% 100%, rgba(10, 220, 182, 0.4) 0%, rgba(10, 220, 182, 0.1) 51.54%, rgba(10, 220, 182, 0) 100%), #142C2C",
+      background: StyleUtils.greenGradient,
       boxShadow: "none",
     },
     [theme.breakpoints.down("sm")]: {

@@ -1,11 +1,12 @@
 import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
-import { Box, Divider, makeStyles, Modal, Theme, Typography } from "@material-ui/core";
+import { StyleUtils } from "@carbon-info/utils/styles";
+import { Box, Divider, Modal, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useState } from "react";
-import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { useInView } from "react-intersection-observer";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import RoadMapModal from "./RoadMapModal";
 
 interface Props {
@@ -145,7 +146,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                 <br /><br />
                 <Typography color="textPrimary" variant="subtitle2" className={classes.swipe}>
                   <RoadMapPageArrowLeft className={classes.swipeArrow} />
-                        SWIPE FOR MORE
+                  SWIPE FOR MORE
                   <RoadMapPageArrowRight className={classes.swipeArrow} />
                 </Typography>
                 <br /><br /><br />
@@ -300,7 +301,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         borderRadius: 12,
         padding: 0,
         background: "none",
-        mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+        mask: StyleUtils.maskGradient,
       },
     },
     "&::before": {
@@ -312,8 +313,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 12,
       padding: "1.755px",
-      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      background: StyleUtils.roadmapBackgroundGradient,
+      mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },

@@ -1,3 +1,4 @@
+import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Button, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useState } from "react";
@@ -105,7 +106,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   cardContainer: {
-    background: "linear-gradient(151.06deg, #121212 50%, rgba(0, 126, 119, 0.5) 256.32%)",
+    background: StyleUtils.gridItemBackgroundGradient("rgba(0, 126, 119, 0.5)"),
     mixBlendMode: "normal",
     boxShadow: theme.shadows[1],
     backdropFilter: "blur(100px)",
@@ -140,8 +141,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 30,
       padding: "1.755px",
-      background: "linear-gradient(180deg, #74E8E8 0%, rgba(116, 232, 232, 0) 100%)",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      background: StyleUtils.cardBackgroundGradient,
+      mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
