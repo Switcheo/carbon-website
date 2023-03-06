@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Divider, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import { CarbonLogo, DiscordIcon, GitHubIcon, RedditIcon, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
+import { CarbonLogo, DiscordIcon, GitHubIcon, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
 
 const sitemap = [
@@ -8,43 +8,33 @@ const sitemap = [
     section: "Learn",
     sitemap: [
       {
-        title: "Features",
+        title: "Carbon Features",
         link: Path.Footer.Features,
         target: "",
       },
       {
-        title: "Guides",
+        title: "Guide to Carbon",
         link: Path.Footer.Guides,
         target: "_blank",
       },
       {
-        title: "Blog",
+        title: "Core Dev Blog",
         link: Path.Footer.Blog,
         target: "_blank",
       },
     ],
   },
   {
-    section: "Explore",
+    section: "Ecosystem",
     sitemap: [
       {
-        title: "Get SWTH",
-        link: Path.Footer.GetSWTH,
+        title: "Carbon Token ($SWTH)",
+        link: Path.Footer.CarbonHub,
         target: "_blank",
       },
       {
-        title: "Stake",
-        link: Path.Footer.Stake,
-        target: "_blank",
-      },
-      {
-        title: "Token",
-        link: Path.Footer.Token,
-        target: "_blank",
-      },
-      {
-        title: "Markets",
-        link: Path.Footer.Markets,
+        title: "Buy $SWTH",
+        link: Path.Footer.Buy,
         target: "_blank",
       },
       {
@@ -53,8 +43,13 @@ const sitemap = [
         target: "_blank",
       },
       {
-        title: "Carbon Scan",
+        title: "Carbonscan",
         link: Path.Footer.CarbonScan,
+        target: "_blank",
+      },
+      {
+        title: "Hydrogen",
+        link: Path.Footer.Hydrogen,
         target: "_blank",
       },
     ],
@@ -63,18 +58,28 @@ const sitemap = [
     section: "Build",
     sitemap: [
       {
-        title: "Switcheo Development Fund",
-        link: Path.Footer.SwitcheoDevelopmentFund,
+        title: "Setup",
+        link: Path.Footer.Setup,
         target: "_blank",
       },
       {
-        title: "APIs",
+        title: "Docs",
         link: Path.Footer.APIs,
+        target: "_blank",
+      },
+      {
+        title: "SDK",
+        link: Path.Footer.SDK,
         target: "_blank",
       },
       {
         title: "GitHub",
         link: Path.Footer.Github,
+        target: "_blank",
+      },
+      {
+        title: "Community Dev Fund (SDF)",
+        link: Path.Footer.SwitcheoDevelopmentFund,
         target: "_blank",
       },
     ],
@@ -149,9 +154,6 @@ const Footer: React.FC = () => {
             </Link>
             <Link href={Path.Socials.Discord} underline="none" target="_blank">
               <DiscordIcon className={classes.socialMediaIcon} />
-            </Link>
-            <Link href={Path.Socials.Reddit} underline="none" target="_blank">
-              <RedditIcon className={classes.socialMediaIcon} />
             </Link>
             <Link href={Path.Socials.Github} underline="none" target="_blank">
               <GitHubIcon className={classes.socialMediaIcon} />

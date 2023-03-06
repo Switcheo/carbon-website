@@ -14,6 +14,7 @@ interface cardProps {
 }
 
 const isFirefox = !!(navigator.userAgent.indexOf("Firefox") !== -1);
+const isMobileSafari = !!(navigator.userAgent.indexOf("iPhone") > -1);
 
 const CardWithIcon: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
@@ -226,7 +227,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
       mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: `${isFirefox ? "subtract" : "source-out"}`,
+      maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
     [theme.breakpoints.down("md")]: {

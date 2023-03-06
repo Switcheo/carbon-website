@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Link, makeStyles, Typography, Theme } from "@material-ui/core";
-import { CarbonLogo, MediumIcon, MenuIconClose, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
+import { CarbonLogo, MenuIconClose, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
 import onClickOutside from "@carbon-info/hooks/OnClickOutside";
 import { Path } from "@carbon-info/constants";
 
@@ -32,11 +32,11 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
         <Link href={Path.Footer.CarbonScan} underline="none" onClick={callback} target="_blank">
           <Typography color="textPrimary" variant="h1" display="inline">Explorer</Typography>
         </Link>
+        <Link href={Path.Header.SWTH} underline="none" onClick={callback} target="_blank">
+          <Typography color="textPrimary" variant="h1" display="inline">SWTH</Typography>
+        </Link>
       </div>
       <div className={classes.socialMediaContainer}>
-        <Link href={Path.Socials.Medium} underline="none" target="_blank">
-          <MediumIcon className={classes.socialMediaIcon} />
-        </Link>
         <Link href={Path.Socials.Telegram} underline="none" target="_blank">
           <TelegramIcon className={classes.socialMediaIcon} />
         </Link>

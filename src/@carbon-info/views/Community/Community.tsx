@@ -37,13 +37,13 @@ const Community: React.FC = () => {
                 </Typography>
                 <br />
                 <Typography color="textPrimary" variant={isTablet && !isMobile ? "subtitle2" : "subtitle1"} align="left" paragraph className={classes.subtitle}>
-                  Using the SWTH token, anyone can play a part in shaping Carbon’s journey towards the future of finance.
+                  Using the Carbon &#40;$SWTH&#41; Token, anyone can play a part in shaping Carbon’s journey towards the future of finance.
                 </Typography>
                 <br />
                 <Typography align="left" paragraph component={"span"}>
                   <CTAButton
-                    text="GET TOKEN"
-                    link={Path.GetToken}
+                    text="FIND OUT MORE"
+                    link={Path.FindOutMore}
                     CTA
                   />
                 </Typography>
@@ -128,6 +128,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
       transform: "translate(0px,0px) scale(1)",
     },
+    margin: "-3rem 0px 0px -5rem",
     [theme.breakpoints.down("md")]: {
       position: "relative",
       width: "100%",
@@ -136,7 +137,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down(1100)]: {
       position: "relative",
       width: "100%",
-      margin: "-10rem 0px 0px -2rem",
+      margin: "-1rem 0px 0px -2rem",
+    },
+    [theme.breakpoints.down(1060)]: {
+      position: "relative",
+      width: "100%",
+      margin: "-5rem 0px 0px -2rem",
     },
     [theme.breakpoints.down(961)]: {
       position: "relative",
@@ -144,12 +150,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: "-1rem 0px 0px -2rem",
     },
     [theme.breakpoints.down("sm")]: {
-      margin: 0,
       position: "relative",
       width: "57%",
+      margin: "0rem 0px 0px 0rem",
     },
     [theme.breakpoints.down("xs")]: {
-      margin: 0,
+      margin: "4rem 0px -2rem 0rem",
       position: "relative",
       width: "80%",
     },
