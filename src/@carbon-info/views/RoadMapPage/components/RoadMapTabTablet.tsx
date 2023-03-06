@@ -1,4 +1,5 @@
 import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
+import { Responsive } from "@carbon-info/constants";
 import { isFirefox, isMobileSafari } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Grid, Grow, Modal, Theme, Typography, createStyles, makeStyles, useTheme, withStyles } from "@material-ui/core";
@@ -26,21 +27,6 @@ interface Props {
     }[];
   }[],
 }
-
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
 
 const RoadMapTab: React.FC<Props> = (props: Props) => {
   const { content } = props;
@@ -92,7 +78,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
         <Grid container>
           <Grid container item xs={12} className={classes.tabContainer}>
             <Carousel
-              responsive={responsive}
+              responsive={Responsive.roadmap}
               infinite={true}
               keyBoardControl={true}
               customTransition="all .5"

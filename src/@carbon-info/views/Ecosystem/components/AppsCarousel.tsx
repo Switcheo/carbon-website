@@ -1,3 +1,4 @@
+import { Responsive } from "@carbon-info/constants";
 import { isFirefox, isMobileSafari } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Button, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
@@ -20,24 +21,9 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
-
   return (
     <Carousel
-      responsive={responsive}
+      responsive={Responsive.apps}
       containerClass={clsx(classes.carouselContainer, "carousel-container")}
       arrows={!isMobile}
       showDots={isMobile}

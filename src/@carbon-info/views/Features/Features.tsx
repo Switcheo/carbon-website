@@ -3,7 +3,7 @@ import stable from "@carbon-info/assets/animated/stable.json";
 import versatile from "@carbon-info/assets/animated/versatile.json";
 import carbonFeaturesBackground from "@carbon-info/assets/background/carbonFeaturesBackground.svg";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
-import { Path } from "@carbon-info/constants";
+import { Path, Responsive } from "@carbon-info/constants";
 import { Box, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
@@ -78,21 +78,6 @@ const Features: React.FC = () => {
     icon: StableAnimation,
   }];
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 1,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
-
   return (
     <div ref={ref} id="features" className={classes.features}>
       <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: inView })} />
@@ -108,7 +93,7 @@ const Features: React.FC = () => {
             </Typography>
           </>
           <Carousel
-            responsive={responsive}
+            responsive={Responsive.roadmap}
             containerClass={clsx(classes.carouselContainer, "carousel-container")}
             arrows={false}
             infinite={true}
