@@ -21,45 +21,30 @@ const Secured: React.FC = () => {
     triggerOnce: true,
   });
 
-  const DropSWTH = {
-    loop: false,
-    autoplay: true,
-    animationData: dropSwth,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
-  const FloatSWTH = {
-    loop: true,
-    autoplay: true,
-    animationData: floatSwth,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
-  const SpinSWTH = {
-    loop: true,
-    autoplay: true,
-    animationData: spinSwth,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-      scaleMode: "0.25",
-    },
+  const genLottieData = (animation: any, loop: boolean, scaleMode?: string) => {
+    return {
+      loop: loop,
+      autoplay: true,
+      animationData: animation,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice",
+        scaleMode: scaleMode,
+      },
+    };
   };
 
   const [getSWTHIcon, setGetSWTHIcon] = useState<Options>();
 
   useEffect(() => {
     if (inView && !getSWTHIcon) {
+      const DropSWTH = genLottieData(dropSwth, false);
       setGetSWTHIcon(DropSWTH);
     }
   }, [inView]);
 
   const events: EventListener[] = [{
     eventName: "complete",
-    callback: () => setGetSWTHIcon(FloatSWTH),
+    callback: () => setGetSWTHIcon(genLottieData(floatSwth, true)),
   }];
 
   return (
@@ -85,7 +70,7 @@ const Secured: React.FC = () => {
               }
             </Box>
             <Lottie
-              options={SpinSWTH}
+              options={genLottieData(spinSwth, true, "0.25")}
               width={650}
               height={650}
               style={{ position: "absolute", zIndex: 0, right: "-100px" }}
