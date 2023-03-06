@@ -266,7 +266,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   status: {
     fontFamily: "SourceSansPro",
-    color: "#74E8E8",
+    color: theme.palette.primary.main,
     marginBottom: "-0.5rem",
     fontSize: "1.1rem",
   },
@@ -276,10 +276,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflowY: "auto",
     "&::-webkit-scrollbar": {
       width: "2px",
-      backgroundColor: "#554B4B",
+      backgroundColor: theme.palette.background.scrollbar,
     },
     "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "#74E8E8",
+      backgroundColor: theme.palette.primary.main,
       borderRadius: "4px",
       height: "10px",
       transform: "scale(0.3)",

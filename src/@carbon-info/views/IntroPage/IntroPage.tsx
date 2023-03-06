@@ -1,54 +1,72 @@
-import React from "react";
-import { Grid, makeStyles, Theme, Typography } from "@material-ui/core";
-import { IntroPageBackgroundLine } from "@carbon-info/assets/background";
-import backgroundLogo from "@carbon-info/assets/background/introPageBgLeft.png";
-import backgroundLogoRight from "@carbon-info/assets/background/introPageBgRight.png";
-import backgroundSphereLeft from "@carbon-info/assets/animated/introPageSphereLeft.png";
-import backgroundSphereRight from "@carbon-info/assets/animated/introPageSphereRight.png";
+import { Scroll } from "@carbon-info/assets";
+import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
-import { useInView } from "react-intersection-observer";
+import { Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import "animate.css";
 import clsx from "clsx";
+import React from "react";
+import { useInView } from "react-intersection-observer";
+import Lottie from "react-lottie";
 
 const IntroPage: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.4,
     triggerOnce: true,
   });
+
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+
+  const AniStartOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: heroBackgroundAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
     <div ref={ref} id="home">
       <Grid container className={classes.container}>
-        <img src={backgroundLogo} className={clsx(classes.backgroundLeft, { open: inView })} alt="herobackground" />
-        <img src={backgroundSphereLeft} className={clsx(classes.sphereLeft, { open: inView })} alt="herobackground" />
-        <div>
+        <Lottie
+          options={AniStartOptions}
+          width={isMobile ? "100%" : 1480}
+          height={isMobile ? 650 : "100%"}
+        />
+        <div className={classes.headerContainer}>
           <FadeAndSlide visible={inView} transform={[0, -20]}>
-            <Typography variant="h4" color="textPrimary">
-              Meet Carbon
+            <Typography variant="body1" color="textSecondary" className={classes.bodyTypography}>
+              MEET CARBON
             </Typography>
           </FadeAndSlide>
-          <IntroPageBackgroundLine className={classes.dash} />
-          <Typography color="textPrimary" variant="h2" className={clsx(classes.mainTitle, { open: inView })} >
-            The core of
+          <Typography color="textPrimary" variant="h1" className={clsx(classes.mainTitle, "animate__animated animate__slideInUp", { open: inView })} >
+            The Core of
             <br />
-            <span className={clsx(classes.gradientText, { open: inView })} >
-              decentralized
-            <br />
+            <span className={clsx(classes.highlightedText, { open: inView })} >
+              Decentralized
+              <br />
             </span>
-            <span className={clsx(classes.gradientText)}>
-              financial markets
-              </span>
+            <span className={clsx(classes.highlightedText)}>
+              Financial Markets.
+            </span>
           </Typography>
           <FadeAndSlide visible={inView}>
-            <Typography color="textPrimary" variant="subtitle1" className={classes.subtitle}>
-              Carbon is a cross-chain protocol that acts as a<br />building block for DeFi.
+            <Typography color="textSecondary" variant="body1" className={clsx(classes.subtitle, "animate__animated animate__slideInUp")}>
+              Carbon is a cross-chain protocol that acts as<br />a building block for DeFi.
             </Typography>
           </FadeAndSlide>
+          <FadeAndSlide visible={inView}>
+            <div className={clsx(classes.scrollContainer, { open: inView })}>
+              <Scroll className={clsx(classes.scrollIcon, "bounce")} />
+              <Typography variant="body2" className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
+            </div>
+          </FadeAndSlide>
         </div>
-        <img src={backgroundLogoRight} className={clsx(classes.backgroundRight, { open: inView })} alt="herobackgroundright" />
-        <img src={backgroundSphereRight} className={clsx(classes.sphereRight, { open: inView })} alt="herobackgroundright" />
       </Grid>
-    </div>
+    </div >
   );
 };
 
@@ -59,118 +77,62 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
+    [theme.breakpoints.only("xs")]: {
+      marginLeft: "-16px",
+      width: "calc(100% + 32px)",
+    },
+  },
+  headerContainer: {
+    zIndex: 5,
+    marginTop: "11.25rem",
+    position: "absolute",
+    top: 0,
+    [theme.breakpoints.only("xs")]: {
+      marginTop: "8rem",
+    },
   },
   mainTitle: {
     opacity: 0,
     transition: "all 2s ease",
+    marginTop: "0.75rem",
     "&.open": {
       opacity: 1,
     },
-    [theme.breakpoints.down(320)]: {
-      fontSize: "3.65rem",
-      lineHeight: "3.5rem",
-    },
-  },
-  dash: {
-    margin: "3rem 0px",
-    height: "1.5rem",
-  },
-  backgroundLeft: {
-    pointerEvents: "none",
-    position: "absolute",
-    left: "-50%",
-    top: "-125%",
-    width: "86%",
-    opacity: 0,
-    transform: "translate(-40px, -40px) scale(0.95)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
-    "&.open": {
-      opacity: 1,
-      transform: "translate(0px,0px) scale(1)",
-    },
-    [theme.breakpoints.down(880)]: {
-      top: "-67%",
-      left: "-72%",
-      width: "100%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "-69%",
-      left: "-73%",
-    },
-  },
-  sphereLeft: {
-    position: "absolute",
-    left: "6%",
-    top: "-2%",
-    width: "21%",
-    opacity: 0,
-    transform: "translate(-40px, -40px) scale(0.95)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
-    "&.open": {
-      opacity: 1,
-      transform: "translate(0px,0px) scale(1)",
-    },
-    [theme.breakpoints.down(880)]: {
-      left: "2%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      left: "-2%",
-      top: "0%",
-      width: "22%",
-    },
-  },
-  backgroundRight: {
-    pointerEvents: "none",
-    position: "absolute",
-    right: "-56%",
-    top: "-5%",
-    width: "80%",
-    opacity: 0,
-    transform: "translate(40px, 40px) scale(0.95)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
-    "&.open": {
-      opacity: 1,
-      transform: "translate(0px,0px) scale(1)",
-    },
-    [theme.breakpoints.down("xs")]: {
-      right: "-58%",
-      top: "-32%",
-      width: "80%",
-    },
-  },
-  sphereRight: {
-    position: "absolute",
-    right: "2%",
-    top: "48%",
-    width: "15%",
-    opacity: 0,
-    transform: "translate(40px, 40px) scale(0.95)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
-    "&.open": {
-      opacity: 1,
-      transform: "translate(0px,0px) scale(1)",
-    },
-    [theme.breakpoints.down(880)]: {
-      right: "2%",
-      top: "35%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      right: "3%",
-      top: "10%",
-      width: "16%",
+    [theme.breakpoints.down("sm")]: {
+      ...theme.typography.h3,
     },
   },
   subtitle: {
-    marginTop: "2.5rem",
+    transition: "all 2s ease",
     maxWidth: "40rem",
-    [theme.breakpoints.down(325)]: {
-      marginTop: "2.5rem",
-      fontSize: "2rem",
+  },
+  highlightedText: {
+    color: theme.palette.primary.light,
+  },
+  scrollContainer: {
+    opacity: 0,
+    marginTop: "30rem",
+    "&.open": {
+      opacity: 1,
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "21.5rem",
     },
   },
-  gradientText: {
-    background: "linear-gradient(63deg,#196163,#DAFFF4,#DAFFF4, #72E7E2, #11D1D1)",
-    WebkitTextFillColor: "transparent",
-    WebkitBackgroundClip: "text",
+  scrollIcon: {
+    "&.bounce": {
+      animation: "bounce 2s ease infinite",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "2.5rem",
+    },
+  },
+  scrollText: {
+    marginTop: "1rem",
+    fontWeight: 600,
+    color: theme.palette.text.hint,
+  },
+  bodyTypography: {
+    fontWeight: 400,
   },
 }));

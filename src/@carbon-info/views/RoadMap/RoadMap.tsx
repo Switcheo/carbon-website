@@ -21,7 +21,7 @@ const RoadMap: React.FC = () => {
   const [view, setView] = useState([0]);
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.5,
+    threshold: 0.25,
     triggerOnce: true,
   });
   const { data } = useContentful({
@@ -144,11 +144,7 @@ const RoadMap: React.FC = () => {
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
           <Typography variant="h2" color="textPrimary" paragraph noWrap className={classes.noWrap}>
-            {
-              isTablet ? <span>Building<br />towards change</span>
-                : <span>Building towards change</span>
-            }
-
+            Building towards change
           </Typography >
         </FadeAndSlide>
         <FadeAndSlide visible={inView} delay={10000}>
@@ -204,7 +200,7 @@ const RoadMap: React.FC = () => {
           <CTAButton
             text="See Full Roadmap"
             link="/roadmap"
-            CTA
+            iconClassName={classes.ctaIcon}
             newTab={false}
           />
         </div>
@@ -271,12 +267,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   button: {
     margin: "3rem 0px 3rem 16px",
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
     [theme.breakpoints.down("sm")]: {
       margin: "7rem auto",
     },
   },
   boxContainer: {
-    margin: "50vh 0px",
+    margin: "25vh 0px",
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
     },
@@ -332,5 +331,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   noWrap: {
     overflow: "visible",
     marginBottom: theme.spacing(4),
+  },
+  ctaIcon: {
+    width: "20px",
+    height: "16px",
   },
 }));

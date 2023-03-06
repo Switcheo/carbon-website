@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Box, createStyles, Divider, Grid, Grow, makeStyles, Modal, Theme, Typography, withStyles } from "@material-ui/core";
-import { useInView } from "react-intersection-observer";
-import clsx from "clsx";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
+import { isFirefox, isMobileSafari } from "@carbon-info/utils/environment";
+import { StyleUtils } from "@carbon-info/utils/styles";
+import { Box, Divider, Grid, Grow, Modal, Theme, Typography, createStyles, makeStyles, useTheme, withStyles } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
+import clsx from "clsx";
+import React, { useState } from "react";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { useInView } from "react-intersection-observer";
 import RoadMapModal from "./RoadMapModal";
 
 interface Props {
@@ -23,12 +25,10 @@ interface Props {
   }[],
 }
 
-const isFirefox = !!(navigator.userAgent.indexOf("Firefox") !== -1);
-const isMobileSafari = !!(navigator.userAgent.indexOf("iPhone") > -1);
-
 const RoadMapTab: React.FC<Props> = (props: Props) => {
   const { content } = props;
   const classes = useStyles();
+  const theme = useTheme();
   const [view, setView] = useState(0);
   const [tabView, setTabView] = useState(0);
   const [showCompleted, setShowCompleted] = useState(false);
@@ -130,7 +130,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                                   className={classes.circularCompleted}
                                   value={100}
                                   styles={buildStyles({
-                                    pathColor: "#74E8E8",
+                                    pathColor: theme.palette.primary.main,
                                     trailColor: "rgba(255, 255, 255, 0.3)",
                                     textColor: "rgba(255, 255, 255, 1)",
                                   })} />
@@ -207,7 +207,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   status: {
     letterSpacing: 0,
     marginTop: "auto",
-    color: "#74E8E8",
+    color: theme.palette.primary.main,
     "&.completed": {
       color: "#5B5656",
     },
@@ -271,7 +271,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         borderRadius: 12,
         padding: 0,
         background: "none",
-        mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+        mask: StyleUtils.maskGradient,
       },
     },
     "&::before": {
@@ -283,9 +283,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 12,
       padding: "1.755px",
-      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
+      background: StyleUtils.roadmapBackgroundGradient,
+      mask: StyleUtils.maskGradient,
+      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
   },
@@ -304,7 +304,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: "0px 0px 0px 0px",
     margin: "auto",
     "&.selected": {
-      color: "#74E8E8",
+      color: theme.palette.primary.main,
       zIndex: 3,
       backgroundColor: "#1B1C1F",
       boxShadow: "inset 84.877px 134.16px 136.898px -82.139px #242424, inset 0px 1.36898px 54.7594px rgb(85 85 85 / 4%)",
@@ -317,9 +317,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         bottom: 0,
         borderRadius: "12px 12px 0px 0px",
         padding: "1.755px 1.755px 0px 1.755px",
-        background: "#74E8E8",
-        mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-        maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
+        background: theme.palette.primary.main,
+        mask: StyleUtils.maskGradient,
+        maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
         pointerEvents: "none",
       },
     },
@@ -348,9 +348,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       right: 0,
       bottom: 0,
       padding: "0px 0px 2px 0px",
-      background: "#74E8E8",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
+      background: theme.palette.primary.main,
+      mask: StyleUtils.maskGradient,
+      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
   },
@@ -373,9 +373,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: "0px 0px 12px 12px",
       padding: "1.755px",
-      background: "#74E8E8",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
+      background: theme.palette.primary.main,
+      mask: StyleUtils.maskGradient,
+      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
   },
@@ -424,9 +424,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 58,
       padding: "1.755px",
-      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
+      background: StyleUtils.roadmapBackgroundGradient,
+      mask: StyleUtils.maskGradient,
+      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
     [theme.breakpoints.down("sm")]: {
@@ -455,11 +455,11 @@ const IOSSwitch = withStyles((theme: Theme) =>
       margin: theme.spacing(1),
     },
     switchBase: {
-      color: "#74E8E8",
+      color: theme.palette.primary.main,
       padding: 1,
       "&$checked": {
         transform: "translateX(16px)",
-        color: "#74E8E8",
+        color: theme.palette.primary.main,
         "& + $track": {
           backgroundColor: "#3c3636",
           opacity: 1,
@@ -467,7 +467,7 @@ const IOSSwitch = withStyles((theme: Theme) =>
         },
       },
       "&$focusVisible $thumb": {
-        color: "#74E8E8",
+        color: theme.palette.primary.main,
         border: "6px solid #fff",
       },
     },

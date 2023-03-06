@@ -1,5 +1,5 @@
 export const Path = {
-  Header:{
+  Header: {
     Build: "https://docs.carbon.network",
     SWTH: "https://hub.carbon.network/",
   },
@@ -22,6 +22,7 @@ export const Path = {
     Buy: "https://hub.carbon.network/buy",
     CarbonHub: "https://hub.carbon.network/",
     Stake: "https://app.dem.exchange/stake",
+    Nitron: "https://app.dem.exchange/nitron",
     Token: "https://scan.carbon.network/tokens?net=main",
     Markets: "https://scan.carbon.network/markets?net=main",
     Demex: "https://dem.exchange",
@@ -34,6 +35,7 @@ export const Path = {
     Forum: "https://commonwealth.im/carbon-protocol",
     Governance: "https://scan.carbon.network/governance",
     Setup: "https://docs.carbon.network/setting-up-a-node/mainnet-setup",
+    Research: "https://blog.switcheo.com/tag/research/",
   },
   FindOutMore: "https://hub.carbon.network/",
 };

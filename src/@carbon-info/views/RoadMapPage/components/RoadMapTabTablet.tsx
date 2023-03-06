@@ -1,9 +1,12 @@
 import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
-import { Box, createStyles, Grid, Grow, makeStyles, Modal, Theme, Typography, withStyles } from "@material-ui/core";
+import { Responsive } from "@carbon-info/constants";
+import { isFirefox, isMobileSafari } from "@carbon-info/utils/environment";
+import { StyleUtils } from "@carbon-info/utils/styles";
+import { Box, Grid, Grow, Modal, Theme, Typography, createStyles, makeStyles, useTheme, withStyles } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
 import clsx from "clsx";
 import React, { useState } from "react";
-import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { useInView } from "react-intersection-observer";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -25,27 +28,10 @@ interface Props {
   }[],
 }
 
-const isFirefox = !!(navigator.userAgent.indexOf("Firefox") !== -1);
-const isMobileSafari = !!(navigator.userAgent.indexOf("iPhone") > -1);
-
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
-
 const RoadMapTab: React.FC<Props> = (props: Props) => {
   const { content } = props;
   const classes = useStyles();
+  const theme = useTheme();
   const [view, setView] = useState(0);
   const [tabView, setTabView] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -92,7 +78,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
         <Grid container>
           <Grid container item xs={12} className={classes.tabContainer}>
             <Carousel
-              responsive={responsive}
+              responsive={Responsive.roadmap}
               infinite={true}
               keyBoardControl={true}
               customTransition="all .5"
@@ -130,11 +116,11 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
           <div className={classes.FilterContainer}>
             <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
               In Progress
-                  </Typography>
+            </Typography>
             <IOSSwitch checked={showCompleted} onChange={() => setShowCompleted(!showCompleted)} name="checkedB" />
             <Typography color="textPrimary" variant="h4" display={"inline"} className={classes.filterText}>
               Completed
-                  </Typography>
+            </Typography>
           </div>
           <Grid container item xs={12} className={classes.contentContainer} spacing={0}>
             <Grid container item xs={12} spacing={2}>
@@ -154,7 +140,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                                   className={classes.circularCompleted}
                                   value={100}
                                   styles={buildStyles({
-                                    pathColor: "#74E8E8",
+                                    pathColor: theme.palette.primary.main,
                                     trailColor: "rgba(255, 255, 255, 0.3)",
                                     textColor: "rgba(255, 255, 255, 1)",
                                   })} />
@@ -215,7 +201,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "4rem",
   },
   status: {
-    color: "#74E8E8",
+    color: theme.palette.primary.main,
     "&.completed": {
       color: "#5B5656",
     },
@@ -284,7 +270,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         borderRadius: 12,
         padding: 0,
         background: "none",
-        mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+        mask: StyleUtils.maskGradient,
       },
     },
     "&::before": {
@@ -296,9 +282,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 12,
       padding: "1.755px",
-      background: "linear-gradient(180deg,#74E8E8,#74E8E8,rgba(255,255,255,0.4),rgba(255,255,255,0.2))",
-      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-      maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
+      background: StyleUtils.roadmapBackgroundGradient,
+      mask: StyleUtils.maskGradient,
+      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
   },
@@ -309,7 +295,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxSizing: "border-box",
     margin: "auto",
     "&.selected": {
-      color: "#74E8E8",
+      color: theme.palette.primary.main,
       zIndex: 3,
     },
   },
@@ -360,11 +346,11 @@ const IOSSwitch = withStyles((theme: Theme) =>
       margin: theme.spacing(1),
     },
     switchBase: {
-      color: "#74E8E8",
+      color: theme.palette.primary.main,
       padding: 1,
       "&$checked": {
         transform: "translateX(16px)",
-        color: "#74E8E8",
+        color: theme.palette.primary.main,
         "& + $track": {
           backgroundColor: "#3c3636",
           opacity: 1,
@@ -372,7 +358,7 @@ const IOSSwitch = withStyles((theme: Theme) =>
         },
       },
       "&$focusVisible $thumb": {
-        color: "#74E8E8",
+        color: theme.palette.primary.main,
         border: "6px solid #fff",
       },
     },
