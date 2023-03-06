@@ -73,36 +73,6 @@ const Ecosystem: React.FC = () => {
     });
   }, []);
 
-  const content = React.useMemo(() => {
-    switch (value) {
-      case "Featured dApps":
-        return <AppsCarousel items={allFeatured} inView />;
-      case "Blockchains":
-        return (
-          <>
-            {filterButtons}
-            <div className={classes.contentBox}>
-              <FeatureGrid items={filteredBlockchains} inView />
-            </div>
-          </>
-        );
-      case "Wallets":
-        return (
-          <div className={classes.contentBox}>
-            <FeatureGrid items={allWallets} inView />
-          </div>
-        );
-      case "Validators":
-        return (
-          <div className={classes.contentBox}>
-            <FeatureGrid items={sortedValidators} inView />
-          </div>
-        );
-      default:
-        return <AppsCarousel items={allFeatured} inView />;
-    }
-  }, [inView, value, filteredBlockchains]);
-
   return (
     <div ref={ref} id="ecosystem">
       <Box className={classes.boxContainer}>
@@ -135,7 +105,27 @@ const Ecosystem: React.FC = () => {
                 </Box>
               ))}
           </Box>
-          {content}
+          {value === "Featured dApps" && (
+            <AppsCarousel items={allFeatured} inView />
+          )}
+          {value === "Blockchains" && (
+            <>
+              {filterButtons}
+              <div className={classes.contentBox}>
+                <FeatureGrid items={filteredBlockchains} inView />
+              </div>
+            </>
+          )}
+          {value === "Wallets" && (
+            <div className={classes.contentBox}>
+              <FeatureGrid items={allWallets} inView />
+            </div>
+          )}
+          {value === "Validators" && (
+            <div className={classes.contentBox}>
+              <FeatureGrid items={sortedValidators} inView />
+            </div>
+          )}
         </FadeAndSlide >
       </Box>
     </div >
