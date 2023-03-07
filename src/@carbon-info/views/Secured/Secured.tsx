@@ -86,7 +86,7 @@ export default Secured;
 
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
-    margin: "30vh 0px",
+    margin: "auto",
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
     },

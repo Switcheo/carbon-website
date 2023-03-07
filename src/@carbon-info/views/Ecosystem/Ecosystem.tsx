@@ -137,7 +137,7 @@ export default Ecosystem;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "25vh auto",
+    margin: "auto",
     minHeight: "90vh",
     maxWidth: "1430px",
     [theme.breakpoints.down("sm")]: {
