@@ -88,6 +88,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "relative",
     marginTop: "10rem",
     paddingBottom: "10rem",
+    zIndex: 5,
   },
   headerText: {
     maxWidth: "57.125rem",

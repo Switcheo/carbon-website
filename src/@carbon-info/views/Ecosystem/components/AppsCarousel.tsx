@@ -30,9 +30,10 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
       infinite={true}
       beforeChange={(currSlide) => {
         const offset = isMobile ? 2 : 5;
-        const currSlideAbs = (currSlide - offset === items.length) ? 0 : currSlide - offset;
-        setView(currSlideAbs);
+        const currSlideMod = currSlide < offset ? items.length - (offset - currSlide) : (currSlide - offset) % items.length;
+        setView(currSlideMod);
       }}
+      minimumTouchDrag={150}
     >
       {items.map((item, index) => {
         const { name, icon, description, tag, ctaLink } = item;
@@ -170,6 +171,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "1rem 2rem",
     textTransform: "none",
     marginTop: "2rem",
+    "&:hover": {
+      background: StyleUtils.ctaButtonGradient,
+    },
   },
   minButton: {
     ...theme.typography.body2,
@@ -177,6 +181,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     background: theme.palette.text.tag,
     padding: "0.5rem 1.5rem",
     borderRadius: "32px",
+    "&:hover": {
+      background: theme.palette.text.tag,
+    },
   },
   logo: {
     height: "6.25rem",

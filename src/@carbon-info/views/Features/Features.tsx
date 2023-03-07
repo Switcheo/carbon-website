@@ -80,8 +80,8 @@ const Features: React.FC = () => {
 
   return (
     <div ref={ref} id="features" className={classes.features}>
-      <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: inView })} />
       <FadeAndSlide visible={inView}>
+        <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: inView })} />
         <Box className={clsx(classes.container, { open: inView })} >
           <>
             <Typography variant="h1" color="textPrimary" align="left">
@@ -99,6 +99,7 @@ const Features: React.FC = () => {
             infinite={true}
             showDots
             dotListClass={classes.dotList}
+            minimumTouchDrag={150}
           >
             {items.map((item, index) => {
               return (
@@ -147,6 +148,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: "-15%",
     scale: 2.25,
     opacity: 0,
+    zIndex: 0,
     "&.open": {
       opacity: 1,
     },
@@ -161,13 +163,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   container: {
     width: "100vw",
-    flexGrow: 1,
     display: "flex",
     paddingTop: "23.125rem",
     paddingBottom: "20rem",
     justifyContent: "center",
     opacity: 0,
     transition: "all 2s ease",
+    zIndex: 10,
+    position: "relative",
     "&.open": {
       opacity: 1,
     },
