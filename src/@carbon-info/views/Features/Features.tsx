@@ -84,7 +84,7 @@ const Features: React.FC = () => {
         <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: inView })} />
         <Box className={clsx(classes.container, { open: inView })} >
           <>
-            <Typography variant="h1" color="textPrimary" align="left">
+            <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
               Carbon is built&nbsp;
               {!isMobile && <br />}
               <span style={{ color: theme.palette.primary.light }}>for the future,&nbsp;</span>
@@ -121,9 +121,9 @@ const Features: React.FC = () => {
                   </Box>
                   <Lottie
                     options={item.icon}
-                    width={144}
+                    width={160}
                     height={160}
-                    style={{ margin: 0 }}
+                    style={{ margin: "0 1rem" }}
                   />
                 </Box>
               );
@@ -162,7 +162,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   container: {
-    width: "100vw",
+    width: "100%",
     display: "flex",
     paddingTop: "23.125rem",
     paddingBottom: "20rem",
@@ -174,15 +174,27 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.open": {
       opacity: 1,
     },
+    [theme.breakpoints.only("md")]: {
+      justifyContent: "space-between",
+    },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
+    },
+  },
+  featuresHeader: {
+    [theme.breakpoints.only("md")]: {
+      maxWidth: "350px",
     },
   },
   carouselContainer: {
     width: "667px",
     marginLeft: "129px",
+    [theme.breakpoints.only("md")]: {
+      width: "60%",
+      marginLeft: 0,
+    },
     [theme.breakpoints.down("sm")]: {
-      width: "calc(100% - 72px)",
+      width: "calc(100% - 32px)",
       marginLeft: 0,
       paddingRight: "2.5rem",
     },
