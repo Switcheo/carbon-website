@@ -1,6 +1,6 @@
 import { isFirefox, isMobileSafari } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
-import { Box, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, Grow, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
 import { BlockchainConfig, ValidatorConfig, WalletConfig, isBlockchainConfig } from "../ecosystemConfig";
@@ -22,25 +22,29 @@ const FeatureGrid: React.FC<Props> = (props: Props) => {
       {isBlockchainConfig(items) && items.map((item: BlockchainConfig, index) => {
         const { icon, name, chain } = item;
         return (
-          <Box key={`${name}-${index}`} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-            <Box className={clsx(classes.cardContainer, `${chain}`, { open: inView })}>
-              <img src={icon} alt="logo" className={classes.logo} />
-              {!isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "1.5rem", fontWeight: 700 }}>{name}</Typography>}
+          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-${index}`}>
+            <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+              <Box className={clsx(classes.cardContainer, `${chain}`, { open: inView })}>
+                <img src={icon} alt="logo" className={classes.logo} />
+                {!isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "1.5rem", fontWeight: 700 }}>{name}</Typography>}
+              </Box>
+              {isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "1.5rem", fontWeight: 700 }}>{name}</Typography>}
             </Box>
-            {isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "1.5rem", fontWeight: 700 }}>{name}</Typography>}
-          </Box>
+          </Grow>
         );
       })}
       {!isBlockchainConfig(items) && items.map((item: WalletConfig | ValidatorConfig, index) => {
         const { icon, name } = item;
         return (
-          <Box key={`${name}-${index}`} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-            <Box className={clsx(classes.cardContainer, { open: inView })}>
-              <img src={icon} alt="logo" className={classes.logo} />
-              {!isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "1.5rem", fontWeight: 700 }}>{name}</Typography>}
+          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-${index}`}>
+            <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+              <Box className={clsx(classes.cardContainer, { open: inView })}>
+                <img src={icon} alt="logo" className={classes.logo} />
+                {!isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "1.5rem", fontWeight: 700 }}>{name}</Typography>}
+              </Box>
+              {isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "0.5rem", fontWeight: 700 }}>{name}</Typography>}
             </Box>
-            {isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "0.5rem", fontWeight: 700 }}>{name}</Typography>}
-          </Box>
+          </Grow>
         );
       })}
     </Box>
