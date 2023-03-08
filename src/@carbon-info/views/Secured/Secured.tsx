@@ -86,10 +86,7 @@ export default Secured;
 
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
-    margin: "auto",
-    [theme.breakpoints.down("sm")]: {
-      margin: "10vh 0px",
-    },
+    margin: "10vh 0px",
   },
   secureContainer: {
     position: "relative",
@@ -97,11 +94,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     alignItems: "center",
     margin: "0 auto",
+    minHeight: "30rem",
     "&.open": {
       opacity: 1,
     },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column-reverse",
+      width: "100%",
     },
   },
   descriptionContainer: {

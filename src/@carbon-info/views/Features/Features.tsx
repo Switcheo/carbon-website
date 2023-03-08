@@ -121,9 +121,9 @@ const Features: React.FC = () => {
                   </Box>
                   <Lottie
                     options={item.icon}
-                    width={160}
-                    height={160}
-                    style={{ margin: "0 1rem" }}
+                    width={144}
+                    height={150}
+                    style={{ margin: 0 }}
                   />
                 </Box>
               );
@@ -155,6 +155,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.only("xl")]: {
       left: 0,
     },
+    [theme.breakpoints.only("md")]: {
+      top: -300,
+      scale: 1.5,
+    },
     [theme.breakpoints.down("sm")]: {
       top: "5rem",
       height: "80rem",
@@ -176,9 +180,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.only("md")]: {
       justifyContent: "space-between",
+      padding: "10rem 0",
     },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
+      paddingTop: 0,
+      paddingBottom: 0,
     },
   },
   featuresHeader: {

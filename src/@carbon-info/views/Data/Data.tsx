@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     position: "relative",
     marginTop: "10rem",
-    paddingBottom: "10rem",
+    paddingBottom: "5rem",
     zIndex: 5,
   },
   headerText: {

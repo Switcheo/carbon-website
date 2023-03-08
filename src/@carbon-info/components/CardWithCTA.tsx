@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("lg")]: {
       minHeight: "375px",
     },
     [theme.breakpoints.down("sm")]: {

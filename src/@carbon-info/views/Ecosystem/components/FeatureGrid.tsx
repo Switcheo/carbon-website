@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.only("xs")]: {
       gridTemplateColumns: "repeat(auto-fill, 9rem)",
       rowGap: "2.5rem",
+      maxHeight: "30rem",
     },
     // gradient scroll
     overflowY: "auto",

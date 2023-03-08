@@ -63,8 +63,9 @@ export default Build;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "25vh auto",
+    margin: "15vh auto",
     maxWidth: "1480px",
+    zIndex: 10,
     [theme.breakpoints.only("xl")]: {
       maxWidth: "1830px",
     },
@@ -78,5 +79,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: "-600px",
     left: "45%",
     marginLeft: "-50%",
+    [theme.breakpoints.up("xl")]: {
+      width: "110%",
+      top: "-800px",
+    },
   },
 }));

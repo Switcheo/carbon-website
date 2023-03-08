@@ -1,7 +1,7 @@
 import { Scroll } from "@carbon-info/assets";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
-import { Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import "animate.css";
 import clsx from "clsx";
 import React from "react";
@@ -59,10 +59,10 @@ const IntroPage: React.FC = () => {
             </Typography>
           </FadeAndSlide>
           <FadeAndSlide visible={inView}>
-            <div className={clsx(classes.scrollContainer, { open: inView })}>
+            <Box className={clsx(classes.scrollContainer, { open: inView })}>
               <Scroll className={clsx(classes.scrollIcon, "bounce")} />
               <Typography variant="body2" className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
-            </div>
+            </Box>
           </FadeAndSlide>
         </div>
       </Grid>
@@ -112,10 +112,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   scrollContainer: {
     opacity: 0,
     marginTop: "30rem",
+    position: "relative",
+    zIndex: 10,
+    cursor: "pointer",
     "&.open": {
       opacity: 1,
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       marginTop: "21.5rem",
     },
   },
@@ -123,7 +126,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.bounce": {
       animation: "bounce 2s ease infinite",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       height: "2.5rem",
     },
   },

@@ -137,8 +137,7 @@ export default Ecosystem;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "auto",
-    minHeight: "90vh",
+    margin: "0 auto 15vh",
     maxWidth: "1430px",
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
@@ -205,6 +204,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "100%",
       height: "15rem",
       background: StyleUtils.scrollBottomGradient,
+      [theme.breakpoints.down("sm")]: {
+        height: "10rem",
+      },
     },
     "&::after": {
       content: "''",
@@ -214,6 +216,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "100%",
       height: "15rem",
       background: StyleUtils.scrollTopGradient,
+      [theme.breakpoints.down("sm")]: {
+        height: "10rem",
+      },
     },
     "&.hidden": {
       display: "none",
