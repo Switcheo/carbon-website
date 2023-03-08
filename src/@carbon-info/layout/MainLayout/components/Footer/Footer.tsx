@@ -99,9 +99,9 @@ const sitemap = [
 const Footer: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Box id="footer">
+    <Box id="footer" className={classes.footerContainer}>
       <Divider style={{ marginBottom: "1.5rem" }} />
       <Grid container className={classes.sitemapContainer} spacing={isMobile ? 0 : 0}>
         {
@@ -130,10 +130,12 @@ const Footer: React.FC = () => {
       <Divider style={{ marginTop: "3.5rem" }} />
       <Grid container className={classes.footNoteContainer} spacing={6}>
         <Grid container item xs={12} md={12} alignItems="center" justifyContent="center">
-          <Grid item xs={12} sm={6} md={6} className={classes.socialMediaContainer}>
-            {/* <Typography color="textPrimary" variant="body1">
-              Social Media
-            </Typography> */}
+          {!isMobile && (
+            <Grid item xs={12} md={6} className={classes.logoContainer}>
+              <CarbonLogo className={classes.logo} />
+            </Grid>
+          )}
+          <Grid item xs={12} md={6} className={classes.socialMediaContainer}>
             <Link href={Path.Socials.Twitter} underline="none" target="_blank">
               <TwitterIcon className={classes.socialMediaIcon} />
             </Link>
@@ -147,9 +149,11 @@ const Footer: React.FC = () => {
               <GitHubIcon className={classes.socialMediaIcon} />
             </Link>
           </Grid>
-        </Grid>
-        <Grid item xs={12} sm={6} md={6} className={classes.logoContainer}>
-          <CarbonLogo className={classes.logo} />
+          {isMobile && (
+            <Grid item xs={12} md={6} className={classes.logoContainer}>
+              <CarbonLogo className={classes.logo} />
+            </Grid>
+          )}
         </Grid>
         <Grid item md={12}>
           <Typography className={classes.footNoteText} align="left" variant="body2">
@@ -158,7 +162,7 @@ const Footer: React.FC = () => {
         </Grid>
         <Grid item md={12}>
           <Typography color="textPrimary" variant="body2" align="left">
-            MADE WITH ❤️ FOR BUILDERS EVERYWHERE
+            Made with ❤️ for builders everywhere
           </Typography>
         </Grid>
       </Grid>
@@ -169,11 +173,14 @@ const Footer: React.FC = () => {
 export default Footer;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  footerContainer: {
+    maxWidth: "1830px",
+    margin: "0 auto",
+  },
   logo: {
-    verticalAlign: "middle",
     margin: "0px 0.063rem",
     [theme.breakpoints.down("xs")]: {
-      width: "30%",
+      width: "100px",
     },
   },
   footerHeader: {
@@ -198,21 +205,22 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   logoContainer: {
     textAlign: "start",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       textAlign: "center",
+      paddingTop: "4rem",
     },
   },
   socialMediaContainer: {
     textAlign: "center",
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     [theme.breakpoints.down("sm")]: {
       padding: "0 2rem",
       justifyContent: "space-between",
     },
   },
   footNoteContainer: {
-    marginTop: "5.5rem",
+    marginTop: "2.5rem",
     marginBottom: "7.5rem",
     [theme.breakpoints.down("sm")]: {
       marginTop: "3.5rem",
