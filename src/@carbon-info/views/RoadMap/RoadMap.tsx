@@ -273,7 +273,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   boxContainer: {
-    margin: "10vh 0px 15vh",
+    margin: "5vh 0px 15vh",
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
     },

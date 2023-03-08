@@ -174,7 +174,7 @@ export default Footer;
 
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
-    maxWidth: "1830px",
+    maxWidth: "1480px",
     margin: "0 auto",
   },
   logo: {

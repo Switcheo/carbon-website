@@ -160,7 +160,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       scale: 1.5,
     },
     [theme.breakpoints.down("sm")]: {
-      top: "5rem",
+      top: "-5rem",
       height: "80rem",
       left: "-75%",
     },
@@ -170,11 +170,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     paddingTop: "23.125rem",
     paddingBottom: "20rem",
-    justifyContent: "center",
+    justifyContent: "space-between",
     opacity: 0,
     transition: "all 2s ease",
     zIndex: 10,
     position: "relative",
+    margin: "auto",
+    maxWidth: "1480px",
     "&.open": {
       opacity: 1,
     },

@@ -89,11 +89,8 @@ export default Socials;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "15vh auto",
+    margin: "10vh auto 5vh",
     maxWidth: "1480px",
-    [theme.breakpoints.only("xl")]: {
-      maxWidth: "1600px",
-    },
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
     },
@@ -112,7 +109,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   contentBox: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },

@@ -19,7 +19,7 @@ const Partnership: React.FC = () => {
     <div ref={ref} id="partnership">
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
-          <Typography variant="h2" color="textPrimary" paragraph noWrap={!isTablet && !isSmallScreen} className={classes.noWrap}>
+          <Typography variant="h1" color="textPrimary" paragraph noWrap={!isTablet && !isSmallScreen}>
             Parterned with and backed by the best.
           </Typography >
         </FadeAndSlide>
@@ -44,9 +44,8 @@ export default Partnership;
 
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
-    margin: "15vh 0px",
+    margin: "10vh auto",
     [theme.breakpoints.down("sm")]: {
-      margin: "10vh 0px",
       zIndex: 10,
       position: "relative",
     },
@@ -76,13 +75,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("xs")]: {
       gap: 0,
-    },
-  },
-  noWrap: {
-    overflow: "visible",
-    marginBottom: theme.spacing(8),
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: "3rem",
     },
   },
   logo: {

@@ -1,5 +1,5 @@
 import { StyleUtils } from "@carbon-info/utils/styles";
-import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Box, makeStyles, Theme, Typography } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
@@ -24,23 +24,19 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   });
 
   return (
-    <div ref={ref}>
+    <div ref={ref} style={{ height: "100%" }}>
       <Box className={clsx(classes.boxContainer, { open: inView })} onClick={() => window.open(`${link}`, "_blank")}>
         <div className={classes.iconContainer}>
           <img src={icon} alt="icon" className={classes.icon} />
         </div>
-        <Grid className={classes.gridContainer} container>
-          <Grid item className={classes.gridItem}>
-            <div className={classes.textContainer}>
-              <Typography color="textPrimary" variant="h2" className={classes.title}>
-                {title}
-              </Typography>
-              <Typography color="textSecondary" variant="body1">
-                {description}
-              </Typography>
-            </div>
-          </Grid>
-        </Grid>
+        <div className={classes.textContainer}>
+          <Typography color="textPrimary" variant="h2" className={classes.title}>
+            {title}
+          </Typography>
+          <Typography color="textSecondary" variant="body1">
+            {description}
+          </Typography>
+        </div>
       </Box>
     </div>
   );
@@ -76,6 +72,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     opacity: 0,
     transform: "translate(0px, 20px)",
     transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    maxWidth: "450px",
     "&:hover": {
       cursor: "pointer",
     },
@@ -128,5 +125,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     marginBottom: "2.5rem",
     maxWidth: "328px",
+    [theme.breakpoints.only("md")]: {
+      paddingTop: "2.5rem",
+    },
   },
 }));

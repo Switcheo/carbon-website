@@ -6,7 +6,7 @@ import { CTAButton } from "@carbon-info/components";
 import FadeAndSlide from "@carbon-info/components/FadeAndSlide";
 import { Path } from "@carbon-info/constants";
 import { StyleUtils } from "@carbon-info/utils/styles";
-import { Box, Button, Theme, Typography, makeStyles } from "@material-ui/core";
+import { Box, Button, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -15,11 +15,15 @@ import "react-multi-carousel/lib/styles.css";
 
 const Secured: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.75,
     triggerOnce: true,
   });
+  // const widthMd = useMediaQuery(theme.breakpoints.only("md"));
+  const widthSmDown = useMediaQuery(theme.breakpoints.down("sm"));
+
 
   const genLottieData = (animation: any, loop: boolean, scaleMode?: string) => {
     return {
@@ -63,18 +67,28 @@ const Secured: React.FC = () => {
             <Box minWidth={400}>
               {getSWTHIcon && <Lottie
                 options={getSWTHIcon}
-                width={400}
+                width={widthSmDown ? 250 : 400}
                 style={{ zIndex: 1 }}
                 eventListeners={events}
               />
               }
+              {widthSmDown && (
+                <Lottie
+                  options={genLottieData(spinSwth, true, "0.25")}
+                  width={400}
+                  height={450}
+                  style={{ position: "absolute", zIndex: 0, top: -75 }}
+                />
+              )}
             </Box>
-            <Lottie
-              options={genLottieData(spinSwth, true, "0.25")}
-              width={650}
-              height={650}
-              style={{ position: "absolute", zIndex: 0, right: "-100px" }}
-            />
+            {!widthSmDown && (
+              <Lottie
+                options={genLottieData(spinSwth, true, "0.25")}
+                width={650}
+                height={650}
+                style={{ position: "absolute", zIndex: 0, right: -100 }}
+              />
+            )}
           </Box>
         </FadeAndSlide >
       </Box>
@@ -86,13 +100,14 @@ export default Secured;
 
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
-    margin: "10vh 0px",
+    margin: "10vh auto",
+    maxWidth: "1480px",
   },
   secureContainer: {
     position: "relative",
-    width: "fit-content",
     display: "flex",
     alignItems: "center",
+    justifyContent: "space-between",
     margin: "0 auto",
     minHeight: "30rem",
     "&.open": {
@@ -100,17 +115,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column-reverse",
-      width: "100%",
     },
   },
   descriptionContainer: {
     maxWidth: "48.125rem",
     textAlign: "left",
     marginRight: "5rem",
+    zIndex: 10,
     [theme.breakpoints.down("sm")]: {
       marginRight: 0,
       width: "100%",
-      maxWidth: "unset",
+      textAlign: "center",
     },
   },
   description: {
@@ -144,6 +159,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginRight: "2.125rem",
     borderRadius: "24px",
     background: StyleUtils.greenGradient,
+    whiteSpace: "nowrap",
     "&:hover": {
       background: StyleUtils.greenGradient,
       boxShadow: "none",

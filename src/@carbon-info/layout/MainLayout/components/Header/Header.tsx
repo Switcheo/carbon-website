@@ -64,18 +64,20 @@ const Header: React.FC = () => {
         )}
       </div>
       <Hidden mdUp>
-        <div className={isScrolled ? classes.navBarFixedContainer : classes.navBarFixedContainerCollapsed}>
-          <span className={classes.logoContainer}>
-            <Link href={"/"} underline="none">
-              <CarbonLogo className={classes.logoFixed} />
-            </Link>
-          </span>
-          <div className={classes.navButtonContainer}>
-            <div onClick={() => setShowMobileMenu(true)}>
-              <MenuIcon className={clsx(classes.menuIcon, { open: showMobileMenu })} />
+        {!showMobileMenu && (
+          <div className={isScrolled ? classes.navBarFixedContainer : classes.navBarFixedContainerCollapsed}>
+            <span className={classes.logoContainer}>
+              <Link href={"/"} underline="none">
+                <CarbonLogo className={classes.logoFixed} />
+              </Link>
+            </span>
+            <div className={classes.navButtonContainer}>
+              <div onClick={() => setShowMobileMenu(true)}>
+                <MenuIcon className={clsx(classes.menuIcon, { open: showMobileMenu })} />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </Hidden>
     </nav>
 
@@ -119,7 +121,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   navBarFixedContainer: {
-    zIndex: 10,
+    zIndex: 1000,
     display: "flex",
     alignItems: "center",
     position: "fixed",
@@ -132,7 +134,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     transition: "all 0.25s linear",
     opacity: 1,
     [theme.breakpoints.down("xs")]: {
-      padding: ".75rem 3rem .75rem 1rem",
+      padding: ".75rem 2rem .75rem 1rem",
     },
   },
   navBarFixedContainerCollapsed: {

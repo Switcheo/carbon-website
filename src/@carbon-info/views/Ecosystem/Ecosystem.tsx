@@ -137,7 +137,7 @@ export default Ecosystem;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "0 auto 15vh",
+    margin: "0 auto 10vh",
     maxWidth: "1430px",
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
@@ -246,10 +246,16 @@ const useStyles = makeStyles((theme: Theme) => ({
       borderColor: theme.palette.primary.main,
       backgroundColor: "transparent",
     },
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "1rem",
+    },
   },
   filterBox: {
     "&:not(:last-child)": {
       marginRight: "1.5rem",
+      [theme.breakpoints.down("sm")]: {
+        marginRight: 0,
+      },
     },
   },
 }));
