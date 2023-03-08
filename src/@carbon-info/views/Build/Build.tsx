@@ -40,7 +40,7 @@ const Build: React.FC = () => {
               <CardWithCTA
                 title={"Propose a partnership"}
                 description={"Working towards a freer financial system"}
-                link={"mailto:marketing@switcheo.network"}
+                link={Path.Socials.Discussion}
                 icon={ProposeSVG}
               />
             </Grid>
