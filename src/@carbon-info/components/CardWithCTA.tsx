@@ -24,7 +24,7 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   });
 
   return (
-    <div ref={ref} style={{ height: "100%" }}>
+    <div ref={ref} className={classes.contentCardContainer}>
       <Box className={clsx(classes.boxContainer, { open: inView })} onClick={() => window.open(`${link}`, "_blank")}>
         <div className={classes.iconContainer}>
           <img src={icon} alt="icon" className={classes.icon} />
@@ -45,6 +45,11 @@ const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
 export default CardWithCTA;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  contentCardContainer: {
+    height: "100%",
+    position: "relative",
+    display: "grid",
+  },
   icon: {
     position: "absolute",
     right: 0,
@@ -60,6 +65,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "2.5rem",
   },
   boxContainer: {
+    height: "100%",
+    boxSizing: "border-box",
+    position: "relative",
     background: theme.palette.background.default,
     mixBlendMode: "normal",
     boxShadow: theme.shadows[1],
@@ -93,9 +101,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
       pointerEvents: "none",
-    },
-    [theme.breakpoints.up("lg")]: {
-      minHeight: "375px",
     },
     [theme.breakpoints.down("sm")]: {
       borderRadius: 13.3,
