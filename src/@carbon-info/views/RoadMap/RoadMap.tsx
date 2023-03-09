@@ -1,6 +1,7 @@
 import roadMapBG from "@carbon-info/assets/background/roadmapLineBg.png";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { useContentful } from "@carbon-info/hooks";
+import { isWidth } from "@carbon-info/utils/environment";
 import { Box, Fade, Grid, Hidden, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import moment from "moment";
@@ -11,8 +12,8 @@ import { RoadMapButton, SphereWithText } from "./components";
 const RoadMap: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isTablet = isWidth("sm");
+  const isMobile = isWidth("xs");
   const isWideDesktop = useMediaQuery(theme.breakpoints.up("xl"));
   const [progressAndDescriptionCounter, setProgressAndDescriptionCounter] = useState<any>([]);
   const [step, setStep] = useState<any>(0);

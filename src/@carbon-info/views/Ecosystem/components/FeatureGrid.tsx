@@ -1,6 +1,6 @@
-import { isFirefox, isMobileSafari } from "@carbon-info/utils/environment";
+import { isFirefox, isMobileSafari, isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
-import { Box, Grow, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, Grow, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
 import { BlockchainConfig, ValidatorConfig, WalletConfig, isBlockchainConfig } from "../ecosystemConfig";
@@ -12,10 +12,9 @@ interface Props {
 
 const FeatureGrid: React.FC<Props> = (props: Props) => {
   const { items, inView } = props;
-  const theme = useTheme();
   const classes = useStyles();
 
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = isWidth("sm");
 
   return (
     <Box className={classes.gridContainer}>

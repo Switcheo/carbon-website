@@ -1,7 +1,8 @@
-import React from "react";
-import { Box, Divider, Grid, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { CarbonLogo, DiscordFooterIcon, GitHubIcon, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Box, Divider, Grid, Link, Theme, Typography, makeStyles } from "@material-ui/core";
+import React from "react";
 
 const sitemap = [
   {
@@ -98,8 +99,7 @@ const sitemap = [
 
 const Footer: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = isWidth("sm");
   return (
     <Box id="footer" className={classes.footerContainer}>
       <Divider style={{ marginBottom: "1.5rem" }} />

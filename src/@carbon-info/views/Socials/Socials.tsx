@@ -6,7 +6,8 @@ import TelegramIcon from "@carbon-info/assets/icons/telegram.svg";
 import TwitterIcon from "@carbon-info/assets/icons/twitter.svg";
 import { FadeAndSlide } from "@carbon-info/components";
 import { Path } from "@carbon-info/constants";
-import { Box, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Box, Theme, Typography, makeStyles } from "@material-ui/core";
 import "animate.css";
 import React from "react";
 import { useInView } from "react-intersection-observer";
@@ -20,7 +21,6 @@ interface socialItem {
 
 const Socials: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.35,
@@ -49,7 +49,7 @@ const Socials: React.FC = () => {
     description: "Interested in building on Carbon or joining us as a validator? Join the discussion.",
   }];
 
-  const widthMdDown = useMediaQuery(theme.breakpoints.down("md"));
+  const widthMdDown = isWidth("md");
 
   return (
     <div ref={ref} id="socials">

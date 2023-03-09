@@ -1,16 +1,17 @@
-import React from "react";
-import { Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { IntroPageBackgroundLine } from "@carbon-info/assets/background";
 import backgroundLogo from "@carbon-info/assets/background/roadMapPageLeft.png";
 import backgroundLogoRight from "@carbon-info/assets/background/roadMapPageRight.png";
 import { FadeAndSlide } from "@carbon-info/components";
-import { useInView } from "react-intersection-observer";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Grid, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
+import React from "react";
+import { useInView } from "react-intersection-observer";
 
 const Intro: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = isWidth("sm");
   const isSmallTablet = useMediaQuery(theme.breakpoints.down(700));
   const isSmallMobile = useMediaQuery(theme.breakpoints.down(340));
   const { ref, inView } = useInView({

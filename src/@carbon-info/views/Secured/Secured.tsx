@@ -5,8 +5,9 @@ import spinSwth from "@carbon-info/assets/animated/spinSWTH.json";
 import { CTAButton } from "@carbon-info/components";
 import FadeAndSlide from "@carbon-info/components/FadeAndSlide";
 import { Path } from "@carbon-info/constants";
+import { isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
-import { Box, Button, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, Button, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -15,14 +16,12 @@ import "react-multi-carousel/lib/styles.css";
 
 const Secured: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.75,
     triggerOnce: true,
   });
-  // const widthMd = useMediaQuery(theme.breakpoints.only("md"));
-  const widthSmDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const widthSmDown = isWidth("sm");
 
 
   const genLottieData = (animation: any, loop: boolean, scaleMode?: string) => {

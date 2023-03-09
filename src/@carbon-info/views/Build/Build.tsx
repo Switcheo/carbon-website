@@ -4,7 +4,8 @@ import PitchSVG from "@carbon-info/assets/non-animated/pitch.svg";
 import ProposeSVG from "@carbon-info/assets/non-animated/propose.svg";
 import { CardWithCTA, FadeAndSlide } from "@carbon-info/components";
 import { Path } from "@carbon-info/constants";
-import { Box, Grid, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Box, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
 import "animate.css";
 import clsx from "clsx";
 import React from "react";
@@ -12,8 +13,7 @@ import { useInView } from "react-intersection-observer";
 
 const Build: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = isWidth("sm");
 
   const { ref, inView } = useInView({
     /* Optional options */

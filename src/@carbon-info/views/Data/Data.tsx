@@ -1,6 +1,7 @@
 import { FadeAndSlide } from "@carbon-info/components";
+import { isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
-import { Divider, Grid, makeStyles, Paper, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { Divider, Grid, makeStyles, Paper, Theme, Typography } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
@@ -13,14 +14,13 @@ interface DataInfo {
 
 const Data: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.7,
     triggerOnce: true,
   });
 
-  const widthXs = useMediaQuery(theme.breakpoints.only("xs"));
+  const widthXs = isWidth("xs");
 
   const tableInfo: DataInfo[] = [{
     value: "157,000,000+",

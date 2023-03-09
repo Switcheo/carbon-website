@@ -1,7 +1,8 @@
 import { Scroll } from "@carbon-info/assets";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
-import { Box, Grid, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Box, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
 import "animate.css";
 import clsx from "clsx";
 import React from "react";
@@ -10,14 +11,13 @@ import Lottie from "react-lottie";
 
 const IntroPage: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.4,
     triggerOnce: true,
   });
 
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile = isWidth("xs");
 
   const AniStartOptions = {
     loop: true,

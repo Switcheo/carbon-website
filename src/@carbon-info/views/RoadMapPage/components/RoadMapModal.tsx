@@ -1,9 +1,10 @@
 import { DocsIcon, GitHubIcon, MenuIconClose } from "@carbon-info/assets";
+import { isWidth } from "@carbon-info/utils/environment";
 import { RoadMapButton } from "@carbon-info/views/RoadMap/components";
-import { Divider, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import React from "react";
-import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { Divider, Grid, Hidden, Link, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
+import React from "react";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 interface Props {
   content: {
@@ -23,10 +24,9 @@ interface Props {
 
 const RoadMapModal: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
-  const theme = useTheme();
   const { content, mainTitle, incrementTab, decrementTab, closeModal, page } = props;
   const { title, status, progress, docLink, githubLink, description } = content;
-  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = isWidth("sm");
   return (
     <div className={classes.container}>
       <MenuIconClose className={classes.menuIcon} onClick={closeModal} />

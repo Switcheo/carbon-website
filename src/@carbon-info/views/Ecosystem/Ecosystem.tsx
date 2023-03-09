@@ -146,6 +146,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   tabsBox: {
     display: "flex",
     position: "relative",
+    overflow: "auto",
   },
   tabWrapper: {
     position: "relative",

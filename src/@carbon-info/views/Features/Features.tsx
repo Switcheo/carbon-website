@@ -4,7 +4,8 @@ import versatile from "@carbon-info/assets/animated/versatile.json";
 import carbonFeaturesBackground from "@carbon-info/assets/background/carbonFeaturesBackground.svg";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { Path, Responsive } from "@carbon-info/constants";
-import { Box, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Box, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
@@ -23,7 +24,7 @@ interface FeatureItem {
 const Features: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = isWidth("sm");
 
   const { ref, inView } = useInView({
     /* Optional options */

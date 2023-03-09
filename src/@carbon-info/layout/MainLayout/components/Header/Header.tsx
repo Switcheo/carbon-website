@@ -1,16 +1,16 @@
-import React, { useLayoutEffect, useState } from "react";
-import { Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { ArrowIcon, CarbonLogo, MenuIcon } from "@carbon-info/assets";
-import MobileMenu from "./components/MobileMenu";
-import clsx from "clsx";
 import { Path } from "@carbon-info/constants";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Hidden, Link, Theme, Typography, makeStyles } from "@material-ui/core";
+import clsx from "clsx";
+import React, { useLayoutEffect, useState } from "react";
+import MobileMenu from "./components/MobileMenu";
 
 const SWITCH_THRESHOLD = 45;
 
 const Header: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = isWidth("sm");
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [topOffset, setTopOffset] = useState(window.scrollY);
   useLayoutEffect(() => {
