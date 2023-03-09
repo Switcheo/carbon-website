@@ -192,7 +192,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     zIndex: 99,
     top: "1.1rem",
-    left: "33%",
+    left: "calc(50% - 12.5px)",
     [theme.breakpoints.down(1050)]: {
       left: "28%",
     },
