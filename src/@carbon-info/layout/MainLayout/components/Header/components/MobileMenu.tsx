@@ -19,7 +19,9 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
     <div className={classes.navBarContainer} ref={ref}>
       <img src={mobileMenuBackground} className={classes.background} />
       <div className={classes.logoContainer}>
-        <CarbonLogo className={classes.logo} />
+        <Link href={"/"} underline="none">
+          <CarbonLogo className={classes.logo} />
+        </Link>
         <MenuIconClose onClick={callback} className={classes.menuIcon} />
       </div>
       <div className={classes.navButtonContainer}>
