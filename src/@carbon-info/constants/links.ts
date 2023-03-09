@@ -22,7 +22,7 @@ export const Path = {
     Blog: "https://blog.switcheo.com",
     Buy: "https://hub.carbon.network/buy",
     CarbonHub: "https://hub.carbon.network/",
-    Stake: "https://app.dem.exchange/stake",
+    Stake: "https://hub.carbon.network/stake",
     Nitron: "https://app.dem.exchange/nitron",
     Token: "https://scan.carbon.network/tokens?net=main",
     Markets: "https://scan.carbon.network/markets?net=main",
