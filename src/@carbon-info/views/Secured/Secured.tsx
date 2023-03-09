@@ -5,6 +5,7 @@ import spinSwth from "@carbon-info/assets/animated/spinSWTH.json";
 import { CTAButton } from "@carbon-info/components";
 import FadeAndSlide from "@carbon-info/components/FadeAndSlide";
 import { Path } from "@carbon-info/constants";
+import { isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Button, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
@@ -20,6 +21,8 @@ const Secured: React.FC = () => {
     threshold: 0.75,
     triggerOnce: true,
   });
+  const widthSmDown = isWidth("sm");
+
 
   const genLottieData = (animation: any, loop: boolean, scaleMode?: string) => {
     return {
@@ -63,18 +66,28 @@ const Secured: React.FC = () => {
             <Box minWidth={400}>
               {getSWTHIcon && <Lottie
                 options={getSWTHIcon}
-                width={400}
+                width={widthSmDown ? 250 : 400}
                 style={{ zIndex: 1 }}
                 eventListeners={events}
               />
               }
+              {widthSmDown && (
+                <Lottie
+                  options={genLottieData(spinSwth, true, "0.25")}
+                  width={400}
+                  height={450}
+                  style={{ position: "absolute", zIndex: 0, top: -75 }}
+                />
+              )}
             </Box>
-            <Lottie
-              options={genLottieData(spinSwth, true, "0.25")}
-              width={650}
-              height={650}
-              style={{ position: "absolute", zIndex: 0, right: "-100px" }}
-            />
+            {!widthSmDown && (
+              <Lottie
+                options={genLottieData(spinSwth, true, "0.25")}
+                width={650}
+                height={650}
+                style={{ position: "absolute", zIndex: 0, right: -100 }}
+              />
+            )}
           </Box>
         </FadeAndSlide >
       </Box>
@@ -86,17 +99,16 @@ export default Secured;
 
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
-    margin: "30vh 0px",
-    [theme.breakpoints.down("sm")]: {
-      margin: "10vh 0px",
-    },
+    margin: "10vh auto",
+    maxWidth: "1480px",
   },
   secureContainer: {
     position: "relative",
-    width: "fit-content",
     display: "flex",
     alignItems: "center",
+    justifyContent: "space-between",
     margin: "0 auto",
+    minHeight: "30rem",
     "&.open": {
       opacity: 1,
     },
@@ -108,10 +120,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     maxWidth: "48.125rem",
     textAlign: "left",
     marginRight: "5rem",
+    zIndex: 10,
     [theme.breakpoints.down("sm")]: {
       marginRight: 0,
       width: "100%",
-      maxWidth: "unset",
+      textAlign: "center",
     },
   },
   description: {
@@ -145,6 +158,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginRight: "2.125rem",
     borderRadius: "24px",
     background: StyleUtils.greenGradient,
+    whiteSpace: "nowrap",
     "&:hover": {
       background: StyleUtils.greenGradient,
       boxShadow: "none",

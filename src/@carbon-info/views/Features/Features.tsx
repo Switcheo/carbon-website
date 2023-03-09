@@ -4,7 +4,8 @@ import versatile from "@carbon-info/assets/animated/versatile.json";
 import carbonFeaturesBackground from "@carbon-info/assets/background/carbonFeaturesBackground.svg";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { Path, Responsive } from "@carbon-info/constants";
-import { Box, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Box, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
@@ -23,7 +24,7 @@ interface FeatureItem {
 const Features: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = isWidth("sm");
 
   const { ref, inView } = useInView({
     /* Optional options */
@@ -80,11 +81,11 @@ const Features: React.FC = () => {
 
   return (
     <div ref={ref} id="features" className={classes.features}>
-      <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: inView })} />
       <FadeAndSlide visible={inView}>
+        <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: inView })} />
         <Box className={clsx(classes.container, { open: inView })} >
           <>
-            <Typography variant="h1" color="textPrimary" align="left">
+            <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
               Carbon is built&nbsp;
               {!isMobile && <br />}
               <span style={{ color: theme.palette.primary.light }}>for the future,&nbsp;</span>
@@ -99,6 +100,7 @@ const Features: React.FC = () => {
             infinite={true}
             showDots
             dotListClass={classes.dotList}
+            minimumTouchDrag={150}
           >
             {items.map((item, index) => {
               return (
@@ -121,7 +123,7 @@ const Features: React.FC = () => {
                   <Lottie
                     options={item.icon}
                     width={144}
-                    height={160}
+                    height={150}
                     style={{ margin: 0 }}
                   />
                 </Box>
@@ -147,39 +149,62 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: "-15%",
     scale: 2.25,
     opacity: 0,
+    zIndex: 0,
     "&.open": {
       opacity: 1,
     },
     [theme.breakpoints.only("xl")]: {
       left: 0,
     },
+    [theme.breakpoints.only("md")]: {
+      top: -300,
+      scale: 1.5,
+    },
     [theme.breakpoints.down("sm")]: {
-      top: "5rem",
+      top: "-5rem",
       height: "80rem",
       left: "-75%",
     },
   },
   container: {
-    width: "100vw",
-    flexGrow: 1,
+    width: "100%",
     display: "flex",
     paddingTop: "23.125rem",
     paddingBottom: "20rem",
-    justifyContent: "center",
+    justifyContent: "space-between",
     opacity: 0,
     transition: "all 2s ease",
+    zIndex: 10,
+    position: "relative",
+    margin: "auto",
+    maxWidth: "1480px",
     "&.open": {
       opacity: 1,
     },
+    [theme.breakpoints.only("md")]: {
+      justifyContent: "space-between",
+      padding: "10rem 0",
+    },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
+      paddingTop: 0,
+      paddingBottom: 0,
+    },
+  },
+  featuresHeader: {
+    [theme.breakpoints.only("md")]: {
+      maxWidth: "350px",
     },
   },
   carouselContainer: {
     width: "667px",
     marginLeft: "129px",
+    [theme.breakpoints.only("md")]: {
+      width: "60%",
+      marginLeft: 0,
+    },
     [theme.breakpoints.down("sm")]: {
-      width: "calc(100% - 72px)",
+      width: "calc(100% - 32px)",
       marginLeft: 0,
       paddingRight: "2.5rem",
     },

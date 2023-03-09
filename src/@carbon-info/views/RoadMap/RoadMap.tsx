@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Box, Fade, Grid, Hidden, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import roadMapBG from "@carbon-info/assets/background/roadmapLineBg.png";
-import roadMapGlow from "@carbon-info/assets/background/roadMapGlow.svg";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
+import { useContentful } from "@carbon-info/hooks";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Box, Fade, Grid, Hidden, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import clsx from "clsx";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { RoadMapButton, SphereWithText } from "./components";
-import moment from "moment";
-import clsx from "clsx";
-import { useContentful } from "@carbon-info/hooks";
 
 const RoadMap: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isTablet = isWidth("sm");
+  const isMobile = isWidth("xs");
   const isWideDesktop = useMediaQuery(theme.breakpoints.up("xl"));
   const [progressAndDescriptionCounter, setProgressAndDescriptionCounter] = useState<any>([]);
   const [step, setStep] = useState<any>(0);
@@ -143,13 +143,12 @@ const RoadMap: React.FC = () => {
     <div ref={ref} id="roadMap">
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
-          <Typography variant="h2" color="textPrimary" paragraph noWrap className={classes.noWrap}>
+          <Typography variant="h2" color="textPrimary" paragraph>
             Building towards change
           </Typography >
         </FadeAndSlide>
         <FadeAndSlide visible={inView} delay={10000}>
           <Grid container alignItems="center" justifyContent="center" className={classes.roadMapContainer} spacing={8}>
-            <img src={roadMapGlow} alt="glow" className={classes.glowSVG} />
             <div className={classes.roadMapSVGContainer}>
               <Hidden lgDown>
                 <div className={clsx(classes.gradientOverlay, "right")} />
@@ -275,7 +274,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   boxContainer: {
-    margin: "25vh 0px",
+    margin: "5vh 0px 15vh",
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
     },
@@ -309,14 +308,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginBottom: "-42vw",
     },
   },
-  glowSVG: {
-    position: "absolute",
-    left: "-10%",
-    pointerEvents: "none",
-    [theme.breakpoints.down("sm")]: {
-      width: "150%",
-    },
-  },
   roadMapContainer: {
     zIndex: 1,
     marginTop: "7rem",
@@ -327,10 +318,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("xs")]: {
       marginTop: "9rem",
     },
-  },
-  noWrap: {
-    overflow: "visible",
-    marginBottom: theme.spacing(4),
   },
   ctaIcon: {
     width: "20px",

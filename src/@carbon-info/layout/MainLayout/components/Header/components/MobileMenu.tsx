@@ -23,7 +23,7 @@ const MobileMenu: React.FC<Props> = (props: Props) => {
         <MenuIconClose onClick={callback} className={classes.menuIcon} />
       </div>
       <div className={classes.navButtonContainer}>
-        <Typography color="textPrimary" variant="h1" style={{ margin: "5rem 0" }}>
+        <Typography color="textPrimary" variant="h2" style={{ margin: "5rem 0" }}>
           The Core of
           <br />
           <span style={{ color: theme.palette.primary.light }}>
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   navBarContainer: {
     height: "-webkit-fill-available",
-    width: "100vw",
+    width: "100%",
     position: "relative",
     background: theme.palette.background.navBar,
     top: 0,

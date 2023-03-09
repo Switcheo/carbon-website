@@ -1,15 +1,15 @@
 import { allPartnersLogo } from "@carbon-info/assets";
 import partnershipGlow from "@carbon-info/assets/background/partnershipGlow.svg";
 import { FadeAndSlide } from "@carbon-info/components";
-import { Box, Grid, Grow, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Box, Grid, Grow, Theme, Typography, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 
 const Partnership: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmallScreen = isWidth("md");
+  const isTablet = isWidth("sm");
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.35,
@@ -19,8 +19,8 @@ const Partnership: React.FC = () => {
     <div ref={ref} id="partnership">
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
-          <Typography variant="h2" color="textPrimary" paragraph noWrap={!isTablet && !isSmallScreen} className={classes.noWrap}>
-            Parterned with and backed by the best.
+          <Typography variant="h1" color="textPrimary" paragraph noWrap={!isTablet && !isSmallScreen}>
+            Partnered with and backed by the best.
           </Typography >
         </FadeAndSlide>
         <Grid container alignItems="center" justifyContent="center" className={classes.logoContainer} spacing={isTablet ? 4 : 8}>
@@ -44,9 +44,10 @@ export default Partnership;
 
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
-    margin: "25vh 0px",
+    margin: "10vh auto",
     [theme.breakpoints.down("sm")]: {
-      margin: "10vh 0px",
+      zIndex: 10,
+      position: "relative",
     },
   },
   glowSVG: {
@@ -74,13 +75,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("xs")]: {
       gap: 0,
-    },
-  },
-  noWrap: {
-    overflow: "visible",
-    marginBottom: theme.spacing(8),
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: "3rem",
     },
   },
   logo: {

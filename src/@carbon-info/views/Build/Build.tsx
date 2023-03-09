@@ -4,15 +4,16 @@ import PitchSVG from "@carbon-info/assets/non-animated/pitch.svg";
 import ProposeSVG from "@carbon-info/assets/non-animated/propose.svg";
 import { CardWithCTA, FadeAndSlide } from "@carbon-info/components";
 import { Path } from "@carbon-info/constants";
-import { Box, Grid, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Box, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
 import "animate.css";
+import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 
 const Build: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = isWidth("sm");
 
   const { ref, inView } = useInView({
     /* Optional options */
@@ -26,8 +27,8 @@ const Build: React.FC = () => {
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
           <Typography variant="h1" color="textPrimary" style={{ marginBottom: "4.5rem" }}>Build on Carbon</Typography>
-          <Grid container justifyContent="flex-start" spacing={isMobile ? 5 : 10}>
-            <Grid item xs={12} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInLeft" : ""}>
+          <Grid container justifyContent="center" spacing={5}>
+            <Grid item xs={12} sm={7} md={4} className={clsx(inView && !isMobile ? "animate__animated animate__fadeInLeft" : "", classes.item)} >
               <CardWithCTA
                 title={"Develop on Carbon"}
                 description={"Leverage our native source code to fast-track development"}
@@ -35,15 +36,15 @@ const Build: React.FC = () => {
                 icon={DevelopSVG}
               />
             </Grid>
-            <Grid item xs={12} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInUp" : ""}>
+            <Grid item xs={12} sm={7} md={4} className={clsx(inView && !isMobile ? "animate__animated animate__fadeInUp" : "", classes.item)}>
               <CardWithCTA
                 title={"Propose a partnership"}
                 description={"Working towards a freer financial system"}
-                link={"mailto:marketing@switcheo.network"}
+                link={Path.Socials.Discussion}
                 icon={ProposeSVG}
               />
             </Grid>
-            <Grid item xs={12} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInRight" : ""}>
+            <Grid item xs={12} sm={7} md={4} className={clsx(inView && !isMobile ? "animate__animated animate__fadeInRight" : "", classes.item)}>
               <CardWithCTA
                 title={"Pitch your project"}
                 description={"Need funding to kickstart your project on Carbon?"}
@@ -63,13 +64,11 @@ export default Build;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "25vh auto",
+    margin: "10vh auto",
     maxWidth: "1480px",
-    [theme.breakpoints.only("xl")]: {
-      maxWidth: "1830px",
-    },
+    zIndex: 10,
     [theme.breakpoints.down("sm")]: {
-      margin: "10vh 0px",
+      margin: "5vh 0px",
     },
   },
   background: {
@@ -78,5 +77,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: "-600px",
     left: "45%",
     marginLeft: "-50%",
+    [theme.breakpoints.up("xl")]: {
+      width: "110%",
+      top: "-800px",
+    },
+  },
+  item: {
+    height: "100%",
   },
 }));
