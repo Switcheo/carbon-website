@@ -2,7 +2,7 @@ import { Scroll } from "@carbon-info/assets";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
 import { isWidth } from "@carbon-info/utils/environment";
-import { Box, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
+import { Grid, Theme, Typography, makeStyles } from "@material-ui/core";
 import "animate.css";
 import clsx from "clsx";
 import React from "react";
@@ -26,6 +26,20 @@ const IntroPage: React.FC = () => {
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
+  };
+
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+  const [height, setHeight] = React.useState(0);
+  React.useEffect(() => {
+    if (scrollRef.current) {
+      const homeHeight = scrollRef.current.parentElement?.parentElement?.parentElement?.offsetHeight ?? 0;
+      const navBarHeight = scrollRef.current.parentElement?.parentElement?.parentElement?.offsetTop ?? 0;
+      setHeight(homeHeight + navBarHeight);
+    }
+  }, []);
+
+  const goToData = () => {
+    window.scrollTo(0, height);
   };
 
   return (
@@ -59,10 +73,10 @@ const IntroPage: React.FC = () => {
             </Typography>
           </FadeAndSlide>
           <FadeAndSlide visible={inView}>
-            <Box className={clsx(classes.scrollContainer, { open: inView })}>
+            <div ref={scrollRef} className={clsx(classes.scrollContainer, { open: inView })} onClick={() => goToData()}>
               <Scroll className={clsx(classes.scrollIcon, "bounce")} />
               <Typography variant="body2" className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
-            </Box>
+            </div>
           </FadeAndSlide>
         </div>
       </Grid>
