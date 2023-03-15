@@ -90,7 +90,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
     margin: "10vh auto 5vh",
-    maxWidth: "1480px",
+    maxWidth: "1400px",
+    zIndex: 10,
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
     },
@@ -98,13 +99,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   background: {
     position: "absolute",
     width: "1000px",
-    left: 0,
-    top: "-325px",
-    zIndex: -1,
-    [theme.breakpoints.down("sm")]: {
+    left: "-7.5rem",
+    top: "-400px",
+    zIndex: 0,
+    [theme.breakpoints.only("xs")]: {
       top: "-100px",
       width: "700px",
       left: "-50%",
+    },
+    [theme.breakpoints.up("xl")]: {
+      top: "-300px",
     },
   },
   contentBox: {
@@ -117,6 +121,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   headerSection: {
     maxWidth: "478px",
     marginRight: "10rem",
+    zIndex: 10,
     [theme.breakpoints.only("md")]: {
       maxWidth: "unset",
       marginRight: "2rem",

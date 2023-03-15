@@ -100,7 +100,7 @@ export default Secured;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     margin: "10vh auto",
-    maxWidth: "1480px",
+    maxWidth: "1400px",
   },
   secureContainer: {
     position: "relative",

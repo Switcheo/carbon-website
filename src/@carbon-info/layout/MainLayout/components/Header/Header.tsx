@@ -37,7 +37,7 @@ const Header: React.FC = () => {
           {
             isMobile ?
               <>
-                <div onClick={() => setShowMobileMenu(true)}>
+                <div className={classes.navButtonMobile} onClick={() => setShowMobileMenu(true)}>
                   <MenuIcon className={clsx(classes.menuIcon, { open: showMobileMenu })} />
                 </div>
               </>
@@ -71,7 +71,7 @@ const Header: React.FC = () => {
                 <CarbonLogo className={classes.logoFixed} />
               </Link>
             </span>
-            <div className={classes.navButtonContainer}>
+            <div className={classes.navButtonMobile}>
               <div onClick={() => setShowMobileMenu(true)}>
                 <MenuIcon className={clsx(classes.menuIcon, { open: showMobileMenu })} />
               </div>
@@ -159,8 +159,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   logo: {
     verticalAlign: "middle",
-    margin: theme.spacing(0, 1),
-    width: "250px",
+    width: "200px",
     [theme.breakpoints.down("xs")]: {
       marginRight: "auto",
       textAlign: "start",
@@ -186,9 +185,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   navButtonContainer: {
     display: "flex",
     gap: 50,
-    justifyContent: "flex-end",
+    justifyContent: "center",
     flex: 1,
-    marginRight: theme.spacing(1),
+  },
+  navButtonMobile: {
+    display: "flex",
+    flex: 1,
+    justifyContent: "flex-end",
   },
   externalLink: {
     display: "flex",

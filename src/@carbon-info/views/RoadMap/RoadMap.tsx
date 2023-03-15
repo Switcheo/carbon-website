@@ -2,8 +2,7 @@ import roadMapBG from "@carbon-info/assets/background/roadmapLineBg.png";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { useContentful } from "@carbon-info/hooks";
 import { isWidth } from "@carbon-info/utils/environment";
-import { Box, Fade, Grid, Hidden, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
-import clsx from "clsx";
+import { Box, Fade, Grid, Theme, Typography, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -150,10 +149,6 @@ const RoadMap: React.FC = () => {
         <FadeAndSlide visible={inView} delay={10000}>
           <Grid container alignItems="center" justifyContent="center" className={classes.roadMapContainer} spacing={8}>
             <div className={classes.roadMapSVGContainer}>
-              <Hidden lgDown>
-                <div className={clsx(classes.gradientOverlay, "right")} />
-                <div className={clsx(classes.gradientOverlay, "left")} />
-              </Hidden>
               <img src={roadMapBG} alt="bg" className={classes.roadMapSVG} />
               <div className={classes.sphereContainer} style={{ transform: `rotate(${step * 0}deg)` }}>
                 {roadMapItems.map((items, index) => {

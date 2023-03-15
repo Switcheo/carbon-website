@@ -109,7 +109,7 @@ const Features: React.FC = () => {
                     <Typography variant="h2" color="textPrimary" align="left" style={{ marginBottom: "40px" }}>
                       {item.header}
                     </Typography>
-                    <Typography variant="body1" color="textSecondary" align="left" style={{ marginBottom: "40px", maxWidth: "523px" }}>
+                    <Typography variant="body1" color="textSecondary" align="left" className={classes.description}>
                       <span style={{ color: theme.palette.text.primary }}>{item.subheader}</span>
                       &nbsp;{item.description}
                     </Typography>
@@ -157,8 +157,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       left: 0,
     },
     [theme.breakpoints.only("md")]: {
-      top: -300,
+      top: -400,
       scale: 1.5,
+      left: "-25%",
     },
     [theme.breakpoints.down("sm")]: {
       top: "-5rem",
@@ -177,23 +178,23 @@ const useStyles = makeStyles((theme: Theme) => ({
     zIndex: 10,
     position: "relative",
     margin: "auto",
-    maxWidth: "1480px",
+    maxWidth: "1400px",
     "&.open": {
       opacity: 1,
     },
-    [theme.breakpoints.only("md")]: {
+    [theme.breakpoints.down("md")]: {
       justifyContent: "space-between",
       padding: "10rem 0",
     },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
-      paddingTop: 0,
       paddingBottom: 0,
     },
   },
   featuresHeader: {
-    [theme.breakpoints.only("md")]: {
-      maxWidth: "350px",
+    [theme.breakpoints.up("md")]: {
+      minWidth: "425px",
+      whiteSpace: "nowrap",
     },
   },
   carouselContainer: {
@@ -251,6 +252,13 @@ const useStyles = makeStyles((theme: Theme) => ({
         borderStyle: "none",
         background: theme.palette.divider,
       },
+    },
+  },
+  description: {
+    marginBottom: "40px",
+    maxWidth: "523px",
+    [theme.breakpoints.only("md")]: {
+      maxWidth: "400px",
     },
   },
 }));

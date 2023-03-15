@@ -138,7 +138,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
     margin: "0 auto 10vh",
-    maxWidth: "1430px",
+    maxWidth: "1400px",
     [theme.breakpoints.down("sm")]: {
       margin: "10vh 0px",
     },
@@ -193,7 +193,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       background: StyleUtils.activeIndicator,
     },
   },
-  contentBox: { //
+  contentBox: {
     marginTop: "3.5rem",
     position: "relative",
     // gradient scroll

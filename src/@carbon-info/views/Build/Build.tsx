@@ -13,6 +13,7 @@ import { useInView } from "react-intersection-observer";
 const Build: React.FC = () => {
   const classes = useStyles();
   const isMobile = isWidth("sm");
+  const isSmallScreen = isWidth("md");
 
   const { ref, inView } = useInView({
     /* Optional options */
@@ -26,7 +27,7 @@ const Build: React.FC = () => {
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
           <Typography variant="h1" color="textPrimary" style={{ marginBottom: "4.5rem" }}>Build on Carbon</Typography>
-          <Grid container justifyContent="center" spacing={5}>
+          <Grid container justifyContent="center" spacing={isSmallScreen ? 2 : 5}>
             <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInLeft" : ""} >
               <CardWithCTA
                 title={"Develop on Carbon"}
@@ -64,8 +65,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
     margin: "10vh auto",
-    maxWidth: "1480px",
-    zIndex: 10,
+    maxWidth: "1400px",
+    zIndex: 15,
     [theme.breakpoints.down("sm")]: {
       margin: "5vh 0px",
     },
@@ -73,12 +74,29 @@ const useStyles = makeStyles((theme: Theme) => ({
   background: {
     position: "absolute",
     width: "1887px",
-    top: "-600px",
-    left: "45%",
-    marginLeft: "-50%",
+    height: "700px",
+    top: "-300px",
+    left: "-25%",
+    zIndex: 0,
+    scale: 1.5,
     [theme.breakpoints.up("xl")]: {
-      width: "110%",
-      top: "-800px",
+      top: "-250px",
+      left: "-7.5rem",
+    },
+    [theme.breakpoints.only("md")]: {
+      left: "-50%",
+    },
+    [theme.breakpoints.only("sm")]: {
+      left: 0,
+      marginLeft: "-75%",
+    },
+    [theme.breakpoints.only("xs")]: {
+      width: "100%",
+      maxHeight: "243px",
+      top: "-100px",
+      marginLeft: 0,
+      left: 0,
+      scale: 2,
     },
   },
 }));

@@ -52,12 +52,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   glowSVG: {
     position: "absolute",
-    left: "-8%",
     zIndex: 0,
     pointerEvents: "none",
+    width: "1200px",
+    marginTop: "-100px",
     [theme.breakpoints.down("sm")]: {
       width: "104%",
       left: "-8%",
+      marginTop: 0,
     },
     [theme.breakpoints.down("xs")]: {
       width: "150%",

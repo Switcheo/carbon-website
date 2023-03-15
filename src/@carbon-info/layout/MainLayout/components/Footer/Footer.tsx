@@ -174,12 +174,15 @@ export default Footer;
 
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
-    maxWidth: "1480px",
+    maxWidth: "1400px",
     margin: "0 auto",
   },
   logo: {
     margin: "0px 0.063rem",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.only("sm")]: {
+      width: "150px",
+    },
+    [theme.breakpoints.only("xs")]: {
       width: "100px",
     },
   },

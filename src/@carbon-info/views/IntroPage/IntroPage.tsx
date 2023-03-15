@@ -91,9 +91,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    [theme.breakpoints.only("xs")]: {
-      marginLeft: "-16px",
-      width: "calc(100% + 32px)",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "-24px",
+      marginTop: "-24px",
+      width: "calc(100% + 48px)",
     },
   },
   headerContainer: {

@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "2.5rem",
   },
   boxContainer: {
+    width: "100%",
     height: "100%",
     boxSizing: "border-box",
     position: "relative",
@@ -105,6 +106,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       "&::before": {
         borderRadius: 13.3,
       },
+    },
+    [theme.breakpoints.only("md")]: {
+      padding: "3rem 1.5rem 5rem",
     },
   },
   gridItem: {
