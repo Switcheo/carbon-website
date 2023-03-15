@@ -1,3 +1,4 @@
+import { isFirefox } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, makeStyles, Theme, Typography } from "@material-ui/core";
 import clsx from "clsx";
@@ -10,9 +11,6 @@ interface cardProps {
   icon: string,
   link: string,
 }
-
-const isFirefox = !!(navigator.userAgent.indexOf("Firefox") !== -1);
-const isMobileSafari = !!(navigator.userAgent.indexOf("iPhone") > -1);
 
 const CardWithCTA: React.FC<cardProps> = (props: cardProps) => {
   const classes = useStyles() as any;
@@ -99,7 +97,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: StyleUtils.cardBackgroundGradient,
       mask: StyleUtils.maskGradient,
-      maskComposite: `${isFirefox || isMobileSafari ? "subtract" : "source-out"}`,
+      maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
     [theme.breakpoints.down("sm")]: {

@@ -1,5 +1,5 @@
 import { Responsive } from "@carbon-info/constants";
-import { isFirefox, isMobileSafari, isWidth } from "@carbon-info/utils/environment";
+import { isFirefox, isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Button, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
 import clsx from "clsx";
@@ -134,7 +134,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: StyleUtils.cardBackgroundGradient,
       mask: StyleUtils.maskGradient,
-      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
+      maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
     [theme.breakpoints.only("xs")]: {
