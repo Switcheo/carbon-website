@@ -89,18 +89,18 @@ export default Socials;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "10vh auto 5vh",
+    margin: "15rem auto 5rem",
     maxWidth: "1400px",
     zIndex: 10,
     [theme.breakpoints.down("sm")]: {
-      margin: "10vh 0px",
+      margin: "15rem 0",
     },
   },
   background: {
     position: "absolute",
     width: "1000px",
     left: "-7.5rem",
-    top: "-400px",
+    top: "-350px",
     zIndex: 0,
     [theme.breakpoints.only("xs")]: {
       top: "-100px",

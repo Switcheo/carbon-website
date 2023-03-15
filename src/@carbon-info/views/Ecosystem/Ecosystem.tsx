@@ -137,10 +137,10 @@ export default Ecosystem;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "0 auto 10vh",
+    margin: "0 auto 15rem",
     maxWidth: "1400px",
     [theme.breakpoints.down("sm")]: {
-      margin: "10vh 0px",
+      margin: "15rem 0",
     },
   },
   tabsBox: {

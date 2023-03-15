@@ -99,7 +99,7 @@ export default Secured;
 
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
-    margin: "10vh auto",
+    margin: "15rem auto",
     maxWidth: "1400px",
   },
   secureContainer: {

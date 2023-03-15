@@ -8,7 +8,6 @@ import { useInView } from "react-intersection-observer";
 
 const Partnership: React.FC = () => {
   const classes = useStyles();
-  const isSmallScreen = isWidth("md");
   const isTablet = isWidth("sm");
   const { ref, inView } = useInView({
     /* Optional options */
@@ -19,7 +18,7 @@ const Partnership: React.FC = () => {
     <div ref={ref} id="partnership">
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
-          <Typography variant="h1" color="textPrimary" paragraph noWrap={!isTablet && !isSmallScreen}>
+          <Typography variant="h1" color="textPrimary" paragraph>
             Partnered with and backed by the best.
           </Typography >
         </FadeAndSlide>
@@ -44,7 +43,7 @@ export default Partnership;
 
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
-    margin: "10vh auto",
+    margin: "15rem auto",
     [theme.breakpoints.down("sm")]: {
       zIndex: 10,
       position: "relative",

@@ -64,11 +64,11 @@ export default Build;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "10vh auto",
+    margin: "15rem auto",
     maxWidth: "1400px",
     zIndex: 15,
     [theme.breakpoints.down("sm")]: {
-      margin: "5vh 0px",
+      margin: "15rem 0px",
     },
   },
   background: {

@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   headerContainer: {
     zIndex: 5,
-    marginTop: "11.25rem",
+    marginTop: "10rem",
     position: "absolute",
     top: 0,
     [theme.breakpoints.only("xs")]: {
