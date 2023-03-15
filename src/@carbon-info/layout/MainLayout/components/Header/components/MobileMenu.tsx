@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   navBarContainer: {
     height: "-webkit-fill-available",
-    width: "100%",
+    width: "100vw",
     position: "relative",
     background: theme.palette.background.navBar,
     top: 0,
