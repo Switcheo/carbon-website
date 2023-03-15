@@ -22,14 +22,16 @@ const Data: React.FC = () => {
 
   const widthXs = isWidth("xs");
 
+
+  // updated as of 15 March 2023
   const tableInfo: DataInfo[] = [{
-    value: "157,000,000+",
+    value: "225,980,410+",
     description: "On-Chain Transactions",
   }, {
-    value: "$16,599,873",
+    value: "$3,949,338",
     description: "Total Value Locked",
   }, {
-    value: "1,231,184,282",
+    value: "1,237,352,845",
     description: "Total SWTH Staked",
   }, {
     value: "<$0.01",
@@ -38,7 +40,7 @@ const Data: React.FC = () => {
     value: "10,000",
     description: "Transactions Per Second",
   }, {
-    value: "1-2 s",
+    value: "2 s",
     description: "Block Time",
   }];
 
