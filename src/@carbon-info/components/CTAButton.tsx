@@ -1,26 +1,27 @@
 import { ArrowIcon } from "@carbon-info/assets";
 import { Box, Link, makeStyles, Theme, Typography } from "@material-ui/core";
+import clsx from "clsx";
 import React from "react";
 
 interface buttonProps {
   text: string,
   link: string,
-  CTA?: boolean,
+  buttonClassName?: string,
+  textClassName?: string,
+  iconClassName?: string,
   newTab?: boolean,
 }
 
 const CTAButton: React.FC<buttonProps> = (props: buttonProps) => {
   const classes = useStyles() as any;
-  const { text, link, CTA, newTab = true } = props;
-  const iconClass = CTA ? "iconCTA" : "icon";
-  const textClass = CTA ? "textCTA" : "text";
+  const { text, link, newTab = true, buttonClassName, textClassName, iconClassName } = props;
   return (
-    <Box className={classes.container}>
-      <Link href={link} underline="none" target={newTab ? "_blank" : ""}>
-        <Typography color="textPrimary" variant="button" display="inline" className={classes[textClass]}>
+    <Box className={clsx(classes.container, buttonClassName)}>
+      <Link href={link} underline="none" target={newTab ? "_blank" : ""} style={{ display: "flex", alignItems: "center" }}>
+        <Typography variant="button" display="inline" className={clsx(classes.textClass, textClassName)}>
           {text}
         </Typography>
-        <ArrowIcon className={classes[iconClass]} />
+        <ArrowIcon className={clsx(classes.iconClass, iconClassName)} />
       </Link>
     </Box>
   );
@@ -31,9 +32,15 @@ export default CTAButton;
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
     whiteSpace: "nowrap",
+    textAlign: "left",
+    width: "fit-content",
+    display: "flex",
+    alignItems: "center",
   },
-  textCTA: {
+  textClass: {
     letterSpacing: "2px",
+    color: theme.palette.text.primary,
+    textTransform: "none",
     [theme.breakpoints.down("sm")]: {
       fontSize: "2.3rem",
       letterSpacing: "1px",
@@ -46,9 +53,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontSize: "1.5rem",
     },
   },
-  iconCTA: {
-    margin: theme.spacing(0, 2),
-    verticalAlign: "sub",
+  iconClass: {
+    margin: theme.spacing(0, 1.25),
     [theme.breakpoints.down("sm")]: {
       verticalAlign: "baseline",
       height: "2rem",
@@ -62,28 +68,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down(360)]: {
       height: "1.8rem",
       margin: "0px 2px",
-    },
-  },
-  text: {
-    letterSpacing: "2px",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "1.7rem",
-      letterSpacing: "1px",
-    },
-    [theme.breakpoints.down(360)]: {
-      fontSize: "1.5rem",
-    },
-  },
-  icon: {
-    margin: theme.spacing(0, 2),
-    verticalAlign: "sub",
-    [theme.breakpoints.down("sm")]: {
-      height: "2rem",
-      margin: theme.spacing(0, 1),
-    },
-    [theme.breakpoints.down(360)]: {
-      height: "1.8rem",
-      margin: theme.spacing(0, 0.25),
     },
   },
 }));

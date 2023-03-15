@@ -4,30 +4,42 @@
   src: url("./@carbon-info/assets/fonts/TyrosPro-Light.ttf") format("truetype");
   font-display: swap;
 }
+
 @font-face {
   font-family: "TyrosPro-SemiBold";
   /* font-weight: 500; */
   src: url("./@carbon-info/assets/fonts/TyrosPro-SemiBold.ttf") format("truetype");
   font-display: swap;
 }
+
 @font-face {
   font-family: "TyrosPro";
   /* font-weight: 400; */
   src: url("./@carbon-info/assets/fonts/TyrosPro-Regular.ttf") format("truetype");
   font-display: swap;
 }
+
+@font-face {
+  font-family: "TyrosPro-Bold";
+  /* font-weight: 700; */
+  src: url("./@carbon-info/assets/fonts/TyrosPro-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
 @font-face {
   font-family: "SourceSansPro-Bold";
   /* font-weight: 400; */
   src: url("./@carbon-info/assets/fonts/SourceSansPro-Bold.ttf") format("truetype");
   font-display: swap;
 }
+
 @font-face {
   font-family: "SourceSansPro";
   /* font-weight: 400; */
   src: url("./@carbon-info/assets/fonts/SourceSansPro-Regular.ttf") format("truetype");
   font-display: swap;
 }
+
 @font-face {
   font-family: "SourceSansPro-Light";
   /* font-weight: 400; */
@@ -47,15 +59,15 @@ html {
   scroll-behavior: smooth;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1280px) {
   html {
-    font-size: 10.5px;
+    font-size: 12px;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 960px) {
   html {
-    font-size: 8px;
+    font-size: 10px;
   }
 }
 

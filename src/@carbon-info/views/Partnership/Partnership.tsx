@@ -1,15 +1,15 @@
-import React from "react";
-import { Box, Grid, Grow, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import partnershipGlow from "@carbon-info/assets/background/partnershipGlow.svg";
 import { allPartnersLogo } from "@carbon-info/assets";
+import partnershipGlow from "@carbon-info/assets/background/partnershipGlow.svg";
 import { FadeAndSlide } from "@carbon-info/components";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Box, Grid, Grow, Theme, Typography, makeStyles } from "@material-ui/core";
+import React from "react";
 import { useInView } from "react-intersection-observer";
 
 const Partnership: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmallScreen = isWidth("md");
+  const isTablet = isWidth("sm");
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.35,
@@ -19,26 +19,20 @@ const Partnership: React.FC = () => {
     <div ref={ref} id="partnership">
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
-          <Typography variant="h2" color="textPrimary" paragraph noWrap={!isTablet && !isSmallScreen} className={classes.noWrap}>
-            {
-              isTablet ? <span>Partnered with & <br /> backed by the best</span>
-                : isSmallScreen
-                  ? <span>Partnered with & backed by the blockchain industry’s foremost builders</span>
-                  : <span>Partnered with & backed by the blockchain<br /> industry’s foremost builders</span>
-            }
+          <Typography variant="h1" color="textPrimary" paragraph noWrap={!isTablet && !isSmallScreen}>
+            Partnered with and backed by the best.
           </Typography >
         </FadeAndSlide>
-        <Grid container alignItems="center" justifyContent="center" className={classes.logoContainer} spacing={isTablet ? 2 : 8}>
+        <Grid container alignItems="center" justifyContent="center" className={classes.logoContainer} spacing={isTablet ? 4 : 8}>
           {allPartnersLogo.map((logo: any, index) => {
             return (
               <Grow in={inView} key={logo + index} timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200}>
-                <Grid item xs={4} sm={4} md={3} className={classes.logoGrid}>
+                <Grid item xs={index < 2 ? 6 : 4} className={classes.logoGrid}>
                   <img src={logo} alt="logo" className={classes.logo} />
                 </Grid>
               </Grow>
             );
           })}
-          <div id="gradientOver;ay" className={classes.gradientOverlay} />
           <img src={partnershipGlow} alt="glow" className={classes.glowSVG} />
         </Grid>
       </Box>
@@ -50,55 +44,38 @@ export default Partnership;
 
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
-    margin: "50vh 0px",
+    margin: "10vh auto",
     [theme.breakpoints.down("sm")]: {
-      margin: "30vh 0px",
+      zIndex: 10,
+      position: "relative",
     },
   },
   glowSVG: {
     position: "absolute",
-    top: "-135%",
     left: "-8%",
     zIndex: 0,
     pointerEvents: "none",
     [theme.breakpoints.down("sm")]: {
       width: "104%",
       left: "-8%",
-      top: "-93%",
     },
     [theme.breakpoints.down("xs")]: {
       width: "150%",
       left: "-25%",
-      top: "-66%",
     },
   },
   logoContainer: {
-    marginTop: "5rem",
+    margin: "auto",
     position: "relative",
+    maxWidth: "1200px",
+    width: "100%",
     [theme.breakpoints.down("sm")]: {
       marginTop: "3rem",
-      padding: "2rem 4rem",
       gap: 12,
     },
     [theme.breakpoints.down("xs")]: {
-      padding: "2rem",
       gap: 0,
     },
-  },
-  noWrap: {
-    overflow: "visible",
-    marginBottom: theme.spacing(8),
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: "3rem",
-    },
-  },
-  gradientOverlay: {
-    zIndex: 1,
-    position: "absolute",
-    height: "100%",
-    width: "100%",
-    pointerEvents: "none",
-    background: "linear-gradient(180deg, rgba(22, 21, 21, 0), rgb(22, 21, 21, 0.9))",
   },
   logo: {
     [theme.breakpoints.down("sm")]: {

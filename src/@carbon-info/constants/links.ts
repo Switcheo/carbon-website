@@ -1,5 +1,5 @@
 export const Path = {
-  Header:{
+  Header: {
     Build: "https://docs.carbon.network",
     SWTH: "https://hub.carbon.network/",
   },
@@ -7,7 +7,8 @@ export const Path = {
   Socials: {
     LinkedIn: "https://www.linkedin.com/company/switcheo/",
     Twitter: "https://twitter.com/0xcarbon",
-    Telegram: "https://t.me/carbon_ecosystem",
+    Discussion: "https://t.me/carbon_ecosystem",
+    Telegram: "https://t.me/carbon_ecosystem_ANN",
     Youtube: "https://www.youtube.com/channel/UCqZ9sxvw-0UoHzno4-d97oQ",
     Medium: "https://medium.com/switcheo",
     Discord: "https://discord.gg/SPh62Hf",
@@ -21,7 +22,8 @@ export const Path = {
     Blog: "https://blog.switcheo.com",
     Buy: "https://hub.carbon.network/buy",
     CarbonHub: "https://hub.carbon.network/",
-    Stake: "https://app.dem.exchange/stake",
+    Stake: "https://hub.carbon.network/stake",
+    Nitron: "https://app.dem.exchange/nitron",
     Token: "https://scan.carbon.network/tokens?net=main",
     Markets: "https://scan.carbon.network/markets?net=main",
     Demex: "https://dem.exchange",
@@ -34,6 +36,7 @@ export const Path = {
     Forum: "https://commonwealth.im/carbon-protocol",
     Governance: "https://scan.carbon.network/governance",
     Setup: "https://docs.carbon.network/setting-up-a-node/mainnet-setup",
+    Research: "https://blog.switcheo.com/tag/research/",
   },
   FindOutMore: "https://hub.carbon.network/",
 };

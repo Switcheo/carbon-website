@@ -1,9 +1,10 @@
 import { DocsIcon, GitHubIcon, MenuIconClose } from "@carbon-info/assets";
+import { isWidth } from "@carbon-info/utils/environment";
 import { RoadMapButton } from "@carbon-info/views/RoadMap/components";
-import { Divider, Grid, Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import React from "react";
-import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { Divider, Grid, Hidden, Link, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
+import React from "react";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 interface Props {
   content: {
@@ -23,10 +24,9 @@ interface Props {
 
 const RoadMapModal: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
-  const theme = useTheme();
   const { content, mainTitle, incrementTab, decrementTab, closeModal, page } = props;
   const { title, status, progress, docLink, githubLink, description } = content;
-  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = isWidth("sm");
   return (
     <div className={classes.container}>
       <MenuIconClose className={classes.menuIcon} onClick={closeModal} />
@@ -266,7 +266,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   status: {
     fontFamily: "SourceSansPro",
-    color: "#74E8E8",
+    color: theme.palette.primary.main,
     marginBottom: "-0.5rem",
     fontSize: "1.1rem",
   },
@@ -276,10 +276,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflowY: "auto",
     "&::-webkit-scrollbar": {
       width: "2px",
-      backgroundColor: "#554B4B",
+      backgroundColor: theme.palette.background.scrollbar,
     },
     "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "#74E8E8",
+      backgroundColor: theme.palette.primary.main,
       borderRadius: "4px",
       height: "10px",
       transform: "scale(0.3)",

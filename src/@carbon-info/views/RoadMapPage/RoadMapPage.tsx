@@ -1,13 +1,13 @@
 import { useContentful } from "@carbon-info/hooks";
-import { Box, makeStyles, Theme, useMediaQuery, useTheme } from "@material-ui/core";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Box, Theme, makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { Ideas, Intro, RoadMapTab, RoadMapTabMobile, RoadMapTabTablet } from "./components";
 
 const RoadMapPage: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isTablet = isWidth("sm");
+  const isMobile = isWidth("xs");
   const [roadMapItem, setRoadMapItems] = useState<any[]>([]);
   const { data } = useContentful({
     contentType: "carbonRoadmap",

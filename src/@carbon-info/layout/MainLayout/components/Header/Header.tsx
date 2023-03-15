@@ -1,16 +1,16 @@
-import React, { useLayoutEffect, useState } from "react";
-import { Hidden, Link, makeStyles, Theme, Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import { CarbonLogo, MenuIcon } from "@carbon-info/assets";
-import MobileMenu from "./components/MobileMenu";
-import clsx from "clsx";
+import { ArrowIcon, CarbonLogo, MenuIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
+import { isWidth } from "@carbon-info/utils/environment";
+import { Hidden, Link, Theme, Typography, makeStyles } from "@material-ui/core";
+import clsx from "clsx";
+import React, { useLayoutEffect, useState } from "react";
+import MobileMenu from "./components/MobileMenu";
 
 const SWITCH_THRESHOLD = 45;
 
 const Header: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = isWidth("sm");
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [topOffset, setTopOffset] = useState(window.scrollY);
   useLayoutEffect(() => {
@@ -44,37 +44,40 @@ const Header: React.FC = () => {
               :
               <>
                 <Link href={Path.Footer.Guides} underline="none" target="_blank">
-                  <Typography color="textPrimary" display="inline">Learn</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline">Learn</Typography>
                 </Link>
                 <Link href={Path.Header.Build} underline="none" target="_blank">
-                  <Typography color="textPrimary" display="inline">Build</Typography>
-                </Link>
-                <Link href={"/roadmap"} underline="none">
-                  <Typography color="textPrimary" display="inline">Roadmap</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline">Build</Typography>
                 </Link>
                 <Link href={Path.Footer.CarbonScan} underline="none" target="_blank">
-                  <Typography color="textPrimary" display="inline">Explorer</Typography>
-                </Link>
-                <Link href={Path.Header.SWTH} underline="none" target="_blank">
-                  <Typography color="textPrimary" display="inline">Token &#40;$SWTH&#41;</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline">Explore</Typography>
                 </Link>
               </>
           }
         </div>
+        {!isMobile && (
+          <>
+            <Link href={Path.Footer.Buy} underline="none" target="_blank" className={classes.externalLink}>
+              <Typography variant="h4" color="textPrimary" display="inline">Buy $SWTH <ArrowIcon /></Typography>
+            </Link>
+          </>
+        )}
       </div>
       <Hidden mdUp>
-        <div className={isScrolled ? classes.navBarFixedContainer : classes.navBarFixedContainerCollapsed}>
-          <span className={classes.logoContainer}>
-            <Link href={"/"} underline="none">
-              <CarbonLogo className={classes.logoFixed} />
-            </Link>
-          </span>
-          <div className={classes.navButtonContainer}>
-            <div onClick={() => setShowMobileMenu(true)}>
-              <MenuIcon className={clsx(classes.menuIcon, { open: showMobileMenu })} />
+        {!showMobileMenu && (
+          <div className={isScrolled ? classes.navBarFixedContainer : classes.navBarFixedContainerCollapsed}>
+            <span className={classes.logoContainer}>
+              <Link href={"/"} underline="none">
+                <CarbonLogo className={classes.logoFixed} />
+              </Link>
+            </span>
+            <div className={classes.navButtonContainer}>
+              <div onClick={() => setShowMobileMenu(true)}>
+                <MenuIcon className={clsx(classes.menuIcon, { open: showMobileMenu })} />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </Hidden>
     </nav>
 
@@ -103,7 +106,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   navBarContainer: {
     display: "flex",
     alignItems: "center",
-    margin: theme.spacing(6, 0, 12, 0),
+    maxWidth: "1400px",
+    margin: theme.spacing(6, "auto"),
+    justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
       margin: theme.spacing(6, 4, 12, 4),
       transition: "all 0.25s linear",
@@ -116,7 +121,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   navBarFixedContainer: {
-    zIndex: 10,
+    zIndex: 1000,
     display: "flex",
     alignItems: "center",
     position: "fixed",
@@ -124,12 +129,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: 0,
     right: 0,
     transform: "translate(0px,0px)",
-    background: "#272525",
+    background: theme.palette.background.default,
     padding: "1.25rem 3rem 1.25rem 1rem",
     transition: "all 0.25s linear",
     opacity: 1,
     [theme.breakpoints.down("xs")]: {
-      padding: ".75rem 3rem .75rem 1rem",
+      padding: ".75rem 2rem .75rem 1rem",
     },
   },
   navBarFixedContainerCollapsed: {
@@ -141,7 +146,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: 0,
     left: 0,
     right: 0,
-    background: "#272525",
+    background: theme.palette.background.navBar,
     padding: "1.25rem 3rem 1.25rem 1rem",
     transition: "all 0.25s linear",
     opacity: 0,
@@ -151,14 +156,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   menuIcon: {
     position: "relative",
-    transform: "scale(2.0)",
-    [theme.breakpoints.down("xs")]: {
-      transform: "scale(1.5)",
-    },
   },
   logo: {
     verticalAlign: "middle",
     margin: theme.spacing(0, 1),
+    width: "250px",
     [theme.breakpoints.down("xs")]: {
       marginRight: "auto",
       textAlign: "start",
@@ -166,6 +168,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   logoContainer: {
+    display: "flex",
+    flex: 1,
     [theme.breakpoints.down("xs")]: {
       textAlign: "start",
     },
@@ -180,8 +184,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   navButtonContainer: {
-    marginLeft: "auto",
     display: "flex",
-    gap: 45,
+    gap: 50,
+    justifyContent: "flex-end",
+    flex: 1,
+    marginRight: theme.spacing(1),
+  },
+  externalLink: {
+    display: "flex",
+    flex: 1,
+    justifyContent: "flex-end",
   },
 }));
