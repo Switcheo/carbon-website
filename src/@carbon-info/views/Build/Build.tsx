@@ -23,7 +23,9 @@ const Build: React.FC = () => {
 
   return (
     <div ref={ref} id="build" style={{ position: "relative" }}>
-      <img src={PlanetBackground} className={classes.background} />
+      <FadeAndSlide visible={inView}>
+        <img src={PlanetBackground} className={classes.background} />
+      </FadeAndSlide>
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
           <Typography variant="h1" color="textPrimary" style={{ marginBottom: "4.5rem" }}>Build on Carbon</Typography>
@@ -74,29 +76,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   background: {
     position: "absolute",
     width: "1887px",
-    height: "700px",
+    height: "732px",
     top: "-300px",
-    left: "-25%",
+    left: "50%",
+    marginLeft: "-943.5px", // half of width
     zIndex: 0,
-    scale: 1.5,
     [theme.breakpoints.up("xl")]: {
       top: "-250px",
-      left: "-7.5rem",
     },
-    [theme.breakpoints.only("md")]: {
-      left: "-50%",
-    },
-    [theme.breakpoints.only("sm")]: {
-      left: 0,
-      marginLeft: "-75%",
+    [theme.breakpoints.down("sm")]: {
+      width: "calc(100% + 48px)",
+      left: "50%",
+      marginLeft: "calc(-50% - 24px)",
+      scale: 1,
     },
     [theme.breakpoints.only("xs")]: {
-      width: "100%",
+      top: "-75px",
       maxHeight: "243px",
-      top: "-100px",
-      marginLeft: 0,
-      left: 0,
-      scale: 2,
     },
   },
 }));

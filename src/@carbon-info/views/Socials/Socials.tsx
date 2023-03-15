@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: "-350px",
     zIndex: 0,
     [theme.breakpoints.only("xs")]: {
-      top: "-100px",
+      top: 0,
       width: "700px",
       left: "-50%",
     },
