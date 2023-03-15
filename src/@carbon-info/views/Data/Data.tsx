@@ -38,7 +38,7 @@ const Data: React.FC = () => {
     description: "Gas Fees",
   }, {
     value: "10,000",
-    description: "Transactions Per Second",
+    description: "Max TPS",
   }, {
     value: "2 s",
     description: "Block Time",
