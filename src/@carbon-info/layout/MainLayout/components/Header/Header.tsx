@@ -1,7 +1,7 @@
 import { ArrowIcon, CarbonLogo, MenuIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
-import { Hidden, Link, Theme, Typography, makeStyles } from "@material-ui/core";
+import { Box, Hidden, Link, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useLayoutEffect, useState } from "react";
 import MobileMenu from "./components/MobileMenu";
@@ -57,9 +57,10 @@ const Header: React.FC = () => {
         </div>
         {!isMobile && (
           <>
-            <Link href={Path.Footer.Buy} underline="none" target="_blank" className={classes.externalLink}>
-              <Typography variant="h4" color="textPrimary" display="inline">Buy $SWTH <ArrowIcon /></Typography>
-            </Link>
+            <Box onClick={() => window.open(`${Path.Footer.Buy}`, "_blank")} className={classes.externalLink}>
+              <Typography variant="h4" color="textPrimary">Buy $SWTH</Typography>
+              <ArrowIcon className={classes.arrowIcon} />
+            </Box>
           </>
         )}
       </div>
@@ -197,5 +198,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     flex: 1,
     justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  arrowIcon: {
+    height: "1.5rem",
+    marginLeft: "0.5rem",
   },
 }));
