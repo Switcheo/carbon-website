@@ -7,7 +7,6 @@ import { Path } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
 import { Box, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
 import "animate.css";
-import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -28,7 +27,7 @@ const Build: React.FC = () => {
         <FadeAndSlide visible={inView}>
           <Typography variant="h1" color="textPrimary" style={{ marginBottom: "4.5rem" }}>Build on Carbon</Typography>
           <Grid container justifyContent="center" spacing={5}>
-            <Grid item xs={12} sm={7} md={4} className={clsx(inView && !isMobile ? "animate__animated animate__fadeInLeft" : "", classes.item)} >
+            <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInLeft" : ""} >
               <CardWithCTA
                 title={"Develop on Carbon"}
                 description={"Leverage our native source code to fast-track development"}
@@ -36,7 +35,7 @@ const Build: React.FC = () => {
                 icon={DevelopSVG}
               />
             </Grid>
-            <Grid item xs={12} sm={7} md={4} className={clsx(inView && !isMobile ? "animate__animated animate__fadeInUp" : "", classes.item)}>
+            <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInUp" : ""}>
               <CardWithCTA
                 title={"Propose a partnership"}
                 description={"Working towards a freer financial system"}
@@ -44,7 +43,7 @@ const Build: React.FC = () => {
                 icon={ProposeSVG}
               />
             </Grid>
-            <Grid item xs={12} sm={7} md={4} className={clsx(inView && !isMobile ? "animate__animated animate__fadeInRight" : "", classes.item)}>
+            <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInRight" : ""}>
               <CardWithCTA
                 title={"Pitch your project"}
                 description={"Need funding to kickstart your project on Carbon?"}
@@ -81,8 +80,5 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "110%",
       top: "-800px",
     },
-  },
-  item: {
-    height: "100%",
   },
 }));
