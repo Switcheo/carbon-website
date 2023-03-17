@@ -1,9 +1,10 @@
 import { FadeAndSlide } from "@carbon-info/components";
+import { useContentful } from "@carbon-info/hooks";
 import { isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
 import { Divider, Grid, makeStyles, Paper, Theme, Typography } from "@material-ui/core";
 import clsx from "clsx";
-import React from "react";
+import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { AnimateKeyframes } from "react-simple-animate";
 
@@ -22,27 +23,30 @@ const Data: React.FC = () => {
 
   const widthXs = isWidth("xs");
 
+  const { data } = useContentful({
+    contentType: "carbonWebsiteInfo",
+  });
 
-  // updated as of 15 March 2023
-  const tableInfo: DataInfo[] = [{
-    value: "225,980,410+",
-    description: "On-Chain Transactions",
-  }, {
-    value: "$3,949,338",
-    description: "Total Value Locked",
-  }, {
-    value: "1,237,352,845",
-    description: "Total SWTH Staked",
-  }, {
-    value: "<$0.01",
-    description: "Gas Fees",
-  }, {
-    value: "10,000",
-    description: "Max TPS",
-  }, {
-    value: "2 s",
-    description: "Block Time",
-  }];
+  const [tableInfo, setTableInfo] = React.useState<DataInfo[]>([]);
+  useEffect(() => {
+    const results: DataInfo[] = [];
+    if (!data && !inView) return;
+    async function fetchDataItems() {
+      const content = await data as any;
+
+      if (content && Array.isArray(content.items)) {
+        content.items.forEach((o: any) => {
+          let data: DataInfo = {
+            value: o.fields.value,
+            description: o.fields.key,
+          };
+          results.push(data);
+        });
+      }
+      setTableInfo(results);
+    }
+    fetchDataItems();
+  }, [data]);
 
   return (
     <div ref={ref} id="data" className={classes.container}>
@@ -64,10 +68,10 @@ const Data: React.FC = () => {
         >
           <Grid container item xs={8} sm={12} spacing={0} justifyContent="center" className={clsx(classes.dataTable, { open: inView })}>
             {tableInfo.map((item: DataInfo) => (
-              <Grid item xs={12} sm={4} xl={2} key={item.description.replace(" ", "-")}>
+              <Grid item xs={12} sm={4} xl={2} key={item.description}>
                 <Paper className={classes.dataBox} elevation={0}>
                   <Typography variant="h3" color="textPrimary" align="center">{item.value}</Typography>
-                  <Typography variant="body2" color="textSecondary" align="center">{item.description}</Typography>
+                  <Typography variant="body2" color="textSecondary" align="center">{item.description.replaceAll("_", " ")}</Typography>
                 </Paper>
                 {widthXs && <Divider className={classes.mobileDivider} />}
               </Grid>
