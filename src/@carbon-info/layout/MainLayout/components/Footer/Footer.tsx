@@ -28,6 +28,11 @@ const sitemap = [
         link: Path.Footer.Research,
         target: "_blank",
       },
+      {
+        title: "Brand Assets",
+        link: Path.Footer.BrandAsset,
+        target: "_blank",
+      },
     ],
   },
   {

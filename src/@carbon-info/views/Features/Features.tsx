@@ -72,7 +72,7 @@ const Features: React.FC = () => {
     ctaLink: Path.Footer.Guides,
     icon: VersatileAnimation,
   }, {
-    header: "Secure & Stable",
+    header: "Stable",
     subheader: "Custom-built",
     description: "using Cosmos-SDK and secured through Tendermint PoS for trustless and safe transactions.",
     ctaLink: Path.Footer.Guides,

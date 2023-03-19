@@ -37,6 +37,7 @@ export const Path = {
     Governance: "https://scan.carbon.network/governance",
     Setup: "https://docs.carbon.network/setting-up-a-node/mainnet-setup",
     Research: "https://blog.switcheo.com/tag/research/",
+    BrandAsset: "https://www.notion.so/Carbon-Media-Kit-819ec0d0ed7e45389da48ffd3dbfa6a2",
   },
   FindOutMore: "https://hub.carbon.network/",
 };
