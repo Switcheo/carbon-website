@@ -7,10 +7,12 @@ import clsx from "clsx";
 import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { AnimateKeyframes } from "react-simple-animate";
+import { CountUp } from "use-count-up";
 
 interface DataInfo {
   value: string,
   description: string,
+  toCountUp: boolean,
 }
 
 const Data: React.FC = () => {
@@ -39,6 +41,7 @@ const Data: React.FC = () => {
           let data: DataInfo = {
             value: o.fields.value,
             description: o.fields.key,
+            toCountUp: o.fields.key === "On-Chain_Transactions" || o.fields.key === "Total_Value_Locked" || o.fields.key === "Total_SWTH_Staked",
           };
           results.push(data);
         });
@@ -47,6 +50,21 @@ const Data: React.FC = () => {
     }
     fetchDataItems();
   }, [data]);
+
+
+  const useCountUp = (item: DataInfo, valueToAdd: number = 100) => {
+    const regexExp = /,|\$|\+/g;
+    const value = parseInt(item.value.replaceAll(regexExp, ""));
+    const interval = Math.floor(Math.random() * (500 - 300) + 300) / 100; // random interval from 3 - 5s
+
+    return (
+      <Typography variant="h3" color="textPrimary" align="center">
+        {item.description === "Total_Value_Locked" && "$"}
+        <CountUp isCounting start={value} end={value + valueToAdd} duration={60} thousandsSeparator="," updateInterval={interval} />
+        {item.description === "On-Chain_Transactions" && "+"}
+      </Typography>
+    );
+  };
 
   return (
     <div ref={ref} id="data" className={classes.container}>
@@ -59,7 +77,7 @@ const Data: React.FC = () => {
           any asset type on any blockchain.
         </Typography>
       </FadeAndSlide>
-      <FadeAndSlide visible={inView}>
+      <FadeAndSlide visible={inView} className={classes.dataWrapper}>
         <AnimateKeyframes
           play={inView}
           iterationCount={1}
@@ -70,7 +88,7 @@ const Data: React.FC = () => {
             {tableInfo.map((item: DataInfo) => (
               <Grid item xs={12} sm={4} xl={2} key={item.description}>
                 <Paper className={classes.dataBox} elevation={0}>
-                  <Typography variant="h3" color="textPrimary" align="center">{item.value}</Typography>
+                  {item.toCountUp ? useCountUp(item) : <Typography variant="h3" color="textPrimary" align="center">{item.value}</Typography>}
                   <Typography variant="body2" color="textSecondary" align="center">{item.description.replaceAll("_", " ")}</Typography>
                 </Paper>
                 {widthXs && <Divider className={classes.mobileDivider} />}
@@ -87,6 +105,7 @@ export default Data;
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
+    width: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -108,6 +127,13 @@ const useStyles = makeStyles((theme: Theme) => ({
       ...theme.typography.h3,
     },
   },
+  dataWrapper: {
+    width: "100%",
+    maxWidth: "1100px",
+    [theme.breakpoints.up("xl")]: {
+      maxWidth: "1900px",
+    },
+  },
   dataTable: {
     marginTop: "10rem",
     background: StyleUtils.tableBackgroundGradient,
@@ -123,7 +149,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
     },
     [theme.breakpoints.only("xl")]: {
-      width: "1823px",
       "& > div:not(:first-child)": {
         "& > div": {
           borderLeft: `2px solid ${theme.palette.primary.dark}`,
