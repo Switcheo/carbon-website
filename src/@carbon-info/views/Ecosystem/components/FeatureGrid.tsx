@@ -3,7 +3,7 @@ import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Grow, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
-import { BlockchainConfig, ValidatorConfig, WalletConfig, isBlockchainConfig } from "../ecosystemConfig";
+import { BlockchainConfig, ValidatorConfig, WalletConfig, isBlockchainConfigArr, isValidatorConfig } from "../ecosystemConfig";
 
 interface Props {
   items: BlockchainConfig[] | WalletConfig[] | ValidatorConfig[],
@@ -18,30 +18,30 @@ const FeatureGrid: React.FC<Props> = (props: Props) => {
 
   return (
     <Box className={classes.gridContainer}>
-      {isBlockchainConfig(items) && items.map((item: BlockchainConfig, index) => {
-        const { icon, name, chain } = item;
+      {isBlockchainConfigArr(items) && items.map((item: BlockchainConfig, index) => {
+        const { label, logo, category } = item;
         return (
-          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-${index}`}>
+          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${label}-${index}`}>
             <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-              <Box className={clsx(classes.cardContainer, `${chain}`, { open: inView })}>
-                <img src={icon} alt="logo" className={classes.logo} />
-                {!isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "1.5rem", fontWeight: 700 }}>{name}</Typography>}
+              <Box className={clsx(classes.cardContainer, `${category}`, { open: inView })}>
+                <img src={logo} alt="logo" className={classes.logo} />
+                {!isMobile && <Typography variant="body1" color="textPrimary" className={classes.cardTypography} style={{ marginTop: "1.5rem" }}>{label}</Typography>}
               </Box>
-              {isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "1.5rem", fontWeight: 700 }}>{name}</Typography>}
+              {isMobile && <Typography variant="body1" color="textPrimary" className={classes.cardTypography} style={{ marginTop: "1.5rem" }}>{label}</Typography>}
             </Box>
           </Grow>
         );
       })}
-      {!isBlockchainConfig(items) && items.map((item: WalletConfig | ValidatorConfig, index) => {
-        const { icon, name } = item;
+      {!isBlockchainConfigArr(items) && items.map((item: WalletConfig | ValidatorConfig, index) => {
+        const isValidator = isValidatorConfig(item);
         return (
-          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-${index}`}>
-            <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${item.label}-${index}`}>
+            <Box className={clsx(classes.boxContainer, { clickable: isValidator })} onClick={isValidator ? () => window.open(`${item.link}`, "_blank") : undefined}>
               <Box className={clsx(classes.cardContainer, { open: inView })}>
-                <img src={icon} alt="logo" className={classes.logo} />
-                {!isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "1.5rem", fontWeight: 700 }}>{name}</Typography>}
+                <img src={item.logo} alt="logo" className={classes.logo} />
+                {!isMobile && <Typography variant="body1" color="textPrimary" className={classes.cardTypography} style={{ marginTop: "1.5rem" }}>{item.label}</Typography>}
               </Box>
-              {isMobile && <Typography variant="body1" color="textPrimary" style={{ marginTop: "0.5rem", fontWeight: 700 }}>{name}</Typography>}
+              {isMobile && <Typography variant="body1" color="textPrimary" className={classes.cardTypography} style={{ marginTop: "0.5rem" }}>{item.label}</Typography>}
             </Box>
           </Grow>
         );
@@ -91,6 +91,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& *": {
       scrollbarColor: "transparent",
       scrollbarWidth: "thin",
+    },
+  },
+  boxContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    "&.clickable:hover": {
+      cursor: "pointer",
     },
   },
   cardContainer: {
@@ -176,6 +185,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: "3.5rem",
       width: "3.5rem",
     },
+  },
+  cardTypography: {
+    fontWeight: 700,
+    padding: "0 0.5rem",
+    textAlign: "center",
   },
 }));
 

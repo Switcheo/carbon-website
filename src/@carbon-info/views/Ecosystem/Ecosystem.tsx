@@ -1,11 +1,12 @@
 import { FadeAndSlide } from "@carbon-info/components";
+import { useContentful } from "@carbon-info/hooks";
 import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Button, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { AppsCarousel, FeatureGrid } from "./components";
-import { BlockchainConfig, ValidatorConfig, allBlockchains, allFeatured, allValidators, allWallets } from "./ecosystemConfig";
+import { BlockchainConfig, ValidatorConfig, WalletConfig, allFeatured } from "./ecosystemConfig";
 
 const Ecosystem: React.FC = () => {
   const classes = useStyles();
@@ -14,6 +15,54 @@ const Ecosystem: React.FC = () => {
     threshold: 0.35,
     triggerOnce: true,
   });
+  const { data } = useContentful({
+    contentType: "carbonEcosystemEntry",
+  });
+
+  const [allBlockchains, setAllBlockchains] = React.useState<BlockchainConfig[]>([]);
+  const [allWallets, setAllWallets] = React.useState<WalletConfig[]>([]);
+  const [allValidators, setAllValidators] = React.useState<ValidatorConfig[]>([]);
+
+  useEffect(() => {
+    if (!data && !inView) return;
+    async function fetchEcosystemItems() {
+      let blockchainResult: BlockchainConfig[] = [];
+      let walletResult: WalletConfig[] = [];
+      let validatorResult: ValidatorConfig[] = [];
+      const content = await data as any;
+
+      if (content && Array.isArray(content.items)) {
+        content.items.forEach((o: any) => {
+          const type = o.fields.type ?? [];
+          if (type.some((item: any) => item === "blockchain")) {
+            blockchainResult.push({
+              label: o.fields.label,
+              logo: o.fields.logo.fields.file.url,
+              category: o.fields.category,
+            });
+          }
+          if (type.some((item: any) => item === "wallet")) {
+            walletResult.push({
+              label: o.fields.label,
+              logo: o.fields.logo.fields.file.url,
+            });
+          }
+          if (type.some((item: any) => item === "validator")) {
+            validatorResult.push({
+              label: o.fields.label,
+              logo: o.fields.logo.fields.file.url,
+              link: o.fields.link,
+              votingPower: 0, // TODO: get value for voting power from data
+            });
+          }
+        });
+      }
+      setAllBlockchains(blockchainResult);
+      setAllWallets(walletResult);
+      setAllValidators(validatorResult);
+    }
+    fetchEcosystemItems();
+  }, [data]);
 
   const tabs = ["Featured dApps", "Blockchains", "Wallets", "Validators"];
   const filters = ["All", "IBC", "EVM", "Non-EVM"]; // TODO: Add Coming Soon filter
@@ -40,20 +89,37 @@ const Ecosystem: React.FC = () => {
 
   const filteredBlockchains = React.useMemo(() => {
     let filtered: BlockchainConfig[] = [];
+
+    // All Chains -> show prominent chains (From ETH to Osmosis), then sort by alphabet
+    const prominentChains = ["Ethereum", "BNB Smart Chain", "Arbitrum", "Neo", "Zilliqa", "Cosmos Hub", "Osmosis"];
+    const chainIndexMap: { [key: string]: number } = {};
+    for (let i = 0; i < prominentChains.length; i++) {
+      chainIndexMap[prominentChains[i]] = i;
+    }
+    allBlockchains.sort((a, b) => {
+      const nonProminentChainPos = prominentChains.length + 1; // for non prominent chains, to be placed after the prominent chains
+      const resultsA = chainIndexMap[a.label] ?? nonProminentChainPos;
+      const resultsB = chainIndexMap[b.label] ?? nonProminentChainPos;
+      if (resultsA === nonProminentChainPos && resultsB === nonProminentChainPos) {
+        return a.label.localeCompare(b.label); // sort by alphabet asc
+      }
+      return resultsA - resultsB; // show prominent chains as per prominentChains array
+    });
+
     switch (blockchainFilter) {
       case "IBC":
         filtered = allBlockchains.filter((blockchain) => {
-          return blockchain.chain === "IBC";
+          return blockchain.category === "IBC Chains";
         });
         break;
       case "EVM":
         filtered = allBlockchains.filter((blockchain) => {
-          return blockchain.chain === "EVM";
+          return blockchain.category === "EVM Chains";
         });
         break;
       case "Non-EVM":
         filtered = allBlockchains.filter((blockchain) => {
-          return blockchain.chain === "Non-EVM";
+          return blockchain.category === "Non-EVM Chains";
         });
         break;
       case "All":
@@ -64,14 +130,14 @@ const Ecosystem: React.FC = () => {
         break;
     }
     return filtered;
-  }, [blockchainFilter]);
+  }, [allBlockchains, blockchainFilter]);
 
   const sortedValidators = React.useMemo(() => {
     return allValidators.sort((v1: ValidatorConfig, v2: ValidatorConfig) => {
       // sorted in descending order
       return v2.votingPower - v1.votingPower;
     });
-  }, []);
+  }, [allValidators]);
 
   return (
     <div ref={ref} id="ecosystem">
