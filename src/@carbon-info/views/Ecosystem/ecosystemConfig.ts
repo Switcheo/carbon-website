@@ -16,7 +16,7 @@ export interface BlockchainConfig extends WalletConfig {
 
 export interface ValidatorConfig extends WalletConfig {
   link: string,
-  votingPower: number,
+  sortPriority: number,
 }
 
 export function isBlockchainConfigArr(arr: any[]): arr is BlockchainConfig[] {

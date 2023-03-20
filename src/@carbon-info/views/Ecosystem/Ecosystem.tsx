@@ -52,7 +52,7 @@ const Ecosystem: React.FC = () => {
               label: o.fields.label,
               logo: o.fields.logo.fields.file.url,
               link: o.fields.link,
-              votingPower: 0, // TODO: get value for voting power from data
+              sortPriority: o.fields.sortPriority, // TODO: get value for voting power from data
             });
           }
         });
@@ -134,8 +134,8 @@ const Ecosystem: React.FC = () => {
 
   const sortedValidators = React.useMemo(() => {
     return allValidators.sort((v1: ValidatorConfig, v2: ValidatorConfig) => {
-      // sorted in descending order
-      return v2.votingPower - v1.votingPower;
+      // sorted in ascending order
+      return v1.sortPriority - v2.sortPriority;
     });
   }, [allValidators]);
 
