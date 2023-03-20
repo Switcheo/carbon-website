@@ -81,6 +81,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: "50%",
     marginLeft: "-943.5px", // half of width
     zIndex: 0,
+    scale: 1.5,
     [theme.breakpoints.up("xl")]: {
       top: "-250px",
     },
@@ -88,7 +89,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "calc(100% + 48px)",
       left: "50%",
       marginLeft: "calc(-50% - 24px)",
-      scale: 1,
     },
     [theme.breakpoints.only("xs")]: {
       top: "-75px",

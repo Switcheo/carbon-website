@@ -81,8 +81,8 @@ const Features: React.FC = () => {
 
   return (
     <div ref={ref} id="features" className={classes.features}>
+      <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: inView })} />
       <FadeAndSlide visible={inView}>
-        <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: inView })} />
         <Box className={clsx(classes.container, { open: inView })} >
           <>
             <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
