@@ -43,9 +43,10 @@ export default Partnership;
 
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
-    margin: "15rem auto",
+    margin: "10rem auto",
     [theme.breakpoints.down("sm")]: {
       zIndex: 10,
+      margin: "5rem auto",
       position: "relative",
     },
   },

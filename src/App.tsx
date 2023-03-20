@@ -35,6 +35,11 @@ function App() {
                 <RoadMapPage />
               </Suspense>
             </Route>
+            <Route path="/partnerships">
+              <Suspense fallback={<div style={{ height: "100vh" }} />}>
+                <Partnership />
+              </Suspense>
+            </Route>
             <Route path="/">
               <>
                 <Suspense fallback={<div style={{ height: "100vh" }} />}>
@@ -44,7 +49,6 @@ function App() {
                   <Ecosystem />
                   <RoadMap />
                   <Secured />
-                  <Partnership />
                   <Build />
                   <Socials />
                 </Suspense>
