@@ -7,9 +7,9 @@ import clsx from "clsx";
 import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { AnimateKeyframes } from "react-simple-animate";
-import { CountUp } from "use-count-up";
+import { RollingNum } from "./component";
 
-interface DataInfo {
+export interface DataInfo {
   value: string,
   description: string,
   toCountUp: boolean,
@@ -51,21 +51,6 @@ const Data: React.FC = () => {
     fetchDataItems();
   }, [data]);
 
-
-  const useCountUp = (item: DataInfo, valueToAdd: number = 100) => {
-    const regexExp = /,|\$|\+/g;
-    const value = parseInt(item.value.replaceAll(regexExp, ""));
-    const interval = Math.floor(Math.random() * (500 - 300) + 300) / 100; // random interval from 3 - 5s
-
-    return (
-      <Typography variant="h3" color="textPrimary" align="center">
-        {item.description === "Total_Value_Locked" && "$"}
-        <CountUp isCounting start={value} end={value + valueToAdd} duration={60} thousandsSeparator="," updateInterval={interval} />
-        {item.description === "On-Chain_Transactions" && "+"}
-      </Typography>
-    );
-  };
-
   return (
     <div ref={ref} id="data" className={classes.container}>
       <FadeAndSlide visible={inView}>
@@ -88,7 +73,7 @@ const Data: React.FC = () => {
             {tableInfo.map((item: DataInfo) => (
               <Grid item xs={12} sm={4} xl={2} key={item.description}>
                 <Paper className={classes.dataBox} elevation={0}>
-                  {item.toCountUp ? useCountUp(item) : <Typography variant="h3" color="textPrimary" align="center">{item.value}</Typography>}
+                  {item.toCountUp ? <RollingNum item={item} /> : <Typography variant="h3" color="textPrimary" align="center">{item.value}</Typography>}
                   <Typography variant="body2" color="textSecondary" align="center">{item.description.replaceAll("_", " ")}</Typography>
                 </Paper>
                 {widthXs && <Divider className={classes.mobileDivider} />}
