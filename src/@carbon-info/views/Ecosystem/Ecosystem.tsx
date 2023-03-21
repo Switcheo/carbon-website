@@ -100,7 +100,7 @@ const Ecosystem: React.FC = () => {
       const nonProminentChainPos = prominentChains.length + 1; // for non prominent chains, to be placed after the prominent chains
       const resultsA = chainIndexMap[a.label] ?? nonProminentChainPos;
       const resultsB = chainIndexMap[b.label] ?? nonProminentChainPos;
-      if (resultsA === nonProminentChainPos && resultsB === nonProminentChainPos) {
+      if (resultsA === resultsB) {
         return a.label.localeCompare(b.label); // sort by alphabet asc
       }
       return resultsA - resultsB; // show prominent chains as per prominentChains array

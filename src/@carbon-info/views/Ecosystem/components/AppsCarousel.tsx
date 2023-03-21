@@ -42,7 +42,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
             <Box className={clsx(classes.cardContainer, "expandCard", { open: inView })} style={{ backgroundImage: `linear-gradient(52.83deg, #121212 15.94%, rgba(0, 0, 0, 0) 100%), url("${item?.backgroundImage}")`, boxShadow: `${theme.shadows[5]}`, backgroundSize: widthSm ? "200%" : "" }}>
               <Typography variant="body1" color="textPrimary" className={classes.tag}>{tag}</Typography>
               <img src={icon} className={classes.dAppLogo} />
-              <Typography variant="h3" color="textPrimary" style={{ fontFamily: "TyrosPro-Bold", fontWeight: 700, marginTop: "1rem" }}>{name}</Typography>
+              <Typography variant="h3" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
               <Typography variant="body1" style={{ color: theme.palette.text.button, marginTop: "1rem" }}>{description}</Typography>
               <Button className={classes.ctaButton} href={ctaLink} target="_blank">Launch {name}</Button>
             </Box >
@@ -51,7 +51,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
           <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`}>
             <Box className={clsx(classes.cardContainer, { open: inView })}>
               <img src={icon} className={classes.logo} />
-              <Typography variant="h4" color="textPrimary" style={{ fontFamily: "TyrosPro-Bold", fontWeight: 700, marginTop: "1rem" }}>{name}</Typography>
+              <Typography variant="h4" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
               <Button className={clsx(classes.ctaButton, classes.minButton)} href={ctaLink} target="_blank">{tag}</Button>
             </Box>
           </Grow>
@@ -198,6 +198,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   logo: {
     height: "6.25rem",
     width: "6.25rem",
+  },
+  nameLabel: {
+    fontFamily: "TyrosPro-Bold",
+    fontWeight: 700,
+    marginTop: "1rem",
   },
 }));
 
