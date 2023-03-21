@@ -27,7 +27,7 @@ const FeatureGrid: React.FC<Props> = (props: Props) => {
                 <img src={logo} alt="logo" className={classes.logo} />
                 {!isMobile && <Typography variant="body1" color="textPrimary" className={classes.cardTypography} style={{ marginTop: "1.5rem" }}>{label}</Typography>}
               </Box>
-              {isMobile && <Typography variant="body1" color="textPrimary" className={classes.cardTypography} style={{ marginTop: "1.5rem" }}>{label}</Typography>}
+              {isMobile && <Typography variant="body1" color="textPrimary" noWrap className={classes.cardTypography} style={{ marginTop: "1.5rem" }}>{label}</Typography>}
             </Box>
           </Grow>
         );
@@ -41,7 +41,7 @@ const FeatureGrid: React.FC<Props> = (props: Props) => {
                 <img src={item.logo} alt="logo" className={classes.logo} />
                 {!isMobile && <Typography variant="body1" color="textPrimary" className={classes.cardTypography} style={{ marginTop: "1.5rem" }}>{item.label}</Typography>}
               </Box>
-              {isMobile && <Typography variant="body1" color="textPrimary" className={classes.cardTypography} style={{ marginTop: "0.5rem" }}>{item.label}</Typography>}
+              {isMobile && <Typography variant="body1" color="textPrimary" noWrap className={classes.cardTypography} style={{ marginTop: "0.5rem" }}>{item.label}</Typography>}
             </Box>
           </Grow>
         );
@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     gridTemplateColumns: "repeat(auto-fill, 15.625rem)",
     rowGap: "5rem",
     boxSizing: "border-box",
+    scrollbarGutter: "stable",
     justifyContent: "space-between",
     paddingBottom: "3.5rem",
     [theme.breakpoints.only("sm")]: {
@@ -187,9 +188,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   cardTypography: {
+    fontFamily: "TyrosPro-Bold",
     fontWeight: 700,
     padding: "0 0.5rem",
     textAlign: "center",
+    [theme.breakpoints.only("sm")]: {
+      width: "10rem",
+    },
+    [theme.breakpoints.only("xs")]: {
+      width: "7.5rem",
+    },
   },
 }));
 
