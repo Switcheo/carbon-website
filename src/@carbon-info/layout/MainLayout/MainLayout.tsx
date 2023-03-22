@@ -11,7 +11,7 @@ const MainLayout: React.FC<Props> = (props: Props) => {
 
   return (
     <main className={clsx(classes.app, className)} {...rest}>
-      <Container maxWidth={false}>
+      <Container maxWidth="xl" className={classes.mainContainer}>
         <Header />
         {children}
         <Footer />
@@ -31,6 +31,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     overflow: "hidden",
     textAlign: "center",
+  },
+  mainContainer: {
+    paddingLeft: "7.5rem",
+    paddingRight: "7.5rem",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "24px",
+      paddingRight: "24px",
+    },
   },
 }));
 

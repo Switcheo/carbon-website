@@ -13,6 +13,7 @@ import { useInView } from "react-intersection-observer";
 const Build: React.FC = () => {
   const classes = useStyles();
   const isMobile = isWidth("sm");
+  const isSmallScreen = isWidth("md");
 
   const { ref, inView } = useInView({
     /* Optional options */
@@ -22,11 +23,13 @@ const Build: React.FC = () => {
 
   return (
     <div ref={ref} id="build" style={{ position: "relative" }}>
-      <img src={PlanetBackground} className={classes.background} />
+      <FadeAndSlide visible={inView}>
+        <img src={PlanetBackground} className={classes.background} />
+      </FadeAndSlide>
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
           <Typography variant="h1" color="textPrimary" style={{ marginBottom: "4.5rem" }}>Build on Carbon</Typography>
-          <Grid container justifyContent="center" spacing={5}>
+          <Grid container justifyContent="center" spacing={isSmallScreen ? 2 : 5}>
             <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInLeft" : ""} >
               <CardWithCTA
                 title={"Develop on Carbon"}
@@ -63,22 +66,33 @@ export default Build;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "10vh auto",
-    maxWidth: "1480px",
-    zIndex: 10,
+    margin: "15rem auto",
+    maxWidth: "1400px",
+    zIndex: 15,
     [theme.breakpoints.down("sm")]: {
-      margin: "5vh 0px",
+      margin: "15rem 0px",
     },
   },
   background: {
     position: "absolute",
     width: "1887px",
-    top: "-600px",
-    left: "45%",
-    marginLeft: "-50%",
+    height: "732px",
+    top: "-300px",
+    left: "50%",
+    marginLeft: "-943.5px", // half of width
+    zIndex: 0,
+    scale: 1.5,
     [theme.breakpoints.up("xl")]: {
-      width: "110%",
-      top: "-800px",
+      top: "-250px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "calc(100% + 48px)",
+      left: "50%",
+      marginLeft: "calc(-50% - 24px)",
+    },
+    [theme.breakpoints.only("xs")]: {
+      top: "-75px",
+      maxHeight: "243px",
     },
   },
 }));

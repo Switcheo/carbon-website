@@ -8,16 +8,17 @@ interface Props {
   delay?: number,
   opacity?: number,
   visible: boolean,
+  className?: string,
 }
 
 const FadeAndSlide: React.FC<Props> = (props: Props) => {
-  const { children, transform = [0, 20], delay = 0, opacity = 0, visible = false } = props;
+  const { children, transform = [0, 20], delay = 0, opacity = 0, visible = false, className } = props;
   const classes = useStyles();
   const transformX = transform[0];
   const transformY = transform[1];
   return (
     <div
-      className={clsx(classes.animation, { open: visible })}
+      className={clsx(className, classes.animation, { open: visible })}
       style={{
         opacity,
         transform: `translate(${transformX}px, ${transformY}px)`,

@@ -14,13 +14,12 @@ const sitemap = [
         target: "_blank",
       },
       {
-        title: "Carbon Docs",
-        link: Path.Footer.Guides,
-        target: "_blank",
+        title: "Partnerships",
+        link: Path.Footer.Partnerships,
       },
       {
-        title: "Core Dev Blog",
-        link: Path.Footer.Blog,
+        title: "Carbon Docs",
+        link: Path.Footer.Guides,
         target: "_blank",
       },
       {
@@ -34,7 +33,7 @@ const sitemap = [
     section: "Build",
     sitemap: [
       {
-        title: "Setting Up A Node",
+        title: "Node Set-Up",
         link: Path.Footer.Setup,
         target: "_blank",
       },
@@ -81,7 +80,7 @@ const sitemap = [
     ],
   },
   {
-    section: "Contribute",
+    section: "Resources",
     sitemap: [
       {
         title: "Forum",
@@ -91,6 +90,11 @@ const sitemap = [
       {
         title: "Governance",
         link: Path.Footer.Governance,
+        target: "_blank",
+      },
+      {
+        title: "Brand Assets",
+        link: Path.Footer.BrandAsset,
         target: "_blank",
       },
     ],
@@ -174,12 +178,15 @@ export default Footer;
 
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
-    maxWidth: "1480px",
+    maxWidth: "1400px",
     margin: "0 auto",
   },
   logo: {
     margin: "0px 0.063rem",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.only("sm")]: {
+      width: "150px",
+    },
+    [theme.breakpoints.only("xs")]: {
       width: "100px",
     },
   },
@@ -192,7 +199,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     ...theme.typography.body1,
     margin: "0.5rem 0px",
     maxWidth: "13rem",
-    color: theme.palette.text.disabled,
+    color: theme.palette.text.secondary,
   },
   sitemapContainer: {
     margin: "7.5rem 0px",

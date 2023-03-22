@@ -54,12 +54,15 @@ export default MobileMenu;
 const useStyles = makeStyles((theme: Theme) => ({
   menuIcon: {
     marginLeft: "auto",
-    height: "12px",
-    width: "12px",
+    position: "relative",
+    [theme.breakpoints.only("xs")]: {
+      width: "12px",
+      height: "12px",
+    },
   },
   navBarContainer: {
     height: "-webkit-fill-available",
-    width: "100%",
+    width: "100vw",
     position: "relative",
     background: theme.palette.background.navBar,
     top: 0,
@@ -77,16 +80,22 @@ const useStyles = makeStyles((theme: Theme) => ({
     zIndex: 0,
   },
   logo: {
-    width: "11rem",
-    margin: theme.spacing(0, 1),
+    width: "200px",
+    [theme.breakpoints.only("xs")]: {
+      width: "11rem",
+    },
   },
   logoContainer: {
     display: "flex",
     alignItems: "center",
     boxSizing: "border-box",
-    padding: ".75rem 3rem .75rem 1rem",
+    padding: "2rem 4.5rem 1rem 3rem",
     [theme.breakpoints.down("xs")]: {
       textAlign: "start",
+      paddingLeft: "24px",
+      paddingRight: "24px",
+      paddingTop: "8px",
+      alignItems: "center",
     },
     zIndex: 10,
   },

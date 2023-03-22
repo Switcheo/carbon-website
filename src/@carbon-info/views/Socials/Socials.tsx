@@ -89,22 +89,26 @@ export default Socials;
 const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     position: "relative",
-    margin: "10vh auto 5vh",
-    maxWidth: "1480px",
+    margin: "15rem auto 5rem",
+    maxWidth: "1400px",
+    zIndex: 10,
     [theme.breakpoints.down("sm")]: {
-      margin: "10vh 0px",
+      margin: "15rem 0",
     },
   },
   background: {
     position: "absolute",
     width: "1000px",
-    left: 0,
-    top: "-325px",
-    zIndex: -1,
-    [theme.breakpoints.down("sm")]: {
-      top: "-100px",
+    left: "-7.5rem",
+    top: "-350px",
+    zIndex: 0,
+    [theme.breakpoints.only("xs")]: {
+      top: 0,
       width: "700px",
       left: "-50%",
+    },
+    [theme.breakpoints.up("xl")]: {
+      top: "-300px",
     },
   },
   contentBox: {
@@ -117,6 +121,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   headerSection: {
     maxWidth: "478px",
     marginRight: "10rem",
+    zIndex: 10,
     [theme.breakpoints.only("md")]: {
       maxWidth: "unset",
       marginRight: "2rem",

@@ -9,13 +9,11 @@ const useContentful = (args: CallArgs) => {
 
   useEffect(() => {
     setData(undefined);
-    if (args.contentType !== "carbonRoadmap")
-      console.warn("useContentful only allows carbon roadmap content type atm");
 
     (async () => {
-      const response = await fetch(`https://content.carbon.network/contentful/master/${args.contentType}`);
+      // increase the limit otherwise default is 10
+      const response = await fetch(`https://content.carbon.network/contentful/master/${args.contentType}?limit=100`);
       const result = await response.json();
-
       setData(result);
     })().catch(console.error);
   }, [args.contentType]);

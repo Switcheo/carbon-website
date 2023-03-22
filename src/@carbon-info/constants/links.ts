@@ -19,7 +19,6 @@ export const Path = {
   Footer: {
     Features: "https://guide.carbon.network/features/cross-chain-interoperability",
     Guides: "https://guide.carbon.network",
-    Blog: "https://blog.switcheo.com",
     Buy: "https://hub.carbon.network/buy",
     CarbonHub: "https://hub.carbon.network/",
     Stake: "https://hub.carbon.network/stake",
@@ -37,6 +36,8 @@ export const Path = {
     Governance: "https://scan.carbon.network/governance",
     Setup: "https://docs.carbon.network/setting-up-a-node/mainnet-setup",
     Research: "https://blog.switcheo.com/tag/research/",
+    BrandAsset: "https://www.notion.so/Carbon-Media-Kit-819ec0d0ed7e45389da48ffd3dbfa6a2",
+    Partnerships: "/partnerships",
   },
   FindOutMore: "https://hub.carbon.network/",
 };
