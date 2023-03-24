@@ -101,6 +101,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   boxContainer: {
     margin: "15rem auto",
     maxWidth: "1400px",
+    position: "relative",
+    zIndex: 1,
   },
   secureContainer: {
     position: "relative",
@@ -145,6 +147,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
+    position: "relative",
+    zIndex: 10,
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       justifyContent: "center",

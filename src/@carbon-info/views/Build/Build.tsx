@@ -22,7 +22,7 @@ const Build: React.FC = () => {
   });
 
   return (
-    <div ref={ref} id="build" style={{ position: "relative" }}>
+    <div ref={ref} id="build">
       <FadeAndSlide visible={inView}>
         <img src={PlanetBackground} className={classes.background} />
       </FadeAndSlide>
