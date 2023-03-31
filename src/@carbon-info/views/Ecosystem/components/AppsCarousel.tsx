@@ -37,9 +37,11 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
     >
       {items.map((item, index) => {
         const { name, icon, description, tag, ctaLink } = item;
+        const totalCards = items.length;
+        const preview = widthSm ? 1 : 2;
         return view === index ? (
-          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`}>
-            <Box className={clsx(classes.cardContainer, "expandCard", { open: inView })} style={{ backgroundImage: `linear-gradient(52.83deg, #121212 15.94%, rgba(0, 0, 0, 0) 100%), url("${item?.backgroundImage}")`, boxShadow: `${theme.shadows[5]}`, backgroundSize: widthSm ? "200%" : "" }}>
+          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`} style={{ backgroundImage: `url("${item?.backgroundImage}")` }}>
+            <Box className={clsx(classes.cardContainer, "expandCard", { open: inView })}>
               <Typography variant="body1" color="textPrimary" className={classes.tag}>{tag}</Typography>
               <img src={icon} className={classes.dAppLogo} />
               <Typography variant="h3" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
@@ -49,7 +51,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
           </Grow>
         ) : (
           <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`}>
-            <Box className={clsx(classes.cardContainer, { open: inView })}>
+            <Box className={clsx(classes.cardContainer, { open: inView }, { lastCard: index === (view + preview) % totalCards })}>
               <img src={icon} className={classes.logo} />
               <Typography variant="h4" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
               <Button className={clsx(classes.ctaButton, classes.minButton)} href={ctaLink} target="_blank">{tag}</Button>
@@ -67,8 +69,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingBottom: "5rem",
     "& > ul": {
       alignItems: "flex-end",
-      "& > li.react-multi-carousel-item--active": {
-        width: "unset !important",
+      "& > li": {
+        "&.react-multi-carousel-item--active": {
+          width: "unset !important",
+        },
       },
     },
     "& > ul.react-multi-carousel-dot-list": {
@@ -127,6 +131,13 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
       transform: "translate(0px,0px)",
     },
+    "&.lastCard": {
+      mask: "linear-gradient(to left, rgba(18, 18, 18, 0) 25%, #121212 100%) content-box",
+      maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
+      [theme.breakpoints.between(960, 1500)]: {
+        mask: "linear-gradient(to left, rgba(18, 18, 18, 0) 90%, #121212 100%) content-box",
+      },
+    },
     "&::before": {
       content: "''",
       position: "absolute",
@@ -152,6 +163,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "5rem",
       alignItems: "start",
       position: "relative",
+      backgroundPositionX: "6rem",
+      backgroundPositionY: "4rem",
+      boxShadow: `${theme.shadows[5]}`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
       [theme.breakpoints.only("xs")]: {
         width: "25rem",
         height: "25rem",
