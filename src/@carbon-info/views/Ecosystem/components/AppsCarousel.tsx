@@ -40,17 +40,8 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
         const totalCards = items.length;
         const preview = widthSm ? 1 : 2;
         return view === index ? (
-          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`}>
-            <Box
-              className={clsx(classes.cardContainer, "expandCard", { open: inView })}
-              style={{
-                backgroundImage: `url("${item?.backgroundImage}")`,
-                backgroundPositionX: "6rem",
-                backgroundPositionY: "4rem",
-                boxShadow: `${theme.shadows[5]}`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}>
+          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`} style={{ backgroundImage: `url("${item?.backgroundImage}")` }}>
+            <Box className={clsx(classes.cardContainer, "expandCard", { open: inView })}>
               <Typography variant="body1" color="textPrimary" className={classes.tag}>{tag}</Typography>
               <img src={icon} className={classes.dAppLogo} />
               <Typography variant="h3" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
@@ -172,6 +163,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "5rem",
       alignItems: "start",
       position: "relative",
+      backgroundPositionX: "6rem",
+      backgroundPositionY: "4rem",
+      boxShadow: `${theme.shadows[5]}`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
       [theme.breakpoints.only("xs")]: {
         width: "25rem",
         height: "25rem",
