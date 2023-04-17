@@ -260,33 +260,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   contentBox: {
-    marginTop: "3.5rem",
+    paddingTop: "3.5rem",
+    paddingBottom: "3.5rem",
     position: "relative",
     // gradient scroll
-    "&::before": {
-      content: "''",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "15rem",
-      background: StyleUtils.scrollBottomGradient,
-      [theme.breakpoints.down("sm")]: {
-        height: "10rem",
-      },
-    },
-    "&::after": {
-      content: "''",
-      position: "absolute",
-      bottom: 0,
-      left: 0,
-      width: "100%",
-      height: "15rem",
-      background: StyleUtils.scrollTopGradient,
-      [theme.breakpoints.down("sm")]: {
-        height: "10rem",
-      },
-    },
+    "--scrollbar-width": "0px",
+    "--mask-height": "20%",
+    "overflowY": "auto",
+    "--mask-image-content": "linear-gradient(to bottom, transparent, #010103 var(--mask-height), #010103 calc(100% - var(--mask-height)), transparent)",
+    "--mask-size-content": "calc(100% - var(--scrollbar-width)) 100%",
+    "--mask-image-scrollbar": "linear-gradient(#010103, #010103)",
+    "--mask-size-scrollbar": "var(--scrollbar-width) 100%",
+    maskImage: "var(--mask-image-content), var(--mask-image-scrollbar)",
+    maskSize: "var(--mask-size-content), var(--mask-size-scrollbar)",
+    maskPosition: "0 0, 100% 0",
+    maskRepeat: "no-repeat, no-repeat",
     "&.hidden": {
       display: "none",
     },
@@ -294,7 +282,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   filters: {
     display: "flex",
     justifyContent: "flex-start",
-    margin: "2.5rem 0",
+    margin: "2.5rem 0 0",
     overflowX: "auto",
   },
   filterButton: {
