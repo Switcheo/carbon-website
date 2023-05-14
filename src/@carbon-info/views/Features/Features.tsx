@@ -7,7 +7,7 @@ import { Path, Responsive } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
 import { Box, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
 import clsx from "clsx";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
 import Carousel from "react-multi-carousel";
@@ -24,13 +24,70 @@ interface FeatureItem {
 const Features: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
+  let carouselRef = useRef<any>();
+  const [inViewCount, setInViewCount] = useState(1);
+  const [firstScrollTriggered, setFirstScrollTriggered] = useState(false);
+
   const isMobile = isWidth("sm");
 
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.4,
-    triggerOnce: true,
+    threshold: 0.85,
+    // triggerOnce: true,
   });
+
+  function throttle(fn: (event: { deltaY: number; }) => void, wait: number) { //eslint-disable-line
+    var time = Date.now();
+
+    return function (event: { deltaY: number; }) {
+      if (Math.abs(event.deltaY) < 4) return;
+
+      if ((time + wait - Date.now()) < 0) {
+        fn(event);
+        time = Date.now();
+      }
+    };
+  }
+
+  const handleScroll = (event: { deltaY: number }) => {
+    if (!carouselRef.current) return;
+
+    if (event.deltaY < 0) {
+      // scroll up
+      if (carouselRef.current.state.currentSlide === 2) {
+        window.removeEventListener("wheel", throttled);
+        document.body.style.overflowY = "";
+        return;
+      }
+      carouselRef.current.previous();
+    } else if (event.deltaY > 0) {
+      // scroll down
+      if (carouselRef.current.state.currentSlide === 4) {
+        window.removeEventListener("wheel", throttled);
+        document.body.style.overflowY = "";
+        carouselRef.current.goToSlide(2);
+        return;
+      }
+      carouselRef.current.next();
+    }
+  };
+
+  const handleFirstInView = () => {
+    if (inViewCount === 1) {
+      setFirstScrollTriggered(true);
+      document.body.style.overflowY = "hidden";
+      window.addEventListener("wheel", throttled);
+      setInViewCount((count) => count + 1);
+    }
+  };
+
+  const throttled = throttle(handleScroll, 800);
+
+  useEffect(() => {
+    if (inView) {
+      handleFirstInView();
+    }
+  }, [inView, inViewCount]);
 
   const ConnectiveAnimation = {
     loop: true,
@@ -81,9 +138,9 @@ const Features: React.FC = () => {
 
   return (
     <div ref={ref} id="features" className={classes.features}>
-      <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: inView })} />
-      <FadeAndSlide visible={inView}>
-        <Box className={clsx(classes.container, { open: inView })} >
+      <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: firstScrollTriggered })} />
+      <FadeAndSlide visible={firstScrollTriggered}>
+        <Box className={clsx(classes.container, { open: firstScrollTriggered })} >
           <>
             <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
               Carbon is built&nbsp;
@@ -94,6 +151,7 @@ const Features: React.FC = () => {
             </Typography>
           </>
           <Carousel
+            ref={carouselRef}
             responsive={Responsive.roadmap}
             containerClass={clsx(classes.carouselContainer, "carousel-container")}
             arrows={false}
