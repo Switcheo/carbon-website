@@ -32,8 +32,8 @@ const Features: React.FC = () => {
 
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.85,
-    // triggerOnce: true,
+    rootMargin: "-50% 0% -50% 0%",
+    threshold: 0,
   });
 
   function throttle(fn: (event: { deltaY: number; }) => void, wait: number) { //eslint-disable-line
@@ -76,8 +76,10 @@ const Features: React.FC = () => {
     if (inViewCount === 1) {
       setFirstScrollTriggered(true);
       document.body.style.overflowY = "hidden";
-      window.addEventListener("wheel", throttled);
-      setInViewCount((count) => count + 1);
+      setTimeout(() => {
+        window.addEventListener("wheel", throttled);
+        setInViewCount((count) => count + 1);
+      }, 2000);
     }
   };
 
@@ -137,11 +139,11 @@ const Features: React.FC = () => {
   }];
 
   return (
-    <div ref={ref} id="features" className={classes.features}>
+    <div id="features" className={classes.features}>
       <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: firstScrollTriggered })} />
       <FadeAndSlide visible={firstScrollTriggered}>
         <Box className={clsx(classes.container, { open: firstScrollTriggered })} >
-          <>
+          <div ref={ref} >
             <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
               Carbon is built&nbsp;
               {!isMobile && <br />}
@@ -149,7 +151,7 @@ const Features: React.FC = () => {
               {!isMobile && <br />}
               today.
             </Typography>
-          </>
+          </div>
           <Carousel
             ref={carouselRef}
             responsive={Responsive.roadmap}
@@ -159,6 +161,9 @@ const Features: React.FC = () => {
             showDots
             dotListClass={classes.dotList}
             minimumTouchDrag={150}
+            customTransition="opacity 1s ease-in"
+            transitionDuration={1000}
+            itemClass={classes.item}
           >
             {items.map((item, index) => {
               return (
@@ -267,6 +272,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginLeft: 0,
       paddingRight: "2.5rem",
     },
+    "& .react-multi-carousel-item--active": {
+      opacity: "1 !important",
+    },
   },
   carouselItem: {
     marginBottom: "96px",
@@ -277,6 +285,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       flexDirection: "column-reverse",
       justifyContent: "flex-start",
     },
+  },
+  item: {
+    opacity: 0,
+    transition: "opacity 1s ease-in",
   },
   ctaButton: {
     paddingBottom: "6.25rem",
