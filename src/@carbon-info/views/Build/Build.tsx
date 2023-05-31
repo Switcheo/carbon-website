@@ -40,8 +40,8 @@ const Build: React.FC = () => {
             </Grid>
             <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInUp" : ""}>
               <CardWithCTA
-                title={"Propose a partnership"}
-                description={"Working towards a freer financial system"}
+                title={"Launch on Carbon EVM"}
+                description={"Learn everything you need to deploy an EVM-compatible smart contract on Carbon"}
                 link={Path.Socials.Discussion}
                 icon={ProposeSVG}
               />
