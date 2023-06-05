@@ -10,6 +10,7 @@ declare module "@material-ui/core/styles/createPalette" {
     tag: string;
     button: string;
     footer: string;
+    red: string;
   }
   export interface TypeBackground {
     default: string;
@@ -53,6 +54,7 @@ export const theme = createTheme({
       tag: "#0D4444",
       button: "#DDDDDD",
       footer: "#6C6C6C",
+      red: '#FF2115'
     },
     divider: "#343434",
   },
