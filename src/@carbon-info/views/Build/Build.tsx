@@ -32,9 +32,9 @@ const Build: React.FC = () => {
           <Grid container justifyContent="center" spacing={isSmallScreen ? 2 : 5}>
             <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInLeft" : ""} >
               <CardWithCTA
-                title={"Develop on Carbon"}
+                title={"Develop on Carbon Core"}
                 description={"Leverage our native source code to fast-track development"}
-                link={Path.Footer.Guides}
+                link={Path.Docs.Guides}
                 icon={DevelopSVG}
               />
             </Grid>
@@ -42,7 +42,7 @@ const Build: React.FC = () => {
               <CardWithCTA
                 title={"Launch on Carbon EVM"}
                 description={"Learn everything you need to deploy an EVM-compatible smart contract on Carbon"}
-                link={Path.Socials.Discussion}
+                link={Path.Docs.Discussion}
                 icon={ProposeSVG}
               />
             </Grid>

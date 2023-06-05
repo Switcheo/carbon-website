@@ -54,7 +54,7 @@ const Data: React.FC = () => {
   return (
     <div ref={ref} id="data" className={classes.container}>
       <FadeAndSlide visible={inView}>
-        <Typography variant="h2" style={{ color: 'red', fontSize: '1.8rem', marginBottom: '2rem' }} className={clsx(classes.headerText, { open: inView })}>Powered by  Cosmos-SDK</Typography>
+        <Typography variant="h2" style={{ color: 'red', fontSize: '1.8rem', marginBottom: '2rem' }} className={clsx(classes.headerText, { open: inView })}>Powered by Cosmos-SDK</Typography>
         <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, { open: inView })}>
           Carbon allows anyone to bootstrap
           <br />

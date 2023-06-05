@@ -7,7 +7,7 @@ export const Path = {
   Socials: {
     LinkedIn: "https://www.linkedin.com/company/switcheo/",
     Twitter: "https://twitter.com/0xcarbon",
-    Discussion: "https://docs.carbon.network/module-architecture/carbon-evm",
+    Discussion: "https://t.me/carbon_ecosystem",
     Telegram: "https://t.me/carbon_ecosystem_ANN",
     Youtube: "https://www.youtube.com/channel/UCqZ9sxvw-0UoHzno4-d97oQ",
     Medium: "https://medium.com/switcheo",
@@ -16,9 +16,13 @@ export const Path = {
     Github: "https://github.com/Switcheo/carbon-bootstrap",
     SwitcheoForum: "https://commonwealth.im/carbon-protocol/discussions/Proposal%20Discussion",
   },
+  Docs: {
+    Discussion: "https://docs.carbon.network/module-architecture/carbon-evm",
+    Guides: "https://docs.carbon.network/module-architecture/carbon-core",
+  },
   Footer: {
     Features: "https://guide.carbon.network/features/cross-chain-interoperability",
-    Guides: "https://guide.carbon.network",
+    Guides: "https://guide.carbon.network/introduction/contents",
     Buy: "https://hub.carbon.network/buy",
     CarbonHub: "https://hub.carbon.network/",
     Stake: "https://hub.carbon.network/stake",

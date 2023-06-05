@@ -247,7 +247,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "calc(100%/3)",
       "& > button": {
         width: "100%",
-        height: "21px",
+        height: "4px",
         borderRadius: 0,
         borderStyle: "none",
         background: theme.palette.divider,
