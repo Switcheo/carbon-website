@@ -3,7 +3,7 @@ jobs:
   deploy:
     docker:
       # image with node, npm and yarn installed
-      - image: circleci/node:14.15.5
+      - image: cimg/node:14.19.0-browsers
     steps:
 
       # checkout workspace to repo code
