@@ -1,13 +1,15 @@
 import connective from "@carbon-info/assets/animated/connective.json";
 import stable from "@carbon-info/assets/animated/stable.json";
 import versatile from "@carbon-info/assets/animated/versatile.json";
-import carbonFeaturesBackground from "@carbon-info/assets/background/carbonFeaturesBackground.svg";
+import carbonFeaturesGlowBg from "@carbon-info/assets/background/carbonFeaturesGlowBg.svg";
+import carbonFeaturesHexagonGlow from "@carbon-info/assets/background/carbonFeaturesHexagonGlow.svg";
+import carbonFeaturesHexagonOutline from "@carbon-info/assets/background/carbonFeaturesHexagonOutline.svg";
 import { CTAButton, FadeAndSlide } from "@carbon-info/components";
 import { Path, Responsive } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
 import { Box, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
 import clsx from "clsx";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
 import Carousel from "react-multi-carousel";
@@ -21,16 +23,156 @@ interface FeatureItem {
   icon: any,
 }
 
+type EventHandler<T = any> = (event: T) => void; // eslint-disable-line
+
 const Features: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const carouselRef = useRef<any>();
+  const hexagonGlowRef = useRef<HTMLImageElement>(null);
+  const hexagonOutlineRef = useRef<HTMLImageElement>(null);
+  const [inViewCount, setInViewCount] = useState(1);
+  const [firstScrollTriggered, setFirstScrollTriggered] = useState(false);
+  const [scrolledPastFeatures, setScrolledPastFeatures] = useState(false);
+  const angle = 70;
   const isMobile = isWidth("sm");
+
+  // for event listeners
+  let touchStartY = 0;
+  let glowRotation = 0;
+  let outlineRotation = 0;
 
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.4,
-    triggerOnce: true,
+    rootMargin: isMobile ? "-20% 0% -80% 0%" : "-50% 0% -50% 0%",
+    threshold: 0,
   });
+
+  function throttle(fn: (event: any) => void, wait: number) { // eslint-disable-line
+    var time = Date.now();
+
+    return function (event: any) {
+      if (Math.abs(event.deltaY) < 4) return;
+
+      if ((time + wait - Date.now()) < 0) {
+        fn(event);
+        time = Date.now();
+      }
+    };
+  }
+
+  const handleScroll: EventHandler<{ deltaY: number }> = (event) => {
+    if (!carouselRef.current) return;
+
+    const { currentSlide } = carouselRef.current.state;
+
+    if (event.deltaY < 0) {
+      scrollUp(currentSlide);
+    } else if (event.deltaY > 0) {
+      scrollDown(currentSlide);
+    }
+  };
+
+  const scrollUp = (currentSlide: number) => {
+    if (currentSlide === 2) {
+      document.body.style.overflowY = "";
+      removeEventListeners();
+      return;
+    }
+
+    rotateHexagonGlow(-angle);
+    rotateHexagonOutline(-angle);
+    carouselRef.current.previous();
+  };
+
+  const scrollDown = (currentSlide: number) => {
+    if (currentSlide === 4) {
+      document.body.style.overflowY = "";
+      removeEventListeners();
+      carouselRef.current.goToSlide(2);
+      setScrolledPastFeatures(true);
+      rotateHexagonGlow(0);
+      rotateHexagonOutline(0);
+      return;
+    }
+
+    rotateHexagonGlow(angle);
+    rotateHexagonOutline(angle);
+    carouselRef.current.next();
+  };
+
+  const handleSwipes: EventHandler<TouchEvent> = (e) => {
+    const { currentSlide } = carouselRef.current.state;
+    let touchEndY = e.changedTouches[0].screenY;
+    if (touchEndY < touchStartY) {
+      scrollDown(currentSlide);
+    }
+    if (touchEndY > touchStartY) {
+      scrollUp(currentSlide);
+    }
+  };
+
+  const handleTouchStart: EventHandler<TouchEvent> = (e) => {
+    touchStartY = e.changedTouches[0].screenY;
+  };
+
+  const handleInView = () => {
+    if (inViewCount === 1) {
+      setFirstScrollTriggered(true);
+      document.body.style.overflowY = "hidden";
+      setTimeout(() => {
+        addEventListeners();
+        setInViewCount((count) => count + 1);
+      }, 200);
+    }
+
+    if (inViewCount > 1 && !scrolledPastFeatures) {
+      document.body.style.overflowY = "hidden";
+      setTimeout(() => {
+        addEventListeners();
+        setInViewCount((count) => count + 1);
+      }, 200);
+    }
+  };
+
+  const addEventListeners = () => {
+    window.addEventListener("wheel", throttled);
+    if (isMobile) {
+      window.addEventListener("touchstart", handleTouchStart);
+      window.addEventListener("touchend", throttledMobile);
+    }
+  };
+
+  const removeEventListeners = () => {
+    window.removeEventListener("wheel", throttled);
+    if (isMobile) {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", throttledMobile);
+    }
+  };
+
+  const rotateHexagonGlow = (angle: number) => {
+    if (hexagonGlowRef.current) {
+      glowRotation = angle !== 0 ? (glowRotation + angle) % 360 : angle;
+      hexagonGlowRef.current.style.transform = `rotate(-${glowRotation}deg)`;
+    }
+  };
+
+  const rotateHexagonOutline = (angle: number) => {
+    if (hexagonOutlineRef.current) {
+      outlineRotation = angle !== 0 ? (glowRotation + angle) % 360 : angle;
+      hexagonOutlineRef.current.style.transform = `rotate(-${outlineRotation}deg)`;
+    }
+  };
+
+  const throttled: EventHandler = throttle(handleScroll, 800);
+  const throttledMobile: EventHandler = throttle(handleSwipes, 800);
+
+  useEffect(() => {
+    if (inView) {
+      handleInView();
+    }
+  }, [inView]);
 
   const ConnectiveAnimation = {
     loop: true,
@@ -80,11 +222,13 @@ const Features: React.FC = () => {
   }];
 
   return (
-    <div ref={ref} id="features" className={classes.features}>
-      <img src={carbonFeaturesBackground} className={clsx(classes.background, { open: inView })} />
-      <FadeAndSlide visible={inView}>
-        <Box className={clsx(classes.container, { open: inView })} >
-          <>
+    <div id="features" className={classes.features}>
+      <img ref={hexagonOutlineRef} src={carbonFeaturesHexagonOutline} className={clsx(classes.hexagonOutline, { open: firstScrollTriggered })} />
+      <img ref={hexagonGlowRef} src={carbonFeaturesHexagonGlow} className={clsx(classes.hexagonGlow, { open: firstScrollTriggered })} />
+      <img src={carbonFeaturesGlowBg} className={clsx(classes.background, { open: firstScrollTriggered })} />
+      <FadeAndSlide visible={firstScrollTriggered}>
+        <Box className={clsx(classes.container, { open: firstScrollTriggered })} >
+          <div ref={ref}>
             <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
               Carbon is built&nbsp;
               {!isMobile && <br />}
@@ -92,8 +236,9 @@ const Features: React.FC = () => {
               {!isMobile && <br />}
               today.
             </Typography>
-          </>
+          </div>
           <Carousel
+            ref={carouselRef}
             responsive={Responsive.roadmap}
             containerClass={clsx(classes.carouselContainer, "carousel-container")}
             arrows={false}
@@ -101,6 +246,9 @@ const Features: React.FC = () => {
             showDots
             dotListClass={classes.dotList}
             minimumTouchDrag={150}
+            customTransition="opacity 10ms ease-in"
+            transitionDuration={10}
+            itemClass={classes.item}
           >
             {items.map((item, index) => {
               return (
@@ -141,13 +289,81 @@ export default Features;
 const useStyles = makeStyles((theme: Theme) => ({
   features: {
     position: "relative",
+    margin: "5rem 0",
+    [theme.breakpoints.only("md")]: {
+      margin: "10rem 0",
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: "10rem 0",
+      minHeight: "725px",
+    },
+  },
+  hexagonGlow: {
+    transition: "all 1s",
+    position: "absolute",
+    top: -95,
+    left: "13%",
+    scale: 0.9,
+    opacity: 0,
+    zIndex: 0,
+    "&.open": {
+      opacity: 1,
+    },
+    [theme.breakpoints.only("xl")]: {
+      left: "30%",
+    },
+    [theme.breakpoints.only("md")]: {
+      top: "-65%",
+      scale: 0.7,
+      left: "5%",
+    },
+    [theme.breakpoints.only("sm")]: {
+      top: "-35%",
+      scale: 0.6,
+      left: "-38%",
+    },
+    [theme.breakpoints.only("xs")]: {
+      top: "-43%",
+      scale: 0.5,
+      left: "-75%",
+    },
+  },
+  hexagonOutline: {
+    transition: "all 1s",
+    position: "absolute",
+    top: 35,
+    left: "13%",
+    scale: 0.9,
+    opacity: 0,
+    zIndex: 0,
+    "&.open": {
+      opacity: 1,
+    },
+    [theme.breakpoints.only("xl")]: {
+      top: "-1%",
+      left: "35%",
+    },
+    [theme.breakpoints.only("md")]: {
+      top: "-35%",
+      scale: 0.7,
+      left: "10%",
+    },
+    [theme.breakpoints.only("sm")]: {
+      top: "-15%",
+      scale: 0.6,
+      left: "-28%",
+    },
+    [theme.breakpoints.only("xs")]: {
+      top: "-22%",
+      scale: 0.5,
+      left: "-50%",
+    },
   },
   background: {
-    height: "1283px",
     position: "absolute",
     top: -125,
-    left: "-15%",
-    scale: 2.25,
+    left: "-10%",
+    scale: 1,
     opacity: 0,
     zIndex: 0,
     "&.open": {
@@ -209,6 +425,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginLeft: 0,
       paddingRight: "2.5rem",
     },
+    "& .react-multi-carousel-item--active": {
+      opacity: "1 !important",
+    },
   },
   carouselItem: {
     marginBottom: "96px",
@@ -219,6 +438,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       flexDirection: "column-reverse",
       justifyContent: "flex-start",
     },
+  },
+  item: {
+    opacity: 0,
+    transition: "opacity 1s ease-in",
   },
   ctaButton: {
     paddingBottom: "6.25rem",
@@ -237,6 +460,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   dotList: {
+    zIndex: 100,
     width: "100%",
     "& .react-multi-carousel-dot--active": {
       "& > button": {
