@@ -48,7 +48,27 @@ const Features: React.FC = () => {
     threshold: 0,
   });
 
-  function throttle(fn: (event: any) => void, wait: number) { // eslint-disable-line
+  useEffect(() => {
+    if (scrolledPastFeatures) {
+      const timer = setInterval(() => {
+        const { currentSlide } = carouselRef.current.state;
+
+        if (currentSlide === 4) {
+          carouselRef.current.goToSlide(2);
+          rotateHexagonGlow(0);
+          rotateHexagonOutline(0);
+          return;
+        }
+
+        onNextFeature();
+      }, 5000);
+
+      // Clean up the timer when the component unmounts or when the dependencies change
+      return () => clearInterval(timer);
+    }
+  }, [scrolledPastFeatures]);
+
+  const throttle = (fn: (event: any) => void, wait: number) => { // eslint-disable-line
     var time = Date.now();
 
     return function (event: any) {
@@ -59,7 +79,13 @@ const Features: React.FC = () => {
         time = Date.now();
       }
     };
-  }
+  };
+
+  const onNextFeature = () => {
+    rotateHexagonGlow(angle);
+    rotateHexagonOutline(angle);
+    carouselRef.current.next();
+  };
 
   const handleScroll: EventHandler<{ deltaY: number }> = (event) => {
     if (!carouselRef.current) return;
@@ -96,9 +122,7 @@ const Features: React.FC = () => {
       return;
     }
 
-    rotateHexagonGlow(angle);
-    rotateHexagonOutline(angle);
-    carouselRef.current.next();
+    onNextFeature();
   };
 
   const handleSwipes: EventHandler<TouchEvent> = (e) => {
