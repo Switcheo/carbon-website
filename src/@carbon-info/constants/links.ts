@@ -32,7 +32,7 @@ export const Path = {
     Demex: "https://dem.exchange",
     CarbonScan: "https://scan.carbon.network",
     Hydrogen: "https://hydrogen.carbon.network",
-    SwitcheoDevelopmentFund: "https://commonwealth.im/carbon-protocol/discussion/4486-how-to-apply-for-a-grant-under-the-switcheo-development-fund",
+    SwitcheoDevelopmentFund: "https://t.me/carbon_ecosystem",
     APIs: "https://docs.carbon.network/api-references",
     Github: "https://github.com/Switcheo/carbon-bootstrap/releases",
     SDK: "https://github.com/Switcheo/carbon-js-sdk",

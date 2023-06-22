@@ -54,7 +54,7 @@ export const theme = createTheme({
       tag: "#0D4444",
       button: "#DDDDDD",
       footer: "#6C6C6C",
-      red: '#FF2115'
+      red: "#FF2115",
     },
     divider: "#343434",
   },

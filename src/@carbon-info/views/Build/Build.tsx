@@ -48,8 +48,8 @@ const Build: React.FC = () => {
             </Grid>
             <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInRight" : ""}>
               <CardWithCTA
-                title={"Pitch your project"}
-                description={"Need funding to kickstart your project on Carbon?"}
+                title={"Propose a partnership"}
+                description={"Working towards a freer financial system"}
                 link={Path.Footer.SwitcheoDevelopmentFund}
                 icon={PitchSVG}
               />
