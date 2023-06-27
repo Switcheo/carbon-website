@@ -32,7 +32,7 @@ const Build: React.FC = () => {
           <Grid container justifyContent="center" spacing={isSmallScreen ? 2 : 5}>
             <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInLeft" : ""} >
               <CardWithCTA
-                title={"Develop on Carbon Core"}
+                title={"Integrate with Carbon Core"}
                 description={"Leverage our native source code to fast-track development"}
                 link={Path.Docs.Guides}
                 icon={DevelopSVG}
@@ -40,7 +40,7 @@ const Build: React.FC = () => {
             </Grid>
             <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInUp" : ""}>
               <CardWithCTA
-                title={"Launch on Carbon EVM"}
+                title={"Develop on Carbon EVM"}
                 description={"Learn everything you need to deploy an EVM-compatible smart contract on Carbon"}
                 link={Path.Docs.Discussion}
                 icon={ProposeSVG}

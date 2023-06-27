@@ -21,7 +21,7 @@ export const Path = {
     Guides: "https://docs.carbon.network/module-architecture/carbon-core",
   },
   Footer: {
-    Features: "https://guide.carbon.network/features/cross-chain-interoperability",
+    Features: "https://guide.carbon.network/carbon-modules/carbon-core",
     Guides: "https://guide.carbon.network/introduction/contents",
     Buy: "https://hub.carbon.network/buy",
     CarbonHub: "https://hub.carbon.network/",
@@ -32,7 +32,7 @@ export const Path = {
     Demex: "https://dem.exchange",
     CarbonScan: "https://scan.carbon.network",
     Hydrogen: "https://hydrogen.carbon.network",
-    SwitcheoDevelopmentFund: "https://t.me/carbon_ecosystem",
+    SwitcheoDevelopmentFund: "https://guide.carbon.network/resources/carbon-development-fund",
     APIs: "https://docs.carbon.network/api-references",
     Github: "https://github.com/Switcheo/carbon-bootstrap/releases",
     SDK: "https://github.com/Switcheo/carbon-js-sdk",
