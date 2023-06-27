@@ -55,7 +55,15 @@ const Data: React.FC = () => {
   return (
     <div ref={ref} id="data" className={classes.container}>
       <FadeAndSlide visible={inView}>
-        <img src={cosmosSDK} alt="Cosmos SDK" />
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "8.5rem" }}>
+          <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, classes.smallerText, { open: inView })}>
+            Powered by
+          </Typography>
+          <img src={cosmosSDK} alt="Cosmos SDK" className={classes.cosmosSDKLogo} />
+          <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, classes.cosmosSDK, classes.smallerText, { open: inView })}>
+            Cosmos SDK
+          </Typography>
+        </div>
         <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, { open: inView })}>
           Carbon allows anyone to bootstrap
           <br />
@@ -172,5 +180,23 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: theme.shadows[4],
     borderRadius: "4px",
     margin: "auto",
+  },
+  cosmosSDK: {
+    background: "linear-gradient(180deg, #469590 0%, #31D8D6 100%)",
+    backgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    WebkitBackgroundClip: "text",
+  },
+  cosmosSDKLogo: {
+    margin: theme.spacing(0, 1.5, 0),
+    [theme.breakpoints.down("sm")]: {
+      margin: theme.spacing(-1, 1, 0),
+      transform: "scale(0.75)",
+    },
+  },
+  smallerText: {
+    [theme.breakpoints.down(380)]: {
+      fontSize: "1.45rem",
+    },
   },
 }));
