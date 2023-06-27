@@ -8,6 +8,7 @@ import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { AnimateKeyframes } from "react-simple-animate";
 import { RollingNum } from "./component";
+import cosmosSDK from "@carbon-info/assets/icons/cosmosSDK.svg";
 
 export interface DataInfo {
   value: string,
@@ -54,7 +55,7 @@ const Data: React.FC = () => {
   return (
     <div ref={ref} id="data" className={classes.container}>
       <FadeAndSlide visible={inView}>
-        {/* <Typography variant="h2" style={{ color: "red", fontSize: "1.8rem", marginBottom: "2rem" }} className={clsx(classes.headerText, { open: inView })}>Powered by Cosmos-SDK</Typography> */}
+        <img src={cosmosSDK} alt="Cosmos SDK" />
         <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, { open: inView })}>
           Carbon allows anyone to bootstrap
           <br />
