@@ -31,8 +31,8 @@ const Features: React.FC = () => {
   const carouselRef = useRef<any>();
   const hexagonGlowRef = useRef<HTMLImageElement>(null);
   const hexagonOutlineRef = useRef<HTMLImageElement>(null);
+  const divRef = useRef<HTMLDivElement>(null);
   const [inViewCount, setInViewCount] = useState(1);
-  const [firstScrollTriggered, setFirstScrollTriggered] = useState(false);
   const [scrolledPastFeatures, setScrolledPastFeatures] = useState(false);
   const angle = 70;
   const isMobile = isWidth("sm");
@@ -44,8 +44,8 @@ const Features: React.FC = () => {
 
   const { ref, inView } = useInView({
     /* Optional options */
-    rootMargin: isMobile ? "-20% 0% -80% 0%" : "-50% 0% -50% 0%",
     threshold: 0,
+    triggerOnce: true,
   });
 
   useEffect(() => {
@@ -63,7 +63,6 @@ const Features: React.FC = () => {
         onNextFeature();
       }, 5000);
 
-      // Clean up the timer when the component unmounts or when the dependencies change
       return () => clearInterval(timer);
     }
   }, [scrolledPastFeatures]);
@@ -114,7 +113,7 @@ const Features: React.FC = () => {
   const scrollDown = (currentSlide: number) => {
     if (currentSlide === 4) {
       document.body.style.overflowY = "";
-      removeEventListeners();
+      removeEventListeners(true);
       carouselRef.current.goToSlide(2);
       setScrolledPastFeatures(true);
       rotateHexagonGlow(0);
@@ -142,7 +141,6 @@ const Features: React.FC = () => {
 
   const handleInView = () => {
     if (inViewCount === 1) {
-      setFirstScrollTriggered(true);
       document.body.style.overflowY = "hidden";
       setTimeout(() => {
         addEventListeners();
@@ -161,18 +159,19 @@ const Features: React.FC = () => {
 
   const addEventListeners = () => {
     window.addEventListener("wheel", throttled);
-    if (isMobile) {
-      window.addEventListener("touchstart", handleTouchStart);
-      window.addEventListener("touchend", throttledMobile);
-    }
+    window.addEventListener("touchend", throttledMobile);
   };
 
-  const removeEventListeners = () => {
-    window.removeEventListener("wheel", throttled);
-    if (isMobile) {
+
+  //TODO: to change reference to fDesktop between wheel and touchend due to inability to removeEventListener when referring to same fDesktop
+  const removeEventListeners = (removeAll?: boolean) => {
+    if (removeAll) {
+      window.removeEventListener("wheel", fDesktop);
+      window.removeEventListener("touchend", fMobile);
       window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", throttledMobile);
     }
+    window.removeEventListener("touchend", throttledMobile);
+    window.removeEventListener("wheel", throttled);
   };
 
   const rotateHexagonGlow = (angle: number) => {
@@ -193,10 +192,51 @@ const Features: React.FC = () => {
   const throttledMobile: EventHandler = throttle(handleSwipes, 800);
 
   useEffect(() => {
-    if (inView) {
-      handleInView();
-    }
-  }, [inView]);
+    window.addEventListener("touchend", fMobile);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("wheel", fDesktop);
+  }, []);
+
+  var getElementsInArea = (function (docElm) {
+    var viewportHeight = docElm.clientHeight;
+
+    return function (e: any, opts: any) {
+      if (divRef.current) {
+        var elm = divRef.current,
+          pos = elm.getBoundingClientRect(),
+          topPerc = pos.top / viewportHeight * 100,
+          bottomPerc = pos.bottom / viewportHeight * 100,
+          middle = (topPerc + bottomPerc) / 2,
+          inViewport = middle > opts.zone[0] &&
+            middle < (100 - opts.zone[1]);
+
+        elm.classList.toggle(opts.markedClass, inViewport);
+
+        if (e && e.type === "touchend") {
+          let touchEndY = e.changedTouches[0].screenY;
+          if (inViewport && touchEndY < touchStartY) {
+            handleInView();
+          }
+        } else {
+          if (inViewport && e.deltaY > 0) {
+            handleInView();
+          }
+        }
+      }
+    };
+  })(document.documentElement);
+
+  function fDesktop(e: any) {
+    getElementsInArea(e, {
+      zone: [40, 40],
+    });
+  }
+
+  function fMobile(e: any) {
+    getElementsInArea(e, {
+      zone: [20, 40],
+    });
+  }
 
   const ConnectiveAnimation = {
     loop: true,
@@ -247,19 +287,21 @@ const Features: React.FC = () => {
 
   return (
     <div id="features" className={classes.features}>
-      <img ref={hexagonOutlineRef} src={carbonFeaturesHexagonOutline} className={clsx(classes.hexagonOutline, { open: firstScrollTriggered })} />
-      <img ref={hexagonGlowRef} src={carbonFeaturesHexagonGlow} className={clsx(classes.hexagonGlow, { open: firstScrollTriggered })} />
-      <img src={carbonFeaturesGlowBg} className={clsx(classes.background, { open: firstScrollTriggered })} />
-      <FadeAndSlide visible={firstScrollTriggered}>
-        <Box className={clsx(classes.container, { open: firstScrollTriggered })} >
-          <div ref={ref}>
-            <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
-              Carbon is built&nbsp;
-              {!isMobile && <br />}
-              <span style={{ color: theme.palette.primary.light }}>for the future,&nbsp;</span>
-              {!isMobile && <br />}
-              today.
-            </Typography>
+      <img ref={hexagonOutlineRef} src={carbonFeaturesHexagonOutline} className={clsx(classes.hexagonOutline, { open: inView })} />
+      <img ref={hexagonGlowRef} src={carbonFeaturesHexagonGlow} className={clsx(classes.hexagonGlow, { open: inView })} />
+      <img src={carbonFeaturesGlowBg} className={clsx(classes.background, { open: inView })} />
+      <FadeAndSlide visible={inView}>
+        <Box className={clsx(classes.container, { open: inView })} >
+          <div ref={divRef}>
+            <div ref={ref}>
+              <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
+                Carbon is built&nbsp;
+                {!isMobile && <br />}
+                <span style={{ color: theme.palette.primary.light }}>for the future,&nbsp;</span>
+                {!isMobile && <br />}
+                today.
+              </Typography>
+            </div>
           </div>
           <Carousel
             ref={carouselRef}
