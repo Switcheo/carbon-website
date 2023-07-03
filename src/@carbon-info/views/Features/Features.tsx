@@ -12,7 +12,7 @@ import clsx from "clsx";
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
-import Carousel from "react-multi-carousel";
+import Carousel, { CarouselInternalState } from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 interface FeatureItem {
@@ -34,8 +34,10 @@ const Features: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
   const [inViewCount, setInViewCount] = useState(1);
   const [scrolledPastFeatures, setScrolledPastFeatures] = useState(false);
-  const angle = 70;
   const isMobile = isWidth("sm");
+
+  const angle = 70;
+  const currentNextPatterns = [{ currentSlide: 2, nextSlide: 3 }, { currentSlide: 3, nextSlide: 4 }, { currentSlide: 4, nextSlide: 2 }];
 
   // for event listeners
   let touchStartY = 0;
@@ -53,25 +55,6 @@ const Features: React.FC = () => {
     window.addEventListener("touchstart", handleTouchStart);
     window.addEventListener("wheel", handleScrollLock);
   }, []);
-
-  useEffect(() => {
-    if (scrolledPastFeatures) {
-      const timer = setInterval(() => {
-        const { currentSlide } = carouselRef.current.state;
-
-        if (currentSlide === 4) {
-          carouselRef.current.goToSlide(2);
-          rotateHexagonGlow(0);
-          rotateHexagonOutline(0);
-          return;
-        }
-
-        onNextFeature();
-      }, 5000);
-
-      return () => clearInterval(timer);
-    }
-  }, [scrolledPastFeatures]);
 
   const throttle = (fn: (event: any) => void, wait: number) => { // eslint-disable-line
     var time = Date.now();
@@ -102,12 +85,6 @@ const Features: React.FC = () => {
     return e.deltaY > 0;
   };
 
-  const onNextFeature = () => {
-    rotateHexagonGlow(angle);
-    rotateHexagonOutline(angle);
-    carouselRef.current.next();
-  };
-
   const handleScroll: EventHandler<WheelEvent> = (event) => {
     if (!carouselRef.current) return;
 
@@ -126,9 +103,6 @@ const Features: React.FC = () => {
       removeEventListeners();
       return;
     }
-
-    rotateHexagonGlow(-angle);
-    rotateHexagonOutline(-angle);
     carouselRef.current.previous();
   };
 
@@ -138,12 +112,10 @@ const Features: React.FC = () => {
       removeEventListeners(true);
       carouselRef.current.goToSlide(2);
       setScrolledPastFeatures(true);
-      rotateHexagonGlow(0);
-      rotateHexagonOutline(0);
       return;
     }
 
-    onNextFeature();
+    carouselRef.current.next();
   };
 
   const handleSwipes: EventHandler<TouchEvent> = (event) => {
@@ -179,8 +151,8 @@ const Features: React.FC = () => {
   };
 
   const addEventListeners = () => {
-    window.addEventListener("wheel", handleScrollAnimations);
-    window.addEventListener("touchend", handleSwipeAnimations);
+    window.addEventListener("wheel", handleScrollThrottled);
+    window.addEventListener("touchend", handleSwipesThrottled);
   };
 
   const removeEventListeners = (removeAll?: boolean) => {
@@ -189,8 +161,8 @@ const Features: React.FC = () => {
       window.removeEventListener("touchend", handleSwipeLock);
       window.removeEventListener("touchstart", handleTouchStart);
     }
-    window.removeEventListener("wheel", handleScrollAnimations);
-    window.removeEventListener("touchend", handleSwipeAnimations);
+    window.removeEventListener("wheel", handleScrollThrottled);
+    window.removeEventListener("touchend", handleSwipesThrottled);
   };
 
   const rotateHexagonGlow = (angle: number) => {
@@ -207,8 +179,8 @@ const Features: React.FC = () => {
     }
   };
 
-  const handleScrollAnimations: EventHandler = throttle(handleScroll, 800);
-  const handleSwipeAnimations: EventHandler = throttle(handleSwipes, 800);
+  const handleScrollThrottled: EventHandler = throttle(handleScroll, 800);
+  const handleSwipesThrottled: EventHandler = throttle(handleSwipes, 800);
 
   const handleViewportChange = (e: TouchEvent | WheelEvent, zone: [number, number]) => {
     const elm = divRef.current;
@@ -242,6 +214,22 @@ const Features: React.FC = () => {
 
   const handleSwipeLock = (e: TouchEvent | WheelEvent) => {
     handleViewportChange(e, [20, 20]);
+  };
+
+  const handleBackgroundAnimations = (nextSlide: number, state: CarouselInternalState) => {
+    const pattern = currentNextPatterns.find((p) => p.currentSlide === state.currentSlide && p.nextSlide === nextSlide);
+    const isPrev = !pattern;
+
+    if (isPrev) {
+      rotateHexagonGlow(-angle);
+      rotateHexagonOutline(-angle);
+    } else if (state.currentSlide === 4) {
+      rotateHexagonGlow(0);
+      rotateHexagonOutline(0);
+    } else {
+      rotateHexagonGlow(angle);
+      rotateHexagonOutline(angle);
+    }
   };
 
   const ConnectiveAnimation = {
@@ -319,6 +307,9 @@ const Features: React.FC = () => {
             customTransition="opacity 10ms ease-in"
             transitionDuration={10}
             itemClass={classes.item}
+            autoPlay={scrolledPastFeatures}
+            autoPlaySpeed={5000}
+            beforeChange={handleBackgroundAnimations}
           >
             {items.map((item, index) => {
               return (
