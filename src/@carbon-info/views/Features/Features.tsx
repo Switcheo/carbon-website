@@ -49,6 +49,12 @@ const Features: React.FC = () => {
   });
 
   useEffect(() => {
+    window.addEventListener("touchend", handleSwipeLock);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("wheel", handleScrollLock);
+  }, []);
+
+  useEffect(() => {
     if (scrolledPastFeatures) {
       const timer = setInterval(() => {
         const { currentSlide } = carouselRef.current.state;
@@ -80,20 +86,36 @@ const Features: React.FC = () => {
     };
   };
 
+  const isSwipeUp = (e: TouchEvent): boolean => {
+    return e.changedTouches[0].screenY < touchStartY;
+  };
+
+  const isSwipeDown = (e: TouchEvent): boolean => {
+    return e.changedTouches[0].screenY > touchStartY;
+  };
+
+  const isScrollUp = (e: WheelEvent): boolean => {
+    return e.deltaY < 0;
+  };
+
+  const isScrollDown = (e: WheelEvent): boolean => {
+    return e.deltaY > 0;
+  };
+
   const onNextFeature = () => {
     rotateHexagonGlow(angle);
     rotateHexagonOutline(angle);
     carouselRef.current.next();
   };
 
-  const handleScroll: EventHandler<{ deltaY: number }> = (event) => {
+  const handleScroll: EventHandler<WheelEvent> = (event) => {
     if (!carouselRef.current) return;
 
     const { currentSlide } = carouselRef.current.state;
 
-    if (event.deltaY < 0) {
+    if (isScrollUp(event)) {
       scrollUp(currentSlide);
-    } else if (event.deltaY > 0) {
+    } else if (isScrollDown(event)) {
       scrollDown(currentSlide);
     }
   };
@@ -124,13 +146,12 @@ const Features: React.FC = () => {
     onNextFeature();
   };
 
-  const handleSwipes: EventHandler<TouchEvent> = (e) => {
+  const handleSwipes: EventHandler<TouchEvent> = (event) => {
     const { currentSlide } = carouselRef.current.state;
-    let touchEndY = e.changedTouches[0].screenY;
-    if (touchEndY < touchStartY) {
+    if (isSwipeUp(event)) {
       scrollDown(currentSlide);
     }
-    if (touchEndY > touchStartY) {
+    if (isSwipeDown(event)) {
       scrollUp(currentSlide);
     }
   };
@@ -158,20 +179,18 @@ const Features: React.FC = () => {
   };
 
   const addEventListeners = () => {
-    window.addEventListener("wheel", throttled);
-    window.addEventListener("touchend", throttledMobile);
+    window.addEventListener("wheel", handleScrollAnimations);
+    window.addEventListener("touchend", handleSwipeAnimations);
   };
 
-
-  //TODO: to change reference to fDesktop between wheel and touchend due to inability to removeEventListener when referring to same fDesktop
   const removeEventListeners = (removeAll?: boolean) => {
     if (removeAll) {
-      window.removeEventListener("wheel", fDesktop);
-      window.removeEventListener("touchend", fMobile);
+      window.removeEventListener("wheel", handleScrollLock);
+      window.removeEventListener("touchend", handleSwipeLock);
       window.removeEventListener("touchstart", handleTouchStart);
     }
-    window.removeEventListener("touchend", throttledMobile);
-    window.removeEventListener("wheel", throttled);
+    window.removeEventListener("wheel", handleScrollAnimations);
+    window.removeEventListener("touchend", handleSwipeAnimations);
   };
 
   const rotateHexagonGlow = (angle: number) => {
@@ -188,55 +207,42 @@ const Features: React.FC = () => {
     }
   };
 
-  const throttled: EventHandler = throttle(handleScroll, 800);
-  const throttledMobile: EventHandler = throttle(handleSwipes, 800);
+  const handleScrollAnimations: EventHandler = throttle(handleScroll, 800);
+  const handleSwipeAnimations: EventHandler = throttle(handleSwipes, 800);
 
-  useEffect(() => {
-    window.addEventListener("touchend", fMobile);
-    window.addEventListener("touchstart", handleTouchStart);
-    window.addEventListener("wheel", fDesktop);
-  }, []);
+  const handleViewportChange = (e: TouchEvent | WheelEvent, zone: [number, number]) => {
+    const elm = divRef.current;
+    const viewportHeight = document.documentElement.clientHeight;
+    if (!elm) return;
 
-  var getElementsInArea = (function (docElm) {
-    var viewportHeight = docElm.clientHeight;
+    const pos = elm.getBoundingClientRect();
+    const topPerc = (pos.top / viewportHeight) * 100;
+    const bottomPerc = (pos.bottom / viewportHeight) * 100;
+    const middle = (topPerc + bottomPerc) / 2;
+    const inViewport = middle > zone[0] && middle < (100 - zone[1]);
 
-    return function (e: any, opts: any) {
-      if (divRef.current) {
-        var elm = divRef.current,
-          pos = elm.getBoundingClientRect(),
-          topPerc = pos.top / viewportHeight * 100,
-          bottomPerc = pos.bottom / viewportHeight * 100,
-          middle = (topPerc + bottomPerc) / 2,
-          inViewport = middle > opts.zone[0] &&
-            middle < (100 - opts.zone[1]);
+    const isOverflowHidden = document.body.style.overflowY === "hidden";
+    const isTouchEndEvent = e?.type === "touchend";
+    const isWheelEvent = e?.type === "wheel";
 
-        elm.classList.toggle(opts.markedClass, inViewport);
+    const shouldHandleInView =
+      !isOverflowHidden &&
+      ((isTouchEndEvent && inViewport && isSwipeUp(e as TouchEvent)) ||
+        (isWheelEvent && inViewport && isScrollDown(e as WheelEvent)));
 
-        if (e && e.type === "touchend") {
-          let touchEndY = e.changedTouches[0].screenY;
-          if (inViewport && touchEndY < touchStartY) {
-            handleInView();
-          }
-        } else {
-          if (inViewport && e.deltaY > 0) {
-            handleInView();
-          }
-        }
-      }
-    };
-  })(document.documentElement);
+    if (shouldHandleInView) {
+      handleInView();
+    }
 
-  function fDesktop(e: any) {
-    getElementsInArea(e, {
-      zone: [40, 40],
-    });
-  }
+  };
 
-  function fMobile(e: any) {
-    getElementsInArea(e, {
-      zone: [20, 40],
-    });
-  }
+  const handleScrollLock = (e: TouchEvent | WheelEvent) => {
+    handleViewportChange(e, [40, 40]);
+  };
+
+  const handleSwipeLock = (e: TouchEvent | WheelEvent) => {
+    handleViewportChange(e, [20, 20]);
+  };
 
   const ConnectiveAnimation = {
     loop: true,
@@ -286,22 +292,20 @@ const Features: React.FC = () => {
   }];
 
   return (
-    <div id="features" className={classes.features}>
+    <div ref={divRef} id="features" className={classes.features}>
       <img ref={hexagonOutlineRef} src={carbonFeaturesHexagonOutline} className={clsx(classes.hexagonOutline, { open: inView })} />
       <img ref={hexagonGlowRef} src={carbonFeaturesHexagonGlow} className={clsx(classes.hexagonGlow, { open: inView })} />
       <img src={carbonFeaturesGlowBg} className={clsx(classes.background, { open: inView })} />
       <FadeAndSlide visible={inView}>
         <Box className={clsx(classes.container, { open: inView })} >
-          <div ref={divRef}>
-            <div ref={ref}>
-              <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
-                Carbon is built&nbsp;
-                {!isMobile && <br />}
-                <span style={{ color: theme.palette.primary.light }}>for the future,&nbsp;</span>
-                {!isMobile && <br />}
-                today.
-              </Typography>
-            </div>
+          <div ref={ref}>
+            <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
+              Carbon is built&nbsp;
+              {!isMobile && <br />}
+              <span style={{ color: theme.palette.primary.light }}>for the future,&nbsp;</span>
+              {!isMobile && <br />}
+              today.
+            </Typography>
           </div>
           <Carousel
             ref={carouselRef}
