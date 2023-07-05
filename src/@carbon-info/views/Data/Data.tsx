@@ -55,7 +55,7 @@ const Data: React.FC = () => {
   return (
     <div ref={ref} id="data" className={classes.container}>
       <FadeAndSlide visible={inView}>
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: "8.5rem" }}>
+        <div className={classes.poweredBy}>
           <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, classes.smallerText, { open: inView })}>
             Powered by
           </Typography>
@@ -130,7 +130,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   dataTable: {
-    marginTop: "10rem",
+    marginTop: "8rem",
     background: StyleUtils.tableBackgroundGradient,
     borderWidth: "0px 4px",
     borderStyle: "solid",
@@ -152,6 +152,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.between("sm", "lg")]: {
       width: "100%",
+      marginTop: "5rem",
       "& > div:not(:nth-child(3n+1))": {
         "& > div": {
           borderLeft: `2px solid ${theme.palette.primary.dark}`,
@@ -159,7 +160,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     [theme.breakpoints.only("xs")]: {
-      margin: "10rem auto 0",
+      marginTop: "4rem",
+      marginLeft: "auto",
+      marginRight: "auto",
       "& > div:last-child > hr": {
         display: "none",
       },
@@ -186,6 +189,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundClip: "text",
     WebkitTextFillColor: "transparent",
     WebkitBackgroundClip: "text",
+  },
+  poweredBy: {
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "6rem",
+    [theme.breakpoints.only("sm")]: {
+      marginBottom: "5rem",
+    },
+    [theme.breakpoints.only("xs")]: {
+      marginBottom: "4rem",
+    },
   },
   cosmosSDKLogo: {
     margin: theme.spacing(0, 1.5, 0),
