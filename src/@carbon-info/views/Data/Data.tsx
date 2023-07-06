@@ -8,6 +8,7 @@ import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { AnimateKeyframes } from "react-simple-animate";
 import { RollingNum } from "./component";
+import cosmosSDK from "@carbon-info/assets/icons/cosmosSDK.svg";
 
 export interface DataInfo {
   value: string,
@@ -54,7 +55,15 @@ const Data: React.FC = () => {
   return (
     <div ref={ref} id="data" className={classes.container}>
       <FadeAndSlide visible={inView}>
-        {/* <Typography variant="h2" style={{ color: "red", fontSize: "1.8rem", marginBottom: "2rem" }} className={clsx(classes.headerText, { open: inView })}>Powered by Cosmos-SDK</Typography> */}
+        <div className={classes.poweredBy}>
+          <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, classes.smallerText, { open: inView })}>
+            Powered by
+          </Typography>
+          <img src={cosmosSDK} alt="Cosmos SDK" className={classes.cosmosSDKLogo} />
+          <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, classes.cosmosSDK, classes.smallerText, { open: inView })}>
+            Cosmos SDK
+          </Typography>
+        </div>
         <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, { open: inView })}>
           Carbon allows anyone to bootstrap
           <br />
@@ -121,7 +130,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   dataTable: {
-    marginTop: "10rem",
+    marginTop: "8rem",
     background: StyleUtils.tableBackgroundGradient,
     borderWidth: "0px 4px",
     borderStyle: "solid",
@@ -143,6 +152,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.between("sm", "lg")]: {
       width: "100%",
+      marginTop: "5rem",
       "& > div:not(:nth-child(3n+1))": {
         "& > div": {
           borderLeft: `2px solid ${theme.palette.primary.dark}`,
@@ -150,7 +160,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
     [theme.breakpoints.only("xs")]: {
-      margin: "10rem auto 0",
+      marginTop: "4rem",
+      marginLeft: "auto",
+      marginRight: "auto",
       "& > div:last-child > hr": {
         display: "none",
       },
@@ -171,5 +183,34 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: theme.shadows[4],
     borderRadius: "4px",
     margin: "auto",
+  },
+  cosmosSDK: {
+    background: "linear-gradient(180deg, #469590 0%, #31D8D6 100%)",
+    backgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    WebkitBackgroundClip: "text",
+  },
+  poweredBy: {
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "6rem",
+    [theme.breakpoints.only("sm")]: {
+      marginBottom: "5rem",
+    },
+    [theme.breakpoints.only("xs")]: {
+      marginBottom: "4rem",
+    },
+  },
+  cosmosSDKLogo: {
+    margin: theme.spacing(0, 1.5, 0),
+    [theme.breakpoints.down("sm")]: {
+      margin: theme.spacing(-1, 1, 0),
+      transform: "scale(0.75)",
+    },
+  },
+  smallerText: {
+    [theme.breakpoints.down(380)]: {
+      fontSize: "1.45rem",
+    },
   },
 }));
