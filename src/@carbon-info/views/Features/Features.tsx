@@ -23,10 +23,15 @@ interface FeatureItem {
   icon: any,
 }
 
+interface HeightProps {
+  windowHeight: number,
+}
+
 type EventHandler<T = any> = (event: T) => void; // eslint-disable-line
 
 const Features: React.FC = () => {
-  const classes = useStyles();
+  const heightProps: HeightProps = { windowHeight: window.innerHeight };
+  const classes = useStyles(heightProps);
   const theme = useTheme();
   const carouselRef = useRef<any>();
   const hexagonGlowRef = useRef<HTMLImageElement>(null);
@@ -347,7 +352,7 @@ const Features: React.FC = () => {
 
 export default Features;
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
   features: {
     position: "relative",
     margin: "5rem 0",
@@ -444,10 +449,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       left: "-75%",
     },
   },
-  container: {
+  container: (props: HeightProps) => ({
     width: "100%",
     display: "flex",
-    paddingTop: "23.125rem",
+    paddingTop: `calc(${props.windowHeight}px / 4)`,
     paddingBottom: "20rem",
     justifyContent: "space-between",
     opacity: 0,
@@ -461,13 +466,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("md")]: {
       justifyContent: "space-between",
-      padding: "10rem 0",
+      padding: "5rem 0",
     },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       paddingBottom: 0,
     },
-  },
+  }),
   featuresHeader: {
     [theme.breakpoints.up("md")]: {
       minWidth: "425px",
