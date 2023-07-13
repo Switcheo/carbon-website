@@ -12,7 +12,7 @@ import clsx from "clsx";
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
-import Carousel from "react-multi-carousel";
+import Carousel, { CarouselInternalState } from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 interface FeatureItem {
@@ -23,19 +23,26 @@ interface FeatureItem {
   icon: any,
 }
 
+interface HeightProps {
+  windowHeight: number,
+}
+
 type EventHandler<T = any> = (event: T) => void; // eslint-disable-line
 
 const Features: React.FC = () => {
-  const classes = useStyles();
+  const heightProps: HeightProps = { windowHeight: window.innerHeight };
+  const classes = useStyles(heightProps);
   const theme = useTheme();
   const carouselRef = useRef<any>();
   const hexagonGlowRef = useRef<HTMLImageElement>(null);
   const hexagonOutlineRef = useRef<HTMLImageElement>(null);
+  const divRef = useRef<HTMLDivElement>(null);
   const [inViewCount, setInViewCount] = useState(1);
-  const [firstScrollTriggered, setFirstScrollTriggered] = useState(false);
   const [scrolledPastFeatures, setScrolledPastFeatures] = useState(false);
-  const angle = 70;
   const isMobile = isWidth("sm");
+
+  const angle = 70;
+  const currentNextPatterns = [{ currentSlide: 2, nextSlide: 3 }, { currentSlide: 3, nextSlide: 4 }, { currentSlide: 4, nextSlide: 2 }];
 
   // for event listeners
   let touchStartY = 0;
@@ -44,29 +51,15 @@ const Features: React.FC = () => {
 
   const { ref, inView } = useInView({
     /* Optional options */
-    rootMargin: isMobile ? "-20% 0% -80% 0%" : "-50% 0% -50% 0%",
     threshold: 0,
+    triggerOnce: true,
   });
 
   useEffect(() => {
-    if (scrolledPastFeatures) {
-      const timer = setInterval(() => {
-        const { currentSlide } = carouselRef.current.state;
-
-        if (currentSlide === 4) {
-          carouselRef.current.goToSlide(2);
-          rotateHexagonGlow(0);
-          rotateHexagonOutline(0);
-          return;
-        }
-
-        onNextFeature();
-      }, 5000);
-
-      // Clean up the timer when the component unmounts or when the dependencies change
-      return () => clearInterval(timer);
-    }
-  }, [scrolledPastFeatures]);
+    window.addEventListener("touchend", handleSwipeLock);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("wheel", handleScrollLock);
+  }, []);
 
   const throttle = (fn: (event: any) => void, wait: number) => { // eslint-disable-line
     var time = Date.now();
@@ -81,20 +74,30 @@ const Features: React.FC = () => {
     };
   };
 
-  const onNextFeature = () => {
-    rotateHexagonGlow(angle);
-    rotateHexagonOutline(angle);
-    carouselRef.current.next();
+  const isSwipeUp = (e: TouchEvent): boolean => {
+    return e.changedTouches[0].screenY < touchStartY;
   };
 
-  const handleScroll: EventHandler<{ deltaY: number }> = (event) => {
+  const isSwipeDown = (e: TouchEvent): boolean => {
+    return e.changedTouches[0].screenY > touchStartY;
+  };
+
+  const isScrollUp = (e: WheelEvent): boolean => {
+    return e.deltaY < 0;
+  };
+
+  const isScrollDown = (e: WheelEvent): boolean => {
+    return e.deltaY > 0;
+  };
+
+  const handleScroll: EventHandler<WheelEvent> = (event) => {
     if (!carouselRef.current) return;
 
     const { currentSlide } = carouselRef.current.state;
 
-    if (event.deltaY < 0) {
+    if (isScrollUp(event)) {
       scrollUp(currentSlide);
-    } else if (event.deltaY > 0) {
+    } else if (isScrollDown(event)) {
       scrollDown(currentSlide);
     }
   };
@@ -105,33 +108,27 @@ const Features: React.FC = () => {
       removeEventListeners();
       return;
     }
-
-    rotateHexagonGlow(-angle);
-    rotateHexagonOutline(-angle);
     carouselRef.current.previous();
   };
 
   const scrollDown = (currentSlide: number) => {
     if (currentSlide === 4) {
       document.body.style.overflowY = "";
-      removeEventListeners();
+      removeEventListeners(true);
       carouselRef.current.goToSlide(2);
       setScrolledPastFeatures(true);
-      rotateHexagonGlow(0);
-      rotateHexagonOutline(0);
       return;
     }
 
-    onNextFeature();
+    carouselRef.current.next();
   };
 
-  const handleSwipes: EventHandler<TouchEvent> = (e) => {
+  const handleSwipes: EventHandler<TouchEvent> = (event) => {
     const { currentSlide } = carouselRef.current.state;
-    let touchEndY = e.changedTouches[0].screenY;
-    if (touchEndY < touchStartY) {
+    if (isSwipeUp(event)) {
       scrollDown(currentSlide);
     }
-    if (touchEndY > touchStartY) {
+    if (isSwipeDown(event)) {
       scrollUp(currentSlide);
     }
   };
@@ -142,7 +139,6 @@ const Features: React.FC = () => {
 
   const handleInView = () => {
     if (inViewCount === 1) {
-      setFirstScrollTriggered(true);
       document.body.style.overflowY = "hidden";
       setTimeout(() => {
         addEventListeners();
@@ -160,19 +156,18 @@ const Features: React.FC = () => {
   };
 
   const addEventListeners = () => {
-    window.addEventListener("wheel", throttled);
-    if (isMobile) {
-      window.addEventListener("touchstart", handleTouchStart);
-      window.addEventListener("touchend", throttledMobile);
-    }
+    window.addEventListener("wheel", handleScrollThrottled);
+    window.addEventListener("touchend", handleSwipesThrottled);
   };
 
-  const removeEventListeners = () => {
-    window.removeEventListener("wheel", throttled);
-    if (isMobile) {
+  const removeEventListeners = (removeAll?: boolean) => {
+    if (removeAll) {
+      window.removeEventListener("wheel", handleScrollLock);
+      window.removeEventListener("touchend", handleSwipeLock);
       window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", throttledMobile);
     }
+    window.removeEventListener("wheel", handleScrollThrottled);
+    window.removeEventListener("touchend", handleSwipesThrottled);
   };
 
   const rotateHexagonGlow = (angle: number) => {
@@ -189,14 +184,58 @@ const Features: React.FC = () => {
     }
   };
 
-  const throttled: EventHandler = throttle(handleScroll, 800);
-  const throttledMobile: EventHandler = throttle(handleSwipes, 800);
+  const handleScrollThrottled: EventHandler = throttle(handleScroll, 800);
+  const handleSwipesThrottled: EventHandler = throttle(handleSwipes, 800);
 
-  useEffect(() => {
-    if (inView) {
+  const handleViewportChange = (e: TouchEvent | WheelEvent, zone: [number, number]) => {
+    const elm = divRef.current;
+    const viewportHeight = document.documentElement.clientHeight;
+    if (!elm) return;
+
+    const pos = elm.getBoundingClientRect();
+    const topPerc = (pos.top / viewportHeight) * 100;
+    const bottomPerc = (pos.bottom / viewportHeight) * 100;
+    const middle = (topPerc + bottomPerc) / 2;
+    const inViewport = middle > zone[0] && middle < (100 - zone[1]);
+
+    const isOverflowHidden = document.body.style.overflowY === "hidden";
+    const isTouchEndEvent = e?.type === "touchend";
+    const isWheelEvent = e?.type === "wheel";
+
+    const shouldHandleInView =
+      !isOverflowHidden &&
+      ((isTouchEndEvent && inViewport && isSwipeUp(e as TouchEvent)) ||
+        (isWheelEvent && inViewport && isScrollDown(e as WheelEvent)));
+
+    if (shouldHandleInView) {
       handleInView();
     }
-  }, [inView]);
+
+  };
+
+  const handleScrollLock = (e: TouchEvent | WheelEvent) => {
+    handleViewportChange(e, [40, 40]);
+  };
+
+  const handleSwipeLock = (e: TouchEvent | WheelEvent) => {
+    handleViewportChange(e, [20, 20]);
+  };
+
+  const handleBackgroundAnimations = (nextSlide: number, state: CarouselInternalState) => {
+    const pattern = currentNextPatterns.find((p) => p.currentSlide === state.currentSlide && p.nextSlide === nextSlide);
+    const isPrev = !pattern;
+
+    if (isPrev) {
+      rotateHexagonGlow(-angle);
+      rotateHexagonOutline(-angle);
+    } else if (state.currentSlide === 4) {
+      rotateHexagonGlow(0);
+      rotateHexagonOutline(0);
+    } else {
+      rotateHexagonGlow(angle);
+      rotateHexagonOutline(angle);
+    }
+  };
 
   const ConnectiveAnimation = {
     loop: true,
@@ -246,12 +285,12 @@ const Features: React.FC = () => {
   }];
 
   return (
-    <div id="features" className={classes.features}>
-      <img ref={hexagonOutlineRef} src={carbonFeaturesHexagonOutline} className={clsx(classes.hexagonOutline, { open: firstScrollTriggered })} />
-      <img ref={hexagonGlowRef} src={carbonFeaturesHexagonGlow} className={clsx(classes.hexagonGlow, { open: firstScrollTriggered })} />
-      <img src={carbonFeaturesGlowBg} className={clsx(classes.background, { open: firstScrollTriggered })} />
-      <FadeAndSlide visible={firstScrollTriggered}>
-        <Box className={clsx(classes.container, { open: firstScrollTriggered })} >
+    <div ref={divRef} id="features" className={classes.features}>
+      <img ref={hexagonOutlineRef} src={carbonFeaturesHexagonOutline} className={clsx(classes.hexagonOutline, { open: inView })} />
+      <img ref={hexagonGlowRef} src={carbonFeaturesHexagonGlow} className={clsx(classes.hexagonGlow, { open: inView })} />
+      <img src={carbonFeaturesGlowBg} className={clsx(classes.background, { open: inView })} />
+      <FadeAndSlide visible={inView}>
+        <Box className={clsx(classes.container, { open: inView })} >
           <div ref={ref}>
             <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
               Carbon is built&nbsp;
@@ -273,6 +312,9 @@ const Features: React.FC = () => {
             customTransition="opacity 10ms ease-in"
             transitionDuration={10}
             itemClass={classes.item}
+            autoPlay={scrolledPastFeatures}
+            autoPlaySpeed={5000}
+            beforeChange={handleBackgroundAnimations}
           >
             {items.map((item, index) => {
               return (
@@ -310,7 +352,7 @@ const Features: React.FC = () => {
 
 export default Features;
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
   features: {
     position: "relative",
     margin: "5rem 0",
@@ -407,10 +449,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       left: "-75%",
     },
   },
-  container: {
+  container: (props: HeightProps) => ({
     width: "100%",
     display: "flex",
-    paddingTop: "23.125rem",
+    paddingTop: `calc(${props.windowHeight}px / 4)`,
     paddingBottom: "20rem",
     justifyContent: "space-between",
     opacity: 0,
@@ -424,13 +466,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.down("md")]: {
       justifyContent: "space-between",
-      padding: "10rem 0",
+      padding: "5rem 0",
     },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       paddingBottom: 0,
     },
-  },
+  }),
   featuresHeader: {
     [theme.breakpoints.up("md")]: {
       minWidth: "425px",
