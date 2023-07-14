@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     // gradient scroll
     overflowY: "auto",
-    maxHeight: "47.5rem",
+    maxHeight: "45rem",
     "&::-webkit-scrollbar": {
       width: "12px",
       height: "12px",

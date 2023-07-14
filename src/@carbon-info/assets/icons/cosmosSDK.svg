@@ -1,0 +1,16 @@
+<svg width="47" height="47" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#469590" />
+      <stop offset="100%" stop-color="#31D8D6" />
+    </linearGradient>
+  </defs>
+  <path d="M5.92116 17.5774L33.5 1.6547L61.0788 17.5774V49.4226L33.5 65.3453L5.92116 49.4226V17.5774Z" stroke="url(#gradient)" stroke-width="2" />
+  <path d="M15.8364 36.3084V30.6771L20.7133 27.8615L25.5901 30.6771V36.3084L20.7133 39.1241L15.8364 36.3084Z" stroke="url(#gradient)" stroke-width="2" />
+  <path d="M28.623 36.3084V30.6771L33.4999 27.8615L38.3768 30.6771V36.3084L33.4999 39.1241L28.623 36.3084Z" stroke="url(#gradient)" stroke-width="2" />
+  <path d="M41.4097 36.3084V30.6771L46.2865 27.8615L51.1634 30.6771V36.3084L46.2865 39.1241L41.4097 36.3084Z" stroke="url(#gradient)" stroke-width="2" />
+  <path d="M22.2295 25.2735V19.6422L27.1063 16.8266L31.9832 19.6422V25.2735L27.1063 28.0892L22.2295 25.2735Z" stroke="url(#gradient)" stroke-width="2" />
+  <path d="M35.0161 25.2735V19.6422L39.893 16.8266L44.7698 19.6422V25.2735L39.893 28.0892L35.0161 25.2735Z" stroke="url(#gradient)" stroke-width="2" />
+  <path d="M22.2295 47.3575V41.7262L27.1063 38.9106L31.9832 41.7262V47.3575L27.1063 50.1732L22.2295 47.3575Z" stroke="url(#gradient)" stroke-width="2" />
+  <path d="M35.0161 47.3575V41.7262L39.893 38.9106L44.7698 41.7262V47.3575L39.893 50.1732L35.0161 47.3575Z" stroke="url(#gradient)" stroke-width="2" />
+</svg>

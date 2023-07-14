@@ -165,17 +165,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   subtitle: {
     marginTop: "2.5rem",
     fontSize: "1.725rem",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "2.125rem",
-    },
-    [theme.breakpoints.down(700)]: {
-      maxWidth: "50rem",
-    },
-    [theme.breakpoints.down(400)]: {
-      minWidth: "44rem",
-    },
     [theme.breakpoints.down(325)]: {
-      minWidth: "36rem",
       marginTop: "2.5rem",
       fontSize: "1.625rem",
     },

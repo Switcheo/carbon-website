@@ -22,7 +22,7 @@ const Build: React.FC = () => {
   });
 
   return (
-    <div ref={ref} id="build" style={{ position: "relative" }}>
+    <div ref={ref} id="build">
       <FadeAndSlide visible={inView}>
         <img src={PlanetBackground} className={classes.background} />
       </FadeAndSlide>
@@ -32,24 +32,24 @@ const Build: React.FC = () => {
           <Grid container justifyContent="center" spacing={isSmallScreen ? 2 : 5}>
             <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInLeft" : ""} >
               <CardWithCTA
-                title={"Develop on Carbon"}
+                title={"Integrate with Carbon Core"}
                 description={"Leverage our native source code to fast-track development"}
-                link={Path.Footer.Guides}
+                link={Path.Docs.Guides}
                 icon={DevelopSVG}
               />
             </Grid>
             <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInUp" : ""}>
               <CardWithCTA
-                title={"Propose a partnership"}
-                description={"Working towards a freer financial system"}
-                link={Path.Socials.Discussion}
+                title={"Develop on Carbon EVM"}
+                description={"Learn everything you need to deploy an EVM-compatible smart contract on Carbon"}
+                link={Path.Docs.Discussion}
                 icon={ProposeSVG}
               />
             </Grid>
             <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInRight" : ""}>
               <CardWithCTA
-                title={"Pitch your project"}
-                description={"Need funding to kickstart your project on Carbon?"}
+                title={"Propose a partnership"}
+                description={"Working towards a freer financial system"}
                 link={Path.Footer.SwitcheoDevelopmentFund}
                 icon={PitchSVG}
               />

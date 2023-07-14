@@ -27,10 +27,10 @@ const Ideas: React.FC = () => {
             <div>
               <Typography color="textPrimary" variant="h2" className={classes.title}>
                 Have ideas to accelerate the growth of Carbon?
-            </Typography>
+              </Typography>
               <Typography color="textPrimary" variant="body2" className={classes.subtext}>
                 Help decentralize Carbon&apos;s development even further by sharing fresh ideas, proposing new features and sparking insightful conversations.
-            </Typography>
+              </Typography>
               <CTAButton
                 text="Submit an idea"
                 link={Path.Socials.SwitcheoForum}
@@ -84,11 +84,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "38rem",
     textAlign: "start",
     margin: "auto",
-    [theme.breakpoints.down("sm")]: {
-      width: "fit-content",
-    },
     [theme.breakpoints.down("xs")]: {
-      height: "42rem",
+      height: "unset",
+      margin: "6rem 0 0",
     },
   },
   image: {
@@ -178,12 +176,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       justifyContent: "center",
       alignItems: "center",
       width: "min-content",
-      minWidth: "38rem",
-      margin: "auto",
-    },
-    [theme.breakpoints.down(340)]: {
-      minWidth: "31rem",
-      marginTop: "11rem",
+      minWidth: "unset",
+      margin: "6rem 0",
     },
   },
 }));

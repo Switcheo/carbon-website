@@ -1,5 +1,5 @@
 import { RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
-import { isFirefox, isMobileSafari } from "@carbon-info/utils/environment";
+import { isFirefox } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Divider, Grid, Grow, Modal, Theme, Typography, createStyles, makeStyles, useTheme, withStyles } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
@@ -285,7 +285,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: StyleUtils.roadmapBackgroundGradient,
       mask: StyleUtils.maskGradient,
-      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
+      maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
   },
@@ -319,7 +319,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         padding: "1.755px 1.755px 0px 1.755px",
         background: theme.palette.primary.main,
         mask: StyleUtils.maskGradient,
-        maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
+        maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
         pointerEvents: "none",
       },
     },
@@ -350,7 +350,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "0px 0px 2px 0px",
       background: theme.palette.primary.main,
       mask: StyleUtils.maskGradient,
-      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
+      maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
   },
@@ -375,7 +375,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: theme.palette.primary.main,
       mask: StyleUtils.maskGradient,
-      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
+      maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
   },
@@ -426,7 +426,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: StyleUtils.roadmapBackgroundGradient,
       mask: StyleUtils.maskGradient,
-      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
+      maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
     [theme.breakpoints.down("sm")]: {

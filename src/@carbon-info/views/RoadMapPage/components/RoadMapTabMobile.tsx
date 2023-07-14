@@ -1,5 +1,5 @@
 import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
-import { isFirefox, isMobileSafari } from "@carbon-info/utils/environment";
+import { isFirefox } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Divider, Modal, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
 import clsx from "clsx";
@@ -314,7 +314,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "1.755px",
       background: StyleUtils.roadmapBackgroundGradient,
       mask: StyleUtils.maskGradient,
-      maskComposite: `${isFirefox() || isMobileSafari() ? "subtract" : "source-out"}`,
+      maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
     },
   },

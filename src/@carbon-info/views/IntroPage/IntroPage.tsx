@@ -113,6 +113,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.open": {
       opacity: 1,
     },
+    [theme.breakpoints.down(1600)]: {
+      fontSize: "2.75rem",
+      lineHeight: "3.85rem",
+    },
+    [theme.breakpoints.down(1280)]: {
+      fontSize: "3.25rem",
+      lineHeight: "4.65rem",
+    },
     [theme.breakpoints.down("sm")]: {
       ...theme.typography.h3,
     },
