@@ -306,6 +306,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       background: StyleUtils.roadmapBackgroundGradient,
       mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
+      WebkitMaskComposite: "source-out",
       pointerEvents: "none",
     },
   },
