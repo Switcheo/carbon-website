@@ -168,6 +168,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   circularCompletedContainer: {
     position: "relative",
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   divider: {
     width: "80%",
@@ -201,22 +206,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   tickSVG: {
     position: "absolute",
     zIndex: 99,
-    top: "1.1rem",
-    left: "35%",
     [theme.breakpoints.down("sm")]: {
-      top: "0.7rem",
-      left: "37%",
       width: "1.5rem",
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "0.4rem",
-      left: "40%",
-    },
-    [theme.breakpoints.down(380)]: {
-      left: "38%",
-    },
-    [theme.breakpoints.down(340)]: {
-      left: "37%",
     },
   },
   circularCompleted: {
