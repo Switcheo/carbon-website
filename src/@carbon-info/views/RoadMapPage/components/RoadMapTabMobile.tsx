@@ -94,6 +94,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                     showThumbs={false}
                     showIndicators={false}
                     centerMode
+                    infiniteLoop
                     autoPlay={false}
                     className={clsx(classes.carousel, { safari: isSafari && !isChrome })}
                   >

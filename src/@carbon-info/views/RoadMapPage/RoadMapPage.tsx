@@ -2,6 +2,7 @@ import { useContentful } from "@carbon-info/hooks";
 import { isWidth } from "@carbon-info/utils/environment";
 import { Box, Theme, makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import moment from "moment";
 import { Ideas, Intro, RoadMapTab, RoadMapTabMobile, RoadMapTabTablet } from "./components";
 
 const RoadMapPage: React.FC = () => {
@@ -20,9 +21,10 @@ const RoadMapPage: React.FC = () => {
       const content = await data as any;
       if (content && Array.isArray(content.items)) {
         content.items.forEach((o: any) => {
-          let tabs: any[] = [];
+          let inProgress: any[] = [];
+          let completed: any[] = [];
           o?.fields?.entries?.forEach((entry: any) => {
-            tabs.push({
+            let data = {
               docLink: entry.fields.link,
               githubLink: entry.fields.githubLink,
               progress: entry.fields.progress,
@@ -30,13 +32,26 @@ const RoadMapPage: React.FC = () => {
               title: entry.fields.title,
               description: entry.fields.description.content[0].content[0].value,
               shortDescription: entry.fields.shortDescription,
-            });
+            };
+            if (entry.fields.progress === 100) {
+              completed.push({ ...data });
+            } else {
+              inProgress.push({ ...data });
+            }
           });
+
+          inProgress.sort((a, b) => (b.progress - a.progress));
+          completed.sort(((a, b) => {
+            if (moment(a.lastUpdate) > moment(b.lastUpdate)) {
+              return 1;
+            }
+            return -1;
+          }));
 
           result.push({
             title: o.fields.title,
             description: o?.fields?.description?.content[0]?.content[0]?.value,
-            tabs: tabs,
+            tabs: [...inProgress, ...completed],
           });
         });
       }
