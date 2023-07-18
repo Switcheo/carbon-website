@@ -21,37 +21,27 @@ const RoadMapPage: React.FC = () => {
       const content = await data as any;
       if (content && Array.isArray(content.items)) {
         content.items.forEach((o: any) => {
-          let inProgress: any[] = [];
-          let completed: any[] = [];
-          o?.fields?.entries?.forEach((entry: any) => {
-            let data = {
-              docLink: entry.fields.link,
-              githubLink: entry.fields.githubLink,
-              progress: entry.fields.progress,
-              status: entry.fields.status,
-              title: entry.fields.title,
-              description: entry.fields.description.content[0].content[0].value,
-              shortDescription: entry.fields.shortDescription,
-            };
-            if (entry.fields.progress === 100) {
-              completed.push({ ...data });
+          const tabs = o?.fields?.entries.map((entry: any) => ({
+            docLink: entry.fields.link,
+            githubLink: entry.fields.githubLink,
+            progress: entry.fields.progress,
+            status: entry.fields.status,
+            title: entry.fields.title,
+            description: entry.fields.description.content[0].content[0].value,
+            shortDescription: entry.fields.shortDescription,
+          })).sort((a: any, b: any) => {
+            if (a.progress === 100 && b.progress === 100) {
+              return moment(a.lastUpdate) > moment(b.lastUpdate) ? 1 : -1;
+            } else if (a.progress === 100 || b.progress === 100) {
+              return a.progress === 100 ? 1 : -1;
             } else {
-              inProgress.push({ ...data });
+              return b.progress - a.progress;
             }
           });
-
-          inProgress.sort((a, b) => (b.progress - a.progress));
-          completed.sort(((a, b) => {
-            if (moment(a.lastUpdate) > moment(b.lastUpdate)) {
-              return 1;
-            }
-            return -1;
-          }));
-
           result.push({
             title: o.fields.title,
             description: o?.fields?.description?.content[0]?.content[0]?.value,
-            tabs: [...inProgress, ...completed],
+            tabs,
           });
         });
       }

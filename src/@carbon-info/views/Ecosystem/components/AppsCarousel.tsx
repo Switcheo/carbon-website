@@ -132,8 +132,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       transform: "translate(0px,0px)",
     },
     "&.lastCard": {
-      mask: "linear-gradient(80deg, #121212 10.92%, rgba(18, 18, 18, 0.00) 70.10%)",
-      WebkitMask: "linear-gradient(80deg, #121212 10.92%, rgba(18, 18, 18, 0.00) 70.10%)",
+      mask: StyleUtils.carouselGradient,
+      WebkitMask: StyleUtils.carouselGradient,
     },
     "&::before": {
       content: "''",
