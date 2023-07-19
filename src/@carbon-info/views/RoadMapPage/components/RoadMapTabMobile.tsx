@@ -1,7 +1,7 @@
-import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
+import { CompletedIcon, RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon } from "@carbon-info/assets";
 import { isFirefox } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
-import { Box, Divider, Modal, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
+import { Box, Divider, Modal, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
@@ -29,7 +29,6 @@ interface Props {
 const RoadMapTab: React.FC<Props> = (props: Props) => {
   const { content } = props;
   const classes = useStyles();
-  const theme = useTheme();
   const [view, setView] = useState(0);
   const [tabView, setTabView] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -108,15 +107,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                             {
                               o.status === "Completed" ?
                                 <div className={classes.circularCompletedContainer}>
-                                  <CircularProgressbar
-                                    className={classes.circularCompleted}
-                                    value={100}
-                                    styles={buildStyles({
-                                      pathColor: theme.palette.primary.main,
-                                      trailColor: "rgba(255, 255, 255, 0.3)",
-                                      textColor: "rgba(255, 255, 255, 1)",
-                                    })} />
-                                  <RoadMapPageCardTick className={classes.tickSVG} />
+                                  <CompletedIcon className={classes.completedIcon} />
                                 </div>
                                 :
                                 <CircularProgressbar
@@ -204,25 +195,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       fill: "#878181 !important",
     },
   },
-  tickSVG: {
-    position: "absolute",
-    zIndex: 99,
-    [theme.breakpoints.down("sm")]: {
-      width: "1.5rem",
-    },
-  },
-  circularCompleted: {
-    position: "absolute",
-    height: "4rem",
-  },
   status: {
     color: theme.palette.primary.main,
     "&.completed": {
       color: "#5B5656",
     },
-  },
-  filterText: {
-    fontWeight: 400,
   },
   arrowIcon: {
     height: "1.8rem",
@@ -321,23 +298,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       zIndex: 3,
     },
   },
-  tabContainer: {
-    width: "100%",
-    display: "grid",
-  },
-  contentContainer: {
-    zIndex: 2,
-    padding: "2rem",
-    boxSizing: "border-box",
-    marginTop: "1rem",
-  },
-  FilterContainer: {
-    margin: "0px auto",
-  },
-  descriptionAndFilterContainer: {
-    display: "flex",
-    marginBottom: "1rem",
-  },
   aniContainer: {
     position: "relative",
   },
@@ -355,5 +315,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
       transform: "translate(0px,0px)",
     },
+  },
+  completedIcon: {
+    position: "relative",
+    width: "100%",
+    height: "100%",
   },
 }));
