@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Responsive } from "@carbon-info/constants";
 import { isFirefox, isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
@@ -21,6 +22,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
 
   const widthSm = isWidth("sm");
 
+  console.log(items)
   return (
     <Carousel
       responsive={Responsive.apps}
@@ -34,6 +36,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
         setView(currSlideMod);
       }}
       minimumTouchDrag={150}
+
     >
       {items.map((item, index) => {
         const { name, icon, description, tag, ctaLink } = item;
@@ -147,7 +150,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 30,
       padding: "1.755px",
-      background: StyleUtils.cardBackgroundGradient,
+      background: 'StyleUtils.cardBackgroundGradient',
       mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
@@ -157,6 +160,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       height: "22.5rem",
     },
     "&.expandCard": {
+      transition: "all 1s ease-in-out !important",
+      transformOrigin: "center",
+      transform: "scale(1)",
       width: "37.5rem",
       height: "32.5rem",
       margin: "3.5rem 1rem 0 0",
