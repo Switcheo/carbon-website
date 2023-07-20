@@ -200,6 +200,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "0.5rem 0px",
     maxWidth: "13rem",
     color: theme.palette.text.secondary,
+    "&:hover": {
+      color: theme.palette.common.white,
+      transition: "all 0.2s ease",
+    },
   },
   sitemapContainer: {
     margin: "7.5rem 0px",

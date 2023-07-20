@@ -327,12 +327,14 @@ const Features: React.FC = () => {
                       <span style={{ color: theme.palette.text.primary }}>{item.subheader}</span>
                       &nbsp;{item.description}
                     </Typography>
-                    <CTAButton
-                      text="Read Our Docs"
-                      link={item.ctaLink}
-                      textClassName={classes.ctaButtonText}
-                      iconClassName={classes.ctaButtonIcon}
-                    />
+                    <Box className={classes.ctaButtonBox}>
+                      <CTAButton
+                        text="Read Our Docs"
+                        link={item.ctaLink}
+                        textClassName={classes.ctaButtonText}
+                        iconClassName={classes.ctaButtonIcon}
+                      />
+                    </Box>
                   </Box>
                   <Lottie
                     options={item.icon}
@@ -512,6 +514,18 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
   ctaButton: {
     paddingBottom: "6.25rem",
     borderBottom: `2px solid ${theme.palette.primary.dark}`,
+  },
+  ctaButtonBox: {
+    "&:hover $ctaButtonText": {
+      color: theme.palette.common.white,
+      transition: "all 0.2s ease",
+    },
+    "&:hover $ctaButtonIcon": {
+      "& path": {
+        fill: theme.palette.common.white,
+        transition: "all 0.2s ease",
+      },
+    },
   },
   ctaButtonText: {
     ...theme.typography.body2,

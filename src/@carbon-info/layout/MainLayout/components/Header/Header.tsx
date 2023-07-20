@@ -44,13 +44,13 @@ const Header: React.FC = () => {
               :
               <>
                 <Link href={Path.Footer.Guides} underline="none" target="_blank">
-                  <Typography variant="h4" color="textPrimary" display="inline">Learn</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline" className={classes.navBarText}>Learn</Typography>
                 </Link>
                 <Link href={Path.Header.Build} underline="none" target="_blank">
-                  <Typography variant="h4" color="textPrimary" display="inline">Build</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline" className={classes.navBarText}>Build</Typography>
                 </Link>
                 <Link href={Path.Footer.CarbonScan} underline="none" target="_blank">
-                  <Typography variant="h4" color="textPrimary" display="inline">Explore</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline" className={classes.navBarText}>Explore</Typography>
                 </Link>
               </>
           }
@@ -153,6 +153,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     opacity: 0,
     [theme.breakpoints.down("xs")]: {
       padding: ".5rem 3rem .75rem 1rem",
+    },
+  },
+  navBarText: {
+    "&:hover": {
+      color: theme.palette.primary.main,
+      transition: "ease-in-out 0.2s",
     },
   },
   menuIcon: {
