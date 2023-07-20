@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Responsive } from "@carbon-info/constants";
 import { isFirefox, isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
@@ -22,7 +21,6 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
 
   const widthSm = isWidth("sm");
 
-  console.log(items)
   return (
     <Carousel
       responsive={Responsive.apps}
@@ -150,7 +148,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: 0,
       borderRadius: 30,
       padding: "1.755px",
-      background: 'StyleUtils.cardBackgroundGradient',
+      background: StyleUtils.cardBackgroundGradient,
       mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
       pointerEvents: "none",
