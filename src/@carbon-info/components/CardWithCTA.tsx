@@ -99,6 +99,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       background: StyleUtils.cardBackgroundGradient,
       mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
+      WebkitMaskComposite: "source-out",
       pointerEvents: "none",
     },
     [theme.breakpoints.down("sm")]: {

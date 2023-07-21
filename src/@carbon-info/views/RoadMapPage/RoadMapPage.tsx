@@ -2,6 +2,7 @@ import { useContentful } from "@carbon-info/hooks";
 import { isWidth } from "@carbon-info/utils/environment";
 import { Box, Theme, makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import moment from "moment";
 import { Ideas, Intro, RoadMapTab, RoadMapTabMobile, RoadMapTabTablet } from "./components";
 
 const RoadMapPage: React.FC = () => {
@@ -20,23 +21,27 @@ const RoadMapPage: React.FC = () => {
       const content = await data as any;
       if (content && Array.isArray(content.items)) {
         content.items.forEach((o: any) => {
-          let tabs: any[] = [];
-          o?.fields?.entries?.forEach((entry: any) => {
-            tabs.push({
-              docLink: entry.fields.link,
-              githubLink: entry.fields.githubLink,
-              progress: entry.fields.progress,
-              status: entry.fields.status,
-              title: entry.fields.title,
-              description: entry.fields.description.content[0].content[0].value,
-              shortDescription: entry.fields.shortDescription,
-            });
+          const tabs = o?.fields?.entries.map((entry: any) => ({
+            docLink: entry.fields.link,
+            githubLink: entry.fields.githubLink,
+            progress: entry.fields.progress,
+            status: entry.fields.status,
+            title: entry.fields.title,
+            description: entry.fields.description.content[0].content[0].value,
+            shortDescription: entry.fields.shortDescription,
+          })).sort((a: any, b: any) => {
+            if (a.progress === 100 && b.progress === 100) {
+              return moment(a.lastUpdate) > moment(b.lastUpdate) ? 1 : -1;
+            } else if (a.progress === 100 || b.progress === 100) {
+              return a.progress === 100 ? 1 : -1;
+            } else {
+              return b.progress - a.progress;
+            }
           });
-
           result.push({
             title: o.fields.title,
             description: o?.fields?.description?.content[0]?.content[0]?.value,
-            tabs: tabs,
+            tabs,
           });
         });
       }

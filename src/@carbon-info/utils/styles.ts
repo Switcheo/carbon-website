@@ -10,4 +10,5 @@ export const StyleUtils = {
   scrollTopGradient: "linear-gradient(rgba(255, 255, 255, 0.001), #121212)",
   tableBackgroundGradient: "linear-gradient(0deg, rgba(24, 35, 35, 0.8), rgba(24, 35, 35, 0.8))",
   ctaButtonGradient: "radial-gradient(63.65% 55% at 50.51% 100%, rgba(10, 220, 182, 0.4) 0%, rgba(10, 220, 182, 0.1) 51.54%, rgba(10, 220, 182, 0) 100%), #142C2C",
+  carouselGradient: "linear-gradient(80deg, #121212 10.92%, rgba(18, 18, 18, 0.00) 70.10%)",
 };
