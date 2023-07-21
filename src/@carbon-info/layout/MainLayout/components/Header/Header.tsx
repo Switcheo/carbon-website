@@ -58,7 +58,7 @@ const Header: React.FC = () => {
         {!isMobile && (
           <>
             <Box onClick={() => window.open(`${Path.Footer.Buy}`, "_blank")} className={classes.externalLink}>
-              <Typography variant="h4" color="textPrimary">Buy $SWTH</Typography>
+              <Typography variant="h4">Buy $SWTH</Typography>
               <ArrowIcon className={classes.arrowIcon} />
             </Box>
           </>
@@ -205,6 +205,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
+    color: theme.palette.common.white,
+    cursor: "pointer",
+    "&:hover": {
+      color: theme.palette.primary.main,
+      transition: "ease-in-out 0.2s",
+    },
+    "&:hover $arrowIcon": {
+      "& path": {
+        fill: theme.palette.primary.main,
+        transition: "ease-in-out 0.2s",
+      },
+    },
   },
   arrowIcon: {
     height: "1.5rem",

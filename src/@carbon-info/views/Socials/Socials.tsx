@@ -69,8 +69,10 @@ const Socials: React.FC = () => {
                   <img src={item.icon} alt="icon" className={classes.icon} />
                   <div>
                     <Box onClick={() => window.open(`${item.link}`, "_blank")} className={classes.socialLink}>
-                      <Typography variant="h4" color="textPrimary" align="left">{item.title}</Typography>
-                      <ExternalLink className={classes.linkIcon} />
+                      <Box className={classes.titleWrapper}>
+                        <Typography variant="h4" align="left">{item.title}</Typography>
+                        <ExternalLink className={classes.linkIcon} />
+                      </Box>
                     </Box>
                     <Typography variant="body1" color="textSecondary" align="left" style={{ maxWidth: "678px" }}>{item.description}</Typography>
                   </div>
@@ -134,9 +136,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   socialLink: {
     display: "flex",
-    alignItems: "center",
     marginBottom: "1rem",
+    color: theme.palette.common.white,
+  },
+  titleWrapper: {
+    alignItems: "center",
     cursor: "pointer",
+    display: "flex",
+    "&:hover": {
+      color: theme.palette.primary.main,
+      transition: "ease-in-out 0.2s",
+    },
+    "&:hover $linkIcon": {
+      "& path": {
+        fill: theme.palette.primary.main,
+        transition: "ease-in-out 0.2s",
+      },
+    },
   },
   icon: {
     height: "3.75rem",

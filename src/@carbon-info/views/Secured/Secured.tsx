@@ -60,9 +60,7 @@ const Secured: React.FC = () => {
               <Typography variant="body1" color="textSecondary" className={classes.description}>Using the Carbon Token - <span className="highlightedText">$SWTH</span>, anyone can secure the Carbon blockchain while earning transaction fees and staking rewards.</Typography>
               <Box className={classes.actionButtons}>
                 <Button variant="contained" className={classes.containedButton} href={Path.Footer.Buy} target="_blank">Buy $SWTH<ArrowIcon style={{ marginLeft: "10px" }} /></Button>
-                <Box className={classes.ctaButtonBox}>
-                  <CTAButton text="Start Staking" link={Path.Footer.Stake} textClassName={classes.ctaText} iconClassName={classes.ctaIcon} />
-                </Box>
+                <CTAButton text="Start Staking" link={Path.Footer.Stake} textClassName={classes.ctaText} iconClassName={classes.ctaIcon} buttonClassName={classes.ctaButtonBox} />
               </Box>
             </div>
             <Box minWidth={400}>

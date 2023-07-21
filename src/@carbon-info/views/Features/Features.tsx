@@ -327,14 +327,13 @@ const Features: React.FC = () => {
                       <span style={{ color: theme.palette.text.primary }}>{item.subheader}</span>
                       &nbsp;{item.description}
                     </Typography>
-                    <Box className={classes.ctaButtonBox}>
-                      <CTAButton
-                        text="Read Our Docs"
-                        link={item.ctaLink}
-                        textClassName={classes.ctaButtonText}
-                        iconClassName={classes.ctaButtonIcon}
-                      />
-                    </Box>
+                    <CTAButton
+                      text="Read Our Docs"
+                      link={item.ctaLink}
+                      textClassName={classes.ctaButtonText}
+                      iconClassName={classes.ctaButtonIcon}
+                      buttonClassName={classes.ctaButtonBox}
+                    />
                   </Box>
                   <Lottie
                     options={item.icon}

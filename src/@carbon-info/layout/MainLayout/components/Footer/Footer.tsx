@@ -248,5 +248,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: "0px 0.5rem",
       width: "2.5rem",
     },
+    "&:hover": {
+      "& path": {
+        fill: theme.palette.primary.main,
+        transition: "all 0.2s ease",
+      },
+    },
   },
 }));
