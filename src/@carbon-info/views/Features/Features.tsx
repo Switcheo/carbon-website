@@ -41,6 +41,7 @@ const Features: React.FC = () => {
   const [scrolledPastFeatures, setScrolledPastFeatures] = useState(false);
   const [hovered, setHovered] = useState(false);
   const isMobile = isWidth("sm");
+  const isTablet = isWidth("md");
 
   const angle = 70;
   const currentNextPatterns = [{ currentSlide: 2, nextSlide: 3 }, { currentSlide: 3, nextSlide: 4 }, { currentSlide: 4, nextSlide: 2 }];
@@ -52,7 +53,7 @@ const Features: React.FC = () => {
 
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0,
+    threshold: isTablet ? 0.5 : 0,
     triggerOnce: true,
   });
 
@@ -245,7 +246,7 @@ const Features: React.FC = () => {
     }
   };
 
-  const handleFeaturesMouseOver = () => {
+  const handleFeaturesMouseEnter = () => {
     if (!hovered && scrolledPastFeatures) {
       setHovered(true);
     }
@@ -322,7 +323,7 @@ const Features: React.FC = () => {
               today.
             </Typography>
           </div>
-          <Box className={classes.carouselWrapper} onMouseOver={handleFeaturesMouseOver} onMouseLeave={handleFeaturesMouseLeave}>
+          <Box className={classes.carouselWrapper} onMouseEnter={handleFeaturesMouseEnter} onMouseLeave={handleFeaturesMouseLeave}>
             <Carousel
               ref={carouselRef}
               responsive={Responsive.roadmap}
