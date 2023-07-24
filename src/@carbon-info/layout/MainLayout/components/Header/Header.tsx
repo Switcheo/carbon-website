@@ -211,22 +211,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    color: theme.palette.common.white,
     cursor: "pointer",
-    "&:hover": {
-      color: theme.palette.primary.main,
-      transition: "ease-in-out 0.2s",
-    },
-    "&:hover $arrowIcon": {
-      "& path": {
-        fill: theme.palette.primary.main,
-        transition: "ease-in-out 0.2s",
-      },
-    },
   },
   ctaButtonIcon: {
-    width: "20px",
-    height: "16px",
     "& path": {
       fill: theme.palette.common.white,
     },
