@@ -35,14 +35,14 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
       }}
       minimumTouchDrag={150}
       transitionDuration={1000}
-      customTransition={"transform 1500ms cubic-bezier(.1,1.03,1,1) 0ms"}
+      customTransition={"transform 1000ms cubic-bezier(.1,1.03,1,1) 0ms"}
     >
       {items.map((item, index) => {
         const { name, icon, description, tag, ctaLink } = item;
         const totalCards = items.length;
         const preview = widthSm ? 1 : 2;
         return view === index ? (
-          <Grow in timeout={(index + 1) * 200 > 1000 ? 2000 : (index + 1) * 2000} key={`${name}-featured-dApps`} style={{ backgroundImage: `url("${item?.backgroundImage}")` }}>
+          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`} style={{ backgroundImage: `url("${item?.backgroundImage}")` }}>
             <Box className={clsx(classes.cardContainer, "expandCard", { open: inView })}>
               <Typography variant="body1" color="textPrimary" className={classes.tag}>{tag}</Typography>
               <img src={icon} className={classes.dAppLogo} />
@@ -52,7 +52,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
             </Box >
           </Grow>
         ) : (
-          <Grow in timeout={(index + 1) * 200 > 1000 ? 2000 : (index + 1) * 2000} key={`${name}-featured-dApps`}>
+          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`}>
             <Box className={clsx(classes.cardContainer, { open: inView }, { lastCard: index === (view + preview) % totalCards })}>
               <img src={icon} className={classes.logo} />
               <Typography variant="h4" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
