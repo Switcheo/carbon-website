@@ -1,10 +1,11 @@
-import { ArrowIcon, CarbonLogo, MenuIcon } from "@carbon-info/assets";
+import { CarbonLogo, MenuIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
 import { Box, Hidden, Link, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useLayoutEffect, useState } from "react";
 import MobileMenu from "./components/MobileMenu";
+import { CTAButton } from "@carbon-info/components";
 
 const SWITCH_THRESHOLD = 45;
 
@@ -58,8 +59,13 @@ const Header: React.FC = () => {
         {!isMobile && (
           <>
             <Box onClick={() => window.open(`${Path.Footer.Buy}`, "_blank")} className={classes.externalLink}>
-              <Typography variant="h4">Buy $SWTH</Typography>
-              <ArrowIcon className={classes.arrowIcon} />
+              <CTAButton
+                text="Buy $SWTH"
+                link={Path.Footer.Buy}
+                textClassName={classes.ctaButtonText}
+                iconClassName={classes.ctaButtonIcon}
+                buttonClassName={classes.ctaButtonBox}
+              />
             </Box>
           </>
         )}
@@ -218,8 +224,27 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
   },
-  arrowIcon: {
-    height: "1.5rem",
-    marginLeft: "0.5rem",
+  ctaButtonIcon: {
+    width: "20px",
+    height: "16px",
+    "& path": {
+      fill: theme.palette.common.white,
+    },
+  },
+  ctaButtonBox: {
+    "&:hover $ctaButtonText": {
+      color: theme.palette.primary.main,
+      transition: "all 0.2s ease-in",
+    },
+    "&:hover $ctaButtonIcon": {
+      "& path": {
+        fill: theme.palette.primary.main,
+        transition: "all 0.2s ease-in",
+      },
+    },
+  },
+  ctaButtonText: {
+    ...theme.typography.h4,
+    color: theme.palette.common.white,
   },
 }));
