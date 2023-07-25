@@ -35,7 +35,8 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
         setView(currSlideMod);
       }}
       minimumTouchDrag={150}
-
+      transitionDuration={1000}
+      customTransition={"transform 1000ms cubic-bezier(.1,1.03,1,1) 0ms"}
     >
       {items.map((item, index) => {
         const { name, icon, description, tag, ctaLink } = item;
