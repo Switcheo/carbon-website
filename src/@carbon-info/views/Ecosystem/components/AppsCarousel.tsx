@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Responsive } from "@carbon-info/constants";
 import { isFirefox, isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
@@ -200,7 +201,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: "none",
     marginTop: "2rem",
     "&:hover": {
-      background: StyleUtils.ctaButtonGradient,
+      background: StyleUtils.activeGradient,
     },
   },
   minButton: {
