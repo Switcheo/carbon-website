@@ -200,6 +200,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "0.5rem 0px",
     maxWidth: "13rem",
     color: theme.palette.text.secondary,
+    "&:hover": {
+      color: theme.palette.common.white,
+      transition: "all 0.2s ease",
+    },
   },
   sitemapContainer: {
     margin: "7.5rem 0px",
@@ -243,6 +247,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       margin: "0px 0.5rem",
       width: "2.5rem",
+    },
+    "&:hover": {
+      "& path": {
+        fill: theme.palette.primary.main,
+        transition: "all 0.2s ease",
+      },
     },
   },
 }));

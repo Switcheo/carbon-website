@@ -332,6 +332,7 @@ const Features: React.FC = () => {
                       link={item.ctaLink}
                       textClassName={classes.ctaButtonText}
                       iconClassName={classes.ctaButtonIcon}
+                      buttonClassName={classes.ctaButtonBox}
                     />
                   </Box>
                   <Lottie
@@ -512,6 +513,18 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
   ctaButton: {
     paddingBottom: "6.25rem",
     borderBottom: `2px solid ${theme.palette.primary.dark}`,
+  },
+  ctaButtonBox: {
+    "&:hover $ctaButtonText": {
+      color: theme.palette.common.white,
+      transition: "all 0.2s ease",
+    },
+    "&:hover $ctaButtonIcon": {
+      "& path": {
+        fill: theme.palette.common.white,
+        transition: "all 0.2s ease",
+      },
+    },
   },
   ctaButtonText: {
     ...theme.typography.body2,

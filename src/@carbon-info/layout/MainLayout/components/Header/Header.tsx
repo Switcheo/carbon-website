@@ -1,10 +1,11 @@
-import { ArrowIcon, CarbonLogo, MenuIcon } from "@carbon-info/assets";
+import { CarbonLogo, MenuIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
 import { Box, Hidden, Link, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useLayoutEffect, useState } from "react";
 import MobileMenu from "./components/MobileMenu";
+import { CTAButton } from "@carbon-info/components";
 
 const SWITCH_THRESHOLD = 45;
 
@@ -44,13 +45,13 @@ const Header: React.FC = () => {
               :
               <>
                 <Link href={Path.Footer.Guides} underline="none" target="_blank">
-                  <Typography variant="h4" color="textPrimary" display="inline">Learn</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline" className={classes.navBarText}>Learn</Typography>
                 </Link>
                 <Link href={Path.Header.Build} underline="none" target="_blank">
-                  <Typography variant="h4" color="textPrimary" display="inline">Build</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline" className={classes.navBarText}>Build</Typography>
                 </Link>
                 <Link href={Path.Footer.CarbonScan} underline="none" target="_blank">
-                  <Typography variant="h4" color="textPrimary" display="inline">Explore</Typography>
+                  <Typography variant="h4" color="textPrimary" display="inline" className={classes.navBarText}>Explore</Typography>
                 </Link>
               </>
           }
@@ -58,8 +59,13 @@ const Header: React.FC = () => {
         {!isMobile && (
           <>
             <Box onClick={() => window.open(`${Path.Footer.Buy}`, "_blank")} className={classes.externalLink}>
-              <Typography variant="h4" color="textPrimary">Buy $SWTH</Typography>
-              <ArrowIcon className={classes.arrowIcon} />
+              <CTAButton
+                text="Buy $SWTH"
+                link={Path.Footer.Buy}
+                textClassName={classes.ctaButtonText}
+                iconClassName={classes.ctaButtonIcon}
+                buttonClassName={classes.ctaButtonBox}
+              />
             </Box>
           </>
         )}
@@ -155,6 +161,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: ".5rem 3rem .75rem 1rem",
     },
   },
+  navBarText: {
+    "&:hover": {
+      color: theme.palette.primary.main,
+      transition: "ease-in-out 0.2s",
+    },
+  },
   menuIcon: {
     position: "relative",
   },
@@ -199,9 +211,27 @@ const useStyles = makeStyles((theme: Theme) => ({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
+    cursor: "pointer",
   },
-  arrowIcon: {
-    height: "1.5rem",
-    marginLeft: "0.5rem",
+  ctaButtonIcon: {
+    "& path": {
+      fill: theme.palette.common.white,
+    },
+  },
+  ctaButtonBox: {
+    "&:hover $ctaButtonText": {
+      color: theme.palette.primary.main,
+      transition: "all 0.2s ease-in",
+    },
+    "&:hover $ctaButtonIcon": {
+      "& path": {
+        fill: theme.palette.primary.main,
+        transition: "all 0.2s ease-in",
+      },
+    },
+  },
+  ctaButtonText: {
+    ...theme.typography.h4,
+    color: theme.palette.common.white,
   },
 }));
