@@ -1,7 +1,7 @@
-import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
+import { CompletedIcon, RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon } from "@carbon-info/assets";
 import { isFirefox } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
-import { Box, Divider, Modal, Theme, Typography, makeStyles, useTheme } from "@material-ui/core";
+import { Box, Divider, Modal, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
@@ -29,7 +29,6 @@ interface Props {
 const RoadMapTab: React.FC<Props> = (props: Props) => {
   const { content } = props;
   const classes = useStyles();
-  const theme = useTheme();
   const [view, setView] = useState(0);
   const [tabView, setTabView] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -94,6 +93,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                     showThumbs={false}
                     showIndicators={false}
                     centerMode
+                    infiniteLoop
                     autoPlay={false}
                     className={clsx(classes.carousel, { safari: isSafari && !isChrome })}
                   >
@@ -107,15 +107,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                             {
                               o.status === "Completed" ?
                                 <div className={classes.circularCompletedContainer}>
-                                  <CircularProgressbar
-                                    className={classes.circularCompleted}
-                                    value={100}
-                                    styles={buildStyles({
-                                      pathColor: theme.palette.primary.main,
-                                      trailColor: "rgba(255, 255, 255, 0.3)",
-                                      textColor: "rgba(255, 255, 255, 1)",
-                                    })} />
-                                  <RoadMapPageCardTick className={classes.tickSVG} />
+                                  <CompletedIcon className={classes.completedIcon} />
                                 </div>
                                 :
                                 <CircularProgressbar
@@ -168,6 +160,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   circularCompletedContainer: {
     position: "relative",
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   divider: {
     width: "80%",
@@ -198,39 +195,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       fill: "#878181 !important",
     },
   },
-  tickSVG: {
-    position: "absolute",
-    zIndex: 99,
-    top: "1.1rem",
-    left: "35%",
-    [theme.breakpoints.down("sm")]: {
-      top: "0.7rem",
-      left: "37%",
-      width: "1.5rem",
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "0.4rem",
-      left: "40%",
-    },
-    [theme.breakpoints.down(380)]: {
-      left: "38%",
-    },
-    [theme.breakpoints.down(340)]: {
-      left: "37%",
-    },
-  },
-  circularCompleted: {
-    position: "absolute",
-    height: "4rem",
-  },
   status: {
     color: theme.palette.primary.main,
     "&.completed": {
       color: "#5B5656",
     },
-  },
-  filterText: {
-    fontWeight: 400,
   },
   arrowIcon: {
     height: "1.8rem",
@@ -315,6 +284,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       background: StyleUtils.roadmapBackgroundGradient,
       mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
+      WebkitMaskComposite: "source-out",
       pointerEvents: "none",
     },
   },
@@ -327,23 +297,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       color: theme.palette.primary.main,
       zIndex: 3,
     },
-  },
-  tabContainer: {
-    width: "100%",
-    display: "grid",
-  },
-  contentContainer: {
-    zIndex: 2,
-    padding: "2rem",
-    boxSizing: "border-box",
-    marginTop: "1rem",
-  },
-  FilterContainer: {
-    margin: "0px auto",
-  },
-  descriptionAndFilterContainer: {
-    display: "flex",
-    marginBottom: "1rem",
   },
   aniContainer: {
     position: "relative",
@@ -362,5 +315,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
       transform: "translate(0px,0px)",
     },
+  },
+  completedIcon: {
+    position: "relative",
+    width: "100%",
+    height: "100%",
   },
 }));

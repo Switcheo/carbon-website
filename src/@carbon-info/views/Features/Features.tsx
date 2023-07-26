@@ -542,6 +542,18 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
     paddingBottom: "6.25rem",
     borderBottom: `2px solid ${theme.palette.primary.dark}`,
   },
+  ctaButtonBox: {
+    "&:hover $ctaButtonText": {
+      color: theme.palette.common.white,
+      transition: "all 0.2s ease",
+    },
+    "&:hover $ctaButtonIcon": {
+      "& path": {
+        fill: theme.palette.common.white,
+        transition: "all 0.2s ease",
+      },
+    },
+  },
   ctaButtonText: {
     ...theme.typography.body2,
     fontWeight: 700,

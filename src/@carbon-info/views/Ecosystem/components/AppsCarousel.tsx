@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Responsive } from "@carbon-info/constants";
 import { isFirefox, isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
@@ -34,6 +35,8 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
         setView(currSlideMod);
       }}
       minimumTouchDrag={150}
+      transitionDuration={1000}
+      customTransition={"transform 1000ms cubic-bezier(.1,1.03,1,1) 0ms"}
     >
       {items.map((item, index) => {
         const { name, icon, description, tag, ctaLink } = item;
@@ -72,6 +75,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       "& > li": {
         "&.react-multi-carousel-item--active": {
           width: "unset !important",
+          marginRight: "1rem",
         },
       },
     },
@@ -121,7 +125,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "center",
     width: "20rem",
     height: "36.25rem",
-    marginLeft: "1rem",
     "& > button": {
       padding: "0rem 0.75rem",
       fontSize: "0.624rem",
@@ -132,11 +135,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       transform: "translate(0px,0px)",
     },
     "&.lastCard": {
-      mask: "linear-gradient(to left, rgba(18, 18, 18, 0) 25%, #121212 100%) content-box",
-      maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
-      [theme.breakpoints.between(960, 1500)]: {
-        mask: "linear-gradient(to left, rgba(18, 18, 18, 0) 90%, #121212 100%) content-box",
-      },
+      mask: StyleUtils.carouselGradient,
+      WebkitMask: StyleUtils.carouselGradient,
     },
     "&::before": {
       content: "''",
@@ -150,6 +150,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       background: StyleUtils.cardBackgroundGradient,
       mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
+      WebkitMaskComposite: "source-out",
       pointerEvents: "none",
     },
     [theme.breakpoints.only("xs")]: {
@@ -198,7 +199,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: "none",
     marginTop: "2rem",
     "&:hover": {
-      background: StyleUtils.ctaButtonGradient,
+      background: StyleUtils.activeGradient,
     },
   },
   minButton: {

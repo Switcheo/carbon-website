@@ -1,8 +1,8 @@
-import { RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon, RoadMapPageCardTick } from "@carbon-info/assets";
+import { CompletedIcon, RoadMapPageArrowLeft, RoadMapPageArrowRight, RoadMapPageCardIcon } from "@carbon-info/assets";
 import { Responsive } from "@carbon-info/constants";
 import { isFirefox } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
-import { Box, Grid, Grow, Modal, Theme, Typography, createStyles, makeStyles, useTheme, withStyles } from "@material-ui/core";
+import { Box, Grid, Grow, Modal, Theme, Typography, createStyles, makeStyles, withStyles } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
 import clsx from "clsx";
 import React, { useState } from "react";
@@ -31,7 +31,6 @@ interface Props {
 const RoadMapTab: React.FC<Props> = (props: Props) => {
   const { content } = props;
   const classes = useStyles();
-  const theme = useTheme();
   const [view, setView] = useState(0);
   const [tabView, setTabView] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -135,17 +134,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
                           </Typography>
                           {
                             o.status === "Completed" ?
-                              <div className={classes.circularCompletedContainer}>
-                                <CircularProgressbar
-                                  className={classes.circularCompleted}
-                                  value={100}
-                                  styles={buildStyles({
-                                    pathColor: theme.palette.primary.main,
-                                    trailColor: "rgba(255, 255, 255, 0.3)",
-                                    textColor: "rgba(255, 255, 255, 1)",
-                                  })} />
-                                <RoadMapPageCardTick className={classes.tickSVG} />
-                              </div>
+                              <CompletedIcon className={classes.circularCompleted} />
                               :
                               <CircularProgressbar
                                 className={classes.circular}
@@ -182,23 +171,10 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
 export default RoadMapTab;
 
 const useStyles = makeStyles((theme: Theme) => ({
-  circularCompletedContainer: {
-    position: "relative",
-  },
-  tickSVG: {
-    position: "absolute",
-    zIndex: 99,
-    top: "1.1rem",
-    left: "35%",
-    [theme.breakpoints.down("sm")]: {
-      top: "0.7rem",
-      left: "37%",
-      width: "1.5rem",
-    },
-  },
   circularCompleted: {
-    position: "absolute",
-    height: "4rem",
+    height: "100%",
+    justifySelf: "center",
+    scale: "0.9",
   },
   status: {
     color: theme.palette.primary.main,
@@ -285,6 +261,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       background: StyleUtils.roadmapBackgroundGradient,
       mask: StyleUtils.maskGradient,
       maskComposite: `${isFirefox() ? "subtract" : "source-out"}`,
+      WebkitMaskComposite: "source-out",
       pointerEvents: "none",
     },
   },
@@ -312,10 +289,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   FilterContainer: {
     width: "100%",
     margin: "0px auto",
-  },
-  descriptionAndFilterContainer: {
-    display: "flex",
-    marginBottom: "1rem",
   },
   aniContainer: {
     position: "relative",

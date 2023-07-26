@@ -4,6 +4,7 @@ export { ReactComponent as Carbon } from "./carbon.svg";
 export { ReactComponent as CarbonHubIcon } from "./carbonHub.svg";
 export { ReactComponent as CarbonscanIcon } from "./carbonscan.svg";
 export { ReactComponent as ChooseIcon } from "./choose.svg";
+export { ReactComponent as CompletedIcon } from "./completed.svg";
 export { ReactComponent as Connective } from "./connective.svg";
 export { ReactComponent as DecentralizedIcon } from "./decentralized.svg";
 export { ReactComponent as DemexIcon } from "./demex.svg";
