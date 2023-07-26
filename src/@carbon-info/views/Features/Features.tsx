@@ -39,7 +39,9 @@ const Features: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
   const [inViewCount, setInViewCount] = useState(1);
   const [scrolledPastFeatures, setScrolledPastFeatures] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const isMobile = isWidth("sm");
+  const isTablet = isWidth("md");
 
   const angle = 70;
   const currentNextPatterns = [{ currentSlide: 2, nextSlide: 3 }, { currentSlide: 3, nextSlide: 4 }, { currentSlide: 4, nextSlide: 2 }];
@@ -51,7 +53,7 @@ const Features: React.FC = () => {
 
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0,
+    threshold: isTablet ? 0.5 : 0,
     triggerOnce: true,
   });
 
@@ -60,6 +62,13 @@ const Features: React.FC = () => {
     window.addEventListener("touchstart", handleTouchStart);
     window.addEventListener("wheel", handleScrollLock);
   }, []);
+
+  useEffect(() => {
+    if (hovered) {
+      document.body.style.overflowY = "hidden";
+      window.addEventListener("wheel", handleScrollThrottled);
+    }
+  }, [hovered]);
 
   const throttle = (fn: (event: any) => void, wait: number) => { // eslint-disable-line
     var time = Date.now();
@@ -237,6 +246,20 @@ const Features: React.FC = () => {
     }
   };
 
+  const handleFeaturesMouseEnter = () => {
+    if (!hovered && scrolledPastFeatures) {
+      setHovered(true);
+    }
+  };
+
+  const handleFeaturesMouseLeave = () => {
+    if (hovered && scrolledPastFeatures) {
+      window.removeEventListener("wheel", handleScrollThrottled);
+      document.body.style.overflowY = "";
+      setHovered(false);
+    }
+  };
+
   const ConnectiveAnimation = {
     loop: true,
     autoplay: true,
@@ -300,51 +323,52 @@ const Features: React.FC = () => {
               today.
             </Typography>
           </div>
-          <Carousel
-            ref={carouselRef}
-            responsive={Responsive.roadmap}
-            containerClass={clsx(classes.carouselContainer, "carousel-container")}
-            arrows={false}
-            infinite={true}
-            showDots
-            dotListClass={classes.dotList}
-            minimumTouchDrag={150}
-            customTransition="opacity 10ms ease-in"
-            transitionDuration={10}
-            itemClass={classes.item}
-            autoPlay={scrolledPastFeatures}
-            autoPlaySpeed={5000}
-            beforeChange={handleBackgroundAnimations}
-          >
-            {items.map((item, index) => {
-              return (
-                <Box className={classes.carouselItem} key={`${item.header}-${index}`}>
-                  <Box>
-                    <Typography variant="h2" color="textPrimary" align="left" style={{ marginBottom: "40px" }}>
-                      {item.header}
-                    </Typography>
-                    <Typography variant="body1" color="textSecondary" align="left" className={classes.description}>
-                      <span style={{ color: theme.palette.text.primary }}>{item.subheader}</span>
-                      &nbsp;{item.description}
-                    </Typography>
-                    <CTAButton
-                      text="Read Our Docs"
-                      link={item.ctaLink}
-                      textClassName={classes.ctaButtonText}
-                      iconClassName={classes.ctaButtonIcon}
-                      buttonClassName={classes.ctaButtonBox}
+          <Box className={classes.carouselWrapper} onMouseEnter={handleFeaturesMouseEnter} onMouseLeave={handleFeaturesMouseLeave}>
+            <Carousel
+              ref={carouselRef}
+              responsive={Responsive.roadmap}
+              containerClass={clsx(classes.carouselContainer, "carousel-container")}
+              arrows={false}
+              infinite={true}
+              showDots
+              dotListClass={classes.dotList}
+              minimumTouchDrag={150}
+              customTransition="opacity 10ms ease-in"
+              transitionDuration={10}
+              itemClass={classes.item}
+              autoPlay={scrolledPastFeatures && !hovered}
+              autoPlaySpeed={5000}
+              beforeChange={handleBackgroundAnimations}
+            >
+              {items.map((item, index) => {
+                return (
+                  <Box className={classes.carouselItem} key={`${item.header}-${index}`}>
+                    <Box>
+                      <Typography variant="h2" color="textPrimary" align="left" style={{ marginBottom: "40px" }}>
+                        {item.header}
+                      </Typography>
+                      <Typography variant="body1" color="textSecondary" align="left" className={classes.description}>
+                        <span style={{ color: theme.palette.text.primary }}>{item.subheader}</span>
+                        &nbsp;{item.description}
+                      </Typography>
+                      <CTAButton
+                        text="Read Our Docs"
+                        link={item.ctaLink}
+                        textClassName={classes.ctaButtonText}
+                        iconClassName={classes.ctaButtonIcon}
+                      />
+                    </Box>
+                    <Lottie
+                      options={item.icon}
+                      width={144}
+                      height={150}
+                      style={{ margin: 0 }}
                     />
                   </Box>
-                  <Lottie
-                    options={item.icon}
-                    width={144}
-                    height={150}
-                    style={{ margin: 0 }}
-                  />
-                </Box>
-              );
-            })}
-          </Carousel>
+                );
+              })}
+            </Carousel>
+          </Box>
         </Box>
       </FadeAndSlide >
     </div >
@@ -480,11 +504,15 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
       whiteSpace: "nowrap",
     },
   },
+  carouselWrapper: {
+    width: "100%",
+    display: "contents",
+  },
   carouselContainer: {
     width: "667px",
     marginLeft: "129px",
     [theme.breakpoints.only("md")]: {
-      width: "60%",
+      width: "50%",
       marginLeft: 0,
     },
     [theme.breakpoints.down("sm")]: {
