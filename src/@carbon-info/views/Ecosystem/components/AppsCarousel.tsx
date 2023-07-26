@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Responsive } from "@carbon-info/constants";
 import { isFirefox, isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
@@ -34,6 +35,8 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
         setView(currSlideMod);
       }}
       minimumTouchDrag={150}
+      transitionDuration={1000}
+      customTransition={"transform 1000ms cubic-bezier(.1,1.03,1,1) 0ms"}
     >
       {items.map((item, index) => {
         const { name, icon, description, tag, ctaLink } = item;
@@ -196,7 +199,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: "none",
     marginTop: "2rem",
     "&:hover": {
-      background: StyleUtils.ctaButtonGradient,
+      background: StyleUtils.activeGradient,
     },
   },
   minButton: {

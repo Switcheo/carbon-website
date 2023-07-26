@@ -194,8 +194,10 @@ const RoadMap: React.FC = () => {
           <CTAButton
             text="See Full Roadmap"
             link="/roadmap"
+            textClassName={classes.ctaText}
             iconClassName={classes.ctaIcon}
             newTab={false}
+            buttonClassName={classes.ctaButton}
           />
         </div>
       </Box>
@@ -268,6 +270,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: "7rem auto",
     },
   },
+  ctaText: {
+    color: theme.palette.primary.main,
+  },
   boxContainer: {
     margin: "5vh 0px 15vh",
     [theme.breakpoints.down("sm")]: {
@@ -317,5 +322,20 @@ const useStyles = makeStyles((theme: Theme) => ({
   ctaIcon: {
     width: "20px",
     height: "16px",
+    "& path": {
+      fill: theme.palette.primary.main,
+    },
+  },
+  ctaButton: {
+    "&:hover $ctaText": {
+      color: theme.palette.common.white,
+      transition: "all 0.2s ease-in",
+    },
+    "&:hover $ctaIcon": {
+      "& path": {
+        fill: theme.palette.common.white,
+        transition: "all 0.2s ease-in",
+      },
+    },
   },
 }));

@@ -11,4 +11,5 @@ export const StyleUtils = {
   tableBackgroundGradient: "linear-gradient(0deg, rgba(24, 35, 35, 0.8), rgba(24, 35, 35, 0.8))",
   ctaButtonGradient: "radial-gradient(63.65% 55% at 50.51% 100%, rgba(10, 220, 182, 0.4) 0%, rgba(10, 220, 182, 0.1) 51.54%, rgba(10, 220, 182, 0) 100%), #142C2C",
   carouselGradient: "linear-gradient(80deg, #121212 10.92%, rgba(18, 18, 18, 0.00) 70.10%)",
+  activeGradient: "radial-gradient(81.4% 70.34% at 50.51% 105.92%, rgba(15, 250, 207, 0.5) 0%, rgba(12, 236, 196, 0.125) 56.25%, rgba(10, 220, 182, 0) 100%),linear-gradient(0deg, #142C2C, #142C2C)",
 };
