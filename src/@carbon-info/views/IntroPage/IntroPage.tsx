@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Scroll } from "@carbon-info/assets";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
@@ -46,7 +45,7 @@ const IntroPage: React.FC = () => {
 
   const goToAltCarbon = () => {
     window.scrollTo(0, 10000);
-  }
+  };
 
   return (
     <div ref={ref} id="home">
@@ -173,7 +172,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "flex-end",
     cursor: "pointer",
     marginTop: "-10rem",
-    '@media (max-width: 790px)': {
+    "@media (max-width: 790px)": {
       marginTop: "0rem",
     },
     zIndex: 5,
