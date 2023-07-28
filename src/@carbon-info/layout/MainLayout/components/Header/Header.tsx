@@ -1,6 +1,7 @@
 import { CarbonLogo, MenuIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
+import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Hidden, Link, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useLayoutEffect, useState } from "react";
@@ -162,9 +163,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   navBarText: {
+    transition: StyleUtils.hoverTransition(),
     "&:hover": {
       color: theme.palette.primary.main,
-      transition: "ease-in-out 0.2s",
     },
   },
   menuIcon: {
