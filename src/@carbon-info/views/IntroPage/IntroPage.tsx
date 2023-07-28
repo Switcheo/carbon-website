@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Scroll } from "@carbon-info/assets";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
@@ -29,6 +30,7 @@ const IntroPage: React.FC = () => {
   };
 
   const scrollRef = React.useRef<HTMLDivElement>(null);
+  const altCarbonRef = React.useRef<HTMLDivElement>(null);
   const [height, setHeight] = React.useState(0);
   React.useEffect(() => {
     if (scrollRef.current) {
@@ -41,6 +43,10 @@ const IntroPage: React.FC = () => {
   const goToData = () => {
     window.scrollTo(0, height);
   };
+
+  const goToAltCarbon = () => {
+    window.scrollTo(0, 10000);
+  }
 
   return (
     <div ref={ref} id="home">
@@ -78,6 +84,9 @@ const IntroPage: React.FC = () => {
               <Typography variant="body2" className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
             </div>
           </FadeAndSlide>
+        </div>
+        <div className={classes.altCarbonContainer} ref={altCarbonRef}>
+          <Typography variant="body1" className={classes.altCarbon} onClick={() => goToAltCarbon()} >Looking for Carbon DeFi by Bancor?</Typography>
         </div>
       </Grid>
     </div >
@@ -157,6 +166,24 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: "1rem",
     fontWeight: 600,
     color: theme.palette.text.hint,
+  },
+  altCarbonContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "flex-end",
+    cursor: "pointer",
+    marginTop: "-10rem",
+    '@media (max-width: 790px)': {
+      marginTop: "0rem",
+    },
+    zIndex: 5,
+  },
+  altCarbon: {
+    border: "1px solid #FFFFFF",
+    borderBottom: "0",
+    color: theme.palette.text.secondary,
+    borderRadius: "12px",
+    padding: theme.spacing(1, 1.5, 1, 1.5),
   },
   bodyTypography: {
     fontWeight: 400,
