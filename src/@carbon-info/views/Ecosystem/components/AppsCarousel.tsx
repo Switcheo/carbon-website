@@ -200,6 +200,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "1rem 2rem",
     textTransform: "none",
     marginTop: "2rem",
+    transition: StyleUtils.hoverTransition("background"),
     "&:hover": {
       background: StyleUtils.activeGradient,
     },
