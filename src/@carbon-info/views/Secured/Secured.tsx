@@ -163,6 +163,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: "24px",
     background: StyleUtils.greenGradient,
     whiteSpace: "nowrap",
+    transition: StyleUtils.hoverTransition("background"),
     "&:hover": {
       background: StyleUtils.activeGradient,
       boxShadow: "none",
