@@ -44,7 +44,7 @@ const IntroPage: React.FC = () => {
   };
 
   const goToAltCarbon = () => {
-    window.scrollTo(0, 10000);
+    window.scrollTo({ left: 0, top: document.documentElement.getBoundingClientRect().height ?? document.body.scrollHeight, behavior: "smooth" });
   };
 
   return (
@@ -178,11 +178,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     zIndex: 5,
   },
   altCarbon: {
-    border: "1px solid #FFFFFF",
+    border: theme.palette.text.secondary,
+    borderWidth: "1px",
+    borderStyle: "solid",
     borderBottom: "0",
     color: theme.palette.text.secondary,
     borderRadius: "12px",
     padding: theme.spacing(1, 1.5, 1, 1.5),
+    boxShadow: "33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
   },
   bodyTypography: {
     fontWeight: 400,

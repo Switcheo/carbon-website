@@ -168,7 +168,7 @@ const Footer: React.FC = () => {
           <Typography className={classes.footNoteText} variant="body2" align="left">
             {"Carbon isn't affiliated with "}
             <Link href={"https://www.carbondefi.xyz/"} target="_blank" rel="noopener noreferrer">
-              <Typography className={classes.altCarbon} color="textSecondary" display="inline">
+              <Typography className={classes.altCarbon} variant="body2" color="textSecondary" display="inline">
                 Carbon DeFi
               </Typography>
             </Link>
