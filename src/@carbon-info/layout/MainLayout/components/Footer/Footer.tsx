@@ -1,6 +1,7 @@
 import { CarbonLogo, DiscordFooterIcon, GitHubIcon, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
+import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Divider, Grid, Link, Theme, Typography, makeStyles } from "@material-ui/core";
 import React from "react";
 
@@ -252,7 +253,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.text.footer,
   },
   altCarbon: {
-    background: "linear-gradient(180deg, #469590 0%, #31D8D6 100%)",
+    background: StyleUtils.blueGradient,
     backgroundClip: "text",
     WebkitBackgroundClip: "text",
     color: "transparent",
