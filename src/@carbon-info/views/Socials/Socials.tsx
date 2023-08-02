@@ -7,6 +7,7 @@ import TwitterIcon from "@carbon-info/assets/icons/twitter.svg";
 import { FadeAndSlide } from "@carbon-info/components";
 import { Path } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
+import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Theme, Typography, makeStyles } from "@material-ui/core";
 import "animate.css";
 import React from "react";
@@ -143,14 +144,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     cursor: "pointer",
     display: "flex",
+    transition: StyleUtils.hoverTransition(),
     "&:hover": {
       color: theme.palette.primary.main,
-      transition: "ease-in-out 0.2s",
     },
     "&:hover $linkIcon": {
+      transition: StyleUtils.hoverTransition(),
       "& path": {
         fill: theme.palette.primary.main,
-        transition: "ease-in-out 0.2s",
       },
     },
   },

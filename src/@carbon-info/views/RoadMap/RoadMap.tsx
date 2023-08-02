@@ -36,7 +36,7 @@ const RoadMap: React.FC = () => {
       if (content && Array.isArray(content.items)) {
         content.items.forEach((o: any) => {
           o?.fields?.entries?.forEach((entry: any) => {
-            let data = {
+            const data = {
               category: o.fields.title,
               docLink: entry.fields.link,
               githubLink: entry.fields.githubLink,
