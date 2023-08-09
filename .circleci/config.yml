@@ -1,9 +1,12 @@
 version: 2.1
 jobs:
-  deploy:
+  build:
     docker:
       # image with node, npm and yarn installed
-      - image: cimg/node:14.19.0-browsers
+      - image: cimg/node:20.5.0
+        auth:
+          username: $DOCKER_HUB_USERNAME
+          password: $DOCKER_HUB_PASSWORD
     steps:
 
       # checkout workspace to repo code
@@ -29,35 +32,45 @@ jobs:
           command: |
             yarn build
 
-      - run:
-          name: install AWS CLI
-          command: |
-            sudo apt-get update
-            sudo apt-get install awscli
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
+
+  deploy:
+    docker:
+      - image: cimg/gcp:2023.08
+        auth:
+          username: $DOCKER_HUB_USERNAME
+          password: $DOCKER_HUB_PASSWORD
+    steps:
+      - attach_workspace:
+          at: .
 
       - run:
-          name: deploy to aws
+          name: activate GCP service account
           command: |
-            aws configure set preview.cloudfront true
-            if [ "${CIRCLE_BRANCH}" = "staging" ]; then
-              aws s3 sync build s3://switcheo-carbon-website/staging/ --delete
-              aws cloudfront create-invalidation --distribution-id="E1QJNXB6J1OTUW" --paths=/*
-            elif [ "${CIRCLE_BRANCH}" = "master" ]; then
-              aws s3 sync build s3://switcheo-carbon-website/prod/ --delete
-              aws cloudfront create-invalidation --distribution-id="E3AUJMH8N05ZG4" --paths=/*
-            elif [ "${CIRCLE_BRANCH}" = "feat/carbon-scan" ]; then
-              aws s3 sync build s3://carbonscan/prod/ --delete
-              aws cloudfront create-invalidation --distribution-id="EH39M40PYRWVW" --paths=/*
-            fi
+            echo $GCP_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+            gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+            gcloud config set project $GCP_PROJECT_ID
+
+      - run:
+          name: deploy to gcp
+          command: |
+            gcloud storage cp -R build/* gs://carbon-website-${CIRCLE_BRANCH}/
 
 workflows: 
   deploy-project:
     jobs:
-      - deploy: 
+      - build: 
           context: org-switcheo
           filters:
             branches:
               only:
                 - master 
                 - staging
-                - feat/carbon-scan
+      - deploy:
+          context: org-switcheo
+          requires:
+            - build
+
