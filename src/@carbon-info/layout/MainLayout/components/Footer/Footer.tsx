@@ -1,6 +1,7 @@
 import { CarbonLogo, DiscordFooterIcon, GitHubIcon, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
+import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Divider, Grid, Link, Theme, Typography, makeStyles } from "@material-ui/core";
 import React from "react";
 
@@ -165,6 +166,17 @@ const Footer: React.FC = () => {
           </Typography>
         </Grid>
         <Grid item md={12}>
+          <Typography className={classes.footNoteText} variant="body2" align="left">
+            {"Carbon isn't affiliated with "}
+            <Link href={"https://www.carbondefi.xyz/"} target="_blank" rel="noopener noreferrer">
+              <Typography className={classes.altCarbon} variant="body2" color="textSecondary" display="inline">
+                Carbon DeFi
+              </Typography>
+            </Link>
+            {" by Bancor, a decentralized protocol for automating onchain trading strategies"}
+          </Typography>
+        </Grid>
+        <Grid item md={12}>
           <Typography color="textPrimary" variant="body2" align="left">
             Made with ❤️ for builders everywhere
           </Typography>
@@ -239,6 +251,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   footNoteText: {
     color: theme.palette.text.footer,
+  },
+  altCarbon: {
+    background: StyleUtils.blueGradient,
+    backgroundClip: "text",
+    WebkitBackgroundClip: "text",
+    color: "transparent",
+    display: "inline-block",
+    fontWeight: 700,
   },
   socialMediaIcon: {
     height: "32px",
