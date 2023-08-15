@@ -176,26 +176,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     "@media (max-width: 790px)": {
       marginTop: "0rem",
     },
-    [theme.breakpoints.down("md")]: {
-      top: "60%",
-      right: 0,
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "78%",
-      right: 0,
-    },
   },
   altCarbon: {
     border: theme.palette.text.secondary,
     background: theme.palette.background.default,
-    opacity: 0.8,
     borderWidth: "1px",
     borderStyle: "solid",
     color: theme.palette.text.primary,
     borderRadius: "12px",
     padding: theme.spacing(1, 1.5, 1, 1.5),
     boxShadow: "33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
-    backgroundColor: theme.palette.background.default,
     "&:hover": {
       color: theme.palette.primary.main,
     },
