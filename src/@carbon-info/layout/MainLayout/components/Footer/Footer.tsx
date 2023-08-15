@@ -161,12 +161,12 @@ const Footer: React.FC = () => {
           )}
         </Grid>
         <Grid item md={12}>
-          <Typography align="left" variant="body2" color="textSecondary">
+          <Typography className={classes.footNoteText} align="left" variant="body2">
             This website is maintained by Switcheo Labs. The contents and opinions of this website are those of Switcheo Labs. Switcheo Labs provides links to cryptocurrency exchanges as a service to the public. Switcheo Labs does not operate these websites and is not responsible for their content and expressly rejects any liability for damages of any kind resulting from the use, reference to, or reliance on any information contained within these websites. Switcheo Labs does not warrant that the information provided by these websites is correct, complete, or up-to-date.
           </Typography>
         </Grid>
         <Grid item md={12}>
-          <Typography variant="body2" align="left" color="textSecondary">
+          <Typography className={classes.footNoteText} variant="body2" align="left">
             {"Carbon isn't affiliated with "}
             <Link href={"https://www.carbondefi.xyz/"} target="_blank" rel="noopener noreferrer">
               <Typography className={classes.altCarbon} variant="body2" color="textSecondary" display="inline">
@@ -248,6 +248,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       marginTop: "3.5rem",
     },
+  },
+  footNoteText: {
+    color: theme.palette.text.secondary,
   },
   altCarbon: {
     background: StyleUtils.blueGradient,

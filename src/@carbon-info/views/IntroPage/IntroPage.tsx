@@ -167,31 +167,19 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.text.hint,
   },
   altCarbonContainer: {
+    top: "70vh",
+    position: "absolute",
     width: "100%",
     display: "flex",
     justifyContent: "flex-end",
     cursor: "pointer",
-    position: "absolute",
-    top: "42%",
-    right: -90,
-    zIndex: 5,
-    [theme.breakpoints.up("xl")]: {
-      top: "82%",
-      right: -200,
-    },
-    [theme.breakpoints.down("md")]: {
-      top: "60%",
-      right: 0,
-    },
-    [theme.breakpoints.down("xs")]: {
-      top: "78%",
-      right: 0,
+    "@media (max-width: 790px)": {
+      marginTop: "0rem",
     },
   },
   altCarbon: {
     border: theme.palette.text.secondary,
     background: theme.palette.background.default,
-    opacity: 0.8,
     borderWidth: "1px",
     borderStyle: "solid",
     color: theme.palette.text.primary,
