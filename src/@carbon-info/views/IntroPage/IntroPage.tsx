@@ -167,11 +167,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.text.hint,
   },
   altCarbonContainer: {
+    top: "70vh",
+    position: "absolute",
     width: "100%",
     display: "flex",
     justifyContent: "flex-end",
     cursor: "pointer",
-    marginTop: "-10rem",
     "@media (max-width: 790px)": {
       marginTop: "0rem",
     },
@@ -186,6 +187,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: "12px",
     padding: theme.spacing(1, 1.5, 1, 1.5),
     boxShadow: "33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
+    backgroundColor: theme.palette.background.default,
+    "&:hover": {
+      color: theme.palette.primary.main,
+    },
   },
   bodyTypography: {
     fontWeight: 400,
