@@ -11,10 +11,11 @@ import { DAppsConfig } from "../ecosystemConfig";
 
 interface Props {
   items: DAppsConfig[],
+  inView: boolean,
 }
 
 const AppsCarousel: React.FC<Props> = (props: Props) => {
-  const { items } = props;
+  const { items, inView } = props;
   const theme = useTheme();
   const classes = useStyles();
   const [view, setView] = useState(0);
@@ -45,7 +46,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
         const buttonText = view === index? `Launch ${name}` : tag
 
         return <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`} >
-          <Box id={`list-item-${index}`} className={clsx(classes.cardContainer, index === view && "expandCard", { lastCard: index === (view + preview) % totalCards })}>
+          <Box id={`list-item-${index}`} className={clsx(classes.cardContainer, index === view && "expandCard", { open: inView }, { lastCard: index === (view + preview) % totalCards })}>
             <Typography variant="body1" color="textPrimary" className={classes.tag}>{tag}</Typography>
             <img src={icon} className={index === view ? classes.dAppLogo : classes.logo} />
             <Typography variant="h3" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
@@ -122,6 +123,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "0rem 0.75rem",
       fontSize: "0.624rem",
       marginTop: "2.5rem",
+    },
+    "&.open": {
+      opacity: 1,
+      transform: "translate(0px,0px)",
     },
     "&.lastCard": {
       mask: StyleUtils.carouselGradient,
