@@ -11,11 +11,10 @@ import { DAppsConfig } from "../ecosystemConfig";
 
 interface Props {
   items: DAppsConfig[],
-  inView: boolean,
 }
 
 const AppsCarousel: React.FC<Props> = (props: Props) => {
-  const { items, inView } = props;
+  const { items } = props;
   const theme = useTheme();
   const classes = useStyles();
   const [view, setView] = useState(0);
@@ -35,32 +34,26 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
         setView(currSlideMod);
       }}
       minimumTouchDrag={150}
-      transitionDuration={1000}
-      customTransition={"transform 1000ms cubic-bezier(.1,1.03,1,1) 0ms"}
+      itemClass={classes.itemContainer}
+      transitionDuration={700}
+      customTransition={"transform 1000ms cubic-bezier(.1,0,0,0.5) 0ms"}
     >
       {items.map((item, index) => {
         const { name, icon, description, tag, ctaLink } = item;
         const totalCards = items.length;
         const preview = widthSm ? 1 : 2;
-        return view === index ? (
-          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`} style={{ backgroundImage: `url("${item?.backgroundImage}")` }}>
-            <Box className={clsx(classes.cardContainer, "expandCard", { open: inView })}>
-              <Typography variant="body1" color="textPrimary" className={classes.tag}>{tag}</Typography>
-              <img src={icon} className={classes.dAppLogo} />
-              <Typography variant="h3" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
-              <Typography variant="body1" style={{ color: theme.palette.text.button, marginTop: "1rem" }}>{description}</Typography>
-              <Button className={classes.ctaButton} href={ctaLink} target="_blank">Launch {name}</Button>
-            </Box >
-          </Grow>
-        ) : (
-          <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`}>
-            <Box className={clsx(classes.cardContainer, { open: inView }, { lastCard: index === (view + preview) % totalCards })}>
-              <img src={icon} className={classes.logo} />
-              <Typography variant="h4" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
-              <Button className={clsx(classes.ctaButton, classes.minButton)} href={ctaLink} target="_blank">{tag}</Button>
-            </Box>
-          </Grow>
-        );
+        const buttonText = view === index? `Launch ${name}` : tag
+
+        return <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`} >
+          <Box id={`list-item-${index}`} className={clsx(classes.cardContainer, index === view && "expandCard", { lastCard: index === (view + preview) % totalCards })}>
+            <Typography variant="body1" color="textPrimary" className={classes.tag}>{tag}</Typography>
+            <img src={icon} className={index === view ? classes.dAppLogo : classes.logo} />
+            <Typography variant="h3" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
+            {index === view && <Typography variant="body1" style={{ color: theme.palette.text.button, marginTop: "1rem" }}>{description}</Typography>}
+            <Button className={classes.ctaButton} href={ctaLink} target="_blank">{buttonText}</Button>
+            <Box className={clsx(classes.backgroundImage, view !== index && 'inactive')}  style={{ backgroundImage: `url("${item?.backgroundImage}")` }} />
+          </Box>
+        </Grow>
       })}
     </Carousel >
   );
@@ -118,7 +111,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: "hidden",
     opacity: 0,
     transform: "translate(0px, 20px)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s, padding ease-in-out 1s !important",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -129,10 +122,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "0rem 0.75rem",
       fontSize: "0.624rem",
       marginTop: "2.5rem",
-    },
-    "&.open": {
-      opacity: 1,
-      transform: "translate(0px,0px)",
     },
     "&.lastCard": {
       mask: StyleUtils.carouselGradient,
@@ -160,15 +149,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&.expandCard": {
       width: "37.5rem",
       height: "32.5rem",
-      margin: "3.5rem 1rem 0 0",
+      margin: "0 1rem 0 1rem",
       padding: "5rem",
       alignItems: "start",
       position: "relative",
-      backgroundPositionX: "6rem",
-      backgroundPositionY: "4rem",
       boxShadow: `${theme.shadows[5]}`,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
       [theme.breakpoints.only("xs")]: {
         width: "25rem",
         height: "25rem",
@@ -221,6 +206,29 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: "TyrosPro-Bold",
     fontWeight: 700,
     marginTop: "1rem",
+  },
+  itemContainer: {
+    height:'100vh',
+    display:'flex',
+    alignItems:'center',
+    [theme.breakpoints.down('sm')]: {
+      height:'55vh',
+    },
+  },
+  backgroundImage:{
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    zIndex:-1,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: '0.5',
+    transition: "1s",
+    "&.inactive": {
+      opacity:0,
+    }
   },
 }));
 
