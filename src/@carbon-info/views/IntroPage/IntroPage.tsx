@@ -85,7 +85,7 @@ const IntroPage: React.FC = () => {
           </FadeAndSlide>
         </div>
         <div className={classes.altCarbonContainer} ref={altCarbonRef}>
-          <Typography variant="body1" className={classes.altCarbon} onClick={() => goToAltCarbon()} >Looking for Carbon DeFi by Bancor?</Typography>
+          <Typography variant="body1" className={classes.altCarbon} onClick={() => goToAltCarbon()} >Looking for Carbon DeFi by <span className={classes.bancor}>Bancor</span>?</Typography>
         </div>
       </Grid>
     </div >
@@ -171,23 +171,42 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "flex-end",
     cursor: "pointer",
-    marginTop: "-10rem",
-    "@media (max-width: 790px)": {
-      marginTop: "0rem",
-    },
+    position: "absolute",
+    top: "42%",
+    right: -90,
     zIndex: 5,
+    [theme.breakpoints.up("xl")]: {
+      top: "82%",
+      right: -200,
+    },
+    [theme.breakpoints.down("md")]: {
+      top: "60%",
+      right: 0,
+    },
+    [theme.breakpoints.down("xs")]: {
+      top: "78%",
+      right: 0,
+    },
   },
   altCarbon: {
     border: theme.palette.text.secondary,
+    background: theme.palette.background.default,
+    opacity: 0.8,
     borderWidth: "1px",
     borderStyle: "solid",
-    borderBottom: "0",
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.primary,
     borderRadius: "12px",
     padding: theme.spacing(1, 1.5, 1, 1.5),
     boxShadow: "33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
+    "&:hover": {
+      color: theme.palette.primary.main,
+    },
   },
   bodyTypography: {
     fontWeight: 400,
+  },
+  bancor: {
+    color: theme.palette.primary.main,
+    fontWeight: 700,
   },
 }));
