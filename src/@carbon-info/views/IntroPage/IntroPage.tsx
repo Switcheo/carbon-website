@@ -167,7 +167,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.text.hint,
   },
   altCarbonContainer: {
-    top: "70vh",
+    top: "75vh",
     position: "absolute",
     width: "100%",
     display: "flex",
@@ -182,7 +182,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     background: theme.palette.background.default,
     borderWidth: "1px",
     borderStyle: "solid",
-    color: theme.palette.text.primary,
+    color: theme.palette.text.secondary,
     borderRadius: "12px",
     padding: theme.spacing(1, 1.5, 1, 1.5),
     boxShadow: "33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
