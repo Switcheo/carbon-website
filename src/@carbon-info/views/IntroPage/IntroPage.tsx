@@ -121,7 +121,6 @@ const IntroPage: React.FC = () => {
           </div>
         </FadeAndSlide>
         <div className={classes.altCarbonContainer} ref={altCarbonRef}>
-<<<<<<< HEAD
           <Typography
             variant="body1"
             className={classes.altCarbon}
@@ -130,18 +129,6 @@ const IntroPage: React.FC = () => {
             Looking for Carbon DeFi by{" "}
             <span className={classes.bancor}>Bancor</span>?
           </Typography>
-        </div>
-        <div className={classes.altCarbonContainer} ref={altCarbonRef}>
-          <Typography
-            variant="body1"
-            className={classes.altCarbon}
-            onClick={() => goToAltCarbon()}
-          >
-            Looking for Carbon DeFi by Bancor?
-          </Typography>
-=======
-          <Typography variant="body1" className={classes.altCarbon} onClick={() => goToAltCarbon()} >Looking for Carbon DeFi by <span className={classes.bancor}>Bancor</span>?</Typography>
->>>>>>> master
         </div>
       </Grid>
     </div>
@@ -242,15 +229,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.text.secondary,
     borderRadius: "12px",
     padding: theme.spacing(1, 1.5, 1, 1.5),
-<<<<<<< HEAD
     boxShadow:
       "33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
-=======
-    boxShadow: "33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
     "&:hover": {
       color: theme.palette.primary.main,
     },
->>>>>>> master
   },
   bodyTypography: {
     fontWeight: 400,
