@@ -167,7 +167,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.text.hint,
   },
   altCarbonContainer: {
-    top: "75vh",
+    top: "70vh",
     position: "absolute",
     width: "100%",
     display: "flex",
