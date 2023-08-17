@@ -43,18 +43,18 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
         const { name, icon, description, tag, ctaLink } = item;
         const totalCards = items.length;
         const preview = widthSm ? 1 : 2;
-        const buttonText = view === index? `Launch ${name}` : tag
+        const buttonText = view === index ? `Launch ${name}` : tag
 
-        return <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`} >
+        return (<Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`} >
           <Box id={`list-item-${index}`} className={clsx(classes.cardContainer, index === view && "expandCard", { open: inView }, { lastCard: index === (view + preview) % totalCards })}>
             <Typography variant="body1" color="textPrimary" className={classes.tag}>{tag}</Typography>
             <img src={icon} className={index === view ? classes.dAppLogo : classes.logo} />
             <Typography variant="h3" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
             {index === view && <Typography variant="body1" style={{ color: theme.palette.text.button, marginTop: "1rem" }}>{description}</Typography>}
             <Button className={classes.ctaButton} href={ctaLink} target="_blank">{buttonText}</Button>
-            <Box className={clsx(classes.backgroundImage, view !== index && 'inactive')}  style={{ backgroundImage: `url("${item?.backgroundImage}")` }} />
+            <Box className={clsx(classes.backgroundImage, view !== index && 'inactive')} style={{ backgroundImage: `url("${item?.backgroundImage}")` }} />
           </Box>
-        </Grow>
+        </Grow>)
       })}
     </Carousel >
   );
@@ -112,7 +112,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: "hidden",
     opacity: 0,
     transform: "translate(0px, 20px)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s, padding ease-in-out 0.7s !important",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.4s, padding-top ease-in-out 0.7s, padding-bottom ease-in-out 0.7s !important",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -213,17 +213,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: "1rem",
   },
   itemContainer: {
-    height:'100vh',
-    display:'flex',
-    alignItems:'center',
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
-      height:'55vh',
+      height: '55vh',
     },
   },
-  backgroundImage:{
+  backgroundImage: {
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    zIndex:-1,
+    zIndex: -1,
     position: "absolute",
     top: 0,
     left: 0,
@@ -232,7 +232,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     opacity: '0.5',
     transition: "1s",
     "&.inactive": {
-      opacity:0,
+      opacity: 0,
     }
   },
 }));
