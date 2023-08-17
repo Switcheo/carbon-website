@@ -250,7 +250,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   footNoteText: {
-    color: theme.palette.text.footer,
+    color: theme.palette.text.secondary,
   },
   altCarbon: {
     background: StyleUtils.blueGradient,
