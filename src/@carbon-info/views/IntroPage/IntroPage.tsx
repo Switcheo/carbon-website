@@ -33,12 +33,8 @@ const IntroPage: React.FC = () => {
   const [height, setHeight] = React.useState(0);
   React.useEffect(() => {
     if (scrollRef.current) {
-      const homeHeight =
-        scrollRef.current.parentElement?.parentElement?.parentElement
-          ?.offsetHeight ?? 0;
-      const navBarHeight =
-        scrollRef.current.parentElement?.parentElement?.parentElement
-          ?.offsetTop ?? 0;
+      const homeHeight = scrollRef.current.parentElement?.parentElement?.parentElement?.offsetHeight ?? 0;
+      const navBarHeight = scrollRef.current.parentElement?.parentElement?.parentElement?.offsetTop ?? 0;
       setHeight(homeHeight + navBarHeight);
     }
   }, []);
@@ -48,13 +44,7 @@ const IntroPage: React.FC = () => {
   };
 
   const goToAltCarbon = () => {
-    window.scrollTo({
-      left: 0,
-      top:
-        document.documentElement.getBoundingClientRect().height ??
-        document.body.scrollHeight,
-      behavior: "smooth",
-    });
+    window.scrollTo({ left: 0, top: document.documentElement.getBoundingClientRect().height ?? document.body.scrollHeight, behavior: "smooth" });
   };
 
   return (
@@ -67,23 +57,11 @@ const IntroPage: React.FC = () => {
         />
         <div className={classes.headerContainer}>
           <FadeAndSlide visible={inView} transform={[0, -20]}>
-            <Typography
-              variant="body1"
-              color="textSecondary"
-              className={classes.bodyTypography}
-            >
+            <Typography variant="body1" color="textSecondary" className={classes.bodyTypography}>
               MEET CARBON
             </Typography>
           </FadeAndSlide>
-          <Typography
-            color="textPrimary"
-            variant="h1"
-            className={clsx(
-              classes.mainTitle,
-              "animate__animated animate__slideInUp",
-              { open: inView }
-            )}
-          >
+          <Typography color="textPrimary" variant="h1" className={clsx(classes.mainTitle, "animate__animated animate__slideInUp", { open: inView })} >
             The Core of
             <br />
             <span className={clsx(classes.highlightedText, { open: inView })}>
@@ -95,16 +73,8 @@ const IntroPage: React.FC = () => {
             </span>
           </Typography>
           <FadeAndSlide visible={inView}>
-            <Typography
-              color="textSecondary"
-              variant="body1"
-              className={clsx(
-                classes.subtitle,
-                "animate__animated animate__slideInUp"
-              )}
-            >
-              Carbon is a cross-chain protocol that acts as
-              <br />a building block for DeFi.
+            <Typography color="textSecondary" variant="body1" className={clsx(classes.subtitle, "animate__animated animate__slideInUp")}>
+              Carbon is a cross-chain protocol that acts as<br />a building block for DeFi.
             </Typography>
           </FadeAndSlide>
         </div>
@@ -121,14 +91,7 @@ const IntroPage: React.FC = () => {
           </div>
         </FadeAndSlide>
         <div className={classes.altCarbonContainer} ref={altCarbonRef}>
-          <Typography
-            variant="body1"
-            className={classes.altCarbon}
-            onClick={() => goToAltCarbon()}
-          >
-            Looking for Carbon DeFi by{" "}
-            <span className={classes.bancor}>Bancor</span>?
-          </Typography>
+          <Typography variant="body1" className={classes.altCarbon} onClick={() => goToAltCarbon()} >Looking for Carbon DeFi by <span className={classes.bancor}>Bancor</span>?</Typography>
         </div>
       </Grid>
     </div>
