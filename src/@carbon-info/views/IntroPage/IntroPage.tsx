@@ -85,7 +85,7 @@ const IntroPage: React.FC = () => {
           </FadeAndSlide>
         </div>
         <div className={classes.altCarbonContainer} ref={altCarbonRef}>
-          <Typography variant="body1" className={classes.altCarbon} onClick={() => goToAltCarbon()} >Looking for Carbon DeFi by <span className={classes.bancor}>Bancor</span>?</Typography>
+          <Typography variant="body2" className={classes.altCarbon} onClick={() => goToAltCarbon()} >Looking for Carbon DeFi by <span className={classes.bancor}>Bancor</span>?</Typography>
         </div>
       </Grid>
     </div >
@@ -176,6 +176,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     "@media (max-width: 790px)": {
       marginTop: "0rem",
     },
+    [theme.breakpoints.up("xl")]: {
+      top: "78vh",
+    },
   },
   altCarbon: {
     border: theme.palette.text.secondary,
@@ -184,7 +187,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderStyle: "solid",
     color: theme.palette.text.secondary,
     borderRadius: "12px",
-    padding: theme.spacing(1, 1.5, 1, 1.5),
+    padding: theme.spacing(0.75, 1.25, 0.75, 1.25),
     boxShadow: "33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
     "&:hover": {
       color: theme.palette.primary.main,
