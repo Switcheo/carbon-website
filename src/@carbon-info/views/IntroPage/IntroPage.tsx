@@ -173,6 +173,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "flex-end",
     cursor: "pointer",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: theme.spacing(3),
+    },
   },
   altCarbon: {
     border: theme.palette.text.secondary,
