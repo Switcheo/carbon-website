@@ -167,18 +167,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.text.hint,
   },
   altCarbonContainer: {
-    top: "70vh",
+    top: "calc(80vh - 30px)",
     position: "absolute",
     width: "100%",
     display: "flex",
     justifyContent: "flex-end",
     cursor: "pointer",
-    "@media (max-width: 790px)": {
-      marginTop: "0rem",
-    },
-    [theme.breakpoints.up("xl")]: {
-      top: "78vh",
-    },
   },
   altCarbon: {
     border: theme.palette.text.secondary,
