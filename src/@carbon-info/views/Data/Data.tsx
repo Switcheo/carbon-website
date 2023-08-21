@@ -193,6 +193,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   poweredBy: {
     display: "flex",
     justifyContent: "center",
+    alignItems: "center",
     marginBottom: "6rem",
     [theme.breakpoints.only("sm")]: {
       marginBottom: "5rem",
