@@ -64,7 +64,7 @@ const IntroPage: React.FC = () => {
           <Typography color="textPrimary" variant="h1" className={clsx(classes.mainTitle, "animate__animated animate__slideInUp", { open: inView })} >
             The Core of
             <br />
-            <span className={clsx(classes.highlightedText, { open: inView })} >
+            <span className={clsx(classes.highlightedText, { open: inView })}>
               Decentralized
               <br />
             </span>
@@ -77,18 +77,24 @@ const IntroPage: React.FC = () => {
               Carbon is a cross-chain protocol that acts as<br />a building block for DeFi.
             </Typography>
           </FadeAndSlide>
-          <FadeAndSlide visible={inView}>
-            <div ref={scrollRef} className={clsx(classes.scrollContainer, { open: inView })} onClick={() => goToData()}>
-              <Scroll className={clsx(classes.scrollIcon, "bounce")} />
-              <Typography variant="body2" className={classes.scrollText}>SCROLL TO EXPLORE</Typography>
-            </div>
-          </FadeAndSlide>
         </div>
+        <FadeAndSlide visible={inView} className={classes.scrollContainer}>
+          <div
+            ref={scrollRef}
+            className={clsx({ open: inView })}
+            onClick={() => goToData()}
+          >
+            <Scroll className={clsx(classes.scrollIcon, "bounce")} />
+            <Typography variant="body2" className={classes.scrollText}>
+              SCROLL TO EXPLORE
+            </Typography>
+          </div>
+        </FadeAndSlide>
         <div className={classes.altCarbonContainer} ref={altCarbonRef}>
           <Typography variant="body2" className={classes.altCarbon} onClick={() => goToAltCarbon()} >Looking for Carbon DeFi by <span className={classes.bancor}>Bancor</span>?</Typography>
         </div>
       </Grid>
-    </div >
+    </div>
   );
 };
 
@@ -99,6 +105,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
+    marginTop: "-2rem",
     [theme.breakpoints.down("sm")]: {
       marginLeft: "-24px",
       marginTop: "-24px",
@@ -107,7 +114,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   headerContainer: {
     zIndex: 5,
-    marginTop: "10rem",
+    marginTop: "12rem",
     position: "absolute",
     top: 0,
     [theme.breakpoints.only("xs")]: {
@@ -142,15 +149,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   scrollContainer: {
     opacity: 0,
-    marginTop: "30rem",
-    position: "relative",
+    top: "calc(75vh - 30px)",
+    position: "absolute",
     zIndex: 10,
     cursor: "pointer",
     "&.open": {
       opacity: 1,
     },
-    [theme.breakpoints.down("md")]: {
-      marginTop: "21.5rem",
+    [theme.breakpoints.down("xs")]: {
+      top: "calc(70vh - 30px)",
     },
   },
   scrollIcon: {
