@@ -149,7 +149,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   scrollContainer: {
     opacity: 0,
-    top: "70vh",
+    top: "calc(75vh - 30px)",
     position: "absolute",
     zIndex: 10,
     cursor: "pointer",
@@ -157,7 +157,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 1,
     },
     [theme.breakpoints.down("xs")]: {
-      top: "60vh",
+      top: "calc(70vh - 30px)",
     },
   },
   scrollIcon: {
