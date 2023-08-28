@@ -213,11 +213,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: "1rem",
   },
   itemContainer: {
-    height: '100vh',
+    height: '36.25rem',
     display: 'flex',
     alignItems: 'center',
+    marginTop: '6rem',
     [theme.breakpoints.down('sm')]: {
-      height: '55vh',
+      height: '22.5rem',
+      margin: '8rem 0 4rem 0',
     },
   },
   backgroundImage: {
