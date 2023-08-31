@@ -215,11 +215,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   itemContainer: {
     height: '36.25rem',
     display: 'flex',
-    alignItems: 'center',
-    marginTop: '6rem',
-    [theme.breakpoints.down('sm')]: {
+    alignItems: 'end',
+    marginTop: '10rem',
+    [theme.breakpoints.down('xs')]: {
       height: '22.5rem',
-      margin: '8rem 0 4rem 0',
+      margin: '12rem 0 4rem 0',
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '12rem',
     },
   },
   backgroundImage: {
