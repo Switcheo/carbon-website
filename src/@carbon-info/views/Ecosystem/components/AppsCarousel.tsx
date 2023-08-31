@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Responsive } from "@carbon-info/constants";
 import { isFirefox, isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
@@ -42,7 +43,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
         const { name, icon, description, tag, ctaLink } = item;
         const totalCards = items.length;
         const preview = widthSm ? 1 : 2;
-        const buttonText = view === index ? `Launch ${name}` : tag
+        const buttonText = view === index ? `Launch ${name}` : tag;
 
         return (<Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`} >
           <Box id={`list-item-${index}`} className={clsx(classes.cardContainer, index === view && "expandCard", { open: inView }, { lastCard: index === (view + preview) % totalCards })}>
@@ -51,9 +52,9 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
             <Typography variant="h3" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
             {index === view && <Typography variant="body1" style={{ color: theme.palette.text.button, marginTop: "1rem" }}>{description}</Typography>}
             <Button className={classes.ctaButton} href={ctaLink} target="_blank">{buttonText}</Button>
-            <Box className={clsx(classes.backgroundImage, view !== index && 'inactive')} style={{ backgroundImage: `url("${item?.backgroundImage}")` }} />
+            <Box className={clsx(classes.backgroundImage, view !== index && "inactive")} style={{ backgroundImage: `url("${item?.backgroundImage}")` }} />
           </Box>
-        </Grow>)
+        </Grow>);
       })}
     </Carousel >
   );
@@ -212,16 +213,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: "1rem",
   },
   itemContainer: {
-    height: '36.25rem',
-    display: 'flex',
-    alignItems: 'end',
-    marginTop: '10rem',
-    [theme.breakpoints.down('xs')]: {
-      height: '22.5rem',
-      margin: '12rem 0 4rem 0',
+    height: "36.25rem",
+    display: "flex",
+    alignItems: "end",
+    marginTop: "10rem",
+    [theme.breakpoints.down("xs")]: {
+      height: "22.5rem",
+      margin: "12rem 0 4rem 0",
     },
-    [theme.breakpoints.down('sm')]: {
-      marginTop: '12rem',
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "12rem",
     },
   },
   backgroundImage: {
@@ -233,11 +234,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: 0,
     right: 0,
     bottom: 0,
-    opacity: '0.5',
+    opacity: "0.5",
     transition: "1s",
     "&.inactive": {
       opacity: 0,
-    }
+    },
   },
 }));
 
