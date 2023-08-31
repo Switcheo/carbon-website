@@ -36,7 +36,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
       minimumTouchDrag={150}
       itemClass={classes.itemContainer}
       transitionDuration={700}
-      customTransition={"transform 700ms cubic-bezier(0,-0.11,0,.98) 0ms"}
+      customTransition={"transform 800ms cubic-bezier(0,-0.11,0,.98) 0ms"}
     >
       {items.map((item, index) => {
         const { name, icon, description, tag, ctaLink } = item;
@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: "hidden",
     opacity: 0,
     transform: "translate(0px, 20px)",
-    transition: "opacity ease-in 0.3s, transform ease-in 0.4s, padding-top ease-in-out 0.7s, padding-bottom ease-in-out 0.7s !important",
+    transition: "opacity ease-in 0.3s, transform ease-in 0.8s, padding-top ease-in 1.0s, padding-bottom ease-in 1.0s !important",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
