@@ -14,6 +14,7 @@ export interface BlockchainConfig extends WalletConfig {
   category: string,
 }
 
+
 export interface ValidatorConfig extends WalletConfig {
   link: string,
   sortPriority: number,
@@ -34,15 +35,17 @@ export interface DAppsConfig {
   tag: string,
   ctaLink: string,
   backgroundImage?: string,
+  category: string,
 }
 
-export const allFeatured: DAppsConfig[] = [{
+export const allDApps: DAppsConfig[] = [{
   icon: DemexIcon,
   name: "Demex",
   description: "Demex is a central limit order book decentralized exchange that offers all types of crypto derivative trading including spot, futures, perpetuals, and more!",
   tag: "DEX",
   ctaLink: Path.Footer.Demex,
   backgroundImage: DemexBg,
+  category: "Carbon Core",
 }, {
   icon: NitronIcon,
   name: "Nitron",
@@ -50,6 +53,7 @@ export const allFeatured: DAppsConfig[] = [{
   tag: "Lending",
   ctaLink: Path.Footer.Nitron,
   backgroundImage: NitronBg,
+  category: "Carbon Core",
 }, {
   icon: CarbonHubIcon,
   name: "Carbon Hub",
@@ -57,6 +61,7 @@ export const allFeatured: DAppsConfig[] = [{
   tag: "Staking",
   ctaLink: Path.Footer.CarbonHub,
   backgroundImage: CarbonHubBg,
+  category: "Carbon Core",
 }, {
   icon: CarbonscanIcon,
   name: "Carbonscan",
@@ -64,6 +69,7 @@ export const allFeatured: DAppsConfig[] = [{
   tag: "Explorer",
   ctaLink: Path.Footer.CarbonScan,
   backgroundImage: CarbonscanBg,
+  category: "Carbon Core",
 }, {
   icon: HydrogenIcon,
   name: "Hydrogen",
@@ -71,4 +77,13 @@ export const allFeatured: DAppsConfig[] = [{
   tag: "Bridge Relayer",
   ctaLink: Path.Footer.Hydrogen,
   backgroundImage: HydrogenBg,
+  category: "Carbon Core",
+}, {
+  icon: HydrogenIcon,
+  name: "Domex",
+  description: "Domex is a decentralized AMM exchange that allows traders to trade with high capital efficiency through the use of concentrated liquidity pools.",
+  tag: "DEX",
+  ctaLink: Path.Footer.Hydrogen,
+  backgroundImage: HydrogenBg,
+  category: "Carbon EVM", // nada todo: change icon + images to DOMEX
 }];
