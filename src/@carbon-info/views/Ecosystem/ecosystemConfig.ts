@@ -1,6 +1,7 @@
 import CarbonHubIcon from "@carbon-info/assets/icons/carbonHub.svg";
 import CarbonscanIcon from "@carbon-info/assets/icons/carbonscan.svg";
 import DemexIcon from "@carbon-info/assets/icons/demex.svg";
+import DomexIcon from "@carbon-info/assets/icons/domex.svg";
 import HydrogenIcon from "@carbon-info/assets/icons/hydrogen.svg";
 import NitronIcon from "@carbon-info/assets/icons/nitron.svg";
 import { Path } from "@carbon-info/constants";
@@ -79,11 +80,11 @@ export const allDApps: DAppsConfig[] = [{
   backgroundImage: HydrogenBg,
   category: "Carbon Core",
 }, {
-  icon: HydrogenIcon,
+  icon: DomexIcon,
   name: "Domex",
   description: "Domex is a decentralized AMM exchange that allows traders to trade with high capital efficiency through the use of concentrated liquidity pools.",
   tag: "DEX",
   ctaLink: Path.Footer.Hydrogen,
-  backgroundImage: HydrogenBg,
-  category: "Carbon EVM", // nada todo: change icon + images to DOMEX
+  category: "Carbon EVM", 
+  // TODO : add background picture + link once its live
 }];

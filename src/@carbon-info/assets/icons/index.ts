@@ -11,6 +11,7 @@ export { ReactComponent as DemexIcon } from "./demex.svg";
 export { ReactComponent as DiscordIcon } from "./discord.svg";
 export { ReactComponent as DiscordFooterIcon } from "./discordFooter.svg";
 export { ReactComponent as DocsIcon } from "./docs.svg";
+export { ReactComponent as DomexIcon } from "./domex.svg";
 export { ReactComponent as ExternalLink } from "./externalLink.svg";
 export { ReactComponent as GitHubIcon } from "./github.svg";
 export { ReactComponent as HydrogenIcon } from "./hydrogen.svg";

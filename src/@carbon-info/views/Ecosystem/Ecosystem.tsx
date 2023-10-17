@@ -123,7 +123,7 @@ const Ecosystem: React.FC = () => {
         subtext = (
           <>
             <Typography variant="body1" color="textSecondary" align="left" style={{ maxWidth: "1024px", marginTop: "20px" }}>
-              The EVM component of Carbon allows anyone to deploy EVM-based smart contracts written in Solidity, Vyper, etc. on Carbon. This component allows users to perform any action via both Cosmos and EVM formatted transactions, meaning that users and developers can use popular Ethereum wallets and clients (e.g. MetaMask, HardHat, etc.) to interact with Carbon without additional effort.;
+              The EVM component of Carbon allows anyone to deploy EVM-based smart contracts written in Solidity, Vyper, etc. on Carbon. This component allows users to perform any action via both Cosmos and EVM formatted transactions, meaning that users and developers can use popular Ethereum wallets and clients (e.g. MetaMask, HardHat, etc.) to interact with Carbon without additional effort.
             </Typography>
             <CTAButton
               text="Learn More"
@@ -138,7 +138,7 @@ const Ecosystem: React.FC = () => {
         subtext = (
           <>
             <Typography variant="body1" color="textSecondary" align="left" style={{ maxWidth: "1024px", marginTop: "20px" }}>
-              Carbon Core consists of various native modules written in native code (e.g. Golang) instead of a virtual machine. This implementation securely enables features in a scalable manner such as on-chain central-limit order books, lending and borrowing markets, and more.;
+              Carbon Core consists of various native modules written in native code (e.g. Golang) instead of a virtual machine. This implementation securely enables features in a scalable manner such as on-chain central-limit order books, lending and borrowing markets, and more.
             </Typography>
             <CTAButton
               text="Learn More"

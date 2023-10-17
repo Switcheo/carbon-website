@@ -45,7 +45,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
         const buttonText = view === index ? `Launch ${name}` : tag;
 
         return (<Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`} >
-          <Box id={`list-item-${index}`} className={clsx(classes.cardContainer, index === view && "expandCard", { open: inView }, { lastCard: index === (view + preview) % totalCards })}>
+          <Box id={`list-item-${index}`} className={clsx(classes.cardContainer, index === view && "expandCard", { open: inView }, { lastCard: totalCards > 2 && index === (view + preview) % totalCards })}>
             <Typography variant="body1" color="textPrimary" className={classes.tag}>{tag}</Typography>
             <img src={icon} className={index === view ? classes.dAppLogo : classes.logo} />
             <Typography variant="h3" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
