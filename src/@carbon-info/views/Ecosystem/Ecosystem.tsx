@@ -258,7 +258,7 @@ const Ecosystem: React.FC = () => {
             <>
               {dAppsFilterButtons}
               {renderSubtext}
-              <AppsCarousel items={filteredDApps} inView />
+              <AppsCarousel items={filteredDApps} inView key={dAppsFilter}/>
             </>
           )}
           {value === "Blockchains" && (
