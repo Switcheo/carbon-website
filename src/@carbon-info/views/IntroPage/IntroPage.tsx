@@ -1,4 +1,3 @@
-import { Scroll } from "@carbon-info/assets";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
 import { isWidth } from "@carbon-info/utils/environment";
@@ -28,20 +27,7 @@ const IntroPage: React.FC = () => {
     },
   };
 
-  const scrollRef = React.useRef<HTMLDivElement>(null);
   const altCarbonRef = React.useRef<HTMLDivElement>(null);
-  const [height, setHeight] = React.useState(0);
-  React.useEffect(() => {
-    if (scrollRef.current) {
-      const homeHeight = scrollRef.current.parentElement?.parentElement?.parentElement?.offsetHeight ?? 0;
-      const navBarHeight = scrollRef.current.parentElement?.parentElement?.parentElement?.offsetTop ?? 0;
-      setHeight(homeHeight + navBarHeight);
-    }
-  }, []);
-
-  const goToData = () => {
-    window.scrollTo(0, height);
-  };
 
   const goToAltCarbon = () => {
     window.scrollTo({ left: 0, top: document.documentElement.getBoundingClientRect().height ?? document.body.scrollHeight, behavior: "smooth" });
@@ -78,18 +64,6 @@ const IntroPage: React.FC = () => {
             </Typography>
           </FadeAndSlide>
         </div>
-        <FadeAndSlide visible={inView} className={classes.scrollContainer}>
-          <div
-            ref={scrollRef}
-            className={clsx({ open: inView })}
-            onClick={() => goToData()}
-          >
-            <Scroll className={clsx(classes.scrollIcon, "bounce")} />
-            <Typography variant="body2" className={classes.scrollText}>
-              SCROLL TO EXPLORE
-            </Typography>
-          </div>
-        </FadeAndSlide>
         <div className={classes.altCarbonContainer} ref={altCarbonRef}>
           <Typography variant="body2" className={classes.altCarbon} onClick={() => goToAltCarbon()} >Looking for Carbon DeFi by <span className={classes.bancor}>Bancor</span>?</Typography>
         </div>
