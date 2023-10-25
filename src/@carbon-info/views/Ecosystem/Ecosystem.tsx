@@ -7,7 +7,7 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { AppsCarousel, FeatureGrid } from "./components";
-import { BlockchainConfig, DAppsConfig, ValidatorConfig, WalletConfig, allDApps } from "./ecosystemConfig";
+import { BlockchainConfig, ValidatorConfig, WalletConfig, DAppsConfig } from "./ecosystemConfig";
 
 interface SubTextContent {
   description: string
@@ -28,6 +28,9 @@ const Ecosystem: React.FC = () => {
   const [allBlockchains, setAllBlockchains] = React.useState<BlockchainConfig[]>([]);
   const [allWallets, setAllWallets] = React.useState<WalletConfig[]>([]);
   const [allValidators, setAllValidators] = React.useState<ValidatorConfig[]>([]);
+  const [allDAppsEVM, setAllDAppsEVM] = React.useState<DAppsConfig[]>([]);
+  const [allDAppsCore, setAllDAppsCore] = React.useState<DAppsConfig[]>([]);
+
 
 
   useEffect(() => {
@@ -35,6 +38,8 @@ const Ecosystem: React.FC = () => {
       let blockchainResult: BlockchainConfig[] = [];
       let walletResult: WalletConfig[] = [];
       let validatorResult: ValidatorConfig[] = [];
+      let dAppsEVMResult: DAppsConfig[] =[];
+      let dAppsCarbonResult: DAppsConfig[] =[];
       const content = await data as any;
 
       if (content && Array.isArray(content.items)) {
@@ -61,14 +66,37 @@ const Ecosystem: React.FC = () => {
               sortPriority: o.fields.sortPriority, // TODO: get value for voting power from data
             });
           }
+          if (type.some((item: any) => item === "carbon-evm")) {
+            dAppsEVMResult.push({
+              label: o.fields.label,
+              logo: o.fields.logo.fields.file.url,
+              categoryLabel: o.fields.category,
+              link: o.fields.link,
+              background: o.fields.backgroundImage.fields.file.url,
+              description: o.fields.description,
+            });
+          }
+          if (type.some((item: any) => item === "carbon-core")) {
+            dAppsCarbonResult.push({
+              label: o.fields.label,
+              logo: o.fields.logo.fields.file.url,
+              categoryLabel: o.fields.category,
+              link: o.fields.link,
+              background: o.fields.backgroundImage.fields.file.url,
+              description: o.fields.description,
+            });
+          }
         });
       }
       setAllBlockchains(blockchainResult);
       setAllWallets(walletResult);
       setAllValidators(validatorResult);
+      setAllDAppsEVM(dAppsEVMResult);
+      setAllDAppsCore(dAppsCarbonResult);
     }
     fetchEcosystemItems();
   }, [data]);
+
 
   const tabs = ["dApps", "Blockchains", "Wallets", "Validators"];
   const dAppsFilters = ["All", "Carbon Core", "Carbon EVM"];
@@ -86,26 +114,20 @@ const Ecosystem: React.FC = () => {
     let filtered: DAppsConfig[] = [];
     switch (dAppsFilter) {
       case "Carbon Core":
-        filtered = allDApps.filter((blockchain) => {
-          return blockchain.category === "Carbon Core";
-        });
+        filtered = allDAppsCore;
         break;
       case "Carbon EVM":
-        filtered = allDApps.filter((blockchain) => {
-          return blockchain.category === "Carbon EVM";
-        });
+        filtered = allDAppsEVM;
         break;
       case "All":
-        filtered = allDApps;
+        filtered = allDAppsCore.concat(allDAppsEVM);
         break;
       default:
-        filtered = allDApps;
+        filtered = allDAppsCore.concat(allDAppsEVM);
         break;
     }
     return filtered;
-  }, [allDApps, dAppsFilter]);
-
-  // nada todo: dont usememo on html
+  }, [allDAppsCore, allDAppsEVM, dAppsFilter]);
 
   const subTextContent = React.useMemo((): SubTextContent | null => {
     switch (dAppsFilter) {
