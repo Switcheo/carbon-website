@@ -9,6 +9,11 @@ import { useInView } from "react-intersection-observer";
 import { AppsCarousel, FeatureGrid } from "./components";
 import { BlockchainConfig, DAppsConfig, ValidatorConfig, WalletConfig, allDApps } from "./ecosystemConfig";
 
+interface SubTextContent {
+  description: string
+  link: string
+}
+
 const Ecosystem: React.FC = () => {
   const classes = useStyles();
   const { ref, inView } = useInView({
@@ -77,22 +82,6 @@ const Ecosystem: React.FC = () => {
     setValue(newValue);
   };
 
-  const dAppsFilterButtons = (
-    <Box className={classes.filters}>
-      {dAppsFilters.map((filter, index) => {
-        return (
-          <Box className={classes.filterBox} key={`${filter}-${index}`}>
-            <Button className={clsx(classes.filterButton, { active: dAppsFilter === filter })} onClick={() => setDAppsFilter(filter)} disableRipple>
-              {filter}
-            </Button>
-          </Box>
-        );
-      })}
-    </Box>
-  );
-
-
-
   const filteredDApps = React.useMemo(() => {
     let filtered: DAppsConfig[] = [];
     switch (dAppsFilter) {
@@ -116,59 +105,24 @@ const Ecosystem: React.FC = () => {
     return filtered;
   }, [allDApps, dAppsFilter]);
 
-  const renderSubtext = React.useMemo(() => {
-    let subtext;
+  // nada todo: dont usememo on html
+
+  const subTextContent = React.useMemo((): SubTextContent | null => {
     switch (dAppsFilter) {
       case "Carbon EVM":
-        subtext = (
-          <>
-            <Typography variant="body1" color="textSecondary" align="left" style={{ maxWidth: "1024px", marginTop: "20px" }}>
-              The EVM component of Carbon allows anyone to deploy EVM-based smart contracts written in Solidity, Vyper, etc. on Carbon. This component allows users to perform any action via both Cosmos and EVM formatted transactions, meaning that users and developers can use popular Ethereum wallets and clients (e.g. MetaMask, HardHat, etc.) to interact with Carbon without additional effort.
-            </Typography>
-            <CTAButton
-              text="Learn More"
-              link={Path.Docs.CarbonEVM}
-              textClassName={classes.ctaButtonText}
-              iconClassName={classes.ctaButtonIcon}
-            />
-          </>
-        );
-        break;
+        return {
+          description: "The EVM component of Carbon allows anyone to deploy EVM-based smart contracts written in Solidity, Vyper, etc. on Carbon. This component allows users to perform any action via both Cosmos and EVM formatted transactions, meaning that users and developers can use popular Ethereum wallets and clients (e.g. MetaMask, HardHat, etc.) to interact with Carbon without additional effort.",
+          link: Path.Docs.CarbonEVM,
+        };
       case "Carbon Core":
-        subtext = (
-          <>
-            <Typography variant="body1" color="textSecondary" align="left" style={{ maxWidth: "1024px", marginTop: "20px" }}>
-              Carbon Core consists of various native modules written in native code (e.g. Golang) instead of a virtual machine. This implementation securely enables features in a scalable manner such as on-chain central-limit order books, lending and borrowing markets, and more.
-            </Typography>
-            <CTAButton
-              text="Learn More"
-              link={Path.Docs.CarbonCore}
-              textClassName={classes.ctaButtonText}
-              iconClassName={classes.ctaButtonIcon}
-            />
-          </>
-        );
-        break;
+        return {
+          description: "Carbon Core consists of various native modules written in native code (e.g. Golang) instead of a virtual machine. This implementation securely enables features in a scalable manner such as on-chain central-limit order books, lending and borrowing markets, and more.",
+          link: Path.Docs.CarbonCore,
+        };
       default:
-        subtext = null;
+        return null;
     }
-    return subtext;
-  }, [allDApps, dAppsFilter]);
-
-
-  const blockchainFilterButtons = (
-    <Box className={classes.filters}>
-      {blockchainFilters.map((filter, index) => {
-        return (
-          <Box className={classes.filterBox} key={`${filter}-${index}`}>
-            <Button className={clsx(classes.filterButton, { active: blockchainFilter === filter })} onClick={() => setBlockchainFilter(filter)} disableRipple>
-              {filter} Chains
-            </Button>
-          </Box>
-        );
-      })}
-    </Box>
-  );
+  }, [dAppsFilter]);
 
   const filteredBlockchains = React.useMemo(() => {
     let filtered: BlockchainConfig[] = [];
@@ -256,14 +210,47 @@ const Ecosystem: React.FC = () => {
           </Box>
           {value === "dApps" && (
             <>
-              {dAppsFilterButtons}
-              {renderSubtext}
+               <Box className={classes.filters}>
+                  {dAppsFilters.map((filter, index) => {
+                    return (
+                      <Box className={classes.filterBox} key={`${filter}-${index}`}>
+                        <Button className={clsx(classes.filterButton, { active: dAppsFilter === filter })} onClick={() => setDAppsFilter(filter)} disableRipple>
+                          {filter}
+                        </Button>
+                      </Box>
+                    );
+                  })}
+                </Box>
+                {subTextContent && (
+                  <>
+                  <Typography variant="body1" color="textSecondary" align="left" style={{ maxWidth: "1024px", marginTop: "20px" }}>
+                    {subTextContent.description}
+                  </Typography>
+                  <CTAButton
+                    text="Learn More"
+                    link={subTextContent.link}
+                    textClassName={classes.ctaButtonText}
+                    iconClassName={classes.ctaButtonIcon}
+                  />
+                </>
+
+                )}
               <AppsCarousel items={filteredDApps} inView key={dAppsFilter}/>
             </>
           )}
           {value === "Blockchains" && (
             <>
-              {blockchainFilterButtons}
+              <Box className={classes.filters}>
+                {blockchainFilters.map((filter, index) => {
+                  return (
+                    <Box className={classes.filterBox} key={`${filter}-${index}`}>
+                      <Button className={clsx(classes.filterButton, { active: blockchainFilter === filter })} onClick={() => setBlockchainFilter(filter)} disableRipple>
+                        {filter} Chains
+                      </Button>
+                    </Box>
+                  );
+                })}
+              </Box>
               <div className={classes.contentBox}>
                 <FeatureGrid items={filteredBlockchains} inView />
               </div>
