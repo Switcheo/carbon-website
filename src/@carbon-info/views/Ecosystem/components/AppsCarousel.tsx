@@ -175,7 +175,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     right: 40,
   },
   dAppLogo: {
-    height: "7.5rem",
+    height: "auto",
     width: "7.5rem",
   },
   ctaButton: {
@@ -202,7 +202,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   logo: {
-    height: "6.25rem",
+    height: "auto",
     width: "6.25rem",
   },
   nameLabel: {
