@@ -28,7 +28,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
       showDots={widthSm}
       infinite={true}
       beforeChange={(currSlide) => {
-        const offset = widthSm ? 2 : 5;
+        const offset = widthSm ? 2 : items.length;
         const currSlideMod = currSlide < offset ? items.length - (offset - currSlide) : (currSlide - offset) % items.length;
         setView(currSlideMod);
       }}
