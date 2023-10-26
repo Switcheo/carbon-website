@@ -39,63 +39,63 @@ const Ecosystem: React.FC = () => {
       let walletResult: WalletConfig[] = [];
       let validatorResult: ValidatorConfig[] = [];
       let dAppsEVMResult: DAppsConfig[] =[];
-      let dAppsCarbonResult: DAppsConfig[] =[];
+      let dAppsCoreResult: DAppsConfig[] =[];
       const content = await data as any;
 
       if (content && Array.isArray(content.items)) {
         content.items.forEach((o: any) => {
           const type = o.fields.type ?? [];
-          if (type.some((item: any) => item === "blockchain")) {
+          const resultItem= {
+            label: o.fields.label,
+            logo: o.fields.logo.fields.file.url,
+          }; 
+          if (type.includes("blockchain")) {
             blockchainResult.push({
-              label: o.fields.label,
-              logo: o.fields.logo.fields.file.url,
+              ...resultItem,
               category: o.fields.category,
             });
           }
-          if (type.some((item: any) => item === "wallet")) {
+          if (type.includes("wallet")) {
             walletResult.push({
-              label: o.fields.label,
-              logo: o.fields.logo.fields.file.url,
+              ...resultItem,
             });
           }
-          if (type.some((item: any) => item === "validator")) {
+          if (type.includes("validator")) {
             validatorResult.push({
-              label: o.fields.label,
-              logo: o.fields.logo.fields.file.url,
+              ...resultItem,
               link: o.fields.link,
-              sortPriority: o.fields.sortPriority, // TODO: get value for voting power from data
+              sortPriority: o.fields.sortPriority,
             });
-          }
-          if (type.some((item: any) => item === "carbon-evm")) {
-            dAppsEVMResult.push({
-              label: o.fields.label,
-              logo: o.fields.logo.fields.file.url,
-              categoryLabel: o.fields.category,
-              link: o.fields.link,
-              background: o.fields.backgroundImage.fields.file.url,
-              description: o.fields.description,
-            });
-          }
-          if (type.some((item: any) => item === "carbon-core")) {
-            dAppsCarbonResult.push({
-              label: o.fields.label,
-              logo: o.fields.logo.fields.file.url,
-              categoryLabel: o.fields.category,
-              link: o.fields.link,
-              background: o.fields.backgroundImage.fields.file.url,
-              description: o.fields.description,
-            });
-          }
+          } 
+          if (type.includes("dApp")) {
+            const carbonItem= {
+              ...resultItem,
+                categoryLabel: o.fields.category,
+                link: o.fields.link,
+                background: o.fields.backgroundImage.fields.file.url,
+                description: o.fields.description,
+            }; 
+            if (type.includes("carbon-evm")) {
+              dAppsEVMResult.push(carbonItem);
+            }
+            if (type.includes("carbon-core")) {
+              dAppsCoreResult.push(carbonItem);
+            }
+
+          }          
         });
       }
       setAllBlockchains(blockchainResult);
       setAllWallets(walletResult);
       setAllValidators(validatorResult);
       setAllDAppsEVM(dAppsEVMResult);
-      setAllDAppsCore(dAppsCarbonResult);
+      setAllDAppsCore(dAppsCoreResult);
     }
     fetchEcosystemItems();
   }, [data]);
+
+
+
 
 
   const tabs = ["dApps", "Blockchains", "Wallets", "Validators"];
@@ -119,9 +119,6 @@ const Ecosystem: React.FC = () => {
       case "Carbon EVM":
         filtered = allDAppsEVM;
         break;
-      case "All":
-        filtered = allDAppsCore.concat(allDAppsEVM);
-        break;
       default:
         filtered = allDAppsCore.concat(allDAppsEVM);
         break;
@@ -129,22 +126,19 @@ const Ecosystem: React.FC = () => {
     return filtered;
   }, [allDAppsCore, allDAppsEVM, dAppsFilter]);
 
-  const subTextContent = React.useMemo((): SubTextContent | null => {
-    switch (dAppsFilter) {
-      case "Carbon EVM":
-        return {
-          description: "The EVM component of Carbon allows anyone to deploy EVM-based smart contracts written in Solidity, Vyper, etc. on Carbon. This component allows users to perform any action via both Cosmos and EVM formatted transactions, meaning that users and developers can use popular Ethereum wallets and clients (e.g. MetaMask, HardHat, etc.) to interact with Carbon without additional effort.",
-          link: Path.Docs.CarbonEVM,
-        };
-      case "Carbon Core":
-        return {
-          description: "Carbon Core consists of various native modules written in native code (e.g. Golang) instead of a virtual machine. This implementation securely enables features in a scalable manner such as on-chain central-limit order books, lending and borrowing markets, and more.",
-          link: Path.Docs.CarbonCore,
-        };
-      default:
-        return null;
-    }
-  }, [dAppsFilter]);
+  const subTextContentMap: { [key: string]: { description: string; link: string } } = {
+    "Carbon EVM": {
+      description: "The EVM component of Carbon allows anyone to deploy EVM-based smart contracts written in Solidity, Vyper, etc. on Carbon. This component allows users to perform any action via both Cosmos and EVM formatted transactions, meaning that users and developers can use popular Ethereum wallets and clients (e.g. MetaMask, HardHat, etc.) to interact with Carbon without additional effort.",
+      link: Path.Docs.CarbonEVM,
+    },
+    "Carbon Core": {
+      description: "Carbon Core consists of various native modules written in native code (e.g. Golang) instead of a virtual machine. This implementation securely enables features in a scalable manner such as on-chain central-limit order books, lending and borrowing markets, and more.",
+      link: Path.Docs.CarbonCore,
+    },
+  };
+
+  const subTextContent: SubTextContent | null = subTextContentMap[dAppsFilter] ?? null;
+
 
   const filteredBlockchains = React.useMemo(() => {
     let filtered: BlockchainConfig[] = [];
@@ -180,9 +174,6 @@ const Ecosystem: React.FC = () => {
         filtered = allBlockchains.filter((blockchain) => {
           return blockchain.category === "Non-EVM Chains";
         });
-        break;
-      case "All":
-        filtered = allBlockchains;
         break;
       default:
         filtered = allBlockchains;
