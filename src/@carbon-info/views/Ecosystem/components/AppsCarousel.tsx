@@ -25,8 +25,8 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
       responsive={Responsive.apps}
       containerClass={clsx(classes.carouselContainer, "carousel-container")}
       arrows={!widthSm}
-      showDots={widthSm}
-      infinite={true}
+      showDots={widthSm && items.length>1}
+      infinite={items.length>1}
       beforeChange={(currSlide) => {
         const offset = widthSm ? 2 : items.length;
         const currSlideMod = currSlide < offset ? items.length - (offset - currSlide) : (currSlide - offset) % items.length;
@@ -40,7 +40,7 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
       {items.map((item, index) => {
         const { label, logo, description, categoryLabel, link } = item;
         const totalCards = items.length;
-        const preview = widthSm ? 2 : 2;
+        const preview = widthSm ? 1 : 2;
         const buttonText = view === index ? `Launch ${label}` : categoryLabel;
 
         return (
