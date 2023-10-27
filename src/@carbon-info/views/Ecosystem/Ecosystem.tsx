@@ -1,4 +1,5 @@
-import { FadeAndSlide } from "@carbon-info/components";
+import { CTAButton, FadeAndSlide } from "@carbon-info/components";
+import { Path } from "@carbon-info/constants";
 import { useContentful } from "@carbon-info/hooks";
 import { StyleUtils } from "@carbon-info/utils/styles";
 import { Box, Button, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
@@ -6,7 +7,12 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { AppsCarousel, FeatureGrid } from "./components";
-import { BlockchainConfig, ValidatorConfig, WalletConfig, allFeatured } from "./ecosystemConfig";
+import { BlockchainConfig, ValidatorConfig, WalletConfig, DAppsConfig } from "./ecosystemConfig";
+
+interface SubTextContent {
+  description: string
+  link: string
+}
 
 const Ecosystem: React.FC = () => {
   const classes = useStyles();
@@ -22,70 +28,117 @@ const Ecosystem: React.FC = () => {
   const [allBlockchains, setAllBlockchains] = React.useState<BlockchainConfig[]>([]);
   const [allWallets, setAllWallets] = React.useState<WalletConfig[]>([]);
   const [allValidators, setAllValidators] = React.useState<ValidatorConfig[]>([]);
+  const [allDAppsEVM, setAllDAppsEVM] = React.useState<DAppsConfig[]>([]);
+  const [allDAppsCore, setAllDAppsCore] = React.useState<DAppsConfig[]>([]);
+
+
 
   useEffect(() => {
-    if (!data && !inView) return;
     async function fetchEcosystemItems() {
       let blockchainResult: BlockchainConfig[] = [];
       let walletResult: WalletConfig[] = [];
       let validatorResult: ValidatorConfig[] = [];
+      let dAppsEVMResult: DAppsConfig[] =[];
+      let dAppsCoreResult: DAppsConfig[] =[];
       const content = await data as any;
 
       if (content && Array.isArray(content.items)) {
         content.items.forEach((o: any) => {
           const type = o.fields.type ?? [];
-          if (type.some((item: any) => item === "blockchain")) {
+          const resultItem= {
+            label: o.fields.label,
+            logo: o.fields.logo.fields.file.url,
+          }; 
+          if (type.includes("blockchain")) {
             blockchainResult.push({
-              label: o.fields.label,
-              logo: o.fields.logo.fields.file.url,
+              ...resultItem,
               category: o.fields.category,
             });
           }
-          if (type.some((item: any) => item === "wallet")) {
+          if (type.includes("wallet")) {
             walletResult.push({
-              label: o.fields.label,
-              logo: o.fields.logo.fields.file.url,
+              ...resultItem,
             });
           }
-          if (type.some((item: any) => item === "validator")) {
+          if (type.includes("validator")) {
             validatorResult.push({
-              label: o.fields.label,
-              logo: o.fields.logo.fields.file.url,
+              ...resultItem,
               link: o.fields.link,
-              sortPriority: o.fields.sortPriority, // TODO: get value for voting power from data
+              sortPriority: o.fields.sortPriority,
             });
-          }
+          } 
+          if (type.includes("dApp")) {
+            const carbonItem= {
+              ...resultItem,
+                categoryLabel: o.fields.category,
+                link: o.fields.link,
+                background: o.fields.backgroundImage.fields.file.url,
+                description: o.fields.description,
+            }; 
+            if (type.includes("carbon-evm")) {
+              dAppsEVMResult.push(carbonItem);
+            }
+            if (type.includes("carbon-core")) {
+              dAppsCoreResult.push(carbonItem);
+            }
+
+          }          
         });
       }
       setAllBlockchains(blockchainResult);
       setAllWallets(walletResult);
       setAllValidators(validatorResult);
+      setAllDAppsEVM(dAppsEVMResult);
+      setAllDAppsCore(dAppsCoreResult);
     }
     fetchEcosystemItems();
   }, [data]);
 
-  const tabs = ["Featured dApps", "Blockchains", "Wallets", "Validators"];
-  const filters = ["All", "IBC", "EVM", "Non-EVM"]; // TODO: Add Coming Soon filter
+
+
+
+
+  const tabs = ["dApps", "Blockchains", "Wallets", "Validators"];
+  const dAppsFilters = ["All", "Carbon Core", "Carbon EVM"];
+  const blockchainFilters = ["All", "IBC", "EVM", "Non-EVM"]; // TODO: Add Coming Soon filter
   const [value, setValue] = useState<string>(tabs[0]);
-  const [blockchainFilter, setBlockchainFilter] = useState<string>(filters[0]);
+  const [blockchainFilter, setBlockchainFilter] = useState<string>(blockchainFilters[0]);
+  const [dAppsFilter, setDAppsFilter] = useState<string>(dAppsFilters[0]);
+
 
   const handleChange = (newValue: any) => {
     setValue(newValue);
   };
 
-  const filterButtons = (
-    <Box className={classes.filters}>
-      {filters.map((filter, index) => {
-        return (
-          <Box className={classes.filterBox} key={`${filter}-${index}`}>
-            <Button className={clsx(classes.filterButton, { active: blockchainFilter === filter })} onClick={() => setBlockchainFilter(filter)} disableRipple>
-              {filter} Chains
-            </Button>
-          </Box>
-        );
-      })}
-    </Box>
-  );
+  const filteredDApps = React.useMemo(() => {
+    let filtered: DAppsConfig[] = [];
+    switch (dAppsFilter) {
+      case "Carbon Core":
+        filtered = allDAppsCore;
+        break;
+      case "Carbon EVM":
+        filtered = allDAppsEVM;
+        break;
+      default:
+        filtered = allDAppsCore.concat(allDAppsEVM);
+        break;
+    }
+    return filtered;
+  }, [allDAppsCore, allDAppsEVM, dAppsFilter]);
+
+  const subTextContentMap: { [key: string]: { description: string; link: string } } = {
+    "Carbon EVM": {
+      description: "The EVM component of Carbon allows anyone to deploy EVM-based smart contracts written in Solidity, Vyper, etc. on Carbon. This component allows users to perform any action via both Cosmos and EVM formatted transactions, meaning that users and developers can use popular Ethereum wallets and clients (e.g. MetaMask, HardHat, etc.) to interact with Carbon without additional effort.",
+      link: Path.Docs.CarbonEVM,
+    },
+    "Carbon Core": {
+      description: "Carbon Core consists of various native modules written in native code (e.g. Golang) instead of a virtual machine. This implementation securely enables features in a scalable manner such as on-chain central-limit order books, lending and borrowing markets, and more.",
+      link: Path.Docs.CarbonCore,
+    },
+  };
+
+  const subTextContent: SubTextContent | null = subTextContentMap[dAppsFilter] ?? null;
+
 
   const filteredBlockchains = React.useMemo(() => {
     let filtered: BlockchainConfig[] = [];
@@ -121,9 +174,6 @@ const Ecosystem: React.FC = () => {
         filtered = allBlockchains.filter((blockchain) => {
           return blockchain.category === "Non-EVM Chains";
         });
-        break;
-      case "All":
-        filtered = allBlockchains;
         break;
       default:
         filtered = allBlockchains;
@@ -171,12 +221,49 @@ const Ecosystem: React.FC = () => {
                 </Box>
               ))}
           </Box>
-          {value === "Featured dApps" && (
-            <AppsCarousel items={allFeatured} inView />
+          {value === "dApps" && (
+            <>
+               <Box className={classes.filters}>
+                  {dAppsFilters.map((filter, index) => {
+                    return (
+                      <Box className={classes.filterBox} key={`${filter}-${index}`}>
+                        <Button className={clsx(classes.filterButton, { active: dAppsFilter === filter })} onClick={() => setDAppsFilter(filter)} disableRipple>
+                          {filter}
+                        </Button>
+                      </Box>
+                    );
+                  })}
+                </Box>
+                {subTextContent && (
+                  <>
+                  <Typography variant="body1" color="textSecondary" align="left" style={{ maxWidth: "1024px", marginTop: "20px" }}>
+                    {subTextContent.description}
+                  </Typography>
+                  <CTAButton
+                    text="Learn More"
+                    link={subTextContent.link}
+                    textClassName={classes.ctaButtonText}
+                    iconClassName={classes.ctaButtonIcon}
+                  />
+                </>
+
+                )}
+              <AppsCarousel items={filteredDApps} inView key={dAppsFilter}/>
+            </>
           )}
           {value === "Blockchains" && (
             <>
-              {filterButtons}
+              <Box className={classes.filters}>
+                {blockchainFilters.map((filter, index) => {
+                  return (
+                    <Box className={classes.filterBox} key={`${filter}-${index}`}>
+                      <Button className={clsx(classes.filterButton, { active: blockchainFilter === filter })} onClick={() => setBlockchainFilter(filter)} disableRipple>
+                        {filter} Chains
+                      </Button>
+                    </Box>
+                  );
+                })}
+              </Box>
               <div className={classes.contentBox}>
                 <FeatureGrid items={filteredBlockchains} inView />
               </div>
@@ -311,6 +398,30 @@ const useStyles = makeStyles((theme: Theme) => ({
       [theme.breakpoints.down("sm")]: {
         marginRight: 0,
       },
+    },
+  },
+  ctaButtonBox: {
+    "&:hover $ctaButtonText": {
+      color: theme.palette.common.white,
+      transition: "all 0.2s ease",
+    },
+    "&:hover $ctaButtonIcon": {
+      "& path": {
+        fill: theme.palette.common.white,
+        transition: "all 0.2s ease",
+      },
+    },
+  },
+  ctaButtonText: {
+    ...theme.typography.body2,
+    fontWeight: 700,
+    color: theme.palette.primary.main,
+  },
+  ctaButtonIcon: {
+    height: "14px",
+    width: "16px",
+    "& path": {
+      fill: theme.palette.primary.light,
     },
   },
 }));

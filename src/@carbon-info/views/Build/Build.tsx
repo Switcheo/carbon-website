@@ -34,7 +34,7 @@ const Build: React.FC = () => {
               <CardWithCTA
                 title={"Integrate with Carbon Core"}
                 description={"Leverage our native source code to fast-track development"}
-                link={Path.Docs.Guides}
+                link={Path.Docs.CarbonCore}
                 icon={DevelopSVG}
               />
             </Grid>
@@ -42,7 +42,7 @@ const Build: React.FC = () => {
               <CardWithCTA
                 title={"Develop on Carbon EVM"}
                 description={"Learn everything you need to deploy an EVM-compatible smart contract on Carbon"}
-                link={Path.Docs.Discussion}
+                link={Path.Docs.CarbonEVM}
                 icon={ProposeSVG}
               />
             </Grid>

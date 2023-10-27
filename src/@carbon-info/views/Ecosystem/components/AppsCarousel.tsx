@@ -7,7 +7,6 @@ import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { DAppsConfig } from "../ecosystemConfig";
-
 interface Props {
   items: DAppsConfig[],
   inView: boolean,
@@ -26,10 +25,10 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
       responsive={Responsive.apps}
       containerClass={clsx(classes.carouselContainer, "carousel-container")}
       arrows={!widthSm}
-      showDots={widthSm}
-      infinite={true}
+      showDots={widthSm && items.length>1}
+      infinite={items.length>1}
       beforeChange={(currSlide) => {
-        const offset = widthSm ? 2 : 5;
+        const offset = widthSm ? 2 : items.length;
         const currSlideMod = currSlide < offset ? items.length - (offset - currSlide) : (currSlide - offset) % items.length;
         setView(currSlideMod);
       }}
@@ -39,19 +38,20 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
       customTransition={"transform 800ms cubic-bezier(0,-0.11,0,.98) 0ms"}
     >
       {items.map((item, index) => {
-        const { name, icon, description, tag, ctaLink } = item;
+        const { label, logo, description, categoryLabel, link } = item;
         const totalCards = items.length;
         const preview = widthSm ? 1 : 2;
-        const buttonText = view === index ? `Launch ${name}` : tag;
+        const buttonText = view === index ? `Launch ${label}` : categoryLabel;
 
-        return (<Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${name}-featured-dApps`} >
-          <Box id={`list-item-${index}`} className={clsx(classes.cardContainer, index === view && "expandCard", { open: inView }, { lastCard: index === (view + preview) % totalCards })}>
-            <Typography variant="body1" color="textPrimary" className={classes.tag}>{tag}</Typography>
-            <img src={icon} className={index === view ? classes.dAppLogo : classes.logo} />
-            <Typography variant="h3" color="textPrimary" className={classes.nameLabel}>{name}</Typography>
+        return (
+        <Grow in timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200} key={`${label}-featured-dApps`} >
+          <Box id={`list-item-${index}`} className={clsx(classes.cardContainer, index === view && "expandCard", { open: inView }, { lastCard: totalCards > 1 && index === (view + preview) % totalCards })}>
+            <Typography variant="body1" color="textPrimary" className={classes.tag}>{categoryLabel}</Typography>
+            <img src={logo} className={index === view ? classes.dAppLogo : classes.logo} />
+            <Typography variant="h3" color="textPrimary" className={classes.nameLabel}>{label}</Typography>
             {index === view && <Typography variant="body1" style={{ color: theme.palette.text.button, marginTop: "1rem" }}>{description}</Typography>}
-            <Button className={classes.ctaButton} href={ctaLink} target="_blank">{buttonText}</Button>
-            <Box className={clsx(classes.backgroundImage, view !== index && "inactive")} style={{ backgroundImage: `url("${item?.backgroundImage}")` }} />
+            <Button className={classes.ctaButton} href={link} target="_blank">{buttonText}</Button>
+            <Box className={clsx(classes.backgroundImage, view !== index && "inactive")} style={{ backgroundImage: `url("${item?.background}")` }} />
           </Box>
         </Grow>);
       })}
@@ -176,7 +176,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     right: 40,
   },
   dAppLogo: {
-    height: "7.5rem",
+    height: "auto",
     width: "7.5rem",
   },
   ctaButton: {
@@ -203,7 +203,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   logo: {
-    height: "6.25rem",
+    height: "auto",
     width: "6.25rem",
   },
   nameLabel: {

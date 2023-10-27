@@ -17,8 +17,8 @@ export const Path = {
     SwitcheoForum: "https://commonwealth.im/carbon-protocol/discussions/Proposal%20Discussion",
   },
   Docs: {
-    Discussion: "https://docs.carbon.network/module-architecture/carbon-evm",
-    Guides: "https://docs.carbon.network/module-architecture/carbon-core",
+    CarbonEVM: "https://docs.carbon.network/carbon-evm/overview",
+    CarbonCore: "https://docs.carbon.network/carbon-core/overview",
   },
   Footer: {
     Features: "https://docs.carbon.network/carbon-core",
