@@ -17,6 +17,7 @@ export interface DAppsConfig extends WalletConfig {
   background: string,
   categoryLabel: string,
   description: string,
+  sortPriority: number,
 }
 
 export function isBlockchainConfigArr(arr: any[]): arr is BlockchainConfig[] {

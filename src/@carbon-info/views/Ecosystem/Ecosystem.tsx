@@ -74,6 +74,7 @@ const Ecosystem: React.FC = () => {
                 link: o.fields.link,
                 background: o.fields.backgroundImage.fields.file.url,
                 description: o.fields.description,
+                sortPriority: o.fields.sortPriority,
             }; 
             if (type.includes("carbon-evm")) {
               dAppsEVMResult.push(carbonItem);
@@ -189,6 +190,12 @@ const Ecosystem: React.FC = () => {
     });
   }, [allValidators]);
 
+  const sortedDApps= React.useMemo(() => {
+    return filteredDApps.sort((v1: DAppsConfig, v2: DAppsConfig) => {
+      return v1.sortPriority - v2.sortPriority;
+    });
+  }, [allDAppsCore, allDAppsEVM]);
+
   return (
     <div ref={ref} id="ecosystem">
       <Box className={classes.boxContainer}>
@@ -248,7 +255,7 @@ const Ecosystem: React.FC = () => {
                 </>
 
                 )}
-              <AppsCarousel items={filteredDApps} inView key={dAppsFilter}/>
+              <AppsCarousel items={sortedDApps} inView key={dAppsFilter}/>
             </>
           )}
           {value === "Blockchains" && (
