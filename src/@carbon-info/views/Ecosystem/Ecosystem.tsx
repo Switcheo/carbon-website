@@ -111,6 +111,7 @@ const Ecosystem: React.FC = () => {
     setValue(newValue);
   };
 
+
   const filteredDApps = React.useMemo(() => {
     let filtered: DAppsConfig[] = [];
     switch (dAppsFilter) {
@@ -125,6 +126,12 @@ const Ecosystem: React.FC = () => {
         break;
     }
     return filtered;
+  }, [allDAppsCore, allDAppsEVM, dAppsFilter]);
+
+  const sortedDApps= React.useMemo(() => {
+    return filteredDApps.sort((v1: DAppsConfig, v2: DAppsConfig) => {
+      return v1.sortPriority - v2.sortPriority;
+    });
   }, [allDAppsCore, allDAppsEVM, dAppsFilter]);
 
   const subTextContentMap: { [key: string]: { description: string; link: string } } = {
@@ -190,11 +197,7 @@ const Ecosystem: React.FC = () => {
     });
   }, [allValidators]);
 
-  const sortedDApps= React.useMemo(() => {
-    return filteredDApps.sort((v1: DAppsConfig, v2: DAppsConfig) => {
-      return v1.sortPriority - v2.sortPriority;
-    });
-  }, [allDAppsCore, allDAppsEVM]);
+  
 
   return (
     <div ref={ref} id="ecosystem">
