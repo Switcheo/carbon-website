@@ -233,7 +233,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: 0,
     right: 0,
     bottom: 0,
-    opacity: "0.5",
+    opacity: "0.4",
     transition: "1s",
     "&.inactive": {
       opacity: 0,
