@@ -74,6 +74,7 @@ const Ecosystem: React.FC = () => {
                 link: o.fields.link,
                 background: o.fields.backgroundImage.fields.file.url,
                 description: o.fields.description,
+                sortPriority: o.fields.sortPriority,
             }; 
             if (type.includes("carbon-evm")) {
               dAppsEVMResult.push(carbonItem);
@@ -110,7 +111,8 @@ const Ecosystem: React.FC = () => {
     setValue(newValue);
   };
 
-  const filteredDApps = React.useMemo(() => {
+
+  const sortedDApps = React.useMemo(() => {
     let filtered: DAppsConfig[] = [];
     switch (dAppsFilter) {
       case "Carbon Core":
@@ -123,7 +125,9 @@ const Ecosystem: React.FC = () => {
         filtered = allDAppsCore.concat(allDAppsEVM);
         break;
     }
-    return filtered;
+    return filtered.sort((v1: DAppsConfig, v2: DAppsConfig) => {
+      return v1.sortPriority - v2.sortPriority;
+    });
   }, [allDAppsCore, allDAppsEVM, dAppsFilter]);
 
   const subTextContentMap: { [key: string]: { description: string; link: string } } = {
@@ -189,6 +193,8 @@ const Ecosystem: React.FC = () => {
     });
   }, [allValidators]);
 
+  
+
   return (
     <div ref={ref} id="ecosystem">
       <Box className={classes.boxContainer}>
@@ -248,7 +254,7 @@ const Ecosystem: React.FC = () => {
                 </>
 
                 )}
-              <AppsCarousel items={filteredDApps} inView key={dAppsFilter}/>
+              <AppsCarousel items={sortedDApps} inView key={dAppsFilter}/>
             </>
           )}
           {value === "Blockchains" && (
