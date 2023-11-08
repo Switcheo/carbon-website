@@ -112,7 +112,7 @@ const Ecosystem: React.FC = () => {
   };
 
 
-  const filteredDApps = React.useMemo(() => {
+  const sortedDApps = React.useMemo(() => {
     let filtered: DAppsConfig[] = [];
     switch (dAppsFilter) {
       case "Carbon Core":
@@ -125,11 +125,7 @@ const Ecosystem: React.FC = () => {
         filtered = allDAppsCore.concat(allDAppsEVM);
         break;
     }
-    return filtered;
-  }, [allDAppsCore, allDAppsEVM, dAppsFilter]);
-
-  const sortedDApps= React.useMemo(() => {
-    return filteredDApps.sort((v1: DAppsConfig, v2: DAppsConfig) => {
+    return filtered.sort((v1: DAppsConfig, v2: DAppsConfig) => {
       return v1.sortPriority - v2.sortPriority;
     });
   }, [allDAppsCore, allDAppsEVM, dAppsFilter]);
