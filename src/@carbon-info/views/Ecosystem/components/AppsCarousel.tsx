@@ -62,7 +62,6 @@ const AppsCarousel: React.FC<Props> = (props: Props) => {
 const useStyles = makeStyles((theme: Theme) => ({
   carouselContainer: {
     display: "flex",
-    paddingBottom: "5rem",
     "& > ul": {
       alignItems: "flex-end",
       "& > li": {
