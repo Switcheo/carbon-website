@@ -41,10 +41,12 @@ const RoadMapPage: React.FC = () => {
           result.push({
             title: o.fields.title,
             description: o?.fields?.description?.content[0]?.content[0]?.value,
+            sortPriority: o.fields.sortPriority,
             tabs,
           });
         });
       }
+      result.sort((a, b) => a.sortPriority - b.sortPriority);
       setRoadMapItems(result);
     }
     fetchRoadMapItems();
