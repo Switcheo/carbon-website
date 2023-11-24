@@ -19,7 +19,7 @@ const RoadMapPage: React.FC = () => {
     async function fetchRoadMapItems() {
       let result: any[] = [];
       const content = await data as any;
-      if (content && Array.isArray(content.items)) {
+            if (content && Array.isArray(content.items)) {
         content.items.forEach((o: any) => {
           const tabs = o?.fields?.entries.map((entry: any) => ({
             docLink: entry.fields.link,
@@ -41,11 +41,12 @@ const RoadMapPage: React.FC = () => {
           result.push({
             title: o.fields.title,
             description: o?.fields?.description?.content[0]?.content[0]?.value,
+            sortPriority: o.fields.sortPriority,
             tabs,
           });
         });
       }
-      setRoadMapItems(result);
+      setRoadMapItems(result.sort((a, b) => a.sortPriority - b.sortPriority));
     }
     fetchRoadMapItems();
   }, [data]);
