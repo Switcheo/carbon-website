@@ -46,7 +46,8 @@ const RoadMapPage: React.FC = () => {
           });
         });
       }
-      setRoadMapItems(result.sort((a, b) => a.sortPriority - b.sortPriority));
+      result.sort((a, b) => a.sortPriority - b.sortPriority);
+      setRoadMapItems(result);
     }
     fetchRoadMapItems();
   }, [data]);
