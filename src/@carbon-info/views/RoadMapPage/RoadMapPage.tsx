@@ -19,7 +19,7 @@ const RoadMapPage: React.FC = () => {
     async function fetchRoadMapItems() {
       let result: any[] = [];
       const content = await data as any;
-            if (content && Array.isArray(content.items)) {
+      if (content && Array.isArray(content.items)) {
         content.items.forEach((o: any) => {
           const tabs = o?.fields?.entries.map((entry: any) => ({
             docLink: entry.fields.link,
