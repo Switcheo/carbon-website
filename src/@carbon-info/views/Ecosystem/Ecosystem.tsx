@@ -201,12 +201,12 @@ const Ecosystem: React.FC = () => {
         <FadeAndSlide visible={inView}>
           <Grid container alignItems="center" justifyContent="space-between" style={{ marginBottom: "3.5rem" }}>
             <Grid item xs={12} md={4}>
-              <Typography variant="h1" color="textPrimary" align="left">Explore our Ecosystem</Typography>
+              <Typography variant="h1" color="textPrimary" align="left">Our Ecosystem</Typography>
             </Grid>
             <Grid item xs={12} md={5}>
               <Typography variant="body1" color="textSecondary" align="left" style={{ maxWidth: "720px" }}>
-                Carbon is powered by a large network of builders, validators and community partners. Explore the fastest growing  ecosystem pioneering a new world of finance.
-              </Typography>
+                Carbon is powered by Cosmos SDK, builders, validators and community partners to create the future of DeFi.
+                </Typography>
             </Grid>
           </Grid>
           <Box className={classes.tabsBox}>
