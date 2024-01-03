@@ -7,7 +7,9 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { AppsCarousel, FeatureGrid } from "./components";
+import { ReactComponent as SWTHIcon } from "@carbon-info/assets/icons/SWTH.svg";
 import { BlockchainConfig, ValidatorConfig, WalletConfig, DAppsConfig } from "./ecosystemConfig";
+import LinkButton from "@carbon-info/components/LinkButton";
 
 interface SubTextContent {
   description: string
@@ -193,19 +195,29 @@ const Ecosystem: React.FC = () => {
     });
   }, [allValidators]);
 
-  
-
   return (
     <div ref={ref} id="ecosystem">
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
-          <Grid container alignItems="center" justifyContent="space-between" style={{ marginBottom: "3.5rem" }}>
-            <Grid item xs={12} md={4}>
+          <Grid container alignItems="center" spacing={3} justifyContent="space-between" style={{ marginBottom: "3.5rem" }}>
+            <Grid item xs={12}>
               <Typography variant="h1" color="textPrimary" align="left">Our Ecosystem</Typography>
             </Grid>
-            <Grid item xs={12} md={5}>
-              <Typography variant="body1" color="textSecondary" align="left" style={{ maxWidth: "720px" }}>
+            <Grid item xs={12}>
+              <Typography variant="body1" color="textSecondary" align="left">
                 Carbon is powered by Cosmos SDK, builders, validators and community partners to create the future of DeFi.
+                </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="body1" color="textPrimary" align="left" style={{ width:"fit-content" }}>
+                <Box className={classes.banner}>
+                  <SWTHIcon className={classes.swthIcon}/>
+                  Want to build something cool on Carbon? 
+                    <LinkButton
+                      text="Apply for our Ecosystem Fund"
+                      link = "#"
+                    />
+                </Box>
                 </Typography>
             </Grid>
           </Grid>
@@ -229,7 +241,7 @@ const Ecosystem: React.FC = () => {
           </Box>
           {value === "dApps" && (
             <>
-               <Box className={classes.filters}>
+              <Box className={classes.filters}>
                   {dAppsFilters.map((filter, index) => {
                     return (
                       <Box className={classes.filterBox} key={`${filter}-${index}`}>
@@ -294,6 +306,13 @@ const Ecosystem: React.FC = () => {
 export default Ecosystem;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  banner:{
+    display:"flex",
+    alignItems:"center",
+    borderRadius: "20px",
+    border: "1px #74E8E8 solid",
+    padding: ".75rem 1.25rem",
+  },
   boxContainer: {
     position: "relative",
     margin: "0 auto 15rem",
@@ -301,6 +320,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("sm")]: {
       margin: "15rem 0",
     },
+  },
+  swthIcon:{
+    marginRight:"1rem",
   },
   tabsBox: {
     display: "flex",
