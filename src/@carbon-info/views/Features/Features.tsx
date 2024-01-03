@@ -316,11 +316,15 @@ const Features: React.FC = () => {
         <Box className={clsx(classes.container, { open: inView })} >
           <div ref={ref}>
             <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
-              Carbon is built&nbsp;
+              Built for the
               {!isMobile && <br />}
-              <span style={{ color: theme.palette.primary.light }}>for the future,&nbsp;</span>
+              future,
               {!isMobile && <br />}
-              today.
+              <span style={{ color: theme.palette.primary.light }}>          
+                Empowering
+              {!isMobile && <br />}
+                traders today.&nbsp;
+                </span>
             </Typography>
           </div>
           <Box className={classes.carouselWrapper} onMouseEnter={handleFeaturesMouseEnter} onMouseLeave={handleFeaturesMouseLeave}>
