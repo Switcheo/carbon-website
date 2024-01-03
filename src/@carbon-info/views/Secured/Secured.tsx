@@ -57,7 +57,7 @@ const Secured: React.FC = () => {
           <Box className={clsx(classes.secureContainer, { open: inView })}>
             <div className={classes.descriptionContainer}>
               <Typography variant="h1" color="textPrimary" style={{ marginBottom: "2.125rem" }}>Secured by SWTH</Typography>
-              <Typography variant="body1" color="textSecondary" className={classes.description}>Using the Carbon Token - <span className="highlightedText">$SWTH</span>, anyone can secure the Carbon blockchain while earning transaction fees and staking rewards.</Typography>
+              <Typography variant="body1" color="textSecondary" className={classes.description}>Using the Carbon Token - <span className="highlightedText">$SWTH</span>, anyone can secure the network while earning transaction fees and staking rewards, providing sustainable real yield to everyone.</Typography>
               <Box className={classes.actionButtons}>
                 <Button variant="contained" className={classes.containedButton} href={Path.Footer.Buy} target="_blank">Buy $SWTH<ArrowIcon style={{ marginLeft: "10px" }} /></Button>
                 <CTAButton text="Start Staking" link={Path.Footer.Stake} textClassName={classes.ctaText} iconClassName={classes.ctaIcon} buttonClassName={classes.ctaButtonBox} />
