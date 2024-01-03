@@ -22,4 +22,6 @@ export { ReactComponent as Scroll } from "./scroll.svg";
 export { ReactComponent as Stable } from "./stable.svg";
 export { ReactComponent as TelegramIcon } from "./telegram.svg";
 export { ReactComponent as TwitterIcon } from "./twitter.svg";
+export { ReactComponent as GeckoTerminalIcon } from "./geckoTerminal.svg";
+export { ReactComponent as CosmosSDKSmallWhiteLogo } from "./cosmosSDKSmallWhite.svg";
 export { ReactComponent as Versatile } from "./versatile.svg";

@@ -1,4 +1,4 @@
-import { CarbonLogo, DiscordFooterIcon, GitHubIcon, TelegramIcon, TwitterIcon } from "@carbon-info/assets";
+import { CarbonLogo, DiscordFooterIcon, GitHubIcon, TelegramIcon, TwitterIcon, GeckoTerminalIcon, CosmosSDKSmallWhiteLogo } from "@carbon-info/assets";
 import { Path } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
@@ -138,6 +138,17 @@ const Footer: React.FC = () => {
           {!isMobile && (
             <Grid item xs={12} md={6} className={classes.logoContainer}>
               <CarbonLogo className={classes.logo} />
+                <Typography
+                  className={classes.poweredBySDKContainer}
+                >
+                  Powered by
+                  <CosmosSDKSmallWhiteLogo 
+                    className={classes.cosmosSDKLogo}
+                  />
+                  <strong>
+                    Cosmos SDK
+                  </strong>
+                </Typography>
             </Grid>
           )}
           <Grid item xs={12} md={6} className={classes.socialMediaContainer}>
@@ -152,6 +163,9 @@ const Footer: React.FC = () => {
             </Link>
             <Link href={Path.Socials.Github} underline="none" target="_blank">
               <GitHubIcon className={classes.socialMediaIcon} />
+            </Link>
+            <Link href={Path.Socials.GeckoTerminal} underline="none" target="_blank">
+              <GeckoTerminalIcon className={classes.socialMediaIcon} />
             </Link>
           </Grid>
           {isMobile && (
@@ -192,6 +206,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
     maxWidth: "1400px",
     margin: "0 auto",
+  },
+  cosmosSDKLogo: {
+    margin: "0 .5rem",
+  },
+  poweredBySDKContainer:{
+    display:"flex",
+    alignItems:"center",
+    color: theme.palette.text.primary,
   },
   logo: {
     margin: "0px 0.063rem",
