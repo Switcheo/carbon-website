@@ -15,7 +15,7 @@ export const Path = {
 		Github: "https://github.com/Switcheo/carbon-bootstrap",
 		SwitcheoForum:
 			"https://commonwealth.im/carbon-protocol/discussions/Proposal%20Discussion",
-		GeckoTerminal:"#",
+		GeckoTerminal:"https://www.geckoterminal.com/eth/pools/0xc995da109796385524f630ceecd34b6e928b9158",
 	},
 	Docs: {
 		CarbonEVM: "https://docs.carbon.network/carbon-evm/overview",
