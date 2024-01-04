@@ -1,12 +1,61 @@
+import { ArrowIcon } from "@carbon-info/assets";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
 import { isWidth } from "@carbon-info/utils/environment";
-import { Grid, Theme, Typography, makeStyles } from "@material-ui/core";
+import {
+	Box,
+	Grid,
+	Link,
+	Theme,
+	Typography,
+	makeStyles,
+} from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "animate.css";
 import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
+
+const CtaButton: React.FC = () => {
+	const goToEcosystem = () => {
+		document.getElementById("ecosystem")?.scrollIntoView({
+			behavior: "smooth",
+		});
+	};
+
+	const classes = useStyles();
+	return (
+		<Box
+			className={classes.ctaButton}
+			onClick={() => {
+				goToEcosystem();
+			}}
+		>
+			<Box className={classes.ctaButtonInner}>
+				<Typography variant="h4" className={classes.ctaButtonText}>
+					Explore
+				</Typography>
+				<ExpandMoreIcon />
+			</Box>
+		</Box>
+	);
+};
+
+const CtaLinkButton: React.FC = () => {
+	const classes = useStyles();
+	return (
+		<Link
+			href={"https://docs.carbon.network/"}
+			underline="none"
+			target={"_blank"}
+			className={classes.ctaLinkButton}
+		>
+			Learn More
+			<ArrowIcon className={classes.ctaLinkIcon} />
+		</Link>
+	);
+};
 
 const Hero: React.FC = () => {
 	const classes = useStyles();
@@ -42,48 +91,55 @@ const Hero: React.FC = () => {
 	return (
 		<div ref={ref} id="home">
 			<Grid container className={classes.container}>
-				<Grid container item xs={6}>
-					<div className={classes.headerContainer}>
-						<FadeAndSlide visible={inView} transform={[0, -20]}>
-							<Typography
-								variant="body1"
-								color="textPrimary"
-								className={classes.bodyTypography}
-							>
-								MEET CARBON
-							</Typography>
-						</FadeAndSlide>
+				{/* Hero Titles and Description */}
+				<Grid container item xs={6} className={classes.heroTextContainer}>
+					{/* <div className={classes.headerContainer}> */}
+					<FadeAndSlide visible={inView} transform={[0, -20]}>
 						<Typography
+							variant="body1"
 							color="textPrimary"
-							variant="h1"
+							className={classes.bodyTypography}
+						>
+							MEET CARBON
+						</Typography>
+					</FadeAndSlide>
+					<Typography
+						color="textPrimary"
+						variant="h1"
+						className={clsx(
+							classes.mainTitle,
+							"animate__animated animate__slideInUp",
+							{ open: inView },
+						)}
+					>
+						The Blockchain Tailored
+						<br />
+						for{" "}
+						<span className={clsx(classes.highlightedText, { open: inView })}>
+							DeFi and Trading
+						</span>
+					</Typography>
+					<FadeAndSlide visible={inView}>
+						<Typography
+							color="textSecondary"
+							variant="body1"
 							className={clsx(
-								classes.mainTitle,
+								classes.subtitle,
 								"animate__animated animate__slideInUp",
-								{ open: inView },
 							)}
 						>
-							The Blockchain Tailored for
-							<br />
-							<span className={clsx(classes.highlightedText, { open: inView })}>
-								DeFi and Trading
-							</span>
+							Carbon is a Layer 1 chain that offers native DeFi modules for
+							building unparalleled trading experiences.
 						</Typography>
-						<FadeAndSlide visible={inView}>
-							<Typography
-								color="textSecondary"
-								variant="body1"
-								className={clsx(
-									classes.subtitle,
-									"animate__animated animate__slideInUp",
-								)}
-							>
-								Carbon is a cross-chain protocol that acts as
-								<br />a building block for DeFi.
-							</Typography>
-						</FadeAndSlide>
-					</div>
+						<Box className={classes.ctaGroupContainer}>
+							<CtaButton />
+							<CtaLinkButton />
+						</Box>
+					</FadeAndSlide>
+					{/* </div> */}
 				</Grid>
 
+				{/* Hero Graphic */}
 				<Grid container item xs={6}>
 					<Lottie
 						options={AniStartOptions}
@@ -109,6 +165,100 @@ const Hero: React.FC = () => {
 export default Hero;
 
 const useStyles = makeStyles((theme: Theme) => ({
+	// ctaButton: {
+	// 	display: 'flex',
+	// 	justifyContent: 'flex-start',
+	// 	color: 'white',
+	// 	marginRight: '2.5rem',
+	// 	borderRadius: 12,
+	// 	transition: 'background 0.2s ease-in-out',
+	// 	background:
+	// 	'radial-gradient(63.65% 55% at 50.51% 100%, rgba(10, 220, 182, 0.25) 0%, rgba(10, 220, 182, 0.06) 51.54%, rgba(10, 220, 182, 0.00) 100%), #142C2C',
+	// 	'&:hover': {
+	// 		cursor: 'pointer',
+	// 		background:
+	// 			'radial-gradient(81.4% 70.34% at 50.51% 105.92%, rgba(15, 250, 207, 0.50) 0%, rgba(12, 236, 196, 0.13) 56.25%, rgba(10, 220, 182, 0.00) 100%), #142C2C',
+	// 		boxShadow: '0px 0px 20px 0px rgba(116, 232, 232, 0.20)',
+	// 	},
+	// },
+
+	ctaButton: {
+		position: "relative", // Needed for positioning the pseudo-element
+		display: "flex",
+		justifyContent: "flex-start",
+		color: "white",
+		marginRight: "2.5rem",
+		borderRadius: 12,
+		background:
+			"radial-gradient(63.65% 55% at 50.51% 100%, rgba(10, 220, 182, 0.25) 0%, rgba(10, 220, 182, 0.06) 51.54%, rgba(10, 220, 182, 0) 100%), #142C2C",
+		overflow: "hidden",
+		cursor: "pointer",
+		zIndex: 1,
+		"&::before": {
+			// Pseudo-element for the hover effect
+			content: "''",
+			position: "absolute",
+			top: 0,
+			right: 0,
+			bottom: 0,
+			left: 0,
+			borderRadius: "inherit", // To match the button's border-radius
+			background:
+				"radial-gradient(81.4% 70.34% at 50.51% 105.92%, rgba(15, 250, 207, 0.50) 0%, rgba(12, 236, 196, 0.13) 56.25%, rgba(10, 220, 182, 0) 100%), #142C2C",
+			zIndex: -1,
+			transition: "opacity 0.2s ease-in-out",
+			opacity: 0,
+		},
+
+		"&:hover": {
+			cursor: "pointer",
+			"&::before": {
+				opacity: 1,
+			},
+			boxShadow: "0px 0px 20px 0px rgba(116, 232, 232, 0.20)",
+		},
+	},
+	ctaButtonInner: {
+		display: "flex",
+		padding: "1rem 2rem",
+		alignItems: "center",
+	},
+	ctaButtonText: {
+		marginRight: ".75rem",
+		fontSize: "1rem",
+	},
+	ctaLinkButton: {
+		paddingTop: "1rem",
+		paddingBottom: "1rem",
+		fontSize: "1rem",
+		display: "flex",
+		alignItems: "center",
+		transition: "all 0.2s ease-in-out",
+		color: theme.palette.primary.main,
+		"&:hover": {
+			color: theme.palette.text.primary,
+			"& $ctaLinkIcon path": {
+				fill: theme.palette.text.primary,
+			},
+		},
+	},
+	ctaLinkIcon: {
+		marginLeft: ".5rem",
+		width: "1rem",
+		height: "1rem",
+		"& path": {
+			transition: "all 0.2s ease-in-out",
+			fill: theme.palette.primary.main,
+		},
+	},
+	ctaGroupContainer: {
+		marginTop: "56px",
+		display: "flex",
+		fontSize: "1rem",
+	},
+	heroTextContainer: {
+		textAlign: "left",
+	},
 	container: {
 		justifyContent: "center",
 		alignItems: "center",
@@ -132,7 +282,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 	mainTitle: {
 		opacity: 0,
 		transition: "all 2s ease",
-		marginTop: "0.75rem",
+		marginTop: "20px",
 		"&.open": {
 			opacity: 1,
 		},
@@ -149,6 +299,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 	subtitle: {
+		marginTop: "24px",
 		transition: "all 2s ease",
 		maxWidth: "40rem",
 	},
@@ -182,8 +333,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 		color: theme.palette.text.hint,
 	},
 	altCarbonContainer: {
-		top: "calc(80vh - 30px)",
-		position: "absolute",
+		// top: "calc(80vh - 30px)",
+		// position: "absolute",
 		width: "100%",
 		display: "flex",
 		justifyContent: "flex-end",
