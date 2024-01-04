@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React from "react";
 
 interface bannerProps {
-	icon?: React.ReactNode;
+	icon: React.ReactNode;
 	text: string;
 	highlightedText: string;
 	link: string;
