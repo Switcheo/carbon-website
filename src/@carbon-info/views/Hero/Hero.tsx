@@ -204,6 +204,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		marginTop: "4rem",
 	},
 	partnershipLogoContainer: {
+		opacity: 0.8,
 		maxHeight: "4rem",
 		alignItems: "center",
 		marginTop: "20px",
