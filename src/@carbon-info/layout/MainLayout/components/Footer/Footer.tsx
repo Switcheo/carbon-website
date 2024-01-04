@@ -280,6 +280,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		margin: "0 .5rem",
 	},
 	poweredBySDKContainer: {
+		marginLeft: "8px",
 		display: "flex",
 		alignItems: "center",
 		color: theme.palette.text.primary,
