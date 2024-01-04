@@ -79,10 +79,10 @@ export const theme = createTheme({
       letterSpacing: "-0.02rem",
     },
     h2: { 
-      // Large 48px/Header
+      // Large 40px/Header
       fontFamily: "TyrosPro-Bold",
       fontWeight: 700,
-      fontSize: "3rem",
+      fontSize: "2.5rem",
       lineHeight: "1.25",
       letterSpacing: "-0.02rem",
     },
