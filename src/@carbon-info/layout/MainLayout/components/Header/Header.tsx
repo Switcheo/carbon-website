@@ -152,7 +152,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 		display: 'flex',
 		alignItems: 'center',
 		maxWidth: '1400px',
-		margin: theme.spacing(6, 'auto'),
+		paddingTop: theme.spacing(6),
+		paddingBottom: theme.spacing(6),
 		justifyContent: 'space-between',
 		[theme.breakpoints.down('sm')]: {
 			margin: theme.spacing(6, 4, 12, 4),
