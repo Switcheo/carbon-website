@@ -9,7 +9,7 @@ import { useInView } from "react-intersection-observer";
 import { AppsCarousel, FeatureGrid } from "./components";
 import { ReactComponent as SWTHIcon } from "@carbon-info/assets/icons/SWTH.svg";
 import { BlockchainConfig, ValidatorConfig, WalletConfig, DAppsConfig } from "./ecosystemConfig";
-import LinkButton from "@carbon-info/components/LinkButton";
+import Banner from "@carbon-info/components/Banner";
 
 interface SubTextContent {
   description: string
@@ -204,21 +204,17 @@ const Ecosystem: React.FC = () => {
               <Typography variant="h1" color="textPrimary" align="left">Our Ecosystem</Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="body1" color="textSecondary" align="left">
+              <Typography color="textSecondary" align="left">
                 Carbon is powered by Cosmos SDK, builders, validators and community partners to create the future of DeFi.
-                </Typography>
+              </Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="body1" color="textPrimary" align="left" style={{ width:"fit-content" }}>
-                <Box className={classes.banner}>
-                  <SWTHIcon className={classes.swthIcon}/>
-                  Want to build something cool on Carbon? 
-                    <LinkButton
-                      text="Apply for our Ecosystem Fund"
-                      link = "#"
-                    />
-                </Box>
-                </Typography>
+              <Banner 
+                icon={<SWTHIcon/>}
+                text="Want to build something cool on Carbon?"
+                highlightedText="Apply for our Ecosystem Fund"
+                link="https://docs.carbon.network/grants-programs/carbon-ecosystem-grant"
+              />
             </Grid>
           </Grid>
           <Box className={classes.tabsBox}>
