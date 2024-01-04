@@ -233,7 +233,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 			right: 0,
 			bottom: 0,
 			left: 0,
-			borderRadius: "inherit", // To match the button's border-radius
 			background:
 				"radial-gradient(81.4% 70.34% at 50.51% 105.92%, rgba(15, 250, 207, 0.50) 0%, rgba(12, 236, 196, 0.13) 56.25%, rgba(10, 220, 182, 0) 100%), #142C2C",
 			zIndex: -1,
