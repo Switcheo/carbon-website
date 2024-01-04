@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React from "react";
 
 interface bannerProps {
-	icon: React.ReactNode;
+	icon?: React.ReactNode;
 	text: string;
 	highlightedText: string;
 	link: string;
@@ -21,9 +21,10 @@ const Banner: React.FC<bannerProps> = (props: bannerProps) => {
 			style={{ display: "flex", alignItems: "center" }}
 			className={classes.bannerContainer}
 		>
-			{React.cloneElement(icon as React.ReactElement, {
-				className: classes.iconContainer,
-			})}
+			{icon &&
+				React.cloneElement(icon as React.ReactElement, {
+					className: classes.iconContainer,
+				})}
 			<Typography variant="body1" color="textPrimary">
 				{text}
 			</Typography>
