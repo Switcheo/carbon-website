@@ -11,6 +11,7 @@ export { ReactComponent as DiscordFooterIcon } from "./discordFooter.svg";
 export { ReactComponent as DocsIcon } from "./docs.svg";
 export { ReactComponent as ExternalLink } from "./externalLink.svg";
 export { ReactComponent as EthereumIcon } from "./Ethereum.svg";
+export { ReactComponent as Fail } from "./Fail.svg";
 export { ReactComponent as GitHubIcon } from "./github.svg";
 export { ReactComponent as KujiraIcon } from "./Kujira.svg";
 export { ReactComponent as MenuIcon } from "./menu.svg";
@@ -22,6 +23,7 @@ export { ReactComponent as RoadMapPageCardIcon } from "./roadMapPageCardIcon.svg
 export { ReactComponent as RoadMapPageCardTick } from "./roadMapPageCardTick.svg";
 export { ReactComponent as RoadMapRightButtonIcon } from "./roadMapRightButton.svg";
 export { ReactComponent as Scroll } from "./scroll.svg";
+export { ReactComponent as Success } from "./Success.svg";
 export { ReactComponent as SolanaIcon } from "./Solana.svg";
 export { ReactComponent as Stable } from "./stable.svg";
 export { ReactComponent as TelegramIcon } from "./telegram.svg";
