@@ -85,7 +85,7 @@ const Data: React.FC = () => {
 										<RollingNum item={item} />
 									) : (
 										<Typography variant="h4" color="textPrimary" align="center">
-											{item.value}
+											{item.description === "Block_Time" ? "< 2s" : item.value}
 										</Typography>
 									)}
 									{/* Description */}
