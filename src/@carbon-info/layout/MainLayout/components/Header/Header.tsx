@@ -17,6 +17,27 @@ import { CTAButton } from '@carbon-info/components'
 
 const SWITCH_THRESHOLD = 45
 
+interface NavBarLinkProps{
+	href: string;
+	label: string;
+}
+
+const NavBarLink: React.FC<NavBarLinkProps> = ({ href, label }) => {
+	const classes = useStyles();
+	return (
+	<Link href={href} underline="none" target="_blank">
+		<Typography
+		variant="h5"
+		color="textPrimary"
+		display="inline"
+		className={classes.navBarText}
+		>
+		{label}
+		</Typography>
+	</Link>
+	);
+};
+
 const Header: React.FC = () => {
 	const classes = useStyles()
 	const isMobile = isWidth('sm')
@@ -56,50 +77,10 @@ const Header: React.FC = () => {
 						</>
 					) : (
 						<>
-							<Link href={Path.Footer.Guides} underline="none" target="_blank">
-								<Typography
-									variant="h4"
-									color="textPrimary"
-									display="inline"
-									className={classes.navBarText}
-								>
-									Learn
-								</Typography>
-							</Link>
-							<Link href={Path.Header.Build} underline="none" target="_blank">
-								<Typography
-									variant="h4"
-									color="textPrimary"
-									display="inline"
-									className={classes.navBarText}
-								>
-									Build
-								</Typography>
-							</Link>
-							<Link
-								href={Path.Footer.CarbonScan}
-								underline="none"
-								target="_blank"
-							>
-								<Typography
-									variant="h4"
-									color="textPrimary"
-									display="inline"
-									className={classes.navBarText}
-								>
-									Ecosystem
-								</Typography>
-							</Link>
-							<Link href={Path.Footer.Bridge} underline="none" target="_blank">
-								<Typography
-									variant="h4"
-									color="textPrimary"
-									display="inline"
-									className={classes.navBarText}
-								>
-									Bridge
-								</Typography>
-							</Link>
+							<NavBarLink href={Path.Footer.Guides} label="Learn" />
+							<NavBarLink href={Path.Header.Build} label="Build" />
+							<NavBarLink href={Path.Footer.CarbonScan} label="Ecosystem" />
+							<NavBarLink href={Path.Footer.Bridge} label="Bridge" />
 						</>
 					)}
 				</div>
@@ -288,7 +269,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 	ctaButtonText: {
-		...theme.typography.h4,
+		...theme.typography.h5,
 		color: theme.palette.common.white,
 	},
 }))
