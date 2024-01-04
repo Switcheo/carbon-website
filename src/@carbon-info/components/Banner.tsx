@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		padding: "1rem 1.5rem",
 		fontSize: "1rem",
 		color: theme.palette.text.primary,
+		background: theme.palette.background.default,
 		transition: "all 0.2s ease-in-out",
 		"&:hover": {
 			background: "#103132",
