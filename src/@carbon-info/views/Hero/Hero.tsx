@@ -73,7 +73,7 @@ const PartnershipBanner: React.FC = () => {
 			{/* Container for Partners logo */}
 			<Box
 				display="flex"
-				justifyContent="space-around"
+				justifyContent="space-between"
 				className={classes.partnershipLogoContainer}
 			>
 				{/* Cosmos */}
