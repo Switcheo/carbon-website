@@ -71,10 +71,10 @@ export const theme = createTheme({
     fontFamily: "TyrosPro, SourceSansPro, SourceSansPro-Light, SourceSansPro-Bold, TyrosPro-Light, TyrosPro-SemiBold, TyrosPro-Bold",
     // Root size = 16px, 1rem = 16px
     h1: { 
-      // XLarge 64px
+      // XLarge 56px
       fontFamily: "TyrosPro-Bold",
       fontWeight: 900,
-      fontSize: "4rem",
+      fontSize: "3.5rem",
       lineHeight: "1.3",
       letterSpacing: "-0.02rem",
     },
