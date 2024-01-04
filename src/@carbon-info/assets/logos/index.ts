@@ -3,6 +3,7 @@ export { ReactComponent as CosmosSVGLogo } from "./cosmos-logo-black.svg";
 export { ReactComponent as DefianceCapitalLogo } from "./DefianceCapital.svg";
 export { ReactComponent as NGCSvgLogo } from "./NGC-svg-logo.svg";
 export { ReactComponent as DemexLogo } from "./Demex.svg";
+export { ReactComponent as CoinGeckoLogo } from "./Coingecko.svg";
 
 import BlockHunterLogo from "./BlockHuntersLogo.png";
 import { default as BoltLogo } from "./Bolt.svg";
