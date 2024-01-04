@@ -90,7 +90,7 @@ const Comparison: React.FC = () => {
 													index === headers.length - 1
 														? classes.lastRowFirstColumn
 														: ""
-											  }`
+											}`
 											: ""
 									}
 								>
