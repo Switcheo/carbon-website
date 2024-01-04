@@ -40,7 +40,7 @@ const RollingNum: React.FC<Props> = (props: Props) => {
   }, []);
 
   return (
-    <Typography variant="h3" color="textPrimary" align="center">
+    <Typography variant="h4" color="textPrimary" align="center">
       {item.description === "Total_Value_Locked" && "$"}
       <CountUp isCounting={true} start={startValue} end={endValue} duration={3} thousandsSeparator="," easing="easeOutCubic" updateInterval={0} onComplete={onComplete} />
     </Typography>
