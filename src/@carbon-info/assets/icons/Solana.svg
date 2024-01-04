@@ -1,0 +1,24 @@
+<svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Logo/Solana">
+<circle id="Ellipse" cx="18.5" cy="18" r="18" fill="black"/>
+<g id="Vector">
+<path d="M10.3992 8.82512C10.5501 8.6803 10.7492 8.59583 10.9544 8.59583H30.1066C30.4565 8.59583 30.6315 9.01821 30.3841 9.26561L26.6008 13.049C26.4559 13.1938 26.2568 13.2783 26.0456 13.2783H6.89343C6.54345 13.2783 6.36847 12.8559 6.61586 12.6085L10.3992 8.82512Z" fill="url(#paint0_linear_1855_15244)"/>
+<path d="M10.3992 22.951C10.5441 22.8061 10.7432 22.7217 10.9544 22.7217H30.1066C30.4565 22.7217 30.6315 23.144 30.3841 23.3914L26.6008 27.1748C26.4559 27.3196 26.2568 27.4041 26.0456 27.4041H6.89343C6.54346 27.4041 6.36847 26.9817 6.61586 26.7343L10.3992 22.951Z" fill="url(#paint1_linear_1855_15244)"/>
+<path d="M26.0456 15.6135C26.2568 15.6135 26.4559 15.698 26.6008 15.8428L30.3841 19.6262C30.6315 19.8736 30.4565 20.296 30.1066 20.296H10.9544C10.7432 20.296 10.5441 20.2115 10.3992 20.0667L6.61586 16.2833C6.36847 16.0359 6.54346 15.6135 6.89343 15.6135H26.0456Z" fill="url(#paint2_linear_1855_15244)"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_1855_15244" x1="25.3607" y1="4.81317" x2="12.1058" y2="30.2016" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00FFA3"/>
+<stop offset="1" stop-color="#DC1FFF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_1855_15244" x1="25.3607" y1="4.81317" x2="12.1058" y2="30.2016" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00FFA3"/>
+<stop offset="1" stop-color="#DC1FFF"/>
+</linearGradient>
+<linearGradient id="paint2_linear_1855_15244" x1="25.3607" y1="4.81317" x2="12.1058" y2="30.2016" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00FFA3"/>
+<stop offset="1" stop-color="#DC1FFF"/>
+</linearGradient>
+</defs>
+</svg>
