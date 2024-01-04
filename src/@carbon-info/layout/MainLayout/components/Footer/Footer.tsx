@@ -185,7 +185,13 @@ const Footer: React.FC = () => {
 							<Typography className={classes.poweredBySDKContainer}>
 								Powered by
 								<CosmosSDKSmallWhiteLogo className={classes.cosmosSDKLogo} />
-								<strong>Cosmos SDK</strong>
+								<Link
+									href="https://v1.cosmos.network/sdk"
+									target="_blank"
+									className={classes.cosmosLink}
+								>
+									<strong>Cosmos SDK</strong>
+								</Link>
 							</Typography>
 						</Grid>
 					)}
@@ -278,6 +284,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 	},
 	cosmosSDKLogo: {
 		margin: "0 .5rem",
+	},
+	cosmosLink: {
+		color: theme.palette.text.primary,
+		"&:hover": {
+			textDecoration: "none",
+		},
 	},
 	poweredBySDKContainer: {
 		marginLeft: "8px",
