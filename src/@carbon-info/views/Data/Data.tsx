@@ -2,6 +2,7 @@ import { FadeAndSlide } from "@carbon-info/components";
 import { useContentful } from "@carbon-info/hooks";
 import { isWidth } from "@carbon-info/utils/environment";
 import {
+	Box,
 	Divider,
 	Grid,
 	makeStyles,
@@ -14,6 +15,8 @@ import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { AnimateKeyframes } from "react-simple-animate";
 import { RollingNum } from "./component";
+import Banner from "@carbon-info/components/Banner";
+import { DemexLogo } from "@carbon-info/assets";
 
 export interface DataInfo {
 	value: string;
@@ -91,7 +94,7 @@ const Data: React.FC = () => {
 									{/* Description */}
 									<Typography
 										variant="body2"
-										color="textSecondary"
+										color="textPrimary"
 										align="center"
 									>
 										{item.description.replaceAll("_", " ")}
@@ -101,6 +104,21 @@ const Data: React.FC = () => {
 							</Grid>
 						))}
 					</Grid>
+					<Box
+						display="flex"
+						style={{
+							justifyContent: "center",
+							position: "relative",
+							top: "-20px",
+						}}
+					>
+						<Banner
+							icon={<DemexLogo />}
+							text="Ready to test drive Carbon?"
+							highlightedText="Trade, Borrow and Earn on Demex"
+							link="https://app.dem.exchange/"
+						/>
+					</Box>
 				</AnimateKeyframes>
 			</FadeAndSlide>
 		</div>
@@ -149,7 +167,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		boxShadow: theme.shadows[3],
 		background:
 			"radial-gradient(63.65% 55% at 50.51% 100%, rgba(10, 220, 182, 0.25) 0%, rgba(10, 220, 182, 0.06) 51.54%, rgba(10, 220, 182, 0.00) 100%), #0F4950",
-		borderRadius: "10px",
+		borderRadius: "20px",
 		opacity: 0,
 		transition: "all 2s ease",
 		animation: "expandTable .25s",
