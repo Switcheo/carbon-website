@@ -63,10 +63,10 @@ const CtaLinkButton: React.FC = () => {
 	);
 };
 
-const PartnershipBanner: React.FC = () => {
+const PartnershipContainer: React.FC = () => {
 	const classes = useStyles();
 	return (
-		<Box className={classes.partnershipBanner}>
+		<Box className={classes.partnershipContainer}>
 			<Typography color="textSecondary">
 				Partnered with and backed by the best.
 			</Typography>
@@ -168,7 +168,7 @@ const Hero: React.FC = () => {
 								<CtaButton />
 								<CtaLinkButton />
 							</Box>
-							<PartnershipBanner />
+							<PartnershipContainer />
 						</Box>
 					</FadeAndSlide>
 					{/* </div> */}
@@ -200,7 +200,7 @@ const Hero: React.FC = () => {
 export default Hero;
 
 const useStyles = makeStyles((theme: Theme) => ({
-	partnershipBanner: {
+	partnershipContainer: {
 		marginTop: "4rem",
 	},
 	partnershipLogoContainer: {
