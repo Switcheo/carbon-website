@@ -1,5 +1,4 @@
 import {
-	ArrowIcon,
 	CosmosSVGLogo,
 	DefianceCapitalLogo,
 	NGCSvgLogo,
@@ -7,61 +6,15 @@ import {
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
 import { isWidth } from "@carbon-info/utils/environment";
-import {
-	Box,
-	Grid,
-	Link,
-	Theme,
-	Typography,
-	makeStyles,
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Box, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
 import "animate.css";
 import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
 import { default as IOSGLogo } from "@carbon-info/assets/logos/IOSG_white.png";
-
-const CtaButton: React.FC = () => {
-	const goToEcosystem = () => {
-		document.getElementById("ecosystem")?.scrollIntoView({
-			behavior: "smooth",
-		});
-	};
-
-	const classes = useStyles();
-	return (
-		<Box
-			className={classes.ctaButton}
-			onClick={() => {
-				goToEcosystem();
-			}}
-		>
-			<Box className={classes.ctaButtonInner}>
-				<Typography variant="h4" className={classes.ctaButtonText}>
-					Explore
-				</Typography>
-				<ExpandMoreIcon />
-			</Box>
-		</Box>
-	);
-};
-
-const CtaLinkButton: React.FC = () => {
-	const classes = useStyles();
-	return (
-		<Link
-			href={"https://docs.carbon.network/"}
-			underline="none"
-			target={"_blank"}
-			className={classes.ctaLinkButton}
-		>
-			Learn More
-			<ArrowIcon className={classes.ctaLinkIcon} />
-		</Link>
-	);
-};
+import CTAShinyButton from "@carbon-info/components/CTAShinyButton";
+import CTALinkButton from "@carbon-info/components/CTALinkButton";
 
 const PartnershipContainer: React.FC = () => {
 	const classes = useStyles();
@@ -120,6 +73,12 @@ const Hero: React.FC = () => {
 		});
 	};
 
+	const goToEcosystem = () => {
+		document.getElementById("ecosystem")?.scrollIntoView({
+			behavior: "smooth",
+		});
+	};
+
 	return (
 		<div ref={ref} id="home">
 			<Grid container className={classes.container}>
@@ -165,8 +124,11 @@ const Hero: React.FC = () => {
 						</Typography>
 						<Box className={classes.ctaGroupContainer}>
 							<Box display="flex" flexDirection="row">
-								<CtaButton />
-								<CtaLinkButton />
+								<CTAShinyButton onClick={goToEcosystem} label="Explore" />
+								<CTALinkButton
+									href="https://docs.carbon.network/"
+									label="Learn More"
+								/>
 							</Box>
 							<PartnershipContainer />
 						</Box>
@@ -213,74 +175,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 		maxHeight: "100%",
 		maxWidth: "8rem",
 		height: "auto",
-	},
-	ctaButton: {
-		position: "relative", // Needed for positioning the pseudo-element
-		display: "flex",
-		justifyContent: "flex-start",
-		color: "white",
-		marginRight: "2.5rem",
-		borderRadius: 12,
-		background:
-			"radial-gradient(63.65% 55% at 50.51% 100%, rgba(10, 220, 182, 0.25) 0%, rgba(10, 220, 182, 0.06) 51.54%, rgba(10, 220, 182, 0) 100%), #142C2C",
-		overflow: "hidden",
-		cursor: "pointer",
-		zIndex: 1,
-		"&::before": {
-			// Pseudo-element for the hover effect
-			content: "''",
-			position: "absolute",
-			top: 0,
-			right: 0,
-			bottom: 0,
-			left: 0,
-			background:
-				"radial-gradient(81.4% 70.34% at 50.51% 105.92%, rgba(15, 250, 207, 0.50) 0%, rgba(12, 236, 196, 0.13) 56.25%, rgba(10, 220, 182, 0) 100%), #142C2C",
-			zIndex: -1,
-			transition: "opacity 0.2s ease-in-out",
-			opacity: 0,
-		},
-
-		"&:hover": {
-			cursor: "pointer",
-			"&::before": {
-				opacity: 1,
-			},
-			boxShadow: "0px 0px 20px 0px rgba(116, 232, 232, 0.20)",
-		},
-	},
-	ctaButtonInner: {
-		display: "flex",
-		padding: "1rem 2rem",
-		alignItems: "center",
-	},
-	ctaButtonText: {
-		marginRight: ".75rem",
-		fontSize: "1rem",
-	},
-	ctaLinkButton: {
-		paddingTop: "1rem",
-		paddingBottom: "1rem",
-		fontSize: "1rem",
-		display: "flex",
-		alignItems: "center",
-		transition: "all 0.2s ease-in-out",
-		color: theme.palette.primary.main,
-		"&:hover": {
-			color: theme.palette.text.primary,
-			"& $ctaLinkIcon path": {
-				fill: theme.palette.text.primary,
-			},
-		},
-	},
-	ctaLinkIcon: {
-		marginLeft: ".5rem",
-		width: "1rem",
-		height: "1rem",
-		"& path": {
-			transition: "all 0.2s ease-in-out",
-			fill: theme.palette.primary.main,
-		},
 	},
 	ctaGroupContainer: {
 		marginTop: "56px",
