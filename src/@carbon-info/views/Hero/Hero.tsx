@@ -1,4 +1,9 @@
-import { ArrowIcon } from "@carbon-info/assets";
+import {
+	ArrowIcon,
+	CosmosSVGLogo,
+	DefianceCapitalLogo,
+	NGCSvgLogo,
+} from "@carbon-info/assets";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
 import { isWidth } from "@carbon-info/utils/environment";
@@ -16,6 +21,7 @@ import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
+import { default as IOSGLogo } from "@carbon-info/assets/logos/IOSG_white.png";
 
 const CtaButton: React.FC = () => {
 	const goToEcosystem = () => {
@@ -54,6 +60,32 @@ const CtaLinkButton: React.FC = () => {
 			Learn More
 			<ArrowIcon className={classes.ctaLinkIcon} />
 		</Link>
+	);
+};
+
+const PartnershipBanner: React.FC = () => {
+	const classes = useStyles();
+	return (
+		<Box className={classes.partnershipBanner}>
+			<Typography color="textSecondary">
+				Partnered with and backed by the best.
+			</Typography>
+			{/* Container for Partners logo */}
+			<Box
+				display="flex"
+				justifyContent="space-around"
+				className={classes.partnershipLogoContainer}
+			>
+				{/* Cosmos */}
+				<CosmosSVGLogo className={classes.partnerLogo} />
+				{/* Defiance Capital */}
+				<DefianceCapitalLogo className={classes.partnerLogo} />
+				{/* NGC */}
+				<NGCSvgLogo className={classes.partnerLogo} />
+				{/* IOSG */}
+				<img src={IOSGLogo} alt="IOSG Logo" className={classes.partnerLogo} />
+			</Box>
+		</Box>
 	);
 };
 
@@ -132,8 +164,11 @@ const Hero: React.FC = () => {
 							building unparalleled trading experiences.
 						</Typography>
 						<Box className={classes.ctaGroupContainer}>
-							<CtaButton />
-							<CtaLinkButton />
+							<Box display="flex" flexDirection="row">
+								<CtaButton />
+								<CtaLinkButton />
+							</Box>
+							<PartnershipBanner />
 						</Box>
 					</FadeAndSlide>
 					{/* </div> */}
@@ -165,23 +200,19 @@ const Hero: React.FC = () => {
 export default Hero;
 
 const useStyles = makeStyles((theme: Theme) => ({
-	// ctaButton: {
-	// 	display: 'flex',
-	// 	justifyContent: 'flex-start',
-	// 	color: 'white',
-	// 	marginRight: '2.5rem',
-	// 	borderRadius: 12,
-	// 	transition: 'background 0.2s ease-in-out',
-	// 	background:
-	// 	'radial-gradient(63.65% 55% at 50.51% 100%, rgba(10, 220, 182, 0.25) 0%, rgba(10, 220, 182, 0.06) 51.54%, rgba(10, 220, 182, 0.00) 100%), #142C2C',
-	// 	'&:hover': {
-	// 		cursor: 'pointer',
-	// 		background:
-	// 			'radial-gradient(81.4% 70.34% at 50.51% 105.92%, rgba(15, 250, 207, 0.50) 0%, rgba(12, 236, 196, 0.13) 56.25%, rgba(10, 220, 182, 0.00) 100%), #142C2C',
-	// 		boxShadow: '0px 0px 20px 0px rgba(116, 232, 232, 0.20)',
-	// 	},
-	// },
-
+	partnershipBanner: {
+		marginTop: "4rem",
+	},
+	partnershipLogoContainer: {
+		maxHeight: "4rem",
+		alignItems: "center",
+		marginTop: "20px",
+	},
+	partnerLogo: {
+		maxHeight: "100%",
+		maxWidth: "8rem",
+		height: "auto",
+	},
 	ctaButton: {
 		position: "relative", // Needed for positioning the pseudo-element
 		display: "flex",
@@ -254,6 +285,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 	ctaGroupContainer: {
 		marginTop: "56px",
 		display: "flex",
+		flexDirection: "column",
 		fontSize: "1rem",
 	},
 	heroTextContainer: {
