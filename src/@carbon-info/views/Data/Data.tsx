@@ -8,7 +8,7 @@ import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { AnimateKeyframes } from "react-simple-animate";
 import { RollingNum } from "./component";
-import cosmosSDK from "@carbon-info/assets/icons/cosmosSDK.svg";
+
 
 export interface DataInfo {
   value: string,
@@ -54,24 +54,6 @@ const Data: React.FC = () => {
 
   return (
     <div ref={ref} id="data" className={classes.container}>
-      <FadeAndSlide visible={inView}>
-        <div className={classes.poweredBy}>
-          <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, classes.smallerText, { open: inView })}>
-            Powered by
-          </Typography>
-          <img src={cosmosSDK} alt="Cosmos SDK" className={classes.cosmosSDKLogo} />
-          <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, classes.cosmosSDK, classes.smallerText, { open: inView })}>
-            Cosmos SDK
-          </Typography>
-        </div>
-        <Typography variant="h2" color="textPrimary" className={clsx(classes.headerText, { open: inView })}>
-          Carbon allows anyone to bootstrap
-          <br />
-          open financial markets for
-          <br />
-          any asset type on any blockchain.
-        </Typography>
-      </FadeAndSlide>
       <FadeAndSlide visible={inView} className={classes.dataWrapper}>
         <AnimateKeyframes
           play={inView}
