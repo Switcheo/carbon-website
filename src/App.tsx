@@ -19,6 +19,7 @@ const Features = React.lazy(() => import("@carbon-info/views/Features/Features")
 const Ecosystem = React.lazy(() => import("@carbon-info/views/Ecosystem/Ecosystem"));
 const RoadMap = React.lazy(() => import("@carbon-info/views/RoadMap/RoadMap"));
 const Secured = React.lazy(() => import("@carbon-info/views/Secured/Secured"));
+const Comparison = React.lazy(() => import("@carbon-info/views/Comparison/Comparison"));
 const Partnership = React.lazy(() => import("@carbon-info/views/Partnership/Partnership"));
 const Build = React.lazy(() => import("@carbon-info/views/Build/Build"));
 const Socials = React.lazy(() => import("@carbon-info/views/Socials/Socials"));
@@ -49,6 +50,7 @@ function App() {
                   <Ecosystem />
                   <RoadMap />
                   <Secured />
+									<Comparison />
                   <Build />
                   <Socials />
                 </Suspense>
