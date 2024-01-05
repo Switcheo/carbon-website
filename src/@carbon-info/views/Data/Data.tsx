@@ -187,7 +187,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 	},
 	bannerContainer: {
 		marginTop: "4rem",
-		[theme.breakpoints.up("md")]: {
+		[theme.breakpoints.up("sm")]: {
+			marginTop: 0,
 			display: "flex",
 			justifyContent: "center",
 			position: "relative",
