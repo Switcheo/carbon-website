@@ -21,16 +21,17 @@ const Banner: React.FC<bannerProps> = (props: bannerProps) => {
 			style={{ display: "flex", alignItems: "center" }}
 			className={classes.bannerContainer}
 		>
-			{icon &&
-				React.cloneElement(icon as React.ReactElement, {
-					className: classes.iconContainer,
-				})}
-			<Typography variant="body1" color="textPrimary">
-				{text}
-			</Typography>
-			<Box className={clsx(classes.linkButtonContainer)}>
-				<Typography className={classes.text}>{highlightedText}</Typography>
-				<ArrowIcon className={classes.icon} />
+			<Box className={classes.iconContainer}>
+				{icon && React.cloneElement(icon as React.ReactElement)}
+			</Box>
+			<Box className={classes.textContainer}>
+				<Typography variant="body1" color="textPrimary">
+					{text}
+				</Typography>
+				<Box className={clsx(classes.linkButtonContainer)}>
+					<Typography className={classes.text}>{highlightedText}</Typography>
+					<ArrowIcon className={classes.icon} />
+				</Box>
 			</Box>
 		</Link>
 	);
@@ -56,26 +57,29 @@ const useStyles = makeStyles((theme: Theme) => ({
 		"&:hover": {
 			background: "#103132",
 		},
+		[theme.breakpoints.down("sm")]: {
+			padding: ".5rem 1rem",
+			width: "auto",
+		},
 	},
 	linkButtonContainer: {
 		marginLeft: ".5rem",
 		display: "flex",
 		width: "fit-content",
 		alignItems: "center",
+		[theme.breakpoints.down("sm")]: {
+			marginLeft: "0",
+		},
 	},
 	text: {
 		color: theme.palette.primary.main,
 		fontWeight: 700,
-		[theme.breakpoints.down("sm")]: {
-			fontSize: "2.3rem",
-			letterSpacing: "1px",
-		},
+	},
+	textContainer: {
+		display: "flex",
 		[theme.breakpoints.down("xs")]: {
-			fontSize: "1.7rem",
-			letterSpacing: "1px",
-		},
-		[theme.breakpoints.down(360)]: {
-			fontSize: "1.5rem",
+			flexDirection: "column",
+			textAlign: "left",
 		},
 	},
 	icon: {
