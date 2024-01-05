@@ -225,7 +225,7 @@ const Ecosystem: React.FC = () => {
 						alignItems="center"
 						spacing={3}
 						justifyContent="space-between"
-						style={{ marginBottom: "3.5rem" }}
+						style={{ marginBottom: "2.5rem" }}
 					>
 						<Grid item xs={12}>
 							<Typography variant="h1" color="textPrimary" align="left">
