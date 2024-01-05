@@ -75,7 +75,7 @@ const Secured: React.FC = () => {
 							</Typography>
 							<Box className={classes.ctaBtnGroupContainer}>
 								<CTAShinyButton
-									label="Buy SWTH"
+									label="Buy $SWTH"
 									href="https://hub.carbon.network/buy"
 								/>
 								<CTALinkButton
