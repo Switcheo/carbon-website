@@ -104,14 +104,7 @@ const Data: React.FC = () => {
 							</Grid>
 						))}
 					</Grid>
-					<Box
-						display="flex"
-						style={{
-							justifyContent: "center",
-							position: "relative",
-							top: "-20px",
-						}}
-					>
+					<Box className={classes.bannerContainer}>
 						<Banner
 							icon={<DemexLogo />}
 							text="Ready to test drive Carbon?"
@@ -162,6 +155,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 	dataTable: {
 		marginTop: "8rem",
 		borderWidth: "2px",
+		marginLeft: "auto",
+		marginRight: "auto",
 		borderStyle: "solid",
 		borderColor: theme.palette.primary.main,
 		boxShadow: theme.shadows[3],
@@ -178,6 +173,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 			// Apply borderLeft to all child divs except the first one
 			"&:not(:first-child) > div": {
 				borderLeft: `2px solid ${theme.palette.primary.main}`,
+				[theme.breakpoints.down("xs")]: {
+					borderLeft: "0",
+				},
 			},
 
 			// Apply marginLeft and marginRight auto to all child divs except the first and last one
@@ -186,30 +184,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 				marginRight: "auto",
 			},
 		},
-		// [theme.breakpoints.only("xl")]: {
-		// 	"& > div:not(:first-child)": {
-		// 		"& > div": {
-		// 			borderLeft: `2px solid ${theme.palette.primary.main}`,
-		// 		},
-		// 	},
-		// },
-		// [theme.breakpoints.between("sm", "lg")]: {
-		// 	width: "100%",
-		// 	marginTop: "5rem",
-		// 	"& > div:not(:first-child)": {
-		// 		"& > div": {
-		// 			borderLeft: `2px solid ${theme.palette.primary.main}`,
-		// 		},
-		// 	},
-		// },
-		// [theme.breakpoints.only("xs")]: {
-		// 	marginTop: "4rem",
-		// 	marginLeft: "auto",
-		// 	marginRight: "auto",
-		// 	"& > div:last-child > hr": {
-		// 		display: "none",
-		// 	},
-		// },
+	},
+	bannerContainer: {
+		marginTop: "4rem",
+		[theme.breakpoints.up("md")]: {
+			display: "flex",
+			justifyContent: "center",
+			position: "relative",
+			top: "-20px",
+		},
 	},
 	dataBox: {
 		margin: theme.spacing(4, 0),
