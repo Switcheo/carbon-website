@@ -57,7 +57,7 @@ const Secured: React.FC = () => {
 					<Box className={clsx(classes.secureContainer, { open: inView })}>
 						<div className={classes.descriptionContainer}>
 							<Typography
-								variant="h1"
+								variant="h2"
 								color="textPrimary"
 								style={{ marginBottom: "2.125rem" }}
 							>
@@ -73,7 +73,7 @@ const Secured: React.FC = () => {
 								secure the network while earning transaction fees and staking
 								rewards, providing sustainable real yield to everyone.
 							</Typography>
-							<Box display="flex" flexDirection="row">
+							<Box className={classes.ctaBtnGroupContainer}>
 								<CTAShinyButton
 									label="Buy SWTH"
 									href="https://hub.carbon.network/buy"
@@ -120,6 +120,16 @@ const Secured: React.FC = () => {
 export default Secured;
 
 const useStyles = makeStyles((theme: Theme) => ({
+	ctaBtnGroupContainer: {
+		display: "flex",
+		flexDirection: "row",
+		[theme.breakpoints.down("sm")]: {
+			textAlign: "center",
+			flexDirection: "column",
+			alignItems: "center",
+			width: "100%",
+		},
+	},
 	boxContainer: {
 		margin: "15rem auto",
 		maxWidth: "1400px",
@@ -155,7 +165,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		fontWeight: 500,
 		maxWidth: "35rem",
 		marginBottom: "2.125rem",
-		"&.highlightedText": {
+		"& .highlightedText": {
 			fontWeight: 700,
 			color: theme.palette.primary.light,
 		},
