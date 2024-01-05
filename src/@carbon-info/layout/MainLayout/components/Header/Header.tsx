@@ -156,14 +156,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 		paddingBottom: theme.spacing(6),
 		justifyContent: "space-between",
 		[theme.breakpoints.down("sm")]: {
-			margin: theme.spacing(6, 4, 12, 4),
 			transition: "all 0.25s linear",
-		},
-		[theme.breakpoints.down("sm")]: {
-			margin: theme.spacing(3, 2, 8, 2),
-		},
-		[theme.breakpoints.down("xs")]: {
-			margin: theme.spacing(1, 0, 7, 0),
+			paddingTop: theme.spacing(4),
+			paddingBottom: theme.spacing(4),
 		},
 	},
 	navBarFixedContainer: {
