@@ -146,7 +146,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 	},
 	dataWrapper: {
 		width: "100%",
-		position: "absolute",
 		left: 0,
 		[theme.breakpoints.up("xl")]: {
 			maxWidth: "1900px",
