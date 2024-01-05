@@ -386,7 +386,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 			background: StyleUtils.activeIndicator,
 		},
 		"&:not(:last-child)": {
-			marginRight: "10rem",
+			marginRight: "5rem",
 			[theme.breakpoints.down("sm")]: {
 				marginRight: "2.5rem",
 			},
@@ -461,7 +461,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		border: `2px solid ${theme.palette.text.secondary}`,
 		boxShadow: theme.shadows[2],
 		borderRadius: "32px",
-		marginRight: "2.5rem",
+		marginRight: "1.25rem",
 		whiteSpace: "nowrap",
 		"&.active, &:hover": {
 			color: theme.palette.primary.main,
