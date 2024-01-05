@@ -83,7 +83,13 @@ const Hero: React.FC = () => {
 		<div ref={ref} id="home">
 			<Grid container className={classes.container}>
 				{/* Hero Titles and Description */}
-				<Grid container item xs={6} className={classes.heroTextContainer}>
+				<Grid
+					container
+					item
+					xs={12}
+					md={6}
+					className={classes.heroTextContainer}
+				>
 					{/* <div className={classes.headerContainer}> */}
 					<FadeAndSlide visible={inView} transform={[0, -20]}>
 						<Typography
@@ -123,7 +129,7 @@ const Hero: React.FC = () => {
 							building unparalleled trading experiences.
 						</Typography>
 						<Box className={classes.ctaGroupContainer}>
-							<Box display="flex" flexDirection="row">
+							<Box className={classes.ctaBtnGroupContainer}>
 								<CTAShinyButton onClick={goToEcosystem} label="Explore" />
 								<CTALinkButton
 									href="https://docs.carbon.network/"
@@ -182,8 +188,23 @@ const useStyles = makeStyles((theme: Theme) => ({
 		flexDirection: "column",
 		fontSize: "1rem",
 	},
+	ctaBtnGroupContainer: {
+		display: "flex",
+		flexDirection: "row",
+		[theme.breakpoints.down("sm")]: {
+			textAlign: "center",
+			flexDirection: "column",
+			alignItems: "center",
+			width: "100%",
+		},
+	},
 	heroTextContainer: {
 		textAlign: "left",
+		[theme.breakpoints.down("sm")]: {
+			textAlign: "center",
+			flexDirection: "column",
+			alignItems: "center",
+		},
 	},
 	container: {
 		justifyContent: "center",

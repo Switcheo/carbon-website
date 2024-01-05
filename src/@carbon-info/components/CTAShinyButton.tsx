@@ -63,13 +63,18 @@ const useStyles = makeStyles((theme: Theme) => ({
 			transition: "opacity 0.2s ease-in-out",
 			opacity: 0,
 		},
-
 		"&:hover": {
 			textDecoration: "none",
 			"&::before": {
 				opacity: 1,
 			},
 			boxShadow: "0px 0px 20px 0px rgba(116, 232, 232, 0.20)",
+		},
+		[theme.breakpoints.down("sm")]: {
+			width: "100%",
+			marginRight: "0",
+			marginBottom: ".5rem",
+			justifyContent: "space-around",
 		},
 	},
 	ctaButtonInner: {
