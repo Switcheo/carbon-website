@@ -307,7 +307,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 	footerHeader: {
-		...theme.typography.h3,
+		...theme.typography.h4,
 		marginTop: "2rem",
 		marginBottom: "1.5rem",
 	},
