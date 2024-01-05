@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		overflow: "hidden",
 		cursor: "pointer",
 		zIndex: 1,
+		maxWidth: "280px",
 		"&::before": {
 			// Pseudo-element for the hover effect
 			content: "''",
@@ -85,29 +86,5 @@ const useStyles = makeStyles((theme: Theme) => ({
 	ctaButtonText: {
 		marginRight: ".75rem",
 		fontSize: "1rem",
-	},
-	ctaLinkButton: {
-		paddingTop: "1rem",
-		paddingBottom: "1rem",
-		fontSize: "1rem",
-		display: "flex",
-		alignItems: "center",
-		transition: "all 0.2s ease-in-out",
-		color: theme.palette.primary.main,
-		"&:hover": {
-			color: theme.palette.text.primary,
-			"& $ctaLinkIcon path": {
-				fill: theme.palette.text.primary,
-			},
-		},
-	},
-	ctaLinkIcon: {
-		marginLeft: ".5rem",
-		width: "1rem",
-		height: "1rem",
-		"& path": {
-			transition: "all 0.2s ease-in-out",
-			fill: theme.palette.primary.main,
-		},
 	},
 }));
