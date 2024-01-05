@@ -315,17 +315,21 @@ const Features: React.FC = () => {
       <FadeAndSlide visible={inView}>
         <Box className={clsx(classes.container, { open: inView })} >
           <div ref={ref}>
-            <Typography variant="h1" color="textPrimary" align="left" className={classes.featuresHeader}>
-              Built for the
-              {!isMobile && <br />}
-              future,
-              {!isMobile && <br />}
-              <span style={{ color: theme.palette.primary.light }}>          
-                Empowering
-              {!isMobile && <br />}
-                traders today.&nbsp;
-                </span>
-            </Typography>
+            <Typography
+              variant="h1"
+              color="textPrimary"
+              align="left"
+              className={classes.featuresHeader}
+            >
+							Built for the {" "}
+							{!isMobile && <br />}
+							future,
+							<br />
+							<span style={{ color: theme.palette.primary.light }}>
+								Empowering {!isMobile && <br />}
+								traders today.&nbsp;
+							</span>
+						</Typography>
           </div>
           <Box className={classes.carouselWrapper} onMouseEnter={handleFeaturesMouseEnter} onMouseLeave={handleFeaturesMouseLeave}>
             <Carousel
@@ -348,7 +352,7 @@ const Features: React.FC = () => {
                 return (
                   <Box className={classes.carouselItem} key={`${item.header}-${index}`}>
                     <Box>
-                      <Typography variant="h2" color="textPrimary" align="left" style={{ marginBottom: "40px" }}>
+                      <Typography variant="h2" color="textPrimary" align="left" className={classes.itemHeader}>
                         {item.header}
                       </Typography>
                       <Typography variant="body1" color="textSecondary" align="left" className={classes.description}>
@@ -362,12 +366,13 @@ const Features: React.FC = () => {
                         iconClassName={classes.ctaButtonIcon}
                       />
                     </Box>
-                    <Lottie
-                      options={item.icon}
-                      width={144}
-                      height={150}
-                      style={{ margin: 0 }}
-                    />
+                    <Box
+                      className={classes.lottieIcon}
+                    >
+                      <Lottie
+                        options={item.icon}
+                      />
+                    </Box>
                   </Box>
                 );
               })}
@@ -503,6 +508,10 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
     },
   }),
   featuresHeader: {
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2rem",
+      textAlign: "center",
+    },
     [theme.breakpoints.up("md")]: {
       minWidth: "425px",
       whiteSpace: "nowrap",
@@ -528,14 +537,27 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
       opacity: "1 !important",
     },
   },
+  lottieIcon:{
+    margin:0,
+    height: "10rem",
+    [theme.breakpoints.down("sm")]: {
+      height: "8rem",
+    },
+  },
   carouselItem: {
     marginBottom: "96px",
     display: "flex",
     alignItems: "flex-start",
     [theme.breakpoints.down("sm")]: {
+      alignItems:"center",
       marginTop: "4rem",
+      marginBottom: "32px",
       flexDirection: "column-reverse",
       justifyContent: "flex-start",
+      "& > * > *":{
+        textAlign: "center",
+        margin: "auto",
+      },
     },
   },
   item: {
@@ -589,9 +611,18 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
       },
     },
   },
+  itemHeader:{
+    marginBottom: "40px",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "16px",
+    },
+  },
   description: {
     marginBottom: "40px",
     maxWidth: "523px",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "16px",
+    },
     [theme.breakpoints.only("md")]: {
       maxWidth: "400px",
     },
