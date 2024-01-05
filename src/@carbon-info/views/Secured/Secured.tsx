@@ -1,13 +1,12 @@
-import { ArrowIcon } from "@carbon-info/assets";
 import dropSwth from "@carbon-info/assets/animated/dropSWTH.json";
 import floatSwth from "@carbon-info/assets/animated/floatSWTH.json";
 import spinSwth from "@carbon-info/assets/animated/spinSWTH.json";
-import { CTAButton } from "@carbon-info/components";
+import CTAShinyButton from "@carbon-info/components/CTAShinyButton";
+import CTALinkButton from "@carbon-info/components/CTALinkButton";
 import FadeAndSlide from "@carbon-info/components/FadeAndSlide";
-import { Path } from "@carbon-info/constants";
 import { isWidth } from "@carbon-info/utils/environment";
 import { StyleUtils } from "@carbon-info/utils/styles";
-import { Box, Button, Theme, Typography, makeStyles } from "@material-ui/core";
+import { Box, Theme, Typography, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -56,14 +55,35 @@ const Secured: React.FC = () => {
         <FadeAndSlide visible={inView} opacity={1}>
           <Box className={clsx(classes.secureContainer, { open: inView })}>
             <div className={classes.descriptionContainer}>
-              <Typography variant="h1" color="textPrimary" style={{ marginBottom: "2.125rem" }}>Secured by SWTH</Typography>
-              <Typography variant="body1" color="textSecondary" className={classes.description}>Using the Carbon Token - <span className="highlightedText">$SWTH</span>, anyone can secure the network while earning transaction fees and staking rewards, providing sustainable real yield to everyone.</Typography>
-              <Box className={classes.actionButtons}>
-                <Button variant="contained" className={classes.containedButton} href={Path.Footer.Buy} target="_blank">Buy $SWTH<ArrowIcon style={{ marginLeft: "10px" }} /></Button>
-                <CTAButton text="Start Staking" link={Path.Footer.Stake} textClassName={classes.ctaText} iconClassName={classes.ctaIcon} buttonClassName={classes.ctaButtonBox} />
-              </Box>
-            </div>
-            <Box minWidth={400}>
+							<Typography
+								variant="h1"
+								color="textPrimary"
+								style={{ marginBottom: "2.125rem" }}
+							>
+								Secured by SWTH
+							</Typography>
+							<Typography
+								variant="body1"
+								color="textSecondary"
+								className={classes.description}
+							>
+								Using the Carbon Token -{" "}
+								<span className="highlightedText">$SWTH</span>, anyone can
+								secure the network while earning transaction fees and staking
+								rewards, providing sustainable real yield to everyone.
+							</Typography>
+							<Box display="flex" flexDirection="row">
+								<CTAShinyButton
+									label="Buy SWTH"
+									href="https://hub.carbon.network/buy"
+								/>
+								<CTALinkButton
+									label="Start Staking"
+									href="https://hub.carbon.network/stake"
+								/>
+							</Box>
+						</div>
+						<Box minWidth={400}>
               {getSWTHIcon && <Lottie
                 options={getSWTHIcon}
                 width={widthSmDown ? 250 : 400}
