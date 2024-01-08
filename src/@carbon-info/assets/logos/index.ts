@@ -1,5 +1,5 @@
 export { ReactComponent as CarbonLogo } from "./carbon_logo.svg";
-export { ReactComponent as CosmosSVGLogo } from "./cosmos-logo-black.svg";
+export { ReactComponent as CosmosLogo } from "./cosmos.svg";
 export { ReactComponent as DefianceCapitalLogo } from "./DefianceCapital.svg";
 export { ReactComponent as NGCLogo } from "./NGC.svg";
 export { ReactComponent as DemexLogo } from "./Demex.svg";
@@ -8,7 +8,7 @@ export { default as IOSGLogo } from "./IOSG.png";
 
 import BlockHunterLogo from "./BlockHuntersLogo.png";
 import { default as BoltLogo } from "./Bolt.svg";
-import { default as CosmosLogo } from "./Cosmos.png";
+import { default as CosmosLogo } from "./cosmos.svg";
 import { default as DACMLogo } from "./DACM.svg";
 import { default as DefiCapitalLogo } from "./DefiCapital.svg";
 import { default as DefianceCapitalLogo } from "./DefianceCapital.svg";

@@ -1,5 +1,5 @@
 import {
-	CosmosSVGLogo,
+	CosmosLogo,
 	DefianceCapitalLogo,
 	NGCLogo,
 	IOSGLogo,
@@ -13,7 +13,6 @@ import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
-// import { IOSGLogo } from "@carbon-info/assets/logos/";
 import CTAShinyButton from "@carbon-info/components/CTAShinyButton";
 import CTALinkButton from "@carbon-info/components/CTALinkButton";
 
@@ -28,7 +27,7 @@ const PartnershipContainer: React.FC = () => {
 			<Grid container className={classes.partnershipLogoContainer}>
 				<Grid container item xs={6} md={3}>
 					{/* Cosmos */}
-					<CosmosSVGLogo className={classes.partnerLogo} />
+					<CosmosLogo className={classes.partnerLogo} />
 				</Grid>
 				<Grid container item xs={6} md={3}>
 					{/* Defiance Capital */}
