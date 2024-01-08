@@ -25,20 +25,20 @@ const PartnershipContainer: React.FC = () => {
 				Partnered with and backed by the best.
 			</Typography>
 			{/* Container for Partners logo */}
-			<Grid container className={classes.partnershipLogoContainer}>
-				<Grid container item xs={6} md={3}>
+			<Grid container className={classes.partnershipLogoContainer} spacing={2}>
+				<Grid item xs={6} md={3}>
 					{/* Cosmos */}
 					<CosmosLogo className={classes.partnerLogo} />
 				</Grid>
-				<Grid container item xs={6} md={3}>
+				<Grid item xs={6} md={3}>
 					{/* Defiance Capital */}
 					<DefianceCapitalLogo className={classes.partnerLogo} />
 				</Grid>
-				<Grid container item xs={6} md={3}>
+				<Grid item xs={6} md={3}>
 					{/* NGC */}
 					<NGCLogo className={classes.partnerLogo} />
 				</Grid>
-				<Grid container item xs={6} md={3}>
+				<Grid item xs={6} md={3}>
 					{/* IOSG */}
 					<img src={IOSGLogo} alt="IOSG Logo" className={classes.partnerLogo} />
 				</Grid>
@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
 					container
 					item
 					xs={12}
-					md={6}
+					sm={6}
 					className={classes.heroTextContainer}
 				>
 					{/* <div className={classes.headerContainer}> */}
@@ -185,16 +185,24 @@ const useStyles = makeStyles((theme: Theme) => ({
 		alignItems: "center",
 		marginTop: "20px",
 		display: "flex",
+		flexWrap: "nowrap",
+		gap: "2rem",
 		justifyContent: "space-between",
 		// style for all children
 		"& > *": {
 			justifyContent: " center",
 		},
+		[theme.breakpoints.down("sm")]: {
+			flexWrap: "wrap",
+			gap: "0",
+		},
 	},
 	partnerLogo: {
-		maxHeight: "100%",
-		maxWidth: "8rem",
+		maxWidth: "100%",
 		height: "auto",
+		[theme.breakpoints.down("sm")]: {
+			maxWidth: "8rem",
+		},
 	},
 	ctaGroupContainer: {
 		marginTop: "56px",
@@ -225,10 +233,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 	},
 	heroTextContainer: {
 		textAlign: "left",
+		flexDirection: "column",
 		[theme.breakpoints.down("sm")]: {
 			zIndex: 1,
 			textAlign: "center",
-			flexDirection: "column",
 			alignItems: "center",
 		},
 	},
