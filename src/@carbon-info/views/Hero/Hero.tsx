@@ -15,10 +15,40 @@ import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
 import CTAShinyButton from "@carbon-info/components/CTAShinyButton";
 import CTALinkButton from "@carbon-info/components/CTALinkButton";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Path } from "@carbon-info/constants";
+
+const AltCarbonBanner: React.FC = () => {
+	const classes = useStyles();
+
+	const altCarbonRef = React.useRef<HTMLDivElement>(null);
+
+	const goToAltCarbon = () => {
+		document.getElementById("footer")?.scrollIntoView({
+			behavior: "smooth",
+		});
+	};
+	return (
+		<div className={classes.altCarbonContainer} ref={altCarbonRef}>
+			<Typography
+				variant="body2"
+				className={classes.altCarbon}
+				onClick={() => goToAltCarbon()}
+			>
+				<strong>
+					Looking for Carbon DeFi by{" "}
+					<span className={classes.bancor}>Bancor</span>?
+				</strong>
+				<ExpandMoreIcon />
+			</Typography>
+		</div>
+	);
+};
 
 const PartnershipContainer: React.FC = () => {
 	const classes = useStyles();
+	const isMobile = isWidth("xs");
+
 	return (
 		<Box className={classes.partnershipContainer}>
 			<Typography color="textSecondary">
@@ -42,6 +72,7 @@ const PartnershipContainer: React.FC = () => {
 					{/* IOSG */}
 					<img src={IOSGLogo} alt="IOSG Logo" className={classes.partnerLogo} />
 				</Grid>
+				{!isMobile && <AltCarbonBanner />}
 			</Grid>
 		</Box>
 	);
@@ -64,18 +95,6 @@ const Hero: React.FC = () => {
 		rendererSettings: {
 			preserveAspectRatio: "xMidYMid slice",
 		},
-	};
-
-	const altCarbonRef = React.useRef<HTMLDivElement>(null);
-
-	const goToAltCarbon = () => {
-		window.scrollTo({
-			left: 0,
-			top:
-				document.documentElement.getBoundingClientRect().height ??
-				document.body.scrollHeight,
-			behavior: "smooth",
-		});
 	};
 
 	const goToEcosystem = () => {
@@ -157,16 +176,6 @@ const Hero: React.FC = () => {
 						width={isMobile ? "100%" : 1480}
 						height={isMobile ? 425 : "100%"}
 					/>
-					<div className={classes.altCarbonContainer} ref={altCarbonRef}>
-						<Typography
-							variant="body2"
-							className={classes.altCarbon}
-							onClick={() => goToAltCarbon()}
-						>
-							Looking for Carbon DeFi by{" "}
-							<span className={classes.bancor}>Bancor</span>?
-						</Typography>
-					</div>
 				</Grid>
 			</Grid>
 		</div>
@@ -234,8 +243,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 	heroTextContainer: {
 		textAlign: "left",
 		flexDirection: "column",
+		zIndex: 1,
 		[theme.breakpoints.down("sm")]: {
-			zIndex: 1,
 			textAlign: "center",
 			alignItems: "center",
 		},
@@ -317,8 +326,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 		color: theme.palette.text.hint,
 	},
 	altCarbonContainer: {
-		// top: "calc(80vh - 30px)",
-		// position: "absolute",
+		position: "absolute",
+		left: "calc(40vw)",
 		width: "100%",
 		display: "flex",
 		justifyContent: "flex-end",
@@ -328,13 +337,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 	altCarbon: {
+		display: "flex",
+		gap: "8px",
 		border: theme.palette.text.secondary,
 		background: theme.palette.background.default,
 		borderWidth: "1px",
 		borderStyle: "solid",
-		color: theme.palette.text.secondary,
-		borderRadius: "12px",
-		padding: theme.spacing(0.75, 1.25, 0.75, 1.25),
+		color: theme.palette.text.primary,
+		borderRadius: "16px",
+		padding: theme.spacing(1.5, 2.5),
 		boxShadow:
 			"33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
 		"&:hover": {
