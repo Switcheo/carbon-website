@@ -63,12 +63,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 	linkButtonContainer: {
-		marginLeft: ".5rem",
+		marginLeft: "0",
 		display: "flex",
 		width: "fit-content",
 		alignItems: "center",
-		[theme.breakpoints.down("sm")]: {
-			marginLeft: "0",
+		[theme.breakpoints.up("sm")]: {
+			marginLeft: ".5rem",
 		},
 	},
 	text: {
