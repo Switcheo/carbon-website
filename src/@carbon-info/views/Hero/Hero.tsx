@@ -12,7 +12,7 @@ import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
-import { default as IOSGLogo } from "@carbon-info/assets/logos/IOSG_white.png";
+import { IOSGLogo } from "@carbon-info/assets/logos/";
 import CTAShinyButton from "@carbon-info/components/CTAShinyButton";
 import CTALinkButton from "@carbon-info/components/CTALinkButton";
 
