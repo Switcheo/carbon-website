@@ -14,7 +14,7 @@ const CTALinkButton: React.FC<CTALinkButtonProps> = ({ href, label }) => {
 		<Link
 			href={href}
 			underline="none"
-			target={"_blank"}
+			target="_blank"
 			className={classes.CTALinkButton}
 		>
 			{label}
