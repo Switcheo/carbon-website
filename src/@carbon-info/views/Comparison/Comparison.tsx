@@ -23,10 +23,10 @@ const headers = [
 ];
 
 const rowData = {
-	carbon: ["10,000", "< 2 sec", true, "Proof of Stake"],
-	eth: ["20", "6 mins", false, "Proof of Stake"],
-	sol: ["10,000", "2.5 sec", false, "Proof of Stake"],
-	kuj: ["10,000", "4 sec", false, "Proof of Stake"],
+	carbon: ["10,000 TPS", "< 2 sec", true, "Proof of Stake"],
+	eth: ["20 TPS", "6 mins", false, "Proof of Stake"],
+	sol: ["10,000 TPS", "2.5 sec", false, "Proof of Stake"],
+	kuj: ["10,000 TPS", "4 sec", false, "Proof of Stake"],
 };
 
 const HeaderRowCell: React.FC<headerRowCellProps> = ({
