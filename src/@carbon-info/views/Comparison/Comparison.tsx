@@ -8,7 +8,6 @@ import {
 } from "@carbon-info/assets";
 import { Box, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
 import React from "react";
-import clsx from "clsx";
 
 interface headerRowCellProps {
 	className?: string;
@@ -62,17 +61,17 @@ const Comparison: React.FC = () => {
 			</Typography>
 			<Box className={classes.boxContainer}>
 				{/* Grid */}
-				<Grid container>
+				<Grid container className={classes.tableGrid}>
+					<Grid container item className={classes.overlayContainer}>
+						<Grid item xs={4} />
+						<Grid item xs={2} className={classes.highlightedCol} />
+					</Grid>
 					{/* Header row */}
 					<Grid container item className={classes.rowContainer}>
 						{/* empty header cell */}
 						<Grid item xs={4} />
 						{/* logo header cell */}
-						<HeaderRowCell
-							className={classes.firstRowFirstColumn}
-							icon={<CarbonNoBG />}
-							label="Carbon"
-						/>
+						<HeaderRowCell icon={<CarbonNoBG />} label="Carbon" />
 						<HeaderRowCell icon={<EthereumIcon />} label="Ethereum" />
 						<HeaderRowCell icon={<SolanaIcon />} label="Solana" />
 						<HeaderRowCell icon={<KujiraIcon />} label="Kujira" />
@@ -88,17 +87,8 @@ const Comparison: React.FC = () => {
 								</Typography>
 							</Grid>
 							{/* Rows */}
-							{Object.entries(rowData).map(([key, values], columnIndex) => (
-								<Grid
-									item
-									xs={2}
-									key={key}
-									className={clsx({
-										[classes.firstColumnCell]: columnIndex === 0,
-										[classes.lastRowFirstColumn]:
-											columnIndex === 0 && index === headers.length - 1,
-									})}
-								>
+							{Object.entries(rowData).map(([key, values]) => (
+								<Grid item xs={2} key={key}>
 									{header === "Frontrunning Prevention" ? (
 										values[index] ? (
 											<Success />
@@ -121,35 +111,8 @@ const Comparison: React.FC = () => {
 export default Comparison;
 
 const useStyles = makeStyles((theme: Theme) => ({
-	firstRowFirstColumn: {
-		borderTopLeftRadius: "12px",
-		borderTopRightRadius: "12px",
-		borderTop: "2px solid #469590",
-		borderLeft: "2px solid #469590",
-		borderRight: "2px solid #469590",
-		"& > :first-child": {
-			marginTop: "-2px",
-			marginLeft: "-2px",
-			marginRight: "-2px",
-		},
-	},
-	lastRowFirstColumn: {
-		borderBottomLeftRadius: "12px",
-		borderBottomRightRadius: "12px",
-		borderBottom: "2px solid #469590",
-		borderLeft: "2px solid #469590",
-		borderRight: "2px solid #469590",
-	},
-
-	/* Base style for the second column */
-	firstColumnCell: {
-		borderLeft: "2px solid #469590",
-		borderRight: "2px solid #469590",
-	},
 	headerColumnCell: {
-		[theme.breakpoints.down("xs")]: {
-			textAlign: "left",
-		},
+		textAlign: "left",
 	},
 	/* Bottom border for the last row's second column */
 	rowContainer: {
@@ -164,7 +127,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 			// Selects all direct child elements of rowContainer
 			padding: "2rem 0",
 		},
-		"&:nth-child(even)": {
+		"&:nth-child(odd)": {
 			// Alternate background color for odd rows
 			background: "#0D2625",
 		},
@@ -183,6 +146,24 @@ const useStyles = makeStyles((theme: Theme) => ({
 	},
 	boxContainer: {
 		color: theme.palette.text.primary,
-		overflow: "scroll",
+		overflowX: "scroll",
+		position: "relative",
+	},
+	tableGrid: {
+		[theme.breakpoints.down("xs")]: {
+			minWidth: "72rem",
+		},
+	},
+	highlightedCol: {
+		border: "2px solid #469590",
+		borderRadius: "12px",
+		margin: "12px 0",
+		boxShadow: "0px 0px 12px 0px #39BEBB",
+	},
+	overlayContainer: {
+		position: "absolute",
+		height: "100%",
+		padding: "0 2rem",
+		minWidth: "72rem",
 	},
 }));
