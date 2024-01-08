@@ -96,7 +96,8 @@ const Comparison: React.FC = () => {
 									key={key}
 									className={clsx({
 										[classes.firstColumnCell]: columnIndex === 0,
-										[classes.lastRowFirstColumn]: index === headers.length - 1,
+										[classes.lastRowFirstColumn]:
+											columnIndex === 0 && index === headers.length - 1,
 									})}
 								>
 									{header === "Frontrunning Prevention" ? (
