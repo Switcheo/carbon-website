@@ -546,7 +546,7 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
     width: "10rem",
     [theme.breakpoints.down("sm")]: {
       height: "8rem",
-      width: "10rem",
+      width: "8rem",
     },
   },
   carouselItem: {
