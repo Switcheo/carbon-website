@@ -4,26 +4,12 @@ import React from "react";
 
 interface CTAShinyButtonProps {
 	label: string;
-	onClick?: () => void;
-	href?: string;
 }
 
-const CTAShinyButton: React.FC<CTAShinyButtonProps> = ({
-	label,
-	onClick,
-	href,
-}) => {
+const CTAShinyButton: React.FC<CTAShinyButtonProps> = ({ label, ...rest }) => {
 	const classes = useStyles();
 	return (
-		<Link
-			className={classes.ctaButton}
-			onClick={() => {
-				if (onClick) {
-					onClick();
-				}
-			}}
-			href={href}
-		>
+		<Link className={classes.ctaButton} {...rest}>
 			<Box className={classes.ctaButtonInner}>
 				<Typography variant="h4" className={classes.ctaButtonText}>
 					{label}
