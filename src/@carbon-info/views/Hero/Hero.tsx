@@ -203,6 +203,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 		display: "flex",
 		flexDirection: "column",
 		fontSize: "1rem",
+		[theme.breakpoints.down("sm")]: {
+			marginTop: "2rem",
+		},
 	},
 	ctaBtnGroupContainer: {
 		display: "flex",
@@ -274,6 +277,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 		marginTop: "24px",
 		transition: "all 2s ease",
 		maxWidth: "40rem",
+		[theme.breakpoints.down("sm")]: {
+			marginTop: "22rem",
+		},
 	},
 	highlightedText: {
 		color: theme.palette.primary.light,
