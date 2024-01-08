@@ -17,6 +17,8 @@ import { AnimateKeyframes } from "react-simple-animate";
 import { RollingNum } from "./component";
 import Banner from "@carbon-info/components/Banner";
 import { DemexLogo } from "@carbon-info/assets";
+import { Path } from "@carbon-info/constants";
+import { StyleUtils } from "@carbon-info/utils/styles";
 
 export interface DataInfo {
 	value: string;
@@ -74,7 +76,6 @@ const Data: React.FC = () => {
 				>
 					<Grid
 						container
-						item
 						xs={8}
 						sm={12}
 						spacing={0}
@@ -112,7 +113,7 @@ const Data: React.FC = () => {
 							icon={<DemexLogo />}
 							text="Ready to test drive Carbon?"
 							highlightedText="Trade, Borrow and Earn on Demex"
-							link="https://app.dem.exchange/"
+							link={Path.Socials.Demex}
 						/>
 					</Box>
 				</AnimateKeyframes>
@@ -214,7 +215,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		margin: "auto",
 	},
 	cosmosSDK: {
-		background: "linear-gradient(180deg, #469590 0%, #31D8D6 100%)",
+		background: StyleUtils.blueGradient,
 		backgroundClip: "text",
 		WebkitTextFillColor: "transparent",
 		WebkitBackgroundClip: "text",

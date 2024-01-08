@@ -21,6 +21,9 @@ export const Path = {
 		CarbonEVM: "https://docs.carbon.network/carbon-evm/overview",
 		CarbonCore: "https://docs.carbon.network/carbon-core/overview",
 	},
+	Ecosystem: {
+		Grant:"https://docs.carbon.network/grants-programs/carbon-ecosystem-grant",
+	},
 	Footer: {
 		Features: "https://docs.carbon.network/carbon-core",
 		Guides: "https://docs.carbon.network/introduction",
