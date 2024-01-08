@@ -81,7 +81,7 @@ const Data: React.FC = () => {
 						justifyContent="center"
 						className={clsx(classes.dataTable, { open: inView })}
 					>
-						{tableInfo.map((item: DataInfo) => (
+						{tableInfo.map((item: DataInfo, index: number) => (
 							<Grid item xs={12} sm={2} key={item.description}>
 								<Paper className={classes.dataBox} elevation={0}>
 									{item.toCountUp ? (
@@ -100,7 +100,10 @@ const Data: React.FC = () => {
 										{item.description.replaceAll("_", " ")}
 									</Typography>
 								</Paper>
-								{widthXs && <Divider className={classes.mobileDivider} />}
+								{/* Add a Divider for all but the last item */}
+								{widthXs && index < tableInfo.length - 1 && (
+									<Divider className={classes.mobileDivider} />
+								)}
 							</Grid>
 						))}
 					</Grid>
