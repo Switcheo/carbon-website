@@ -243,7 +243,7 @@ const Ecosystem: React.FC = () => {
 								icon={<SWTHIcon />}
 								text="Want to build something cool on Carbon?"
 								highlightedText="Apply for our Ecosystem Fund"
-								link="https://docs.carbon.network/grants-programs/carbon-ecosystem-grant"
+								link={Path.Ecosystem.Grant}
 							/>
 						</Grid>
 					</Grid>
@@ -361,7 +361,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		display: "flex",
 		alignItems: "center",
 		borderRadius: "20px",
-		border: "1px #74E8E8 solid",
+		border: `1px ${theme.palette.primary.main} solid`,
 		padding: ".75rem 1.25rem",
 	},
 	boxContainer: {
