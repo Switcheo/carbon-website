@@ -17,7 +17,7 @@ const Banner: React.FC<bannerProps> = (props: bannerProps) => {
 		<Link
 			href={link}
 			underline="none"
-			target={"_blank"}
+			target="_blank"
 			style={{ display: "flex", alignItems: "center" }}
 			className={classes.bannerContainer}
 		>
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		display: "flex",
 		alignItems: "center",
 		borderRadius: "20px",
-		border: "1px #74E8E8 solid",
+		border: "1px solid " + theme.palette.primary.main,
 		padding: "1rem 1.5rem",
 		fontSize: "1rem",
 		color: theme.palette.text.primary,
