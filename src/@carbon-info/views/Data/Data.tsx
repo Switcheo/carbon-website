@@ -76,8 +76,6 @@ const Data: React.FC = () => {
 				>
 					<Grid
 						container
-						xs={8}
-						sm={12}
 						spacing={0}
 						justifyContent="center"
 						className={clsx(classes.dataTable, { open: inView })}
