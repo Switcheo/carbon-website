@@ -394,8 +394,11 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
       margin: "10rem 0",
     },
     [theme.breakpoints.down("sm")]: {
-      margin: "10rem 0",
-      minHeight: "725px",
+      margin: "0",
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
     },
   },
   hexagonGlow: {
@@ -540,8 +543,10 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
   lottieIcon:{
     margin:0,
     height: "10rem",
+    width: "10rem",
     [theme.breakpoints.down("sm")]: {
       height: "8rem",
+      width: "10rem",
     },
   },
   carouselItem: {
