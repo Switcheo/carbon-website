@@ -24,7 +24,7 @@ const AltCarbonBanner: React.FC = () => {
 	const altCarbonRef = React.useRef<HTMLDivElement>(null);
 
 	const goToAltCarbon = () => {
-		document.getElementById("footer")?.scrollIntoView({
+		document.getElementById("bancor")?.scrollIntoView({
 			behavior: "smooth",
 		});
 	};

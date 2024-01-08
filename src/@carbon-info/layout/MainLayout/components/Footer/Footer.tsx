@@ -247,7 +247,8 @@ const Footer: React.FC = () => {
 					>
 						{"Carbon isn't affiliated with "}
 						<Link
-							href={"https://www.carbondefi.xyz/"}
+							id="bancor"
+							href="https://www.carbondefi.xyz/"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
