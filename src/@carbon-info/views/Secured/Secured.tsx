@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie, { EventListener, Options } from "react-lottie";
 import "react-multi-carousel/lib/styles.css";
+import { Path } from "@carbon-info/constants";
 
 const Secured: React.FC = () => {
 	const classes = useStyles();
@@ -78,10 +79,7 @@ const Secured: React.FC = () => {
 									label="Buy $SWTH"
 									href="https://hub.carbon.network/buy"
 								/>
-								<CTALinkButton
-									label="Start Staking"
-									href="https://hub.carbon.network/stake"
-								/>
+								<CTALinkButton label="Start Staking" href={Path.Footer.Stake} />
 							</Box>
 						</div>
 						<Box minWidth={400}>
