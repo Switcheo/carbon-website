@@ -8,6 +8,7 @@ import {
 } from "@carbon-info/assets";
 import { Box, Grid, Theme, Typography, makeStyles } from "@material-ui/core";
 import React from "react";
+import clsx from "clsx";
 
 interface headerRowCellProps {
 	className?: string;
@@ -79,7 +80,10 @@ const Comparison: React.FC = () => {
 					{headers.map((header, index) => (
 						<Grid container item key={header} className={classes.rowContainer}>
 							<Grid container item xs={4}>
-								<Typography variant="body1">
+								<Typography
+									variant="body1"
+									className={classes.headerColumnCell}
+								>
 									<strong>{header}</strong>
 								</Typography>
 							</Grid>
@@ -90,16 +94,10 @@ const Comparison: React.FC = () => {
 									item
 									xs={2}
 									key={key}
-									className={
-										columnIndex === 0
-											? `${classes.firstColumnCell} ${
-													// If it's the first column and the last row, add lastRowFirstColumn class
-													index === headers.length - 1
-														? classes.lastRowFirstColumn
-														: ""
-											}`
-											: ""
-									}
+									className={clsx({
+										[classes.firstColumnCell]: columnIndex === 0,
+										[classes.lastRowFirstColumn]: index === headers.length - 1,
+									})}
 								>
 									{header === "Frontrunning Prevention" ? (
 										values[index] ? (
@@ -129,6 +127,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 		borderTop: "2px solid #469590",
 		borderLeft: "2px solid #469590",
 		borderRight: "2px solid #469590",
+		"& > :first-child": {
+			marginTop: "-2px",
+			marginLeft: "-2px",
+			marginRight: "-2px",
+		},
 	},
 	lastRowFirstColumn: {
 		borderBottomLeftRadius: "12px",
@@ -143,11 +146,18 @@ const useStyles = makeStyles((theme: Theme) => ({
 		borderLeft: "2px solid #469590",
 		borderRight: "2px solid #469590",
 	},
+	headerColumnCell: {
+		[theme.breakpoints.down("xs")]: {
+			textAlign: "left",
+		},
+	},
 	/* Bottom border for the last row's second column */
 	rowContainer: {
 		padding: "0 2rem",
 		borderRadius: "20px",
+		minWidth: "48rem",
 		"& > *:not(:first-child)": {
+			alignContent: "center",
 			justifyContent: "center",
 		},
 		"& > *": {
@@ -166,8 +176,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 		gap: ".75rem",
 		paddingTop: "2rem",
 		paddingBottom: "2rem",
+		"& > svg": {
+			width: "2.4rem",
+			height: "2.4rem",
+		},
 	},
 	boxContainer: {
 		color: theme.palette.text.primary,
+		overflow: "scroll",
 	},
 }));
