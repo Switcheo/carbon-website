@@ -147,11 +147,17 @@ const Hero: React.FC = () => {
 				</Grid>
 
 				{/* Hero Graphic */}
-				<Grid container item xs={6}>
+				<Grid
+					container
+					item
+					xs={12}
+					sm={6}
+					className={classes.heroGraphicContainer}
+				>
 					<Lottie
 						options={AniStartOptions}
 						width={isMobile ? "100%" : 1480}
-						height={isMobile ? 650 : "100%"}
+						height={isMobile ? 425 : "100%"}
 					/>
 					<div className={classes.altCarbonContainer} ref={altCarbonRef}>
 						<Typography
@@ -208,9 +214,18 @@ const useStyles = makeStyles((theme: Theme) => ({
 			width: "100%",
 		},
 	},
+	heroGraphicContainer: {
+		[theme.breakpoints.down("sm")]: {
+			zIndex: 0,
+			opacity: 0.6,
+			position: "absolute",
+			top: "0rem",
+		},
+	},
 	heroTextContainer: {
 		textAlign: "left",
 		[theme.breakpoints.down("sm")]: {
+			zIndex: 1,
 			textAlign: "center",
 			flexDirection: "column",
 			alignItems: "center",
