@@ -66,7 +66,7 @@ const Comparison: React.FC = () => {
 					{/* Header row */}
 					<Grid container item className={classes.rowContainer}>
 						{/* empty header cell */}
-						<Grid container item xs={4} />
+						<Grid item xs={4} />
 						{/* logo header cell */}
 						<HeaderRowCell
 							className={classes.firstRowFirstColumn}
@@ -79,7 +79,7 @@ const Comparison: React.FC = () => {
 					</Grid>
 					{headers.map((header, index) => (
 						<Grid container item key={header} className={classes.rowContainer}>
-							<Grid container item xs={4}>
+							<Grid item xs={4}>
 								<Typography
 									variant="body1"
 									className={classes.headerColumnCell}
@@ -90,7 +90,6 @@ const Comparison: React.FC = () => {
 							{/* Rows */}
 							{Object.entries(rowData).map(([key, values], columnIndex) => (
 								<Grid
-									container
 									item
 									xs={2}
 									key={key}
