@@ -15,6 +15,7 @@ import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
 import CTAShinyButton from "@carbon-info/components/CTAShinyButton";
 import CTALinkButton from "@carbon-info/components/CTALinkButton";
+import { Path } from "@carbon-info/constants";
 
 const PartnershipContainer: React.FC = () => {
 	const classes = useStyles();
@@ -135,10 +136,7 @@ const Hero: React.FC = () => {
 						<Box className={classes.ctaGroupContainer}>
 							<Box className={classes.ctaBtnGroupContainer}>
 								<CTAShinyButton onClick={goToEcosystem} label="Explore" />
-								<CTALinkButton
-									href="https://docs.carbon.network/"
-									label="Learn More"
-								/>
+								<CTALinkButton href={Path.Header.Build} label="Learn More" />
 							</Box>
 							<PartnershipContainer />
 						</Box>
