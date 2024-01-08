@@ -52,6 +52,13 @@ const Comparison: React.FC = () => {
 	const classes = useStyles();
 	return (
 		<div id="comparison">
+			<Typography
+				variant="h2"
+				color="textPrimary"
+				style={{ marginBottom: "2.125rem" }}
+			>
+				Comparing to other Blockchain
+			</Typography>
 			<Box className={classes.boxContainer}>
 				{/* Grid */}
 				<Grid container>
