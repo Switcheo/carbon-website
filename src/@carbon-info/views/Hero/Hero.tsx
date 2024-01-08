@@ -24,20 +24,24 @@ const PartnershipContainer: React.FC = () => {
 				Partnered with and backed by the best.
 			</Typography>
 			{/* Container for Partners logo */}
-			<Box
-				display="flex"
-				justifyContent="space-between"
-				className={classes.partnershipLogoContainer}
-			>
-				{/* Cosmos */}
-				<CosmosSVGLogo className={classes.partnerLogo} />
-				{/* Defiance Capital */}
-				<DefianceCapitalLogo className={classes.partnerLogo} />
-				{/* NGC */}
-				<NGCSvgLogo className={classes.partnerLogo} />
-				{/* IOSG */}
-				<img src={IOSGLogo} alt="IOSG Logo" className={classes.partnerLogo} />
-			</Box>
+			<Grid container className={classes.partnershipLogoContainer}>
+				<Grid container item xs={6} md={3}>
+					{/* Cosmos */}
+					<CosmosSVGLogo className={classes.partnerLogo} />
+				</Grid>
+				<Grid container item xs={6} md={3}>
+					{/* Defiance Capital */}
+					<DefianceCapitalLogo className={classes.partnerLogo} />
+				</Grid>
+				<Grid container item xs={6} md={3}>
+					{/* NGC */}
+					<NGCSvgLogo className={classes.partnerLogo} />
+				</Grid>
+				<Grid container item xs={6} md={3}>
+					{/* IOSG */}
+					<img src={IOSGLogo} alt="IOSG Logo" className={classes.partnerLogo} />
+				</Grid>
+			</Grid>
 		</Box>
 	);
 };
@@ -176,6 +180,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 		maxHeight: "4rem",
 		alignItems: "center",
 		marginTop: "20px",
+		display: "flex",
+		justifyContent: "space-between",
+		// style for all children
+		"& > *": {
+			justifyContent: " center",
+		},
 	},
 	partnerLogo: {
 		maxHeight: "100%",
