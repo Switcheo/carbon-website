@@ -151,16 +151,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 			// Alternate background color for odd rows
 			background: "#0D2625",
 		},
-		"&:first-child": {
-			"& .firstColumnCell": {
-				borderTop: "2px solid red",
-			},
-		},
-		"&:last-child": {
-			"& .firstColumnCell": {
-				borderBottom: "2px solid red",
-			},
-		},
 	},
 	headerRowCell: {
 		display: "flex",
