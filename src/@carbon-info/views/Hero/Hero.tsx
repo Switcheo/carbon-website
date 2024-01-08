@@ -1,7 +1,8 @@
 import {
 	CosmosSVGLogo,
 	DefianceCapitalLogo,
-	NGCSvgLogo,
+	NGCLogo,
+	IOSGLogo,
 } from "@carbon-info/assets";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
@@ -12,7 +13,7 @@ import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
-import { IOSGLogo } from "@carbon-info/assets/logos/";
+// import { IOSGLogo } from "@carbon-info/assets/logos/";
 import CTAShinyButton from "@carbon-info/components/CTAShinyButton";
 import CTALinkButton from "@carbon-info/components/CTALinkButton";
 
@@ -35,7 +36,7 @@ const PartnershipContainer: React.FC = () => {
 				</Grid>
 				<Grid container item xs={6} md={3}>
 					{/* NGC */}
-					<NGCSvgLogo className={classes.partnerLogo} />
+					<NGCLogo className={classes.partnerLogo} />
 				</Grid>
 				<Grid container item xs={6} md={3}>
 					{/* IOSG */}

@@ -1,7 +1,7 @@
 export { ReactComponent as CarbonLogo } from "./carbon_logo.svg";
 export { ReactComponent as CosmosSVGLogo } from "./cosmos-logo-black.svg";
 export { ReactComponent as DefianceCapitalLogo } from "./DefianceCapital.svg";
-export { ReactComponent as NGCSvgLogo } from "./NGC-svg-logo.svg";
+export { ReactComponent as NGCLogo } from "./NGC.svg";
 export { ReactComponent as DemexLogo } from "./Demex.svg";
 export { ReactComponent as CoinGeckoLogo } from "./Coingecko.svg";
 export { default as IOSGLogo } from "./IOSG.png";
