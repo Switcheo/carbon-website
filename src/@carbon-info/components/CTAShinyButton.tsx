@@ -1,3 +1,4 @@
+import { ArrowIcon } from "@carbon-info/assets";
 import { Box, Link, Theme, Typography, makeStyles } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React from "react";
@@ -6,14 +7,26 @@ interface CTAShinyButtonProps {
 	label: string;
 	onClick?: () => void;
 	href?: string;
+	iconType?: "down" | "arrow";
 }
 
 const CTAShinyButton: React.FC<CTAShinyButtonProps> = ({
 	label,
 	onClick,
 	href,
+	iconType = "down",
 }) => {
 	const classes = useStyles();
+
+	const renderIcon = () => {
+		switch (iconType) {
+			case "arrow":
+				return <ArrowIcon className={classes.ctaArrowIcon} />;
+			case "down":
+				return <ExpandMoreIcon />;
+		}
+	};
+
 	return (
 		<Link
 			className={classes.ctaButton}
@@ -28,7 +41,7 @@ const CTAShinyButton: React.FC<CTAShinyButtonProps> = ({
 				<Typography variant="h4" className={classes.ctaButtonText}>
 					{label}
 				</Typography>
-				<ExpandMoreIcon />
+				{renderIcon()}
 			</Box>
 		</Link>
 	);
@@ -86,5 +99,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 	ctaButtonText: {
 		marginRight: ".75rem",
 		fontSize: "1rem",
+	},
+	ctaArrowIcon: {
+		width: "1rem",
+		height: "1rem",
+		"& path": {
+			transition: "all 0.2s ease-in-out",
+		},
 	},
 }));

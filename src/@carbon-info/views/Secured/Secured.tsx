@@ -75,7 +75,11 @@ const Secured: React.FC = () => {
 								rewards, providing sustainable real yield to everyone.
 							</Typography>
 							<Box className={classes.ctaBtnGroupContainer}>
-								<CTAShinyButton label="Buy $SWTH" href={Path.Footer.Buy} />
+								<CTAShinyButton
+									label="Buy $SWTH"
+									href={Path.Footer.Buy}
+									iconType="arrow"
+								/>
 								<CTALinkButton label="Start Staking" href={Path.Footer.Stake} />
 							</Box>
 						</div>
