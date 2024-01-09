@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		"&:hover": {
 			background: "#103132",
 		},
-		[theme.breakpoints.down("sm")]: {
+		[theme.breakpoints.down("xs")]: {
 			padding: ".5rem 1rem",
 			width: "auto",
 		},
@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 			fill: theme.palette.primary.main,
 		},
 		margin: theme.spacing(0, 0.5),
-		[theme.breakpoints.down("sm")]: {
+		[theme.breakpoints.down("xs")]: {
 			verticalAlign: "baseline",
 			height: "2rem",
 			margin: theme.spacing(0, 1),
