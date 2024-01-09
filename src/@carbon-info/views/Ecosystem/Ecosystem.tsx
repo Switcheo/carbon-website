@@ -228,7 +228,12 @@ const Ecosystem: React.FC = () => {
 						style={{ marginBottom: "2.5rem" }}
 					>
 						<Grid item xs={12}>
-							<Typography variant="h1" color="textPrimary" align="left">
+							<Typography
+								variant="h1"
+								color="textPrimary"
+								align="left"
+								className={classes.ecosystemHeader}
+							>
 								Our Ecosystem
 							</Typography>
 						</Grid>
@@ -502,6 +507,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 		width: "16px",
 		"& path": {
 			fill: theme.palette.primary.light,
+		},
+	},
+	ecosystemHeader: {
+		[theme.breakpoints.down("sm")]: {
+			...theme.typography.h3,
 		},
 	},
 }));
