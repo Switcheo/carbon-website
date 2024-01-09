@@ -120,11 +120,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 		borderRadius: "20px",
 		minWidth: "48rem",
 		"& > *:not(:first-child)": {
-			alignContent: "center",
 			justifyContent: "center",
 		},
 		"& > *": {
 			// Selects all direct child elements of rowContainer
+			display: "flex",
+			alignItems:"center",
 			padding: "2rem 0",
 		},
 		"&:nth-child(odd)": {
