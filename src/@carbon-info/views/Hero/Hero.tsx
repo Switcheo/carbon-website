@@ -47,7 +47,7 @@ const AltCarbonBanner: React.FC = () => {
 
 const PartnershipContainer: React.FC = () => {
 	const classes = useStyles();
-	const isMobile = isWidth("xs");
+	const isMobile = isWidth("sm");
 
 	return (
 		<Box className={classes.partnershipContainer}>
@@ -86,7 +86,7 @@ const Hero: React.FC = () => {
 		triggerOnce: true,
 	});
 
-	const isMobile = isWidth("xs");
+	const isMobile = isWidth("sm");
 
 	const AniStartOptions = {
 		loop: true,
@@ -156,6 +156,7 @@ const Hero: React.FC = () => {
 							<Box className={classes.ctaBtnGroupContainer}>
 								<CTAShinyButton onClick={goToEcosystem} label="Explore" />
 								<CTALinkButton href={Path.Header.Build} label="Learn More" />
+								{isMobile && <AltCarbonBanner />}
 							</Box>
 							<PartnershipContainer />
 						</Box>
@@ -187,6 +188,9 @@ export default Hero;
 const useStyles = makeStyles((theme: Theme) => ({
 	partnershipContainer: {
 		marginTop: "4rem",
+		[theme.breakpoints.down("sm")]: {
+			marginTop: "2rem",
+		},
 	},
 	partnershipLogoContainer: {
 		opacity: 0.8,
@@ -335,6 +339,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 		[theme.breakpoints.down("sm")]: {
 			marginRight: theme.spacing(3),
 		},
+		[theme.breakpoints.down("sm")]: {
+			position: "relative",
+			marginTop: "12px",
+			left: 0,
+			padding: "8px 12px",
+			fontSize: "8px",
+		},
 	},
 	altCarbon: {
 		display: "flex",
@@ -350,6 +361,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 			"33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
 		"&:hover": {
 			color: theme.palette.primary.main,
+		},
+		[theme.breakpoints.down("sm")]: {
+			padding: "8px 12px",
 		},
 	},
 	bodyTypography: {
