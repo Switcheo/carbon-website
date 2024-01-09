@@ -178,23 +178,22 @@ const Footer: React.FC = () => {
 					md={12}
 					alignItems="center"
 					justifyContent="center"
+					style={{ flexFlow: "wrap-reverse" }}
 				>
-					{!isMobile && (
-						<Grid item xs={12} md={6} className={classes.logoContainer}>
-							<CarbonLogo className={classes.logo} />
-							<Typography className={classes.poweredBySDKContainer}>
-								Powered by
-								<CosmosSDKSmallWhiteLogo className={classes.cosmosSDKLogo} />
-								<Link
-									href="https://v1.cosmos.network/sdk"
-									target="_blank"
-									className={classes.cosmosLink}
-								>
-									<strong>Cosmos SDK</strong>
-								</Link>
-							</Typography>
-						</Grid>
-					)}
+					<Grid item xs={12} md={6} className={classes.logoContainer}>
+						<CarbonLogo className={classes.logo} />
+						<Typography className={classes.poweredBySDKContainer}>
+							Powered by
+							<CosmosSDKSmallWhiteLogo className={classes.cosmosSDKLogo} />
+							<Link
+								href="https://v1.cosmos.network/sdk"
+								target="_blank"
+								className={classes.cosmosLink}
+							>
+								<strong>Cosmos SDK</strong>
+							</Link>
+						</Typography>
+					</Grid>
 					<Grid item xs={12} md={6} className={classes.socialMediaContainer}>
 						<Link href={Path.Socials.Twitter} underline="none" target="_blank">
 							<TwitterIcon className={classes.socialMediaIcon} />
@@ -216,11 +215,6 @@ const Footer: React.FC = () => {
 							<CoinGeckoLogo className={classes.socialMediaIcon} />
 						</Link>
 					</Grid>
-					{isMobile && (
-						<Grid item xs={12} md={6} className={classes.logoContainer}>
-							<CarbonLogo className={classes.logo} />
-						</Grid>
-					)}
 				</Grid>
 				<Grid item md={12}>
 					<Typography
@@ -285,6 +279,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 	},
 	cosmosSDKLogo: {
 		margin: "0 .5rem",
+		[theme.breakpoints.down("sm")]: {
+			width: "16px",
+			height: "16px",
+		},
 	},
 	cosmosLink: {
 		color: theme.palette.text.primary,
@@ -297,6 +295,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 		display: "flex",
 		alignItems: "center",
 		color: theme.palette.text.primary,
+		[theme.breakpoints.down("sm")]: {
+			justifyContent: "center",
+			fontSize: "0.8rem",
+		},
 	},
 	logo: {
 		margin: "0px 0.063rem",
@@ -335,7 +337,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		textAlign: "start",
 		[theme.breakpoints.down("sm")]: {
 			textAlign: "center",
-			paddingTop: "4rem",
+			paddingTop: "2rem",
 		},
 	},
 	socialMediaContainer: {
