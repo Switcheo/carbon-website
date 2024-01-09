@@ -600,6 +600,10 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
   dotList: {
     zIndex: 100,
     width: "100%",
+    [theme.breakpoints.down("md")]:{
+      maxWidth: "500px",
+      margin: "auto",
+    },
     "& .react-multi-carousel-dot--active": {
       "& > button": {
         background: theme.palette.primary.dark,
