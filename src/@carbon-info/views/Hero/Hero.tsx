@@ -344,6 +344,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 			padding: "8px 12px",
 			fontSize: "8px",
 		},
+		[theme.breakpoints.up("xl")]: {
+			left: "calc(30vw)",
+		},
 	},
 	altCarbon: {
 		display: "flex",
