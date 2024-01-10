@@ -331,15 +331,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 	},
 	altCarbonContainer: {
 		position: "absolute",
-		left: "calc(40vw)",
+		left: "40vw",
 		width: "100%",
 		display: "flex",
 		justifyContent: "flex-end",
 		cursor: "pointer",
 		[theme.breakpoints.down("sm")]: {
 			marginRight: theme.spacing(3),
-		},
-		[theme.breakpoints.down("sm")]: {
 			position: "relative",
 			marginTop: "12px",
 			left: 0,
