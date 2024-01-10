@@ -151,7 +151,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 	navBarContainer: {
 		display: "flex",
 		alignItems: "center",
-		maxWidth: "1400px",
+		maxWidth: "100%",
 		paddingTop: theme.spacing(6),
 		paddingBottom: theme.spacing(6),
 		justifyContent: "space-between",
