@@ -133,8 +133,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     marginBottom: "2.5rem",
     maxWidth: "328px",
-    [theme.breakpoints.only("md")]: {
+    [theme.breakpoints.down("md")]: {
       paddingTop: "2.5rem",
+      fontSize:"20px",
     },
   },
 }));
