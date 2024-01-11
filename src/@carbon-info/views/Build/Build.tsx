@@ -28,7 +28,9 @@ const Build: React.FC = () => {
       </FadeAndSlide>
       <Box className={classes.boxContainer}>
         <FadeAndSlide visible={inView}>
-          <Typography variant="h1" color="textPrimary" style={{ marginBottom: "4.5rem" }}>Build on Carbon</Typography>
+          <Typography variant="h1" color="textPrimary" 
+          className={classes.buildTitle}
+          >Build on Carbon</Typography>
           <Grid container justifyContent="center" spacing={isSmallScreen ? 2 : 5}>
             <Grid item xs={12} sm={7} md={4} className={inView && !isMobile ? "animate__animated animate__fadeInLeft" : ""} >
               <CardWithCTA
@@ -93,6 +95,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.only("xs")]: {
       top: "-75px",
       maxHeight: "243px",
+    },
+  },
+  buildTitle:{
+    marginBottom: "4.5rem",
+    [theme.breakpoints.down("sm")]: {
+        fontSize:"20px",
     },
   },
 }));

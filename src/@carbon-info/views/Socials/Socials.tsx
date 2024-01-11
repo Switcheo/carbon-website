@@ -59,7 +59,9 @@ const Socials: React.FC = () => {
           <img src={SocialsBackground} className={classes.background} />
           <Box className={classes.contentBox}>
             <Box className={classes.headerSection}>
-              <Typography variant="h1" color="textPrimary" style={{ textAlign: "left", marginBottom: "2.5rem" }}>Be a part of our global community</Typography>
+              <Typography variant="h1" color="textPrimary" className={classes.socialTitle}>
+                Be a part of our global community
+              </Typography>
               <Typography variant="body1" color="textSecondary" style={{ textAlign: "left" }}>
                 Join a fast-growing community of developers and innovators connected all over the world building the new face of finance.
               </Typography>
@@ -164,5 +166,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "1.5rem",
     width: "1.5rem",
     marginLeft: "8px",
+  },
+  socialTitle:{
+    textAlign: "left",
+    marginBottom: "2.5rem",
+    [theme.breakpoints.down("sm")]:{
+      fontSize:"20px",
+    },
   },
 }));

@@ -69,53 +69,58 @@ export const theme = createTheme({
   ] as Shadows,
   typography: {
     fontFamily: "TyrosPro, SourceSansPro, SourceSansPro-Light, SourceSansPro-Bold, TyrosPro-Light, TyrosPro-SemiBold, TyrosPro-Bold",
-    // All font sizes to be reduced by 6px 
-    h1: { // XLarge 64px
+    // Root size = 16px, 1rem = 16px
+    h1: { 
+      // XLarge 56px
       fontFamily: "TyrosPro-Bold",
       fontWeight: 900,
-      fontSize: "3.625rem",
-      lineHeight: "5.125rem",
+      fontSize: "3.5rem",
+      lineHeight: "1.3",
       letterSpacing: "-0.02rem",
     },
-    h2: { // Large 48px/Header
+    h2: { 
+      // Large 40px/Header
       fontFamily: "TyrosPro-Bold",
       fontWeight: 700,
-      fontSize: "2.625rem",
-      lineHeight: "3.75rem",
+      fontSize: "2.5rem",
+      lineHeight: "1.25",
       letterSpacing: "-0.02rem",
     },
-    h3: { // 36px
+    h3: { 
+      // Medium 36px
       fontFamily: "TyrosPro-Bold",
       fontWeight: 700,
-      fontSize: "1.875rem",
-      lineHeight: "2.755rem",
+      fontSize: "2.25rem",
+      lineHeight: "1.4",
       letterSpacing: 0,
     },
-    h4: { // Regular 24px/CTA & Title
+    h4: { 
+      // Regular 24px/CTA & Title
       fontFamily: "TyrosPro-Bold",
       fontWeight: 700,
       fontSize: "1.5rem",
-      lineHeight: "2.062rem",
+      lineHeight: "1.5",
       letterSpacing: "-0.02rem",
     },
-    h5: { // 20px
+    h5: { 
+      // Small 20px
       fontFamily: "TyrosPro-Bold",
       fontWeight: 700,
-      fontSize: "0.875rem",
-      lineHeight: "1.344rem",
+      fontSize: "1.25rem",
+      lineHeight: "1.5",
     },
-    body1: { // Regular 24px/Body
+    body1: { // Regular 18px/Body
       fontFamily: "TyrosPro",
       fontWeight: 400,
       fontSize: "1.125rem",
-      lineHeight: "1.687rem",
+      lineHeight: "1.7",
       letterSpacing: 0,
     },
-    body2: { // Small 20px/Body
+    body2: { // Small 14px/Body
       fontFamily: "TyrosPro",
       fontWeight: 400,
       fontSize: "0.875rem",
-      lineHeight: "1.75rem",
+      lineHeight: "1.8",
     },
   },
 });

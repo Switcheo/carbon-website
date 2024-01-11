@@ -2,7 +2,7 @@ export * from "./Build";
 export * from "./Data";
 export * from "./Ecosystem";
 export * from "./Features";
-export * from "./IntroPage";
+export * from "./Hero";
 export * from "./Partnership";
 export * from "./RoadMap";
 export * from "./RoadMapPage";

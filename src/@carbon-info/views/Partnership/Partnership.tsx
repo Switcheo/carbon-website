@@ -80,6 +80,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   logo: {
+		maxWidth: "85%",
     [theme.breakpoints.down("sm")]: {
       width: "70%",
     },
