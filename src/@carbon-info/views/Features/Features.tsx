@@ -421,12 +421,12 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
       left: "5%",
     },
     [theme.breakpoints.only("sm")]: {
-      top: "-35%",
+      top: "-85%",
       scale: 0.6,
       left: "-38%",
     },
     [theme.breakpoints.only("xs")]: {
-      top: "-43%",
+      top: "-100%",
       scale: 0.5,
       left: "-75%",
     },
@@ -452,12 +452,12 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
       left: "10%",
     },
     [theme.breakpoints.only("sm")]: {
-      top: "-15%",
+      top: "-35%",
       scale: 0.6,
       left: "-28%",
     },
     [theme.breakpoints.only("xs")]: {
-      top: "-22%",
+      top: "-52%",
       scale: 0.5,
       left: "-50%",
     },
@@ -480,10 +480,15 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
       scale: 1.5,
       left: "-25%",
     },
-    [theme.breakpoints.down("sm")]: {
-      top: "-5rem",
+    [theme.breakpoints.only("sm")]: {
+      top: "-10rem",
       height: "80rem",
-      left: "-75%",
+      left: "0%",
+    },
+    [theme.breakpoints.only("xs")]: {
+      top: "-10rem",
+      height: "60rem",
+      left: "-25%",
     },
   },
   container: (props: HeightProps) => ({
@@ -602,7 +607,7 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
     width: "100%",
     [theme.breakpoints.down("md")]:{
       maxWidth: "500px",
-      margin: "auto",
+      margin: "auto !important",
     },
     "& .react-multi-carousel-dot--active": {
       "& > button": {
