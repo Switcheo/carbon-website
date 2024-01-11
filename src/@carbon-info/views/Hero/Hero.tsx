@@ -208,6 +208,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 		[theme.breakpoints.down("sm")]: {
 			flexWrap: "wrap",
 			gap: "0",
+			width: "80%",
+			marginLeft:"auto",
+			marginRight:"auto",
 		},
 	},
 	partnerLogo: {
@@ -356,7 +359,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		borderWidth: "1px",
 		borderStyle: "solid",
 		color: theme.palette.text.primary,
-		borderRadius: "16px",
+		borderRadius: "8px",
 		padding: theme.spacing(1.5, 2.5),
 		boxShadow:
 			"33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
@@ -364,7 +367,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 			color: theme.palette.primary.main,
 		},
 		[theme.breakpoints.down("sm")]: {
-			padding: "8px 12px",
+			padding: "6px 12px",
 		},
 	},
 	bodyTypography: {
