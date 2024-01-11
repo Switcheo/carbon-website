@@ -334,12 +334,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 	},
 	altCarbonContainer: {
 		position: "absolute",
-		left: "40vw",
+		left: "calc(200% - 340px)",
 		width: "100%",
 		display: "flex",
-		justifyContent: "flex-end",
+		justifyContent: "flex-start",
 		cursor: "pointer",
 		[theme.breakpoints.down("sm")]: {
+			justifyContent: "flex-end",
 			marginRight: theme.spacing(3),
 			position: "relative",
 			marginTop: "12px",
@@ -347,9 +348,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 			padding: "8px 12px",
 			fontSize: "8px",
 		},
-		[theme.breakpoints.up("xl")]: {
-			left: "calc(30vw)",
+		[theme.breakpoints.only("md")]: {
+			left: "calc(200% - 260px)",
 		},
+		[theme.breakpoints.up("xl")]: {
+			left: "calc(200% - 340px)",
+		},
+		
 	},
 	altCarbon: {
 		display: "flex",
