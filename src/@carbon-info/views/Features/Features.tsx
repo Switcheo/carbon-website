@@ -395,7 +395,7 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       margin: "0",
-      minHeight: "100vh",
+      minHeight: "50vh",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
