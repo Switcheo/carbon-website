@@ -359,7 +359,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		borderWidth: "1px",
 		borderStyle: "solid",
 		color: theme.palette.text.primary,
-		borderRadius: "8px",
+		borderRadius: "16px",
 		padding: theme.spacing(1.5, 2.5),
 		boxShadow:
 			"33px 33px 75px -10px #000000BF, -33px -33px 75px -10px #00000054",
@@ -368,6 +368,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 		[theme.breakpoints.down("sm")]: {
 			padding: "6px 12px",
+			borderRadius: "8px",
 		},
 	},
 	bodyTypography: {
