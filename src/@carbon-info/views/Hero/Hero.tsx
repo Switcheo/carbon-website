@@ -39,7 +39,7 @@ const AltCarbonBanner: React.FC = () => {
 					Looking for Carbon DeFi by{" "}
 					<span className={classes.bancor}>Bancor</span>?
 				</strong>
-				<DoubleArrowIcon />
+				<DoubleArrowIcon style={{ width: "1rem", height: "1rem" }} />
 			</Typography>
 		</div>
 	);
