@@ -152,8 +152,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 		display: "flex",
 		alignItems: "center",
 		maxWidth: "100%",
-		paddingTop: theme.spacing(6),
-		paddingBottom: theme.spacing(6),
+		paddingTop: theme.spacing(3),
+		paddingBottom: theme.spacing(3),
 		justifyContent: "space-between",
 		[theme.breakpoints.down("sm")]: {
 			transition: "all 0.25s linear",
