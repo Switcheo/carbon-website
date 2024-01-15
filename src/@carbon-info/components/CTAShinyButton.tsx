@@ -1,6 +1,5 @@
-import { ArrowIcon } from "@carbon-info/assets";
+import { ArrowIcon, DoubleArrowIcon } from "@carbon-info/assets";
 import { Box, Link, Theme, Typography, makeStyles } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React from "react";
 
 interface CTAShinyButtonProps {
@@ -23,7 +22,7 @@ const CTAShinyButton: React.FC<CTAShinyButtonProps> = ({
 			case "arrow":
 				return <ArrowIcon className={classes.ctaArrowIcon} />;
 			case "down":
-				return <ExpandMoreIcon />;
+				return <DoubleArrowIcon />;
 		}
 	};
 
