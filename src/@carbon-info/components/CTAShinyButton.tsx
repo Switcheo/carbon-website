@@ -20,9 +20,9 @@ const CTAShinyButton: React.FC<CTAShinyButtonProps> = ({
 	const renderIcon = () => {
 		switch (iconType) {
 			case "arrow":
-				return <ArrowIcon className={classes.ctaArrowIcon} />;
+				return <ArrowIcon className={classes.ctaIcon} />;
 			case "down":
-				return <DoubleArrowIcon />;
+				return <DoubleArrowIcon className={classes.ctaIcon} />;
 		}
 	};
 
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		marginRight: ".75rem",
 		fontSize: "1rem",
 	},
-	ctaArrowIcon: {
+	ctaIcon: {
 		width: "1rem",
 		height: "1rem",
 		"& path": {
