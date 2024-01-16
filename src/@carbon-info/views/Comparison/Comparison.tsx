@@ -125,7 +125,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		"& > *": {
 			// Selects all direct child elements of rowContainer
 			display: "flex",
-			alignItems:"center",
+			alignItems: "center",
 			padding: "2rem 0",
 		},
 		"&:nth-child(odd)": {
@@ -146,6 +146,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 	boxContainer: {
+		"&::-webkit-scrollbar": {
+			display: "none",
+		},
+		"-ms-overflow-style": "none" /* IE and Edge */,
+		scrollbarWidth: "none" /* Firefox */,
 		color: theme.palette.text.primary,
 		overflowX: "scroll",
 		position: "relative",

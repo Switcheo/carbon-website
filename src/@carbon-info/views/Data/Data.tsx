@@ -84,9 +84,14 @@ const Data: React.FC = () => {
 							<Grid item xs={12} sm={2} key={item.description}>
 								<Paper className={classes.dataBox} elevation={0}>
 									{item.toCountUp ? (
-										<RollingNum item={item} />
+										<RollingNum item={item} className={classes.tablePrimary} />
 									) : (
-										<Typography variant="h4" color="textPrimary" align="center">
+										<Typography
+											variant="h4"
+											color="textPrimary"
+											align="center"
+											className={classes.tablePrimary}
+										>
 											{item.description === "Block_Time" ? "< 2s" : item.value}
 										</Typography>
 									)}
@@ -95,6 +100,7 @@ const Data: React.FC = () => {
 										variant="body2"
 										color="textPrimary"
 										align="center"
+										className={classes.tableDescription}
 									>
 										{item.description.replaceAll("_", " ")}
 									</Typography>
@@ -130,9 +136,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 		justifyContent: "center",
 		alignItems: "center",
 		position: "relative",
-		marginTop: "10rem",
+		marginTop: "2rem",
 		paddingBottom: "5rem",
 		zIndex: 5,
+		[theme.breakpoints.down("sm")]: {
+			marginTop: "12rem",
+		},
 	},
 	headerText: {
 		maxWidth: "57.125rem",
@@ -154,7 +163,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 	dataTable: {
-		marginTop: "8rem",
+		marginTop: "2rem",
 		borderWidth: "2px",
 		marginLeft: "auto",
 		marginRight: "auto",
@@ -240,6 +249,16 @@ const useStyles = makeStyles((theme: Theme) => ({
 	smallerText: {
 		[theme.breakpoints.down(380)]: {
 			fontSize: "1.45rem",
+		},
+	},
+	tablePrimary: {
+		[theme.breakpoints.up("sm")]: {
+			fontSize: "1rem",
+		},
+	},
+	tableDescription: {
+		[theme.breakpoints.up("sm")]: {
+			fontSize: ".75rem",
 		},
 	},
 }));

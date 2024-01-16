@@ -1,5 +1,6 @@
 export { ReactComponent as AccelerateIcon } from "./accelerate.svg";
 export { ReactComponent as ArrowIcon } from "./arrow.svg";
+export { ReactComponent as DoubleArrowIcon } from "./double_arrow.svg";
 export { ReactComponent as Carbon } from "./carbon.svg";
 export { ReactComponent as CarbonNoBG } from "./carbon_no_bg.svg";
 export { ReactComponent as ChooseIcon } from "./choose.svg";

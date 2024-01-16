@@ -3,6 +3,7 @@ import {
 	DefianceCapitalLogo,
 	NGCLogo,
 	IOSGLogo,
+	DoubleArrowIcon,
 } from "@carbon-info/assets";
 import heroBackgroundAnimation from "@carbon-info/assets/animated/heroBackgroundAnimation.json";
 import { FadeAndSlide } from "@carbon-info/components";
@@ -15,7 +16,6 @@ import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie";
 import CTAShinyButton from "@carbon-info/components/CTAShinyButton";
 import CTALinkButton from "@carbon-info/components/CTALinkButton";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Path } from "@carbon-info/constants";
 
 const AltCarbonBanner: React.FC = () => {
@@ -39,7 +39,7 @@ const AltCarbonBanner: React.FC = () => {
 					Looking for Carbon DeFi by{" "}
 					<span className={classes.bancor}>Bancor</span>?
 				</strong>
-				<ExpandMoreIcon />
+				<DoubleArrowIcon style={{ width: "1rem", height: "1rem" }} />
 			</Typography>
 		</div>
 	);
@@ -94,6 +94,7 @@ const Hero: React.FC = () => {
 		animationData: heroBackgroundAnimation,
 		rendererSettings: {
 			preserveAspectRatio: "xMidYMid slice",
+			className: classes.lottie,
 		},
 	};
 
@@ -114,16 +115,6 @@ const Hero: React.FC = () => {
 					sm={6}
 					className={classes.heroTextContainer}
 				>
-					{/* <div className={classes.headerContainer}> */}
-					<FadeAndSlide visible={inView} transform={[0, -20]}>
-						<Typography
-							variant="body1"
-							color="textPrimary"
-							className={classes.bodyTypography}
-						>
-							MEET CARBON
-						</Typography>
-					</FadeAndSlide>
 					<Typography
 						color="textPrimary"
 						variant="h1"
@@ -174,8 +165,8 @@ const Hero: React.FC = () => {
 				>
 					<Lottie
 						options={AniStartOptions}
-						width={isMobile ? "100%" : 1480}
-						height={isMobile ? 425 : "100%"}
+						width={isMobile ? "100%" : "auto"}
+						height={"auto"}
 					/>
 				</Grid>
 			</Grid>
@@ -187,7 +178,7 @@ export default Hero;
 
 const useStyles = makeStyles((theme: Theme) => ({
 	partnershipContainer: {
-		marginTop: "4rem",
+		marginTop: "2rem",
 		[theme.breakpoints.down("sm")]: {
 			marginTop: "2rem",
 		},
@@ -209,8 +200,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 			flexWrap: "wrap",
 			gap: "0",
 			width: "80%",
-			marginLeft:"auto",
-			marginRight:"auto",
+			marginLeft: "auto",
+			marginRight: "auto",
 		},
 	},
 	partnerLogo: {
@@ -221,7 +212,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 	ctaGroupContainer: {
-		marginTop: "56px",
+		marginTop: "28px",
 		display: "flex",
 		flexDirection: "column",
 		fontSize: "1rem",
@@ -333,6 +324,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		color: theme.palette.text.hint,
 	},
 	altCarbonContainer: {
+		opacity: "90%",
 		position: "absolute",
 		left: "calc(200% - 340px)",
 		width: "100%",
@@ -354,10 +346,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 		[theme.breakpoints.up("xl")]: {
 			left: "calc(200% - 340px)",
 		},
-		
 	},
 	altCarbon: {
 		display: "flex",
+		alignItems: "center",
 		gap: "8px",
 		border: theme.palette.text.secondary,
 		background: theme.palette.background.default,
@@ -382,5 +374,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 	bancor: {
 		color: theme.palette.primary.main,
 		fontWeight: 700,
+	},
+	lottie: {
+		maxHeight: "60vh",
 	},
 }));

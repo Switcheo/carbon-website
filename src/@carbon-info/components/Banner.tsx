@@ -25,11 +25,17 @@ const Banner: React.FC<bannerProps> = (props: bannerProps) => {
 				{icon && React.cloneElement(icon as React.ReactElement)}
 			</Box>
 			<Box className={classes.textContainer}>
-				<Typography variant="body1" color="textPrimary">
+				<Typography
+					variant="body1"
+					color="textPrimary"
+					className={classes.text}
+				>
 					{text}
 				</Typography>
-				<Box className={clsx(classes.linkButtonContainer)}>
-					<Typography className={classes.text}>{highlightedText}</Typography>
+				<Box className={classes.linkButtonContainer}>
+					<Typography className={clsx(classes.text, classes.highlightedText)}>
+						{highlightedText}
+					</Typography>
 					<ArrowIcon className={classes.icon} />
 				</Box>
 			</Box>
@@ -49,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 		alignItems: "center",
 		borderRadius: "20px",
 		border: "1px solid " + theme.palette.primary.main,
-		padding: "1rem 1.5rem",
+		padding: ".75rem 1rem",
 		fontSize: "1rem",
 		color: theme.palette.text.primary,
 		background: theme.palette.background.default,
@@ -72,8 +78,14 @@ const useStyles = makeStyles((theme: Theme) => ({
 		},
 	},
 	text: {
-		color: theme.palette.primary.main,
 		fontWeight: 700,
+		fontSize: "16px",
+		[theme.breakpoints.down("sm")]: {
+			fontSize: "1.125rem",
+		},
+	},
+	highlightedText: {
+		color: theme.palette.primary.main,
 	},
 	textContainer: {
 		display: "flex",

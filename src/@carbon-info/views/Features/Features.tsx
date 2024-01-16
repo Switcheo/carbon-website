@@ -390,6 +390,9 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
   features: {
     position: "relative",
     margin: "5rem 0",
+    [theme.breakpoints.up("md")]: {
+      margin: "0",
+    },
     [theme.breakpoints.only("md")]: {
       margin: "10rem 0",
     },
@@ -406,7 +409,7 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
     position: "absolute",
     top: -95,
     left: "13%",
-    scale: 0.9,
+    scale: 0.7,
     opacity: 0,
     zIndex: 0,
     "&.open": {
@@ -421,14 +424,14 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
       left: "5%",
     },
     [theme.breakpoints.only("sm")]: {
-      top: "-85%",
+      top: "-35%",
       scale: 0.6,
       left: "-38%",
     },
     [theme.breakpoints.only("xs")]: {
-      top: "-100%",
+      top: "-25%",
       scale: 0.5,
-      left: "-75%",
+      left: "-50%",
     },
   },
   hexagonOutline: {
@@ -436,7 +439,7 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
     position: "absolute",
     top: 35,
     left: "13%",
-    scale: 0.9,
+    scale: 0.7,
     opacity: 0,
     zIndex: 0,
     "&.open": {
@@ -457,7 +460,7 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
       left: "-28%",
     },
     [theme.breakpoints.only("xs")]: {
-      top: "-52%",
+      top: "-5%",
       scale: 0.5,
       left: "-50%",
     },
@@ -466,7 +469,7 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
     position: "absolute",
     top: -125,
     left: "-10%",
-    scale: 1,
+    scale: .8,
     opacity: 0,
     zIndex: 0,
     "&.open": {
@@ -486,9 +489,9 @@ const useStyles = makeStyles<Theme, HeightProps>((theme: Theme) => ({
       left: "0%",
     },
     [theme.breakpoints.only("xs")]: {
-      top: "-10rem",
+      top: "0",
       height: "60rem",
-      left: "-25%",
+      left: "0",
     },
   },
   container: (props: HeightProps) => ({
