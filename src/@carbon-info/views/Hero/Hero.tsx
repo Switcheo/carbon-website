@@ -376,7 +376,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 		fontWeight: 700,
 	},
 	lottie: {
-		maxHeight: "550px",
-		[theme.breakpoints.down("sm")]: {},
+		maxHeight: "60vh",
 	},
 }));
