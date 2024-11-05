@@ -114,7 +114,7 @@ const RoadMapTab: React.FC<Props> = (props: Props) => {
             </Grid>
             <Grid container item xs={12} spacing={2}>
               {
-                content[view]?.tabs.filter(card => card.status === (showCompleted ? "Completed" : "In progress")).map((o, index) => {
+                content[view]?.tabs.filter(card => card.status.toLowerCase() === (showCompleted ? "completed" : "in progress")).map((o, index) => {
                   return (
                     <Grid item xs={12} sm={6} md={4} key={o.title}>
                       <Grow in={inView} timeout={(index + 1) * 200 > 1000 ? 1000 : (index + 1) * 200}>
